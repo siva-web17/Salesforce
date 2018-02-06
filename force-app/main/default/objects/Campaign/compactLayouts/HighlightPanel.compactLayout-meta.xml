@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HighlightPanel</fullName>
+    <fields>Name</fields>
+    <fields>Market__c</fields>
+    <fields>SalesOffice__c</fields>
+    <fields>Program__c</fields>
+    <fields>MeetingType__c</fields>
+    <fields>DateFrom__c</fields>
+    <fields>MeetingCity__c</fields>
+    <fields>MeetingSize__c</fields>
+    <label>HighlightPanel</label>
+</CompactLayout>

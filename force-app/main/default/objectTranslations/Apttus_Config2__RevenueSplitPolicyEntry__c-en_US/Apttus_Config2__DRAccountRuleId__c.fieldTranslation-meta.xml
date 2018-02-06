@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the deferred revenue account rule --></help>
+    <label><!-- Deferred Revenue Account --></label>
+    <name>Apttus_Config2__DRAccountRuleId__c</name>
+    <relationshipLabel><!-- Revenue Split Policy Entries (Deferred Revenue Account) --></relationshipLabel>
+</CustomFieldTranslation>

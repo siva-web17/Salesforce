@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The associated product classification ID. --></help>
+    <label><!-- Product Classification --></label>
+    <name>Apttus_Config2__ProductClassificationId__c</name>
+    <relationshipLabel><!-- Product Hierarchy View --></relationshipLabel>
+</CustomFieldTranslation>

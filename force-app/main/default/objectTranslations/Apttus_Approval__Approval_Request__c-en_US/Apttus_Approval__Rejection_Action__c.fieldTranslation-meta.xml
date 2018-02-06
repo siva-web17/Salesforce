@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Rejection Action --></label>
+    <name>Apttus_Approval__Rejection_Action__c</name>
+    <picklistValues>
+        <masterLabel>Final Rejection</masterLabel>
+        <translation><!-- Final Rejection --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Group &amp; Final Rejection</masterLabel>
+        <translation><!-- Group &amp; Final Rejection --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Group Rejection</masterLabel>
+        <translation><!-- Group Rejection --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>None</masterLabel>
+        <translation><!-- None --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

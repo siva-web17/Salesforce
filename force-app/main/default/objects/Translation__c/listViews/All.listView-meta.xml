@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Market__c</columns>
+    <columns>GeneralInfoTranslation__c</columns>
+    <columns>ProductNameTranslation__c</columns>
+    <columns>Product__c</columns>
+    <columns>Unique_Record_Identifier__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>Language__c</columns>
+    <columns>NAME</columns>
+    <columns>General_heading__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product__c</field>
+        <operation>startsWith</operation>
+        <value>immer</value>
+    </filters>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The data source which provides the default value for the quantity.Only applicable when the default quantity from is available. --></help>
+    <label><!-- Default Quantity Field --></label>
+    <name>Apttus_Config2__DefaultQuantityDatasource__c</name>
+</CustomFieldTranslation>

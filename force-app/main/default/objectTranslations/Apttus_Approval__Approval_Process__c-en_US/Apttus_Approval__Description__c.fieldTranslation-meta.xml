@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Denotes a description for the particular approval process record type being used (i.e. initial action description, final submission action, etc) --></help>
+    <label><!-- Description --></label>
+    <name>Apttus_Approval__Description__c</name>
+</CustomFieldTranslation>

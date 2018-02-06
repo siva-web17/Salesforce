@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The chain of user ids that this request will get escalated to in the event that it is escalated. This chain is determined when the request is initially submitted and is only applicable to dynamic escalation types. --></help>
+    <label><!-- Escalate To Chain --></label>
+    <name>Apttus_Approval__EscalateToChain__c</name>
+</CustomFieldTranslation>

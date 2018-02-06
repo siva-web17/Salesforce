@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateTo__c</fullName>
+    <defaultValue>NOW()</defaultValue>
+    <description>The user should not be allowed to select a date different from that entered in "Date From".</description>
+    <externalId>false</externalId>
+    <label>Date To</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

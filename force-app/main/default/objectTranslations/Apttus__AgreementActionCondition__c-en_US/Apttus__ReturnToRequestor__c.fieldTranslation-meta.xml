@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to return the agreement back to requestor --></help>
+    <label><!-- Return To Requestor --></label>
+    <name>Apttus__ReturnToRequestor__c</name>
+</CustomFieldTranslation>

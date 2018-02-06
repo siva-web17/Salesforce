@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTSTWTRCourse__c</fullName>
+    <description>Is used to identify if a sales user is going to create a Twin or Triple Quote.</description>
+    <externalId>false</externalId>
+    <label>TW/TR Course</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Twin</fullName>
+                <default>false</default>
+                <label>Twin</label>
+            </value>
+            <value>
+                <fullName>Triple</fullName>
+                <default>false</default>
+                <label>Triple</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

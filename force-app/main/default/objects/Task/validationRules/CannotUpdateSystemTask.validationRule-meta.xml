@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotUpdateSystemTask</fullName>
+    <active>true</active>
+    <description>Validation to restrict of 'SystemTask' update.</description>
+    <errorConditionFormula>AND( 
+(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)), NOT(IsParentClosing__c )&amp;&amp; 
+$RecordType.DeveloperName = "SystemCallTask"&amp;&amp; 
+(ISCHANGED(Status) || ISCHANGED(Priority) ))</errorConditionFormula>
+    <errorMessage>"System Task" cannot be updated.</errorMessage>
+</ValidationRule>

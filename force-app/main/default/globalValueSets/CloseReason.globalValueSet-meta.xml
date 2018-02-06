@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Had no intention</fullName>
+        <default>false</default>
+        <label>Had no intention</label>
+    </customValue>
+    <customValue>
+        <fullName>Lost to competitor</fullName>
+        <default>false</default>
+        <label>Lost to competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Had intention and money, but chose to do something else</fullName>
+        <default>false</default>
+        <label>Had intention and money, but chose to do something else</label>
+    </customValue>
+    <customValue>
+        <fullName>Has no means</fullName>
+        <default>false</default>
+        <label>Has no means</label>
+    </customValue>
+    <customValue>
+        <fullName>Finds EF offer too expensive</fullName>
+        <default>false</default>
+        <label>Finds EF offer too expensive</label>
+    </customValue>
+    <customValue>
+        <fullName>Wrongly Imported</fullName>
+        <default>false</default>
+        <label>Wrongly Imported</label>
+    </customValue>
+    <customValue>
+        <fullName>Closed by System</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Closed by System</label>
+    </customValue>
+    <masterLabel>Close Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

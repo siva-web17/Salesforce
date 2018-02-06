@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The area in the page to display the custom actions --></help>
+    <label><!-- Page Area For Action Display --></label>
+    <name>Apttus_Config2__PageAreaForActionDisplay__c</name>
+</CustomFieldTranslation>

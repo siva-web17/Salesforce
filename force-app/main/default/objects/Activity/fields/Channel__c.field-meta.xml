@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel__c</fullName>
+    <externalId>false</externalId>
+    <label>Channel</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AP Reply Card</fullName>
+                <default>false</default>
+                <label>AP Reply Card</label>
+            </value>
+            <value>
+                <fullName>APP Reply Card</fullName>
+                <default>false</default>
+                <label>APP Reply Card</label>
+            </value>
+            <value>
+                <fullName>Aupair Kft</fullName>
+                <default>false</default>
+                <label>Aupair Kft</label>
+            </value>
+            <value>
+                <fullName>Call</fullName>
+                <default>false</default>
+                <label>Call</label>
+            </value>
+            <value>
+                <fullName>CLT Reply Card</fullName>
+                <default>false</default>
+                <label>CLT Reply Card</label>
+            </value>
+            <value>
+                <fullName>Convert</fullName>
+                <default>false</default>
+                <label>Convert</label>
+            </value>
+            <value>
+                <fullName>Coupon</fullName>
+                <default>false</default>
+                <label>Coupon</label>
+            </value>
+            <value>
+                <fullName>E-Mail</fullName>
+                <default>false</default>
+                <label>E-Mail</label>
+            </value>
+            <value>
+                <fullName>Exhibition/Fair</fullName>
+                <default>false</default>
+                <label>Exhibition/Fair</label>
+            </value>
+            <value>
+                <fullName>Fax</fullName>
+                <default>false</default>
+                <label>Fax</label>
+            </value>
+            <value>
+                <fullName>Flyer</fullName>
+                <default>false</default>
+                <label>Flyer</label>
+            </value>
+            <value>
+                <fullName>Gewinnspiel</fullName>
+                <default>false</default>
+                <label>Gewinnspiel</label>
+            </value>
+            <value>
+                <fullName>HSY Reply Card</fullName>
+                <default>false</default>
+                <label>HSY Reply Card</label>
+            </value>
+            <value>
+                <fullName>Internet</fullName>
+                <default>false</default>
+                <label>Internet</label>
+            </value>
+            <value>
+                <fullName>LS Reply Card</fullName>
+                <default>false</default>
+                <label>LS Reply Card</label>
+            </value>
+            <value>
+                <fullName>Mail</fullName>
+                <default>false</default>
+                <label>Mail</label>
+            </value>
+            <value>
+                <fullName>Mobile Site</fullName>
+                <default>false</default>
+                <label>Mobile Site</label>
+            </value>
+            <value>
+                <fullName>Multi-Flyer</fullName>
+                <default>false</default>
+                <label>Multi-Flyer</label>
+            </value>
+            <value>
+                <fullName>Multi-Replycard</fullName>
+                <default>false</default>
+                <label>Multi-Replycard</label>
+            </value>
+            <value>
+                <fullName>Not known</fullName>
+                <default>false</default>
+                <label>Not known</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Phone</fullName>
+                <default>false</default>
+                <label>Phone</label>
+            </value>
+            <value>
+                <fullName>Post</fullName>
+                <default>false</default>
+                <label>Post</label>
+            </value>
+            <value>
+                <fullName>Reply Card</fullName>
+                <default>false</default>
+                <label>Reply Card</label>
+            </value>
+            <value>
+                <fullName>Reply Card EFC</fullName>
+                <default>false</default>
+                <label>Reply Card EFC</label>
+            </value>
+            <value>
+                <fullName>Reply Card FD</fullName>
+                <default>false</default>
+                <label>Reply Card FD</label>
+            </value>
+            <value>
+                <fullName>Reply Card LT</fullName>
+                <default>false</default>
+                <label>Reply Card LT</label>
+            </value>
+            <value>
+                <fullName>SCH Reply Card</fullName>
+                <default>false</default>
+                <label>SCH Reply Card</label>
+            </value>
+            <value>
+                <fullName>SMS</fullName>
+                <default>false</default>
+                <label>SMS</label>
+            </value>
+            <value>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+                <label>Telemarketing</label>
+            </value>
+            <value>
+                <fullName>Visit</fullName>
+                <default>false</default>
+                <label>Visit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

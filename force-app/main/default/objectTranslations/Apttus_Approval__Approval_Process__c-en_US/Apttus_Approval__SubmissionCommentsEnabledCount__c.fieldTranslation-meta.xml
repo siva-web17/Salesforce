@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Keeps track of the number of steps in the process that have one or more submission comments enabled for that step. --></help>
+    <label><!-- Submission Comments Enabled Count --></label>
+    <name>Apttus_Approval__SubmissionCommentsEnabledCount__c</name>
+</CustomFieldTranslation>

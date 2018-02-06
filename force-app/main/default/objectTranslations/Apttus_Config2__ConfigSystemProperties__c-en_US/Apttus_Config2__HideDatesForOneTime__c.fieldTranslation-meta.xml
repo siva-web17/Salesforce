@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Hide Dates For One Time Charge --></help>
+    <label><!-- Hide Dates For One Time Charge --></label>
+    <name>Apttus_Config2__HideDatesForOneTime__c</name>
+</CustomFieldTranslation>

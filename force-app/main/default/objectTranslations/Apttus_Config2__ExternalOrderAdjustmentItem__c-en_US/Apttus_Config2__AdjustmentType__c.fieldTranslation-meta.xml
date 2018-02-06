@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Adjustment Type --></label>
+    <name>Apttus_Config2__AdjustmentType__c</name>
+    <picklistValues>
+        <masterLabel>% Adjustment</masterLabel>
+        <translation><!-- % Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>% Benefit</masterLabel>
+        <translation><!-- % Benefit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Adjusted Price</masterLabel>
+        <translation><!-- Adjusted Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Adjustment Amount</masterLabel>
+        <translation><!-- Adjustment Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Benefit Per Unit</masterLabel>
+        <translation><!-- Benefit Per Unit --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

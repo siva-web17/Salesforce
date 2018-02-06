@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Formatted_Start_Date__c</fullName>
+    <description>Transforms the value of the Start Date field on the PAV record; used to show on Template.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Apttus_Config2__StartDate__c),"",
+IF(Date_Format_Type__c = "DateTypeUS",
+
+TEXT(MONTH(Apttus_Config2__StartDate__c)) &amp; "-" &amp; TEXT(DAY(Apttus_Config2__StartDate__c)) &amp; "-" &amp; TEXT(YEAR(Apttus_Config2__StartDate__c)),
+
+TEXT(DAY(Apttus_Config2__StartDate__c)) &amp; "-" &amp; TEXT(MONTH(Apttus_Config2__StartDate__c)) &amp; "-" &amp; TEXT(YEAR(Apttus_Config2__StartDate__c))
+
+))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Formatted Start Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

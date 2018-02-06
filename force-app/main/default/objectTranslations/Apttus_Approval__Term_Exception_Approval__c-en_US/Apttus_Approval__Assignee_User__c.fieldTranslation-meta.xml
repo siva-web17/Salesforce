@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Used to specify a user assignee using standard salesforce lookup behavior instead of having to type the user&apos;s name.  Using standard lookup prevents typing errors and ensures that the user is correctly assigned regardless of locale settings. --></help>
+    <label><!-- Assignee User --></label>
+    <name>Apttus_Approval__Assignee_User__c</name>
+    <relationshipLabel><!-- Term Exception Approvals --></relationshipLabel>
+</CustomFieldTranslation>

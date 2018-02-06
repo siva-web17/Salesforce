@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>UpdatePricingDateField</fullName>
+        <description>Pricing Date field = Today of when the record is created</description>
+        <field>Apttus_QPConfig__PricingDate__c</field>
+        <formula>DATETIMEVALUE(TODAY())</formula>
+        <name>Update Pricing Date Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Validity_Date</fullName>
+        <field>Apttus_Proposal__Valid_Until_Date__c</field>
+        <formula>(TODAY()+7)</formula>
+        <name>Update Validity Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>SetDefaultValidityDate</fullName>
+        <actions>
+            <name>Update_Validity_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus_Proposal__Proposal__c.Name</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Default Validity Date should be 1 week</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>UpdatePricingDateField</fullName>
+        <actions>
+            <name>UpdatePricingDateField</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus_Proposal__Proposal__c.Name</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>This is used to populate the Pricing Date field = Today of when the record is created. This is needed for the correct PLIs to be incl. in pricing - if effective date of a PLI is in the past, this price will be omitted and system will take an active one.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

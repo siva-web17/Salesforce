@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The order line status --></help>
+    <label><!-- Status --></label>
+    <name>Apttus_Config2__Status__c</name>
+    <picklistValues>
+        <masterLabel>Activated</masterLabel>
+        <translation><!-- Activated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Draft</masterLabel>
+        <translation><!-- Draft --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fulfilled</masterLabel>
+        <translation><!-- Fulfilled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Fulfillment</masterLabel>
+        <translation><!-- In Fulfillment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partially Fulfilled</masterLabel>
+        <translation><!-- Partially Fulfilled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending</masterLabel>
+        <translation><!-- Pending --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

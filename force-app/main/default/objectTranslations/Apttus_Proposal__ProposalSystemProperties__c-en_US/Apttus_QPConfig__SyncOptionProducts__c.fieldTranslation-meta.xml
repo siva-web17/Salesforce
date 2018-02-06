@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the option products should be synchronized along with the bundle. The default is synchronize bundle only. --></help>
+    <label><!-- Sync Option Products --></label>
+    <name>Apttus_QPConfig__SyncOptionProducts__c</name>
+</CustomFieldTranslation>

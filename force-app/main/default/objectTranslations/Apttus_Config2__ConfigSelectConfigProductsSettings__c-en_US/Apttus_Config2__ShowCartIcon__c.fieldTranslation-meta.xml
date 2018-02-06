@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Shows the cart as icon and hides the cart sidebar on the right hand side --></help>
+    <label><!-- Minimize Cart --></label>
+    <name>Apttus_Config2__ShowCartIcon__c</name>
+</CustomFieldTranslation>

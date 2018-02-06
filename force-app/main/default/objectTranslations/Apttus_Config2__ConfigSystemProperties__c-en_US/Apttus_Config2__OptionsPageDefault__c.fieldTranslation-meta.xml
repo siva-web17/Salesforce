@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the default options page. On configure command  this page is displayed for selecting options. Valid values are :
+SelectConfigOptions 
+SelectConfigOptionsTabView
+SelectConfigOptionsListView
+SelectConfigOptionsTreeView
+SelectBundleOptions --></help>
+    <label><!-- Options Page --></label>
+    <name>Apttus_Config2__OptionsPageDefault__c</name>
+</CustomFieldTranslation>

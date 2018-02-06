@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Apttus__Status__c</name>
+    <picklistValues>
+        <masterLabel>Activated</masterLabel>
+        <translation><!-- Activated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Approved Request</masterLabel>
+        <translation><!-- Approved Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Author Contract</masterLabel>
+        <translation><!-- Author Contract --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Amended</masterLabel>
+        <translation><!-- Being Amended --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Renewed</masterLabel>
+        <translation><!-- Being Renewed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Terminated</masterLabel>
+        <translation><!-- Being Terminated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancelled Request</masterLabel>
+        <translation><!-- Cancelled Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Expired</masterLabel>
+        <translation><!-- Expired --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fully Signed</masterLabel>
+        <translation><!-- Fully Signed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Amendment</masterLabel>
+        <translation><!-- In Amendment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Reconciliation</masterLabel>
+        <translation><!-- In Reconciliation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Renewal</masterLabel>
+        <translation><!-- In Renewal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internal Review</masterLabel>
+        <translation><!-- Internal Review --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internal Signatures</masterLabel>
+        <translation><!-- Internal Signatures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Language Approval</masterLabel>
+        <translation><!-- Language Approval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Language Approved</masterLabel>
+        <translation><!-- Language Approved --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Party Review</masterLabel>
+        <translation><!-- Other Party Review --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Party Signatures</masterLabel>
+        <translation><!-- Other Party Signatures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ready for Signatures</masterLabel>
+        <translation><!-- Ready for Signatures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reconciled</masterLabel>
+        <translation><!-- Reconciled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Request</masterLabel>
+        <translation><!-- Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Request Approval</masterLabel>
+        <translation><!-- Request Approval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Signature Declined</masterLabel>
+        <translation><!-- Signature Declined --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Submitted Request</masterLabel>
+        <translation><!-- Submitted Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Superseded</masterLabel>
+        <translation><!-- Superseded --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Terminated</masterLabel>
+        <translation><!-- Terminated --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

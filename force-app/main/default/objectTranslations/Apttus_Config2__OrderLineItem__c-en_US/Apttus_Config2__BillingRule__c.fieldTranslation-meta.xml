@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The billing rule associated with the price item --></help>
+    <label><!-- Billing Rule --></label>
+    <name>Apttus_Config2__BillingRule__c</name>
+    <picklistValues>
+        <masterLabel>Bill In Advance</masterLabel>
+        <translation><!-- Bill In Advance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bill In Arrears</masterLabel>
+        <translation><!-- Bill In Arrears --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Milestone Billing</masterLabel>
+        <translation><!-- Milestone Billing --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

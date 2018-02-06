@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether existing rollup or rebate records for the period will be deleted and recreated. If not enabled, existing records would be updated and new records would get created if they did not already exist. --></help>
+    <label><!-- Recreate Output Data --></label>
+    <name>Apttus_Config2__RecreateOutputData__c</name>
+</CustomFieldTranslation>

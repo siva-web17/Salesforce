@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Gives expression evaluation context --></help>
+    <label><!-- Evaluation Context --></label>
+    <name>Apttus_Config2__EvaluationContext__c</name>
+    <picklistValues>
+        <masterLabel>Constraint Rule Action</masterLabel>
+        <translation><!-- Constraint Rule Action --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Default Quantity</masterLabel>
+        <translation><!-- Default Quantity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Record Update</masterLabel>
+        <translation><!-- Record Update --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rollup</masterLabel>
+        <translation><!-- Rollup --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

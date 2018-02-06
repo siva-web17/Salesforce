@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BoughtName__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If this name was acquired  by buying a name database</description>
+    <externalId>false</externalId>
+    <label>BoughtName</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

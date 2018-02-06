@@ -1,0 +1,6 @@
+#Mapping values
+#Tue Jan 30 13:31:03 IST 2018
+LEADAPINAME__C=LeadAPIName__c
+ACCOUNTFIELDNAME__C=AccountFieldName__c
+ACCOUNTAPINAME__C=AccountAPIName__c
+NAME=Name

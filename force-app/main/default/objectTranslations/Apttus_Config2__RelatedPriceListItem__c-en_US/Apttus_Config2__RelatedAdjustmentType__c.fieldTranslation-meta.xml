@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The related item price adjustment type --></help>
+    <label><!-- Related Adjustment Type --></label>
+    <name>Apttus_Config2__RelatedAdjustmentType__c</name>
+    <picklistValues>
+        <masterLabel>% Discount</masterLabel>
+        <translation><!-- % Discount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>% Markup</masterLabel>
+        <translation><!-- % Markup --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Amount</masterLabel>
+        <translation><!-- Discount Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Markup Amount</masterLabel>
+        <translation><!-- Markup Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Percentage</masterLabel>
+        <translation><!-- Percentage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price Factor</masterLabel>
+        <translation><!-- Price Factor --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

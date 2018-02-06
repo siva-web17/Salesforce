@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsTaskCallReached__c</fullName>
+    <description>Identifies if the Task resulted in Customer being Reached</description>
+    <externalId>false</externalId>
+    <formula>ISPICKVAL( SalesAction__c ,'Call Reached') || 
+ISPICKVAL( SalesAction__c ,'Called Us') || 
+ISPICKVAL( SalesAction__c ,'Visited Us') || 
+ISPICKVAL( SalesAction__c ,'Emailed Us') || 
+ISPICKVAL( SalesAction__c ,'Social Media Reached')</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Task Call Reached</label>
+    <type>Checkbox</type>
+</CustomField>

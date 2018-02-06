@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Represents the target field name which gets value at runtime from field update or rollup expressions. --></help>
+    <label><!-- Update Field --></label>
+    <name>Apttus_Config2__UpdateField__c</name>
+</CustomFieldTranslation>

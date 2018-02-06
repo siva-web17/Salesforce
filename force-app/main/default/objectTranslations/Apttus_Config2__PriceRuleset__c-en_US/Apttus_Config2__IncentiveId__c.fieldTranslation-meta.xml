@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the incentive associated with the ruleset. Only applicable for incentives. --></help>
+    <label><!-- Incentive --></label>
+    <name>Apttus_Config2__IncentiveId__c</name>
+    <relationshipLabel><!-- Price Rulesets --></relationshipLabel>
+</CustomFieldTranslation>

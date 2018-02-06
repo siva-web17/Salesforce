@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the order rollup data is already committed to the rollup data --></help>
+    <label><!-- Is Committed --></label>
+    <name>Apttus_Config2__IsCommitted__c</name>
+</CustomFieldTranslation>

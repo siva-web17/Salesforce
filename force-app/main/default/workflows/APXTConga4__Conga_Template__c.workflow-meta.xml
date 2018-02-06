@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>UpdateTemplategroup</fullName>
+        <description>Update Template group field</description>
+        <field>APXTConga4__Template_Group__c</field>
+        <formula>TEXT(Market__c)+ '_' + TEXT( Program__c)</formula>
+        <name>UpdateTemplategroup</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>UpdateTemplateGroup</fullName>
+        <actions>
+            <name>UpdateTemplategroup</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the 'TemplateGroup' field by concatenating Market and Program.</description>
+        <formula>ISNEW() || OR(    ISCHANGED(Market__c),    ISCHANGED(Program__c)    )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

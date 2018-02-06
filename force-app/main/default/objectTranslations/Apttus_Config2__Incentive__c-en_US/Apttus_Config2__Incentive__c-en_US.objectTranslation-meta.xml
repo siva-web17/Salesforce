@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Add Rebates To Agreement Columns --></label>
+        <name>AddRebatesToAgreementColumns</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Information Section Fields --></label>
+        <name>InformationSectionFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Information Section Loyalty Fields --></label>
+        <name>InformationSectionLoyaltyFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Information Section Point Accrual Fields --></label>
+        <name>InformationSectionPointAccrualFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Promotion Custom Fields --></label>
+        <name>PromotionCustomFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Scope Section Fields --></label>
+        <name>ScopeSectionFields</name>
+    </fieldSets>
+    <validationRules>
+        <errorMessage><!-- Effective date cannot be greater then expiration date. --></errorMessage>
+        <name>Apttus_Config2__DateValidation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- MassDelete --></label>
+        <name>Apttus_Config2__MassDelete</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewLoyaltyProgram --></label>
+        <name>Apttus_Config2__NewLoyaltyProgram</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewPointAccrual --></label>
+        <name>Apttus_Config2__NewPointAccrual</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewPriceProgram --></label>
+        <name>Apttus_Config2__NewPriceProgram</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewPromotion --></label>
+        <name>Apttus_Config2__NewPromotion</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewRebate --></label>
+        <name>Apttus_Config2__NewRebate</name>
+    </webLinks>
+</CustomObjectTranslation>

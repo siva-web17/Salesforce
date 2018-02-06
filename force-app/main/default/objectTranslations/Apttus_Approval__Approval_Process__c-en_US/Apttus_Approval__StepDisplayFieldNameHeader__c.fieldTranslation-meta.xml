@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The API name of the header field to display for the step --></help>
+    <label><!-- Step Display Field Name Header --></label>
+    <name>Apttus_Approval__StepDisplayFieldNameHeader__c</name>
+</CustomFieldTranslation>

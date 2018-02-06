@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The API name of the approval group status field. Only applicable to custom context objects. If not specified, defaults to &quot;Approval_Group_Status__c&quot;. --></help>
+    <label><!-- Approval Group Status Field --></label>
+    <name>Apttus_Approval__ApprovalGroupStatusField__c</name>
+</CustomFieldTranslation>

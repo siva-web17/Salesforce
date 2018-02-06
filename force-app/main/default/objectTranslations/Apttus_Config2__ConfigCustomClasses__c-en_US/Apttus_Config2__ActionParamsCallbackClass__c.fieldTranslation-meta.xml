@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The action parameters callback class name. The class should implement the CustomClass.IActionParamsCallback interface. --></help>
+    <label><!-- Action Params Callback Class --></label>
+    <name>Apttus_Config2__ActionParamsCallbackClass__c</name>
+</CustomFieldTranslation>

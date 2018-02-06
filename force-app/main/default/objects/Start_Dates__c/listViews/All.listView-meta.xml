@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Course__c</columns>
+    <columns>Program__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Is_Beginner__c</columns>
+    <columns>Is_Preferred__c</columns>
+    <columns>StartDate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Program__c</field>
+        <operation>equals</operation>
+        <value>ILSU</value>
+    </filters>
+    <label>All</label>
+</ListView>

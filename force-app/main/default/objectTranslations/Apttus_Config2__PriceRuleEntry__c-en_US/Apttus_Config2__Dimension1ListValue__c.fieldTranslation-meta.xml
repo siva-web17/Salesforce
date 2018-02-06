@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The list of values for the first dimension. Only applicable to List dimensions --></help>
+    <label><!-- Dimension 1 List Value --></label>
+    <name>Apttus_Config2__Dimension1ListValue__c</name>
+</CustomFieldTranslation>

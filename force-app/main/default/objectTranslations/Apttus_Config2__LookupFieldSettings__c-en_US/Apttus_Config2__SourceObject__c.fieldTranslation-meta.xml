@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The junction object which you would like to filter the lookup values. This is a custom object that you can define to filter the values which do not exist on the Lookup Object itself. --></help>
+    <label><!-- Junction Object Name --></label>
+    <name>Apttus_Config2__SourceObject__c</name>
+</CustomFieldTranslation>

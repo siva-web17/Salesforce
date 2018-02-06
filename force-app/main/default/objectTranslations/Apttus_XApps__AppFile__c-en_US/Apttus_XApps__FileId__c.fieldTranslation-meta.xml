@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- File ID --></label>
+    <name>Apttus_XApps__FileId__c</name>
+</CustomFieldTranslation>

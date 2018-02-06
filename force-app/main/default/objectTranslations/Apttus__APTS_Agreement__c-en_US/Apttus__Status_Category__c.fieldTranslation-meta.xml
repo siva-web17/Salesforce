@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status Category --></label>
+    <name>Apttus__Status_Category__c</name>
+    <picklistValues>
+        <masterLabel>Amended</masterLabel>
+        <translation><!-- Amended --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Expired</masterLabel>
+        <translation><!-- Expired --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Authoring</masterLabel>
+        <translation><!-- In Authoring --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Effect</masterLabel>
+        <translation><!-- In Effect --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Filing</masterLabel>
+        <translation><!-- In Filing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Signatures</masterLabel>
+        <translation><!-- In Signatures --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Request</masterLabel>
+        <translation><!-- Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Terminated</masterLabel>
+        <translation><!-- Terminated --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

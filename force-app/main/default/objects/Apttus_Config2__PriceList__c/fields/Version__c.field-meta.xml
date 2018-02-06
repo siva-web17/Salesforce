@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Version__c</fullName>
+    <description>Please enter the Version of the Brochure.</description>
+    <externalId>false</externalId>
+    <label>Version</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>V0</fullName>
+                <default>false</default>
+                <label>V0</label>
+            </value>
+            <value>
+                <fullName>V1</fullName>
+                <default>false</default>
+                <label>V1</label>
+            </value>
+            <value>
+                <fullName>V2</fullName>
+                <default>false</default>
+                <label>V2</label>
+            </value>
+            <value>
+                <fullName>V3</fullName>
+                <default>false</default>
+                <label>V3</label>
+            </value>
+            <value>
+                <fullName>V4</fullName>
+                <default>false</default>
+                <label>V4</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

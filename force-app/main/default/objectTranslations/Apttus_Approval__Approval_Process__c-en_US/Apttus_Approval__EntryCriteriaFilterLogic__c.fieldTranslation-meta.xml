@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter any combination of AND, OR, parenthesis, and numbers representing the expressions. These are the only values that can be used. Using other values may cause unexpected behavior. --></help>
+    <label><!-- Entry Criteria Filter Logic --></label>
+    <name>Apttus_Approval__EntryCriteriaFilterLogic__c</name>
+</CustomFieldTranslation>

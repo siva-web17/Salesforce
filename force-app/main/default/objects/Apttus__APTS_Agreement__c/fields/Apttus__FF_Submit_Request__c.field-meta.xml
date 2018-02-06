@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus__FF_Submit_Request__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Submit the agreement request</description>
+    <externalId>false</externalId>
+    <formula>IF (AND(ISPICKVAL(Apttus__Status_Category__c,"Request"),OR(ISPICKVAL(Apttus__Status__c,"Request"),ISPICKVAL(Apttus__Status__c,"In Amendment"),ISPICKVAL(Apttus__Status__c,"In Renewal"),ISPICKVAL(Apttus__Status__c,""))), HYPERLINK("/apex/Apttus__AgreementSubmitRequest?id=" &amp;Id, IMAGE("/resource/Apttus__Button_SubmitRequest", "Submit Request"), "_self"), NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Submit the agreement request</inlineHelpText>
+    <label>Submit Request</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

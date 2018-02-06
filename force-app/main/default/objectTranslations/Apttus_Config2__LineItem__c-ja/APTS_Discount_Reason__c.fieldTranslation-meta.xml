@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Discount Reason --></label>
+    <name>APTS_Discount_Reason__c</name>
+    <picklistValues>
+        <masterLabel>Discount</masterLabel>
+        <translation><!-- Discount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount 1st Distribution</masterLabel>
+        <translation><!-- Discount 1st Distribution --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Corporation</masterLabel>
+        <translation><!-- Discount Corporation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Flight</masterLabel>
+        <translation><!-- Discount Flight --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Free Flight</masterLabel>
+        <translation><!-- Discount Free Flight --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount VIP Customer</masterLabel>
+        <translation><!-- Discount VIP Customer --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

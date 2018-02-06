@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates that an input value is required for the end user to continue the wizard --></help>
+    <label><!-- Required --></label>
+    <name>Apttus__Required__c</name>
+</CustomFieldTranslation>

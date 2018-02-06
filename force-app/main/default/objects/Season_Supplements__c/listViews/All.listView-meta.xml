@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>SupplementStartDate__c</columns>
+    <columns>SupplementEndDate__c</columns>
+    <columns>APTS_Market__c</columns>
+    <columns>SeasonSupplementProduct__c</columns>
+    <columns>IsMainSupplement__c</columns>
+    <columns>ProductGroup__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <columns>Destination_Location__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Destination_Location__c</field>
+        <operation>equals</operation>
+        <value>Northern Hemisphere</value>
+    </filters>
+    <label>All</label>
+</ListView>

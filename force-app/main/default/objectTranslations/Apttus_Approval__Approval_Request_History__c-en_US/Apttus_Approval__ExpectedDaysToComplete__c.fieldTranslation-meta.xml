@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The number of expected days that this approval request needs to be completed in (approved or rejected). --></help>
+    <label><!-- Expected Days To Complete --></label>
+    <name>Apttus_Approval__ExpectedDaysToComplete__c</name>
+</CustomFieldTranslation>

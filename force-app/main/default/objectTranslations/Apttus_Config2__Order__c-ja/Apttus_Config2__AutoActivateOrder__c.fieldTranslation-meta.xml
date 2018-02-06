@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the order will be automatically activated when the order is accepted. --></help>
+    <label><!-- Auto Activate Order ? --></label>
+    <name>Apttus_Config2__AutoActivateOrder__c</name>
+</CustomFieldTranslation>

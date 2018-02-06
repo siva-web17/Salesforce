@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Look up to wizard step runtime --></help>
+    <label><!-- Next Wizard Step Runtime --></label>
+    <name>Apttus__NextWizardStepRuntimeId__c</name>
+    <relationshipLabel><!-- Wizard Step Runtime --></relationshipLabel>
+</CustomFieldTranslation>

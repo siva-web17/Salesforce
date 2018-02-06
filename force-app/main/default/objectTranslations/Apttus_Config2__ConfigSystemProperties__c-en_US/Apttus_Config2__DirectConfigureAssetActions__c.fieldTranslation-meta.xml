@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Comma separated values of Increment, Amend, Renew, Cancel actions. Listed actions will configure products directly. --></help>
+    <label><!-- Direct Configure Asset Actions --></label>
+    <name>Apttus_Config2__DirectConfigureAssetActions__c</name>
+</CustomFieldTranslation>

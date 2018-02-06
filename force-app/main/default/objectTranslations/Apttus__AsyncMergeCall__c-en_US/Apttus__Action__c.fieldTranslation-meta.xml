@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Action --></label>
+    <name>Apttus__Action__c</name>
+    <picklistValues>
+        <masterLabel>Generate</masterLabel>
+        <translation><!-- Generate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Generate Supporting Document</masterLabel>
+        <translation><!-- Generate Supporting Document --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Preview</masterLabel>
+        <translation><!-- Preview --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Publish</masterLabel>
+        <translation><!-- Publish --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regenerate</masterLabel>
+        <translation><!-- Regenerate --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

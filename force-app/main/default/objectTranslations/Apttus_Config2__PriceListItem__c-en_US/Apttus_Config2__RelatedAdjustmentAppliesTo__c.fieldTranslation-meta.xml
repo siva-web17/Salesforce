@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Related Adjustment Applies To --></label>
+    <name>Apttus_Config2__RelatedAdjustmentAppliesTo__c</name>
+    <picklistValues>
+        <masterLabel>Average Unit Net Price</masterLabel>
+        <translation><!-- Average Unit Net Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Base Extended Price</masterLabel>
+        <translation><!-- Base Extended Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Base Price</masterLabel>
+        <translation><!-- Base Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Extended Price</masterLabel>
+        <translation><!-- Extended Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>List Price</masterLabel>
+        <translation><!-- List Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Net Price</masterLabel>
+        <translation><!-- Net Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Net Unit Price</masterLabel>
+        <translation><!-- Net Unit Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unit Net Price</masterLabel>
+        <translation><!-- Unit Net Price --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

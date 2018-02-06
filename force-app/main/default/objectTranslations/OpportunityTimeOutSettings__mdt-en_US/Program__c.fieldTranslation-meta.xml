@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Program --></label>
+    <name>Program__c</name>
+    <picklistValues>
+        <masterLabel>AY</masterLabel>
+        <translation><!-- AY --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AYP</masterLabel>
+        <translation><!-- AYP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CC</masterLabel>
+        <translation><!-- CC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>EXC</masterLabel>
+        <translation><!-- EXC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ILC</masterLabel>
+        <translation><!-- ILC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ILS</masterLabel>
+        <translation><!-- ILS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ILSH</masterLabel>
+        <translation><!-- ILSH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ILSP</masterLabel>
+        <translation><!-- ILSP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ILSU</masterLabel>
+        <translation><!-- ILSU --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LT</masterLabel>
+        <translation><!-- LT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MLY</masterLabel>
+        <translation><!-- MLY --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MLYP</masterLabel>
+        <translation><!-- MLYP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MULTI</masterLabel>
+        <translation><!-- MULTI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PRW</masterLabel>
+        <translation><!-- PRW --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

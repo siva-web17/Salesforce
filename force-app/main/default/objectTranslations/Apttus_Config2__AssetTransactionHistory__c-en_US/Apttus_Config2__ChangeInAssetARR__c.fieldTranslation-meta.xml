@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The change in the asset annual recurring revenue due to the transaction --></help>
+    <label><!-- Change In Asset ARR --></label>
+    <name>Apttus_Config2__ChangeInAssetARR__c</name>
+</CustomFieldTranslation>

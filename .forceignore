@@ -1,0 +1,69 @@
+**PersonalJourney.settings 
+**SocialCustomerServiceSettings.settings       
+**EntityMilestone-Object Milestone Layout.layout
+**ChatterAnswersAgentView.page
+**ChatterAnswersAgentView.page-meta.xml
+**ChatterAnswersChangePassword.page
+**ChatterAnswersChangePassword.page-meta.xml
+**ChatterAnswersForgotPassword.page
+**ChatterAnswersForgotPassword.page-meta.xml
+**ChatterAnswersForgotPasswordConfirm.page
+**ChatterAnswersForgotPasswordConfirm.page-meta.xml
+**ChatterAnswersHelp.page
+**ChatterAnswersHelp.page-meta.xml
+**ChatterAnswersLogin.page
+**ChatterAnswersLogin.page-meta.xml
+**ChatterAnswersRegistration.page
+**ChatterAnswersRegistration.page-meta.xml  
+**profileSessionSettings
+**profilePasswordPolicies
+**portals
+**communities
+**OrgPreference.settings
+**datacategorygroups
+**cleanDataServices
+**installedPackages
+**FiscalYearPeriodName.standardValueSet
+**IdeaMultiCategory.standardValueSet
+**IdeaStatus.standardValueSet
+**OpportunityCompetitor.standardValueSet
+**OrderType.standardValueSet
+**SocialPostReviewedStatus.standardValueSet
+**ActiveScratchOrg.object
+**ScratchOrgInfo.object
+**NamespaceRegistry.object
+**ActiveScratchOrg.sharingRules
+**ScratchOrgInfo.sharingRules
+**Idea.object
+**FAQ__kav-How To Layout.layout
+**Question-Question Layout.layout
+**Reply-Reply Layout.layout
+**FAQ__kav-de.objectTranslation
+**FAQ__kav-en_US.objectTranslation
+**Duplicate_Check_Full_Access.permissionset
+**Service_Cloud_Console.app
+**Trial Customer Portal User.profile
+**permissionsets
+**Search.settings
+**Local.field-meta.xml
+**AccountContactMultiRoles.standardValueSet-meta.xml
+**Question.workflow-meta.xml
+
+#QA sandbox items commented list
+**QuickTextCategory.standardValueSet-meta.xml
+**QuickTextChannel.standardValueSet-meta.xml
+**QuickText
+**Topic
+**Collaboration
+**CollaborationGroupMember
+**Scorecard
+**ScorecardAssociation
+**ScorecardMetric
+**SocialPost
+**IqScore.field-meta.xml
+**EmailMessage-Email Message Layout - Email-to-Case.layout-meta.xml
+**PricebookEntry-Price Book Entry Layout.layout-meta.xml
+**Chatter_Answers_Moderator.app-meta.xml
+**standard__ServiceConsole.app-meta.xml
+**standard__Content.app-meta.xml
+**Salesforce1.appMenu-meta.xml

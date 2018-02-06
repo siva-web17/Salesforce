@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Configure the columns of the Lookup popup Fields from the Lookup Object which you&apos;d like to display by populating with the fields APIs from the Lookup Object such as Name__c, additional can be added comma-separated without spaces. --></help>
+    <label><!-- Lookup Display Columns --></label>
+    <name>Apttus_Config2__DisplayColumns__c</name>
+</CustomFieldTranslation>

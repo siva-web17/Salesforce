@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Select how the billing plan start date will be determined. --></help>
+    <label><!-- Start Type --></label>
+    <name>Apttus_Config2__StartType__c</name>
+    <picklistValues>
+        <masterLabel>Quote Start Date</masterLabel>
+        <translation><!-- Quote Start Date --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>User Entered</masterLabel>
+        <translation><!-- User Entered --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Used to determine type of a line item for use in Cost &amp; Profitability Price Waterfall
+
+
+if checked, item is a Price Point. If unchecked, item is an Adjustment. --></help>
+    <label><!-- Is Price Point --></label>
+    <name>Apttus_Config2__IsPricePoint__c</name>
+</CustomFieldTranslation>

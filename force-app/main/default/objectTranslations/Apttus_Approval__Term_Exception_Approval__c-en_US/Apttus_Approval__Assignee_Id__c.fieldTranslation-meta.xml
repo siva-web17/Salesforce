@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This field holds the ID of the queue, role, or forecast role that is assigned to the request.  This field is not used when the assignee type is user. --></help>
+    <label><!-- Assignee Id --></label>
+    <name>Apttus_Approval__Assignee_Id__c</name>
+</CustomFieldTranslation>

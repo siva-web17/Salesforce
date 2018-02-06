@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The charge type associated with the related product/service --></help>
+    <label><!-- Related Charge Type --></label>
+    <name>Apttus_Config2__RelatedChargeType__c</name>
+    <picklistValues>
+        <masterLabel>Adjustment</masterLabel>
+        <translation><!-- Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Implementation Fee</masterLabel>
+        <translation><!-- Implementation Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Installation Fee</masterLabel>
+        <translation><!-- Installation Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>License Fee</masterLabel>
+        <translation><!-- License Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maintenance Fee</masterLabel>
+        <translation><!-- Maintenance Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sales Tax</masterLabel>
+        <translation><!-- Sales Tax --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Shipping &amp; Handling</masterLabel>
+        <translation><!-- Shipping &amp; Handling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Standard Price</masterLabel>
+        <translation><!-- Standard Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Subscription Fee</masterLabel>
+        <translation><!-- Subscription Fee --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

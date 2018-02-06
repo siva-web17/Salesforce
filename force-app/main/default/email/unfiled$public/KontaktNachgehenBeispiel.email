@@ -1,0 +1,7 @@
+Sehr geehrte(r) {!Contact.Title} {!Contact.LastName}, 
+
+unser Gespräch heute ist gut gelaufen. Ich glaube, dass {!Organization.Name} für {!Account.Name} sehr viel zu bieten hat. Ich freue mich auf unseren nächsten Termin. 
+
+Mit freundlichen Grüßen, 
+
+{!User.FirstName} {!User.LastName}

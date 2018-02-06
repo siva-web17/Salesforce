@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Name of the focus object if one is determined by this ruleset. If none is determined, this value would be null. --></help>
+    <label><!-- Focus Object Name --></label>
+    <name>Apttus__FocusObjectName__c</name>
+</CustomFieldTranslation>

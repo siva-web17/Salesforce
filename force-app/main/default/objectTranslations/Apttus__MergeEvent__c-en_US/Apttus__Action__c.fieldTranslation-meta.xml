@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Action --></label>
+    <name>Apttus__Action__c</name>
+    <picklistValues>
+        <masterLabel>Check In</masterLabel>
+        <translation><!-- Check In --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Check Out</masterLabel>
+        <translation><!-- Check Out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Create Offline Agreement</masterLabel>
+        <translation><!-- Create Offline Agreement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Generate</masterLabel>
+        <translation><!-- Generate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Generate Supporting Document</masterLabel>
+        <translation><!-- Generate Supporting Document --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Import Offline Agreement</masterLabel>
+        <translation><!-- Import Offline Agreement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Preview</masterLabel>
+        <translation><!-- Preview --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regenerate</masterLabel>
+        <translation><!-- Regenerate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Revert Check Out</masterLabel>
+        <translation><!-- Revert Check Out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Review</masterLabel>
+        <translation><!-- Review --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

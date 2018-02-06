@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesMadeby__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This field holds the user name, which can be changed at the time of Booking in Booking Summary Component</description>
+    <externalId>false</externalId>
+    <label>Sales Made by</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Proposals</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

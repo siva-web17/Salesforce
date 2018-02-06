@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgeToShouldBeGreaterThanAgeFrom</fullName>
+    <active>true</active>
+    <description>The "age to" should be always greater than the "age from" specified</description>
+    <errorConditionFormula>(AgeToYears__c  * 12) +  AgeToMonths__c  &lt;=  ( AgeFromYears__c * 12) +  AgeFromMonths__c</errorConditionFormula>
+    <errorMessage>Age To should be always greater than Age From.</errorMessage>
+</ValidationRule>

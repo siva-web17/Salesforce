@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Information Type --></label>
+    <name>Apttus_Config2__InformationType__c</name>
+    <picklistValues>
+        <masterLabel>Attached File</masterLabel>
+        <translation><!-- Attached File --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Embedded Code</masterLabel>
+        <translation><!-- Embedded Code --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>URL Address</masterLabel>
+        <translation><!-- URL Address --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

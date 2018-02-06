@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the associated batch job --></help>
+    <label><!-- Batch Job (CPQ) --></label>
+    <name>Apttus_Config2__BatchJobId__c</name>
+    <relationshipLabel><!-- Batch Job (CPQ) Parameters --></relationshipLabel>
+</CustomFieldTranslation>

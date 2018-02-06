@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field to be displayed from Option Line Item. Only text fields are supported. --></help>
+    <label><!-- Option Field In Summary --></label>
+    <name>Apttus_Config2__OptionFieldInSummary__c</name>
+</CustomFieldTranslation>

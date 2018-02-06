@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the date the payment term is calculated from --></help>
+    <label><!-- Offset Type --></label>
+    <name>Apttus_Config2__OffsetType__c</name>
+    <picklistValues>
+        <masterLabel>Day</masterLabel>
+        <translation><!-- Day --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>End of Month</masterLabel>
+        <translation><!-- End of Month --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Month</masterLabel>
+        <translation><!-- Month --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Receipt</masterLabel>
+        <translation><!-- On Receipt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Specific Day</masterLabel>
+        <translation><!-- Specific Day --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Start of Month</masterLabel>
+        <translation><!-- Start of Month --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the approver receives only a notification for the approval request (when set to true) or gets the request assigned to them in addition to receiving a notification (when set to false, which is the default). --></help>
+    <label><!-- Step Notify Only --></label>
+    <name>Apttus_Approval__Step_Notify_Only__c</name>
+</CustomFieldTranslation>

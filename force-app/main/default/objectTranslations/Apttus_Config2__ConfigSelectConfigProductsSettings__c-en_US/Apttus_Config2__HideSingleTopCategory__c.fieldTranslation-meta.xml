@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check to hide top category when there is only one top category and it has one or more child categories. --></help>
+    <label><!-- Hide Single Top Category --></label>
+    <name>Apttus_Config2__HideSingleTopCategory__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The revenue recognition rule associated with the policy --></help>
+    <label><!-- Revenue Recognition Rule --></label>
+    <name>Apttus_Config2__RevRec_Rule__c</name>
+    <picklistValues>
+        <masterLabel>Immediate</masterLabel>
+        <translation><!-- Immediate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Manual</masterLabel>
+        <translation><!-- Manual --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ratable</masterLabel>
+        <translation><!-- Ratable --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Subscription</masterLabel>
+        <translation><!-- Subscription --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

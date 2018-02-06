@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus__SubmitRequest__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Indicator to submit agreement request</description>
+    <externalId>false</externalId>
+    <formula>AND(ISPICKVAL(Apttus__AgreementId__r.Apttus__Status_Category__c,"Request"),OR(ISPICKVAL(Apttus__AgreementId__r.Apttus__Status__c,"Request"),ISPICKVAL(Apttus__AgreementId__r.Apttus__Status__c,"In Amendment"),ISPICKVAL(Apttus__AgreementId__r.Apttus__Status__c,"In Renewal"),ISPICKVAL(Apttus__AgreementId__r.Apttus__Status__c,"")))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicator to submit agreement request</inlineHelpText>
+    <label>Submit Request</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

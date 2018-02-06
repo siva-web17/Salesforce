@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompactLayoutOpp</fullName>
+    <fields>AccountId</fields>
+    <fields>RecordSharingKey__c</fields>
+    <fields>StageName</fields>
+    <fields>Ranking__c</fields>
+    <fields>Partner__c</fields>
+    <fields>Etag__c</fields>
+    <fields>OwnerId</fields>
+    <fields>Mobile__c</fields>
+    <fields>HomePhone__c</fields>
+    <label>Compact Layout Opp</label>
+</CompactLayout>

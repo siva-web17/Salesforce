@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to allow automatic placement of Agreement number in the header and last modified timestamp in the footer of the document for generate, offline and import actions. --></help>
+    <label><!-- Auto Insert Header Footer Data --></label>
+    <name>Apttus__AutoInsertHeaderFooterData__c</name>
+</CustomFieldTranslation>

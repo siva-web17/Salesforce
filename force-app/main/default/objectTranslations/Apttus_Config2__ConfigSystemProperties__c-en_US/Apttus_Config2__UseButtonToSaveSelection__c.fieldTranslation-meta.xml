@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether to wait for button click before processing option selection and validation. --></help>
+    <label><!-- Use Button To Save Selection --></label>
+    <name>Apttus_Config2__UseButtonToSaveSelection__c</name>
+</CustomFieldTranslation>

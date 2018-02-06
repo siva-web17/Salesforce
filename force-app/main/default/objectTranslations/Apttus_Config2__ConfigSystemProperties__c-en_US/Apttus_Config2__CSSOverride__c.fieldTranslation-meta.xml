@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Name of the static resource to override CSS in catalog, cart, attribute and options pages --></help>
+    <label><!-- CSS Override --></label>
+    <name>Apttus_Config2__CSSOverride__c</name>
+</CustomFieldTranslation>

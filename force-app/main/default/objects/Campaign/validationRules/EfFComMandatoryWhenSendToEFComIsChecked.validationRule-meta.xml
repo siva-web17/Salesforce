@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EfFComMandatoryWhenSendToEFComIsChecked</fullName>
+    <active>true</active>
+    <description>EF.COM is mandatory if  Send to EF.COM is checked</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),((ISBLANK(TEXT(EFCOMMarket__c))) &amp;&amp; (SendtoEFCOM__c)))</errorConditionFormula>
+    <errorMessage>Please select the EF.COM Market.</errorMessage>
+</ValidationRule>

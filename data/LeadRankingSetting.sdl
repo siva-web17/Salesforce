@@ -1,0 +1,6 @@
+#Mapping values
+#Tue Jan 30 16:32:35 IST 2018
+PRODUCT__C=Product__c
+MARKETCODE__C=MarketCode__c
+NAME=Name
+RANKING__C=Ranking__c

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Lookup to wizard ruleset this rule belongs to --></help>
+    <label><!-- Wizard Ruleset --></label>
+    <name>Apttus__WizardRulesetId__c</name>
+    <relationshipLabel><!-- Wizard Rules (Wizard Ruleset) --></relationshipLabel>
+</CustomFieldTranslation>

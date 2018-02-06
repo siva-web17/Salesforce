@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- CRMC Action Grid Defaults --></label>
+        <name>CRMC_Action_Grid_Defaults</name>
+    </fieldSets>
+    <layouts>
+        <layout>Opportunity Page Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunity Information --></label>
+            <section>Opportunity Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- New Task --></label>
+        <name>NewSBRTask</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- View Person Account Information --></label>
+        <name>ViewPersonAccountInformation</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage><!-- Please do not update the Stage of the Opportunity. Only automatic Stage Movements are allowed. --></errorMessage>
+        <name>DoNotEditActiveOpportunityStage</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Opportunity you are attempting to edit is Inactive. Please work with the latest Active Opportunity or create a new Opportunity. --></errorMessage>
+        <name>DoNotEditInactiveOpportunities</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Account and Opportunity should belong to the same Market. --></errorMessage>
+        <name>MarketMismatchAccountOpportunity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Active opportunity already exists for this Personal Account. --></errorMessage>
+        <name>OnlyOneActiveOpportunityPerAccount</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTConga4__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTConga4__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateProposalFromOpp --></label>
+        <name>Apttus_Proposal__CreateProposalFromOpp</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateQuoteProposalFromOpportunity --></label>
+        <name>Apttus_Proposal__CreateQuoteProposalFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EditInExcel --></label>
+        <name>Apttus_XApps__EditInExcel</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateAgreementFromOpportunity --></label>
+        <name>Apttus__CreateAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateOfflineAgreementFromOpportunity --></label>
+        <name>Apttus__CreateOfflineAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewAgreementFromOpportunity --></label>
+        <name>Apttus__NewAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewOfflineAgreementFromOpportunity --></label>
+        <name>Apttus__NewOfflineAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateQuoteProposalFromOpportunity --></label>
+        <name>CreateQuoteProposalFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PrintTemplate --></label>
+        <name>PrintTemplate</name>
+    </webLinks>
+</CustomObjectTranslation>

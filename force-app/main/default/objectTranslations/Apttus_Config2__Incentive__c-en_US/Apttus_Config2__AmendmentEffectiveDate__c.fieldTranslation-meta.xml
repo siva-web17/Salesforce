@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The date when the amendment to the incentive takes effect --></help>
+    <label><!-- Amendment Effective Date --></label>
+    <name>Apttus_Config2__AmendmentEffectiveDate__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This should be in the format: __Y__M  OR  __Y --></help>
+    <label><!-- Age From --></label>
+    <name>AgeFrom__c</name>
+</CustomFieldTranslation>

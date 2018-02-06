@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the reconcile selection is allowed to be overridden by the user. Only applicable when reconciliation is auto enabled for documents. --></help>
+    <label><!-- Allow Reconcile Selection Override --></label>
+    <name>Apttus__AllowReconcileSelectionOverride__c</name>
+</CustomFieldTranslation>

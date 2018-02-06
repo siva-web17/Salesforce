@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Asset Status --></label>
+    <name>Apttus_Config2__AssetStatus__c</name>
+    <picklistValues>
+        <masterLabel>Activated</masterLabel>
+        <translation><!-- Activated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Amended</masterLabel>
+        <translation><!-- Amended --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Incremented</masterLabel>
+        <translation><!-- Incremented --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Activation</masterLabel>
+        <translation><!-- Pending Activation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Cancellation</masterLabel>
+        <translation><!-- Pending Cancellation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Change</masterLabel>
+        <translation><!-- Pending Change --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Re-activation</masterLabel>
+        <translation><!-- Pending Re-activation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Renewal</masterLabel>
+        <translation><!-- Pending Renewal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Suspension</masterLabel>
+        <translation><!-- Pending Suspension --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Renewed</masterLabel>
+        <translation><!-- Renewed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Superseded</masterLabel>
+        <translation><!-- Superseded --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspended</masterLabel>
+        <translation><!-- Suspended --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

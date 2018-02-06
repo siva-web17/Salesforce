@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Contains JSON string with Cost Rollup information showing how the Costs are rolled up from a child all the way to the topmost parent. --></help>
+    <label><!-- Cost Rollup Info --></label>
+    <name>Apttus_Config2__CostRollupInfo__c</name>
+</CustomFieldTranslation>

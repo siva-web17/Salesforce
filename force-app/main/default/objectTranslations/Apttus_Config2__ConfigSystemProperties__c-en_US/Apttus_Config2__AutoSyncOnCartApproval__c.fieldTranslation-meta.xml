@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the cart is auto synchronized when the cart is approved and ready for finalization. --></help>
+    <label><!-- Auto Sync On Cart Approval --></label>
+    <name>Apttus_Config2__AutoSyncOnCartApproval__c</name>
+</CustomFieldTranslation>

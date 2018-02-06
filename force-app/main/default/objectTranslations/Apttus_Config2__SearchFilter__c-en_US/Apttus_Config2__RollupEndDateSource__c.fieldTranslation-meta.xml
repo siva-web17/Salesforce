@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the source field in the rollup business object or a child object which determines the rollup end date --></help>
+    <label><!-- Rollup End Date Source --></label>
+    <name>Apttus_Config2__RollupEndDateSource__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The loyalty level granted to the account/contact or custom point accrual level from the previous cycle. This level becomes the starting level for the new cycle unless an override is in effect. --></help>
+    <label><!-- Loyalty Level (Initial) --></label>
+    <name>Apttus_Config2__LoyaltyLevelInitial__c</name>
+</CustomFieldTranslation>

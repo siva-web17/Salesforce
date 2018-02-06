@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Additional Pricing Fields --></label>
+        <name>AdditionalPricingFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Rebate Additional Pricing Fields --></label>
+        <name>RebateAdditionalPricingFields</name>
+    </fieldSets>
+</CustomObjectTranslation>

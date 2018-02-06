@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- You may apply your own naming convention to documents at generation, check-in and signature events, by defining a string of delimited variables, in the format %VarName1%_%VarName 2% … The default value is &apos;%:Name%_%action%_%templatename%_%timestamp%&apos;. --></help>
+    <label><!-- Document Naming Convention --></label>
+    <name>Apttus__DocumentNamingConvention__c</name>
+</CustomFieldTranslation>

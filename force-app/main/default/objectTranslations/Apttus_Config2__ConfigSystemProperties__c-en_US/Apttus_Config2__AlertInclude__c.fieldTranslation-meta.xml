@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check it to display radio buttons for  Renew, Increment, Amend, Cancel asset actions. --></help>
+    <label><!-- Show Radio Buttons for Asset --></label>
+    <name>Apttus_Config2__AlertInclude__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PQ Template</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PQ Templates</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- Batch Template Publish Result FieldSet --></label>
+        <name>BatchTemplatePublishResultFieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Browse Templates Result FieldSet --></label>
+        <name>BrowseTemplatesResultFieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Checkin Template Field Set --></label>
+        <name>CheckinTemplateFieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Create Template Field Set --></label>
+        <name>CreateTemplateFieldSet</name>
+    </fieldSets>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

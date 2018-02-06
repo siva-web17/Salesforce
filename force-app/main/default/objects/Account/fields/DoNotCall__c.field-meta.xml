@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoNotCall__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used to identify when the customer should not be called.</description>
+    <externalId>false</externalId>
+    <label>Do Not Call</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

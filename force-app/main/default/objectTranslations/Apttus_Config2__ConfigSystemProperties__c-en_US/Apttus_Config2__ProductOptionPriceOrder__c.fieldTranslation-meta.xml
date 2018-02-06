@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the evaluation order of the product option price in the pricing waterfall.
+
+Valid Values (default = &quot;Last&quot;)
+=======================
+First
+Last --></help>
+    <label><!-- Product Option Price Order --></label>
+    <name>Apttus_Config2__ProductOptionPriceOrder__c</name>
+</CustomFieldTranslation>

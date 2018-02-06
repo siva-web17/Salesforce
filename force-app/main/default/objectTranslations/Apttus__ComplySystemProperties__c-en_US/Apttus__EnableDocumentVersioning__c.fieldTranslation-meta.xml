@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enables document versioning. Make sure EnableVersionControl is set to true. --></help>
+    <label><!-- Enable Document Versioning --></label>
+    <name>Apttus__EnableDocumentVersioning__c</name>
+</CustomFieldTranslation>

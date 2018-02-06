@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The definition of the data type entered in by the designer. --></help>
+    <label><!-- Interface Definition --></label>
+    <name>Apttus__InterfaceDefinition__c</name>
+    <picklistValues>
+        <masterLabel>Checkbox</masterLabel>
+        <translation><!-- Checkbox --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Currency &lt;Type, Chars, Dec></masterLabel>
+        <translation><!-- Currency &lt;Type, Chars, Dec&gt; --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Date &lt;Format></masterLabel>
+        <translation><!-- Date &lt;Format&gt; --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Expression Formula</masterLabel>
+        <translation><!-- Expression Formula --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Number &lt;Chars, Dec></masterLabel>
+        <translation><!-- Number &lt;Chars, Dec&gt; --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Percent &lt;Dec></masterLabel>
+        <translation><!-- Percent &lt;Dec&gt; --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Picklist Dropdown</masterLabel>
+        <translation><!-- Picklist Dropdown --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Picklist Radio Button</masterLabel>
+        <translation><!-- Picklist Radio Button --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Text Entry</masterLabel>
+        <translation><!-- Text Entry --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CloseMainReason__c</fullName>
+    <externalId>false</externalId>
+    <label>Close Main Reason</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Had no intention</fullName>
+                <default>false</default>
+                <label>Had no intention</label>
+            </value>
+            <value>
+                <fullName>Lost to competitor</fullName>
+                <default>false</default>
+                <label>Lost to competitor</label>
+            </value>
+            <value>
+                <fullName>Had intention and money, but chose to do something else</fullName>
+                <default>false</default>
+                <label>Had intention and money, but chose to do something else</label>
+            </value>
+            <value>
+                <fullName>Has no means</fullName>
+                <default>false</default>
+                <label>Has no means</label>
+            </value>
+            <value>
+                <fullName>Finds EF offer too expensive</fullName>
+                <default>false</default>
+                <label>Finds EF offer too expensive</label>
+            </value>
+            <value>
+                <fullName>Had intention and money, but chose to do something else (soft no, we can try next year)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Had intention and money, but chose to do something else (soft no, we can try next year)</label>
+            </value>
+            <value>
+                <fullName>Had no intention (ordered by mistake, didn't understand what it was for at all)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Had no intention (ordered by mistake, didn't understand what it was for at all)</label>
+            </value>
+            <value>
+                <fullName>Lost to competitor (definitely try again)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lost to competitor (definitely try again)</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

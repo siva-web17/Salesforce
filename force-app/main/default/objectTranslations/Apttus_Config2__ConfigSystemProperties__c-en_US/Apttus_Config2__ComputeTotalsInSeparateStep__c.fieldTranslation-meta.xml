@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether totaling should be performed in a separate step or combined with the base pricing step --></help>
+    <label><!-- Compute Totals In Separate Step --></label>
+    <name>Apttus_Config2__ComputeTotalsInSeparateStep__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Lookup to the parent document version id from where this version is derived --></help>
+    <label><!-- Ancestor --></label>
+    <name>Apttus__ParentDocumentVersionDetailId__c</name>
+    <relationshipLabel><!-- Document Version Details --></relationshipLabel>
+</CustomFieldTranslation>

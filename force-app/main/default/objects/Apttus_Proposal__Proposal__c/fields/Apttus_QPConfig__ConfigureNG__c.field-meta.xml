@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus_QPConfig__ConfigureNG__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Configure products for the quote/proposal</description>
+    <externalId>false</externalId>
+    <formula>IF ( LEN( Apttus_QPConfig__PriceListId__c ) > 0 , HYPERLINK("/apex/Apttus_QPConfig__ProposalConfiguration?id=" &amp;Id &amp; "&amp;flow=NGDefault", IMAGE("/resource/Apttus_QPConfig__Button_Configure", "Configure Products"),"_self"), NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Configure Products (NG)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <recordTypes>
+        <label><!-- Approval Process --></label>
+        <name>ApprovalProcess</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Entry Criteria --></label>
+        <name>EntryCriteria</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Final Action --></label>
+        <name>FinalAction</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Initial Submission Action --></label>
+        <name>InitialSubmissionAction</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Step --></label>
+        <name>Step</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Step Filter Criteria --></label>
+        <name>StepFilterCriteria</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Step Group --></label>
+        <name>StepGroup</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Step Group Action --></label>
+        <name>StepGroupAction</name>
+    </recordTypes>
+    <webLinks>
+        <label><!-- Clone --></label>
+        <name>Apttus_Approval__Clone</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create --></label>
+        <name>Apttus_Approval__Create</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Apttus_Approval__Delete</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Edit --></label>
+        <name>Apttus_Approval__Edit</name>
+    </webLinks>
+</CustomObjectTranslation>

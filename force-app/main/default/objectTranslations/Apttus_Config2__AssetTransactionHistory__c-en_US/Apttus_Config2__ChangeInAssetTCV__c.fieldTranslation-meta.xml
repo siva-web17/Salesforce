@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The change in the asset TCV due to the transaction --></help>
+    <label><!-- Change In Asset TCV --></label>
+    <name>Apttus_Config2__ChangeInAssetTCV__c</name>
+</CustomFieldTranslation>

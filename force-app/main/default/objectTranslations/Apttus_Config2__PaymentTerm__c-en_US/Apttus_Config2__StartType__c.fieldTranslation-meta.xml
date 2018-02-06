@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates which type of start type will be used to calculate the payment term. --></help>
+    <label><!-- Start Type --></label>
+    <name>Apttus_Config2__StartType__c</name>
+    <picklistValues>
+        <masterLabel>Day</masterLabel>
+        <translation><!-- Day --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>End of Month</masterLabel>
+        <translation><!-- End of Month --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>End of Quarter</masterLabel>
+        <translation><!-- End of Quarter --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Invoice Date</masterLabel>
+        <translation><!-- Invoice Date --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Month</masterLabel>
+        <translation><!-- Month --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Specific Day</masterLabel>
+        <translation><!-- Specific Day --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Start of Month</masterLabel>
+        <translation><!-- Start of Month --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Start of Quarter</masterLabel>
+        <translation><!-- Start of Quarter --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The name of the custom attributes page associated with ConfigureBundle and SelectConfigOptionsDetailView pages --></help>
+    <label><!-- Custom Option Attribute Page --></label>
+    <name>Apttus_Config2__CustomOptionAttributePage__c</name>
+</CustomFieldTranslation>

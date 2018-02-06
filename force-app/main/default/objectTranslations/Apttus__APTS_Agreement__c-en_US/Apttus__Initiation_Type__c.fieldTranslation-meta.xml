@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Initiation Type --></label>
+    <name>Apttus__Initiation_Type__c</name>
+    <picklistValues>
+        <masterLabel>Negotiate Contract</masterLabel>
+        <translation><!-- Negotiate Contract --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Store Executed Contract</masterLabel>
+        <translation><!-- Store Executed Contract --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

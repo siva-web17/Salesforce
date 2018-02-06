@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The extended quantity is Quantity X Parent Quantity) --></help>
+    <label><!-- Extended Quantity --></label>
+    <name>Apttus_QPConfig__ExtendedQuantity__c</name>
+</CustomFieldTranslation>

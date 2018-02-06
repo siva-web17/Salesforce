@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check to disable &quot;Add To Cart&quot; button on click until the server confirms addition of product. --></help>
+    <label><!-- Disable Add To Cart On Click --></label>
+    <name>Apttus_Config2__DisableAddToCartOnClick__c</name>
+</CustomFieldTranslation>

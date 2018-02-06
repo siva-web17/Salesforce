@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The type of offset to apply to the rollup start date --></help>
+    <label><!-- Rollup Start Date Offset Type --></label>
+    <name>Apttus_Config2__RollupStartDateOffsetType__c</name>
+    <picklistValues>
+        <masterLabel>Offset (+) Days</masterLabel>
+        <translation><!-- Offset (+) Days --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offset (+) Months</masterLabel>
+        <translation><!-- Offset (+) Months --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offset (-) Days</masterLabel>
+        <translation><!-- Offset (-) Days --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offset (-) Months</masterLabel>
+        <translation><!-- Offset (-) Months --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

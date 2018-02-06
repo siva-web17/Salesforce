@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Enrollment Fee</fullName>
+        <default>false</default>
+        <label>Enrollment Fee</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Travel Insurance</fullName>
+        <default>false</default>
+        <label>Travel Insurance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Accommodation</fullName>
+        <default>false</default>
+        <label>Accommodation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Course</fullName>
+        <default>false</default>
+        <label>Course</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Destination</fullName>
+        <default>false</default>
+        <label>Destination</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Junior Course</fullName>
+        <default>false</default>
+        <label>Junior Course</label>
+    </standardValue>
+    <standardValue>
+        <fullName>General Fee</fullName>
+        <default>false</default>
+        <label>General Fee</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LT Course</fullName>
+        <default>false</default>
+        <label>LT Course</label>
+    </standardValue>
+</StandardValueSet>

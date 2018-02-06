@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoNotEditActiveOpportunityStage</fullName>
+    <active>true</active>
+    <description>This validation rule is used to block users from editing the Opportunity Stage so that Stage Movements are consistent throughout the system.</description>
+    <errorConditionFormula>NOT($Setup.BypassTriggersValidation__c.DisableValidation__c) 
+&amp;&amp; 
+IsActive__c = TRUE
+&amp;&amp;
+ISCHANGED( StageName )
+&amp;&amp;
+TFBypassStageValidation__c = FALSE</errorConditionFormula>
+    <errorMessage>Please do not update the Stage of the Opportunity. Only automatic Stage Movements are allowed.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field that relates the child object to the parent. This helps resolve multiple parent references --></help>
+    <label><!-- Parent Reference Field --></label>
+    <name>Apttus__ParentReferenceField__c</name>
+</CustomFieldTranslation>

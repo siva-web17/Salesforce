@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LessonsDescriptionsTranslation__c</fullName>
+    <description>This is the same field in Translation Object</description>
+    <externalId>false</externalId>
+    <label>Lessons Descriptions Translation</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>
