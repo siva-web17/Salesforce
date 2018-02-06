@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether multiple checkout is allowed. Only applicable when version control is in effect. --></help>
+    <label><!-- Enable Multiple Checkout --></label>
+    <name>Apttus__EnableMultipleCheckout__c</name>
+</CustomFieldTranslation>

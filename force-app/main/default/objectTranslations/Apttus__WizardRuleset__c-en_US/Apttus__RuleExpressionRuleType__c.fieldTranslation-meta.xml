@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Rule types that can be used for navigating the runtime wizard flow, determining the focus object and record type. --></help>
+    <label><!-- Rule Expression Rule Type --></label>
+    <name>Apttus__RuleExpressionRuleType__c</name>
+    <picklistValues>
+        <masterLabel>Determine Focus Object</masterLabel>
+        <translation><!-- Determine Focus Object --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Determine Record Type</masterLabel>
+        <translation><!-- Determine Record Type --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Go To Input</masterLabel>
+        <translation><!-- Go To Input --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Go To Step</masterLabel>
+        <translation><!-- Go To Step --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Go To Submit</masterLabel>
+        <translation><!-- Go To Submit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Go To URL</masterLabel>
+        <translation><!-- Go To URL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Next Step</masterLabel>
+        <translation><!-- Next Step --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

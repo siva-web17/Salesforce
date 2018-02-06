@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the API object name for the object the condition applies to.  For custom objects, the  API name has a  &quot;__c&quot; appended to it. --></help>
+    <label><!-- Object --></label>
+    <name>Apttus_Approval__Object__c</name>
+</CustomFieldTranslation>

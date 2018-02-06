@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Identifies the next page if its not a Wizard Step (URL, SUBMIT, ACKNOWLEDGEMENT) --></help>
+    <label><!-- Next Page --></label>
+    <name>Apttus__NextPage__c</name>
+</CustomFieldTranslation>

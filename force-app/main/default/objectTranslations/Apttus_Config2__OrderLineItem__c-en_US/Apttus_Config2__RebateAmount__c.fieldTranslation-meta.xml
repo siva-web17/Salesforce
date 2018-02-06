@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The rebate amount associated with the product/service --></help>
+    <label><!-- Rebate Amount --></label>
+    <name>Apttus_Config2__RebateAmount__c</name>
+</CustomFieldTranslation>

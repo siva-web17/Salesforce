@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The email template for sending checkin notifications. --></help>
+    <label><!-- Email Template For Checkin Notification --></label>
+    <name>Apttus__EmailTemplateForCheckinNotification__c</name>
+</CustomFieldTranslation>

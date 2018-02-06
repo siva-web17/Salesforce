@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type --></label>
+    <name>MeetingType__c</name>
+    <picklistValues>
+        <masterLabel>Info Meeting - Offline</masterLabel>
+        <translation><!-- Info Meeting - Offline --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Info Meeting - Online</masterLabel>
+        <translation><!-- Info Meeting - Online --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Open House</masterLabel>
+        <translation><!-- Open House --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

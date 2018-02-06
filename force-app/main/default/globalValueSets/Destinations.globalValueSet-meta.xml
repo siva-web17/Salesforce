@@ -1,0 +1,1770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Amsterdam</fullName>
+        <default>false</default>
+        <label>Amsterdam</label>
+    </customValue>
+    <customValue>
+        <fullName>Antibes</fullName>
+        <default>false</default>
+        <label>Antibes</label>
+    </customValue>
+    <customValue>
+        <fullName>Antwerp Partner</fullName>
+        <default>false</default>
+        <label>Antwerp Partner</label>
+    </customValue>
+    <customValue>
+        <fullName>Arnhem</fullName>
+        <default>false</default>
+        <label>Arnhem</label>
+    </customValue>
+    <customValue>
+        <fullName>Asia</fullName>
+        <default>false</default>
+        <label>Asia</label>
+    </customValue>
+    <customValue>
+        <fullName>Atlanta</fullName>
+        <default>false</default>
+        <label>Atlanta</label>
+    </customValue>
+    <customValue>
+        <fullName>Atlanta Homestay</fullName>
+        <default>false</default>
+        <label>Atlanta Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Atlanta Residence</fullName>
+        <default>false</default>
+        <label>Atlanta Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Auckland</fullName>
+        <default>false</default>
+        <label>Auckland</label>
+    </customValue>
+    <customValue>
+        <fullName>Auckland Homestay</fullName>
+        <default>false</default>
+        <label>Auckland Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Auckland Residence</fullName>
+        <default>false</default>
+        <label>Auckland Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Austin</fullName>
+        <default>false</default>
+        <label>Austin</label>
+    </customValue>
+    <customValue>
+        <fullName>Austin Homestay</fullName>
+        <default>false</default>
+        <label>Austin Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Austin Residence</fullName>
+        <default>false</default>
+        <label>Austin Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Australian Adventur Tour</fullName>
+        <default>false</default>
+        <label>Australian Adventur Tour</label>
+    </customValue>
+    <customValue>
+        <fullName>Autibes</fullName>
+        <default>false</default>
+        <label>Autibes</label>
+    </customValue>
+    <customValue>
+        <fullName>Barcelona</fullName>
+        <default>false</default>
+        <label>Barcelona</label>
+    </customValue>
+    <customValue>
+        <fullName>Barcelona Homestay</fullName>
+        <default>false</default>
+        <label>Barcelona Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Barcelona-Mataro</fullName>
+        <default>false</default>
+        <label>Barcelona-Mataro</label>
+    </customValue>
+    <customValue>
+        <fullName>Bath</fullName>
+        <default>false</default>
+        <label>Bath</label>
+    </customValue>
+    <customValue>
+        <fullName>Bedgebury</fullName>
+        <default>false</default>
+        <label>Bedgebury</label>
+    </customValue>
+    <customValue>
+        <fullName>Bedgebury Park</fullName>
+        <default>false</default>
+        <label>Bedgebury Park</label>
+    </customValue>
+    <customValue>
+        <fullName>Beijing</fullName>
+        <default>false</default>
+        <label>Beijing</label>
+    </customValue>
+    <customValue>
+        <fullName>Beijing Junior</fullName>
+        <default>false</default>
+        <label>Beijing Junior</label>
+    </customValue>
+    <customValue>
+        <fullName>Beijing Senior</fullName>
+        <default>false</default>
+        <label>Beijing Senior</label>
+    </customValue>
+    <customValue>
+        <fullName>Belgium Flanders</fullName>
+        <default>false</default>
+        <label>Belgium Flanders</label>
+    </customValue>
+    <customValue>
+        <fullName>Berkeley</fullName>
+        <default>false</default>
+        <label>Berkeley</label>
+    </customValue>
+    <customValue>
+        <fullName>Berkley</fullName>
+        <default>false</default>
+        <label>Berkley</label>
+    </customValue>
+    <customValue>
+        <fullName>Berlin</fullName>
+        <default>false</default>
+        <label>Berlin</label>
+    </customValue>
+    <customValue>
+        <fullName>Berlin Homestay</fullName>
+        <default>false</default>
+        <label>Berlin Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Berlin Residence</fullName>
+        <default>false</default>
+        <label>Berlin Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Bethany</fullName>
+        <default>false</default>
+        <label>Bethany</label>
+    </customValue>
+    <customValue>
+        <fullName>Blackpool</fullName>
+        <default>false</default>
+        <label>Blackpool</label>
+    </customValue>
+    <customValue>
+        <fullName>Bodensee Junior Homestay</fullName>
+        <default>false</default>
+        <label>Bodensee Junior Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Bodensee Junior Residence</fullName>
+        <default>false</default>
+        <label>Bodensee Junior Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Bodensee Residential Senior</fullName>
+        <default>false</default>
+        <label>Bodensee Residential Senior</label>
+    </customValue>
+    <customValue>
+        <fullName>Bognor</fullName>
+        <default>false</default>
+        <label>Bognor</label>
+    </customValue>
+    <customValue>
+        <fullName>Bognor Regis Homestay</fullName>
+        <default>false</default>
+        <label>Bognor Regis Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Bognor Resort</fullName>
+        <default>false</default>
+        <label>Bognor Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston</fullName>
+        <default>false</default>
+        <label>Boston</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Corporate</fullName>
+        <default>false</default>
+        <label>Boston Corporate</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Ef Center</fullName>
+        <default>false</default>
+        <label>Boston Ef Center</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston EFC</fullName>
+        <default>false</default>
+        <label>Boston EFC</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Executive Center</fullName>
+        <default>false</default>
+        <label>Boston Executive Center</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Junior Residence</fullName>
+        <default>false</default>
+        <label>Boston Junior Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Newport</fullName>
+        <default>false</default>
+        <label>Boston Newport</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Residence</fullName>
+        <default>false</default>
+        <label>Boston Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Boston Suffolk</fullName>
+        <default>false</default>
+        <label>Boston Suffolk</label>
+    </customValue>
+    <customValue>
+        <fullName>Bournemouth</fullName>
+        <default>false</default>
+        <label>Bournemouth</label>
+    </customValue>
+    <customValue>
+        <fullName>Bournemouth Homestay</fullName>
+        <default>false</default>
+        <label>Bournemouth Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Breda</fullName>
+        <default>false</default>
+        <label>Breda</label>
+    </customValue>
+    <customValue>
+        <fullName>Bregenz Residence</fullName>
+        <default>false</default>
+        <label>Bregenz Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton</fullName>
+        <default>false</default>
+        <label>Brighton</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton Falmer</fullName>
+        <default>false</default>
+        <label>Brighton Falmer</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton Homestay</fullName>
+        <default>false</default>
+        <label>Brighton Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton Moulscoomb</fullName>
+        <default>false</default>
+        <label>Brighton Moulscoomb</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton Residence</fullName>
+        <default>false</default>
+        <label>Brighton Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Brighton University</fullName>
+        <default>false</default>
+        <label>Brighton University</label>
+    </customValue>
+    <customValue>
+        <fullName>Brisbane</fullName>
+        <default>false</default>
+        <label>Brisbane</label>
+    </customValue>
+    <customValue>
+        <fullName>Brisbane Homestay</fullName>
+        <default>false</default>
+        <label>Brisbane Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Brisbane Residence</fullName>
+        <default>false</default>
+        <label>Brisbane Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Bristol</fullName>
+        <default>false</default>
+        <label>Bristol</label>
+    </customValue>
+    <customValue>
+        <fullName>Brock Residential</fullName>
+        <default>false</default>
+        <label>Brock Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Bryant Residential</fullName>
+        <default>false</default>
+        <label>Bryant Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Cairns</fullName>
+        <default>false</default>
+        <label>Cairns</label>
+    </customValue>
+    <customValue>
+        <fullName>Cairns Homestay</fullName>
+        <default>false</default>
+        <label>Cairns Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>California</fullName>
+        <default>false</default>
+        <label>California</label>
+    </customValue>
+    <customValue>
+        <fullName>California  Homestay</fullName>
+        <default>false</default>
+        <label>California  Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>California Homestay</fullName>
+        <default>false</default>
+        <label>California Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Camber Sands Resort</fullName>
+        <default>false</default>
+        <label>Camber Sands Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Cambridge</fullName>
+        <default>false</default>
+        <label>Cambridge</label>
+    </customValue>
+    <customValue>
+        <fullName>Cambridge Corporate</fullName>
+        <default>false</default>
+        <label>Cambridge Corporate</label>
+    </customValue>
+    <customValue>
+        <fullName>Cambridge Homestay</fullName>
+        <default>false</default>
+        <label>Cambridge Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Cambridge Residence</fullName>
+        <default>false</default>
+        <label>Cambridge Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Canada Heritage Discovery Tour</fullName>
+        <default>false</default>
+        <label>Canada Heritage Discovery Tour</label>
+    </customValue>
+    <customValue>
+        <fullName>Canterbury Residence</fullName>
+        <default>false</default>
+        <label>Canterbury Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Cap Dail</fullName>
+        <default>false</default>
+        <label>Cap Dail</label>
+    </customValue>
+    <customValue>
+        <fullName>Cape Town</fullName>
+        <default>false</default>
+        <label>Cape Town</label>
+    </customValue>
+    <customValue>
+        <fullName>Chicago</fullName>
+        <default>false</default>
+        <label>Chicago</label>
+    </customValue>
+    <customValue>
+        <fullName>Chicago Summer School</fullName>
+        <default>false</default>
+        <label>Chicago Summer School</label>
+    </customValue>
+    <customValue>
+        <fullName>Chichester university College</fullName>
+        <default>false</default>
+        <label>Chichester university College</label>
+    </customValue>
+    <customValue>
+        <fullName>China Discovery Tours</fullName>
+        <default>false</default>
+        <label>China Discovery Tours</label>
+    </customValue>
+    <customValue>
+        <fullName>Christchurch</fullName>
+        <default>false</default>
+        <label>Christchurch</label>
+    </customValue>
+    <customValue>
+        <fullName>Clare College</fullName>
+        <default>false</default>
+        <label>Clare College</label>
+    </customValue>
+    <customValue>
+        <fullName>Clare College Homestay</fullName>
+        <default>false</default>
+        <label>Clare College Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Clare College Residence</fullName>
+        <default>false</default>
+        <label>Clare College Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Coast to Coast</fullName>
+        <default>false</default>
+        <label>Coast to Coast</label>
+    </customValue>
+    <customValue>
+        <fullName>Colchester</fullName>
+        <default>false</default>
+        <label>Colchester</label>
+    </customValue>
+    <customValue>
+        <fullName>Cork Homestay</fullName>
+        <default>false</default>
+        <label>Cork Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Cork Residential</fullName>
+        <default>false</default>
+        <label>Cork Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Costa Brava Resort</fullName>
+        <default>false</default>
+        <label>Costa Brava Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Costa del Maresme Resort</fullName>
+        <default>false</default>
+        <label>Costa del Maresme Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Costa Del Sol Global Village</fullName>
+        <default>false</default>
+        <label>Costa Del Sol Global Village</label>
+    </customValue>
+    <customValue>
+        <fullName>Costa Rica</fullName>
+        <default>false</default>
+        <label>Costa Rica</label>
+    </customValue>
+    <customValue>
+        <fullName>Costa Rica Playa Tamarindo</fullName>
+        <default>false</default>
+        <label>Costa Rica Playa Tamarindo</label>
+    </customValue>
+    <customValue>
+        <fullName>Cote D'Azur Resort</fullName>
+        <default>false</default>
+        <label>Cote D'Azur Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Croatia Global Village</fullName>
+        <default>false</default>
+        <label>Croatia Global Village</label>
+    </customValue>
+    <customValue>
+        <fullName>Cyprus Global Village</fullName>
+        <default>false</default>
+        <label>Cyprus Global Village</label>
+    </customValue>
+    <customValue>
+        <fullName>Dauntsey</fullName>
+        <default>false</default>
+        <label>Dauntsey</label>
+    </customValue>
+    <customValue>
+        <fullName>Dauntsey Residence</fullName>
+        <default>false</default>
+        <label>Dauntsey Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Dorset Residence</fullName>
+        <default>false</default>
+        <label>Dorset Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Dubai</fullName>
+        <default>false</default>
+        <label>Dubai</label>
+    </customValue>
+    <customValue>
+        <fullName>Dublin</fullName>
+        <default>false</default>
+        <label>Dublin</label>
+    </customValue>
+    <customValue>
+        <fullName>Dublin City University</fullName>
+        <default>false</default>
+        <label>Dublin City University</label>
+    </customValue>
+    <customValue>
+        <fullName>Dublin Homestay</fullName>
+        <default>false</default>
+        <label>Dublin Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Dublin Junior Residence</fullName>
+        <default>false</default>
+        <label>Dublin Junior Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Dublin Residence</fullName>
+        <default>false</default>
+        <label>Dublin Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>East Coast</fullName>
+        <default>false</default>
+        <label>East Coast</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastbourne</fullName>
+        <default>false</default>
+        <label>Eastbourne</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastbourne Brighton University</fullName>
+        <default>false</default>
+        <label>Eastbourne Brighton University</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastbourne Homestay</fullName>
+        <default>false</default>
+        <label>Eastbourne Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastbourne Residence</fullName>
+        <default>false</default>
+        <label>Eastbourne Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Edinburgh</fullName>
+        <default>false</default>
+        <label>Edinburgh</label>
+    </customValue>
+    <customValue>
+        <fullName>Edinburgh College</fullName>
+        <default>false</default>
+        <label>Edinburgh College</label>
+    </customValue>
+    <customValue>
+        <fullName>Essex University</fullName>
+        <default>false</default>
+        <label>Essex University</label>
+    </customValue>
+    <customValue>
+        <fullName>European Tour</fullName>
+        <default>false</default>
+        <label>European Tour</label>
+    </customValue>
+    <customValue>
+        <fullName>Explore Coast to Coast</fullName>
+        <default>false</default>
+        <label>Explore Coast to Coast</label>
+    </customValue>
+    <customValue>
+        <fullName>Farringtons</fullName>
+        <default>false</default>
+        <label>Farringtons</label>
+    </customValue>
+    <customValue>
+        <fullName>Florence</fullName>
+        <default>false</default>
+        <label>Florence</label>
+    </customValue>
+    <customValue>
+        <fullName>Florida</fullName>
+        <default>false</default>
+        <label>Florida</label>
+    </customValue>
+    <customValue>
+        <fullName>Florida Homestay</fullName>
+        <default>false</default>
+        <label>Florida Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Florida Immersion</fullName>
+        <default>false</default>
+        <label>Florida Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>Florida International</fullName>
+        <default>false</default>
+        <label>Florida International</label>
+    </customValue>
+    <customValue>
+        <fullName>Florida Resort</fullName>
+        <default>false</default>
+        <label>Florida Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Fort Lauderdale</fullName>
+        <default>false</default>
+        <label>Fort Lauderdale</label>
+    </customValue>
+    <customValue>
+        <fullName>GB-OXN</fullName>
+        <default>false</default>
+        <label>GB-OXN</label>
+    </customValue>
+    <customValue>
+        <fullName>Georgian Bay Residential</fullName>
+        <default>false</default>
+        <label>Georgian Bay Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Gold Coast</fullName>
+        <default>false</default>
+        <label>Gold Coast</label>
+    </customValue>
+    <customValue>
+        <fullName>Gold Coast Homestay</fullName>
+        <default>false</default>
+        <label>Gold Coast Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Gold Coast Residence</fullName>
+        <default>false</default>
+        <label>Gold Coast Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Gozo Resort</fullName>
+        <default>false</default>
+        <label>Gozo Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Grand Tour Europe</fullName>
+        <default>false</default>
+        <label>Grand Tour Europe</label>
+    </customValue>
+    <customValue>
+        <fullName>Grand Tour incl. Cruise Extension</fullName>
+        <default>false</default>
+        <label>Grand Tour incl. Cruise Extension</label>
+    </customValue>
+    <customValue>
+        <fullName>Great Lakes</fullName>
+        <default>false</default>
+        <label>Great Lakes</label>
+    </customValue>
+    <customValue>
+        <fullName>Great Lakes Homestay</fullName>
+        <default>false</default>
+        <label>Great Lakes Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Great Lakes Immersion</fullName>
+        <default>false</default>
+        <label>Great Lakes Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>Hastings</fullName>
+        <default>false</default>
+        <label>Hastings</label>
+    </customValue>
+    <customValue>
+        <fullName>Hastings Homestay</fullName>
+        <default>false</default>
+        <label>Hastings Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Hastings Residence</fullName>
+        <default>false</default>
+        <label>Hastings Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Hastings Residence Homestay</fullName>
+        <default>false</default>
+        <label>Hastings Residence Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Hawaii</fullName>
+        <default>false</default>
+        <label>Hawaii</label>
+    </customValue>
+    <customValue>
+        <fullName>Highlights of Europe Tour</fullName>
+        <default>false</default>
+        <label>Highlights of Europe Tour</label>
+    </customValue>
+    <customValue>
+        <fullName>Honolulu</fullName>
+        <default>false</default>
+        <label>Honolulu</label>
+    </customValue>
+    <customValue>
+        <fullName>Hooke Court Residence</fullName>
+        <default>false</default>
+        <label>Hooke Court Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Huron University London</fullName>
+        <default>false</default>
+        <label>Huron University London</label>
+    </customValue>
+    <customValue>
+        <fullName>Ireland Immersion</fullName>
+        <default>false</default>
+        <label>Ireland Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>Isle of Thanet</fullName>
+        <default>false</default>
+        <label>Isle of Thanet</label>
+    </customValue>
+    <customValue>
+        <fullName>Isle of Wight</fullName>
+        <default>false</default>
+        <label>Isle of Wight</label>
+    </customValue>
+    <customValue>
+        <fullName>Isle of Wight Homestay</fullName>
+        <default>false</default>
+        <label>Isle of Wight Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Isle of Wight Residence</fullName>
+        <default>false</default>
+        <label>Isle of Wight Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Keele</fullName>
+        <default>false</default>
+        <label>Keele</label>
+    </customValue>
+    <customValue>
+        <fullName>Keele University Manchester</fullName>
+        <default>false</default>
+        <label>Keele University Manchester</label>
+    </customValue>
+    <customValue>
+        <fullName>Keele University Manchester Junior</fullName>
+        <default>false</default>
+        <label>Keele University Manchester Junior</label>
+    </customValue>
+    <customValue>
+        <fullName>Lija Resort</fullName>
+        <default>false</default>
+        <label>Lija Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Limerick</fullName>
+        <default>false</default>
+        <label>Limerick</label>
+    </customValue>
+    <customValue>
+        <fullName>Lincoln University</fullName>
+        <default>false</default>
+        <label>Lincoln University</label>
+    </customValue>
+    <customValue>
+        <fullName>Lindau</fullName>
+        <default>false</default>
+        <label>Lindau</label>
+    </customValue>
+    <customValue>
+        <fullName>Lindau Homestay</fullName>
+        <default>false</default>
+        <label>Lindau Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>London</fullName>
+        <default>false</default>
+        <label>London</label>
+    </customValue>
+    <customValue>
+        <fullName>London Campus</fullName>
+        <default>false</default>
+        <label>London Campus</label>
+    </customValue>
+    <customValue>
+        <fullName>London Homestay</fullName>
+        <default>false</default>
+        <label>London Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>London International Students House</fullName>
+        <default>false</default>
+        <label>London International Students House</label>
+    </customValue>
+    <customValue>
+        <fullName>London Residence</fullName>
+        <default>false</default>
+        <label>London Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>London Russell Square</fullName>
+        <default>false</default>
+        <label>London Russell Square</label>
+    </customValue>
+    <customValue>
+        <fullName>London University</fullName>
+        <default>false</default>
+        <label>London University</label>
+    </customValue>
+    <customValue>
+        <fullName>Long Beach</fullName>
+        <default>false</default>
+        <label>Long Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Long Beach Residence</fullName>
+        <default>false</default>
+        <label>Long Beach Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles</fullName>
+        <default>false</default>
+        <label>Los Angeles</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles - BEACH</fullName>
+        <default>false</default>
+        <label>Los Angeles - BEACH</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles Cal Lutheran</fullName>
+        <default>false</default>
+        <label>Los Angeles Cal Lutheran</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles Homestay</fullName>
+        <default>false</default>
+        <label>Los Angeles Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles Immersion</fullName>
+        <default>false</default>
+        <label>Los Angeles Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>Los Angeles Redondo Beach</fullName>
+        <default>false</default>
+        <label>Los Angeles Redondo Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Lynn University - Miami Beach</fullName>
+        <default>false</default>
+        <label>Lynn University - Miami Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Madrid</fullName>
+        <default>false</default>
+        <label>Madrid</label>
+    </customValue>
+    <customValue>
+        <fullName>Malaga</fullName>
+        <default>false</default>
+        <label>Malaga</label>
+    </customValue>
+    <customValue>
+        <fullName>Malaga Homestay</fullName>
+        <default>false</default>
+        <label>Malaga Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Malaga Residence</fullName>
+        <default>false</default>
+        <label>Malaga Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Malta Resort</fullName>
+        <default>false</default>
+        <label>Malta Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>Malta St. Julian's</fullName>
+        <default>false</default>
+        <label>Malta St. Julian's</label>
+    </customValue>
+    <customValue>
+        <fullName>Malta/Saint Julians</fullName>
+        <default>false</default>
+        <label>Malta/Saint Julians</label>
+    </customValue>
+    <customValue>
+        <fullName>Malta/Sliema</fullName>
+        <default>false</default>
+        <label>Malta/Sliema</label>
+    </customValue>
+    <customValue>
+        <fullName>Manchester</fullName>
+        <default>false</default>
+        <label>Manchester</label>
+    </customValue>
+    <customValue>
+        <fullName>Manchester Summer School</fullName>
+        <default>false</default>
+        <label>Manchester Summer School</label>
+    </customValue>
+    <customValue>
+        <fullName>Melbourne</fullName>
+        <default>false</default>
+        <label>Melbourne</label>
+    </customValue>
+    <customValue>
+        <fullName>Miami</fullName>
+        <default>false</default>
+        <label>Miami</label>
+    </customValue>
+    <customValue>
+        <fullName>Miami Beach</fullName>
+        <default>false</default>
+        <label>Miami Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Miami Beach Homestay</fullName>
+        <default>false</default>
+        <label>Miami Beach Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Miami Beach Residence</fullName>
+        <default>false</default>
+        <label>Miami Beach Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Monterey Bay</fullName>
+        <default>false</default>
+        <label>Monterey Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>Monterey Bay Homestay</fullName>
+        <default>false</default>
+        <label>Monterey Bay Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Montreal</fullName>
+        <default>false</default>
+        <label>Montreal</label>
+    </customValue>
+    <customValue>
+        <fullName>Montreal Residence</fullName>
+        <default>false</default>
+        <label>Montreal Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Moyles Court</fullName>
+        <default>false</default>
+        <label>Moyles Court</label>
+    </customValue>
+    <customValue>
+        <fullName>Munich</fullName>
+        <default>false</default>
+        <label>Munich</label>
+    </customValue>
+    <customValue>
+        <fullName>Munich Homestay</fullName>
+        <default>false</default>
+        <label>Munich Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Munich Residence</fullName>
+        <default>false</default>
+        <label>Munich Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>New England</fullName>
+        <default>false</default>
+        <label>New England</label>
+    </customValue>
+    <customValue>
+        <fullName>New England Homestay</fullName>
+        <default>false</default>
+        <label>New England Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>New Hampshire - Franklin Pierce University</fullName>
+        <default>false</default>
+        <label>New Hampshire - Franklin Pierce University</label>
+    </customValue>
+    <customValue>
+        <fullName>New York</fullName>
+        <default>false</default>
+        <label>New York</label>
+    </customValue>
+    <customValue>
+        <fullName>New York - Marymount College</fullName>
+        <default>false</default>
+        <label>New York - Marymount College</label>
+    </customValue>
+    <customValue>
+        <fullName>New York - Marymount Manhatten</fullName>
+        <default>false</default>
+        <label>New York - Marymount Manhatten</label>
+    </customValue>
+    <customValue>
+        <fullName>New York Homestay</fullName>
+        <default>false</default>
+        <label>New York Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>New York Marymount Residence</fullName>
+        <default>false</default>
+        <label>New York Marymount Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>New York Residence</fullName>
+        <default>false</default>
+        <label>New York Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>New York Thornwood</fullName>
+        <default>false</default>
+        <label>New York Thornwood</label>
+    </customValue>
+    <customValue>
+        <fullName>New York Thornwood Residence</fullName>
+        <default>false</default>
+        <label>New York Thornwood Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>New Zealand</fullName>
+        <default>false</default>
+        <label>New Zealand</label>
+    </customValue>
+    <customValue>
+        <fullName>New Zealand Discovery Tours</fullName>
+        <default>false</default>
+        <label>New Zealand Discovery Tours</label>
+    </customValue>
+    <customValue>
+        <fullName>Newland Park</fullName>
+        <default>false</default>
+        <label>Newland Park</label>
+    </customValue>
+    <customValue>
+        <fullName>Newland Park Residence</fullName>
+        <default>false</default>
+        <label>Newland Park Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Newport</fullName>
+        <default>false</default>
+        <label>Newport</label>
+    </customValue>
+    <customValue>
+        <fullName>Newquay</fullName>
+        <default>false</default>
+        <label>Newquay</label>
+    </customValue>
+    <customValue>
+        <fullName>Newquay Residential</fullName>
+        <default>false</default>
+        <label>Newquay Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Nice</fullName>
+        <default>false</default>
+        <label>Nice</label>
+    </customValue>
+    <customValue>
+        <fullName>Nice Homestay</fullName>
+        <default>false</default>
+        <label>Nice Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Nice Residence</fullName>
+        <default>false</default>
+        <label>Nice Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford</fullName>
+        <default>false</default>
+        <label>Oxford</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Cotuit Residential</fullName>
+        <default>false</default>
+        <label>Oxford Cotuit Residential</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Heythrop</fullName>
+        <default>false</default>
+        <label>Oxford Heythrop</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Homestay</fullName>
+        <default>false</default>
+        <label>Oxford Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Pembroke</fullName>
+        <default>false</default>
+        <label>Oxford Pembroke</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Residence</fullName>
+        <default>false</default>
+        <label>Oxford Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Oxford Residential Junior</fullName>
+        <default>false</default>
+        <label>Oxford Residential Junior</label>
+    </customValue>
+    <customValue>
+        <fullName>Pacific Beach</fullName>
+        <default>false</default>
+        <label>Pacific Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Paris</fullName>
+        <default>false</default>
+        <label>Paris</label>
+    </customValue>
+    <customValue>
+        <fullName>Paris Homestay</fullName>
+        <default>false</default>
+        <label>Paris Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Paris Residence</fullName>
+        <default>false</default>
+        <label>Paris Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Pasadena International</fullName>
+        <default>false</default>
+        <label>Pasadena International</label>
+    </customValue>
+    <customValue>
+        <fullName>Perth</fullName>
+        <default>false</default>
+        <label>Perth</label>
+    </customValue>
+    <customValue>
+        <fullName>Perth Residence</fullName>
+        <default>false</default>
+        <label>Perth Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Pismo Beach International</fullName>
+        <default>false</default>
+        <label>Pismo Beach International</label>
+    </customValue>
+    <customValue>
+        <fullName>Plymouth</fullName>
+        <default>false</default>
+        <label>Plymouth</label>
+    </customValue>
+    <customValue>
+        <fullName>Quepos</fullName>
+        <default>false</default>
+        <label>Quepos</label>
+    </customValue>
+    <customValue>
+        <fullName>Quito</fullName>
+        <default>false</default>
+        <label>Quito</label>
+    </customValue>
+    <customValue>
+        <fullName>Roehampton</fullName>
+        <default>false</default>
+        <label>Roehampton</label>
+    </customValue>
+    <customValue>
+        <fullName>Rome</fullName>
+        <default>false</default>
+        <label>Rome</label>
+    </customValue>
+    <customValue>
+        <fullName>Rookesbury</fullName>
+        <default>false</default>
+        <label>Rookesbury</label>
+    </customValue>
+    <customValue>
+        <fullName>Rookesbury Residence</fullName>
+        <default>false</default>
+        <label>Rookesbury Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Saint Petersburg</fullName>
+        <default>false</default>
+        <label>Saint Petersburg</label>
+    </customValue>
+    <customValue>
+        <fullName>Saint Raphaël</fullName>
+        <default>false</default>
+        <label>Saint Raphaël</label>
+    </customValue>
+    <customValue>
+        <fullName>San Diego</fullName>
+        <default>false</default>
+        <label>San Diego</label>
+    </customValue>
+    <customValue>
+        <fullName>San Diego Homestay</fullName>
+        <default>false</default>
+        <label>San Diego Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>San Diego Point Loma</fullName>
+        <default>false</default>
+        <label>San Diego Point Loma</label>
+    </customValue>
+    <customValue>
+        <fullName>San Diego Residence</fullName>
+        <default>false</default>
+        <label>San Diego Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco - CITY</fullName>
+        <default>false</default>
+        <label>San Francisco - CITY</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco City</fullName>
+        <default>false</default>
+        <label>San Francisco City</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco Down Town</fullName>
+        <default>false</default>
+        <label>San Francisco Down Town</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco Homestay</fullName>
+        <default>false</default>
+        <label>San Francisco Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco Immersion</fullName>
+        <default>false</default>
+        <label>San Francisco Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco Mills College</fullName>
+        <default>false</default>
+        <label>San Francisco Mills College</label>
+    </customValue>
+    <customValue>
+        <fullName>San Francisco Mills College.</fullName>
+        <default>false</default>
+        <label>San Francisco Mills College.</label>
+    </customValue>
+    <customValue>
+        <fullName>Santa Barbara</fullName>
+        <default>false</default>
+        <label>Santa Barbara</label>
+    </customValue>
+    <customValue>
+        <fullName>Santa Barbara Homestay</fullName>
+        <default>false</default>
+        <label>Santa Barbara Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Santa Cruz</fullName>
+        <default>false</default>
+        <label>Santa Cruz</label>
+    </customValue>
+    <customValue>
+        <fullName>Santa Monica</fullName>
+        <default>false</default>
+        <label>Santa Monica</label>
+    </customValue>
+    <customValue>
+        <fullName>Santra Cruz</fullName>
+        <default>false</default>
+        <label>Santra Cruz</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle</fullName>
+        <default>false</default>
+        <label>Seattle</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle Homestay</fullName>
+        <default>false</default>
+        <label>Seattle Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle - Evergreen State Coll</fullName>
+        <default>false</default>
+        <label>Seattle - Evergreen State Coll</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle Immersion</fullName>
+        <default>false</default>
+        <label>Seattle Immersion</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle LT</fullName>
+        <default>false</default>
+        <label>Seattle LT</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle Olympia Homestay</fullName>
+        <default>false</default>
+        <label>Seattle Olympia Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Seattle Olympia Residence</fullName>
+        <default>false</default>
+        <label>Seattle Olympia Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Severn Valley Residence</fullName>
+        <default>false</default>
+        <label>Severn Valley Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Shanghai</fullName>
+        <default>false</default>
+        <label>Shanghai</label>
+    </customValue>
+    <customValue>
+        <fullName>Singapore</fullName>
+        <default>false</default>
+        <label>Singapore</label>
+    </customValue>
+    <customValue>
+        <fullName>Singapore Homestay</fullName>
+        <default>false</default>
+        <label>Singapore Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Singapore LT</fullName>
+        <default>false</default>
+        <label>Singapore LT</label>
+    </customValue>
+    <customValue>
+        <fullName>Singapore Mandarin</fullName>
+        <default>false</default>
+        <label>Singapore Mandarin</label>
+    </customValue>
+    <customValue>
+        <fullName>Singapore Residence</fullName>
+        <default>false</default>
+        <label>Singapore Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Sliema Homestay</fullName>
+        <default>false</default>
+        <label>Sliema Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Sliema Residence</fullName>
+        <default>false</default>
+        <label>Sliema Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Snow camp</fullName>
+        <default>false</default>
+        <label>Snow camp</label>
+    </customValue>
+    <customValue>
+        <fullName>Somerset</fullName>
+        <default>false</default>
+        <label>Somerset</label>
+    </customValue>
+    <customValue>
+        <fullName>Somerset Resort</fullName>
+        <default>false</default>
+        <label>Somerset Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>South Africa Discovery Tours</fullName>
+        <default>false</default>
+        <label>South Africa Discovery Tours</label>
+    </customValue>
+    <customValue>
+        <fullName>South America Discovery Tours</fullName>
+        <default>false</default>
+        <label>South America Discovery Tours</label>
+    </customValue>
+    <customValue>
+        <fullName>South Hampton</fullName>
+        <default>false</default>
+        <label>South Hampton</label>
+    </customValue>
+    <customValue>
+        <fullName>South Sea Resort</fullName>
+        <default>false</default>
+        <label>South Sea Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>South Wales Residence</fullName>
+        <default>false</default>
+        <label>South Wales Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Southampton Institute</fullName>
+        <default>false</default>
+        <label>Southampton Institute</label>
+    </customValue>
+    <customValue>
+        <fullName>Southampton Residence</fullName>
+        <default>false</default>
+        <label>Southampton Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Southern California Residence</fullName>
+        <default>false</default>
+        <label>Southern California Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Southport</fullName>
+        <default>false</default>
+        <label>Southport</label>
+    </customValue>
+    <customValue>
+        <fullName>Southsea</fullName>
+        <default>false</default>
+        <label>Southsea</label>
+    </customValue>
+    <customValue>
+        <fullName>St John’s College</fullName>
+        <default>false</default>
+        <label>St John’s College</label>
+    </customValue>
+    <customValue>
+        <fullName>St Pauls Bay Homestay</fullName>
+        <default>false</default>
+        <label>St Pauls Bay Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>St Pauls Bay Residence</fullName>
+        <default>false</default>
+        <label>St Pauls Bay Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>St Paul's Bay Residence</fullName>
+        <default>false</default>
+        <label>St Paul's Bay Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>St Raphael</fullName>
+        <default>false</default>
+        <label>St Raphael</label>
+    </customValue>
+    <customValue>
+        <fullName>St Raphael Homestay</fullName>
+        <default>false</default>
+        <label>St Raphael Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Anthony's</fullName>
+        <default>false</default>
+        <label>St. Anthony's</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Antonyºs</fullName>
+        <default>false</default>
+        <label>St. Antonyºs</label>
+    </customValue>
+    <customValue>
+        <fullName>St. John’s College</fullName>
+        <default>false</default>
+        <label>St. John’s College</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Julians Resort</fullName>
+        <default>false</default>
+        <label>St. Julians Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Julians/Sliema</fullName>
+        <default>false</default>
+        <label>St. Julians/Sliema</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Marys in Brighton</fullName>
+        <default>false</default>
+        <label>St. Marys in Brighton</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Marys in Cambridge</fullName>
+        <default>false</default>
+        <label>St. Marys in Cambridge</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Paul's Bay</fullName>
+        <default>false</default>
+        <label>St. Paul's Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Pauls Bay Junior Homestay</fullName>
+        <default>false</default>
+        <label>St. Pauls Bay Junior Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Pauls Bay Junior Resort</fullName>
+        <default>false</default>
+        <label>St. Pauls Bay Junior Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Pauls Bay Resort</fullName>
+        <default>false</default>
+        <label>St. Pauls Bay Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Paul's Bay Resort</fullName>
+        <default>false</default>
+        <label>St. Paul's Bay Resort</label>
+    </customValue>
+    <customValue>
+        <fullName>St.John’s College</fullName>
+        <default>false</default>
+        <label>St.John’s College</label>
+    </customValue>
+    <customValue>
+        <fullName>Swansea Bay</fullName>
+        <default>false</default>
+        <label>Swansea Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>Swansea Bay Residence</fullName>
+        <default>false</default>
+        <label>Swansea Bay Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Sydney</fullName>
+        <default>false</default>
+        <label>Sydney</label>
+    </customValue>
+    <customValue>
+        <fullName>Sydney Beach</fullName>
+        <default>false</default>
+        <label>Sydney Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Sydney Homestay</fullName>
+        <default>false</default>
+        <label>Sydney Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Sydney LT</fullName>
+        <default>false</default>
+        <label>Sydney LT</label>
+    </customValue>
+    <customValue>
+        <fullName>Sydney Residence</fullName>
+        <default>false</default>
+        <label>Sydney Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Tampa Bay</fullName>
+        <default>false</default>
+        <label>Tampa Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>Temecula International</fullName>
+        <default>false</default>
+        <label>Temecula International</label>
+    </customValue>
+    <customValue>
+        <fullName>Thousand Oaks</fullName>
+        <default>false</default>
+        <label>Thousand Oaks</label>
+    </customValue>
+    <customValue>
+        <fullName>Tokyo</fullName>
+        <default>false</default>
+        <label>Tokyo</label>
+    </customValue>
+    <customValue>
+        <fullName>Tokyo Homestay</fullName>
+        <default>false</default>
+        <label>Tokyo Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Tokyo Residence</fullName>
+        <default>false</default>
+        <label>Tokyo Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto</fullName>
+        <default>false</default>
+        <label>Toronto</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto Residence</fullName>
+        <default>false</default>
+        <label>Toronto Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto Residence (Brock)</fullName>
+        <default>false</default>
+        <label>Toronto Residence (Brock)</label>
+    </customValue>
+    <customValue>
+        <fullName>Torquay</fullName>
+        <default>false</default>
+        <label>Torquay</label>
+    </customValue>
+    <customValue>
+        <fullName>Torquay Homestay</fullName>
+        <default>false</default>
+        <label>Torquay Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Tour Europe</fullName>
+        <default>false</default>
+        <label>Tour Europe</label>
+    </customValue>
+    <customValue>
+        <fullName>Undecided</fullName>
+        <default>false</default>
+        <label>Undecided</label>
+    </customValue>
+    <customValue>
+        <fullName>University College London</fullName>
+        <default>false</default>
+        <label>University College London</label>
+    </customValue>
+    <customValue>
+        <fullName>University of Derby Buxton</fullName>
+        <default>false</default>
+        <label>University of Derby Buxton</label>
+    </customValue>
+    <customValue>
+        <fullName>University of Derby Derby</fullName>
+        <default>false</default>
+        <label>University of Derby Derby</label>
+    </customValue>
+    <customValue>
+        <fullName>University of Loughborough</fullName>
+        <default>false</default>
+        <label>University of Loughborough</label>
+    </customValue>
+    <customValue>
+        <fullName>Uppsala Residence</fullName>
+        <default>false</default>
+        <label>Uppsala Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver</fullName>
+        <default>false</default>
+        <label>Vancouver</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver Homestay</fullName>
+        <default>false</default>
+        <label>Vancouver Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver Residence</fullName>
+        <default>false</default>
+        <label>Vancouver Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Vermont - Lyndon State College</fullName>
+        <default>false</default>
+        <label>Vermont - Lyndon State College</label>
+    </customValue>
+    <customValue>
+        <fullName>Virginia Beach</fullName>
+        <default>false</default>
+        <label>Virginia Beach</label>
+    </customValue>
+    <customValue>
+        <fullName>Virginia Beach Homestay</fullName>
+        <default>false</default>
+        <label>Virginia Beach Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Visby</fullName>
+        <default>false</default>
+        <label>Visby</label>
+    </customValue>
+    <customValue>
+        <fullName>Vught</fullName>
+        <default>false</default>
+        <label>Vught</label>
+    </customValue>
+    <customValue>
+        <fullName>Washington D.C</fullName>
+        <default>false</default>
+        <label>Washington D.C</label>
+    </customValue>
+    <customValue>
+        <fullName>Washington D.C. Homestay</fullName>
+        <default>false</default>
+        <label>Washington D.C. Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Washington D.C. Residence</fullName>
+        <default>false</default>
+        <label>Washington D.C. Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>West Coast</fullName>
+        <default>false</default>
+        <label>West Coast</label>
+    </customValue>
+    <customValue>
+        <fullName>Weymouth</fullName>
+        <default>false</default>
+        <label>Weymouth</label>
+    </customValue>
+    <customValue>
+        <fullName>Weymouth Homestay</fullName>
+        <default>false</default>
+        <label>Weymouth Homestay</label>
+    </customValue>
+    <customValue>
+        <fullName>Wiltshire Residence</fullName>
+        <default>false</default>
+        <label>Wiltshire Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Winchester King Alfreds College</fullName>
+        <default>false</default>
+        <label>Winchester King Alfreds College</label>
+    </customValue>
+    <customValue>
+        <fullName>Winchester Residence</fullName>
+        <default>false</default>
+        <label>Winchester Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>Worthing</fullName>
+        <default>false</default>
+        <label>Worthing</label>
+    </customValue>
+    <customValue>
+        <fullName>Yeo Valley Residence</fullName>
+        <default>false</default>
+        <label>Yeo Valley Residence</label>
+    </customValue>
+    <customValue>
+        <fullName>York</fullName>
+        <default>false</default>
+        <label>York</label>
+    </customValue>
+    <customValue>
+        <fullName>Yorkshire Residence</fullName>
+        <default>false</default>
+        <label>Yorkshire Residence</label>
+    </customValue>
+    <masterLabel>Destinations</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

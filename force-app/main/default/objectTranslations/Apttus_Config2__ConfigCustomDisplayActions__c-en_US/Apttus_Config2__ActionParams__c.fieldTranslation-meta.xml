@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The url parameters for the action. Multiple parameters may be passed by using the ampersand character to separate each parameter. Each parameter is expressed in the form param-name=param-value. For e.g. templateName=XYZ&amp;draft=true --></help>
+    <label><!-- Action Params --></label>
+    <name>Apttus_Config2__ActionParams__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to disable SOSL catalog search. When disabled, system uses SOQL catalog search. --></help>
+    <label><!-- DisableSOSLTextSearch --></label>
+    <name>Apttus_Config2__DisableSOSLTextSearch__c</name>
+</CustomFieldTranslation>

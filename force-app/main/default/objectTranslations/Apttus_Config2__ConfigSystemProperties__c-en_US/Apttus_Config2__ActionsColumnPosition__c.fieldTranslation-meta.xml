@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The position of the actions column in the cart page. 
+
+Valid values are: 
+============= 
+Left 
+Right --></help>
+    <label><!-- Actions Column Position --></label>
+    <name>Apttus_Config2__ActionsColumnPosition__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UniqueField__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <defaultValue>''</defaultValue>
+    <description>Backend field to check record uniqueness.</description>
+    <externalId>false</externalId>
+    <label>Unique Field</label>
+    <length>200</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

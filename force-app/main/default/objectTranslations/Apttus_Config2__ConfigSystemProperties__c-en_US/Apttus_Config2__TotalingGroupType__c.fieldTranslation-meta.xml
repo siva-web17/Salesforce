@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The default value for the summary group type picklist. For Product based totaling, also indicate the fields which form the hierarchy using the Product Hierarchy Fields custom setting.
+Valid values are:
+=============
+Category
+Product
+Ad Hoc --></help>
+    <label><!-- Totaling Group Type --></label>
+    <name>Apttus_Config2__TotalingGroupType__c</name>
+</CustomFieldTranslation>

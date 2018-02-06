@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The url of your Salesforce instance. The instance url will be used to create an absolute url for your custom pages. --></help>
+    <label><!-- Instance Url --></label>
+    <name>Apttus_Config2__InstanceUrl__c</name>
+</CustomFieldTranslation>

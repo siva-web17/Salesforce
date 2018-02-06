@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Search URL end point for enhanced product search --></help>
+    <label><!-- Enhanced Search URL --></label>
+    <name>Apttus_Config2__EnhancedSearchURL__c</name>
+</CustomFieldTranslation>

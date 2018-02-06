@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The question or instruction statement that is used to direct the end user when completing the wizard after setup.  Defaults to Input Label --></help>
+    <label><!-- Question/Instruction --></label>
+    <name>Apttus__Question__c</name>
+</CustomFieldTranslation>

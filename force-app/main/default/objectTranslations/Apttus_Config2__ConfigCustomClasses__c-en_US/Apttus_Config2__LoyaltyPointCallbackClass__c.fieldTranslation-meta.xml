@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The loyalty point callback class name. The class should implement the CustomClass.ILoyaltyPointCallback interface. --></help>
+    <label><!-- Loyalty Point Callback Class --></label>
+    <name>Apttus_Config2__LoyaltyPointCallbackClass__c</name>
+</CustomFieldTranslation>

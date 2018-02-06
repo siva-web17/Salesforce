@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether approval status should be retained on the cart and line items associated with the cloned quote/proposal --></help>
+    <label><!-- Clone With Approval Status --></label>
+    <name>Apttus_QPConfig__CloneWithApprovalStatus__c</name>
+</CustomFieldTranslation>

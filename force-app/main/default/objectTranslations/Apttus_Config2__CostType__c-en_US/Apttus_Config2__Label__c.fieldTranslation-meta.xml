@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Label --></label>
+    <name>Apttus_Config2__Label__c</name>
+    <picklistValues>
+        <masterLabel>Electrical Material</masterLabel>
+        <translation><!-- Electrical Material --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Material and Equipment</masterLabel>
+        <translation><!-- Material and Equipment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Material, Equipment and Labor</masterLabel>
+        <translation><!-- Material, Equipment and Labor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mechanical Material</masterLabel>
+        <translation><!-- Mechanical Material --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Production Cost</masterLabel>
+        <translation><!-- Production Cost --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Standard Cost</masterLabel>
+        <translation><!-- Standard Cost --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The default owner for the agreement created from a quote/proposal. Valid values are Quote Owner and Current User. If not set, the Quote Owner will become the owner of the new agreement --></help>
+    <label><!-- Default Quote Agreement Owner --></label>
+    <name>Apttus_Proposal__DefaultQuoteAgreementOwner__c</name>
+</CustomFieldTranslation>

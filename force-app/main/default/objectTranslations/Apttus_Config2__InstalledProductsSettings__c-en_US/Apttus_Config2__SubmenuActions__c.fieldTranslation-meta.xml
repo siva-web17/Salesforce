@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- List of actions to be displayed in the asset action submenu dropdowns separated by commas. --></help>
+    <label><!-- Submenu Actions --></label>
+    <name>Apttus_Config2__SubmenuActions__c</name>
+</CustomFieldTranslation>

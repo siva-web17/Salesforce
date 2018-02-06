@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- EF.COM Market --></label>
+    <name>EFCOMMarket__c</name>
+    <picklistValues>
+        <masterLabel>AR</masterLabel>
+        <translation><!-- AR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DE</masterLabel>
+        <translation><!-- DE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FR</masterLabel>
+        <translation><!-- FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IT</masterLabel>
+        <translation><!-- IT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>UE</masterLabel>
+        <translation><!-- UE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WM</masterLabel>
+        <translation><!-- WM --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

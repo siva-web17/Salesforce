@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The incentive application method, depends on the application type. --></help>
+    <label><!-- Application Method --></label>
+    <name>Apttus_Config2__ApplicationMethod__c</name>
+    <picklistValues>
+        <masterLabel>Buy X Get X</masterLabel>
+        <translation><!-- Buy X Get X --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Buy X Get Y</masterLabel>
+        <translation><!-- Buy X Get Y --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>For Every X Get X</masterLabel>
+        <translation><!-- For Every X Get X --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>For Every X Get Y</masterLabel>
+        <translation><!-- For Every X Get Y --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

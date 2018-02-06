@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Destination Location --></label>
+    <name>Destination_Location__c</name>
+    <picklistValues>
+        <masterLabel>Destination Bundles</masterLabel>
+        <translation><!-- Destination Bundles --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Northern Hemisphere</masterLabel>
+        <translation><!-- Northern Hemisphere --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Southern Hemisphere</masterLabel>
+        <translation><!-- Southern Hemisphere --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

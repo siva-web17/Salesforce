@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Apttus__Category__c</name>
+    <picklistValues>
+        <masterLabel>Confidentiality</masterLabel>
+        <translation>機密性</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Definitions</masterLabel>
+        <translation>定義</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disclosure</masterLabel>
+        <translation>開示</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General</masterLabel>
+        <translation>一般的な</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indemnity</masterLabel>
+        <translation>賠償</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Intellectual Property Claims</masterLabel>
+        <translation>知的財産請求</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>License Grant</masterLabel>
+        <translation>ライセンスの許諾</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>License Restrictions</masterLabel>
+        <translation>ライセンスの制限</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Limitation of Liability</masterLabel>
+        <translation>賠償責任の制限</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maintenance / Support</masterLabel>
+        <translation>メンテナンス/サポート</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others</masterLabel>
+        <translation>その他</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Services</masterLabel>
+        <translation>サービス</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Term and Termination</masterLabel>
+        <translation>期間と終了</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Verification</masterLabel>
+        <translation>検証</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warranties</masterLabel>
+        <translation>保証</translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The timeout in milliseconds for the merge request --></help>
+    <label><!-- Merge Call Timeout Millis --></label>
+    <name>Apttus_XApps__MergeCallTimeoutMillis__c</name>
+</CustomFieldTranslation>

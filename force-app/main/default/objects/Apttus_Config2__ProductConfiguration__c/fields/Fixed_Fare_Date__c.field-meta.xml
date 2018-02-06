@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fixed_Fare_Date__c</fullName>
+    <description>This field is used to find the Minimum start date of the accommodation type Line Items</description>
+    <externalId>false</externalId>
+    <label>Fixed Fare Date</label>
+    <summarizedField>Apttus_Config2__LineItem__c.Apttus_Config2__StartDate__c</summarizedField>
+    <summaryFilterItems>
+        <field>Apttus_Config2__LineItem__c.APTS_Product_Type__c</field>
+        <operation>equals</operation>
+        <value>ACCOMMODATION</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Apttus_Config2__LineItem__c.Apttus_Config2__StartDate__c</field>
+        <operation>notEqual</operation>
+        <value/>
+    </summaryFilterItems>
+    <summaryForeignKey>Apttus_Config2__LineItem__c.Apttus_Config2__ConfigurationId__c</summaryForeignKey>
+    <summaryOperation>min</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

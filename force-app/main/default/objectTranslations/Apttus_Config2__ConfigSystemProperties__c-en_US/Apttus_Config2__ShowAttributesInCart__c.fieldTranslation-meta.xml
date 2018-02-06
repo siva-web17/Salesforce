@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Shows the specified attributes applicable to the line items in the cart. Attributes appear in the product dialog. --></help>
+    <label><!-- Show Attributes In Cart --></label>
+    <name>Apttus_Config2__ShowAttributesInCart__c</name>
+</CustomFieldTranslation>

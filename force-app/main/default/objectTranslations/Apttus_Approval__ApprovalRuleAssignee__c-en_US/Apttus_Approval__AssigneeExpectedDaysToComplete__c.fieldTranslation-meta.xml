@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The number of expected days that this approval rule assignee needs to be completed in (approved or rejected) before a request is automatically escalated. --></help>
+    <label><!-- Assignee Expected Days To Complete --></label>
+    <name>Apttus_Approval__AssigneeExpectedDaysToComplete__c</name>
+</CustomFieldTranslation>

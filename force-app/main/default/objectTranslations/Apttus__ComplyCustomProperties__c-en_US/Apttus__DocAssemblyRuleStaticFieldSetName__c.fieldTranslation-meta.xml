@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The API name of the doc assembly rule static field set associated with the business object. The list of static fields are used as pre-filters to retrieve rules associated with the rule set during the dynamic assembly process. --></help>
+    <label><!-- Doc Assembly Rule Static FieldSet Name --></label>
+    <name>Apttus__DocAssemblyRuleStaticFieldSetName__c</name>
+</CustomFieldTranslation>

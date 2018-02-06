@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the order associated with the quote/proposal will be automatically activated when the quote/proposal is accepted. --></help>
+    <label><!-- Auto Activate Order ? --></label>
+    <name>Apttus_QPConfig__AutoActivateOrder__c</name>
+</CustomFieldTranslation>

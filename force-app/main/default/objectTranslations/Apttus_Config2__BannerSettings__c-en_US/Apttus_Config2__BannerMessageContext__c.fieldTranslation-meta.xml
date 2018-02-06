@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Allow values:
+Progressbar
+Marketing
+
+If the page context is &apos;Progressbar&apos;, BannerType must be &apos;CustomLabel&apos; --></help>
+    <label><!-- BannerMessageContext --></label>
+    <name>Apttus_Config2__BannerMessageContext__c</name>
+</CustomFieldTranslation>

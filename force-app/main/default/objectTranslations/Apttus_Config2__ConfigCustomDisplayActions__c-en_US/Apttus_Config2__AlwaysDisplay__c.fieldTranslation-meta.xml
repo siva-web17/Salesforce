@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check this to display the action as disabled(grayed out)  even when it is not enabled. --></help>
+    <label><!-- Always Display --></label>
+    <name>Apttus_Config2__AlwaysDisplay__c</name>
+</CustomFieldTranslation>

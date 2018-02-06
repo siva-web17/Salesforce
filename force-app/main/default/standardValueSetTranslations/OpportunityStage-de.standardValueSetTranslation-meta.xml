@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Booking</masterLabel>
+        <translation><!-- Booking --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Closed Lost</masterLabel>
+        <translation>Geschlossen Verloren</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Follow Up</masterLabel>
+        <translation><!-- Follow Up --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales Closed</masterLabel>
+        <translation><!-- Sales Closed --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>To Contact</masterLabel>
+        <translation><!-- To Contact --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

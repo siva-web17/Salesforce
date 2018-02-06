@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- If checked, options which have been disabled by exclusion rules will not appear in the list of availbe options. --></help>
+    <label><!-- Hide Disabled Options --></label>
+    <name>Apttus_Config2__HideDisabledOptions__c</name>
+</CustomFieldTranslation>

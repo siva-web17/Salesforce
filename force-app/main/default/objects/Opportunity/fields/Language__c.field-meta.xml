@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Language__c</fullName>
+    <description>This field is used to display the PA Language on the Opportunity PL.
+Note: To be removed as soon as the PA component on Opportunity is functional.</description>
+    <externalId>false</externalId>
+    <formula>TEXT( Account.Language__c )</formula>
+    <label>Language</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

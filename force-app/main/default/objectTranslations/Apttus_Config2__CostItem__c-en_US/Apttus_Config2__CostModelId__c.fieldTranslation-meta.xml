@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Id of the Cost Model associated with the Product&apos;s price list --></help>
+    <label><!-- Cost Model --></label>
+    <name>Apttus_Config2__CostModelId__c</name>
+    <relationshipLabel><!-- Cost Items --></relationshipLabel>
+</CustomFieldTranslation>

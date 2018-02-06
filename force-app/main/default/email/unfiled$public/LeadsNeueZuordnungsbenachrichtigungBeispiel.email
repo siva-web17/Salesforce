@@ -1,0 +1,7 @@
+*** NEUE LEAD ZUWEISUNGSBENACHRICHTIGUNG *** 
+
+Ihnen wurde der folgende Lead zugewiesen: 
+Firma: {!Lead.Company} 
+Lead Name: {!Lead.Name} 
+
+Bitte verwenden Sie den folgenden Link um direkt zum Lead zu gelangen: {!Lead.Link}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether author events should be published. If enabled, a record is inserted in the Merge Event table. --></help>
+    <label><!-- Publish Author Events --></label>
+    <name>Apttus__PublishAuthorEvents__c</name>
+</CustomFieldTranslation>

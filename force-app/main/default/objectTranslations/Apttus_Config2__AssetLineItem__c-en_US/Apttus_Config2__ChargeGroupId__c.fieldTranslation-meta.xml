@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the charge group to which this charge type is associated --></help>
+    <label><!-- Charge Group --></label>
+    <name>Apttus_Config2__ChargeGroupId__c</name>
+    <relationshipLabel><!-- Asset Line Items --></relationshipLabel>
+</CustomFieldTranslation>

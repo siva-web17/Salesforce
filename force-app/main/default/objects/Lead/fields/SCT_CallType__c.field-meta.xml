@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SCT_CallType__c</fullName>
+    <description>This fields stores Next Call Type from System Call Task NextCallType__c. Copied by process builder</description>
+    <externalId>false</externalId>
+    <label>Task Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FUA</fullName>
+                <default>false</default>
+                <label>Appointment</label>
+            </value>
+            <value>
+                <fullName>FUP</fullName>
+                <default>false</default>
+                <label>Follow-up</label>
+            </value>
+            <value>
+                <fullName>TCC</fullName>
+                <default>false</default>
+                <label>Contact Customer</label>
+            </value>
+            <value>
+                <fullName>UCC</fullName>
+                <default>false</default>
+                <label>Unreached Customer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

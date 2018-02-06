@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The catalog page. Specify one of the following pages or a custom page.
+
+SelectConfigProducts
+SelectConfigProductsFilterView --></help>
+    <label><!-- Catalog Page --></label>
+    <name>Apttus_Config2__CatalogPage__c</name>
+</CustomFieldTranslation>

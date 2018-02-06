@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Denotes what sequence should proceed this step in order to appear. In the form (1) (1 OR 2) (1 AND 2) etc. --></help>
+    <label><!-- Precedence --></label>
+    <name>Apttus__Precedence__c</name>
+</CustomFieldTranslation>

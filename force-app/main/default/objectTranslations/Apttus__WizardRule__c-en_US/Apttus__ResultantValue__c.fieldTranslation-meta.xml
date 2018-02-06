@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The value that should result for this input based on the value of another input --></help>
+    <label><!-- Resultant Value --></label>
+    <name>Apttus__ResultantValue__c</name>
+</CustomFieldTranslation>

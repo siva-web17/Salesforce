@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to disable pricing query optimization for carts under the large cart threshold. By default fewer fields are retrieved for line items in the cart to optimize the heap. This indicator is used to disable the optimization to support customization. --></help>
+    <label><!-- Disable Pricing Query Optimization --></label>
+    <name>Apttus_Config2__DisablePricingQueryOptimization__c</name>
+</CustomFieldTranslation>

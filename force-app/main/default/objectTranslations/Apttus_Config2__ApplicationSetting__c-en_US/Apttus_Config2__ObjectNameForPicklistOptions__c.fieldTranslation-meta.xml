@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field to specify API Name of an object, whose fields need to be displayed as available options if the setting is a picklist --></help>
+    <label><!-- Object Name For Picklist Options --></label>
+    <name>Apttus_Config2__ObjectNameForPicklistOptions__c</name>
+</CustomFieldTranslation>

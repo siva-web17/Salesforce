@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether overlapping price ramps are allowed --></help>
+    <label><!-- Allow Price Ramp Overlap --></label>
+    <name>Apttus_Config2__AllowPriceRampOverlap__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Comma separated list of values for making determinations on. --></help>
+    <label><!-- Response --></label>
+    <name>Apttus__Response__c</name>
+</CustomFieldTranslation>

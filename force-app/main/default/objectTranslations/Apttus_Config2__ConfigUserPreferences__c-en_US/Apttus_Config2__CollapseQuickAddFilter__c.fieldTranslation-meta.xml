@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the quick add filter will be collapsed by default. --></help>
+    <label><!-- Collapse Quick Add Filter --></label>
+    <name>Apttus_Config2__CollapseQuickAddFilter__c</name>
+</CustomFieldTranslation>

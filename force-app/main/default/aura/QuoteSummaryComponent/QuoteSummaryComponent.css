@@ -1,0 +1,26 @@
+.THIS{
+    overflow-x : scroll;
+}
+.THIS .lightningVerticalNavigation .slds-nav-vertical__title{
+	font-size: 17px;
+    font-weight: bold;
+    border-bottom: 1px solid #00a1e1;
+    color: #333;
+}
+.THIS .slds-table th,.THIS .slds-table td{
+	padding: 10px .5rem !important;
+}
+.THIS .slds-button_brand .slds-icon-text-default {
+	fill: rgb(255, 255, 255);
+  }
+.THIS .slds-nav-vertical__section {
+    height: 500px;
+    overflow-y: scroll;
+}
+.THIS .slds-modal__container{
+     max-width: 70rem !important;
+     width:90% !important;
+}
+.THIS.scrollerSize {
+    height: 300px;
+}

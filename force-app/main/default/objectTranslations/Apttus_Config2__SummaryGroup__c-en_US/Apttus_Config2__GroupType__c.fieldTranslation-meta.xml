@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Totaling Group Type --></label>
+    <name>Apttus_Config2__GroupType__c</name>
+    <picklistValues>
+        <masterLabel>Ad Hoc</masterLabel>
+        <translation><!-- Ad Hoc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Adjustment</masterLabel>
+        <translation><!-- Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Category</masterLabel>
+        <translation><!-- Category --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product</masterLabel>
+        <translation><!-- Product --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

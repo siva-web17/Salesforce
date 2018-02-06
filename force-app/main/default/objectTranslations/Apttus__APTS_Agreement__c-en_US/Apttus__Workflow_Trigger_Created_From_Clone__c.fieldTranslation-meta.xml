@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates a transient agreement that may get deleted by the user. A new agreement is in transient state until the agreement is explicitly saved by the user. --></help>
+    <label><!-- Is Transient --></label>
+    <name>Apttus__Workflow_Trigger_Created_From_Clone__c</name>
+</CustomFieldTranslation>

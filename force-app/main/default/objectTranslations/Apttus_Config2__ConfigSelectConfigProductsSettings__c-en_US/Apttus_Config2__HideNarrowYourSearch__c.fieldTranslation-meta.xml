@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- When checked Narrow Your Search is hidden. --></help>
+    <label><!-- Hide Narrow Your Search --></label>
+    <name>Apttus_Config2__HideNarrowYourSearch__c</name>
+</CustomFieldTranslation>

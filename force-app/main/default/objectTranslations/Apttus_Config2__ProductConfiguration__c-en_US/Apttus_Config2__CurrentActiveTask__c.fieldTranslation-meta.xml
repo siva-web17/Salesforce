@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The current active task for the cart --></help>
+    <label><!-- Current Active Task --></label>
+    <name>Apttus_Config2__CurrentActiveTask__c</name>
+    <picklistValues>
+        <masterLabel>Cloning Adjustment Line Items</masterLabel>
+        <translation><!-- Cloning Adjustment Line Items --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Agreement Price Rules</masterLabel>
+        <translation><!-- Cloning Agreement Price Rules --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Agreement Price Tier</masterLabel>
+        <translation><!-- Cloning Agreement Price Tier --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Attribute Values</masterLabel>
+        <translation><!-- Cloning Attribute Values --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Detail Objects</masterLabel>
+        <translation><!-- Cloning Detail Objects --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Expression Information</masterLabel>
+        <translation><!-- Cloning Expression Information --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Price Breakups</masterLabel>
+        <translation><!-- Cloning Price Breakups --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Rule Information</masterLabel>
+        <translation><!-- Cloning Rule Information --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Tax Breakups</masterLabel>
+        <translation><!-- Cloning Tax Breakups --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cloning Usage Tiers</masterLabel>
+        <translation><!-- Cloning Usage Tiers --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

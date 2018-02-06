@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotUpdateSpecificCallTaskFields</fullName>
+    <active>true</active>
+    <description>Validation to restrict the  'CallTask' update to only certain fields</description>
+    <errorConditionFormula>AND( 
+(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)), NOT(IsParentClosing__c )&amp;&amp; 
+$RecordType.DeveloperName = "CallTask"&amp;&amp; 
+(ISCHANGED(Status) || ISCHANGED(Priority) || ISCHANGED(OwnerId)))</errorConditionFormula>
+    <errorMessage>"Call Task" cannot be updated.</errorMessage>
+</ValidationRule>

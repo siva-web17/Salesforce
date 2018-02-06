@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Is_Optional__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>this check box is to identify Optional Product</description>
+    <externalId>false</externalId>
+    <label>Is Optional</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

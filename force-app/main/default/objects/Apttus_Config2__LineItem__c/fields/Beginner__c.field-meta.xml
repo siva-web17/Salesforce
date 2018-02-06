@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Beginner__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This will indicate weather the student is beginner or not(We added this field in line item so that we can select the field in new custom page)</description>
+    <externalId>false</externalId>
+    <label>Beginner</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

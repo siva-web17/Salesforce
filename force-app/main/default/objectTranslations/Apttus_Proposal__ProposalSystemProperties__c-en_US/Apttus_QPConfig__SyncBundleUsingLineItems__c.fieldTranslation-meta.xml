@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether proposal line items should be used to synchronize bundle products. The default uses proposal summary objects. Only applicable when proposal summary is enabled. --></help>
+    <label><!-- Sync Bundle Using Line Items --></label>
+    <name>Apttus_QPConfig__SyncBundleUsingLineItems__c</name>
+</CustomFieldTranslation>

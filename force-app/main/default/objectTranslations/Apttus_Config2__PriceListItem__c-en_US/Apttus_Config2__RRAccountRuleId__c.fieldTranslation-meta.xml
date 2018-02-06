@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the recognized revenue account rule --></help>
+    <label><!-- Recognized Revenue Account --></label>
+    <name>Apttus_Config2__RRAccountRuleId__c</name>
+    <relationshipLabel><!-- Price List Items (Recognized Revenue Account) --></relationshipLabel>
+</CustomFieldTranslation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComparativeQuote__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to modify the pricing logic for the Line Items - if checked, cumulative ranges (such as Quantity are not applied) so that each Courses/Travel Insurance articles are priced independently per Destination Bundle</description>
+    <externalId>false</externalId>
+    <label>Comparative Quote</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

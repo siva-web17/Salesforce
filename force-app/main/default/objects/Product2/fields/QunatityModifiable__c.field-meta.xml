@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QunatityModifiable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>We have added this field so that we can modify the quantity in start date page</description>
+    <externalId>false</externalId>
+    <label>Qunatity Modifiable</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

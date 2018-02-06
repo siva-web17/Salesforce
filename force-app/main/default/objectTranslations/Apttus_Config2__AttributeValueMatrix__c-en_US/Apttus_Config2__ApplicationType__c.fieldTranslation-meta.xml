@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- How to apply the matrix values to the attributes --></help>
+    <label><!-- Application Type --></label>
+    <name>Apttus_Config2__ApplicationType__c</name>
+    <picklistValues>
+        <masterLabel>Constrain</masterLabel>
+        <translation><!-- Constrain --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Default</masterLabel>
+        <translation><!-- Default --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Force Set</masterLabel>
+        <translation><!-- Force Set --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The date the loyalty level was granted to the account/contact based on points accrued for the incentive --></help>
+    <label><!-- Grant Date --></label>
+    <name>Apttus_Config2__GrantDate__c</name>
+</CustomFieldTranslation>

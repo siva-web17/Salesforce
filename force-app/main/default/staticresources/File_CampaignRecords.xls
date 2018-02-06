@@ -1,0 +1,21 @@
+DateFrom__c,DateTo__c,Market__c,MeetingCity__c,MeetingSize__c,MeetingType__c,Name,Product__c,Program__c,SalesOffice__c,Status
+2017-12-05T19:00:00.000Z,2017-12-05T22:00:00.000Z,DEB,Berlin,20,Info Meeting - Online,testCampaign 1,SCH,LT,DEB,Active
+2017-12-05T19:00:00.000Z,2017-12-05T22:00:00.000Z,DEB,Berlin,20,Info Meeting - Online,testCampaign 2,APP,AY,DEB,Active
+2017-11-14T15:31:00.000Z,2017-11-14T15:33:00.000Z,DEB,Aachen,30,Info Meeting - Offline,testCampaign 3,APP,AY,DEB,Active
+2017-10-21T08:52:00.000Z,2017-10-21T09:00:00.000Z,DEB,Aschaffenburg,5000,Info Meeting - Offline,testCampaign 4,ILS,ILSH,DEB,Active
+2017-10-20T12:32:00.000Z,2017-10-20T12:35:00.000Z,DEB,Aschaffenburg,1500,Info Meeting - Online,testCampaign 5,ILS,ILSH,DEB,Active
+2017-10-21T05:27:00.000Z,2017-10-21T05:29:00.000Z,DEB,Aschaffenburg,600,Info Meeting - Offline,testCampaign 6,ILS,ILSH,DEB,Active
+2017-10-27T05:47:00.000Z,2017-10-27T08:00:00.000Z,DEB,Aschaffenburg,5000,Info Meeting - Offline,testCampaign 7,APP,AY,DEB,Active
+2017-10-28T09:31:00.000Z,2017-10-28T09:45:00.000Z,DEB,Aschaffenburg,600,Info Meeting - Offline,testCampaign 8,APP,AY,DEB,Active
+2017-10-28T09:39:00.000Z,2017-10-28T10:00:00.000Z,DEB,Aschaffenburg,200,Info Meeting - Online,testCampaign 9,ILS,ILSH,DEB,Active
+2017-10-29T05:30:00.000Z,2017-10-29T05:40:00.000Z,DEB,Aschaffenburg,1500,Info Meeting - Offline,testCampaign 10,APP,AY,DEB,Active
+2017-10-28T09:46:00.000Z,2017-10-28T09:50:00.000Z,DEB,Berlin,500,Info Meeting - Online,testCampaign 11,APP,AY,DEB,Active
+2017-10-29T09:44:00.000Z,2017-10-29T09:48:00.000Z,DEB,Augsburg,2500,Open House,testCampaign 12,APP,AY,DEB,Active
+2017-10-28T09:40:00.000Z,2017-10-28T09:45:00.000Z,DEB,Augsburg,230,Info Meeting - Online,testCampaign 13,ILS,ILSH,DEB,Active
+2018-02-04T13:29:00.000Z,2018-02-04T14:19:00.000Z,DEB,Augsburg,9,Info Meeting - Offline,testCampaign 14,ILS,ILSH,DEX,Active
+2017-10-29T05:31:00.000Z,2017-10-29T05:50:00.000Z,DEB,Aschaffenburg,1000,Info Meeting - Offline,testCampaign 15,ILS,ILSH,DEB,Active
+2017-09-30T08:50:00.000Z,2017-09-30T08:55:00.000Z,DEB,Berlin,2000,Info Meeting - Offline,testCampaign 16,APP,AY,DEB,Active
+2017-09-11T11:30:00.000Z,2017-09-11T12:30:00.000Z,DEB,Augsburg,10,Info Meeting - Offline,testCampaign 17,APP,AY,DEB,Active
+2017-09-11T23:30:00.000Z,2017-09-12T00:30:00.000Z,DEB,Augsburg,10,Info Meeting - Offline,testCampaign 18,APP,AY,DEB,Active
+2017-09-12T23:30:00.000Z,2017-09-13T00:30:00.000Z,DEB,Augsburg,10,Info Meeting - Offline,testCampaign 19,APP,AY,DEB,Active
+2017-09-13T23:30:00.000Z,2017-09-14T00:30:00.000Z,DEB,Augsburg,10,Info Meeting - Offline,testCampaign 20,APP,AY,DEB,Active

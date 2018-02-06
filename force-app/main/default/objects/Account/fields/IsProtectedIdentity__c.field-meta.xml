@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsProtectedIdentity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If customer has opted in for protect information, if this is true then we should not share contact details of this customer</description>
+    <externalId>false</externalId>
+    <label>Is Protected Identity</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

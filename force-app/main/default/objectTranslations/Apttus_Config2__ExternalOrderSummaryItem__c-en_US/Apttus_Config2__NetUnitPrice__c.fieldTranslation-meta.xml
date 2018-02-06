@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The net unit price for the product or service --></help>
+    <label><!-- Net Unit Price --></label>
+    <name>Apttus_Config2__NetUnitPrice__c</name>
+</CustomFieldTranslation>

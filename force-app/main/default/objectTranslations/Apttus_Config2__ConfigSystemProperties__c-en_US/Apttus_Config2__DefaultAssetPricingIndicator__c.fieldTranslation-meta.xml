@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether asset pricing is enabled by default for asset related line items --></help>
+    <label><!-- Default Asset Pricing Indicator ? --></label>
+    <name>Apttus_Config2__DefaultAssetPricingIndicator__c</name>
+</CustomFieldTranslation>

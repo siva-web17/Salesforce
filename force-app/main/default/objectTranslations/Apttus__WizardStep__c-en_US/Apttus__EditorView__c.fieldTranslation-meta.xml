@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Editor View --></label>
+    <name>Apttus__EditorView__c</name>
+    <picklistValues>
+        <masterLabel>All</masterLabel>
+        <translation><!-- All --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Input Name</masterLabel>
+        <translation><!-- Input Name --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Input Q / S</masterLabel>
+        <translation><!-- Input Q / S --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Input Response</masterLabel>
+        <translation><!-- Input Response --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Input Sequence List</masterLabel>
+        <translation><!-- Input Sequence List --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Q / S &amp; Response</masterLabel>
+        <translation><!-- Q / S &amp; Response --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rule Editors</masterLabel>
+        <translation><!-- Rule Editors --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

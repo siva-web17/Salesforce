@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the sidebar should be displayed for admin pages. --></help>
+    <label><!-- Show Admin Sidebar --></label>
+    <name>Apttus_Config2__ShowAdminSidebar__c</name>
+</CustomFieldTranslation>

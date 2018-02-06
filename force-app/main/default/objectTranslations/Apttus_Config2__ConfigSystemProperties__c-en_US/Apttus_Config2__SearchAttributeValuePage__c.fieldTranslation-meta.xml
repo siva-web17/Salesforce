@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The scope to look for related items in related pricing. The default value is Cart
+Valid Values are:
+============
+Cart
+Bundle --></help>
+    <label><!-- Related Price Scope --></label>
+    <name>Apttus_Config2__SearchAttributeValuePage__c</name>
+</CustomFieldTranslation>

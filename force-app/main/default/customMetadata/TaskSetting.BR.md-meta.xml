@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>BR</label>
+    <protected>false</protected>
+    <values>
+        <field>CanCloseManually__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>CanCreateManually__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>CreateCallType__c</field>
+        <value xsi:type="xsd:string">TCC| (TCC &amp; SBR)|SBR</value>
+    </values>
+    <values>
+        <field>ForClosedCallTypes__c</field>
+        <value xsi:type="xsd:string">FUP| (FUP&amp; SBR)</value>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsCallType__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsTaskPerCustomer__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Name__c</field>
+        <value xsi:type="xsd:string">BR</value>
+    </values>
+    <values>
+        <field>No__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>RecordTypeLabel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RuleForActivity__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RuleForTask__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Rule__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>TaskGroup__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>TaskSubject__c</field>
+        <value xsi:type="xsd:string">Brochure Request</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Customer Request</value>
+    </values>
+    <values>
+        <field>UpdateCallType__c</field>
+        <value xsi:type="xsd:string">UCC|FUP|FUA</value>
+    </values>
+</CustomMetadata>

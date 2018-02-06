@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The contract number associated with the price rule. The rule is associated with a conract number after activation. --></help>
+    <label><!-- Contract Number --></label>
+    <name>Apttus_Config2__ContractNumber__c</name>
+</CustomFieldTranslation>

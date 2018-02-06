@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- API name of the field in the order object or a path to the field from the order object that holds the point accrual value --></help>
+    <label><!-- Order Field Name --></label>
+    <name>Apttus_Config2__OrderFieldName__c</name>
+</CustomFieldTranslation>

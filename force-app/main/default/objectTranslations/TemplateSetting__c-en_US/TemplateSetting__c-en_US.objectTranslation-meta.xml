@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Template Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Template Settings</value>
+    </caseValues>
+    <layouts>
+        <layout>Template Setting Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter AgeFrom in this format: __Y__M Or __Y --></errorMessage>
+        <name>AgeFromFormatCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter AgeTo in this format: __Y__M Or __Y --></errorMessage>
+        <name>AgeToFormatCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Age To should be always greater than Age From. --></errorMessage>
+        <name>AgeToShouldBeGreaterThanAgeFrom</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter valid month. Cannot exceed value 12 or be negative --></errorMessage>
+        <name>ValidMonthValues</name>
+    </validationRules>
+</CustomObjectTranslation>

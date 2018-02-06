@@ -1,0 +1,35 @@
+<aura:component description="OwnerChange" controller="GetRecordDetails" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="label" type="string" default="Record Owner"/>
+    <aura:attribute name="ownerName" type="string"/>
+    <aura:attribute name="ownerURL" type="string" />
+    <aura:attribute name="Record" type="SObject" />
+
+
+    <aura:attribute name="OwnerRecord" type="SObject" />
+    <aura:attribute name="ParentObjectApi" type="string" default="Apttus_Proposal__Proposal__c"/>
+    <aura:handler name="change" value="{!v.Record}" action="{!c.OnOwnerChanged}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="LookUpEvent" value="{!this}" action="{!c.OpenChangeOwnerlookUpComponent}" event="c:HandleModalPopUpEvent"/>
+    <div class="slds-form slds-form_compound">
+        <fieldset class="slds-form-element">
+            <!--<legend class="slds-form-element__label slds-text-title_caps">{!v.label}</legend>-->
+            <div class="slds-form-element__group">
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+
+                        <ui:outputURL aura:id="url" label="{!v.ownerName}" class="field"
+                                     
+                                      value="{!v.ownerURL}"/>
+                        <c:PopOver aura:id="Tooltip" ownerName="{!v.ownerName}" MarketCode="{!v.Record.Shrivatsa__Market__c }" ownerURL="{!v.ownerURL}" Active="{!v.OwnerRecord.IsActive}"/>
+                        <lightning:buttonIcon iconName="utility:change_owner" variant="bare" alternativeText="Change Owner" title="Change Owner" iconClass="dark" onclick="{! c.OpenChangeOwnerlookUpComponent}"/>
+                        <!--<lightning:button class="slds-button__icon slds-button__icon_left slds-button__icon_small"  label="" iconName="action:change_owner" iconPosition="left" onclick="{! c.OpenChangeOwnerlookUpComponent}" />-->
+
+                            <c:ModalPopUp aura:id="ModalPopUp" selectedLookUpRecord="{!v.Record}" />
+
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+</aura:component>

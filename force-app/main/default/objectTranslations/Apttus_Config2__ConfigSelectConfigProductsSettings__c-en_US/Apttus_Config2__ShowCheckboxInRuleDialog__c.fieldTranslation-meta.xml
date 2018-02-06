@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Shows checkbox instead of Add to Cart button in Rule Dialog --></help>
+    <label><!-- Show Checkbox In Rule Dialog --></label>
+    <name>Apttus_Config2__ShowCheckboxInRuleDialog__c</name>
+</CustomFieldTranslation>

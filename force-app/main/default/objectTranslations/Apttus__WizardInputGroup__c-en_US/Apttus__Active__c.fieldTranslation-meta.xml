@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Signifies that the Input Group within a Step is Active. Setting Step as Active automatically activates the included Input Groups. --></help>
+    <label><!-- Active --></label>
+    <name>Apttus__Active__c</name>
+</CustomFieldTranslation>

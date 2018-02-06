@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the number of the condition, startting with 1 and incrementing up to the number of conditions.  Conditions are evaluated in the order specified by this field.  When a condition evaluates to false, remaining conditions are ignored. --></help>
+    <label><!-- Number --></label>
+    <name>Apttus_Approval__Number__c</name>
+</CustomFieldTranslation>

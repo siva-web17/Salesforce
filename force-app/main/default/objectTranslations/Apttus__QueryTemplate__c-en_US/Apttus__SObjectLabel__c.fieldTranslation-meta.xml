@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The object to query --></help>
+    <label><!-- Object --></label>
+    <name>Apttus__SObjectLabel__c</name>
+    <picklistValues>
+        <masterLabel>Agreement Template</masterLabel>
+        <translation><!-- Agreement Template --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Quote/Proposal Template</masterLabel>
+        <translation><!-- Quote/Proposal Template --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

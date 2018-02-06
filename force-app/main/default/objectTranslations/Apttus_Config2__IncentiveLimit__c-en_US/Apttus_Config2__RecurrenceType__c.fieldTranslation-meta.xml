@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The limit recurrence type --></help>
+    <label><!-- Recurrence Type --></label>
+    <name>Apttus_Config2__RecurrenceType__c</name>
+    <picklistValues>
+        <masterLabel>One Time</masterLabel>
+        <translation><!-- One Time --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Recurring</masterLabel>
+        <translation><!-- Recurring --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

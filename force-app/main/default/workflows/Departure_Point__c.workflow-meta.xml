@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>UpdateDefaultUniqueIdentifier</fullName>
+        <description>Update the Default Unique Identifier value</description>
+        <field>APTS_Default_Unique_Identifier__c</field>
+        <formula>Name &amp; "_" &amp; 
+TEXT(Market__c)&amp; "_" &amp; 
+Code__c &amp; "_"&amp; 
+TEXT(Product__c)</formula>
+        <name>Update Default Unique Identifier</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>UpdateUniqueIdentifier</fullName>
+        <actions>
+            <name>UpdateDefaultUniqueIdentifier</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates The departure point unique identifier</description>
+        <formula>ISNEW() 
+|| 
+OR( 
+ISCHANGED(Name), 
+ISCHANGED(Market__c), 
+ISCHANGED(Product__c) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

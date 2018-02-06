@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The loyalty level earned by the account/contact or custom point accrual level based on points accrued for the incentive --></help>
+    <label><!-- Loyalty Level (Earned) --></label>
+    <name>Apttus_Config2__LoyaltyLevelEarned__c</name>
+</CustomFieldTranslation>

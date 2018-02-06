@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The sequence in which this input entry should be displayed during runtime --></help>
+    <label><!-- Sequence --></label>
+    <name>Apttus__Sequence__c</name>
+</CustomFieldTranslation>

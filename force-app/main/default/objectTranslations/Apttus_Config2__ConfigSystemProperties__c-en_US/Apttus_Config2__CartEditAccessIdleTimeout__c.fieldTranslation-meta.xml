@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field to specify number of minutes of idle time a configuration can be kept open in edit mode. --></help>
+    <label><!-- Cart Edit Access Idle Timeout in Minutes --></label>
+    <name>Apttus_Config2__CartEditAccessIdleTimeout__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The account Id of the agreement leaf in the agreement hierarchy.
+Root &gt; Parent &gt; Leaf - Account Id --></help>
+    <label><!-- Agreement Leaf Account --></label>
+    <name>Apttus__AgreementLeafAccountId__c</name>
+    <relationshipLabel><!-- Agreement Hierarchies --></relationshipLabel>
+</CustomFieldTranslation>

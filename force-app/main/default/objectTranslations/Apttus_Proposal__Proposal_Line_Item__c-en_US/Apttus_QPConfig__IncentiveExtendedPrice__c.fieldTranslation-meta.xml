@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The incentive extended price is Quantity X Incentive Base Price X Term (if applicable) for individual products and options --></help>
+    <label><!-- Incentive Extended Price --></label>
+    <name>Apttus_QPConfig__IncentiveExtendedPrice__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateFromAndDateToMustBeSameDay</fullName>
+    <active>true</active>
+    <description>Date shouldn't be different from that entered in "Date From".</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),(DATEVALUE(DateFrom__c ) &lt;>  DATEVALUE(DateTo__c)))</errorConditionFormula>
+    <errorMessage>Info Meetings should be created for the same day. Please modify the date and try again.</errorMessage>
+</ValidationRule>

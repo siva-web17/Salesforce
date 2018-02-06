@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicate which currency management system CPQ will use in a multi-currency environment. 
+Valid values:
+Apttus
+Platform --></help>
+    <label><!-- Multi Currency Management --></label>
+    <name>Apttus_Config2__MultiCurrencyManagement__c</name>
+</CustomFieldTranslation>

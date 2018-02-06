@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the associated rule set --></help>
+    <label><!-- Ruleset --></label>
+    <name>Apttus__RulesetId__c</name>
+    <relationshipLabel><!-- Doc Assembly Rules --></relationshipLabel>
+</CustomFieldTranslation>

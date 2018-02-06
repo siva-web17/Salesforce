@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The run day of week. Specific Day of Week when recurring weekly jobs should run. --></help>
+    <label><!-- Run Day Of Week --></label>
+    <name>Apttus_Config2__RunDayOfWeek__c</name>
+    <picklistValues>
+        <masterLabel>1st Day of the Week</masterLabel>
+        <translation><!-- 1st Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2nd Day of the Week</masterLabel>
+        <translation><!-- 2nd Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3rd Day of the Week</masterLabel>
+        <translation><!-- 3rd Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>4th Day of the Week</masterLabel>
+        <translation><!-- 4th Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>5th Day of the Week</masterLabel>
+        <translation><!-- 5th Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>6th Day of the Week</masterLabel>
+        <translation><!-- 6th Day of the Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>7th Day of the Week</masterLabel>
+        <translation><!-- 7th Day of the Week --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

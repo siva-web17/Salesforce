@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Allow users to make change to one time line item. --></help>
+    <label><!-- Enable One Time Change --></label>
+    <name>Apttus_Config2__EnableOneTimeChange__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Fields from the transaction records that represent volume or revenue 
+1.	VOLUME:  Generally represented by the standard field “Quantity” 
+2.	REVENUE: Generally represented by the standard field “Net Price”.  However,  can also use other fields --></help>
+    <label><!-- Metric Value Source --></label>
+    <name>Apttus_Config2__MetricValueSource__c</name>
+</CustomFieldTranslation>

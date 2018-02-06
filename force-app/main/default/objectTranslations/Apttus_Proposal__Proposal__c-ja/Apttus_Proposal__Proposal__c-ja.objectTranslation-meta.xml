@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Quote/Proposal --></value>
+    </caseValues>
+    <layouts>
+        <layout>Price Quote Sales</layout>
+        <sections>
+            <label>操作</label>
+            <section>Actions</section>
+        </sections>
+        <sections>
+            <label>提案プロセス</label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Proposal ID --></nameFieldLabel>
+    <quickActions>
+        <label><!-- Convert To Booking --></label>
+        <name>ConvertToBooking</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Proposal --></label>
+        <name>Proposal</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- RFP --></label>
+        <name>RFP</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- The Validity Date of this Quote has expired, please create a new one. --></errorMessage>
+        <name>Change_quote_after_validity_expired</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AddProposalProducts --></label>
+        <name>Apttus_Proposal__AddProposalProducts</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CloneProposalwithDetails --></label>
+        <name>Apttus_Proposal__CloneProposalwithDetails</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateAgreement --></label>
+        <name>Apttus_Proposal__CreateAgreement</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EditProposaProducts --></label>
+        <name>Apttus_Proposal__EditProposaProducts</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate --></label>
+        <name>Apttus_Proposal__Generate</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GenerateProposal --></label>
+        <name>Apttus_Proposal__GenerateProposal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewQuoteProposalFromOpportunity --></label>
+        <name>Apttus_Proposal__NewQuoteProposalFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PresentProposal --></label>
+        <name>Apttus_Proposal__PresentProposal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ReportViewCurrentTotals --></label>
+        <name>Apttus_Proposal__ReportViewCurrentTotals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitForApproval --></label>
+        <name>Apttus_Proposal__SubmitForApproval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SyncWithOpportunity --></label>
+        <name>Apttus_Proposal__SyncWithOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RepriceQuote --></label>
+        <name>Apttus_QPConfig__RepriceQuote</name>
+    </webLinks>
+</CustomObjectTranslation>

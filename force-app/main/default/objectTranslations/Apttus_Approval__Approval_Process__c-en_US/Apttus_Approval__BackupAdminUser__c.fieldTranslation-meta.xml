@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This field allows you to specify a backup admin approver at the process level instead of the default system wide level that is assigned to requests that have an invalid or deactivated approver. --></help>
+    <label><!-- Backup Admin User --></label>
+    <name>Apttus_Approval__BackupAdminUser__c</name>
+    <relationshipLabel><!-- Approval Processes --></relationshipLabel>
+</CustomFieldTranslation>

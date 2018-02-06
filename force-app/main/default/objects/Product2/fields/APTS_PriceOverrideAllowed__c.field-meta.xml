@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_PriceOverrideAllowed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used in Validation rule on the Line Item - if not checked, adjustment type of Price Override is not allowed</description>
+    <externalId>false</externalId>
+    <label>Price Override Allowed</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

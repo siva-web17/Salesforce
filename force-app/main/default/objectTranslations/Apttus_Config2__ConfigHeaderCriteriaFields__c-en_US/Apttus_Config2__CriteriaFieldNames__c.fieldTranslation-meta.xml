@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the list of field API names from the product configuration object used in criteria in product default rules. Each field may be separated by a comma or a new line. --></help>
+    <label><!-- Criteria Field Names --></label>
+    <name>Apttus_Config2__CriteriaFieldNames__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,300 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="LeadRankingSettingsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description>Lead Ranking Custom Settings</description>
+        <property name="name" value="LeadRankingSettingsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="LeadRankingSetting__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\LeadRankingSetting.sdl"/>
+                <entry key="dataAccess.name" value="..\data\LeadRankingSetting.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="LeadAccountMappingSettingsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="LeadAccountMappingSettingsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="LeadAccountMapping__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\LegalSettings.sdl"/>
+                <entry key="dataAccess.name" value="..\data\LegalSettings.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="LeadMergeRuleConfigSettingsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="LeadMergeRuleConfigSettingsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="MergeRuleConfig__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\LeadMergeRuleConfig.sdl"/>
+                <entry key="dataAccess.name" value="..\data\LeadMergeRuleConfig.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="LegalSettingsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="LegalSettingsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="LegalSettings__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\LegalSettings.sdl"/>
+                <entry key="dataAccess.name" value="..\data\LegalSettings.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="MarketProgramSettingDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="MarketProgramSettingProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="MarketProgramLevelSetting__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\MarketProgramSetting.sdl"/>
+                <entry key="dataAccess.name" value="..\data\MarketProgramSetting.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="BypassTriggerValidationSettingDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="BypassTriggerValidationSettingProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="BypassTriggersValidations__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\BypassTriggerValidation.sdl"/>
+                <entry key="dataAccess.name" value="..\data\BypassTriggerValidation.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="ProposalSystemPropertiesDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="ProposalSystemPropertiesProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="Apttus_Proposal__ProposalSystemProperties__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\ProposalSystemProperties.sdl"/>
+                <entry key="dataAccess.name" value="..\data\ProposalSystemProperties.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="ConfigSystemPropertiesDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="ConfigSystemPropertiesProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="Apttus_Config2__ConfigSystemProperties__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\ConfigSystemProperties.sdl"/>
+                <entry key="dataAccess.name" value="..\data\ConfigSystemProperties.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="ConfigCustomClassesDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="ConfigCustomClassesProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="Apttus_Config2__ConfigCustomClasses__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\CustomClasses.sdl"/>
+                <entry key="dataAccess.name" value="..\data\CustomClasses.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="ConfigLineItemCustomFieldsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="ConfigLineItemCustomFieldsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="Apttus_Config2__ConfigLineItemCustomFields__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\ConfigLineItemCustomFields.sdl"/>
+                <entry key="dataAccess.name" value="..\data\ConfigLineItemCustomFields.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="ConfigLineItemCriteriaFieldsDeploy"
+          class="com.salesforce.dataloader.process.ProcessRunner"
+          singleton="false">
+        <description></description>
+        <property name="name" value="ConfigLineItemCriteriaFieldsProcess"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Program Files (x86)\salesforce.com\Data Loader\samples\status\accountMasterSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value=""/>
+                <entry key="sfdc.username" value=""/>
+                <!-- password below has been encrypted using key file, therefore it will not work without the key setting: process.encryptionKeyFile
+                the password is not a valid encrypted value, please generate the real value using encrypt.bat utility -->
+                <entry key="sfdc.password" value=""/>
+                <entry key="process.encryptionKeyFile" value="Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
+                <entry key="sfdc.entity" value="Apttus_Config2__ConfigLineItemCriteriaFields__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="..\data\ConfigLineItemCriteriaFields.sdl"/>
+                <entry key="dataAccess.name" value="..\data\ConfigLineItemCriteriaFields.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+</beans>

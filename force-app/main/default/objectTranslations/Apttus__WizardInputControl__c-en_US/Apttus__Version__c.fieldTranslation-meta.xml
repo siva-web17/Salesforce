@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Version number (counter) of input control design. This identifies the input control uniquely in the chronology of creation. --></help>
+    <label><!-- Version --></label>
+    <name>Apttus__Version__c</name>
+</CustomFieldTranslation>

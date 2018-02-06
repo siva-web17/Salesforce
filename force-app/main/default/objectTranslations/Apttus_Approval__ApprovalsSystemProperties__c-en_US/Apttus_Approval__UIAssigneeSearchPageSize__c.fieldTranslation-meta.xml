@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Specify a value here to denote the number of search results rows to display when searching for assignee queues, roles, rules, or users in admin setup. The default is 20 rows. --></help>
+    <label><!-- UI Assignee Search Page Size --></label>
+    <name>Apttus_Approval__UIAssigneeSearchPageSize__c</name>
+</CustomFieldTranslation>

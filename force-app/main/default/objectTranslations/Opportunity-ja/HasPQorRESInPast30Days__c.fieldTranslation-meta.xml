@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Has PQ or RES in past 30 days --></label>
+    <name>HasPQorRESInPast30Days__c</name>
+</CustomFieldTranslation>

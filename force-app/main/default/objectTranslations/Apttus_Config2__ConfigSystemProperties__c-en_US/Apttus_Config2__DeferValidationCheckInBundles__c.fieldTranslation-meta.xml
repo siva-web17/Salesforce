@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to defer validation check in the bundle configuration step --></help>
+    <label><!-- Defer Validation Check In Bundles --></label>
+    <name>Apttus_Config2__DeferValidationCheckInBundles__c</name>
+</CustomFieldTranslation>

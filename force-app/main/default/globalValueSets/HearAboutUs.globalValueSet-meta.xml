@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Social Media</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Ex-Pax/Ex-ENQ</fullName>
+        <default>false</default>
+        <label>Ex-Pax/Ex-ENQ</label>
+    </customValue>
+    <customValue>
+        <fullName>I haven't asked</fullName>
+        <default>false</default>
+        <label>I haven't asked</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine</fullName>
+        <default>false</default>
+        <label>Search Engine</label>
+    </customValue>
+    <customValue>
+        <fullName>Advertisement (offline/online)</fullName>
+        <default>false</default>
+        <label>Advertisement (offline/online)</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer doesn't know</fullName>
+        <default>false</default>
+        <label>Customer doesn't know</label>
+    </customValue>
+    <customValue>
+        <fullName>Fair/Exhibitions</fullName>
+        <default>false</default>
+        <label>Fair/Exhibitions</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <label>Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>At School</fullName>
+        <default>false</default>
+        <label>At School</label>
+    </customValue>
+    <customValue>
+        <fullName>EF distributions</fullName>
+        <default>false</default>
+        <label>EF distributions</label>
+    </customValue>
+    <description>How did you hear about us?</description>
+    <masterLabel>HearAboutUs</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

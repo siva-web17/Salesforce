@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether version control is in effect. If enabled, checkout/check-in policy is enforced for agreement documents. --></help>
+    <label><!-- Enable Version Control --></label>
+    <name>Apttus__EnableVersionControl__c</name>
+</CustomFieldTranslation>

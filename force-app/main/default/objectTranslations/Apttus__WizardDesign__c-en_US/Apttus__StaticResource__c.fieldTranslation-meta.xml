@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Static resource file to be used for customizing wizard --></help>
+    <label><!-- Static Resource --></label>
+    <name>Apttus__StaticResource__c</name>
+</CustomFieldTranslation>

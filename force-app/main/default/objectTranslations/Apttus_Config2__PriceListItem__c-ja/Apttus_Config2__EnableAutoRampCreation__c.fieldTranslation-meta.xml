@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether price ramps are auto created based on ramp frequency and enforces bundle and option dates. --></help>
+    <label><!-- Enable Auto Ramp Creation --></label>
+    <name>Apttus_Config2__EnableAutoRampCreation__c</name>
+</CustomFieldTranslation>

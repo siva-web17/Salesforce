@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- User who can be assigned to a X-Author Excel app --></help>
+    <label><!-- User --></label>
+    <name>Apttus_XApps__UserId__c</name>
+    <relationshipLabel><!-- App Assignments --></relationshipLabel>
+</CustomFieldTranslation>

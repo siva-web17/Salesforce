@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Signifies that the Wizard Design is Active. Once activated, the wizard cannot be modified. --></help>
+    <label><!-- Active --></label>
+    <name>Apttus__Active__c</name>
+</CustomFieldTranslation>

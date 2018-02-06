@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The style used to display the header of a column, used primarily for adding inline CSS styles. --></help>
+    <label><!-- Header Style --></label>
+    <name>Apttus_Config2__HeaderStyle__c</name>
+</CustomFieldTranslation>

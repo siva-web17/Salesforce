@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Action Intent --></label>
+    <name>Apttus_Config2__ActionIntent__c</name>
+    <picklistValues>
+        <masterLabel>Auto Include</masterLabel>
+        <translation><!-- Auto Include --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Check on Finalization</masterLabel>
+        <translation><!-- Check on Finalization --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disable Selection</masterLabel>
+        <translation><!-- Disable Selection --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prompt</masterLabel>
+        <translation><!-- Prompt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Show Message</masterLabel>
+        <translation><!-- Show Message --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

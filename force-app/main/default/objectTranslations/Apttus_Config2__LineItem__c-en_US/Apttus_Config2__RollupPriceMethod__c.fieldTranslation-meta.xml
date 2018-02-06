@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The rollup price method.Only applicable to Option line types. --></help>
+    <label><!-- Rollup Price Method --></label>
+    <name>Apttus_Config2__RollupPriceMethod__c</name>
+    <picklistValues>
+        <masterLabel>Flat Price</masterLabel>
+        <translation><!-- Flat Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Per Unit</masterLabel>
+        <translation><!-- Per Unit --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

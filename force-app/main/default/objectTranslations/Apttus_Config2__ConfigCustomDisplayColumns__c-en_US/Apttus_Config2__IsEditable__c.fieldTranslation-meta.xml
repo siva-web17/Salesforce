@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the column allows its value to be edited. --></help>
+    <label><!-- Is Editable --></label>
+    <name>Apttus_Config2__IsEditable__c</name>
+</CustomFieldTranslation>

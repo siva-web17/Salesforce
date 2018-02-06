@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MarketMismatchAccountOpportunity</fullName>
+    <active>true</active>
+    <description>Opportunity should have same market as its corresponding Account.</description>
+    <errorConditionFormula>And(
+NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),
+TEXT( Account.Market__c) &lt;> TEXT(  Market__c )
+)</errorConditionFormula>
+    <errorMessage>The Account and Opportunity should belong to the same Market.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The invoice delivery preference --></help>
+    <label><!-- Invoice Delivery Method --></label>
+    <name>Apttus_Config2__InvoiceDeliveryMethod__c</name>
+    <picklistValues>
+        <masterLabel>3rd party</masterLabel>
+        <translation><!-- 3rd party --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Email</masterLabel>
+        <translation><!-- Email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>N/A</masterLabel>
+        <translation><!-- N/A --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Print</masterLabel>
+        <translation><!-- Print --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Custom Scope Fields --></label>
+        <name>CustomScopeFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Price Items Result FieldSet --></label>
+        <name>PriceItemsResultFieldSet</name>
+    </fieldSets>
+    <webLinks>
+        <label><!-- NewPriceListItem --></label>
+        <name>Apttus_Config2__NewPriceListItem</name>
+    </webLinks>
+</CustomObjectTranslation>

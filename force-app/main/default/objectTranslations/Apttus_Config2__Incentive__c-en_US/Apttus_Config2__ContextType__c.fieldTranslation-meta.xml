@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The type of context associated with the incentive --></help>
+    <label><!-- Context Type --></label>
+    <name>Apttus_Config2__ContextType__c</name>
+    <picklistValues>
+        <masterLabel>External Order Summary Item</masterLabel>
+        <translation><!-- External Order Summary Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Line Item</masterLabel>
+        <translation><!-- Line Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Milestone</masterLabel>
+        <translation><!-- Milestone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Line Item</masterLabel>
+        <translation><!-- Order Line Item --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

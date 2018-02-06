@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTSTWTRCourse__c</fullName>
+    <description>Used for constraint rules to define if one is applicable to non-tw/tr courses or to tw/tr courses.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Apttus_QPConfig__Proposald__r.APTSTWTRCourse__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TW/TR Course</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

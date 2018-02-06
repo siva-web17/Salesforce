@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The proration period treatment method. This is to deal with the time between when the service period starts and the ready for billing day. --></help>
+    <label><!-- Proration Period Treatment --></label>
+    <name>Apttus_Config2__ProrationPeriodTreatment__c</name>
+    <picklistValues>
+        <masterLabel>Charge Full</masterLabel>
+        <translation><!-- Charge Full --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Combine with First Period</masterLabel>
+        <translation><!-- Combine with First Period --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Extend Period</masterLabel>
+        <translation><!-- Extend Period --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ignore</masterLabel>
+        <translation><!-- Ignore --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Separate Period</masterLabel>
+        <translation><!-- Separate Period --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spread over Remaining Period</masterLabel>
+        <translation><!-- Spread over Remaining Period --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
