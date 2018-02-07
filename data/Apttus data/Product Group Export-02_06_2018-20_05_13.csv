@@ -1,0 +1,8 @@
+Currency ISO Code,Description,Group Name,Group Type,Apttus_Config2__IncentiveId__r.Incentive Name
+"CHF","Destination where the HF Twin article will be auto-included.","Host Family included","Standard",""
+"CHF","Necessary for constraint rules regarding Junior Courses","Products with Subtype Hotel and Hotel Extra Night","Standard",""
+"CHF","Used for the Season Supplement","Northern Hemisphere","Standard",""
+"CHF","","Enrollment Fee","Standard",""
+"CHF","Used for the Season Supplement","Southern Hemisphere","Standard",""
+"CHF","Used in Constraint Rules to separate AY Courses from ILS Courses","AY Courses","Standard",""
+"CHF","Used in Constraint Rules to separate ILS courses from AY courses","Non AY Courses","Standard",""
