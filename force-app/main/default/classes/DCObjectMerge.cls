@@ -60,7 +60,7 @@ public class DCObjectMerge {
             opportunityRecord.TFBypassStageValidation__c = true;
             opportunityRecord.StageName =OpportunitiesSelector.getOpportunityStageName(opportunityRecord);
             system.debug('>>>Previous Opp StageName'+opportunityRecord.StageName);
-            opportunityRecord.CloseDate = System.today()+90;
+            opportunityRecord.CloseDate = System.today().addMonths(2);
             opportunityRecord.TimeOutDate__c=null;
             
             if(sourceLead.RequestType__c != 'CAM'){

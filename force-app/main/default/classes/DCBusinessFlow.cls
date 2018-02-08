@@ -2,7 +2,7 @@
  * Created by aditi.sharma on 9/5/2017.
  */
 
-public with sharing class DCBusinessFlow {
+public class DCBusinessFlow {
     public static Lead sourceLead ;
     public static Lead duplicateLead = new Lead();
     public static Account duplicateAccount = new Account();
@@ -129,9 +129,11 @@ public with sharing class DCBusinessFlow {
                     finalLead = DCObjectMerge.leadToLeadFieldMerge(duplicateLead,sourceLead);
                     finalLead.status = finalLead.status=='closed'?'open':finalLead.status;
                     finalLead.isdupe__c = false;
+                    finalLead.isdupeprocessed__c = true;                    
+                     //DCBusinessFlowHelper.notifyForRanking(finalLead);
                      transferEvent(duplicateLead,sourceLead,finalDecision);
-                    DCBusinessFlowHelper.notifyForRanking(finalLead);
                      SObjectUnitOfWork.deleteLead(sourceLead);
+                     
                 }
                 else {
                     system.debug('********** exit merge');
@@ -228,8 +230,18 @@ public with sharing class DCBusinessFlow {
             eventList.add(eventRecord);
         }
         system.debug('updatable event list is'+eventList);
+         List<Lead> sourceLeads = new List<Lead>();
+         sourceLeads.Add(sourceLead);
+         List<RankingServiceResponse> finalResponse = DCBusinessFlowHelper.webServiceCallForRanking(sourceLeads);
         //update the whoid with source lead id(source might be existing or incoming lead)
         SObjectUnitOfWork.executeUpdateEvents(eventList);
+         if(finalResponse!=null && finalResponse[0].SalesForceApplicationId==sourceLead.id){
+                sourceLead.ranking__c = finalResponse[0].ScaleDownRanking;               
+                sourceLead.ReadyForRanking__c = true;         
+                system.debug('ranking>>>>'+sourceLead.ranking__c);
+                //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
+                update sourceLead;
+            }
     }
 
     //this method is used to avoid soql query inside for loop

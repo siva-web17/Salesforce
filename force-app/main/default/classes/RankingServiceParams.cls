@@ -55,14 +55,14 @@ public with sharing class RankingServiceParams {
     public String InterestCreationMonth{get;set;}
     public String SourcecodeCatagory{get;set;}
     public Boolean FirstCallReached{get;set;}
-    public String InterestDurationInHours{get;set;}
+    public string InterestDurationInHours{get;set;}
     public String CallReachHourGroup{get;set;}
     public String PostalCode{get;set;}
     public String State{get;set;}
     public String City{get;set;}
     public String Region{get;set;}
     public Boolean IsByConversion{get;set;}
-    public String InterestDuration{get;set;}
+    public integer InterestDuration{get;set;}
     public DateTime InterestCreatedDate{get;set;}
     public DateTime FirstBookingDate{get;set;}
     public Integer ReachedOnCall{get;set;}
