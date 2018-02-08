@@ -354,6 +354,14 @@
         <value>End Date</value>
     </labels>
     <labels>
+        <fullName>End_Point_URL</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The end point URL for ranking service</shortDescription>
+        <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
+    </labels>
+    <labels>
         <fullName>ExcelImportPublicGroupName</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
