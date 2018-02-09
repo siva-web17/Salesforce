@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether copy action will be hidden in the cart view --></help>
+    <label><!-- Hide Copy Action --></label>
+    <name>Apttus_Config2__HideCopyAction__c</name>
+</CustomFieldTranslation>

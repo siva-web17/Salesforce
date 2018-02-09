@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- When checked this category will be expanded to one level by default. The parent category should also be marked as expanded by default. --></help>
+    <label><!-- Expanded By Default --></label>
+    <name>Apttus_Config2__ExpandedByDefault__c</name>
+</CustomFieldTranslation>

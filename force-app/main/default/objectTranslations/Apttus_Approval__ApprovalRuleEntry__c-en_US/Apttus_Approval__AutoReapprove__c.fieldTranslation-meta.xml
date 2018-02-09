@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether auto re-approval is enabled for the step or entry. This indicator is maintained by the system. --></help>
+    <label><!-- Auto Reapprove --></label>
+    <name>Apttus_Approval__AutoReapprove__c</name>
+</CustomFieldTranslation>

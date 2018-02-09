@@ -1,0 +1,1577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- City --></label>
+    <name>MeetingCity__c</name>
+    <picklistValues>
+        <masterLabel>ALASSIO</masterLabel>
+        <translation><!-- ALASSIO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aachen</masterLabel>
+        <translation><!-- Aachen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Abu Dhabi</masterLabel>
+        <translation><!-- Abu Dhabi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agen</masterLabel>
+        <translation><!-- Agen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agrigento</masterLabel>
+        <translation><!-- Agrigento --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agropoli</masterLabel>
+        <translation><!-- Agropoli --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aix en Provence</masterLabel>
+        <translation><!-- Aix en Provence --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aix-Marseille</masterLabel>
+        <translation><!-- Aix-Marseille --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ajaccio</masterLabel>
+        <translation><!-- Ajaccio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Al Ain</masterLabel>
+        <translation><!-- Al Ain --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Albi</masterLabel>
+        <translation><!-- Albi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alessandria</masterLabel>
+        <translation><!-- Alessandria --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alger</masterLabel>
+        <translation><!-- Alger --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alghero</masterLabel>
+        <translation><!-- Alghero --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Amiens</masterLabel>
+        <translation><!-- Amiens --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ancona</masterLabel>
+        <translation><!-- Ancona --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Angers</masterLabel>
+        <translation><!-- Angers --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Annecy</masterLabel>
+        <translation><!-- Annecy --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Annemasse</masterLabel>
+        <translation><!-- Annemasse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Annonay</masterLabel>
+        <translation><!-- Annonay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Antibes</masterLabel>
+        <translation><!-- Antibes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aosta</masterLabel>
+        <translation><!-- Aosta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Arcachon </masterLabel>
+        <translation><!-- Arcachon  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Arezzo</masterLabel>
+        <translation><!-- Arezzo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Arras</masterLabel>
+        <translation><!-- Arras --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aschaffenburg</masterLabel>
+        <translation><!-- Aschaffenburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ascoli Piceno</masterLabel>
+        <translation><!-- Ascoli Piceno --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Asti</masterLabel>
+        <translation><!-- Asti --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Auch</masterLabel>
+        <translation><!-- Auch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Augsburg</masterLabel>
+        <translation><!-- Augsburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aula Virtuale EF</masterLabel>
+        <translation><!-- Aula Virtuale EF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Avellino</masterLabel>
+        <translation><!-- Avellino --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aversa</masterLabel>
+        <translation><!-- Aversa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Avignon</masterLabel>
+        <translation><!-- Avignon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bandol</masterLabel>
+        <translation><!-- Bandol --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bari</masterLabel>
+        <translation><!-- Bari --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bariloche</masterLabel>
+        <translation><!-- Bariloche --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bastia</masterLabel>
+        <translation><!-- Bastia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Battipaglia</masterLabel>
+        <translation><!-- Battipaglia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bayonne</masterLabel>
+        <translation><!-- Bayonne --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Beaulieu Sur Mer</masterLabel>
+        <translation><!-- Beaulieu Sur Mer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Beausoleil</masterLabel>
+        <translation><!-- Beausoleil --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Beauvais</masterLabel>
+        <translation><!-- Beauvais --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Belluno</masterLabel>
+        <translation><!-- Belluno --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Benevento</masterLabel>
+        <translation><!-- Benevento --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bergamo</masterLabel>
+        <translation><!-- Bergamo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Berlin</masterLabel>
+        <translation><!-- Berlin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Besançon</masterLabel>
+        <translation><!-- Besançon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Biarritz</masterLabel>
+        <translation><!-- Biarritz --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bielefeld</masterLabel>
+        <translation><!-- Bielefeld --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Biella</masterLabel>
+        <translation><!-- Biella --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bologna</masterLabel>
+        <translation><!-- Bologna --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bolsón</masterLabel>
+        <translation><!-- Bolsón --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bolzano</masterLabel>
+        <translation><!-- Bolzano --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bonn</masterLabel>
+        <translation><!-- Bonn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bordeaux</masterLabel>
+        <translation><!-- Bordeaux --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bormes les Mimosas</masterLabel>
+        <translation><!-- Bormes les Mimosas --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Boulogne / Mer</masterLabel>
+        <translation><!-- Boulogne / Mer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Boulogne Billancourt</masterLabel>
+        <translation><!-- Boulogne Billancourt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bourg en Bresse</masterLabel>
+        <translation><!-- Bourg en Bresse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Braunschweig</masterLabel>
+        <translation><!-- Braunschweig --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bremen</masterLabel>
+        <translation><!-- Bremen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brescia</masterLabel>
+        <translation><!-- Brescia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brest</masterLabel>
+        <translation><!-- Brest --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Buenos Aires</masterLabel>
+        <translation><!-- Buenos Aires --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CHALANS</masterLabel>
+        <translation><!-- CHALANS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caen</masterLabel>
+        <translation><!-- Caen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cagliari</masterLabel>
+        <translation><!-- Cagliari --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Calais</masterLabel>
+        <translation><!-- Calais --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caleta Olivia</masterLabel>
+        <translation><!-- Caleta Olivia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Calvi</masterLabel>
+        <translation><!-- Calvi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cambrai</masterLabel>
+        <translation><!-- Cambrai --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Campobasso</masterLabel>
+        <translation><!-- Campobasso --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cannes</masterLabel>
+        <translation><!-- Cannes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Capri</masterLabel>
+        <translation><!-- Capri --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caserta</masterLabel>
+        <translation><!-- Caserta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Catania</masterLabel>
+        <translation><!-- Catania --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cavalaire</masterLabel>
+        <translation><!-- Cavalaire --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cergy-Pontoise</masterLabel>
+        <translation><!-- Cergy-Pontoise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chaco</masterLabel>
+        <translation><!-- Chaco --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chalon Sur Soane</masterLabel>
+        <translation><!-- Chalon Sur Soane --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chambéry</masterLabel>
+        <translation><!-- Chambéry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chantilly</masterLabel>
+        <translation><!-- Chantilly --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charleville Mézières</masterLabel>
+        <translation><!-- Charleville Mézières --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chartres</masterLabel>
+        <translation><!-- Chartres --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chelles</masterLabel>
+        <translation><!-- Chelles --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chiavari</masterLabel>
+        <translation><!-- Chiavari --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chubut</masterLabel>
+        <translation><!-- Chubut --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Château-Thierry</masterLabel>
+        <translation><!-- Château-Thierry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Clermont-Ferrand</masterLabel>
+        <translation><!-- Clermont-Ferrand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cogolin</masterLabel>
+        <translation><!-- Cogolin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Colmar</masterLabel>
+        <translation><!-- Colmar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Como</masterLabel>
+        <translation><!-- Como --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Comodoro Rivadavia</masterLabel>
+        <translation><!-- Comodoro Rivadavia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Compiègne</masterLabel>
+        <translation><!-- Compiègne --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Concepción del Uruguay</masterLabel>
+        <translation><!-- Concepción del Uruguay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Concordia</masterLabel>
+        <translation><!-- Concordia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cordoba</masterLabel>
+        <translation><!-- Cordoba --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Corrientes</masterLabel>
+        <translation><!-- Corrientes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Corte</masterLabel>
+        <translation><!-- Corte --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cosenza</masterLabel>
+        <translation><!-- Cosenza --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cremona</masterLabel>
+        <translation><!-- Cremona --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Créteil</masterLabel>
+        <translation><!-- Créteil --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cuneo</masterLabel>
+        <translation><!-- Cuneo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Darmstadt</masterLabel>
+        <translation><!-- Darmstadt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Digne Les Bains</masterLabel>
+        <translation><!-- Digne Les Bains --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dijon</masterLabel>
+        <translation><!-- Dijon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Divonne Les Bains</masterLabel>
+        <translation><!-- Divonne Les Bains --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dortmund</masterLabel>
+        <translation><!-- Dortmund --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Draguignan</masterLabel>
+        <translation><!-- Draguignan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dresden</masterLabel>
+        <translation><!-- Dresden --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dubai</masterLabel>
+        <translation><!-- Dubai --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dunkerque</masterLabel>
+        <translation><!-- Dunkerque --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Düsseldorf</masterLabel>
+        <translation><!-- Düsseldorf --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Entre Rios</masterLabel>
+        <translation><!-- Entre Rios --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Epinal</masterLabel>
+        <translation><!-- Epinal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Erfurt</masterLabel>
+        <translation><!-- Erfurt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Erlangen</masterLabel>
+        <translation><!-- Erlangen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Esquel</masterLabel>
+        <translation><!-- Esquel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Essen</masterLabel>
+        <translation><!-- Essen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Etampes</masterLabel>
+        <translation><!-- Etampes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Evreux </masterLabel>
+        <translation><!-- Evreux  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fernay Voltaire</masterLabel>
+        <translation><!-- Fernay Voltaire --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ferrara</masterLabel>
+        <translation><!-- Ferrara --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Finale Ligure</masterLabel>
+        <translation><!-- Finale Ligure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Firenze</masterLabel>
+        <translation><!-- Firenze --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flensburg</masterLabel>
+        <translation><!-- Flensburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foggia</masterLabel>
+        <translation><!-- Foggia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fontainebleau</masterLabel>
+        <translation><!-- Fontainebleau --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fontenay-sous-Bois</masterLabel>
+        <translation><!-- Fontenay-sous-Bois --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Forlì</masterLabel>
+        <translation><!-- Forlì --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Formosa</masterLabel>
+        <translation><!-- Formosa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Frankfurt</masterLabel>
+        <translation><!-- Frankfurt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Frascati</masterLabel>
+        <translation><!-- Frascati --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Freiburg</masterLabel>
+        <translation><!-- Freiburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Friedrichshafen</masterLabel>
+        <translation><!-- Friedrichshafen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Frosinone</masterLabel>
+        <translation><!-- Frosinone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fécamp</masterLabel>
+        <translation><!-- Fécamp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gaiman</masterLabel>
+        <translation><!-- Gaiman --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Galatina (LE)</masterLabel>
+        <translation><!-- Galatina (LE) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gap</masterLabel>
+        <translation><!-- Gap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General Roca</masterLabel>
+        <translation><!-- General Roca --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Genova</masterLabel>
+        <translation><!-- Genova --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gießen</masterLabel>
+        <translation><!-- Gießen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gorizia</masterLabel>
+        <translation><!-- Gorizia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grenoble</masterLabel>
+        <translation><!-- Grenoble --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grosseto</masterLabel>
+        <translation><!-- Grosseto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grottammare</masterLabel>
+        <translation><!-- Grottammare --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Guadeloupe</masterLabel>
+        <translation><!-- Guadeloupe --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gualegaychu</masterLabel>
+        <translation><!-- Gualegaychu --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gualeguay</masterLabel>
+        <translation><!-- Gualeguay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Göttingen</masterLabel>
+        <translation><!-- Göttingen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HOF</masterLabel>
+        <translation><!-- HOF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hamburg</masterLabel>
+        <translation><!-- Hamburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hannover</masterLabel>
+        <translation><!-- Hannover --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Heidelberg</masterLabel>
+        <translation><!-- Heidelberg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Heilbronn</masterLabel>
+        <translation><!-- Heilbronn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hossegor</masterLabel>
+        <translation><!-- Hossegor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hyères</masterLabel>
+        <translation><!-- Hyères --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IMPERIA</masterLabel>
+        <translation><!-- IMPERIA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Iglesias</masterLabel>
+        <translation><!-- Iglesias --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ingolstadt</masterLabel>
+        <translation><!-- Ingolstadt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ischia</masterLabel>
+        <translation><!-- Ischia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Jujuy</masterLabel>
+        <translation><!-- Jujuy --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Junin De Los Andes</masterLabel>
+        <translation><!-- Junin De Los Andes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Karlsruhe</masterLabel>
+        <translation><!-- Karlsruhe --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kassel</masterLabel>
+        <translation><!-- Kassel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kempten</masterLabel>
+        <translation><!-- Kempten --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kiel</masterLabel>
+        <translation><!-- Kiel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Koblenz</masterLabel>
+        <translation><!-- Koblenz --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Konstanz</masterLabel>
+        <translation><!-- Konstanz --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Köln</masterLabel>
+        <translation><!-- Köln --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>L'Aquila</masterLabel>
+        <translation><!-- L&apos;Aquila --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LENS</masterLabel>
+        <translation><!-- LENS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Baule</masterLabel>
+        <translation><!-- La Baule --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Ciotat</masterLabel>
+        <translation><!-- La Ciotat --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Pampa</masterLabel>
+        <translation><!-- La Pampa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Plata</masterLabel>
+        <translation><!-- La Plata --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Rochelle </masterLabel>
+        <translation><!-- La Rochelle  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La Spezia</masterLabel>
+        <translation><!-- La Spezia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La rioja</masterLabel>
+        <translation><!-- La rioja --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>La roche sur Yon</masterLabel>
+        <translation><!-- La roche sur Yon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lacanau</masterLabel>
+        <translation><!-- Lacanau --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Landshut</masterLabel>
+        <translation><!-- Landshut --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Laon</masterLabel>
+        <translation><!-- Laon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Latina</masterLabel>
+        <translation><!-- Latina --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Laval</masterLabel>
+        <translation><!-- Laval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Le Havre</masterLabel>
+        <translation><!-- Le Havre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Le Mans</masterLabel>
+        <translation><!-- Le Mans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Le Touquet</masterLabel>
+        <translation><!-- Le Touquet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lecce</masterLabel>
+        <translation><!-- Lecce --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lecce/Galatina</masterLabel>
+        <translation><!-- Lecce/Galatina --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lecco</masterLabel>
+        <translation><!-- Lecco --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Leipzig</masterLabel>
+        <translation><!-- Leipzig --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Libourne</masterLabel>
+        <translation><!-- Libourne --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lille</masterLabel>
+        <translation><!-- Lille --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lisieux </masterLabel>
+        <translation><!-- Lisieux  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Livorno</masterLabel>
+        <translation><!-- Livorno --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lorient</masterLabel>
+        <translation><!-- Lorient --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lucca</masterLabel>
+        <translation><!-- Lucca --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lyon</masterLabel>
+        <translation><!-- Lyon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lübeck</masterLabel>
+        <translation><!-- Lübeck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lüdenscheid</masterLabel>
+        <translation><!-- Lüdenscheid --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MESSINA</masterLabel>
+        <translation><!-- MESSINA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Macerata</masterLabel>
+        <translation><!-- Macerata --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Magdeburg</masterLabel>
+        <translation><!-- Magdeburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mainz</masterLabel>
+        <translation><!-- Mainz --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mannheim</masterLabel>
+        <translation><!-- Mannheim --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Manosque</masterLabel>
+        <translation><!-- Manosque --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mantova</masterLabel>
+        <translation><!-- Mantova --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mar del Plata</masterLabel>
+        <translation><!-- Mar del Plata --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Marne La Vallée</masterLabel>
+        <translation><!-- Marne La Vallée --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Marseille</masterLabel>
+        <translation><!-- Marseille --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Martigues</masterLabel>
+        <translation><!-- Martigues --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Martinique</masterLabel>
+        <translation><!-- Martinique --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Massa</masterLabel>
+        <translation><!-- Massa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Matera</masterLabel>
+        <translation><!-- Matera --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mendoza</masterLabel>
+        <translation><!-- Mendoza --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Menton</masterLabel>
+        <translation><!-- Menton --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mestre</masterLabel>
+        <translation><!-- Mestre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Metz</masterLabel>
+        <translation><!-- Metz --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Milano</masterLabel>
+        <translation><!-- Milano --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mios</masterLabel>
+        <translation><!-- Mios --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Misiones</masterLabel>
+        <translation><!-- Misiones --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Modena</masterLabel>
+        <translation><!-- Modena --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Monaco</masterLabel>
+        <translation><!-- Monaco --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mondovi</masterLabel>
+        <translation><!-- Mondovi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Monfalcone</masterLabel>
+        <translation><!-- Monfalcone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mont de Marsan</masterLabel>
+        <translation><!-- Mont de Marsan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Montauban</masterLabel>
+        <translation><!-- Montauban --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Montpellier</masterLabel>
+        <translation><!-- Montpellier --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Montélimar</masterLabel>
+        <translation><!-- Montélimar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mougins</masterLabel>
+        <translation><!-- Mougins --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mulhouse</masterLabel>
+        <translation><!-- Mulhouse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mérignac</masterLabel>
+        <translation><!-- Mérignac --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>München</masterLabel>
+        <translation><!-- München --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Münster</masterLabel>
+        <translation><!-- Münster --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nancy</masterLabel>
+        <translation><!-- Nancy --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nantes</masterLabel>
+        <translation><!-- Nantes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Napoli</masterLabel>
+        <translation><!-- Napoli --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Necochea</masterLabel>
+        <translation><!-- Necochea --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Neuilly-sur-Seine</masterLabel>
+        <translation><!-- Neuilly-sur-Seine --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Neuquen</masterLabel>
+        <translation><!-- Neuquen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nice</masterLabel>
+        <translation><!-- Nice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Niort</masterLabel>
+        <translation><!-- Niort --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nordelta</masterLabel>
+        <translation><!-- Nordelta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Novara</masterLabel>
+        <translation><!-- Novara --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nuoro</masterLabel>
+        <translation><!-- Nuoro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nîmes</masterLabel>
+        <translation><!-- Nîmes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nürnberg</masterLabel>
+        <translation><!-- Nürnberg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offenbach</masterLabel>
+        <translation><!-- Offenbach --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offenburg</masterLabel>
+        <translation><!-- Offenburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Olbia</masterLabel>
+        <translation><!-- Olbia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Oldenburg</masterLabel>
+        <translation><!-- Oldenburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Line</masterLabel>
+        <translation><!-- On Line --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Online</masterLabel>
+        <translation><!-- Online --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Online-Meeting</masterLabel>
+        <translation><!-- Online-Meeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Oristano</masterLabel>
+        <translation><!-- Oristano --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Orléans</masterLabel>
+        <translation><!-- Orléans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Osnabrück</masterLabel>
+        <translation><!-- Osnabrück --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Padova</masterLabel>
+        <translation><!-- Padova --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Palermo</masterLabel>
+        <translation><!-- Palermo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parana</masterLabel>
+        <translation><!-- Parana --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paris</masterLabel>
+        <translation><!-- Paris --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parma</masterLabel>
+        <translation><!-- Parma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Passau</masterLabel>
+        <translation><!-- Passau --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pau</masterLabel>
+        <translation><!-- Pau --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pavia</masterLabel>
+        <translation><!-- Pavia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Perpignan</masterLabel>
+        <translation><!-- Perpignan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Perugia</masterLabel>
+        <translation><!-- Perugia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pesaro</masterLabel>
+        <translation><!-- Pesaro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pescara</masterLabel>
+        <translation><!-- Pescara --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Piacenza</masterLabel>
+        <translation><!-- Piacenza --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pico Truncado</masterLabel>
+        <translation><!-- Pico Truncado --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pisa</masterLabel>
+        <translation><!-- Pisa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Poitiers</masterLabel>
+        <translation><!-- Poitiers --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pordenone</masterLabel>
+        <translation><!-- Pordenone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Porticcio</masterLabel>
+        <translation><!-- Porticcio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Porto Vecchio</masterLabel>
+        <translation><!-- Porto Vecchio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Posadas</masterLabel>
+        <translation><!-- Posadas --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Potenza</masterLabel>
+        <translation><!-- Potenza --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prato</masterLabel>
+        <translation><!-- Prato --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Puerto Madryn</masterLabel>
+        <translation><!-- Puerto Madryn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Périgueux</masterLabel>
+        <translation><!-- Périgueux --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Quimper</masterLabel>
+        <translation><!-- Quimper --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rafaela</masterLabel>
+        <translation><!-- Rafaela --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ragusa</masterLabel>
+        <translation><!-- Ragusa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rambouillet</masterLabel>
+        <translation><!-- Rambouillet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ravenna</masterLabel>
+        <translation><!-- Ravenna --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ravensburg</masterLabel>
+        <translation><!-- Ravensburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rawson</masterLabel>
+        <translation><!-- Rawson --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regensburg</masterLabel>
+        <translation><!-- Regensburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reggio Calabria</masterLabel>
+        <translation><!-- Reggio Calabria --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reggio Emilia</masterLabel>
+        <translation><!-- Reggio Emilia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reims</masterLabel>
+        <translation><!-- Reims --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rennes</masterLabel>
+        <translation><!-- Rennes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Resistencia</masterLabel>
+        <translation><!-- Resistencia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rieti</masterLabel>
+        <translation><!-- Rieti --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rimini</masterLabel>
+        <translation><!-- Rimini --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rio Cuarto</masterLabel>
+        <translation><!-- Rio Cuarto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rio Gallegos</masterLabel>
+        <translation><!-- Rio Gallegos --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rio Grande</masterLabel>
+        <translation><!-- Rio Grande --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rio Negro</masterLabel>
+        <translation><!-- Rio Negro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Roma</masterLabel>
+        <translation><!-- Roma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Roquebrune Cap Martin</masterLabel>
+        <translation><!-- Roquebrune Cap Martin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rosario</masterLabel>
+        <translation><!-- Rosario --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rosenheim</masterLabel>
+        <translation><!-- Rosenheim --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Roubaix</masterLabel>
+        <translation><!-- Roubaix --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rouen</masterLabel>
+        <translation><!-- Rouen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rovigo</masterLabel>
+        <translation><!-- Rovigo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Réunion</masterLabel>
+        <translation><!-- Réunion --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Saarbrücken</masterLabel>
+        <translation><!-- Saarbrücken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Saint Dié des Vosges</masterLabel>
+        <translation><!-- Saint Dié des Vosges --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Saint Germain en Laye</masterLabel>
+        <translation><!-- Saint Germain en Laye --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Saint Raphael</masterLabel>
+        <translation><!-- Saint Raphael --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sainte Maxime</masterLabel>
+        <translation><!-- Sainte Maxime --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Salerno</masterLabel>
+        <translation><!-- Salerno --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Salta</masterLabel>
+        <translation><!-- Salta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>San Isidro</masterLabel>
+        <translation><!-- San Isidro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>San Juan</masterLabel>
+        <translation><!-- San Juan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>San Luis</masterLabel>
+        <translation><!-- San Luis --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>San Martin de los Andes</masterLabel>
+        <translation><!-- San Martin de los Andes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>San Nicolas</masterLabel>
+        <translation><!-- San Nicolas --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sanremo</masterLabel>
+        <translation><!-- Sanremo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Santa Fe</masterLabel>
+        <translation><!-- Santa Fe --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Santa Rosa</masterLabel>
+        <translation><!-- Santa Rosa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Santiago del Estero</masterLabel>
+        <translation><!-- Santiago del Estero --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sassari</masterLabel>
+        <translation><!-- Sassari --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Savona</masterLabel>
+        <translation><!-- Savona --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Selestat</masterLabel>
+        <translation><!-- Selestat --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Senillosa</masterLabel>
+        <translation><!-- Senillosa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Siegen</masterLabel>
+        <translation><!-- Siegen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Siena</masterLabel>
+        <translation><!-- Siena --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Siracusa</masterLabel>
+        <translation><!-- Siracusa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sondrio</masterLabel>
+        <translation><!-- Sondrio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sophia Antipolis</masterLabel>
+        <translation><!-- Sophia Antipolis --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sorrento</masterLabel>
+        <translation><!-- Sorrento --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Brieuc</masterLabel>
+        <translation><!-- St Brieuc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Etienne</masterLabel>
+        <translation><!-- St Etienne --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Lo</masterLabel>
+        <translation><!-- St Lo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Malo</masterLabel>
+        <translation><!-- St Malo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Nazaire</masterLabel>
+        <translation><!-- St Nazaire --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>St Tropez</masterLabel>
+        <translation><!-- St Tropez --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stralsund</masterLabel>
+        <translation><!-- Stralsund --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Strasbourg</masterLabel>
+        <translation><!-- Strasbourg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stuttgart</masterLabel>
+        <translation><!-- Stuttgart --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Taranto</masterLabel>
+        <translation><!-- Taranto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tarbes </masterLabel>
+        <translation><!-- Tarbes  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Teramo</masterLabel>
+        <translation><!-- Teramo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Termoli</masterLabel>
+        <translation><!-- Termoli --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Thionville</masterLabel>
+        <translation><!-- Thionville --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Thonon Les Bains</masterLabel>
+        <translation><!-- Thonon Les Bains --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Torino</masterLabel>
+        <translation><!-- Torino --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Totoras</masterLabel>
+        <translation><!-- Totoras --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Toulon</masterLabel>
+        <translation><!-- Toulon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Toulouse</masterLabel>
+        <translation><!-- Toulouse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tours</masterLabel>
+        <translation><!-- Tours --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trapani</masterLabel>
+        <translation><!-- Trapani --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trelew</masterLabel>
+        <translation><!-- Trelew --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trento</masterLabel>
+        <translation><!-- Trento --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Treviso</masterLabel>
+        <translation><!-- Treviso --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trieste</masterLabel>
+        <translation><!-- Trieste --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Troyes</masterLabel>
+        <translation><!-- Troyes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tucumán</masterLabel>
+        <translation><!-- Tucumán --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tübingen</masterLabel>
+        <translation><!-- Tübingen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Udine</masterLabel>
+        <translation><!-- Udine --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ulm</masterLabel>
+        <translation><!-- Ulm --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Valbonne</masterLabel>
+        <translation><!-- Valbonne --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Valence</masterLabel>
+        <translation><!-- Valence --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Valenciennes</masterLabel>
+        <translation><!-- Valenciennes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vannes</masterLabel>
+        <translation><!-- Vannes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Varese</masterLabel>
+        <translation><!-- Varese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Venado Tuerto</masterLabel>
+        <translation><!-- Venado Tuerto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vence</masterLabel>
+        <translation><!-- Vence --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Venezia</masterLabel>
+        <translation><!-- Venezia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Verbania</masterLabel>
+        <translation><!-- Verbania --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vercelli</masterLabel>
+        <translation><!-- Vercelli --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vernon </masterLabel>
+        <translation><!-- Vernon  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Verona</masterLabel>
+        <translation><!-- Verona --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Versailles</masterLabel>
+        <translation><!-- Versailles --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Viareggio</masterLabel>
+        <translation><!-- Viareggio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vicenza</masterLabel>
+        <translation><!-- Vicenza --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Villa La Angostura</masterLabel>
+        <translation><!-- Villa La Angostura --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Villepinte</masterLabel>
+        <translation><!-- Villepinte --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vireux Wallerand</masterLabel>
+        <translation><!-- Vireux Wallerand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Viterbo</masterLabel>
+        <translation><!-- Viterbo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vittorio Veneto</masterLabel>
+        <translation><!-- Vittorio Veneto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Weimar</masterLabel>
+        <translation><!-- Weimar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wiesbaden</masterLabel>
+        <translation><!-- Wiesbaden --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Würzburg</masterLabel>
+        <translation><!-- Würzburg --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zapala</masterLabel>
+        <translation><!-- Zapala --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zürich</masterLabel>
+        <translation><!-- Zürich --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Évry</masterLabel>
+        <translation><!-- Évry --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

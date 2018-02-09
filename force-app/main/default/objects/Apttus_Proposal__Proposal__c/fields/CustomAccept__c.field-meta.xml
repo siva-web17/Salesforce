@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CustomAccept__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF (AND(ISPICKVAL(Apttus_Proposal__Approval_Stage__c, "Presented"), Apttus_Proposal__Valid_Until_Date__c >= TODAY()), HYPERLINK("/apex/Apttus_QPConfig__ProposalAccept?id="&amp;Id, IMAGE("/resource/Apttus_QPConfig__Button_Accept", "Accept"),"_self"), NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Accept</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

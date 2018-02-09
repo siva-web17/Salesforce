@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Used for the submit for approvals button on the related list. 
+When true, current approval requests are cancelled and new requests are resubmitted. 
+When false, will prevent the user from canceling and resubmitting an on-going approval process. --></help>
+    <label><!-- Enable Resubmit --></label>
+    <name>Apttus_Approval__EnableResubmit__c</name>
+</CustomFieldTranslation>

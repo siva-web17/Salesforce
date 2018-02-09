@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Lookup to active version of the template --></help>
+    <label><!-- Active Version --></label>
+    <name>Apttus__ActiveVersionId__c</name>
+    <relationshipLabel><!-- Templates (Template Version) --></relationshipLabel>
+</CustomFieldTranslation>

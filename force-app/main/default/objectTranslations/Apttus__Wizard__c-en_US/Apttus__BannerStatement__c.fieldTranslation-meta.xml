@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Defaults to Wizard Design label and is used by the Wizard Runtime as the banner. --></help>
+    <label><!-- Banner Statement --></label>
+    <name>Apttus__BannerStatement__c</name>
+</CustomFieldTranslation>

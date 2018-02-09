@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Rule Type --></label>
+    <name>Apttus__Rule_Type__c</name>
+    <picklistValues>
+        <masterLabel>Agreement Template</masterLabel>
+        <translation><!-- Agreement Template --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agreement Type</masterLabel>
+        <translation><!-- Agreement Type --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Document Folder</masterLabel>
+        <translation><!-- Document Folder --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Email Template</masterLabel>
+        <translation><!-- Email Template --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Queue Assignment</masterLabel>
+        <translation><!-- Queue Assignment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Submit Request Mode</masterLabel>
+        <translation><!-- Submit Request Mode --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

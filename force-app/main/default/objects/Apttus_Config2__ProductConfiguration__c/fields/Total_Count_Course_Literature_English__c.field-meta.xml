@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Count_Course_Literature_English__c</fullName>
+    <description>Course Literature -English</description>
+    <externalId>false</externalId>
+    <label>Total Count Course Literature -English</label>
+    <summaryFilterItems>
+        <field>Apttus_Config2__LineItem__c.Apttus_Config2__Description__c</field>
+        <operation>equals</operation>
+        <value>Course Literature English</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Apttus_Config2__LineItem__c.Apttus_Config2__ConfigurationId__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

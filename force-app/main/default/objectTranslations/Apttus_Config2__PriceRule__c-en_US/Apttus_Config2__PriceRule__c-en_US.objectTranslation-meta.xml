@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Benefit Rate Table Section Fields --></label>
+        <name>BenefitRateTableSectionFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Benefit Section Fields --></label>
+        <name>BenefitSectionFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Benefit Rate Table Section Fields (Price Program) --></label>
+        <name>PriceProgramBenefitRateTableFields</name>
+    </fieldSets>
+    <webLinks>
+        <label><!-- EditPriceRule --></label>
+        <name>Apttus_Config2__EditPriceRule</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewPriceRule --></label>
+        <name>Apttus_Config2__NewPriceRule</name>
+    </webLinks>
+</CustomObjectTranslation>

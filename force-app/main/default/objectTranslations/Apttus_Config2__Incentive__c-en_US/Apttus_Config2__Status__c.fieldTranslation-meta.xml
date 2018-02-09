@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The incentive status --></help>
+    <label><!-- Status --></label>
+    <name>Apttus_Config2__Status__c</name>
+    <picklistValues>
+        <masterLabel>Activated</masterLabel>
+        <translation><!-- Activated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Amended</masterLabel>
+        <translation><!-- Being Amended --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Renewed</masterLabel>
+        <translation><!-- Being Renewed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Being Terminated</masterLabel>
+        <translation><!-- Being Terminated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Amendment</masterLabel>
+        <translation><!-- In Amendment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Renewal</masterLabel>
+        <translation><!-- In Renewal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Superseded</masterLabel>
+        <translation><!-- Superseded --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Terminated</masterLabel>
+        <translation><!-- Terminated --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

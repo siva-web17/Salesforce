@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Action Type --></label>
+    <name>Apttus_Config2__ActionType__c</name>
+    <picklistValues>
+        <masterLabel>Exclusion</masterLabel>
+        <translation><!-- Exclusion --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inclusion</masterLabel>
+        <translation><!-- Inclusion --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Recommendation</masterLabel>
+        <translation><!-- Recommendation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Replacement</masterLabel>
+        <translation><!-- Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Validation</masterLabel>
+        <translation><!-- Validation --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

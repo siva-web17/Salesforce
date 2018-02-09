@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The renewal status --></help>
+    <label><!-- Status --></label>
+    <name>Apttus_Config2__Status__c</name>
+    <picklistValues>
+        <masterLabel>Apply Rule</masterLabel>
+        <translation><!-- Apply Rule --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Complete</masterLabel>
+        <translation><!-- Complete --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Error</masterLabel>
+        <translation><!-- Error --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Renew Assets</masterLabel>
+        <translation><!-- Renew Assets --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sync Cart</masterLabel>
+        <translation><!-- Sync Cart --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Update Price</masterLabel>
+        <translation><!-- Update Price --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Opportunity Channel --></label>
+    <name>OpportunityChannel__c</name>
+    <picklistValues>
+        <masterLabel>AP Reply Card</masterLabel>
+        <translation><!-- AP Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>APP Reply Card</masterLabel>
+        <translation><!-- APP Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aupair Kft</masterLabel>
+        <translation><!-- Aupair Kft --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CLT Reply Card</masterLabel>
+        <translation><!-- CLT Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Call</masterLabel>
+        <translation><!-- Call --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Convert</masterLabel>
+        <translation><!-- Convert --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Coupon</masterLabel>
+        <translation><!-- Coupon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>E-Mail</masterLabel>
+        <translation><!-- E-Mail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Exhibition/Fair</masterLabel>
+        <translation><!-- Exhibition/Fair --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fax</masterLabel>
+        <translation><!-- Fax --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flyer</masterLabel>
+        <translation><!-- Flyer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gewinnspiel</masterLabel>
+        <translation><!-- Gewinnspiel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HSY Reply Card</masterLabel>
+        <translation><!-- HSY Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internet</masterLabel>
+        <translation><!-- Internet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LS Reply Card</masterLabel>
+        <translation><!-- LS Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mail</masterLabel>
+        <translation><!-- Mail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mobile Site</masterLabel>
+        <translation><!-- Mobile Site --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Multi-Flyer</masterLabel>
+        <translation><!-- Multi-Flyer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Multi-Replycard</masterLabel>
+        <translation><!-- Multi-Replycard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not known</masterLabel>
+        <translation><!-- Not known --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone</masterLabel>
+        <translation><!-- Phone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Post</masterLabel>
+        <translation><!-- Post --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reply Card</masterLabel>
+        <translation><!-- Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reply Card EFC</masterLabel>
+        <translation><!-- Reply Card EFC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reply Card FD</masterLabel>
+        <translation><!-- Reply Card FD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reply Card LT</masterLabel>
+        <translation><!-- Reply Card LT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SCH Reply Card</masterLabel>
+        <translation><!-- SCH Reply Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SMS</masterLabel>
+        <translation><!-- SMS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Telemarketing</masterLabel>
+        <translation><!-- Telemarketing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visit</masterLabel>
+        <translation><!-- Visit --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the user profile --></help>
+    <label><!-- Profile --></label>
+    <name>Apttus_XApps__ProfileId__c</name>
+</CustomFieldTranslation>

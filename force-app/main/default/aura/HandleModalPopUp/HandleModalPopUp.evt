@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="HandleModalPopUpEvent">
+
+    <aura:attribute name="SelectedLookUpValue" type="SObject"/>
+
+</aura:event>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The option pricing chunk size for bundles with large number of options. The default value is 100. The SFDC governor limit affects the chunk size. --></help>
+    <label><!-- Option Pricing Chunk Size --></label>
+    <name>Apttus_Config2__OptionPricingChunkSize__c</name>
+</CustomFieldTranslation>

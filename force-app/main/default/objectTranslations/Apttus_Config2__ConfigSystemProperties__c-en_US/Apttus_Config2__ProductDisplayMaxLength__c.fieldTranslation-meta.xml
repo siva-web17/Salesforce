@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Captures the maximum length of the product name for display. If the product name exceeds the specified length – it will be ellipsis display, else it will wrap the product name. The default length is 21 characters. --></help>
+    <label><!-- Product Display Max Length --></label>
+    <name>Apttus_Config2__ProductDisplayMaxLength__c</name>
+</CustomFieldTranslation>

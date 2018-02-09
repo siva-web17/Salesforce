@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The tax break type --></help>
+    <label><!-- Breakup Type --></label>
+    <name>Apttus_QPConfig__BreakupType__c</name>
+    <picklistValues>
+        <masterLabel>Detail</masterLabel>
+        <translation><!-- Detail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Total</masterLabel>
+        <translation><!-- Total --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

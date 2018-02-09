@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Booking Type --></label>
+    <name>BookingType__c</name>
+    <picklistValues>
+        <masterLabel>BKN</masterLabel>
+        <translation><!-- BKN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PRE</masterLabel>
+        <translation><!-- PRE --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The tax type --></help>
+    <label><!-- Tax Type --></label>
+    <name>Apttus_QPConfig__TaxType__c</name>
+    <picklistValues>
+        <masterLabel>City Tax</masterLabel>
+        <translation><!-- City Tax --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>County Tax</masterLabel>
+        <translation><!-- County Tax --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>District Tax</masterLabel>
+        <translation><!-- District Tax --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>State Tax</masterLabel>
+        <translation><!-- State Tax --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

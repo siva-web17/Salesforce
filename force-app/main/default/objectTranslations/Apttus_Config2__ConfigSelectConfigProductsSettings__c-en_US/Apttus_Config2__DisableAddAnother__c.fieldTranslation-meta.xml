@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This custom setting removes the user&apos;s ability to add multiple instances of the same product. --></help>
+    <label><!-- Disable Add Another --></label>
+    <name>Apttus_Config2__DisableAddAnother__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,37 @@
+<aura:component description="PopOver">
+
+    <aura:attribute type="string" name="ownerName"/>
+    <aura:attribute type="string" name="MarketCode"/>
+    <aura:attribute type="string" name="ownerURL"/>
+    <aura:attribute type="boolean" name="Active"/>
+
+    <section class="slds-popover slds-nubbin_left slds-hide" role="dialog" aria-describedby="dialog-body-id-10" aria-labelledby="dialog-heading-id-10">
+        <header class="slds-popover__header">
+            <h2 id="dialog-heading-id-10" class="slds-text-heading_small">
+                <lightning:icon iconName="action:user" size="large" alternativeText="{!v.ownerName}"/>
+                <ui:outputURL aura:id="url" label="{!v.ownerName}" class="field"
+                              title="{!v.ownerName}"
+                              value="{!v.ownerURL}"/>
+            </h2>
+        </header>
+        <div class="slds-popover__body" id="dialog-body-id-10">
+            <div class="slds-form slds-form_compound">
+                <fieldset class="slds-form-element">
+
+                    <div class="slds-form-element__group">
+                        <div class="slds-form-element__row">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <label class="slds-form-element__label" for="input-01">Market Code</label>
+                                <label class="slds-form-element__label" for="input-01">{!v.MarketCode}e</label>
+                            </div>
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <label class="slds-form-element__label" for="input-02">Active</label>
+                                <input type="checkbox" name="default" contenteditable="false" id="checkbox-5" value="{!v.Active}"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+        </div>
+        </div>
+    </section>
+</aura:component>

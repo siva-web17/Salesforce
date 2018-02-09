@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The percent of approvals required by the approval policy. Only applicable to percent approval policy. --></help>
+    <label><!-- Approval Percent --></label>
+    <name>Apttus_Approval__ApprovalPercent__c</name>
+</CustomFieldTranslation>

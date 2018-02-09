@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the operator to join conditions with each other. --></help>
+    <label><!-- Join --></label>
+    <name>Apttus_Approval__Join__c</name>
+    <picklistValues>
+        <masterLabel>AND</masterLabel>
+        <translation><!-- AND --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OR</masterLabel>
+        <translation><!-- OR --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether a renewal opportunity should be created for system generated asset renewal quotes --></help>
+    <label><!-- Create Renewal Opportunity --></label>
+    <name>Apttus_Config2__CreateRenewalOpportunity__c</name>
+</CustomFieldTranslation>

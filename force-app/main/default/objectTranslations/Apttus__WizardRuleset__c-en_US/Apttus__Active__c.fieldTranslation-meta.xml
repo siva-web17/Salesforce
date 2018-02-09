@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Signifies that the Ruleset within a step is Active. Setting Wizard Design as Active automatically activates the included rulesets. --></help>
+    <label><!-- Active --></label>
+    <name>Apttus__Active__c</name>
+</CustomFieldTranslation>

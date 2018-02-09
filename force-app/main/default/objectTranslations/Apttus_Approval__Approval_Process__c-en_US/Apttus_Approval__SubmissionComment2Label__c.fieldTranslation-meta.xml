@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the name of a custom label containing text that will be used as the label when entering a second comment at the step level. --></help>
+    <label><!-- Submission Comment 2 Label --></label>
+    <name>Apttus_Approval__SubmissionComment2Label__c</name>
+</CustomFieldTranslation>

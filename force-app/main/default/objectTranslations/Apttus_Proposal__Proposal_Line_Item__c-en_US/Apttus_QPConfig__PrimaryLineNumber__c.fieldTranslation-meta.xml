@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Represents the unique number for each primary line item --></help>
+    <label><!-- Primary Line Number --></label>
+    <name>Apttus_QPConfig__PrimaryLineNumber__c</name>
+</CustomFieldTranslation>

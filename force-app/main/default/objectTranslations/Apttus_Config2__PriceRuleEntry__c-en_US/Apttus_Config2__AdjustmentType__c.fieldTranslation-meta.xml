@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the rate type to be used. It can be Per Unit Amount, %, or Total Amount. 
+For Rebates, it indicates benefit or deduction rate type. 
+For Promotions, it indicates discount rate type
+For Pricing, it indicates discount or markup --></help>
+    <label><!-- Adjustment Type --></label>
+    <name>Apttus_Config2__AdjustmentType__c</name>
+    <picklistValues>
+        <masterLabel>% Benefit</masterLabel>
+        <translation><!-- % Benefit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>% Discount</masterLabel>
+        <translation><!-- % Discount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>% Markup</masterLabel>
+        <translation><!-- % Markup --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Benefit Amount</masterLabel>
+        <translation><!-- Benefit Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Benefit Per Unit</masterLabel>
+        <translation><!-- Benefit Per Unit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Deduction Amount</masterLabel>
+        <translation><!-- Deduction Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Amount</masterLabel>
+        <translation><!-- Discount Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Markup Amount</masterLabel>
+        <translation><!-- Markup Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Points</masterLabel>
+        <translation><!-- Points --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price Factor</masterLabel>
+        <translation><!-- Price Factor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price Override</masterLabel>
+        <translation><!-- Price Override --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

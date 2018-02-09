@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The approval context type associated with the process for the object
+
+Valid Values are:
+=============
+Single
+Multiple --></help>
+    <label><!-- Approval Context Type --></label>
+    <name>Apttus_Approval__ApprovalContextType__c</name>
+</CustomFieldTranslation>

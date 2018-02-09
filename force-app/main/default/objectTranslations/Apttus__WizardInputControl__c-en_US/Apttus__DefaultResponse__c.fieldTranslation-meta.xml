@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Place a desired default response value here or leave blank --></help>
+    <label><!-- Default Response --></label>
+    <name>Apttus__DefaultResponse__c</name>
+</CustomFieldTranslation>

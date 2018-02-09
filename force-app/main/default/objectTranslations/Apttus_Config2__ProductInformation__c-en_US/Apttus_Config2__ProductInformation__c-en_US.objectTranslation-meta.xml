@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <label><!-- NewCategoryInformation --></label>
+        <name>Apttus_Config2__NewCategoryInformation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewProductInformation --></label>
+        <name>Apttus_Config2__NewProductInformation</name>
+    </webLinks>
+</CustomObjectTranslation>

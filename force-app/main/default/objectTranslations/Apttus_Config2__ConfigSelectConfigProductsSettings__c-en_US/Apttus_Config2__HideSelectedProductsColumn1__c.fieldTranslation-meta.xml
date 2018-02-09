@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check this if you want to hide the column that  shows the product name. --></help>
+    <label><!-- Hide Selected Products Column1 --></label>
+    <name>Apttus_Config2__HideSelectedProductsColumn1__c</name>
+</CustomFieldTranslation>

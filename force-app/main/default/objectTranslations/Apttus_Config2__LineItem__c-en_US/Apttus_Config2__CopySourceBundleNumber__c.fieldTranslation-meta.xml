@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The bundle number from which the current line was copied from --></help>
+    <label><!-- Copy Source Bundle Number --></label>
+    <name>Apttus_Config2__CopySourceBundleNumber__c</name>
+</CustomFieldTranslation>

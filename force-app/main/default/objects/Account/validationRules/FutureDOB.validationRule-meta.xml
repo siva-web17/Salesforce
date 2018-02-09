@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FutureDOB</fullName>
+    <active>true</active>
+    <description>This validation rule is used to prohibit users from entering a DOB which is in the future.</description>
+    <errorConditionFormula>NOT($Setup.BypassTriggersValidation__c.DisableValidation__c) 
+&amp;&amp;
+IsPersonAccount
+&amp;&amp;
+NOT(ISBLANK(PersonBirthdate))
+&amp;&amp;
+PersonBirthdate> TODAY()</errorConditionFormula>
+    <errorMessage>The Date of Birth cannot be in the future.</errorMessage>
+</ValidationRule>

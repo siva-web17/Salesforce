@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The list of child object types associated with the approval process for the parent object. This list is automatically maintained by the application. --></help>
+    <label><!-- Child Object Types2 --></label>
+    <name>Apttus_Approval__ChildObjectTypes2__c</name>
+</CustomFieldTranslation>

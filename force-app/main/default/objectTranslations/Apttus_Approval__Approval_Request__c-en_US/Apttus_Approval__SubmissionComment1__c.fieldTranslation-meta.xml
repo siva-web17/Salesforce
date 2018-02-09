@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A comment entered by the submitter when the request was submitted that can be either a process or step level comment.  The comment label is specified by the &quot;Submission Comment 1 Label&quot; field in the related approval process definition. --></help>
+    <label><!-- Submission Comment 1 --></label>
+    <name>Apttus_Approval__SubmissionComment1__c</name>
+</CustomFieldTranslation>

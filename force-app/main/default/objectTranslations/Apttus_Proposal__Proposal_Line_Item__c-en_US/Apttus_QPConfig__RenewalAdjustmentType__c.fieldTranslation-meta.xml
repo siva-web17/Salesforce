@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The renewal price adjustment type --></help>
+    <label><!-- Renewal Adjustment Type --></label>
+    <name>Apttus_QPConfig__RenewalAdjustmentType__c</name>
+    <picklistValues>
+        <masterLabel>% Uplift</masterLabel>
+        <translation><!-- % Uplift --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Uplift Amount</masterLabel>
+        <translation><!-- Uplift Amount --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

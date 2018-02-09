@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email2OptOut__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>this field will store if customer opts out of receiving emails on email2 address</description>
+    <externalId>false</externalId>
+    <label>Email2 Opt Out</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

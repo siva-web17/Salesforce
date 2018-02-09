@@ -1,0 +1,11 @@
+Active,APTS Migration Ext ID,Based On Adjustment Amount,Based On Adjustment Type,Brackets Threshold,Brackets Threshold TI,Contract Number,Currency ISO Code,Default,Default Unique Identifier,Description,Effective Date,Expiration Date,Guide Page,Market,Program,Type,Version,Year,Apttus_Config2__AccountId__r.Account Name,Apttus_Config2__BasedOnPriceListId__r.Price List Name,Apttus_Config2__CostModelId__r.Cost Model
+TRUE,1,,,,,,NOK,TRUE,NOOILSUNOKTRUE,,,,,NOO,ILSU,Standard,V3,2017,,,
+TRUE,2,,,8,3,,USD,TRUE,USBILSUUSDTRUE,,,,,USB,ILSU,Standard,V3,2017,,,
+TRUE,3,,,8,3,,USD,TRUE,CNBILSUUSDTRUE,,,,,CNB,ILSU,Standard,V3,2017,,,
+TRUE,4,,,8,3,,USD,FALSE,WWAILSUUSDa286E00000050a8,,,,,WWA,ILSU,Standard,V3,2017,,,
+TRUE,5,,,8,,,NOK,TRUE,NOOLTNOKTRUE,,,,,NOO,LT,Standard,V1,2018,,,
+TRUE,6,,,8,3,,EUR,TRUE,FRPILSUEURTRUE,,,,,FRP,ILSU,Standard,V3,2017,,,
+TRUE,7,,,,,,NOK,TRUE,NOOMLYNOKTRUE,,,,,NOO,MLY,Standard,V1,2018,,,
+TRUE,8,,,8,3,,EUR,TRUE,WWAILSUEURTRUE,,,,,WWA,ILSU,Standard,V3,2017,,,
+TRUE,9,,,8,3,,EUR,TRUE,DEBILSUEURTRUE,,,,,DEB,ILSU,Standard,V3,2017,,,
+TRUE,10,,,,,,NOK,TRUE,NOOAYNOKTRUE,,,,,NOO,AY,Standard,V1,2018,,,

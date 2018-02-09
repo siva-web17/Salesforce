@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Benachrichtigung über den Status der Anmeldung im Kundenportal</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Kundenportal: Fehler bei der Registierung (Beispiel)</name>
+    <style>none</style>
+    <subject>Bezüglich Ihrer Anmeldung im {!Organization.Name} Kundenportal</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

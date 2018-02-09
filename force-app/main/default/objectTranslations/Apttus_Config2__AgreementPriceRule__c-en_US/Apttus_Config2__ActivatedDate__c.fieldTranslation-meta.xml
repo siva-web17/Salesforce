@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The date the price rule was activated in the system --></help>
+    <label><!-- Activated Date --></label>
+    <name>Apttus_Config2__ActivatedDate__c</name>
+</CustomFieldTranslation>

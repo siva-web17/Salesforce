@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Optional_Travel_Insurance_Count_1__c</fullName>
+    <description>This gives the count of travel insurance product marked as optional for bundle 1</description>
+    <externalId>false</externalId>
+    <label>Optional Travel Insurance Count 1</label>
+    <summaryFilterItems>
+        <field>Apttus_Proposal__Proposal_Line_Item__c.Apttus_QPConfig__LineNumber__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Apttus_Proposal__Proposal_Line_Item__c.Apttus_QPConfig__IsOptional__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Apttus_Proposal__Proposal_Line_Item__c.Product_Code__c</field>
+        <operation>equals</operation>
+        <value>TI</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Apttus_Proposal__Proposal_Line_Item__c.Apttus_Proposal__Proposal__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

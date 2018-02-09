@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the associated quote/proposal --></help>
+    <label><!-- Quote/Proposal --></label>
+    <name>Apttus_QPConfig__ProposalId__c</name>
+    <relationshipLabel><!-- Asset Line Items --></relationshipLabel>
+</CustomFieldTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BookingType__c</fullName>
+    <description>This field displays the Booking type for sending data to Poseidon through Quote to Booking.</description>
+    <externalId>false</externalId>
+    <label>Booking Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PRE</fullName>
+                <default>false</default>
+                <label>PRE</label>
+            </value>
+            <value>
+                <fullName>BKN</fullName>
+                <default>false</default>
+                <label>BKN</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

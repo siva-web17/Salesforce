@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Specifies if an input control value can be edited by the runtime user --></help>
+    <label><!-- Read Only --></label>
+    <name>Apttus__ReadOnly__c</name>
+</CustomFieldTranslation>

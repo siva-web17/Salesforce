@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A comma separated list of API names of fields to display in the result set for the query --></help>
+    <label><!-- Result Field Set --></label>
+    <name>Apttus__FieldSet__c</name>
+</CustomFieldTranslation>

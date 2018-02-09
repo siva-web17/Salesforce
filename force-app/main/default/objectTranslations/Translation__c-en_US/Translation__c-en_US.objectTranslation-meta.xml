@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Translation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Translations</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- ProductTranslationfieldSet --></label>
+        <name>ProductTranslationfieldSet</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- StaticTextTranslationFieldSet --></label>
+        <name>StaticTextTranslationFieldSet</name>
+    </fieldSets>
+    <layouts>
+        <layout>Product Translation</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Template Language Translation</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Product Translation --></label>
+        <name>Product_Translation</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Static Text Translation --></label>
+        <name>StaticTextTranslation</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

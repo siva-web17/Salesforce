@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The toal of all recurring billings from today and back for 12 months --></help>
+    <label><!-- Annual Recurring Billings (Today) --></label>
+    <name>Apttus_Config2__AnnualRecurringBillingsToday__c</name>
+</CustomFieldTranslation>

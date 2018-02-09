@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Price Uom --></label>
+    <name>Apttus_Config2__PriceUom__c</name>
+    <picklistValues>
+        <masterLabel>Day</masterLabel>
+        <translation>日</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Each</masterLabel>
+        <translation>各</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hour</masterLabel>
+        <translation>時間</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Month</masterLabel>
+        <translation>月</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Week</masterLabel>
+        <translation><!-- Week --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Year</masterLabel>
+        <translation>年</translation>
+    </picklistValues>
+</CustomFieldTranslation>

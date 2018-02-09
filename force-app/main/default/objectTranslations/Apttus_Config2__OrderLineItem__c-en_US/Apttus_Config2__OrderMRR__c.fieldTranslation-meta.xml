@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The change in monthly recurring revenue due to the order over the original service period of the asset. --></help>
+    <label><!-- Order MRR --></label>
+    <name>Apttus_Config2__OrderMRR__c</name>
+</CustomFieldTranslation>

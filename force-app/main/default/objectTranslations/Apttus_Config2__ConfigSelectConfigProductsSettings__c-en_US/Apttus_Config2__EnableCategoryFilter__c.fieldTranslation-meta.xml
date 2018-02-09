@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enable Narrow Your Search category filtering during product search. --></help>
+    <label><!-- Enable Category Filter --></label>
+    <name>Apttus_Config2__EnableCategoryFilter__c</name>
+</CustomFieldTranslation>

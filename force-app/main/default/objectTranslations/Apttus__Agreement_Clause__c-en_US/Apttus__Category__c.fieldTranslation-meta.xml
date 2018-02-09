@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Apttus__Category__c</name>
+    <picklistValues>
+        <masterLabel>Confidentiality</masterLabel>
+        <translation><!-- Confidentiality --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Definitions</masterLabel>
+        <translation><!-- Definitions --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disclosure</masterLabel>
+        <translation><!-- Disclosure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General</masterLabel>
+        <translation><!-- General --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indemnity</masterLabel>
+        <translation><!-- Indemnity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Intellectual Property Claims</masterLabel>
+        <translation><!-- Intellectual Property Claims --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>License Grant</masterLabel>
+        <translation><!-- License Grant --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>License Restrictions</masterLabel>
+        <translation><!-- License Restrictions --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Limitation of Liability</masterLabel>
+        <translation><!-- Limitation of Liability --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maintenance / Support</masterLabel>
+        <translation><!-- Maintenance / Support --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Services</masterLabel>
+        <translation><!-- Services --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Term and Termination</masterLabel>
+        <translation><!-- Term and Termination --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Verification</masterLabel>
+        <translation><!-- Verification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warranties</masterLabel>
+        <translation><!-- Warranties --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

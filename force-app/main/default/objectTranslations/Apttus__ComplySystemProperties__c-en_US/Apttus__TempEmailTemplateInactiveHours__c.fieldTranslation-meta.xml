@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the hours of inactivity after which a temp email template is considered abandoned. The default value is 4 hours --></help>
+    <label><!-- Temp Email Template Inactive Hours --></label>
+    <name>Apttus__TempEmailTemplateInactiveHours__c</name>
+</CustomFieldTranslation>

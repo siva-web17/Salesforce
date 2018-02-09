@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Address__c</fullName>
+    <description>Used to specify the address of meeting location.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This address is used to show google map on ef.com. Please enter only address and not phone numbers or meeting times.</inlineHelpText>
+    <label>Address</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

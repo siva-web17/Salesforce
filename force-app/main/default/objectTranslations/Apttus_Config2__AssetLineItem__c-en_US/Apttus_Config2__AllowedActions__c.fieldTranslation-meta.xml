@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Allowed Actions --></label>
+    <name>Apttus_Config2__AllowedActions__c</name>
+    <picklistValues>
+        <masterLabel>Amend</masterLabel>
+        <translation><!-- Amend --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancel</masterLabel>
+        <translation><!-- Cancel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Increment</masterLabel>
+        <translation><!-- Increment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Renew</masterLabel>
+        <translation><!-- Renew --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

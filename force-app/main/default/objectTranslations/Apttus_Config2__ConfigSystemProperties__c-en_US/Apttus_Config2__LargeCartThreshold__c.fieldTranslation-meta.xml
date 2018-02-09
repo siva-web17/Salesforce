@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The threshold of the number of line items in the cart when exceeded indicates a large cart. A value of -1 inactivates the threshold. A large cart influences how items are processed in the application to stay under various platform governor limits.. --></help>
+    <label><!-- Large Cart Threshold --></label>
+    <name>Apttus_Config2__LargeCartThreshold__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Clause = clause document, Attachment (Id) = hardcoded attachment id, Attachment (Object/Field) = attachment id in a field, Parent (Object/Field) = first attachment in the parent represented by the field, Content (Object/Field) =  raw content of the field. --></help>
+    <label><!-- Component Type --></label>
+    <name>Apttus__ComponentType__c</name>
+    <picklistValues>
+        <masterLabel>Attachment (Id)</masterLabel>
+        <translation><!-- Attachment (Id) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Attachment (Object/Field)</masterLabel>
+        <translation><!-- Attachment (Object/Field) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Clause</masterLabel>
+        <translation><!-- Clause --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Content (Object/Field)</masterLabel>
+        <translation><!-- Content (Object/Field) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parent (Object/Field)</masterLabel>
+        <translation><!-- Parent (Object/Field) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

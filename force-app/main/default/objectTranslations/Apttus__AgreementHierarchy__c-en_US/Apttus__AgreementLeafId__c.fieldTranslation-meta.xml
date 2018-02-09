@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The agreement Id of the leaf within the agreement hierarchy.
+Root &gt; Parent &gt; Leaf --></help>
+    <label><!-- Agreement Leaf --></label>
+    <name>Apttus__AgreementLeafId__c</name>
+    <relationshipLabel><!-- Agreement Hierarchies (Agreement) --></relationshipLabel>
+</CustomFieldTranslation>

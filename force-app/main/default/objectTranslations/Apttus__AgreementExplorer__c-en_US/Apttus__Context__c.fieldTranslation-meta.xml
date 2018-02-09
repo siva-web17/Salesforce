@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The context of the given query. --></help>
+    <label><!-- Context --></label>
+    <name>Apttus__Context__c</name>
+    <picklistValues>
+        <masterLabel>Agreement</masterLabel>
+        <translation><!-- Agreement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agreement By Account(s)</masterLabel>
+        <translation><!-- Agreement By Account(s) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agreement Search</masterLabel>
+        <translation><!-- Agreement Search --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

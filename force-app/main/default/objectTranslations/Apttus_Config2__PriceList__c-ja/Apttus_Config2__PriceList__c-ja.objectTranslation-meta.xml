@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Price List --></value>
+    </caseValues>
+    <nameFieldLabel><!-- Price List Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- There should be one market, one program &amp; one Default Price list --></errorMessage>
+        <name>APTS_Default_Price_List</name>
+    </validationRules>
+</CustomObjectTranslation>

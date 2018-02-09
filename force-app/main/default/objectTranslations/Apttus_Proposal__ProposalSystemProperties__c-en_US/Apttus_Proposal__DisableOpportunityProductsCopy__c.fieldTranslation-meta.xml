@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether opportunity products copy to the quote/proposal is disabled --></help>
+    <label><!-- Disable Opportunity Products Copy --></label>
+    <name>Apttus_Proposal__DisableOpportunityProductsCopy__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Product Subtype --></label>
+    <name>ProductSubtype__c</name>
+    <picklistValues>
+        <masterLabel>Academic/Classes</masterLabel>
+        <translation><!-- Academic/Classes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Accommodation Deposit</masterLabel>
+        <translation><!-- Accommodation Deposit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Accommodation Services</masterLabel>
+        <translation><!-- Accommodation Services --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Activities</masterLabel>
+        <translation><!-- Activities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Activity Vouchers</masterLabel>
+        <translation><!-- Activity Vouchers --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agent Commission</masterLabel>
+        <translation><!-- Agent Commission --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Arrival Transfer</masterLabel>
+        <translation><!-- Arrival Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Arrival and Departure</masterLabel>
+        <translation><!-- Arrival and Departure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Boat/Train/Bus</masterLabel>
+        <translation><!-- Boat/Train/Bus --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Books</masterLabel>
+        <translation><!-- Books --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cax Insurance</masterLabel>
+        <translation><!-- Cax Insurance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Departure Transfer</masterLabel>
+        <translation><!-- Departure Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount</masterLabel>
+        <translation><!-- Discount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Enrollment Fee</masterLabel>
+        <translation><!-- Enrollment Fee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Exam Extension</masterLabel>
+        <translation><!-- Exam Extension --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Explore Pack</masterLabel>
+        <translation><!-- Explore Pack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flight</masterLabel>
+        <translation><!-- Flight --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fun Pack</masterLabel>
+        <translation><!-- Fun Pack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gadgets</masterLabel>
+        <translation><!-- Gadgets --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Host Family</masterLabel>
+        <translation><!-- Host Family --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Host Family Extra Night</masterLabel>
+        <translation><!-- Host Family Extra Night --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hotel</masterLabel>
+        <translation><!-- Hotel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hotel Extra Night</masterLabel>
+        <translation><!-- Hotel Extra Night --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Internship</masterLabel>
+        <translation><!-- Internship --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Item</masterLabel>
+        <translation><!-- Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meals</masterLabel>
+        <translation><!-- Meals --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Accommodation</masterLabel>
+        <translation><!-- No Accommodation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Subtype</masterLabel>
+        <translation><!-- No Subtype --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Optional Excursions</masterLabel>
+        <translation><!-- Optional Excursions --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Post Tours</masterLabel>
+        <translation><!-- Post Tours --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Protection Coverage</masterLabel>
+        <translation><!-- Protection Coverage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Residence</masterLabel>
+        <translation><!-- Residence --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Residence Extra Night</masterLabel>
+        <translation><!-- Residence Extra Night --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reunion Party</masterLabel>
+        <translation><!-- Reunion Party --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Scholarship</masterLabel>
+        <translation><!-- Scholarship --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Season Supplements</masterLabel>
+        <translation><!-- Season Supplements --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sports Options</masterLabel>
+        <translation><!-- Sports Options --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Transfer</masterLabel>
+        <translation><!-- Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Travel Insurance</masterLabel>
+        <translation><!-- Travel Insurance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tuition Deposit</masterLabel>
+        <translation><!-- Tuition Deposit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>University Councelling</masterLabel>
+        <translation><!-- University Councelling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VTM Card</masterLabel>
+        <translation><!-- VTM Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visa Related</masterLabel>
+        <translation><!-- Visa Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Work and Travel</masterLabel>
+        <translation><!-- Work and Travel --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The number of expected minutes that this approval step needs to be completed in (approved or rejected). --></help>
+    <label><!-- Step Expected Minutes To Complete --></label>
+    <name>Apttus_Approval__StepExpectedMinutesToComplete__c</name>
+</CustomFieldTranslation>

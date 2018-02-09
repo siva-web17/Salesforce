@@ -1,0 +1,63 @@
+.zCalender .monthview-primary-with-event { background-color: transparent; color: white; }
+.nav-left { text-align: left; }
+.nav-right { text-align: right; }
+.scrollable { width: 100%; overflow-x: hidden; overflow-y: auto; }
+.table-fixed { table-layout: fixed; }
+.no-event-label { font-weight: bold; color: darkgrey; text-align: center; }
+.event-detail-container { border-top: 2px darkgrey solid; }
+.event-detail { cursor: pointer; white-space: nowrap; text-overflow: ellipsis; }
+.calendar-header { text-align: center; padding-top: 5px; font-weight: bold; font-size: 25px; text-transform: uppercase; color: #333; }
+.calendar-hour-column, .calendar-week-column { width: 50px; }
+.calendar-navbar { margin-bottom: 5px; }
+.calendar-event-wrap { position: relative; height: 100%; }
+.calendar-event { position: absolute; padding: 2px; cursor: pointer; }
+.calendar-event-inner { overflow: hidden; background-color: #3a87ad; color: white; height: 100%; width: 100%; padding: 2px; line-height: 15px; }
+.calendar-cell { padding: 0 !important; height: 37px; }
+.monthview-primary-with-event { background-color: #3a87ad; color: white; }
+.monthview-selected { background-color: transparent; color: white; }
+.monthview-current { background-color: lightgrey; }
+.monthview-eventdetail-timecolumn { width: 110px; overflow: hidden; }
+.monthview-dateCell { cursor: pointer; }
+.monthview-secondary-with-event { background-color: #d9edf7; }
+.weekview-allday-label, .dayview-allday-label { float: left; height: 100%; line-height: 50px; text-align: center; width: 50px; border: 1px solid #ddd; border-right-width: 0; }
+.weekview-allday-content-wrapper, .dayview-allday-content-wrapper { margin-left: 50px; overflow-x: hidden; overflow-y: auto; height: 100%; }
+.weekview-header, .monthview-datetable { margin-bottom: 0; }
+.weekview-header th { overflow: hidden; white-space: nowrap; }
+.weekview-allday-table, .dayview-allday-table { height: 52px; }
+.weekview-allday-content-table, .dayview-allday-content-table { min-height: 100%; margin-bottom: 0; }
+.gutter-column { padding-left: 0 !important; padding-right: 0 !important; }
+
+/*.preferedEnabled { background: #005fb2 !important; border-radius: 40px; }*/
+.zCalender .well { min-height: 20px; padding: 19px; margin-bottom: 20px; background: rgba(255, 255, 255, 1); background: -moz-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(255, 252, 255, 1) 100%); background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(47%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(255, 252, 255, 1))); background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(255, 252, 255, 1) 100%); background: -o-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(255, 252, 255, 1) 100%); background: -ms-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(255, 252, 255, 1) 100%); background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(255, 252, 255, 1) 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fffcff', GradientType=1); border: 1px solid #e3e3e3; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); box-shadow: 0 0 5px rgba(0, 0, 0, .1) }
+.zCalender .btn-sm { padding: 5px 10px; font-size: 12px; border-radius: 50%; height: 40px; width: 40px; color: #fff; background: #005fb2; outline: none; }
+.monthview-dateCell > div { padding: 10px; width: 4rem; text-align: center; margin: 0 auto; height: 4rem; border-radius: 50%; }
+.zCalender .table-bordered>thead>tr>th, .zCalender .table-bordered>tbody>tr>th, .zCalender .table-bordered>tfoot>tr>th, .zCalender .table-bordered>thead>tr>td, .zCalender .table-bordered>tbody>tr>td, .zCalender .table-bordered>tfoot>tr>td { vertical-align: unset; }
+.zCalender .table-bordered>tbody>tr>td { border: 1px solid #ddd; }
+.zCalender .table-bordered>thead>tr>th { border-right: none !important; border-left: none !important; }
+.zCalender .table-bordered>thead>tr>th, .zCalender .table-bordered>thead>tr>td { border-bottom-width: 1px; }
+.monthview-selected > div { background: #005fb2; padding: 10px; width: 4rem; text-align: center; margin: 0 auto; height: 4rem; border-radius: 50%; color: #fff; }
+.zCalender .table-bordered { border: none !important }
+.zCalender .monthview-primary-with-event > div { background: #009ddc; padding: 10px; width: 4rem; text-align: center; margin: 0 auto; height: 4rem; border-radius: 50%; }
+.preferedEnabled > div { background: #009900 !important; padding: 10px; width: 4rem; text-align: center; margin: 0 auto; height: 4rem; border-radius: 50%; color: #fff !important; }
+.note { width: auto; display: inline-block; }
+span.square-preferred { width: 15px; height: 15px; background: #009900; float: left; display: block; margin: 2px; margin-right: 7px; }
+span.square-available { width: 15px; height: 15px; background: #009ddc; float: left; display: block; margin: 2px; margin-right: 7px; }
+span.square-current { width: 15px; height: 15px; background: #005fb2; float: left; display: block; margin: 2px; margin-right: 7px; }
+.note label { display: block; float: left; }
+.monthview-selected.preferedEnabled > div { background: #005fb2 !important; }
+.information { line-height: 30px !important; padding: 10px; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); box-shadow: 0 0 5px rgba(0, 0, 0, .1); border: 1px solid #e1e1e1; }
+.information .col-md-4 { border-right: 1px solid #e1e1e1; }
+.information .col-md-4:nth-last-child(1) { border-right: none; }
+.note-collection.pull-right { padding-top: 5px; }
+button[disabled].zPrimary_btn {
+    background: #e1e1e1 !important;
+    color: #000 !important;
+}
+@media (max-width:750px) {
+	.weekview-allday-label, .dayview-allday-label, .calendar-hour-column, .calendar-week-column { width: 32px; }
+	.weekview-allday-label, .dayview-allday-label { padding-top: 4px; }
+	.table > tbody > tr > td.calendar-hour-column, .table > thead > tr > th.weekview-header-label { padding-left: 0; padding-right: 0; font-size: 12px; line-height: 12px; vertical-align: middle; }
+	.weekview-allday-label, .dayview-allday-label { line-height: inherit; }
+	.weekview-allday-content-wrapper, .dayview-allday-content-wrapper { margin-left: 32px; }
+	.calendar-event-inner { font-size: 12px; }
+}

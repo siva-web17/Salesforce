@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Id of the Price List Item of type Cost which won&apos;t have lookup to Product and will have a self-lookup to the related Price List Item for the given product --></help>
+    <label><!-- Cost Price List Item --></label>
+    <name>Apttus_Config2__CostPriceListItemId__c</name>
+    <relationshipLabel><!-- Cost Items (Cost Price List Item) --></relationshipLabel>
+</CustomFieldTranslation>

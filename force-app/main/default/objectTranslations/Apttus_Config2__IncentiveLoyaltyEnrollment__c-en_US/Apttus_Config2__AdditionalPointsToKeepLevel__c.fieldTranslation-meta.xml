@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The additional loyalty points required to maintain the current loyalty level --></help>
+    <label><!-- Additional Points To Keep Level --></label>
+    <name>Apttus_Config2__AdditionalPointsToKeepLevel__c</name>
+</CustomFieldTranslation>

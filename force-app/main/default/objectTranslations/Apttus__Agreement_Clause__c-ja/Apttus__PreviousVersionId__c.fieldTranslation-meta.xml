@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>以前のバージョン合意条項</help>
+    <label><!-- Previous Agreement Clause --></label>
+    <name>Apttus__PreviousVersionId__c</name>
+    <relationshipLabel><!-- Previous Version Agreement Clauses --></relationshipLabel>
+</CustomFieldTranslation>

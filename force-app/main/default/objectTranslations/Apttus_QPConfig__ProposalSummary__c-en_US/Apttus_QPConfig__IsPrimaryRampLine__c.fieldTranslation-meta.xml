@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the line is the primary line for the price ramp. Only applicable when price ramp is in effect for the product or option --></help>
+    <label><!-- Is Primary Ramp Line --></label>
+    <name>Apttus_QPConfig__IsPrimaryRampLine__c</name>
+</CustomFieldTranslation>

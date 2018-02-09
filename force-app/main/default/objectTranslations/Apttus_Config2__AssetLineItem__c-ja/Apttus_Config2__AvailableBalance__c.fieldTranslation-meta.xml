@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The balance currently available for consumption post additions and deductions --></help>
+    <label><!-- Available Balance --></label>
+    <name>Apttus_Config2__AvailableBalance__c</name>
+</CustomFieldTranslation>

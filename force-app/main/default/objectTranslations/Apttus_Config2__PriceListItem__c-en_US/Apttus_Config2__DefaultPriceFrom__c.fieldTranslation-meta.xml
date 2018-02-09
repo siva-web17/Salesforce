@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The related object to default the base price from. If the related object is not available, the list price will be used. --></help>
+    <label><!-- Default Price From --></label>
+    <name>Apttus_Config2__DefaultPriceFrom__c</name>
+    <picklistValues>
+        <masterLabel>Advanced Formula</masterLabel>
+        <translation><!-- Advanced Formula --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product Attribute</masterLabel>
+        <translation><!-- Product Attribute --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

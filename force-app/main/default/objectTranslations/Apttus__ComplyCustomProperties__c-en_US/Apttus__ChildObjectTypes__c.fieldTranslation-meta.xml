@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- List of comma separated child object types for this business object --></help>
+    <label><!-- Child Object Types --></label>
+    <name>Apttus__ChildObjectTypes__c</name>
+</CustomFieldTranslation>

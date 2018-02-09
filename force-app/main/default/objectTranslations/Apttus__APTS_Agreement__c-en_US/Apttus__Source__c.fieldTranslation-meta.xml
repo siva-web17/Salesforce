@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Source --></label>
+    <name>Apttus__Source__c</name>
+    <picklistValues>
+        <masterLabel>Internal Paper</masterLabel>
+        <translation><!-- Internal Paper --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Party Paper</masterLabel>
+        <translation><!-- Other Party Paper --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

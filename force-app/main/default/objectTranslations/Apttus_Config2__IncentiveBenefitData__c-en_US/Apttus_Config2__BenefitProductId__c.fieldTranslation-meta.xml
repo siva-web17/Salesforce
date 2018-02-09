@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the criteria product associated with the benefit --></help>
+    <label><!-- Benefit Product --></label>
+    <name>Apttus_Config2__BenefitProductId__c</name>
+    <relationshipLabel><!-- Benefit Data (Benefit Product) --></relationshipLabel>
+</CustomFieldTranslation>

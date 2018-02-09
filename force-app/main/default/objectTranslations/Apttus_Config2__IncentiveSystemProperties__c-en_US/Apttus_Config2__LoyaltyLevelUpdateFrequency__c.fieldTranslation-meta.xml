@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the how updates to loyalty levels should be handled. Valid values are:
+
+Auto
+OnDemand
+
+The default value is Auto --></help>
+    <label><!-- Loyalty Level Update Frequency --></label>
+    <name>Apttus_Config2__LoyaltyLevelUpdateFrequency__c</name>
+</CustomFieldTranslation>

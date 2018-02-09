@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsUPOnlyAllowedForSpecificPrograms</fullName>
+    <active>true</active>
+    <description>This field is editable only if the selected program is AY or AYP</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),NOT(ISPICKVAL(Program__c  , 'AY') || ISPICKVAL(Program__c  , 'AYP')) &amp;&amp;  IsUP__c)</errorConditionFormula>
+    <errorMessage>'Is UP' is applicable only for Program 'AY' and 'AYP'.</errorMessage>
+</ValidationRule>

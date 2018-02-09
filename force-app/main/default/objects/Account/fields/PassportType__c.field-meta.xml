@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PassportType__c</fullName>
+    <description>This field is a dropdown and the values are based on the passport types.</description>
+    <externalId>false</externalId>
+    <label>Passport Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Argentino</fullName>
+                <default>false</default>
+                <label>Argentino</label>
+            </value>
+            <value>
+                <fullName>Australian</fullName>
+                <default>false</default>
+                <label>Australian</label>
+            </value>
+            <value>
+                <fullName>Belgium</fullName>
+                <default>false</default>
+                <label>Belgium</label>
+            </value>
+            <value>
+                <fullName>BNO</fullName>
+                <default>false</default>
+                <label>BNO</label>
+            </value>
+            <value>
+                <fullName>Brazilian Passport</fullName>
+                <default>false</default>
+                <label>Brazilian Passport</label>
+            </value>
+            <value>
+                <fullName>Canadian</fullName>
+                <default>false</default>
+                <label>Canadian</label>
+            </value>
+            <value>
+                <fullName>China Travel card</fullName>
+                <default>false</default>
+                <label>China Travel card</label>
+            </value>
+            <value>
+                <fullName>Chinese Passport</fullName>
+                <default>false</default>
+                <label>Chinese Passport</label>
+            </value>
+            <value>
+                <fullName>Diplomatic</fullName>
+                <default>false</default>
+                <label>Diplomatic</label>
+            </value>
+            <value>
+                <fullName>European Passport</fullName>
+                <default>false</default>
+                <label>European Passport</label>
+            </value>
+            <value>
+                <fullName>Europeo</fullName>
+                <default>false</default>
+                <label>Europeo</label>
+            </value>
+            <value>
+                <fullName>French</fullName>
+                <default>false</default>
+                <label>French</label>
+            </value>
+            <value>
+                <fullName>Government</fullName>
+                <default>false</default>
+                <label>Government</label>
+            </value>
+            <value>
+                <fullName>Greek ID</fullName>
+                <default>false</default>
+                <label>Greek ID</label>
+            </value>
+            <value>
+                <fullName>Greek Passport</fullName>
+                <default>false</default>
+                <label>Greek Passport</label>
+            </value>
+            <value>
+                <fullName>HKSAR</fullName>
+                <default>false</default>
+                <label>HKSAR</label>
+            </value>
+            <value>
+                <fullName>Indian</fullName>
+                <default>false</default>
+                <label>Indian</label>
+            </value>
+            <value>
+                <fullName>Japanese</fullName>
+                <default>false</default>
+                <label>Japanese</label>
+            </value>
+            <value>
+                <fullName>Macau SAR</fullName>
+                <default>false</default>
+                <label>Macau SAR</label>
+            </value>
+            <value>
+                <fullName>Malaysia</fullName>
+                <default>false</default>
+                <label>Malaysia</label>
+            </value>
+            <value>
+                <fullName>National ID Card</fullName>
+                <default>false</default>
+                <label>National ID Card</label>
+            </value>
+            <value>
+                <fullName>New Zealand</fullName>
+                <default>false</default>
+                <label>New Zealand</label>
+            </value>
+            <value>
+                <fullName>Ordinary</fullName>
+                <default>false</default>
+                <label>Ordinary</label>
+            </value>
+            <value>
+                <fullName>Philippine</fullName>
+                <default>false</default>
+                <label>Philippine</label>
+            </value>
+            <value>
+                <fullName>Portuguese</fullName>
+                <default>false</default>
+                <label>Portuguese</label>
+            </value>
+            <value>
+                <fullName>PRC</fullName>
+                <default>false</default>
+                <label>PRC</label>
+            </value>
+            <value>
+                <fullName>Singapore</fullName>
+                <default>false</default>
+                <label>Singapore</label>
+            </value>
+            <value>
+                <fullName>South Korea</fullName>
+                <default>false</default>
+                <label>South Korea</label>
+            </value>
+            <value>
+                <fullName>Swedish</fullName>
+                <default>false</default>
+                <label>Swedish</label>
+            </value>
+            <value>
+                <fullName>Taiwanese</fullName>
+                <default>false</default>
+                <label>Taiwanese</label>
+            </value>
+            <value>
+                <fullName>Thai</fullName>
+                <default>false</default>
+                <label>Thai</label>
+            </value>
+            <value>
+                <fullName>United Kingdom</fullName>
+                <default>false</default>
+                <label>United Kingdom</label>
+            </value>
+            <value>
+                <fullName>USA</fullName>
+                <default>false</default>
+                <label>USA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

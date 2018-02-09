@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A global setting to enable auto sequencing for options --></help>
+    <label><!-- Enable Auto Sequencing For Options --></label>
+    <name>Apttus_Config2__EnableAutoSequencingForOptions__c</name>
+</CustomFieldTranslation>

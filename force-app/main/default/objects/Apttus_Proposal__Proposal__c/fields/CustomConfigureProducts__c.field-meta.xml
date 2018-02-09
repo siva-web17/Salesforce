@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CustomConfigureProducts__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( AND(LEN( Apttus_QPConfig__PriceListId__c ) > 0, Apttus_Proposal__Valid_Until_Date__c>=TODAY()), HYPERLINK("/apex/Apttus_QPConfig__ProposalConfiguration?id=" &amp;Id &amp; "&amp;flow=NGDefault", IMAGE("/resource/Apttus_QPConfig__Button_Configure", "Configure Products"),"_self"), NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Configure Products</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

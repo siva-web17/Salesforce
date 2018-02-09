@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyStatusUpdateAllowedOnNonCallTask</fullName>
+    <active>true</active>
+    <description>User can only update Status.</description>
+    <errorConditionFormula>AND( 
+(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)),Not(IsParentClosing__c) &amp;&amp; NOT(ISNEW())&amp;&amp;($RecordType.DeveloperName &lt;> "SystemCallTask" &amp;&amp; $RecordType.DeveloperName &lt;> "CallTask") &amp;&amp; ISCHANGED(Priority ))</errorConditionFormula>
+    <errorMessage>Only Status field can be updated on following task.</errorMessage>
+</ValidationRule>

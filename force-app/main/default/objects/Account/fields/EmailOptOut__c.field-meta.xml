@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EmailOptOut__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>IMPORTANT! This field is used as a temporarily workaround to be able to display the Email Opt Out field on the Opportunity/Account Page Layout. The value of this field is copied to the standard Email Opt Out field so that this field can be removed, without losing any data as soon as Salesforce solved the issue of using Person Account fields in Quick Actions.</description>
+    <externalId>false</externalId>
+    <label>Email Opt Out</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

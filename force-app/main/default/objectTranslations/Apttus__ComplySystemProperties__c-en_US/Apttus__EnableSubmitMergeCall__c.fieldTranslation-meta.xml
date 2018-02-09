@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether merge calls may be submitted for processing. If enabled, a Submit button is displayed during document generation. --></help>
+    <label><!-- Enable Submit Merge Call --></label>
+    <name>Apttus__EnableSubmitMergeCall__c</name>
+</CustomFieldTranslation>

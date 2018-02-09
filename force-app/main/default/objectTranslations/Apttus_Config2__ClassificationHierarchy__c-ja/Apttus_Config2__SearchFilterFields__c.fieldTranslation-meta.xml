@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>精錬の検索結果のために使用することができるチェックボックスまたは選択リスト型の商品分野のリスト</help>
+    <label><!-- Search Filter Fields --></label>
+    <name>Apttus_Config2__SearchFilterFields__c</name>
+    <picklistValues>
+        <masterLabel>Family</masterLabel>
+        <translation>ファミリー</translation>
+    </picklistValues>
+</CustomFieldTranslation>

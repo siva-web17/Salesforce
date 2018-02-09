@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No__c</fullName>
+    <description>This Number is same as ENUM number in Code ,Make sure if you change anything in this metadata you need to change in apex code as well REF: ENUM order we are depending on ENUM order as ENUM order in code and rows in this settings are same</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>No</label>
+    <precision>2</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>true</unique>
+</CustomField>

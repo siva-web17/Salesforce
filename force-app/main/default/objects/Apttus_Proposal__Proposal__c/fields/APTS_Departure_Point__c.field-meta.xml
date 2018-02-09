@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Departure_Point__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Departure Point</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Departure_Point__c.Market__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Market__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Departure_Point__c.Product__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Product__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Departure_Point__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Departure_Point__c</referenceTo>
+    <relationshipLabel>Proposals</relationshipLabel>
+    <relationshipName>Proposals</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

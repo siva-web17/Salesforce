@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Line Type --></label>
+    <name>Apttus_QPConfig__LineType__c</name>
+    <picklistValues>
+        <masterLabel>Adjustment</masterLabel>
+        <translation><!-- Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Category Total</masterLabel>
+        <translation><!-- Category Total --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grand Total</masterLabel>
+        <translation><!-- Grand Total --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Group Total</masterLabel>
+        <translation><!-- Group Total --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Subtotal</masterLabel>
+        <translation><!-- Subtotal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Total</masterLabel>
+        <translation><!-- Total --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

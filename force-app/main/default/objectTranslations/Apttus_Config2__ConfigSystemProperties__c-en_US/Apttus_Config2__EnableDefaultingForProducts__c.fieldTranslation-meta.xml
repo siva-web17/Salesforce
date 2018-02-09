@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A global setting to enable product defaulting rules. --></help>
+    <label><!-- Enable Defaulting For Products --></label>
+    <name>Apttus_Config2__EnableDefaultingForProducts__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the template needs to be published. --></help>
+    <label><!-- Needs Publishing --></label>
+    <name>Apttus__NeedsPublishing__c</name>
+</CustomFieldTranslation>

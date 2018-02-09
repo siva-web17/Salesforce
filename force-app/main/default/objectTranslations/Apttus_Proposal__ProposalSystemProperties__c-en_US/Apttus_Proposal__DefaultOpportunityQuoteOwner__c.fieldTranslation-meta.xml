@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The default owner for the quote/proposal created from an opportunity. Valid values are Opportunity Owner and Current User. If not set, the Opportunity Owner will become the owner of the new quote/proposal. --></help>
+    <label><!-- Default Opportunity Quote Owner --></label>
+    <name>Apttus_Proposal__DefaultOpportunityQuoteOwner__c</name>
+</CustomFieldTranslation>

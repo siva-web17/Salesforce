@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the associated document version detail --></help>
+    <label><!-- Version Detail --></label>
+    <name>Apttus__VersionDetailId__c</name>
+    <relationshipLabel><!-- Async Merge Calls --></relationshipLabel>
+</CustomFieldTranslation>

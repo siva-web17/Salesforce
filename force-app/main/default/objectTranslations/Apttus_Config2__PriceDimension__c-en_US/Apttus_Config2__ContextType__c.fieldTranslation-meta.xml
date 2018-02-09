@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Context Type --></label>
+    <name>Apttus_Config2__ContextType__c</name>
+    <picklistValues>
+        <masterLabel>Child Filter</masterLabel>
+        <translation><!-- Child Filter --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Custom</masterLabel>
+        <translation><!-- Custom --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>External Order Child Filter</masterLabel>
+        <translation><!-- External Order Child Filter --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>External Order Formula Field</masterLabel>
+        <translation><!-- External Order Formula Field --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>External Order Summary Item</masterLabel>
+        <translation><!-- External Order Summary Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Formula Field</masterLabel>
+        <translation><!-- Formula Field --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Line Item</masterLabel>
+        <translation><!-- Line Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Child Filter</masterLabel>
+        <translation><!-- Order Child Filter --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Formula Field</masterLabel>
+        <translation><!-- Order Formula Field --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Line Item</masterLabel>
+        <translation><!-- Order Line Item --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product Attribute</masterLabel>
+        <translation><!-- Product Attribute --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

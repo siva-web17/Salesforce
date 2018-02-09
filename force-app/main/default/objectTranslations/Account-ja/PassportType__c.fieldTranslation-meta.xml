@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Passport Type --></label>
+    <name>PassportType__c</name>
+    <picklistValues>
+        <masterLabel>Argentino</masterLabel>
+        <translation><!-- Argentino --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Australian</masterLabel>
+        <translation><!-- Australian --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BNO</masterLabel>
+        <translation><!-- BNO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Belgium</masterLabel>
+        <translation><!-- Belgium --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brazilian Passport</masterLabel>
+        <translation><!-- Brazilian Passport --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Canadian</masterLabel>
+        <translation><!-- Canadian --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>China Travel card</masterLabel>
+        <translation><!-- China Travel card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chinese Passport</masterLabel>
+        <translation><!-- Chinese Passport --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diplomatic</masterLabel>
+        <translation><!-- Diplomatic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>European Passport</masterLabel>
+        <translation><!-- European Passport --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Europeo</masterLabel>
+        <translation><!-- Europeo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>French</masterLabel>
+        <translation><!-- French --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Government</masterLabel>
+        <translation><!-- Government --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Greek ID</masterLabel>
+        <translation><!-- Greek ID --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Greek Passport</masterLabel>
+        <translation><!-- Greek Passport --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HKSAR</masterLabel>
+        <translation><!-- HKSAR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indian</masterLabel>
+        <translation><!-- Indian --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Japanese</masterLabel>
+        <translation><!-- Japanese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Macau SAR</masterLabel>
+        <translation><!-- Macau SAR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Malaysia</masterLabel>
+        <translation><!-- Malaysia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>National ID Card</masterLabel>
+        <translation><!-- National ID Card --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New Zealand</masterLabel>
+        <translation><!-- New Zealand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ordinary</masterLabel>
+        <translation><!-- Ordinary --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PRC</masterLabel>
+        <translation><!-- PRC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Philippine</masterLabel>
+        <translation><!-- Philippine --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Portuguese</masterLabel>
+        <translation><!-- Portuguese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Singapore</masterLabel>
+        <translation><!-- Singapore --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>South Korea</masterLabel>
+        <translation><!-- South Korea --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Swedish</masterLabel>
+        <translation><!-- Swedish --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Taiwanese</masterLabel>
+        <translation><!-- Taiwanese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Thai</masterLabel>
+        <translation><!-- Thai --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>USA</masterLabel>
+        <translation><!-- USA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>United Kingdom</masterLabel>
+        <translation><!-- United Kingdom --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

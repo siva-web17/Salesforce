@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates a transient record created by the application with default values. A new product attribute value is in transient state until the record is explicitly saved by the user. --></help>
+    <label><!-- Is Transient --></label>
+    <name>Apttus_Config2__IsTransient__c</name>
+</CustomFieldTranslation>

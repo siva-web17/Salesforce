@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Adjustment Type --></label>
+    <name>Apttus_Config2__AdjustmentType__c</name>
+    <picklistValues>
+        <masterLabel>Discount Amount</masterLabel>
+        <translation><!-- Discount Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discount Percent</masterLabel>
+        <translation><!-- Discount Percent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Markup Amount</masterLabel>
+        <translation><!-- Markup Amount --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Markup Percent</masterLabel>
+        <translation><!-- Markup Percent --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

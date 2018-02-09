@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>London</label>
+    <protected>false</protected>
+    <values>
+        <field>DestinationCode__c</field>
+        <value xsi:type="xsd:string">GB-LON</value>
+    </values>
+    <values>
+        <field>EndDateOffSet__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>ProductCode__c</field>
+        <value xsi:type="xsd:string">TI</value>
+    </values>
+    <values>
+        <field>ProductSubType__c</field>
+        <value xsi:type="xsd:string">Residence,Hotel,Travel Insurance,Host Family,Host Family Twin,Flight,No Subtype</value>
+    </values>
+    <values>
+        <field>ProductType__c</field>
+        <value xsi:type="xsd:string">Accommodation,Insurance,Travel</value>
+    </values>
+    <values>
+        <field>StartDateOffSet__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>ValidAccommodationDays__c</field>
+        <value xsi:type="xsd:string">Friday,Saturday,Sunday</value>
+    </values>
+</CustomMetadata>

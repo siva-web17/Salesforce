@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The the name of the custom display setting associated with the incentive. This will be used when an existing incentive record is “Edited”. 
+For a new record, the name will be passed as a URL parameter. --></help>
+    <label><!-- Custom Display Setting --></label>
+    <name>Apttus_Config2__CustomDisplaySetting__c</name>
+</CustomFieldTranslation>

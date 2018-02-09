@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the pdf selection is allowed to be overridden by the user. Only applicable when pdf is auto enabled for final documents. --></help>
+    <label><!-- Allow PDF Selection Override --></label>
+    <name>Apttus__AllowPDFSelectionOverride__c</name>
+</CustomFieldTranslation>

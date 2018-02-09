@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- List of options for the Value Type field in criteria, separated by a semicolon. --></help>
+    <label><!-- Criteria Value Type Options --></label>
+    <name>Apttus_Config2__CriteriaValueTypeOptions__c</name>
+</CustomFieldTranslation>

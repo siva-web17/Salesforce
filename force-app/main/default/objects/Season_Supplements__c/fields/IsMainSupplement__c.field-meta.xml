@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsMainSupplement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field will decide weather the current record is main supplement or not</description>
+    <externalId>false</externalId>
+    <label>Is Main Supplement</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

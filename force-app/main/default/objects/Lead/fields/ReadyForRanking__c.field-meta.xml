@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReadyForRanking__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Once the dupe check process is completed, this flag will be set</description>
+    <externalId>false</externalId>
+    <label>Ready For Ranking</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

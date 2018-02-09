@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Net Price (2 decimals) --></label>
+    <name>Net_Price_2_decimals__c</name>
+</CustomFieldTranslation>

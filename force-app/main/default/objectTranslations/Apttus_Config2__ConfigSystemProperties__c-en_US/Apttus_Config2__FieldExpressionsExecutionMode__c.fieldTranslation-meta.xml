@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Valid Values: 
+* Client
+* Server --></help>
+    <label><!-- Field Expressions Execution Mode --></label>
+    <name>Apttus_Config2__FieldExpressionsExecutionMode__c</name>
+</CustomFieldTranslation>

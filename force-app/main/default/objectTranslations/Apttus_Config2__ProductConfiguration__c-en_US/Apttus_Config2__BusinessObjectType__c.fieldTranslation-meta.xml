@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Business Object Type --></label>
+    <name>Apttus_Config2__BusinessObjectType__c</name>
+    <picklistValues>
+        <masterLabel>Agreement</masterLabel>
+        <translation><!-- Agreement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Collaboration Request</masterLabel>
+        <translation><!-- Collaboration Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Favorite Configuration</masterLabel>
+        <translation><!-- Favorite Configuration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order</masterLabel>
+        <translation><!-- Order --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Proposal</masterLabel>
+        <translation><!-- Proposal --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

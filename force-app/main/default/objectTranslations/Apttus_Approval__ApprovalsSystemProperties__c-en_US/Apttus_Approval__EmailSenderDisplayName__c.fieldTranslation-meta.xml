@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates the datasource for the email sender display name. If not set, defaults to the name of the requester for agreements and defaults to the name of the submitter for all others.
+
+Valid values are : 
+============= 
+Approver 
+Requester 
+Submitter --></help>
+    <label><!-- Email Sender Display Name --></label>
+    <name>Apttus_Approval__EmailSenderDisplayName__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicator to enable the fast document generation feature --></help>
+    <label><!-- Enable Fast Doc Gen --></label>
+    <name>Apttus_Proposal__EnableFastDocGen__c</name>
+</CustomFieldTranslation>

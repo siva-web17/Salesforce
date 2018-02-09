@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Available_Programs__c</fullName>
+    <description>To see at first glance which constraint rule is applicable for which programs.</description>
+    <externalId>false</externalId>
+    <label>Available Programs</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Programs</valueSetName>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

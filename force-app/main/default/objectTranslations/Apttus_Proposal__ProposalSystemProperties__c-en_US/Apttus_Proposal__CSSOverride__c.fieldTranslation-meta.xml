@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The name of the static resource to override CSS in Proposal document generation page --></help>
+    <label><!-- CSS Override --></label>
+    <name>Apttus_Proposal__CSSOverride__c</name>
+</CustomFieldTranslation>

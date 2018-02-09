@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Apttus_Config2__Status__c</name>
+    <picklistValues>
+        <masterLabel>Abandoned</masterLabel>
+        <translation><!-- Abandoned --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Finalized</masterLabel>
+        <translation><!-- Finalized --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Collaboration</masterLabel>
+        <translation><!-- In Collaboration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Approval</masterLabel>
+        <translation><!-- Pending Approval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ready For Approvals</masterLabel>
+        <translation><!-- Ready For Approvals --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ready For Finalization</masterLabel>
+        <translation><!-- Ready For Finalization --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Superseded</masterLabel>
+        <translation><!-- Superseded --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

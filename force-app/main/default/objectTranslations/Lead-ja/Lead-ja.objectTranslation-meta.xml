@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- CRMC Action Grid Defaults --></label>
+        <name>CRMC_Action_Grid_Defaults</name>
+    </fieldSets>
+    <layouts>
+        <layout>Company Layout</layout>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Customer Layout</layout>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Page Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Referral</layout>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>System Admin layout</layout>
+        <sections>
+            <label><!-- Admin Fields --></label>
+            <section>Admin Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Mailing Preferences --></label>
+            <section>Mailing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Personal Details --></label>
+            <section>Personal Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Company --></label>
+        <name>Company</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Customer --></label>
+        <name>Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Referral --></label>
+        <name>Referral</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Lead Status can&apos;t be changed to Converted status. --></errorMessage>
+        <name>BlockStatusChangeToConvertedWhenNotConv</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date of Birth cannot be a future value!
+Please enter a valid Date of Birth. --></errorMessage>
+        <name>DOBShouldNotBeAFutureDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Complete this field --></errorMessage>
+        <name>FirstNameIsMandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ranking Can only have number between 1 and 10 --></errorMessage>
+        <name>ValidRankingValues</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTConga4__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTConga4__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateProposal --></label>
+        <name>Apttus_Proposal__CreateProposal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PrintTemplate --></label>
+        <name>PrintTemplate</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Check --></label>
+        <name>dupcheck__dc3Check</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Convert --></label>
+        <name>dupcheck__dc3Convert</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Merge --></label>
+        <name>dupcheck__dc3Merge</name>
+    </webLinks>
+</CustomObjectTranslation>

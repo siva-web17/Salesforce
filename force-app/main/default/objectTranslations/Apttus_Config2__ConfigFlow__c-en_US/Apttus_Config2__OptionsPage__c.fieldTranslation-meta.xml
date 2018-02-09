@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The options page. Specify one of the following pages or a custom page. 
+
+ConfigureBundle 
+SelectConfigOptions
+SelectConfigOptionsTabView
+SelectConfigOptionsListView
+SelectConfigOptionsTreeView
+SelectConfigOptionsDetailView
+SelectBundleOptions --></help>
+    <label><!-- Options Page --></label>
+    <name>Apttus_Config2__OptionsPage__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus__FF_Send_To_Other_Party_For_Signatures__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Send the agreement for signatures</description>
+    <externalId>false</externalId>
+    <formula>IF (OR(ISPICKVAL(Apttus__Status_Category__c,"In Signatures"), ISPICKVAL(Apttus__Status_Category__c,"In Authoring")),HYPERLINK("/apex/Apttus__SendEmail?id="&amp;Id &amp; "&amp;action=Send_To_Other_Party_For_Signatures", IMAGE("/resource/Apttus__Button_SendForSignatures", "Send For Signatures"), "_self"), NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Send the agreement for signatures</inlineHelpText>
+    <label>Send For Signatures</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

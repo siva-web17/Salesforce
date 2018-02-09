@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Boolean field to specify whether the group is custom created --></help>
+    <label><!-- Is Custom --></label>
+    <name>Apttus_Config2__IsCustom__c</name>
+</CustomFieldTranslation>

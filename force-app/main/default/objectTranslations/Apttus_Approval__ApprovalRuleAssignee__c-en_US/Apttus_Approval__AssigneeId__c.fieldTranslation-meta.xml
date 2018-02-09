@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ID of the assignee. Only applicable for User, Role or Queue. Internally maintained by the application. --></help>
+    <label><!-- Assignee Id --></label>
+    <name>Apttus_Approval__AssigneeId__c</name>
+</CustomFieldTranslation>

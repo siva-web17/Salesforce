@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enter the list of line item fields separated by comma that has information about promotion, delivery info, shipping info etc. --></help>
+    <label><!-- Order Status Fields --></label>
+    <name>Apttus_Config2__OrderStatusFields__c</name>
+</CustomFieldTranslation>

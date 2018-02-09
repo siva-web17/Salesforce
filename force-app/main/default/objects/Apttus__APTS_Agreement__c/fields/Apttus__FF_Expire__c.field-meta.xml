@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus__FF_Expire__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Expire the agreement</description>
+    <externalId>false</externalId>
+    <formula>IF (OR(AND(ISPICKVAL(Apttus__Status_Category__c,"In Effect"),NOT(ISPICKVAL(Apttus__Status__c,"Being Amended")), NOT(ISPICKVAL(Apttus__Status__c,"Being Renewed")))), HYPERLINK("/apex/Apttus__AgreementExpire?id=" &amp; Id, IMAGE("/resource/Apttus__Button_Expire", "Expire"),"_self"), NULL)</formula>
+    <inlineHelpText>Expire the agreement</inlineHelpText>
+    <label>Expire</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

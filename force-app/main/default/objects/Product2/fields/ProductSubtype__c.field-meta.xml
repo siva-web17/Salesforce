@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProductSubtype__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Subtype</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Apttus_Config2__ProductType__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Academic/Classes</fullName>
+                <default>false</default>
+                <label>Academic/Classes</label>
+            </value>
+            <value>
+                <fullName>Accommodation Deposit</fullName>
+                <default>false</default>
+                <label>Accommodation Deposit</label>
+            </value>
+            <value>
+                <fullName>Accommodation Services</fullName>
+                <default>false</default>
+                <label>Accommodation Services</label>
+            </value>
+            <value>
+                <fullName>Activities</fullName>
+                <default>false</default>
+                <label>Activities</label>
+            </value>
+            <value>
+                <fullName>Activity Vouchers</fullName>
+                <default>false</default>
+                <label>Activity Vouchers</label>
+            </value>
+            <value>
+                <fullName>Agent Commission</fullName>
+                <default>false</default>
+                <label>Agent Commission</label>
+            </value>
+            <value>
+                <fullName>Arrival and Departure</fullName>
+                <default>false</default>
+                <label>Arrival and Departure</label>
+            </value>
+            <value>
+                <fullName>Arrival Transfer</fullName>
+                <default>false</default>
+                <label>Arrival Transfer</label>
+            </value>
+            <value>
+                <fullName>Boat/Train/Bus</fullName>
+                <default>false</default>
+                <label>Boat/Train/Bus</label>
+            </value>
+            <value>
+                <fullName>Books</fullName>
+                <default>false</default>
+                <label>Books</label>
+            </value>
+            <value>
+                <fullName>Cax Insurance</fullName>
+                <default>false</default>
+                <label>Cax Insurance</label>
+            </value>
+            <value>
+                <fullName>Departure Transfer</fullName>
+                <default>false</default>
+                <label>Departure Transfer</label>
+            </value>
+            <value>
+                <fullName>Discount</fullName>
+                <default>false</default>
+                <label>Discount</label>
+            </value>
+            <value>
+                <fullName>Enrollment Fee</fullName>
+                <default>false</default>
+                <label>Enrollment Fee</label>
+            </value>
+            <value>
+                <fullName>Exam Extension</fullName>
+                <default>false</default>
+                <label>Exam Extension</label>
+            </value>
+            <value>
+                <fullName>Explore Pack</fullName>
+                <default>false</default>
+                <label>Explore Pack</label>
+            </value>
+            <value>
+                <fullName>Flight</fullName>
+                <default>false</default>
+                <label>Flight</label>
+            </value>
+            <value>
+                <fullName>Fun Pack</fullName>
+                <default>false</default>
+                <label>Fun Pack</label>
+            </value>
+            <value>
+                <fullName>Gadgets</fullName>
+                <default>false</default>
+                <label>Gadgets</label>
+            </value>
+            <value>
+                <fullName>Host Family</fullName>
+                <default>false</default>
+                <label>Host Family</label>
+            </value>
+            <value>
+                <fullName>Host Family Extra Night</fullName>
+                <default>false</default>
+                <label>Host Family Extra Night</label>
+            </value>
+            <value>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+                <label>Hotel</label>
+            </value>
+            <value>
+                <fullName>Hotel Extra Night</fullName>
+                <default>false</default>
+                <label>Hotel Extra Night</label>
+            </value>
+            <value>
+                <fullName>Internship</fullName>
+                <default>false</default>
+                <label>Internship</label>
+            </value>
+            <value>
+                <fullName>Item</fullName>
+                <default>false</default>
+                <label>Item</label>
+            </value>
+            <value>
+                <fullName>Meals</fullName>
+                <default>false</default>
+                <label>Meals</label>
+            </value>
+            <value>
+                <fullName>No Accommodation</fullName>
+                <default>false</default>
+                <label>No Accommodation</label>
+            </value>
+            <value>
+                <fullName>No Subtype</fullName>
+                <default>false</default>
+                <label>No Subtype</label>
+            </value>
+            <value>
+                <fullName>Optional Excursions</fullName>
+                <default>false</default>
+                <label>Optional Excursions</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Post Tours</fullName>
+                <default>false</default>
+                <label>Post Tours</label>
+            </value>
+            <value>
+                <fullName>Protection Coverage</fullName>
+                <default>false</default>
+                <label>Protection Coverage</label>
+            </value>
+            <value>
+                <fullName>Residence</fullName>
+                <default>false</default>
+                <label>Residence</label>
+            </value>
+            <value>
+                <fullName>Residence Extra Night</fullName>
+                <default>false</default>
+                <label>Residence Extra Night</label>
+            </value>
+            <value>
+                <fullName>Reunion Party</fullName>
+                <default>false</default>
+                <label>Reunion Party</label>
+            </value>
+            <value>
+                <fullName>Scholarship</fullName>
+                <default>false</default>
+                <label>Scholarship</label>
+            </value>
+            <value>
+                <fullName>Season Supplements</fullName>
+                <default>false</default>
+                <label>Season Supplements</label>
+            </value>
+            <value>
+                <fullName>Sports Options</fullName>
+                <default>false</default>
+                <label>Sports Options</label>
+            </value>
+            <value>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+                <label>Transfer</label>
+            </value>
+            <value>
+                <fullName>Travel Insurance</fullName>
+                <default>false</default>
+                <label>Travel Insurance</label>
+            </value>
+            <value>
+                <fullName>Tuition Deposit</fullName>
+                <default>false</default>
+                <label>Tuition Deposit</label>
+            </value>
+            <value>
+                <fullName>University Councelling</fullName>
+                <default>false</default>
+                <label>University Councelling</label>
+            </value>
+            <value>
+                <fullName>Visa Related</fullName>
+                <default>false</default>
+                <label>Visa Related</label>
+            </value>
+            <value>
+                <fullName>VTM Card</fullName>
+                <default>false</default>
+                <label>VTM Card</label>
+            </value>
+            <value>
+                <fullName>Work and Travel</fullName>
+                <default>false</default>
+                <label>Work and Travel</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Cax Insurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <controllingFieldValue>Deposit</controllingFieldValue>
+            <controllingFieldValue>Item</controllingFieldValue>
+            <controllingFieldValue>System Article</controllingFieldValue>
+            <controllingFieldValue>Tax</controllingFieldValue>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <controllingFieldValue>VTM</controllingFieldValue>
+            <valueName>No Subtype</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insurance</controllingFieldValue>
+            <valueName>Travel Insurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Academic/Classes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Accommodation Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Activities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Activity Vouchers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Agent Commission</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Books</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <controllingFieldValue>Deposit</controllingFieldValue>
+            <valueName>Discount</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Enrollment Fee</controllingFieldValue>
+            <valueName>Enrollment Fee</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Explore Pack</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Fun Pack</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Host Family</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Host Family Extra Night</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Meals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Optional Excursions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Post Tours</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Reunion Party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Season Supplements</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Sports Options</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>University Councelling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Visa Related</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Arrival and Departure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Arrival Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Boat/Train/Bus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Departure Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Flight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Hotel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Hotel Extra Night</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>No Accommodation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Residence</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation</controllingFieldValue>
+            <valueName>Residence Extra Night</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

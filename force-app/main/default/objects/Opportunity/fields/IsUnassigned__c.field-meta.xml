@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsUnassigned__c</fullName>
+    <description>Returns true if record is assigned to Integration User</description>
+    <externalId>false</externalId>
+    <formula>Owner.FirstName +' '+ Owner.LastName  == 'Integration User'</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Unassigned</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

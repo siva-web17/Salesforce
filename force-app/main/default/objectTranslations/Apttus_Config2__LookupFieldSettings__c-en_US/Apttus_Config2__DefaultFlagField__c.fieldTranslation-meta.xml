@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Field API from the Junction object to determine the default value of a lookup field, this field must be a checkbox. --></help>
+    <label><!-- Junction Default Flag --></label>
+    <name>Apttus_Config2__DefaultFlagField__c</name>
+</CustomFieldTranslation>

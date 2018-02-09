@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Enabling pdf security lets users apply security settings to pdf documents and protect them with a password. --></help>
+    <label><!-- Enable PDF Security --></label>
+    <name>Apttus_Proposal__EnablePDFSecurity__c</name>
+</CustomFieldTranslation>

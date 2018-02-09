@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the header tabs and sidebar should be displayed. --></help>
+    <label><!-- Show Header --></label>
+    <name>Apttus_Config2__ShowHeader__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The incentive base price is Base price + Incentive Adjustments for individual products and options --></help>
+    <label><!-- Incentive Base Price --></label>
+    <name>Apttus_Config2__IncentiveBasePrice__c</name>
+</CustomFieldTranslation>

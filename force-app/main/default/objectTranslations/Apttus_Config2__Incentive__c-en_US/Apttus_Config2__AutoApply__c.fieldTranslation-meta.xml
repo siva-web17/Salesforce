@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the incentive would be automatically applied during pricing --></help>
+    <label><!-- Auto Apply ? --></label>
+    <name>Apttus_Config2__AutoApply__c</name>
+</CustomFieldTranslation>

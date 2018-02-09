@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether benefit dimension inputs should allow multiple selection or not. --></help>
+    <label><!-- Benefit Dimension Allow Multiple --></label>
+    <name>Apttus_Config2__BenefitDimensionAllowMultiple__c</name>
+</CustomFieldTranslation>

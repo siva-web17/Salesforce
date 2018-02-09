@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>テンプレートバージョン（マスター詳細）</help>
+    <label><!-- Template Version --></label>
+    <name>Apttus__TemplateVersionId__c</name>
+    <relationshipLabel><!-- Template Clause Reference Versions (Template Version) --></relationshipLabel>
+</CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Check to show bundle price and quantity in options pages --></help>
+    <label><!-- Show Bundle Detail --></label>
+    <name>Apttus_Config2__ShowBundleDetail__c</name>
+</CustomFieldTranslation>

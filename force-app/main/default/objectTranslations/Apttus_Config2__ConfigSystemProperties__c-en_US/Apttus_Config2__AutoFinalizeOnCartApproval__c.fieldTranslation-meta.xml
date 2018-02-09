@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates whether the cart is auto finalized when the cart is approved and ready for finalization. --></help>
+    <label><!-- Auto Finalize On Cart Approval --></label>
+    <name>Apttus_Config2__AutoFinalizeOnCartApproval__c</name>
+</CustomFieldTranslation>

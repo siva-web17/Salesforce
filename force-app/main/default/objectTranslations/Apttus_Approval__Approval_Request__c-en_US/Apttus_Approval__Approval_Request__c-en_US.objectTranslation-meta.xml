@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- ReviewFieldSet --></label>
+        <name>ReviewFieldSet</name>
+    </fieldSets>
+    <recordTypes>
+        <label><!-- Agreement --></label>
+        <name>Agreement</name>
+    </recordTypes>
+    <webLinks>
+        <label><!-- ApproveReject --></label>
+        <name>Apttus_Approval__ApproveReject</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ApproveRejectLink --></label>
+        <name>Apttus_Approval__ApproveRejectLink</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Cancel --></label>
+        <name>Apttus_Approval__Cancel</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CancelAgreementApprovals --></label>
+        <name>Apttus_Approval__CancelAgreementApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CancelAgreementLineItemApprovals --></label>
+        <name>Apttus_Approval__CancelAgreementLineItemApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Apttus_Approval__Delete</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- DeleteAll --></label>
+        <name>Apttus_Approval__DeleteAll</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Preview --></label>
+        <name>Apttus_Approval__Preview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewAgreementApprovals --></label>
+        <name>Apttus_Approval__PreviewAgreementApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewAgreementLineItemApprovals --></label>
+        <name>Apttus_Approval__PreviewAgreementLineItemApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Reassign --></label>
+        <name>Apttus_Approval__Reassign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit --></label>
+        <name>Apttus_Approval__Submit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitAgreementApprovals --></label>
+        <name>Apttus_Approval__SubmitAgreementApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitAgreementApprovalsWithAttachments --></label>
+        <name>Apttus_Approval__SubmitAgreementApprovalsWithAttachments</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitAgreementLineItemApprovals --></label>
+        <name>Apttus_Approval__SubmitAgreementLineItemApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- sf1AddComment --></label>
+        <name>Apttus_Approval__sf1AddComment</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- sf1ApproveReject --></label>
+        <name>Apttus_Approval__sf1ApproveReject</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- sf1Reassign --></label>
+        <name>Apttus_Approval__sf1Reassign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CancelQuoteApprovals --></label>
+        <name>Apttus_QPApprov__CancelQuoteApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CancelQuoteLineItemApprovals --></label>
+        <name>Apttus_QPApprov__CancelQuoteLineItemApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewQuoteApprovals --></label>
+        <name>Apttus_QPApprov__PreviewQuoteApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewQuoteLineItemApprovals --></label>
+        <name>Apttus_QPApprov__PreviewQuoteLineItemApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitQuoteApprovals --></label>
+        <name>Apttus_QPApprov__SubmitQuoteApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitQuoteApprovalsWithAttachments --></label>
+        <name>Apttus_QPApprov__SubmitQuoteApprovalsWithAttachments</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitQuoteLineItemApprovals --></label>
+        <name>Apttus_QPApprov__SubmitQuoteLineItemApprovals</name>
+    </webLinks>
+</CustomObjectTranslation>

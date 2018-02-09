@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A global setting to enable external price calls. The external pricing call must be coded and associated with the reprice all button in the view cart page. --></help>
+    <label><!-- Enable External Pricing --></label>
+    <name>Apttus_Config2__EnableExternalPricing__c</name>
+</CustomFieldTranslation>
