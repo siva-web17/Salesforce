@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsLT__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Used to identify LT destinations.</description>
+    <description>Used to identify LT destinations</description>
     <externalId>false</externalId>
     <label>IsLT</label>
     <trackHistory>false</trackHistory>
