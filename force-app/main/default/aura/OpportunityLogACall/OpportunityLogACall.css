@@ -1,30 +1,30 @@
-/**
- * Created by Aneesh on 06-08-2017.
- */
-.THIS .single {
-  width: 50%;
-}
+/* Refactoring by Shiva 22-1-2018 */
+
 .THIS .demo-only {
-  display: none;
+  display: none
 }
+
 .THIS .uiInputTextArea {
-  width: 100%;
+  width: 100%
 }
+
 .THIS .slds-textarea {
-  overflow-x: hidden !important;
+  overflow-x: hidden!important;
   height: 48px;
-  resize: none;
+  resize: none
 }
+
 .THIS .bg-brandColor {
   color: rgb(112, 110, 107);
   text-align: left;
   font-size: .75rem;
-  border: none;
+  border: none
 }
 
 .THIS .custom_component {
-  position: relative;
+  position: relative
 }
+
 .THIS .row_right_top {
   position: absolute;
   top: 5%;
@@ -37,8 +37,9 @@
   background: white;
   border: 1px solid #e1e1e1;
   border-radius: 2px;
-  cursor: pointer;
+  cursor: pointer
 }
+
 .THIS .customLoaderTrue {
   position: absolute;
   left: 0;
@@ -49,14 +50,16 @@
   display: block;
   overflow: hidden;
   background: rgba(51, 51, 51, .1);
-  display: block !important;
+  display: block!important
 }
-.THIS  .slds-truncate p {
+
+.THIS .slds-truncate p {
   max-width: 100%;
-  text-overflow: ellipsis !important;
+  text-overflow: ellipsis!important;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap
 }
+
 .THIS .log_a_call_heading {
   max-width: 100%;
   overflow: hidden;
@@ -65,39 +68,33 @@
   font-size: .875rem;
   color: rgb(22, 50, 92);
   font-weight: 400;
-  letter-spacing: .0625em;
+  letter-spacing: .0625em
 }
+
 .THIS .revel_data {
   font-size: .875rem;
   font-weight: 400;
-  color: rgb(43, 40, 38);
+  color: rgb(43, 40, 38)
 }
+
 .THIS .label_adj label {
   margin-left: 0;
-  margin-right: 0;
+  margin-right: 0
 }
-/* .THIS .opportunityLogACallSplit label {
-    width: 50%;
-    float: left;
-    padding: 0;
-    margin: 0;
-}
-.THIS .slds-form-element__control.slds-grow {
-    width: 50%;
-    float: left;
-}
-.THIS .cOpportunityLogACall .slds-form-element__help {
-    float: left;
-    margin-left: 50%;
-} */
 
 .THIS .warning-input .slds-has-error .slds-input {
   background-color: rgb(255, 255, 255);
-  border-color: #2196F3;
-  box-shadow: #2196F3 0 0 0 1px inset;
-  background-clip: padding-box;
+  border-color: #2196f3;
+  box-shadow: #2196f3 0 0 0 1px inset;
+  background-clip: padding-box
 }
 
 .THIS .warning-input .slds-has-error .slds-form-element__help {
-  color: #2196F3;
+  color: #2196f3
+}
+
+.THIS .font-12 {
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 0
 }
