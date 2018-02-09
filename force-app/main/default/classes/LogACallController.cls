@@ -255,6 +255,9 @@ public with sharing class LogACallController {
                 opp.HearAboutUs__c = hearAboutUs;
                 opp.Destinations__c = destination;
                 opp.PreferredDuration__c = duration;
+                if(callResult.toUpperCase() == Label.CloseOpp.toUpperCase()){
+                  opp.closedate=system.today();
+                }
                 if(bookOn != NULL){
                     opp.CloseDate = bookOn.date();
                 }
@@ -263,10 +266,7 @@ public with sharing class LogACallController {
                 update opp;
 
                 if(opp.StageName == Label.SalesClosed ){
-<<<<<<< HEAD
                     opp.CloseDate = bookOn != NULL?bookOn.date():date.today().addmonths(2);
-=======
->>>>>>> f83071537412aabdc462fe10990c4b898e66a65d
                     opp.TFBypassStageValidation__c = false;
                     update opp;
                 }
