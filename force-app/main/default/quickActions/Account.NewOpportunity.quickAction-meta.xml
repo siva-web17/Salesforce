@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This quick action is used to create an Opportunity from an Account</description>
+    <description>This quick action is used to create an Opportunity from an Account.</description>
     <fieldOverrides>
         <field>CloseDate</field>
-        <formula>TODAY() + 180</formula>
+        <formula>DATE( 
+YEAR(TODAY()) + IF(MONTH(TODAY()) > 2, 1, 0), 
+MOD(MONTH(TODAY()) + 2, 12), 
+DAY(TODAY()) 
+)</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>CreationMethod__c</field>

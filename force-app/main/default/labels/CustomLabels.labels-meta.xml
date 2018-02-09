@@ -242,7 +242,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-        <value>0120Y0000002mXn</value>
+        <value>0120E0000006vGl</value>
     </labels>
     <labels>
         <fullName>Days</fullName>
@@ -355,10 +355,9 @@
     </labels>
     <labels>
         <fullName>End_Point_URL</fullName>
-        <categories>Label</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>The end point URL for ranking service</shortDescription>
+        <shortDescription>End Point URL</shortDescription>
         <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
     </labels>
     <labels>
