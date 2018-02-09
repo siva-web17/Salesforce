@@ -17,9 +17,9 @@
                 <label>Call back</label>
             </value>
             <value>
-                <fullName>Call Appointment</fullName>
+                <fullName>Appointment</fullName>
                 <default>false</default>
-                <label>Call Appointment</label>
+                <label>Appointment</label>
             </value>
             <value>
                 <fullName>Visit</fullName>
@@ -57,7 +57,7 @@
             <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
             <controllingFieldValue>Social Media Sent</controllingFieldValue>
-            <valueName>Call Appointment</valueName>
+            <valueName>Appointment</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
