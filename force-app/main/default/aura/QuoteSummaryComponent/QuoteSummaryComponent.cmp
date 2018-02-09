@@ -1,11 +1,7 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="QuotePreview">
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-        <!--<aura:handler event="c:navigateToCmp" action="{!c.NavigateComponent}" />-->
-   <!--<iframe src="{! 'https://my-democ.eu11.visual.force.com/apex/MyVisualforcePage?Id=' + v.recordId }" width="100%" height="500px;" frameBorder="0"/>-->
-
-       <!-- <aura:handler name="Redirect" value="{!this}" action="{!c.doRedirect}" />-->
-	<!--<aura:attribute name="isLarge" type="Boolean"/>-->
     <aura:attribute name="wrapperList" type="QuotePreview.LineitemProductWrapper"/>
+    <aura:attribute name="summaryData" type="QuotePreview.LineItemGroupWrapper[]"/>
     <aura:attribute name="recordId" type="string" />
     <aura:attribute name="ConfigIdList" type="string[]" />
      <aura:attribute name="OrgUrl" type="string" />
@@ -62,7 +58,7 @@
 												<b>{!$Label.c.Price}</b>
 											</div>
 										</th>
-										<th scope="col">
+										<!--<th scope="col">
 											<div class="slds-truncate" title="Discount">
 												<b>{!$Label.c.Discount}</b>
 											</div>
@@ -71,7 +67,7 @@
 											<div class="slds-truncate" title="Discount Reason">
 												<b>{!$Label.c.Discount_Reason}</b>
 											</div>
-                                            </th>
+                                            </th>-->
 										<th scope="col">
 											<div class="slds-truncate" title="Net price">
 												<b>{!$Label.c.Net_Price}</b>
@@ -106,22 +102,25 @@
 											<div class="slds-truncate" title="QUANTITY">{!wrapper.Apttus_QPConfig__Quantity2__c}</div>
 										</td>
 										<td data-label="START DATE">
-											<div class="slds-truncate" title="START DATE">{!wrapper.Apttus_QPConfig__StartDate__c}</div>
+                                            <ui:outputDate value="{!wrapper.Apttus_QPConfig__StartDate__c}" format="dd/MM/yyyy"/>
+                                            <!--<div class="slds-truncate" title="START DATE">{!wrapper.Apttus_QPConfig__StartDate__c}</div>-->
 										</td>
 										<td data-label="END DATE">
-											<div class="slds-truncate" title="END DATE">{!wrapper.Apttus_QPConfig__EndDate__c}</div>
+                                            <ui:outputDate value="{!wrapper.Apttus_QPConfig__EndDate__c}" format="dd/MM/yyyy"/>
+											<!--<div class="slds-truncate" title="END DATE">{!wrapper.Apttus_QPConfig__EndDate__c}</div>-->
 										</td>
 										<td data-label="PRICE">
 											<div class="slds-truncate" title="PRICE">{!wrapper.Non_Discounted_Price__c}</div>
 										</td>
-										<td data-label="DISCOUNT">
+										<!--<td data-label="DISCOUNT">
 											<div class="slds-truncate" title="DISCOUNT">{!wrapper.Discount__c}</div>
 										</td>
-                                         <td data-label="DISCOUNT REASON">
+                                        <td data-label="DISCOUNT REASON">
 											<div class="slds-truncate" title="DISCOUNT REASON">{!wrapper.APTS_Discount_Reason__c}</div>
-										</td>
+										</td>-->
 										<td data-label="NET PRICE">
-											<div class="slds-truncate" title="NET PRICE">{!wrapper.Apttus_QPConfig__NetPrice__c}</div>
+                                            <ui:outputNumber value="{!wrapper.Apttus_QPConfig__NetPrice__c}" format=".00"/>
+											<!--<div class="slds-truncate" title="NET PRICE">{!wrapper.Apttus_QPConfig__NetPrice__c}</div>-->
 										</td>
 										<td data-label="CURRENCY">
 											<div class="slds-truncate" title="CURRENCY">{!wrapper.CurrencyIsoCode}</div>
@@ -131,7 +130,41 @@
 										</td>
 									</tr>
                                     </aura:iteration>
-                                      
+                                    <aura:iteration items="{!v.summaryData}" var="wrapper" indexVar="row">
+                                    	<tr>
+                                        <td data-label="ARTICLE CODE">
+											<div class="slds-truncate" title="ARTICLE CODE">{!wrapper.ProductName}</div>
+										</td>
+                                        <td data-label="ARTICLE NAME">
+											<div class="slds-truncate" title="ARTICLE NAME">{!wrapper.ProductCode}</div>
+										</td>
+										<td data-label="DESTINATION">
+											
+										</td>
+										<td data-label="QUANTITY">
+											
+										</td>
+										<td data-label="START DATE">
+											
+										</td>
+										<td data-label="END DATE">
+											
+										</td>
+										<td data-label="PRICE">
+											
+										</td>
+										
+										<td data-label="NET PRICE">
+                                            <ui:outputNumber value="{!wrapper.netPrice}" format=".00"/>
+										</td>
+										<td data-label="CURRENCY">
+											
+										</td>
+                                        <td data-label="OPTIONAL">
+											
+										</td>
+									</tr>
+                                    </aura:iteration>
 								</tbody>
 							</table>
 						</div>
