@@ -9,6 +9,31 @@ public with sharing class LogACallHelper {
     public static Set<String> allNotReachedItems = new Set<String>{
             Label.CallNotReached.toUpperCase(), Label.SentEmail.toUpperCase(), Label.SocialMediaSent.toUpperCase()
     };
+    
+     public static Set<String> callTypes = new Set<String>{
+            Label.CallReached.toUpperCase(),Label.CallNotReached.toUpperCase(), Label.CalledUs.toUpperCase()
+    };
+    public static Set<String> emailTypes = new Set<String>{
+            Label.SentEmail.toUpperCase(), Label.EmailedUs.toUpperCase()
+    };
+    public static Set<String> taskTypes = new Set<String>{
+             Label.SocialMediaSent.toUpperCase(),Label.SocialMediaReached.toUpperCase(),Label.VisitedUs.toUpperCase()
+    };
+
+    public static String getTaskSubType(String callAction){
+        system.debug('callAction>>>'+callAction);
+        if(callTypes.contains(callAction.toUpperCase())) {
+            system.debug('insidecalltypes>>>'+callAction);
+            return 'Call';
+        }
+         if(emailTypes.contains(callAction.toUpperCase())) {
+            return 'Email';
+        }
+         if(taskTypes.contains(callAction.toUpperCase())) {
+            return 'Task';
+        }
+        return null;
+    }
 
     /**
      * @author Aneesh Bhat
