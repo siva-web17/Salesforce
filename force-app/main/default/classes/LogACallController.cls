@@ -238,7 +238,7 @@ public with sharing class LogACallController {
                 update opp;
 
                 if(opp.StageName == Label.SalesClosed ){
-                opp.CloseDate = bookOn != NULL?bookOn.date():date.today().addmonths(2);
+                    opp.CloseDate = bookOn != NULL?bookOn.date():date.today().addmonths(2);
                     opp.TFBypassStageValidation__c = false;
                     update opp;
                 }
@@ -280,7 +280,7 @@ public with sharing class LogACallController {
             task.CallNotReachedType__c= subAction;
             task.ResultType__c = callResult;
             task.ActivityDateTime__c = Datetime.now();
-            task.ActivityDate = SFLangUtil.ConvertDateTimeTodate(Datetime.now());
+            task.ActivityDate = Datetime.now().Date();
             task.Program__c = program;
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;
