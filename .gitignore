@@ -5,4 +5,8 @@ sfdx-project.json
 .sfdx
 node_modules
 build
+<<<<<<< HEAD
 mdapioutput
+=======
+force-app - Copy
+>>>>>>> 3e280871771cb2fdc8b480e58db5beb908a5f70c
