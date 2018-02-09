@@ -238,6 +238,7 @@ public with sharing class LogACallController {
                 update opp;
 
                 if(opp.StageName == Label.SalesClosed ){
+                opp.CloseDate = bookOn != NULL?bookOn.date():date.today().addmonths(2);
                     opp.TFBypassStageValidation__c = false;
                     update opp;
                 }

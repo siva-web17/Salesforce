@@ -4,3 +4,4 @@ mdapipackage
 sfdx-project.json
 .sfdx
 node_modules
+build

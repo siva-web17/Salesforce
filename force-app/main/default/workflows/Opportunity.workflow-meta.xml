@@ -5,8 +5,8 @@
         <description>Close date will be 6 months ahead from creation date.</description>
         <field>CloseDate</field>
         <formula>DATE( 
-YEAR(TODAY()) + IF(MONTH(TODAY()) > 6, 1, 0), 
-MOD(MONTH(TODAY()) + 6, 12), 
+YEAR(TODAY()) + IF(MONTH(TODAY()) > 2, 1, 0), 
+MOD(MONTH(TODAY()) + 2, 12), 
 DAY(TODAY()) 
 )</formula>
         <name>UpdateOpportunityCloseDate</name>
@@ -15,17 +15,14 @@ DAY(TODAY())
         <protected>false</protected>
     </fieldUpdates>
     <rules>
-        <fullName>CloseDateIncreaseBy6Months</fullName>
+        <fullName>CloseDateIncreaseBy2Months</fullName>
         <actions>
             <name>UpdateOpportunityCloseDate</name>
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <criteriaItems>
-            <field>Opportunity.CloseDate</field>
-            <operation>equals</operation>
-        </criteriaItems>
         <description>New opportunities created should have closed date after 6 months from creation date when the creation date is not specified</description>
+        <formula>NOT(ISBLANK(CloseDate))</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>
