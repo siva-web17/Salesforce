@@ -128,6 +128,14 @@
         <value>Brochure</value>
     </labels>
     <labels>
+        <fullName>BrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BrochureRequest</shortDescription>
+        <value>BR</value>
+    </labels>
+    <labels>
         <fullName>Brochure_Season</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -194,6 +202,14 @@
         <value>Called Us</value>
     </labels>
     <labels>
+        <fullName>CampaignBrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CampaignBrochureRequest</shortDescription>
+        <value>CBR</value>
+    </labels>
+    <labels>
         <fullName>Campaign_Name</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -242,7 +258,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-        <value>0120E0000006vGl</value>
+        <value>0120Y0000002mXn</value>
     </labels>
     <labels>
         <fullName>Days</fullName>
@@ -354,13 +370,6 @@
         <value>End Date</value>
     </labels>
     <labels>
-        <fullName>End_Point_URL</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
-    </labels>
-    <labels>
         <fullName>ExcelImportPublicGroupName</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -439,6 +448,22 @@
         <protected>false</protected>
         <shortDescription>HomePhone</shortDescription>
         <value>Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>IR</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IR</shortDescription>
+        <value>IR</value>
+    </labels>
+    <labels>
+        <fullName>InfoMeeting</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InfoMeeting</shortDescription>
+        <value>InfoMeeting</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -820,6 +845,14 @@
         <protected>false</protected>
         <shortDescription>OppStageInactive</shortDescription>
         <value>InActive</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityBookingStage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityBookingStage</shortDescription>
+        <value>Booking</value>
     </labels>
     <labels>
         <fullName>OpportunityStageFollowUp</fullName>
