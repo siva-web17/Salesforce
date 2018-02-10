@@ -10,16 +10,23 @@ Modification Log   :
  * Arjun.Mohan                 09/14/2017              Original Version
 *******************************************************************************/
 
-public class QuoteProposalDispatcher {
+public with sharing class QuoteProposalDispatcher {
     // Before trigger logic
     public static void run() {
         if (Trigger.IsBefore) {
             if (Trigger.IsInsert) {
-                System.debug('######################### before insert trigger');
                 QuoteProposals.onBeforeInsert(trigger.new);
             }
             if (Trigger.IsUpdate) {
                 QuoteProposals.onBeforeUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new);
+            }
+            if (Trigger.IsDelete) {
+                QuoteProposals.onBeforeDelete(trigger.old);
+            }
+        }
+        if (Trigger.IsAfter) {
+              if (Trigger.IsUpdate) {
+                QuoteProposals.onAfterUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new);
             }
         }
     }
