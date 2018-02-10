@@ -255,6 +255,9 @@ public with sharing class LogACallController {
                 opp.HearAboutUs__c = hearAboutUs;
                 opp.Destinations__c = destination;
                 opp.PreferredDuration__c = duration;
+                if(callResult.toUpperCase() == Label.CloseOpp.toUpperCase()){
+                  opp.closedate=system.today();
+                }
                 if(bookOn != NULL){
                     opp.CloseDate = bookOn.date();
                 }

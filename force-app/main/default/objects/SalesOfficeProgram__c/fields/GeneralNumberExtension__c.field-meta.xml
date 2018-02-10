@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>StartDateOffSet__c</fullName>
-    <defaultValue>-1</defaultValue>
-    <description>This Field will specify the start date off set for Accommodation and other related articles.</description>
+    <fullName>GeneralNumberExtension__c</fullName>
+    <description>Used to store the General Number Extension of Salesoffice</description>
     <externalId>false</externalId>
-    <label>StartDate Off-Set</label>
+    <label>General Number Extension</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>
