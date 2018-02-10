@@ -11,17 +11,17 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Info Meeting - Offline</fullName>
+                <fullName>INF</fullName>
                 <default>false</default>
                 <label>Info Meeting - Offline</label>
             </value>
             <value>
-                <fullName>Info Meeting - Online</fullName>
+                <fullName>ONM</fullName>
                 <default>false</default>
                 <label>Info Meeting - Online</label>
             </value>
             <value>
-                <fullName>Open House</fullName>
+                <fullName>OHO</fullName>
                 <default>false</default>
                 <label>Open House</label>
             </value>

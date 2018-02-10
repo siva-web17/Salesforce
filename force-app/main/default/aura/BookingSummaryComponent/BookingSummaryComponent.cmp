@@ -4,92 +4,44 @@
 	<aura:attribute name="QuoteId" type="Id" />
 	<aura:attribute name="zTitle" type="String" />
 	<aura:attribute name="zNickName" type="String" />
-    <aura:attribute name="pickGender" type="String" /> 
-    <aura:attribute name="pickCurrency" type="String" />
-    <aura:attribute name="salesoffval" type="String" />
-    <aura:attribute name="selectedCountry" type="String" />
-   <!-- <aura:attribute name="selectedState" type="String" />-->
-    <aura:attribute name="selectedNationality" type="String" />
-    <aura:attribute name="selectedPassportType" type="String" />
-    <aura:attribute name="selectedBookingChannel" type="String" />
-        <aura:attribute name="pickBookingType" type="String" />
-
-    <aura:attribute name="selected" type="String[]" />
+	<aura:attribute name="pickGender" type="String" />
+	<aura:attribute name="selectedCurrency" type="String" />
+	<aura:attribute name="selectedSalesOffice" type="String" />
+	<aura:attribute name="selectedCountry" type="String" />
+    <aura:attribute name="selectedBirthCountry" type="String" />
+	<aura:attribute name="selectedNationality" type="String" />
+	<aura:attribute name="selectedOtherNationality" type="String" />
+	<aura:attribute name="selectedPassportType" type="String" />
+	<aura:attribute name="selectedBookingChannel" type="String" />
+	<aura:attribute name="selectedBookingType" type="String" />
+	<aura:attribute name="selected" type="String[]" />
 	<aura:attribute name="zFirstName" type="String" />
 	<aura:attribute name="zMiddleName" type="String" />
 	<aura:attribute name="zlastName" type="String" />
 	<aura:attribute name="Language" type="String" />
 	<!--  Gender -->
-	<aura:attribute name="genderValue" type="SelectOption[]"/>
-    <aura:attribute name="CurrencyValue" type="SelectOption[]" />
-    <aura:attribute name="BookingTypeValue" type="SelectOption[]" />
-    <aura:attribute name="SalesOfficeValue" type="SelectOption[]" />
-    <aura:attribute name="maillingCountryValue" type="SelectOption[]" />
+	<aura:attribute name="GenderList" type="List"/>
+	<aura:attribute name="CurrencyList" type="List" />
+	<aura:attribute name="BookingTypeList" type="List" />
+	<aura:attribute name="SalesOfficeList" type="List" />
+	<aura:attribute name="MaillingCountryList" type="List" />
+    <aura:attribute name="BirthCountryList" type="List" />
     <!--<aura:attribute name="maillingStateValue" type="SelectOption[]" />-->
-	<aura:attribute name="PassportTypes" type="SelectOption[]" />
-    <aura:attribute name="Nationalities" type="SelectOption[]" />
-    <aura:attribute name="BookingChannels" type="SelectOption[]" />
-
-	<aura:attribute name="zGender" type="String" default="" />
-	<aura:handler name="init" value="{!this}" action="{!c.genderDetails}" />
-	<!--End  Gender -->
-	<aura:attribute name="zAge" type="String" />
-	<aura:attribute name="zDOB" type="String" />
-	<!--  Profession -->
-	<aura:attribute name="ProfessionValue" type="List" />
-	<aura:attribute name="zProfession" type="String" default="" />
-	<aura:handler name="init" value="{!this}" action="{!c.professionDetails}" />
-	<aura:attribute name="zProfessionOther" type="String" default="" />
-    <aura:attribute name="isFinishBooking" type="Boolean" default="false" />
-    <aura:attribute name="canLoadComponent" type="Boolean" default="false" />
-	<!--End  Profession -->
-	<aura:attribute name="zLanguage" type="String" />
-	<aura:attribute name="zTR_Manger" type="String" />
-	<aura:attribute name="zAddress" type="String" />
-	<aura:attribute name="zPostalCode" type="String" />
-	<aura:attribute name="zCity" type="String" />
-	<aura:attribute name="zState" type="String" />
-	<aura:attribute name="zCountryOfResidence" type="String" />
-	<aura:attribute name="zRegion" type="String" />
-	<aura:attribute name="zEn_FirstName" type="String" />
-	<aura:attribute name="zEn_LastName" type="String" />
-	<aura:attribute name="zEn_City" type="String" />
-	<aura:attribute name="zEn_State" type="String" />
-	<aura:attribute name="zEn_PostalCode" type="String" />
-	<aura:attribute name="zEn_Address" type="String" />
-	<aura:attribute name="zNationality" type="String" />
-	<aura:attribute name="CountryOfBirth" type="List" />
-	<aura:attribute name="zEmail1" type="String" />
-	<aura:attribute name="zEmail2" type="String" />
-	<aura:attribute name="zParentEmail" type="String" />
-	<aura:attribute name="zLandline" type="integer" />
-	<aura:attribute name="zPhone" type="integer" />
-	<aura:attribute name="zOtherPhone" type="integer" />
-	<aura:attribute name="zID" type="String" />
-	<aura:attribute name="zPassport" type="String" />
-	<aura:attribute name="zPassportType" type="String" />
-	<aura:attribute name="zPassportNumber" type="String" />
-	<aura:attribute name="zPassportIssueDate" type="String" />
-	<aura:attribute name="zPassportExipryDate" type="String" />
-	<aura:attribute name="zBookingDate" type="String" />
-	<aura:attribute name="zBookingCode" type="String" />
-	<aura:attribute name="zBookingChannel" type="String" />
-	<aura:attribute name="zBookingSchool" type="String" />
-	<aura:attribute name="zSalesOfficeAutoPicked" type="String" />
-	<aura:attribute name="zBrochure" type="String" />
-	<aura:attribute name="zBrochureSeason" type="String" />
-	<aura:attribute name="zCurrency" type="String" />
-	<aura:attribute name="zSalesMade" type="String" />
-	<aura:attribute name="zSpecialRequirement" type="String" />
-	<div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;">
+	<aura:attribute name="PassportList" type="List" />
+	<aura:attribute name="NationalityList" type="List" />
+	<aura:attribute name="OtherNationalityList" type="List" />
+	<aura:attribute name="BookingChannelList" type="SelectOption[]" />
+	<aura:attribute name="isFinishBooking" type="Boolean" default="false" />
+	<aura:attribute name="canLoadComponent" type="Boolean" default="false" />
+	<div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
 		<div class="slds-grid">
 			<div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
-				<h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;
-					<lightning:icon iconName="standard:account" class="icon_color_white" />
+				<h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;																																																																	
+					<lightning:icon iconName="utility:phone_portrait" class="customGreen" />
 					<span class="slds-icon_container slds-icon-standard-pricebook" title="Description of icon when needed">
 						<span class="slds-assistive-text">Description of icon</span>
 					</span>
-					<strong>&nbsp; Booking - Title </strong>
+					<strong>&nbsp; Create Booking for {!v.wrapperList.personAcc.FirstName}&nbsp;{!v.wrapperList.personAcc.LastName} </strong>
 				</h2>
 				<p>&nbsp;</p>
 				<div class="demo-only"></div>
@@ -110,22 +62,10 @@
 													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
 														<lightning:icon size="x-small" iconName="utility:announcement" class="icon_color_white" />
 														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; Personal Information </span>
+													</span> &nbsp; Personal Details 																																																																																																																																																
+												</span>
 											</a>
 										</li>
-										<!-- <li class="slds-path__item slds-is-incomplete" aura:id="header-2" role="presentation">
-											<a aria-controls="path-content-2" aria-expanded="true" aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-2" role="tab" tabindex="-1">
-												<span class="slds-path__stage">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" />
-													<span class="slds-assistive-text">Stage Complete</span>
-												</span>
-												<span class="slds-path__title">
-													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
-														<lightning:icon size="x-small" iconName="utility:replace" class="icon_color_white" />
-														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; English Translations </span>
-											</a>
-										</li> -->
 										<li class="slds-path__item slds-is-incomplete" aura:id="header-3" role="presentation">
 											<a aria-controls="path-content-3" aria-expanded="true" aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-3" role="tab" tabindex="0">
 												<span class="slds-path__stage">
@@ -136,7 +76,8 @@
 													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
 														<lightning:icon size="x-small" iconName="utility:replace" class="icon_color_white" />
 														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; Other Details </span>
+													</span> &nbsp; Contact Details 																																																																																																																																																
+												</span>
 											</a>
 										</li>
 										<li class="slds-path__item slds-is-incomplete" aura:id="header-4" role="presentation">
@@ -149,20 +90,8 @@
 													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
 														<lightning:icon size="x-small" iconName="utility:questions_and_answers" class="icon_color_white" />
 														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; Booking Information </span>
-											</a>
-										</li>
-										<li class="slds-path__item slds-is-incomplete" aura:id="header-5" role="presentation">
-											<a aria-controls="path-content-5" aria-expanded="true" aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-5" role="tab" tabindex="0">
-												<span class="slds-path__stage">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" />
-													<span class="slds-assistive-text">Current Stage:</span>
+													</span> &nbsp; Booking Details 																																																																																																																																																
 												</span>
-												<span class="slds-path__title">
-													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
-														<lightning:icon size="x-small" iconName="utility:ad_set" class="icon_color_white" />
-														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; Preview Booking </span>
 											</a>
 										</li>
 									</ul>
@@ -179,13 +108,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- <div class="slds-grid slds-path__action">
-							<span class="slds-path__stage-name">Stage: Unqualified</span>
-							<ui:button aura:id="finishBooking" buttonTitle="Finish your Booking" class="slds-button slds-path__mark-complete  slds-button_neutral slds-not-selected" press="{!c.submit}">
-								<span class="slds-text-not-selected">
-									<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> Finish Booking </span>
-							</ui:button>
-						</div> --></div>
+					</div>
 					<div aria-labelledby="path-1" class="slds-path__content slds-show" aura:id="path-content-1" role="tabpanel">
 						<div class="slds-path__coach slds-grid">
 							<div class="slds-path__keys slds-size_1-of-1">
@@ -199,49 +122,44 @@
 							<div class="slds-path__keys slds-form slds-form_stacked slds-p-top_none">
 								<div class="slds-form slds-form_compound">
 									<fieldset class="slds-form-element">
-										<div class="slds-form-element__group"> 
+										<div class="slds-form-element__group">
 											<div class="slds-grid">
-												<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.First_Name}" aura:id="path_1_Fields" required="true" name="zFirstName" value="{!v.wrapperList.personAcc.FirstName}" /> </div> 
-												<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.Middle_Name}" aura:id="path_1_Fields" name="zMiddleName" value="{!v.wrapperList.personAcc.MiddleName}" /> </div>
-												<div class="slds-form-element slds-size_1-of-3" style="margin-top:0">
-													<lightning:input label="{!$Label.c.Last_Name}" aura:id="path_1_Fields" required="true" name="zlastName" value="{!v.wrapperList.personAcc.LastName}" /> </div>
+												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+													<lightning:input label="{!$Label.c.First_Name}" aura:id="path_1_Fields" required="true" name="zFirstName" value="{!v.wrapperList.personAcc.FirstName}" />
+												</div>
+												<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
+													<lightning:input label="{!$Label.c.Last_Name}" aura:id="path_1_Fields" required="true" name="zlastName" value="{!v.wrapperList.personAcc.LastName}" />
+												</div>
 											</div>
 											<div class="slds-grid slds-p-top_small">
-												<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input aura:id="ageField" label="{!$Label.c.Age}" value="{!v.wrapperList.age}" disabled="true" /> </div>
+												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+													<lightning:input label="{!$Label.c.Middle_Name}" aura:id="path_1_Fields" name="zMiddleName" value="{!v.wrapperList.personAcc.MiddleName}" />
+												</div>
+												<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
+													<lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}" />
+												</div>
+											</div>
+											<div class="slds-grid slds-p-top_small">
 												<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
 													<!--<lightning:input aura:id="path_1_Fields" type="date" required="true" label="DOB" name="zDOB" value="{!v.zDOB}" /> -->
-													{!$Label.c.Birthdate}<ui:inputDate aura:id="dob" displayDatePicker="true" value="{!v.wrapperList.personAcc.PersonBirthdate}" /> </div>
+													<lightning:input aura:id="path_1_Fields" required="true" label="{!$Label.c.Birthdate}" type="date" name="zDOB" value="{!v.wrapperList.personAcc.PersonBirthdate}" />
+													<!-- <ui:inputDate aura:id="dob" displayDatePicker="true" value="{!v.wrapperList.personAcc.PersonBirthdate}" /> -->
+												</div>
+												<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+													<lightning:input aura:id="ageField" label="{!$Label.c.Age}" value="{!v.wrapperList.age}" disabled="true" />
+												</div>
 												<div class="slds-form-element slds-size_1-of-3" style="margin-top:0">
-													<lightning:select name="path_1_Field" label="{!$Label.c.Gender}" required="true" aura:id="path_1_Field" onchange="{!c.getGenderValue}">
-                                                    	<option text="{!v.pickGender}" value="{!v.pickGender}" ></option>
-                                                        <aura:iteration items="{!v.genderValue}" var="gv">	
-   															<option value="{!gv.value}">{!gv.label}</option> 
-                                                            
+													<lightning:select name="path_1_Fields" label="{!$Label.c.Gender}" value="{!v.pickGender}" required="true" aura:id="path_1_Fields">
+														<!--<option text="{!v.pickGender}" value="{!v.pickGender}"></option>-->
+                                                        <option value="">Please select</option>
+                                                        <aura:iteration items="{!v.GenderList}" var="gv">
+															<!--<option value="{!gv.value}">{!gv.key}</option>-->
+															<option text="{!gv.key}" value="{!gv.value}" selected="{!gv.Selected}"/>
 														</aura:iteration>
-          											</lightning:select>
+													</lightning:select>
 												</div>
 											</div>
-											<div class="slds-form-element__row slds-p-top_x-small">
-												<div class="slds-form-element slds-size_1-of-1">
-													<lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}" /> </div>
-											</div>
-											<!-- <div class="slds-grid slds-p-top_small">
-												<div class="slds-form-element__row slds-grow">
-													<div class="slds-form-element slds-size_1-of-2">
-														<lightning:select name="zProfession" label="Profession" aura:id="path_1_Fields" value="{!v.zProfession}">
-															<aura:iteration items="{!v.ProfessionValue}" var="item">
-																<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /> </aura:iteration>
-														</lightning:select>
-													</div>
-													<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-														<aura:if isTrue="{!v.zProfession == 'Other'}">
-															<lightning:input aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" label="Enter your profession" name="zProfessionOther" value="{!v.zProfessionOther}" /> </aura:if>
-													</div>
-												</div>
-											</div> --></div>
+										</div>
 									</fieldset>
 								</div>
 							</div>
@@ -251,459 +169,95 @@
 										<div class="slds-form-element__group">
 											<div class="slds-form-element__row">
 												<div class="slds-form-element slds-size_1-of-1">
-													<lightning:textarea label="{!$Label.c.PersonMailingStreet}" name="zAddress" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address" /> </div>
+													<lightning:textarea label="{!$Label.c.PersonMailingStreet}" name="zAddress" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address" />
+												</div>
 											</div>
 											<div class="slds-grid">
 												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" pattern="[0-9]{}" messageWhenPatternMismatch="Numbers are allowed" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" /> </div>
+													<lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" pattern="[0-9]{}" messageWhenPatternMismatch="Numbers are allowed" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" />
+												</div>
 												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" /> </div>
-												<!-- <div class="slds-form-element slds-size_1-of-3" style="margin-top:0"> &nbsp; </div> --></div>
+													<lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" />
+												</div>
+												<!-- <div class="slds-form-element slds-size_1-of-3" style="margin-top:0"> &nbsp; </div> -->
+											</div>
 											<div class="slds-grid slds-p-top_small">
 												<div class="slds-form-element__row slds-grow">
-													<!-- <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small">
-														<lightning:select aura:id="path_1_Fields" name="Language" label="Language" value="{!v.Language}">
-															<option value="">Please Select</option>
-															<option value="AF">Afrikanns</option>
-															<option value="SQ">Albanian</option>
-															<option value="AR">Arabic</option>
-															<option value="HY">Armenian</option>
-															<option value="EU">Basque</option>
-															<option value="BN">Bengali</option>
-															<option value="BG">Bulgarian</option>
-															<option value="CA">Catalan</option>
-															<option value="KM">Cambodian</option>
-															<option value="ZH">Chinese (Mandarin)</option>
-															<option value="HR">Croation</option>
-															<option value="CS">Czech</option>
-															<option value="DA">Danish</option>
-															<option value="NL">Dutch</option>
-															<option value="EN">English</option>
-															<option value="ET">Estonian</option>
-															<option value="FJ">Fiji</option>
-															<option value="FI">Finnish</option>
-															<option value="FR">French</option>
-															<option value="KA">Georgian</option>
-															<option value="DE">German</option>
-															<option value="EL">Greek</option>
-															<option value="GU">Gujarati</option>
-															<option value="HE">Hebrew</option>
-															<option value="HI">Hindi</option>
-															<option value="HU">Hungarian</option>
-															<option value="IS">Icelandic</option>
-															<option value="ID">Indonesian</option>
-															<option value="GA">Irish</option>
-															<option value="IT">Italian</option>
-															<option value="JA">Japanese</option>
-															<option value="JW">Javanese</option>
-															<option value="KO">Korean</option>
-															<option value="LA">Latin</option>
-															<option value="LV">Latvian</option>
-															<option value="LT">Lithuanian</option>
-															<option value="MK">Macedonian</option>
-															<option value="MS">Malay</option>
-															<option value="ML">Malayalam</option>
-															<option value="MT">Maltese</option>
-															<option value="MI">Maori</option>
-															<option value="MR">Marathi</option>
-															<option value="MN">Mongolian</option>
-															<option value="NE">Nepali</option>
-															<option value="NO">Norwegian</option>
-															<option value="FA">Persian</option>
-															<option value="PL">Polish</option>
-															<option value="PT">Portuguese</option>
-															<option value="PA">Punjabi</option>
-															<option value="QU">Quechua</option>
-															<option value="RO">Romanian</option>
-															<option value="RU">Russian</option>
-															<option value="SM">Samoan</option>
-															<option value="SR">Serbian</option>
-															<option value="SK">Slovak</option>
-															<option value="SL">Slovenian</option>
-															<option value="ES">Spanish</option>
-															<option value="SW">Swahili</option>
-															<option value="SV">Swedish </option>
-															<option value="TA">Tamil</option>
-															<option value="TT">Tatar</option>
-															<option value="TE">Telugu</option>
-															<option value="TH">Thai</option>
-															<option value="BO">Tibetan</option>
-															<option value="TO">Tonga</option>
-															<option value="TR">Turkish</option>
-															<option value="UK">Ukranian</option>
-															<option value="UR">Urdu</option>
-															<option value="UZ">Uzbek</option>
-															<option value="VI">Vietnamese</option>
-															<option value="CY">Welsh</option>
-															<option value="XH">Xhosa</option>
-														</lightning:select>
-													</div> 
-                                                    <lightning:select label="{!$Label.c.PersonMailingState}" name="zState" aura:id="path_1_fields" onchange="{!c.getStateValue}">
-                                                    	<option text="{!v.selectedState}" value="{!v.selectedState}" ></option>
-                                                        <aura:iteration items="{!v.maillingStateValue}" var="item">	
-   															<option value="{!item.value}">{!item.label}</option> 
-														</aura:iteration>
-          											</lightning:select>-->
-                                                    
 													<div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-														<lightning:input label="{!$Label.c.PersonMailingState}" aura:id="path_1_Fields" name="zState" value="{!v.wrapperList.personAcc.PersonMailingState}">
-															<!-- <option value="">Please Select</option>
-															<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-															<option value="Andhra Pradesh">Andhra Pradesh</option>
-															<option value="Arunachal Pradesh">Arunachal Pradesh</option>
-															<option value="Assam">Assam</option>
-															<option value="Bihar">Bihar</option>
-															<option value="Chandigarh">Chandigarh</option>
-															<option value="Chhattisgarh">Chhattisgarh</option>
-															<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-															<option value="Daman and Diu">Daman and Diu</option>
-															<option value="Delhi">Delhi</option>
-															<option value="Goa">Goa</option>
-															<option value="Gujarat">Gujarat</option>
-															<option value="Haryana">Haryana</option>
-															<option value="Himachal Pradesh">Himachal Pradesh</option>
-															<option value="Jammu and Kashmir">Jammu and Kashmir</option>
-															<option value="Jharkhand">Jharkhand</option>
-															<option value="Karnataka">Karnataka</option>
-															<option value="Kerala">Kerala</option>
-															<option value="Lakshadweep">Lakshadweep</option>
-															<option value="Madhya Pradesh">Madhya Pradesh</option>
-															<option value="Maharashtra">Maharashtra</option>
-															<option value="Manipur">Manipur</option>
-															<option value="Meghalaya">Meghalaya</option>
-															<option value="Mizoram">Mizoram</option>
-															<option value="Nagaland">Nagaland</option>
-															<option value="Orissa">Orissa</option>
-															<option value="Pondicherry">Pondicherry</option>
-															<option value="Punjab">Punjab</option>
-															<option value="Rajasthan">Rajasthan</option>
-															<option value="Sikkim">Sikkim</option>
-															<option value="Tamil Nadu">Tamil Nadu</option>
-															<option value="Tripura">Tripura</option>
-															<option value="Uttaranchal">Uttaranchal</option>
-															<option value="Uttar Pradesh">Uttar Pradesh</option>
-															<option value="West Bengal">West Bengal</option>-->
-														</lightning:input>
+														<lightning:input label="{!$Label.c.PersonMailingState}" aura:id="path_1_Fields" name="zState" value="{!v.wrapperList.personAcc.PersonMailingState}"></lightning:input>
 													</div>
 													<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small slds-m-left_none" style="margin-top:0">
-														<lightning:select label="{!$Label.c.PersonMailingCountry}" name="zCountryOfResidence" required="true" aura:id="path_1_fields" onchange="{!c.getCountryValue}">
-                                                    	<option text="{!v.selectedCountry}" value="{!v.selectedCountry}" ></option>
-                                                        <aura:iteration items="{!v.maillingCountryValue}" var="item">	
-   															<option value="{!item.value}">{!item.label}</option> 
-                                                            
-														</aura:iteration>
-          											</lightning:select>
-                                                        
-                                                        <!--{!$Label.c.PersonMailingCountry}<lightning:input aura:id="path_1_Fields" name="zCountryOfResidence" required="true" value="{!v.wrapperList.personAcc.PersonMailingCountry}">
-															<option value="">Please Select</option>
-															<option value="AF">Afghanistan</option>
-															<option value="AX">Åland Islands</option>
-															<option value="AL">Albania</option>
-															<option value="DZ">Algeria</option>
-															<option value="AS">American Samoa</option>
-															<option value="AD">Andorra</option>
-															<option value="AO">Angola</option>
-															<option value="AI">Anguilla</option>
-															<option value="AQ">Antarctica</option>
-															<option value="AG">Antigua and Barbuda</option>
-															<option value="AR">Argentina</option>
-															<option value="AM">Armenia</option>
-															<option value="AW">Aruba</option>
-															<option value="AU">Australia</option>
-															<option value="AT">Austria</option>
-															<option value="AZ">Azerbaijan</option>
-															<option value="BS">Bahamas</option>
-															<option value="BH">Bahrain</option>
-															<option value="BD">Bangladesh</option>
-															<option value="BB">Barbados</option>
-															<option value="BY">Belarus</option>
-															<option value="BE">Belgium</option>
-															<option value="BZ">Belize</option>
-															<option value="BJ">Benin</option>
-															<option value="BM">Bermuda</option>
-															<option value="BT">Bhutan</option>
-															<option value="BO">Bolivia, Plurinational State of</option>
-															<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-															<option value="BA">Bosnia and Herzegovina</option>
-															<option value="BW">Botswana</option>
-															<option value="BV">Bouvet Island</option>
-															<option value="BR">Brazil</option>
-															<option value="IO">British Indian Ocean Territory</option>
-															<option value="BN">Brunei Darussalam</option>
-															<option value="BG">Bulgaria</option>
-															<option value="BF">Burkina Faso</option>
-															<option value="BI">Burundi</option>
-															<option value="KH">Cambodia</option>
-															<option value="CM">Cameroon</option>
-															<option value="CA">Canada</option>
-															<option value="CV">Cape Verde</option>
-															<option value="KY">Cayman Islands</option>
-															<option value="CF">Central African Republic</option>
-															<option value="TD">Chad</option>
-															<option value="CL">Chile</option>
-															<option value="CN">China</option>
-															<option value="CX">Christmas Island</option>
-															<option value="CC">Cocos (Keeling) Islands</option>
-															<option value="CO">Colombia</option>
-															<option value="KM">Comoros</option>
-															<option value="CG">Congo</option>
-															<option value="CD">Congo, the Democratic Republic of the</option>
-															<option value="CK">Cook Islands</option>
-															<option value="CR">Costa Rica</option>
-															<option value="CI">Côte d'Ivoire</option>
-															<option value="HR">Croatia</option>
-															<option value="CU">Cuba</option>
-															<option value="CW">Curaçao</option>
-															<option value="CY">Cyprus</option>
-															<option value="CZ">Czech Republic</option>
-															<option value="DK">Denmark</option>
-															<option value="DJ">Djibouti</option>
-															<option value="DM">Dominica</option>
-															<option value="DO">Dominican Republic</option>
-															<option value="EC">Ecuador</option>
-															<option value="EG">Egypt</option>
-															<option value="SV">El Salvador</option>
-															<option value="GQ">Equatorial Guinea</option>
-															<option value="ER">Eritrea</option>
-															<option value="EE">Estonia</option>
-															<option value="ET">Ethiopia</option>
-															<option value="FK">Falkland Islands (Malvinas)</option>
-															<option value="FO">Faroe Islands</option>
-															<option value="FJ">Fiji</option>
-															<option value="FI">Finland</option>
-															<option value="FR">France</option>
-															<option value="GF">French Guiana</option>
-															<option value="PF">French Polynesia</option>
-															<option value="TF">French Southern Territories</option>
-															<option value="GA">Gabon</option>
-															<option value="GM">Gambia</option>
-															<option value="GE">Georgia</option>
-															<option value="DE">Germany</option>
-															<option value="GH">Ghana</option>
-															<option value="GI">Gibraltar</option>
-															<option value="GR">Greece</option>
-															<option value="GL">Greenland</option>
-															<option value="GD">Grenada</option>
-															<option value="GP">Guadeloupe</option>
-															<option value="GU">Guam</option>
-															<option value="GT">Guatemala</option>
-															<option value="GG">Guernsey</option>
-															<option value="GN">Guinea</option>
-															<option value="GW">Guinea-Bissau</option>
-															<option value="GY">Guyana</option>
-															<option value="HT">Haiti</option>
-															<option value="HM">Heard Island and McDonald Islands</option>
-															<option value="VA">Holy See (Vatican City State)</option>
-															<option value="HN">Honduras</option>
-															<option value="HK">Hong Kong</option>
-															<option value="HU">Hungary</option>
-															<option value="IS">Iceland</option>
-															<option value="IN">India</option>
-															<option value="ID">Indonesia</option>
-															<option value="IR">Iran, Islamic Republic of</option>
-															<option value="IQ">Iraq</option>
-															<option value="IE">Ireland</option>
-															<option value="IM">Isle of Man</option>
-															<option value="IL">Israel</option>
-															<option value="IT">Italy</option>
-															<option value="JM">Jamaica</option>
-															<option value="JP">Japan</option>
-															<option value="JE">Jersey</option>
-															<option value="JO">Jordan</option>
-															<option value="KZ">Kazakhstan</option>
-															<option value="KE">Kenya</option>
-															<option value="KI">Kiribati</option>
-															<option value="KP">Korea, Democratic People's Republic of</option>
-															<option value="KR">Korea, Republic of</option>
-															<option value="KW">Kuwait</option>
-															<option value="KG">Kyrgyzstan</option>
-															<option value="LA">Lao People's Democratic Republic</option>
-															<option value="LV">Latvia</option>
-															<option value="LB">Lebanon</option>
-															<option value="LS">Lesotho</option>
-															<option value="LR">Liberia</option>
-															<option value="LY">Libya</option>
-															<option value="LI">Liechtenstein</option>
-															<option value="LT">Lithuania</option>
-															<option value="LU">Luxembourg</option>
-															<option value="MO">Macao</option>
-															<option value="MK">Macedonia, the former Yugoslav Republic of</option>
-															<option value="MG">Madagascar</option>
-															<option value="MW">Malawi</option>
-															<option value="MY">Malaysia</option>
-															<option value="MV">Maldives</option>
-															<option value="ML">Mali</option>
-															<option value="MT">Malta</option>
-															<option value="MH">Marshall Islands</option>
-															<option value="MQ">Martinique</option>
-															<option value="MR">Mauritania</option>
-															<option value="MU">Mauritius</option>
-															<option value="YT">Mayotte</option>
-															<option value="MX">Mexico</option>
-															<option value="FM">Micronesia, Federated States of</option>
-															<option value="MD">Moldova, Republic of</option>
-															<option value="MC">Monaco</option>
-															<option value="MN">Mongolia</option>
-															<option value="ME">Montenegro</option>
-															<option value="MS">Montserrat</option>
-															<option value="MA">Morocco</option>
-															<option value="MZ">Mozambique</option>
-															<option value="MM">Myanmar</option>
-															<option value="NA">Namibia</option>
-															<option value="NR">Nauru</option>
-															<option value="NP">Nepal</option>
-															<option value="NL">Netherlands</option>
-															<option value="NC">New Caledonia</option>
-															<option value="NZ">New Zealand</option>
-															<option value="NI">Nicaragua</option>
-															<option value="NE">Niger</option>
-															<option value="NG">Nigeria</option>
-															<option value="NU">Niue</option>
-															<option value="NF">Norfolk Island</option>
-															<option value="MP">Northern Mariana Islands</option>
-															<option value="NO">Norway</option>
-															<option value="OM">Oman</option>
-															<option value="PK">Pakistan</option>
-															<option value="PW">Palau</option>
-															<option value="PS">Palestinian Territory, Occupied</option>
-															<option value="PA">Panama</option>
-															<option value="PG">Papua New Guinea</option>
-															<option value="PY">Paraguay</option>
-															<option value="PE">Peru</option>
-															<option value="PH">Philippines</option>
-															<option value="PN">Pitcairn</option>
-															<option value="PL">Poland</option>
-															<option value="PT">Portugal</option>
-															<option value="PR">Puerto Rico</option>
-															<option value="QA">Qatar</option>
-															<option value="RE">Réunion</option>
-															<option value="RO">Romania</option>
-															<option value="RU">Russian Federation</option>
-															<option value="RW">Rwanda</option>
-															<option value="BL">Saint Barthélemy</option>
-															<option value="SH">Saint Helena, Ascension and Tristan da Cunha </option>
-															<option value="KN">Saint Kitts and Nevis</option>
-															<option value="LC">Saint Lucia</option>
-															<option value="MF">Saint Martin (French part)</option>
-															<option value="PM">Saint Pierre and Miquelon</option>
-															<option value="VC">Saint Vincent and the Grenadines</option>
-															<option value="WS">Samoa</option>
-															<option value="SM">San Marino</option>
-															<option value="ST">Sao Tome and Principe</option>
-															<option value="SA">Saudi Arabia</option>
-															<option value="SN">Senegal</option>
-															<option value="RS">Serbia</option>
-															<option value="SC">Seychelles</option>
-															<option value="SL">Sierra Leone</option>
-															<option value="SG">Singapore</option>
-															<option value="SX">Sint Maarten (Dutch part)</option>
-															<option value="SK">Slovakia</option>
-															<option value="SI">Slovenia</option>
-															<option value="SB">Solomon Islands</option>
-															<option value="SO">Somalia</option>
-															<option value="ZA">South Africa</option>
-															<option value="GS">South Georgia and the South Sandwich Islands </option>
-															<option value="SS">South Sudan</option>
-															<option value="ES">Spain</option>
-															<option value="LK">Sri Lanka</option>
-															<option value="SD">Sudan</option>
-															<option value="SR">Suriname</option>
-															<option value="SJ">Svalbard and Jan Mayen </option>
-															<option value="SZ">Swaziland</option>
-															<option value="SE">Sweden</option>
-															<option value="CH">Switzerland</option>
-															<option value="SY">Syrian Arab Republic</option>
-															<option value="TW">Taiwan, Province of China </option>
-															<option value="TJ">Tajikistan</option>
-															<option value="TZ">Tanzania, United Republic of </option>
-															<option value="TH">Thailand</option>
-															<option value="TL">Timor-Leste</option>
-															<option value="TG">Togo</option>
-															<option value="TK">Tokelau</option>
-															<option value="TO">Tonga</option>
-															<option value="TT">Trinidad and Tobago </option>
-															<option value="TN">Tunisia</option>
-															<option value="TR">Turkey</option>
-															<option value="TM">Turkmenistan</option>
-															<option value="TC">Turks and Caicos Islands </option>
-															<option value="TV">Tuvalu</option>
-															<option value="UG">Uganda</option>
-															<option value="UA">Ukraine</option>
-															<option value="AE">United Arab Emirates</option>
-															<option value="GB">United Kingdom</option>
-															<option value="US">United States</option>
-															<option value="UM">United States Minor Outlying Islands </option>
-															<option value="UY">Uruguay</option>
-															<option value="UZ">Uzbekistan</option>
-															<option value="VU">Vanuatu</option>
-															<option value="VE">Venezuela, Bolivarian Republic of </option>
-															<option value="VN">Viet Nam</option>
-															<option value="VG">Virgin Islands, British </option>
-															<option value="VI">Virgin Islands, U.S. </option>
-															<option value="WF">Wallis and Futuna</option>
-															<option value="EH">Western Sahara</option>
-															<option value="YE">Yemen</option>
-															<option value="ZM">Zambia</option>
-															<option value="ZW">Zimbabwe</option>
-														</lightning:input>-->
+														<lightning:select label="{!$Label.c.PersonMailingCountry}" name="zCountryOfResidence" required="true" aura:id="path_1_Fields" value="{!v.wrapperList.personAcc.PersonMailingCountry}">
+															<!--<option text="{!v.selectedCountry}"></option>-->
+                                                            <option value="">Please select</option>
+                                                            <aura:iteration items="{!v.MaillingCountryList}" var="itemCountry">
+																<!--<option value="{!item.value}">{!item.label}</option>-->
+																<option text="{!itemCountry.key}" value="{!itemCountry.value}" selected="{!itemCountry.Selected}"/>
+															</aura:iteration>
+														</lightning:select>
 													</div>
-													<!-- <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-														<lightning:input aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Numbers are allowed" label="Region" name="zRegion" value="{!v.zRegion}" /> </div> --></div>
+												</div>
 											</div>
 										</div>
 									</fieldset>
 								</div>
 							</div>
 						</div>
-						<div class="slds-path__coach slds-grid">
-							<div class="slds-path__keys slds-size_1-of-1">
-								<div class="slds-grid slds-grid_align-spread slds-path__coach-title">
-									<h2>ENGLISH DETAILS</h2>
-								</div>
-							</div>
-						</div>
-						<div class="slds-path__coach slds-grid">
-							<div class="slds-path__keys slds-form slds-form_stacked slds-p-top_none">
-								<div class="slds-form slds-form_compound">
-									<fieldset class="slds-form-element">
-										<div class="slds-form-element__group">
-											<div class="slds-grid">
-												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.First_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$"  name="zEn_FirstName" value="{!v.wrapperList.personAcc.FirstNameEn__c}" /> </div>
-												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.Last_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_LastName" value="{!v.wrapperList.personAcc.LastNameEn__c}" /> </div>
-											</div>
-										</div>
-									</fieldset>
-								</div>
-								<div class="slds-grid slds-grid slds-p-top_small">
-									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" pattern="[0-9]{}" messageWhenPatternMismatch="Numbers are allowed" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}" /> </div>
-									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.PersonOtherCity}" aura:id="path_2_Fields" name="zEn_City" value="{!v.wrapperList.personAcc.PersonOtherCity}" /> </div>
-									<!--<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Shipping_State_Province}" aura:id="path_2_Fields" name="zEn_State" value="{!v.wrapperList.personAcc.ShippingState}" /> </div>-->
+						<aura:if isTrue="{! (v.wrapperList.opp.Market__c == 'RUM') || (v.wrapperList.opp.Market__c == 'KZA') || (v.wrapperList.opp.Market__c == 'CNB') || (v.wrapperList.opp.Market__c == 'CNN') || (v.wrapperList.opp.Market__c == 'TWI') || (v.wrapperList.opp.Market__c == 'JPT') || (v.wrapperList.opp.Market__c == 'KRS') || (v.wrapperList.opp.Market__c == 'THB') }">
+							<div class="slds-path__coach slds-grid">
+								<div class="slds-path__keys slds-size_1-of-1">
+									<div class="slds-grid slds-grid_align-spread slds-path__coach-title">
+										<h2>ENGLISH DETAILS</h2>
 									</div>
-                                
-							</div>
-							<div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
-								<div class="slds-form slds-form_compound">
-									<fieldset class="slds-form-element">
-										<div class="slds-form-element__group">
-											<div class="slds-form-element__row">
-												<div class="slds-form-element slds-size_1-of-1">
-													<lightning:textarea label="{!$Label.c.PersonOtherStreet}" name="zEn_Address" value="{!v.wrapperList.personAcc.PersonOtherStreet}" placeholder="Enter your address" /> </div>
-											</div>
-										</div>
-									</fieldset>
 								</div>
 							</div>
-						</div>
+							<div class="slds-path__coach slds-grid">
+								<div class="slds-path__keys slds-form slds-form_stacked slds-p-top_none">
+									<div class="slds-form slds-form_compound">
+										<fieldset class="slds-form-element">
+											<div class="slds-form-element__group">
+												<div class="slds-grid">
+													<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+														<lightning:input label="{!$Label.c.First_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_FirstName" value="{!v.wrapperList.personAcc.FirstNameEn__c}" />
+													</div>
+													<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+														<lightning:input label="{!$Label.c.Last_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_LastName" value="{!v.wrapperList.personAcc.LastNameEn__c}" />
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+									<div class="slds-grid slds-grid slds-p-top_small">
+										<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+											<lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" pattern="[0-9]{}" messageWhenPatternMismatch="Numbers are allowed" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}" />
+										</div>
+										<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+											<lightning:input label="{!$Label.c.PersonOtherCity}" aura:id="path_2_Fields" name="zEn_City" value="{!v.wrapperList.personAcc.PersonOtherCity}" />
+										</div>
+										<!--<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0"><lightning:input label="{!$Label.c.Shipping_State_Province}" aura:id="path_2_Fields" name="zEn_State" value="{!v.wrapperList.personAcc.ShippingState}" /></div>-->
+									</div>
+								</div>
+								<div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
+									<div class="slds-form slds-form_compound">
+										<fieldset class="slds-form-element">
+											<div class="slds-form-element__group">
+												<div class="slds-form-element__row">
+													<div class="slds-form-element slds-size_1-of-1">
+														<lightning:textarea label="{!$Label.c.PersonOtherStreet}" name="zEn_Address" value="{!v.wrapperList.personAcc.PersonOtherStreet}" placeholder="Enter your address" />
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</aura:if>
 						<div class="slds-clearfix">
 							<div class="slds-float_right slds-p-right_x-small slds-m-top_large">
 								<ui:button aura:id="next1" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue </span>
+										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue 																																																																																																												
+									</span>
 								</ui:button>
 							</div>
 						</div>
@@ -719,64 +273,96 @@
 						</div>
 						<div class="slds-path__coach slds-grid">
 							<div class="slds-path__keys slds-form slds-form_stacked slds-p-top_none">
-								<div class="slds-grid slds-p-bottom_small">
+								<div class="slds-grid">
 									<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-										<lightning:select label="{!$Label.c.Nationality}" aura:id="path_3_Fields" required="true" name="zNationality" onchange="{!c.getSelectedNationalityValue}">
-											<option text="{!v.selectedNationality}" value="{!v.selectedNationality}" ></option>
-                                        	<aura:iteration items="{!v.Nationalities}" var="item">
-                                                
-                                                <option value="{!item.value}">{!item.label}</option> </aura:iteration>
+										<lightning:select label="{!$Label.c.Nationality}" value="{!v.selectedNationality}" aura:id="path_3_Fields" required="true" name="zNationality">
+											<!--<option text="{!v.selectedNationality}" value="{!v.selectedNationality}"></option>-->
+                                            <option value="">Please select</option>
+                                            <aura:iteration items="{!v.NationalityList}" var="itemNation">
+												<!--<option value="{!item.value}">{!item.label}</option>-->
+												<option text="{!itemNation.key}" value="{!itemNation.value}" selected="{!itemNation.Selected}"/>
+											</aura:iteration>
 										</lightning:select>
 									</div>
-									<!--<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-										<lightning:select aura:id="path_3_Fields" name="zCountryOfBirth" label="Country of Birth" value="{!v.wrapperList.personAcc.BirthCountry__pc}">
-											<aura:iteration items="{!v.BirthCountry}" var="item">
-												<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /> </aura:iteration>
+									<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
+										<lightning:select label="Other nationalities" value="{!v.selectedOtherNationality}" aura:id="path_3_Fields" name="zOtherNationality">
+											<!--<option text="{!v.selectedOtherNationality}" value="{!v.selectedOtherNationality}"></option>-->
+                                            <option value="">Please select</option>
+                                            <aura:iteration items="{!v.OtherNationalityList}" var="itemOtherNation">
+												<!--<option value="{!item.value}">{!item.label}</option>-->
+												<option text="{!itemOtherNation.key}" value="{!itemOtherNation.value}" selected="{!itemOtherNation.Selected}"/>
+											</aura:iteration>
 										</lightning:select>
-									</div>-->
+									</div>
+								</div>
+								<div class="slds-grid slds-p-bottom_small">
+									<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0"></div>
+									<!--<div class="slds-form-element slds-size_1-of-2" style="margin-top:0"><lightning:select aura:id="path_3_Fields" name="zCountryOfBirth" label="Country of Birth" value="{!v.wrapperList.personAcc.BirthCountry__pc}"><aura:iteration items="{!v.BirthCountry}" var="item"><option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /></aura:iteration></lightning:select></div>-->
 								</div>
 								<div class="slds-grid slds-p-bottom_small">
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Email}" type="email" aura:id="path_3_Fields" required="true" messageWhenPatternMismatch="please enter valid email ID" name="zEmail1" value="{!v.wrapperList.personAcc.PersonEmail}" /> </div>
+										<lightning:input label="{!$Label.c.Email}" type="email" aura:id="path_3_Fields" required="true" messageWhenPatternMismatch="please enter valid email ID" name="zEmail1" value="{!v.wrapperList.personAcc.PersonEmail}" />
+									</div>
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Email2}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zEmail2" value="{!v.wrapperList.personAcc.Email2__c}" /> </div>
+										<lightning:input label="{!$Label.c.Email2}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zEmail2" value="{!v.wrapperList.personAcc.Email2__c}" />
+									</div>
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Parent_Email_ID}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zParentEmail" value="{!v.wrapperList.personAcc.ParentEmail__c}" /> </div>
+										<lightning:input label="{!$Label.c.Parent_Email_ID}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zParentEmail" value="{!v.wrapperList.personAcc.ParentEmail__c}" />
+									</div>
 								</div>
 								<div class="slds-grid">
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
 										<!--<ui:inputNumber aura:id="landline" label="Landline phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonHomePhone}"-->
-										<lightning:input label="{!$Label.c.Home_Phone}" aura:id="path_3_Fields" pattern="[0-9]{}" name="number" value="{!v.wrapperList.personAcc.PersonHomePhone}" messageWhenBadInput="Landlinee phone number is greater than 10 digits" /> </div>
+										<lightning:input label="{!$Label.c.Home_Phone}" aura:id="path_3_Fields" pattern="[0-9]{}" name="number" value="{!v.wrapperList.personAcc.PersonHomePhone}" messageWhenBadInput="Landlinee phone number is greater than 10 digits" />
+									</div>
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
 										<lightning:input label="{!$Label.c.Mobile}" aura:id="path_3_Fields" pattern="[0-9]{}" name="number" value="{!v.wrapperList.personAcc.PersonMobilePhone}" />
-										<!--<ui:inputNumber aura:id="mobilephn" label="Mobile Phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonMobilePhone}" />--> </div>
+										<!--<ui:inputNumber aura:id="mobilephn" label="Mobile Phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonMobilePhone}" />-->
+									</div>
 									<div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Other_Phone}" aura:id="path_3_Fields" pattern="[0-9]{}" name="number" value="{!v.wrapperList.personAcc.PersonOtherPhone}" /> 
-										<!--<ui:inputNumber aura:id="otherPhn" label="Other Phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonOtherPhone}" />--> </div>
+										<lightning:input label="{!$Label.c.Other_Phone}" aura:id="path_3_Fields" pattern="[0-9]{}" name="number" value="{!v.wrapperList.personAcc.PersonOtherPhone}" />
+										<!--<ui:inputNumber aura:id="otherPhn" label="Other Phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonOtherPhone}" />-->
+									</div>
 								</div>
 							</div>
 							<div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
-								<div class="slds-grid slds-p-bottom_small">
-									<div class="slds-form-element slds-size_1-of-1 slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Personal_ID}" type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid account number" name="zID" value="{!v.wrapperList.personAcc.PersonalID__c}" /> </div>
-								</div>
+                                <div class="slds-grid  slds-p-bottom_small">
+                                    <div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.Personal_ID}" type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid account number" name="zID" value="{!v.wrapperList.personAcc.PersonalID__c}" />
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
+                                        <lightning:select name="path_3_Fields" label="{!$Label.c.CountryOfBirth}" value="{!v.selectedBirthCountry}" aura:id="path_3_Fields">
+                                            <option value="">Please select</option>
+                                            <aura:iteration items="{!v.BirthCountryList}" var="itemBirthCountry">
+                                                <!--<option value="{!item.value}">{!item.label}</option>-->
+                                                <option text="{!itemBirthCountry.key}" value="{!itemBirthCountry.value}" selected="{!itemBirthCountry.Selected}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                </div>
+
 								<div class="slds-grid  slds-p-bottom_small">
 									<div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-										<lightning:select label="{!$Label.c.Passport_Type}" aura:id="path_5_Field" name="zPassportType" onchange="{!c.getSelectedPassportType}">
-											<option text="{!v.selectedPassportType}" value="{!v.selectedPassportType}" ></option>
-                                        	<aura:iteration items="{!v.PassportTypes}" var="item">
-                                                
-                                                <option value="{!item.value}">{!item.label}</option> </aura:iteration>
+										<lightning:select label="{!$Label.c.Passport_Type}" value="{!v.selectedPassportType}" aura:id="path_5_Field" name="zPassportType">
+											<!--<option text="{!v.selectedPassportType}" value="{!v.selectedPassportType}"></option>-->
+                                            <option value="">Please select</option>
+                                            <aura:iteration items="{!v.PassportList}" var="itemPassport">
+												<!--<option value="{!item.value}">{!item.label}</option>-->
+												<option text="{!itemPassport.key}" value="{!itemPassport.value}" selected="{!itemPassport.Selected}"/>
+											</aura:iteration>
 										</lightning:select>
 									</div>
 									<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Passport_Number}" type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid passport number" name="zPassportNumber" value="{!v.wrapperList.personAcc.PassportNumber__c}" /> </div>
+										<lightning:input label="{!$Label.c.Passport_Number}" type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid passport number" name="zPassportNumber" value="{!v.wrapperList.personAcc.PassportNumber__c}" />
+									</div>
 								</div>
 								<div class="slds-grid">
 									<div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Passport_Issue_Date}" type="date" name="zPassportIssueDate" value="{!v.wrapperList.personAcc.PassportIssueDate__c}" /> </div>
+										<lightning:input label="{!$Label.c.Passport_Issue_Date}" type="date" name="zPassportIssueDate" value="{!v.wrapperList.personAcc.PassportIssueDate__c}" />
+									</div>
 									<div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-										<lightning:input label="{!$Label.c.Passport_Expiry_Date}" type="date" name="Passport Expiry Date" value="{!v.wrapperList.personAcc.PassportExpiryDate__c}" /> </div>
+										<lightning:input label="{!$Label.c.Passport_Expiry_Date}" type="date" name="Passport Expiry Date" value="{!v.wrapperList.personAcc.PassportExpiryDate__c}" />
+									</div>
 								</div>
 							</div>
 						</div>
@@ -784,11 +370,13 @@
 							<div class="slds-float_right slds-p-right_x-small">
 								<ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> Back </span>
+										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> Back 																																																																																																												
+									</span>
 								</ui:button>
 								<ui:button aura:id="next3" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext3}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue </span>
+										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue 																																																																																																												
+									</span>
 								</ui:button>
 							</div>
 						</div>
@@ -808,145 +396,50 @@
 									<fieldset class="slds-form-element">
 										<div class="slds-form-element__group">
 											<div class="slds-grid  slds-p-bottom_small">
-												<!-- <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input aura:id="path_4_Fields" required="true" type="text" onchange="{!c.preValidateSubmit}" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid booking code" label="Booking Code" name="zBookingCode" value="{!v.zBookingCode}" /> </div> -->
+												<!-- <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0"><lightning:input aura:id="path_4_Fields" required="true" type="text" onchange="{!c.preValidateSubmit}" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid booking code" label="Booking Code" name="zBookingCode" value="{!v.zBookingCode}" /></div> -->
 												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:select label="{!$Label.c.Booking_Channel}" aura:id="path_6_Fields" required="true" onchange="{!c.getSelectedBookingChannel}" name="zBookingChannel">
-														<option text="{!v.selectedBookingChannel}" value="{!v.selectedBookingChannel}" ></option>
-                                        				<aura:iteration items="{!v.BookingChannels}" var="item">
-                                                
-                                                			<option value="{!item.value}">{!item.label}</option> </aura:iteration>	
+													<lightning:select label="{!$Label.c.Booking_Channel}" value="{!v.selectedBookingChannel}" aura:id="path_4_Fields" required="true" name="zBookingChannel">
+														<!--<option text="{!v.selectedBookingChannel}" value="{!v.selectedBookingChannel}"></option>-->
+                                                        <option value="">Please select</option>
+                                                        <aura:iteration items="{!v.BookingChannelList}" var="itemBooking">
+															<option text="{!itemBooking.key}" value="{!itemBooking.value}" selected="{!itemBooking.Selected}"/>
+															<!--<option value="{!item.value}">{!item.label}</option>-->
+														</aura:iteration>
 													</lightning:select>
 												</div>
 												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<!--<lightning:input aura:id="path_4_Fields" type="text" messageWhenPatternMismatch="Enter valid data" label="Sales office" name="zSalesOfficeAutoPicked" value="{!v.wrapperList.opp.SalesOffice__c}" /> </div>-->
-                                                    
-                                                    <lightning:select label="{!$Label.c.Sales_Office}" aura:id="path_4_Fields" onchange="{!c.getSalesOfficeValue}" required="true"><!---->
-														<option text="{!v.salesoffval}" value="{!v.salesoffval}" ></option>
-                                                        <aura:iteration items="{!v.SalesOfficeValue}" var="item">	
-   															<option value="{!item.value}">{!item.label}</option>
-                                                            
+													<!--<lightning:input aura:id="path_4_Fields" type="text" messageWhenPatternMismatch="Enter valid data" label="Sales office" name="zSalesOfficeAutoPicked" value="{!v.wrapperList.opp.SalesOffice__c}" /></div>-->
+													<lightning:select label="{!$Label.c.Booking_Type}" value="{!v.selectedBookingType}" aura:id="path_4_Field">
+														<!--<option text="{!v.pickBookingType}" value="{!v.pickBookingType}"></option>-->
+                                                        <option value="">Please select</option>
+                                                        <aura:iteration items="{!v.BookingTypeList}" var="itemBookingType">
+															<!--<option value="{!item.value}">{!item.label}</option>-->
+															<option text="{!itemBookingType.key}" value="{!itemBookingType.value}" selected="{!itemBookingType.Selected}"/>
 														</aura:iteration>
 													</lightning:select>
-                                                    <!--<lightning:select name="path_1_Field" required="true" aura:id="path_1_Field" onchange="{!c.getSalesOfficeValue}">
-                                                    	<option text="{!v.pick1}" value="{!v.pick1}" ></option>
-                                                        <aura:iteration items="{!v.SalesOfficeValue}" var="gv">	
-   															<option value="{!gv.value}">{!gv.label}</option> 
-                                                            
-														</aura:iteration>
-          											</lightning:select>-->
-									</div>
-												
-                                                <!-- <div class="slds-form-element slds-size_1-of-3 " style="margin-top:0">
-													<lightning:input type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid booking school" label="Booking School" name="zBookingSchool" value="{!v.zBookingSchool}" /> </div>--> </div>
+													<!--<lightning:select name="path_1_Field" required="true" aura:id="path_1_Field" onchange="{!c.getSalesOfficeValue}"><option text="{!v.pick1}" value="{!v.pick1}"></option><aura:iteration items="{!v.SalesOfficeValue}" var="gv"><option value="{!gv.value}">{!gv.label}</option></aura:iteration></lightning:select>-->
+												</div>
+												<!-- <div class="slds-form-element slds-size_1-of-3 " style="margin-top:0"><lightning:input type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid booking school" label="Booking School" name="zBookingSchool" value="{!v.zBookingSchool}" /></div>-->
+											</div>
 											<div class="slds-grid slds-p-bottom_small">
 												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-													<lightning:input label="{!$Label.c.Brochure}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochure" value="{!v.wrapperList.PriceList.Year__c}" /> </div>
-												<div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">
-													<lightning:input label="{!$Label.c.Brochure_Season}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochureSeason" value="{!v.wrapperList.PriceList.Version__c}" /> </div>
-											</div>
-											<div class="slds-grid  slds-p-bottom_small">
-												<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                   
-                                                    <lightning:select label="{!$Label.c.Currency}" aura:id="path_4_Fields" onchange="{!c.getSelectedCurrency}" required="true">
-														<option text="{!v.pickCurrency}" value="{!v.pickCurrency}" ></option>
-                                                        <aura:iteration items="{!v.CurrencyValue}" var="item">	
-   															<option value="{!item.value}">{!item.label}</option>
-                                                            
-														</aura:iteration>
-													</lightning:select>
-                                                    
-                                                    <!--{!$Label.c.Currency}<lightning:select label="{!$Label.c.Currency}" aura:id="path_4_Fields" required="true" name="zCurrency" disabled="true" value="{!v.wrapperList.Quote.CurrencyIsoCode}">
-														<option value="USD" selected="selected">United States Dollars</option>
-														<option value="EUR">Euro</option>
-														<option value="GBP">United Kingdom Pounds</option>
-														<option value="DZD">Algeria Dinars</option>
-														<option value="ARP">Argentina Pesos</option>
-														<option value="AUD">Australia Dollars</option>
-														<option value="ATS">Austria Schillings</option>
-														<option value="BSD">Bahamas Dollars</option>
-														<option value="BBD">Barbados Dollars</option>
-														<option value="BEF">Belgium Francs</option>
-														<option value="BMD">Bermuda Dollars</option>
-														<option value="BRR">Brazil Real</option>
-														<option value="BGL">Bulgaria Lev</option>
-														<option value="CAD">Canada Dollars</option>
-														<option value="CLP">Chile Pesos</option>
-														<option value="CNY">China Yuan Renmimbi</option>
-														<option value="CYP">Cyprus Pounds</option>
-														<option value="CSK">Czech Republic Koruna</option>
-														<option value="DKK">Denmark Kroner</option>
-														<option value="NLG">Dutch Guilders</option>
-														<option value="XCD">Eastern Caribbean Dollars</option>
-														<option value="EGP">Egypt Pounds</option>
-														<option value="FJD">Fiji Dollars</option>
-														<option value="FIM">Finland Markka</option>
-														<option value="FRF">France Francs</option>
-														<option value="DEM">Germany Deutsche Marks</option>
-														<option value="XAU">Gold Ounces</option>
-														<option value="GRD">Greece Drachmas</option>
-														<option value="HKD">Hong Kong Dollars</option>
-														<option value="HUF">Hungary Forint</option>
-														<option value="ISK">Iceland Krona</option>
-														<option value="INR">India Rupees</option>
-														<option value="IDR">Indonesia Rupiah</option>
-														<option value="IEP">Ireland Punt</option>
-														<option value="ILS">Israel New Shekels</option>
-														<option value="ITL">Italy Lira</option>
-														<option value="JMD">Jamaica Dollars</option>
-														<option value="JPY">Japan Yen</option>
-														<option value="JOD">Jordan Dinar</option>
-														<option value="KRW">Korea (South) Won</option>
-														<option value="LBP">Lebanon Pounds</option>
-														<option value="LUF">Luxembourg Francs</option>
-														<option value="MYR">Malaysia Ringgit</option>
-														<option value="MXP">Mexico Pesos</option>
-														<option value="NLG">Netherlands Guilders</option>
-														<option value="NZD">New Zealand Dollars</option>
-														<option value="NOK">Norway Kroner</option>
-														<option value="PKR">Pakistan Rupees</option>
-														<option value="XPD">Palladium Ounces</option>
-														<option value="PHP">Philippines Pesos</option>
-														<option value="XPT">Platinum Ounces</option>
-														<option value="PLZ">Poland Zloty</option>
-														<option value="PTE">Portugal Escudo</option>
-														<option value="ROL">Romania Leu</option>
-														<option value="RUR">Russia Rubles</option>
-														<option value="SAR">Saudi Arabia Riyal</option>
-														<option value="XAG">Silver Ounces</option>
-														<option value="SGD">Singapore Dollars</option>
-														<option value="SKK">Slovakia Koruna</option>
-														<option value="ZAR">South Africa Rand</option>
-														<option value="KRW">South Korea Won</option>
-														<option value="ESP">Spain Pesetas</option>
-														<option value="XDR">Special Drawing Right (IMF)</option>
-														<option value="SDD">Sudan Dinar</option>
-														<option value="SEK">Sweden Krona</option>
-														<option value="CHF">Switzerland Francs</option>
-														<option value="TWD">Taiwan Dollars</option>
-														<option value="THB">Thailand Baht</option>
-														<option value="TTD">Trinidad and Tobago Dollars</option>
-														<option value="TRL">Turkey Lira</option>
-														<option value="VEB">Venezuela Bolivar</option>
-														<option value="ZMK">Zambia Kwacha</option>
-														<option value="EUR">Euro</option>
-														<option value="XCD">Eastern Caribbean Dollars</option>
-														<option value="XDR">Special Drawing Right (IMF)</option>
-														<option value="XAG">Silver Ounces</option>
-														<option value="XAU">Gold Ounces</option>
-														<option value="XPD">Palladium Ounces</option>
-														<option value="XPT">Platinum Ounces</option>
-													</lightning:select>
+                                                    <lightning:input label="{!$Label.c.Sales_Office}" value="{!v.wrapperList.opp.SalesOffice__c}" aura:id="path_4_Fields" disabled="true" required="true" />
+                                                    <!--<lightning:select label="{!$Label.c.Sales_Office}" value="{!v.selectedSalesOffice}" aura:id="path_4_Fields" required="true">-->
+														<!--&lt;!&ndash;<option text="{!v.salesoffval}" value="{!v.salesoffval}"></option>&ndash;&gt;-->
+                                                        <!--<option value="">Please select</option>-->
+                                                        <!--<aura:iteration items="{!v.SalesOfficeList}" var="itemSales">-->
+															<!--&lt;!&ndash;<option value="{!item.value}">{!item.label}</option>&ndash;&gt;-->
+															<!--<option text="{!itemSales.key}" value="{!itemSales.value}" selected="{!itemSales.Selected}"/>-->
+														<!--</aura:iteration>-->
+													<!--</lightning:select>-->
 												</div>
-												<div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">-->
-													<!-- <lightning:input type="text" pattern="^[a-zA-Z0-9]{2,10}$" messageWhenPatternMismatch="Enter valid data" label="Sales Made by" name="zSalesMade" value="{!v.zSalesMade}" /> -->
-													<lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade" disabled="disable" value="{!v.wrapperList.Quote.SalesMadeby__c}">
-                                                        <!--<option value="" selected="selected">Please Select </option>
-                                                        <option value="Lisa">Lisa</option>-->
-													</lightning:input>
-
-                                                    <c:OwnerChange recordId="{!v.wrapperList.quote.Id}" ParentObjectApi="Apttus_Proposal__Proposal__c"/>
-
+												<div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">
+													<div class="overllappingElement">
+														<lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade" value="{!v.wrapperList.Quote.SalesMadeby__r.name}">
+															<!--<option value="" selected="selected">Please Select </option><option value="Lisa">Lisa</option>-->
+														</lightning:input>
+														<c:OwnerChange recordId="{!v.wrapperList.quote.Id}" ParentObjectApi="Apttus_Proposal__Proposal__c"/>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -958,24 +451,31 @@
 									<fieldset class="slds-form-element">
 										<div class="slds-form-element__group">
 											<div class="slds-form-element__row">
-												<!--<div class="slds-form-element slds-size_1-of-1">
-                                                    <lightning:textarea name="zSpecialRequirement" value="{!v.zSpecialRequirement}" label="Special Requirements" placeholder="" /> </div>-->
-											<div class="slds-form-element slds-size_1-of-1">
-                                                
-                                                <lightning:select label="{!$Label.c.Booking_Type}" aura:id="path_4_Field" onchange="{!c.getSelectedBookingType}">
-														<option text="{!v.pickBookingType}" value="{!v.pickBookingType}" ></option>
-                                                        <aura:iteration items="{!v.BookingTypeValue}" var="item">	
-   															<option value="{!item.value}">{!item.label}</option>
-                                                            
-														</aura:iteration>
-													</lightning:select>
-                                                
-                                                <!--<lightning:select label="{!$Label.c.Booking_Type}" aura:id="path_4_Fields" name="bookingtype" value="{!v.wrapperList.Quote.BookingType__c}">
-											<aura:iteration items="{!v.BookingType}" var="item">
-												<option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /> </aura:iteration>
-										</lightning:select>-->
-                                                </div>
-                                            </div>
+												<!--<div class="slds-form-element slds-size_1-of-1"><lightning:textarea name="zSpecialRequirement" value="{!v.zSpecialRequirement}" label="Special Requirements" placeholder="" /></div>-->
+												<div class="slds-form-element slds-size_1-of-1">
+													<!--<lightning:select label="{!$Label.c.Booking_Type}" aura:id="path_4_Fields" name="bookingtype" value="{!v.wrapperList.Quote.BookingType__c}"><aura:iteration items="{!v.BookingType}" var="item"><option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /></aura:iteration></lightning:select>-->
+													<div class="slds-grid slds-p-bottom_small">
+														<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+															<lightning:input label="{!$Label.c.Brochure}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochure" value="{!v.wrapperList.PriceList.Year__c}" />
+														</div>
+														<div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">
+															<lightning:input label="{!$Label.c.Brochure_Season}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochureSeason" value="{!v.wrapperList.PriceList.Version__c}" />
+														</div>
+													</div>
+													<div class="slds-grid  slds-p-bottom_small">
+														<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+															<lightning:select label="{!$Label.c.Currency}" value="{!v.selectedCurrency}" aura:id="path_4_Fields" disabled="true" required="true">
+																<!--<option text="{!v.pickCurrency}" value="{!v.pickCurrency}"></option>-->
+                                                                <option value="">Please select</option>
+                                                                <aura:iteration items="{!v.CurrencyList}" var="itemCurrency">
+																	<!--<option value="{!item.value}">{!item.label}</option>-->
+																	<option text="{!itemCurrency.key}" value="{!itemCurrency.value}" selected="{!itemCurrency.Selected}"/>
+																</aura:iteration>
+															</lightning:select>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</fieldset>
 								</div>
@@ -985,278 +485,14 @@
 							<div class="slds-float_right slds-p-right_x-small">
 								<ui:button aura:id="prev4" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> Back </span>
+										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> Back 																																																																																																												
+									</span>
 								</ui:button>
 								<ui:button aura:id="next4" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext4}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue </span>
+										<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> Finish Booking
+									</span>
 								</ui:button>
-							</div>
-						</div>
-					</div>
-					<div aria-labelledby="path-5" class="slds-path__content slds-hide" aura:id="path-content-5" role="tabpanel">
-						<div class="slds-path__coach slds-grid">
-							<div class="slds-path__keys ">
-								<article class="slds-card slds-p-around_medium fixedHeight">
-									<div class="text-alteration" style="padding: 0.5rem;background: rgb(0, 111, 211);border-radius: 4px;">
-										<div class="slds-text-color_inverse">
-											<lightning:icon size="x-small" iconName="utility:announcement" class="icon_color_white" /> &nbsp; PERSONALIZE YOUR DETAIL</div>
-									</div>
-									<!-- <aura:if isTrue="{!v.zNickName.length > 0}">
-										<table class="slds-p-around_xx-small slds-m-top_medium">
-											<tr>
-												<th class="slds-form-element slds-size_1-of-1">Nick Name</th>
-											</tr>
-											<tr>
-												<td>{!v.zNickName}</td>
-											</tr>
-										</table>
-									</aura:if> -->
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">First Name</th>
-											<th class="slds-form-element slds-size_1-of-3">Middle Name</th>
-											<th class="slds-form-element slds-size_1-of-3">Last Name</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.FirstName}</td>
-											<aura:if isTrue="{!v.wrapperList.personAcc.MiddleName > 0}">
-												<td>{!v.wrapperList.personAcc.MiddleName}</td>
-												<aura:set attribute="else">
-													<td></td>
-												</aura:set>
-											</aura:if>
-											<td>{!v.wrapperList.personAcc.LastName}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">Age</th>
-											<th class="slds-form-element slds-size_1-of-3">DOB</th>
-											<th class="slds-form-element slds-size_1-of-3">Gender</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.age}</td>
-											<td>{!v.wrapperList.personAcc.PersonBirthdate}</td>
-											<td>{!v.wrapperList.personAcc.Gender__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<!-- <th class="slds-form-element slds-size_1-of-3">Profession</th> -->
-											<th class="slds-form-element slds-size_1-of-3">Nick Name</th>
-											<th class="slds-form-element slds-size_1-of-3">Country of residence</th>
-											<!-- <th class="slds-form-element slds-size_1-of-3">Region</th> -->
-										</tr>
-										<tr>
-											<!-- <td>{!v.zProfessionOther}</td> -->
-											<td>{!v.wrapperList.personAcc.NickName__c}</td>
-											<td>{!v.wrapperList.personAcc.PersonMailingCountry}</td>
-											<!-- <td>{!v.zRegion}</td> -->
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-1">Address</th>
-										</tr>
-										<tr>
-											<td style="word-break: break-all;">{!v.wrapperList.personAcc.PersonMailingStreet}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">PostalCode</th>
-											<th class="slds-form-element slds-size_1-of-3">City</th>
-											<th class="slds-form-element slds-size_1-of-3">State</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PersonMailingPostalCode}</td>
-											<td>{!v.wrapperList.personAcc.PersonMailingCity}</td>
-											<td>{!v.wrapperList.personAcc.PersonMailingState}</td>
-										</tr>
-									</table>
-								</article>
-							</div>
-							<div class="slds-path__keys ">
-								<article class="slds-card slds-p-around_medium fixedHeight">
-									<div class="text-alteration" style="padding: 0.5rem;background: rgb(0, 111, 211);border-radius: 4px;">
-										<div class="slds-text-color_inverse">
-											<lightning:icon size="x-small" iconName="utility:omni_channel" class="icon_color_white" /> &nbsp; ENGLISH DETAILS </div>
-									</div>
-									<table class="slds-p-around_xx-small  slds-m-top_medium">
-										<tr>
-											<!-- <th class="slds-form-element slds-size_1-of-3">Native language</th> -->
-											<th class="slds-form-element slds-size_1-of-2">English First Name</th>
-											<th class="slds-form-element slds-size_1-of-2">English Last Name</th>
-										</tr>
-										<tr>
-											<!-- <td>{!v.Language}</td> -->
-											<td>{!v.wrapperList.personAcc.FirstNameEn__c}</td>
-											<td>{!v.wrapperList.personAcc.LastNameEn__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">English Address</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PersonOtherStreet}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">English Postal Code</th>
-											<th class="slds-form-element slds-size_1-of-3">English City</th>
-											<!--<th class="slds-form-element slds-size_1-of-3">English State</th>-->
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PersonOtherPostalCode}</td>
-											<td>{!v.wrapperList.personAcc.PersonOtherCity}</td>
-											<!--<td>{!v.wrapperList.personAcc.ShippingState}</td>-->
-										</tr>
-									</table>
-								</article>
-							</div>
-						</div>
-						<div class="slds-path__coach slds-grid">
-							<div class="slds-path__keys slds-p-around_medium">
-								<article class="slds-card slds-p-around_medium fixedHeight">
-									<div class="text-alteration" style="padding: 0.5rem;background: rgb(0, 111, 211);border-radius: 4px;">
-										<div class="slds-text-color_inverse">
-											<lightning:icon size="x-small" iconName="utility:questions_and_answers" class="icon_color_white" /> &nbsp; PERSONALIZE YOUR PRELIMINARY DETAILS</div>
-									</div>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-3">Primary Email ID</th>
-											<th class="slds-form-element slds-size_1-of-3">Secondary Email ID</th>
-											<th class="slds-form-element slds-size_1-of-3">Parent Email ID</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PersonEmail}</td>
-											<td>{!v.wrapperList.personAcc.Email2__c}</td>
-											<td>{!v.wrapperList.personAcc.ParentEmail__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-2">Nationality</th>
-											<th class="slds-form-element slds-size_1-of-2">Country of Birth</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.Nationality__c}</td>
-											<!--<td>{!v.wrapperList.personAcc.BirthCountry__c}</td>-->
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-1">ID number of the Account</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PersonalID__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-2">Passport Type</th>
-											<th class="slds-form-element slds-size_1-of-2">Passport Number</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PassportType__c}</td>
-											<td>{!v.wrapperList.personAcc.PassportNumber__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-2">Passport Issue Date</th>
-											<th class="slds-form-element slds-size_1-of-2">Passport Expiry Date</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.personAcc.PassportIssueDate__c}</td>
-											<td>{!v.wrapperList.personAcc.PassportExpiryDate__c}</td>
-										</tr>
-									</table>
-								</article>
-							</div>
-							<div class="slds-path__keys slds-p-around_medium">
-								<article class="slds-card slds-p-around_medium fixedHeight">
-									<div class="text-alteration" style="padding: 0.5rem;background: rgb(0, 111, 211);border-radius: 4px;">
-										<div class="slds-text-color_inverse">
-											<lightning:icon size="x-small" iconName="utility:ad_set" class="icon_color_white" /> &nbsp; PERSONALIZE YOUR BOOKING INFORMATION DETAILS</div>
-									</div>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<!-- <th class="slds-form-element slds-size_1-of-3">Booking Code</th> -->
-											<th class="slds-form-element slds-size_1-of-2">Booking Channel</th>
-											<!-- <th class="slds-form-element slds-size_1-of-2">Booking School</th> -->
-											<th class="slds-form-element slds-size_1-of-2">Sales office</th>
-										</tr>
-										<tr>
-											<!-- <td>{!v.zBookingCode}</td> -->
-											<td>{!v.wrapperList.Quote.BookingChannel__c}</td>
-											<!-- <td>{!v.zBookingSchool}</td> -->
-											<td>{!v.wrapperList.opp.SalesOffice__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-2">Brochure</th>
-											<th class="slds-form-element slds-size_1-of-2">Brochure Season</th>
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.PriceList.Year__c}</td>
-											<td>{!v.wrapperList.PriceList.Version__c}</td>
-										</tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<th class="slds-form-element slds-size_1-of-2">Currency</th>
-											<th class="slds-form-element slds-size_1-of-2">Sales Made by</th>
-                                            <th class="slds-form-element slds-size_1-of-2">Booking Type</th>
-
-										</tr>
-										<tr>
-											<td>{!v.wrapperList.Quote.CurrencyIsoCode}</td>
-											<td>{!v.wrapperList.opp.Owner.Name}</td>
-                                            <td>{!v.wrapperList.Quote.BookingType__c}</td>
-                                        </tr>
-									</table>
-									<table class="slds-p-around_xx-small slds-m-top_medium">
-										<tr>
-											<!--<th class="slds-form-element slds-size_1-of-1">Special Requirements</th>
-										</tr>
-										<tr>
-											<td>{!v.zSpecialRequirement}</td>-->
-										</tr>
-									</table>
-								</article>
-							</div>
-						</div>
-						<div class="slds-clearfix slds-p-top_medium">
-							<div class="slds-grid">
-								<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top: 20px;">
-									<div class="slds-float_left slds-p-left_medium">
-										<ui:button aura:id="prev5" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
-											<span class="slds-text-not-selected">
-												<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> Back </span>
-										</ui:button>
-									</div>
-								</div>
-								<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-									<div class="slds-grid">
-										<div class="slds-form-element slds-size_1-of-2 slds-p-left_medium" style="margin-top:0">
-											<!--{!$Label.c.Booking_Information}<lightning:select >
-												<option value="Pre Application">Pre Application</option>
-												<option value="Booking">Booking</option>
-											</lightning:select>-->
-										</div>
-										<div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top: 20px;">
-											<ui:button buttonTitle="Finish Booking" class="slds-button_brand slds-button slds-float_right  slds-button_neutral slds-not-selected" press="{!c.finishBooking}">
-												<span class="slds-text-not-selected">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> Finish Booking </span>
-											</ui:button>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
