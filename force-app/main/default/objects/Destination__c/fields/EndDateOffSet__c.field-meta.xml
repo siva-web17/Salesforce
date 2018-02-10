@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>EndDateOffSet__c</fullName>
     <defaultValue>1</defaultValue>
-    <description>This Field Will Specify the End Date off set for Accommodation and other related articles</description>
+    <description>This Field Will Specify the End Date off set for Accommodation and other related articles.</description>
     <externalId>false</externalId>
     <label>EndDate Off-Set</label>
     <precision>18</precision>

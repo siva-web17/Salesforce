@@ -11,39 +11,43 @@ Modification Log   :
 *******************************************************************************/
 
 public class QuoteProposalsHelper {
-
-    /**In this Method we will be used to update Proposal Market,program,product
-       from opportunity and also fields related to Translation record for Translation
-       we will also auto populate the price list based on market and program before inserting the proposal record**/
+  //In this Method we will be used to update Proposal Market,program,product
+    // from opportunity and also fields related to Translation record for Translation
+    //we will also auto populate the price list based on market and program before inserting the proposal record
     public static void updateQuoteProposalFieldsBeforeInsert(List<Apttus_Proposal__Proposal__c> quoteProposalNewList) {
         List<string> marketStrings = new List<string>();
         List<string> uniqueStrings = new List<string>();
         List<Id> oppIdList = new List<Id>();
         Id currentRecordId;
         try {
-            System.debug('######################### helper method called');
+
             for (Apttus_Proposal__Proposal__c proposalRecord : quoteProposalNewList) {
                 currentRecordId = proposalRecord.Apttus_Proposal__Opportunity__c;
                 marketStrings.add(proposalRecord.APTS_Market__c);
-                System.debug('######################### marketStrings'+proposalRecord.APTS_Market__c);
+                //System.debug('######################### marketStrings'+proposalRecord.APTS_Market__c);
                 oppIdList.add(proposalRecord.Apttus_Proposal__Opportunity__c);
                 uniqueStrings.add(proposalRecord.Market__c +proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE');
-                System.debug('######################### Unique string'+proposalRecord.Market__c +proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE');
+                //System.debug('######################### Unique string'+proposalRecord.Market__c +proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE');
             }
             Id recordTypeId = GetRecordTypeId(System.Label.StaticTextTranslation);
-            System.debug('######################### recordTypeId '+recordTypeId);
-            System.debug('######################### marketStrings '+marketStrings.size());
+            //System.debug('######################### marketStrings '+marketStrings.size());
             if (marketStrings.size() > 0 && (recordTypeId != NULL) && uniqueStrings.size()>0) {
+
                 String uniqueRecord = '';
                 Map<string, Translation__C> translationsMap = TranslationsSelector.getTranslationRecDetails(true, marketStrings, recordTypeId, null);
-                Map<Id, Opportunity> opportunityMap = OpportunitiesSelector.getOpportunityMap(oppIdList);
-                Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
+                Map<Id, Opportunity> opportunityMap = OpportunitiesSelector.getopportunityMap(oppIdList);
+
+                Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
                 for (Apttus_Proposal__Proposal__c proposalRecord : quoteProposalNewList) {
+                    //System.debug('######################### Apttus_Proposal__Opportunity__c'+proposalRecord.Apttus_Proposal__Opportunity__c);
                     uniqueRecord = proposalRecord.APTS_Market__c + ' '+proposalRecord.APTS_Language__c;
                     if (opportunityMap.containsKey(proposalRecord.Apttus_Proposal__Opportunity__c)) {
+
                         proposalRecord.Market__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Market__c;
                         proposalRecord.Program__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Program__c;
                         proposalRecord.Product__c =opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Product__c;
+                        proposalRecord.SalesMadeby__c =opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).owner.Id;
+                        //System.debug('######################### proposalRecord'+proposalRecord);
                     }
                     if (!translationsMap.containsKey(uniqueRecord)) {
                         String[] defaultArrayString=Utility.splitString(Label.DefaultTranslation,'-');
@@ -52,10 +56,11 @@ public class QuoteProposalsHelper {
                         }
                     }
 
-                    System.debug('######################### uniqueRecord'+uniqueRecord);
+                    //System.debug('######################### uniqueRecord'+uniqueRecord);
                     if (translationsMap.containsKey(uniqueRecord)) {
+                        //System.debug('######################### It has Unique Key');
                         for (Schema.FieldSetMember f : SObjectType.Translation__c.FieldSets.StaticTextTranslationFieldSet.getFields()) {
-                            System.debug('######################### getFieldPath'+translationsMap.get(uniqueRecord).get(f.getFieldPath()));
+                                //System.debug('######################### getFieldPath'+translationsMap.get(uniqueRecord).get(f.getFieldPath()));
                             proposalRecord.put(f.getFieldPath(), translationsMap.get(uniqueRecord).get(f.getFieldPath()));
                         }
                     }
@@ -64,22 +69,26 @@ public class QuoteProposalsHelper {
                         proposalRecord.Apts_Price_List__c=priceListMap.get(proposalRecord.Market__c+proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE').Id;
                         proposalRecord.Apttus_QPConfig__PriceListId__c = proposalRecord.Apts_Price_List__c;
                     }
+                    //System.debug('######################### last line');
+
                 }
             }
         } catch (exception ex) {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeCreation', currentRecordId);
         }
+
     }
 
-    //This method will get the record Id based on record name which is stored in custom label
+
+//This method will get the record Id based on record name which is stored in custom label
     Public static Id GetRecordTypeId(String recordTypeName) {
         return Schema.SObjectType.Translation__C.RecordTypeInfosByName.get(recordTypeName).RecordTypeId;
     }
 
-    /**In this Method we will be used to update Proposal Market,program,product
-       from opportunity and also fields related to Translation record for Translation
-       we will also auto populate the price list based on market and program before updating the proposal record**/
+    //In this Method we will be used to update Proposal Market,program,product
+    // from opportunity and also fields related to Translation record for Translation
+    //we will also auto populate the price list based on market and program before updating the proposal record
     public static void updateQuoteProposalFieldsBeforeUpdate(Map<Id,Apttus_Proposal__Proposal__c> oldQuoteproposalMap, List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
         Id currentRecordId;
         List<string> uniqueStrings = new List<string>();
@@ -88,37 +97,57 @@ public class QuoteProposalsHelper {
                 currentRecordId = proposalRecord.Id;
                 uniqueStrings.add(proposalRecord.Market__c +proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE');
                 proposalRecord.Apttus_QPConfig__PriceListId__c = proposalRecord.Apts_Price_List__c;
+
             }
             if (uniqueStrings.size()>0 ) {
-                Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
-                for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalList) {
-                    currentRecordId = proposalRecord.Id;
-                    if( oldQuoteproposalMap.size()>0 && oldQuoteproposalMap.containsKey(proposalRecord.Id)) {
-                        if(oldQuoteproposalMap.get(proposalRecord.Id).Market__c!= proposalRecord.Market__c || oldQuoteproposalMap.get(proposalRecord.Id).Program__c!= proposalRecord.Program__c) {
-                            if (priceListMap.size() > 0 && priceListMap.containsKey(proposalRecord.Market__c+proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE')) {
-                                proposalRecord.Apts_Price_List__c=priceListMap.get(proposalRecord.Market__c+proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE').Id;
-                                proposalRecord.Apttus_QPConfig__PriceListId__c = proposalRecord.Apts_Price_List__c;
+
+                    Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
+                    for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalList) {
+                        currentRecordId = proposalRecord.Id;
+                        if( oldQuoteproposalMap.size()>0 && oldQuoteproposalMap.containsKey(proposalRecord.Id))
+                        {
+                            System.debug('######################### First If in update');
+                            if(oldQuoteproposalMap.get(proposalRecord.Id).Market__c!= proposalRecord.Market__c || oldQuoteproposalMap.get(proposalRecord.Id).Program__c!= proposalRecord.Program__c)
+                            {
+                                System.debug('######################### Second If in update');
+                                if (priceListMap.size()>0 && priceListMap.containsKey(proposalRecord.Market__c+proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE')) {
+                                    proposalRecord.Apts_Price_List__c=priceListMap.get(proposalRecord.Market__c+proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE').Id;
+                                    proposalRecord.Apttus_QPConfig__PriceListId__c = proposalRecord.Apts_Price_List__c;
+                                    System.debug('######################### Third If in update');
+                                }
                             }
+
                         }
+
                     }
-                }
+
+
             }
-        }
-        catch (Exception ex) {
+
+
+        } catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeUpdate', currentRecordId);
         }
+
     }
     public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
         System.debug('######################### Invoke');
-  				for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalList) {
-                    System.debug('######################### Invoke IntegrationStatus__c :'+proposalRecord.IntegrationStatus__c);
-                        if( proposalRecord.IntegrationStatus__c=='Sent To Poseidon' )
+  				for (Apttus_Proposal__Proposal__c proposalIntegration : newQuoteproposalList) {
+                    System.debug('######################### Invoke IntegrationStatus__c :'+proposalIntegration.IntegrationStatus__c);
+                        if( proposalIntegration.IntegrationStatus__c==System.Label.Sent_To_Poseidon)
                         {
-                              //InvokeScribe.InvokeScribeAfterFinishBooking_Async(proposalRecord.Id);
+                              InvokeScribe.InvokeScribeAfterFinishBooking_Async(proposalIntegration.Id);
 
                         }
 
                     }
 }
+    public static void preventQuoteProposalDelete(List<Apttus_Proposal__Proposal__c> oldQuoteProposals){
+        for(Apttus_Proposal__Proposal__c prop : oldQuoteProposals){
+            if(prop.Apttus_Proposal__Approval_Stage__c!=Label.QuoteProposalStatusesToDelete) {
+                prop.addError(String.format(Label.DeleteQuoteProposalErrorMessage, new List<String>{Label.QuoteProposalStatusesToDelete}));
+            }
+        }
+    }
 }
