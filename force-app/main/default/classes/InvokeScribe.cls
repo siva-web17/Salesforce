@@ -2,14 +2,24 @@ public class InvokeScribe {
 
     @future (callout=true)    
     public static void InvokeScribeAfterFinishBooking_Async(id QuoteID) {
-        system.debug('Inside invoke scribe method');
+        Id currentrecord;
+        try{
+        
         InvokeScribeAfterFinishBooking(QuoteID);
+        system.debug('Inside invoke scribe method Async  :'+QuoteID);
+        }
+            catch(Exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'InvokeScribe', 'InvokeScribeAfterFinishBooking', currentrecord);
+            System.debug('Dml exception :'  +ex.getMessage());
+        }
+            
     }
     public static void InvokeScribeAfterFinishBooking(id QuoteID) {
         Id currentrecord;
-        try{
-            system.debug('Inside invoke scribe method');
+        try{            
                         Apttus_Proposal__Proposal__c quotation = new Apttus_Proposal__Proposal__c();
+           				system.debug('Inside invoke scribe method   :'+quotation);
                         quotation = [select id,Apttus_Proposal__Opportunity__c
                                      from Apttus_Proposal__Proposal__c where Id=:QuoteID LIMIT 1];
                         //Construct HTTP request and response
