@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InfoMeetingID__c</fullName>
-    <description>Captures the unique integer value for the info meeting</description>
+    <description>Its an autonumber field to link each campaign with a unique integer value</description>
+    <displayFormat>{0000}</displayFormat>
     <externalId>false</externalId>
     <label>Info Meeting ID</label>
-    <precision>18</precision>
-    <required>false</required>
-    <scale>0</scale>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>AutoNumber</type>
 </CustomField>
