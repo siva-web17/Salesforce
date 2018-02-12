@@ -112,7 +112,7 @@
     </customValue>
     <customValue>
         <fullName>NO</fullName>
-        <default>false</default>
+        <default>true</default>
         <label>Norwegian</label>
     </customValue>
     <customValue>
