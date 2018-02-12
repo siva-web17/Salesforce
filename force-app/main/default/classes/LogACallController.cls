@@ -10,7 +10,7 @@ public with sharing class LogACallController {
         try{
             if(recordId.getSobjectType() == Lead.getSObjectType()){
                 Lead lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
-                return JSON.serialize(new LogACallData(lead.Id,lead.CloseDate__c,lead.LikelihoodToBook__c,lead.HearAboutUs__c,lead.Destinations__c,lead.PreferredDuration__c,lead.WhenYear__c,lead.WhenMonth__c, true,0,lead.Program__c));
+               return JSON.serialize(new LogACallData(lead.Id,lead.CloseDate__c,lead.LikelihoodToBook__c,lead.HearAboutUs__c,lead.Destinations__c,lead.PreferredDuration__c,lead.WhenYear__c,lead.WhenMonth__c, true,0,lead.Program__c));
             }
             else if(recordId.getSobjectType() == Opportunity.getSObjectType()) {
                 Opportunity opp = OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
@@ -70,7 +70,7 @@ public with sharing class LogACallController {
         }
     }
 
-    @AuraEnabled
+     @AuraEnabled
     public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
@@ -237,25 +237,35 @@ public with sharing class LogACallController {
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
 
                 // If an Opportunity is closed revive the Opportunity
-                if(opp.StageName == Label.SalesClosed ){
+                     if(opp.StageName == Label.SalesClosed ){
                     opp.TFBypassStageValidation__c = true;
                     opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                   //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
+                    date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
+                    if(bookOn == NULL||opp.CloseDate == bookOn.date()){
+                        opp.CloseDate = date.today().addmonths(2);
+                    }
+                    else{
+                        opp.CloseDate = bookOn.date();
+                    }
+                    
+                    update opp;
+                }
+                else {
+                    if(callResult.toUpperCase() == Label.CloseOpp.toUpperCase()){
+                      opp.CloseDate = system.today();
+                    }
+                    else if(bookOn != NULL){
+                        opp.CloseDate = bookOn.date();
+                    }
                 }
 
-                opp.LikelihoodToBook__c = likelihoodToBook;
-                opp.HearAboutUs__c = hearAboutUs;
-                opp.Destinations__c = destination;
-                opp.PreferredDuration__c = duration;
-                if(bookOn != NULL){
-                    opp.CloseDate = bookOn.date();
-                }
-                opp.WhenYear__c = whenYear;
-                opp.WhenMonth__c = whenMonth;
-
-                update opp;
-
-                if(opp.StageName == Label.SalesClosed ){
-                    opp.CloseDate = bookOn != NULL?bookOn.date():date.today().addmonths(2);
+                    opp.LikelihoodToBook__c = likelihoodToBook;
+                    opp.HearAboutUs__c = hearAboutUs;
+                    opp.Destinations__c = destination;
+                    opp.PreferredDuration__c = duration;
+                    opp.WhenYear__c = whenYear;
+                    opp.WhenMonth__c = whenMonth;
                     opp.TFBypassStageValidation__c = false;
                     update opp;
                 }
@@ -302,7 +312,6 @@ public with sharing class LogACallController {
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;
             task.TaskSubtype = LogACallHelper.getTaskSubType(callAction);
-            task.TaskSubtype ='Call';
             task.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.getSObjectType()).get(Label.CallTaskRecordTypeDeveloperName).Id;
             if(recordId.getSobjectType() == Lead.getSObjectType()&& response.Result == null) {
                 task.WhoId = recordId;
