@@ -1624,15 +1624,15 @@
     <picklistValues>
         <picklist>MeetingType__c</picklist>
         <values>
-            <fullName>Info Meeting - Offline</fullName>
+            <fullName>INF</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Info Meeting - Online</fullName>
+            <fullName>ONM</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Open House</fullName>
+            <fullName>OHO</fullName>
             <default>false</default>
         </values>
     </picklistValues>
