@@ -128,6 +128,14 @@
         <value>Brochure</value>
     </labels>
     <labels>
+        <fullName>BrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BrochureRequest</shortDescription>
+        <value>BR</value>
+    </labels>
+    <labels>
         <fullName>Brochure_Season</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -194,6 +202,14 @@
         <value>Called Us</value>
     </labels>
     <labels>
+        <fullName>CampaignBrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CampaignBrochureRequest</shortDescription>
+        <value>CBR</value>
+    </labels>
+    <labels>
         <fullName>Campaign_Name</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -242,7 +258,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-        <value>0120E0000006vGl</value>
+        <value>0120E0000002uaO</value>
     </labels>
     <labels>
         <fullName>Days</fullName>
@@ -297,6 +313,14 @@
         <protected>false</protected>
         <shortDescription>Discount Reason</shortDescription>
         <value>Discount Reason</value>
+    </labels>
+    <labels>
+        <fullName>EFCOM</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EF.COM</shortDescription>
+        <value>Ef.com</value>
     </labels>
     <labels>
         <fullName>EditAccessLevel</fullName>
@@ -354,11 +378,12 @@
         <value>End Date</value>
     </labels>
     <labels>
-        <fullName>End_Point_URL</fullName>
+        <fullName>ExcelImport</fullName>
+        <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
+        <shortDescription>ExcelImport</shortDescription>
+        <value>Excel Import</value>
     </labels>
     <labels>
         <fullName>ExcelImportPublicGroupName</fullName>
@@ -439,6 +464,22 @@
         <protected>false</protected>
         <shortDescription>HomePhone</shortDescription>
         <value>Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>IR</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IR</shortDescription>
+        <value>IR</value>
+    </labels>
+    <labels>
+        <fullName>InfoMeeting</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InfoMeeting</shortDescription>
+        <value>InfoMeeting</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -820,6 +861,14 @@
         <protected>false</protected>
         <shortDescription>OppStageInactive</shortDescription>
         <value>InActive</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityBookingStage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityBookingStage</shortDescription>
+        <value>Booking</value>
     </labels>
     <labels>
         <fullName>OpportunityStageFollowUp</fullName>
@@ -1366,5 +1415,35 @@
         <protected>false</protected>
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
+    </labels>
+    <labels>
+        <fullName>DeleteQuoteProposalErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
+        <value>Only Quote/Proposal records with {0} status can be deleted</value>
+    </labels>
+   <labels>
+        <fullName>QuoteProposalStatusesToDelete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
+        <value>Draft</value>
+    </labels>
+    <labels>
+        <fullName>Sent_To_Poseidon</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>CountryOfBirth</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is created to select the country of birth.</shortDescription>
+        <value>Country Of Birth</value>
     </labels>
 </CustomLabels>

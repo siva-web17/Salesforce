@@ -187,7 +187,7 @@
     <picklistValues>
         <picklist>ResultType__c</picklist>
         <values>
-            <fullName>Call Appointment</fullName>
+            <fullName>Appointment</fullName>
             <default>false</default>
         </values>
         <values>
