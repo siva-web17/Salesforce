@@ -1416,4 +1416,34 @@
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
     </labels>
+    <labels>
+        <fullName>DeleteQuoteProposalErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
+        <value>Only Quote/Proposal records with {0} status can be deleted</value>
+    </labels>
+   <labels>
+        <fullName>QuoteProposalStatusesToDelete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
+        <value>Draft</value>
+    </labels>
+    <labels>
+        <fullName>Sent_To_Poseidon</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>CountryOfBirth</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is created to select the country of birth.</shortDescription>
+        <value>Country Of Birth</value>
+    </labels>
 </CustomLabels>
