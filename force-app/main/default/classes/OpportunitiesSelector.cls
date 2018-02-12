@@ -111,7 +111,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-                select id,Name,account.PersonDoNotCall,account.HasAddress__c,CreationMethod__c,SendBrochure__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
+                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
 //                        SELECT Id, WhoId, WhatId, Subject, Status,
 //                                FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,
 //                                CloseDate__c, IsExpressCall__c,RecordType.DeveloperName
