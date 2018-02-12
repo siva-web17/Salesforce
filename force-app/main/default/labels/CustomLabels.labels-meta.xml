@@ -537,6 +537,30 @@
         <value>Comments</value>
     </labels>
     <labels>
+        <fullName>LAC_Convert</fullName>
+        <categories>Convert</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Convert</shortDescription>
+        <value>Convert</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Convert_C</fullName>
+        <categories>Convert and Close</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Convert_C</shortDescription>
+        <value>Convert and Close</value>
+    </labels>
+    <labels>
+        <fullName>LAC_DATA_SUCCESS</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_DATA_SUCCESS</shortDescription>
+        <value>Data saved successfully</value>
+    </labels>
+    <labels>
         <fullName>LAC_Dest</fullName>
         <categories>LAC</categories>
         <language>en_US</language>
@@ -551,6 +575,22 @@
         <protected>false</protected>
         <shortDescription>Duration</shortDescription>
         <value>Duration</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ERROR_PAST_MSG</fullName>
+        <categories>Past date cannot be selected</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ERROR_PAST_MSG</shortDescription>
+        <value>Past date cannot be selected</value>
+    </labels>
+    <labels>
+        <fullName>LAC_FILL_VALID_INFO</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_FILL_VALID_INFO</shortDescription>
+        <value>Please fill your information correctly.</value>
     </labels>
     <labels>
         <fullName>LAC_HDYH</fullName>
