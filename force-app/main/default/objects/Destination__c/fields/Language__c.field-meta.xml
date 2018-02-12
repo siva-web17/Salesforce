@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Language__c</fullName>
-    <description>Basically we will store English/Non English  values in this field</description>
+    <description>Basically we will store English/Non English  values in this field.</description>
     <externalId>false</externalId>
     <label>Language</label>
     <length>255</length>

@@ -1,0 +1,3 @@
+Business Object,Currency ISO Code,Description,Group Name,Two Column Attribute Display,Apttus_Config2__AttributeValueMatrixId__r.Matrix Name
+"Apttus_Config2__ProductAttributeValue__c","CHF","Used for LT Price Quote. The group of Attributes that we copy from LT course list","LT Course Attributes","false",""
+"Apttus_Config2__ProductAttributeValue__c","CHF","","AY Course Attributes","false",""

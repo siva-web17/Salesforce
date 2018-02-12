@@ -39,6 +39,7 @@
                 <behavior>Required</behavior>
                 <field>CurrencyIsoCode</field>
             </layoutItems>
+            
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

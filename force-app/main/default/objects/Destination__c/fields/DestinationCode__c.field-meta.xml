@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>DestinationCode__c</fullName>
-    <description>This field will store the destination Code for particular destination</description>
+    <description>This field will store the destination Code for particular destination.</description>
     <externalId>false</externalId>
     <label>Destination Code</label>
     <length>255</length>

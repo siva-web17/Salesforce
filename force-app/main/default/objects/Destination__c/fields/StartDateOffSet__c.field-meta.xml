@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>StartDateOffSet__c</fullName>
     <defaultValue>-1</defaultValue>
-    <description>This Field will specify the start date off set for Accommodation and other related articles</description>
+    <description>This Field will specify the start date off set for Accommodation and other related articles.</description>
     <externalId>false</externalId>
     <label>StartDate Off-Set</label>
     <precision>18</precision>
