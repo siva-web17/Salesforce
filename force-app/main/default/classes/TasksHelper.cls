@@ -117,8 +117,7 @@ public class TasksHelper {
         //Opportunity oppRecord = [select id, stagename from opportunity where id in: events.whatid];
 
         List<Event> eventsToBeProcessed = new List<Event>();
-        for (Event event : events) {
-            system.debug('insidefor>>>>');
+        for (Event event : events) {           
            // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
             if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting && event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest && event.Type != system.label.IR ){
                 system.debug('insideifprocessevent>>>>');
@@ -447,7 +446,7 @@ public class TasksHelper {
         boolean canSendBR = false;
         String temp = '';
         //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
-        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport || oppRecord.CreationMethod__c=='')))  : false;
+        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false;
         system.debug('canSendBR>>>'+canSendBR);
         if (!canSendBR) {
             return canSendBR;
