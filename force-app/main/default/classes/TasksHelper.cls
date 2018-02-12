@@ -447,7 +447,7 @@ public class TasksHelper {
         boolean canSendBR = false;
         String temp = '';
         //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
-        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!='Ef.com' && oppRecord.CreationMethod__c!='Excel Import'))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c=='Ef.com' || oppRecord.CreationMethod__c=='Excel Import' || oppRecord.CreationMethod__c=='')))  : false;
+        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport || oppRecord.CreationMethod__c=='')))  : false;
         system.debug('canSendBR>>>'+canSendBR);
         if (!canSendBR) {
             return canSendBR;
