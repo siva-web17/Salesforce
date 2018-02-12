@@ -3,7 +3,7 @@
     <fullName>WhenYear__c</fullName>
     <description>This field represents the Year selected in the 'When' field of Log a Call component</description>
     <externalId>false</externalId>
-    <label>When Year</label>
+    <label>When/Year</label>
     <length>10</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
