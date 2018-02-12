@@ -20599,7 +20599,7 @@
         <field>CRMC_PP__View_Category__c.CRMC_PP__Active__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <fieldPermissions>
+	<fieldPermissions>
         <editable>true</editable>
         <field>Campaign.ActualCost</field>
         <readable>true</readable>
@@ -20788,6 +20788,11 @@
         <editable>true</editable>
         <field>Campaign.ParentId</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Place__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -23871,6 +23876,31 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Source__c.AvailableforExcelImport__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Source__c.AvailableforManualEntry__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Source__c.IsActive__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Source__c.IsGlobal__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Source__c.SourceUniqueKey__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>StartDateSettings__mdt.DestinationCode__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -25009,9 +25039,9 @@
         <field>dupcheck__dcLayout__c.dupcheck__recordType__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <layoutAssignments>
-        <layout>Account-Account Layout</layout>
-    </layoutAssignments>
+        <layoutAssignments>
+	        <layout>Account-Account Layout</layout>
+    	</layoutAssignments>
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
         <recordType>Account.Company</recordType>
@@ -25192,6 +25222,9 @@
     </layoutAssignments>-->
     <layoutAssignments>
         <layout>Solution-Solution Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Source__c-Source Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>StartDateSettings__mdt-Start Date Settings Layout</layout>
@@ -25648,4 +25681,13 @@
         <enabled>true</enabled>
         <name>ViewHelpLink</name>
     </userPermissions>
+	<objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Source__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
 </Profile>
