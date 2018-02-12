@@ -21,7 +21,10 @@ public with sharing class LogACallData {
     public String WhenMonth{get;set;}
     @AuraEnabled
     public Boolean IsActive{get;set;}
-    public LogACallData(Id id,Date closeDate,String likelihoodToBook,String hearAboutUs,String destinations,String duration,String whenYear,String whenMonth, Boolean isActive){
+    @AuraEnabled
+    public Decimal NumberOfUnreachedCalls{get;set;}
+    public String Program{get;set;}
+    public LogACallData(Id id,Date closeDate,String likelihoodToBook,String hearAboutUs,String destinations,String duration,String whenYear,String whenMonth, Boolean isActive, Decimal numberOfUnreachedCalls,String program){
         this.Id = id;
         this.CloseDate = closeDate;
         this.LikelihoodToBook = likelihoodToBook;
@@ -31,5 +34,7 @@ public with sharing class LogACallData {
         this.WhenYear = whenYear;
         this.WhenMonth = whenMonth;
         this.IsActive = isActive;
+        this.NumberOfUnreachedCalls = numberOfUnreachedCalls;
+        this.Program = program;
     }
 }

@@ -16,8 +16,9 @@ public class Events {
     public static void onAfterInsert(List<Event>newItems) {
         List<Id> Ids = new List<Id>();
         Ids = TasksHelper.filterEventsRelatedToOppotunity(newItems);
-        if(Ids.size() > 0){
-            TasksHelper.convertActivitiesToTask(Ids);
+        List<Opportunity> opportunityRecord = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(Ids);
+        if(opportunityRecord.size()>0){
+            TasksHelper.convertActivitiesToTask(opportunityRecord);
         }
         
     }
@@ -25,8 +26,9 @@ public class Events {
     public static void onAfterUpdate(List<Event>newItems) {
         List<Id> Ids = new List<Id>();
         Ids = TasksHelper.filterEventsRelatedToOppotunity(newItems);
-        if(Ids.size() > 0){
-            TasksHelper.convertActivitiesToTask(Ids);
+        List<Opportunity> opportunityRecord = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(Ids);
+        if(opportunityRecord.size()>0){
+            TasksHelper.convertActivitiesToTask(opportunityRecord);
         }        
     }
     
