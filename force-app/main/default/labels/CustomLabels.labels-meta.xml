@@ -164,7 +164,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Call Appointment Call Result on Log an Action component</shortDescription>
-        <value>Call Appointment</value>
+        <value>Appointment</value>
     </labels>
     <labels>
         <fullName>CallBack</fullName>
