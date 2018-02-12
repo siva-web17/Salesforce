@@ -237,7 +237,7 @@ public with sharing class LogACallController {
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
 
                 // If an Opportunity is closed revive the Opportunity
-                     if(opp.StageName == Label.SalesClosed ){
+                if(opp.StageName == Label.SalesClosed ){
                     opp.TFBypassStageValidation__c = true;
                     opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
                    //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
@@ -260,15 +260,14 @@ public with sharing class LogACallController {
                     }
                 }
 
-                    opp.LikelihoodToBook__c = likelihoodToBook;
-                    opp.HearAboutUs__c = hearAboutUs;
-                    opp.Destinations__c = destination;
-                    opp.PreferredDuration__c = duration;
-                    opp.WhenYear__c = whenYear;
-                    opp.WhenMonth__c = whenMonth;
-                    opp.TFBypassStageValidation__c = false;
-                    update opp;
-                }
+                opp.LikelihoodToBook__c = likelihoodToBook;
+                opp.HearAboutUs__c = hearAboutUs;
+                opp.Destinations__c = destination;
+                opp.PreferredDuration__c = duration;
+                opp.WhenYear__c = whenYear;
+                opp.WhenMonth__c = whenMonth;
+                opp.TFBypassStageValidation__c = false;
+                update opp;
             }
 
             // If a call is reached on the Lead, convert the Lead to Opportunity directly
