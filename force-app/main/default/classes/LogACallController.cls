@@ -134,10 +134,17 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-    public static String getCallResults(String callAction){
+    public static String getCallResults(String callAction,Id recordId){
         try{
             Map<String,List<String>> dependentPicklists = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
-            return JSON.serialize(dependentPicklists.get(callAction));
+            Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
+            Integer closeIndex = -1;
+            List<String> callResults = dependentPicklists.get(callAction);
+
+            if((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())){
+                callResults.add(Label.CloseOpp.toUpperCase());
+            }
+            return JSON.serialize(callResults);
         }
         catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
@@ -218,6 +225,7 @@ public with sharing class LogACallController {
                 lead.HearAboutUs__c = hearAboutUs;
                 lead.Destinations__c = destination;
                 lead.PreferredDuration__c = duration;
+
                 if(bookOn != NULL){
                     lead.CloseDate__c = bookOn.date();
                 }
