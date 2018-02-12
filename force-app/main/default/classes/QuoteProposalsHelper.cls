@@ -37,7 +37,7 @@ public class QuoteProposalsHelper {
                 Map<string, Translation__C> translationsMap = TranslationsSelector.getTranslationRecDetails(true, marketStrings, recordTypeId, null);
                 Map<Id, Opportunity> opportunityMap = OpportunitiesSelector.getopportunityMap(oppIdList);
 
-                Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
+                Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
                 for (Apttus_Proposal__Proposal__c proposalRecord : quoteProposalNewList) {
                     //System.debug('######################### Apttus_Proposal__Opportunity__c'+proposalRecord.Apttus_Proposal__Opportunity__c);
                     uniqueRecord = proposalRecord.APTS_Market__c + ' '+proposalRecord.APTS_Language__c;
@@ -101,7 +101,7 @@ public class QuoteProposalsHelper {
             }
             if (uniqueStrings.size()>0 ) {
 
-                    Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
+                    Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
                     for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalList) {
                         currentRecordId = proposalRecord.Id;
                         if( oldQuoteproposalMap.size()>0 && oldQuoteproposalMap.containsKey(proposalRecord.Id))
