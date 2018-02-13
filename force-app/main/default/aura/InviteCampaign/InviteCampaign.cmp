@@ -48,14 +48,14 @@
                 </div>
 
                 <div class="slds-large-size_1-of-4 slds-p-around_medium slds-grid slds-wrap">
-                    <label class="slds-large-size_1-of-1" for="input-id-01">Meeting Type</label>
+                    <label class="slds-large-size_1-of-1" for="input-id-01">Type</label>
                     <div class="slds-large-size_1-of-1">
                         <c:MultiSelect options="{!v.meetingtypes}" selectedItems="{!v.selectedMeetingType}"/>
                     </div>
                 </div>
 
                 <div class="slds-large-size_1-of-4 slds-p-around_medium slds-grid slds-wrap">
-                    <label class="slds-large-size_1-of-1" for="input-id-01">Meeting City</label>
+                    <label class="slds-large-size_1-of-1" for="input-id-01">City</label>
                     <div class="slds-large-size_1-of-1">
                         <c:MultiSelect options="{!v.meetingcities}" selectedItems="{!v.selectedMeetingCity}"/>
                     </div>
@@ -63,14 +63,14 @@
 
                 <div class="slds-large-size_2-of-4 slds-form-element slds-hint-parent slds-form-element_edit">
                     <div class="slds-p-around_medium">
-                        <ui:inputDateTime aura:id="selectedfrom" label="Meeting DateFrom" class="field"
+                        <ui:inputDateTime aura:id="selectedfrom" label="DateFrom" class="field"
                                           value="{!v.selectedfrom}" displayDatePicker="true"/>
                     </div>
                 </div>
 
                 <div class="slds-large-size_2-of-4 slds-form-element slds-hint-parent slds-form-element_edit">
                     <div class="slds-p-around_medium">
-                        <ui:inputDateTime aura:id="selectedTo" label="Meeting DateTo" class="field"
+                        <ui:inputDateTime aura:id="selectedTo" label="DateTo" class="field"
                                           value="{!v.selectedTo}" displayDatePicker="true"/>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col" >
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
-                            <span class="slds-truncate" title="Name">Name</span>
+                            <span class="slds-truncate" title="Name">Campaign Name</span>
                             <div class="slds-icon_container">
 
                             </div>
@@ -115,13 +115,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
                             <span class="slds-truncate" title="Program">Program</span>
                             <div class="slds-icon_container">
-
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -134,33 +133,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
-                            <span class="slds-truncate" title="Meeting City">Meeting City</span>
+                            <span class="slds-truncate" title="Meeting Type">Type</span>
                             <div class="slds-icon_container">
-
-
-                            </div>
-                            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
-                        </a>
-                        <div class="slds-resizable">
-                            <label for="cell-resize-handle-30" class="slds-assistive-text">Account Name column
-                                width</label>
-                            <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text"
-                                   id="cell-resize-handle-30" tabindex="0"/>
-                            <span class="slds-resizable__handle">
-                <span class="slds-resizable__divider"></span>
-              </span>
-                        </div>
-                    </th>
-                    <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
-                        <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
-                            <span class="slds-assistive-text">Sort </span>
-                            <span class="slds-truncate" title="Meeting Type">Meeting Type</span>
-                            <div class="slds-icon_container">
-
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -174,13 +152,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
                             <span class="slds-truncate" title="Date From">Date From</span>
                             <div class="slds-icon_container">
-
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -193,12 +170,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
                             <span class="slds-truncate" title="Date To">Date To</span>
                             <div class="slds-icon_container">
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -212,6 +189,30 @@
               </span>
                         </div>
                     </th>
+
+                    <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                            <span class="slds-assistive-text">Sort </span>
+                            <span class="slds-truncate" title="Meeting City">City</span>
+                            <div class="slds-icon_container">
+                            </div>
+                            <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
+                        </a>
+                        <div class="slds-resizable">
+                            <label for="cell-resize-handle-30" class="slds-assistive-text">Account Name column
+                                width</label>
+                            <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text"
+                                   id="cell-resize-handle-30" tabindex="0"/>
+                            <span class="slds-resizable__handle">
+                <span class="slds-resizable__divider"></span>
+              </span>
+                        </div>
+                    </th>
+
+
+
+
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
@@ -230,13 +231,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
-                            <span class="slds-truncate" title="Meeting Size">Meeting Size</span>
+                            <span class="slds-truncate" title="Size">Size</span>
                             <div class="slds-icon_container">
-
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -249,13 +249,12 @@
               </span>
                         </div>
                     </th>
+
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
                             <span class="slds-truncate" title="Invited">Invited</span>
                             <div class="slds-icon_container">
-
-
                             </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
@@ -283,9 +282,6 @@
                             <div class="slds-truncate">{!wrapper.objWrapperCampaign.Program__c}</div>
                         </td>
                         <td role="gridcell">
-                            <div class="slds-truncate">{!wrapper.objWrapperCampaign.MeetingCity__c}</div>
-                        </td>
-                        <td role="gridcell">
                             <div class="slds-truncate">{!wrapper.objWrapperCampaign.MeetingType__c}</div>
                         </td>
                         <td role="gridcell">
@@ -298,7 +294,9 @@
                                 <ui:outputDateTime value="{!wrapper.objWrapperCampaign.DateTo__c}"/>
                             </div>
                         </td>
-
+                        <td role="gridcell">
+                            <div class="slds-truncate">{!wrapper.objWrapperCampaign.MeetingCity__c}</div>
+                        </td>
                         <td role="gridcell">
                             <div class="slds-truncate">{!wrapper.objWrapperCampaign.IsUP__c}</div>
                         </td>
