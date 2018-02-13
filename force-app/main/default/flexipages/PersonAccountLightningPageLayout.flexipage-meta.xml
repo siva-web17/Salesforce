@@ -235,6 +235,9 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentName>dupcheck:dc3Live</componentName>
+        </componentInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>

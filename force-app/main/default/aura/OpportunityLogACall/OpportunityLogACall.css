@@ -1,100 +1,100 @@
 /* Refactoring by Shiva 22-1-2018 */
 
 .THIS .demo-only {
-  display: none
+    display: none
 }
 
 .THIS .uiInputTextArea {
-  width: 100%
+    width: 100%
 }
 
 .THIS .slds-textarea {
-  overflow-x: hidden!important;
-  height: 48px;
-  resize: none
+    overflow-x: hidden!important;
+    height: 48px;
+    resize: none
 }
 
 .THIS .bg-brandColor {
-  color: rgb(112, 110, 107);
-  text-align: left;
-  font-size: .75rem;
-  border: none
+    color: rgb(112, 110, 107);
+    text-align: left;
+    font-size: .75rem;
+    border: none
 }
 
 .THIS .custom_component {
-  position: relative
+    position: relative
 }
 
 .THIS .row_right_top {
-  position: absolute;
-  top: 5%;
-  right: 2%;
-  display: block;
-  z-index: 8;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  background: white;
-  border: 1px solid #e1e1e1;
-  border-radius: 2px;
-  cursor: pointer
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    display: block;
+    z-index: 8;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    cursor: pointer
 }
 
 .THIS .customLoaderTrue {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 9;
-  display: block;
-  overflow: hidden;
-  background: rgba(51, 51, 51, .1);
-  display: block!important
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    display: block;
+    overflow: hidden;
+    background: rgba(51, 51, 51, .1);
+    display: block!important
 }
 
 .THIS .slds-truncate p {
-  max-width: 100%;
-  text-overflow: ellipsis!important;
-  overflow: hidden;
-  white-space: nowrap
+    max-width: 100%;
+    text-overflow: ellipsis!important;
+    overflow: hidden;
+    white-space: nowrap
 }
 
 .THIS .log_a_call_heading {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: .875rem;
-  color: rgb(22, 50, 92);
-  font-weight: 400;
-  letter-spacing: .0625em
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .875rem;
+    color: rgb(22, 50, 92);
+    font-weight: 400;
+    letter-spacing: .0625em
 }
 
 .THIS .revel_data {
-  font-size: .875rem;
-  font-weight: 400;
-  color: rgb(43, 40, 38)
+    font-size: .875rem;
+    font-weight: 400;
+    color: rgb(43, 40, 38)
 }
 
 .THIS .label_adj label {
-  margin-left: 0;
-  margin-right: 0
+    margin-left: 0;
+    margin-right: 0
 }
 
 .THIS .warning-input .slds-has-error .slds-input {
-  background-color: rgb(255, 255, 255);
-  border-color: #2196f3;
-  box-shadow: #2196f3 0 0 0 1px inset;
-  background-clip: padding-box
+    background-color: rgb(255, 255, 255);
+    border-color: #2196f3;
+    box-shadow: #2196f3 0 0 0 1px inset;
+    background-clip: padding-box
 }
 
 .THIS .warning-input .slds-has-error .slds-form-element__help {
-  color: #2196f3
+    color: #2196f3
 }
 
 .THIS .font-12 {
-  white-space: nowrap;
-  font-size: 12px;
-  padding: 0
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 0
 }

@@ -4,8 +4,9 @@
     <description>S-8 created for mapping with the posiden fields for Lead Imports</description>
     <externalId>false</externalId>
     <label>Form Submission ID</label>
-    <length>20</length>
+    <precision>18</precision>
     <required>false</required>
-    <type>Text</type>
+    <scale>0</scale>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>
