@@ -179,7 +179,7 @@
 			component.set('v.saveText', LAC_SACO);
 		}
 		var callResultAction = component.get('c.getCallResults');
-		callResultAction.setParams({ callAction: component.get('v.selectedActionType') });
+		callResultAction.setParams({ callAction: component.get('v.selectedActionType'),recordId:component.get('v.recordId') });
 		callResultAction.setCallback(this, function(res) {
 			switch (res.getState()) {
 				case 'SUCCESS':
