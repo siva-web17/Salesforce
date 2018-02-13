@@ -70,7 +70,7 @@ public with sharing class LogACallController {
         }
     }
 
-     @AuraEnabled
+    @AuraEnabled
     public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
@@ -82,14 +82,12 @@ public with sharing class LogACallController {
         List<Destination__c> destinationRecord = DestinationsSelector.getdestinationrecords(isLT);
         for(Destination__c destinationRec:destinationRecord){
             if( destinationRec.IsLT__c){
-                if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c)) {
+                if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c.touppercase())) {
                     LTDestinations.add(destinationRec.GroupedLTDestinationName__c);
                 }
             }
             else if(!destinationRec.IsLt__c) {
-               // if (uniqueGroupedLTDestinationName.add(destinationRec.Name)) {
                     nonLTDestinations.add(destinationRec.Name);
-               // }
             }
         }
         if(isLt){
@@ -137,14 +135,26 @@ public with sharing class LogACallController {
     public static String getCallResults(String callAction,Id recordId){
         try{
             Map<String,List<String>> dependentPicklists = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
-            Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-            Integer closeIndex = -1;
-            List<String> callResults = dependentPicklists.get(callAction);
 
-            if((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())){
-                callResults.add(Label.CloseOpp.toUpperCase());
+             Integer closeIndex = -1;
+
+            List<String> callResults = dependentPicklists.get(callAction);
+            if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
+                Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
+                if ((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) {
+                    callResults.add(Label.CloseOpp.toUpperCase());
+                }
+                return JSON.serialize(callResults);
             }
-            return JSON.serialize(callResults);
+            else if(recordId.getSobjectType() == Lead.getSObjectType()) {
+                Map<String,List<String>> dependentPicklists2 = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
+                system.debug('dependentPicklists2>>>>'+dependentPicklists2);
+                system.debug('dependentPicklists23>>>>'+JSON.serialize(dependentPicklists2.get(callAction)));
+                return JSON.serialize(dependentPicklists2.get(callAction));
+
+            }
+            return null;
+
         }
         catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
