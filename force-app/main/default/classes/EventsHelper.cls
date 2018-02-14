@@ -104,15 +104,15 @@ public class ContentNoteAndEventLink{
     return returnStr;
    }
     public static void AddLeadOrContactAsCampaignMember(list<event>newItems){ 
-   list<CampaignMember> CamMemberList= new list<CampaignMember>();
+    list<CampaignMember> CamMemberList= new list<CampaignMember>();
         set<string> campaignUniqueId = new set<string>();
         for(event objEvents:[select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type='IM' and InfoMeetingID__c!=null]){
             campaignUniqueId.add(string.valueof(objEvents.InfoMeetingID__c));
         }
-        list<campaign> campaignList = [select id ,InfoMeetingID__c from campaign where InfoMeetingID__c in:campaignUniqueId];
+        list<campaign> campaignList = [select id ,CampaignID__c from campaign where CampaignID__c in:campaignUniqueId];
         map<string,string> mapOfCampaignSFIdandUniqueId = new map<string,string>();
         for(campaign objcampaign:campaignList){
-            mapOfCampaignSFIdandUniqueId.put(objcampaign.InfoMeetingID__c,objcampaign.id);
+            mapOfCampaignSFIdandUniqueId.put(objcampaign.CampaignID__c,objcampaign.id);
         }
 
 

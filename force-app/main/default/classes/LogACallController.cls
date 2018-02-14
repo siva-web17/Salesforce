@@ -71,7 +71,7 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-    public static List<String> getDestinations(Id recordId) {
+   public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
         List<String> LTDestinations = new List<String>();
@@ -121,9 +121,8 @@ public with sharing class LogACallController {
             }
         }
         return null;
-    }
-
-    @AuraEnabled
+    } 
+       @AuraEnabled
     public static List<string> getDurations(Id recordId){
         try{
             String sObjectName = recordId.getSObjectType().getDescribe().getName();
@@ -260,7 +259,6 @@ public with sharing class LogACallController {
                 lead.HearAboutUs__c = hearAboutUs;
                 lead.Destinations__c = destination;
                 lead.PreferredDuration__c = duration;
-
                 if(bookOn != NULL){
                     lead.CloseDate__c = bookOn.date();
                 }
@@ -272,15 +270,20 @@ public with sharing class LogACallController {
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
 
                 // If an Opportunity is closed revive the Opportunity
-                if(opp.StageName == Label.SalesClosed ){
+                     if(opp.StageName == Label.SalesClosed ){
                     opp.TFBypassStageValidation__c = true;
                     opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    opp.TimeOutDate__c=null;
+                 
                    //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
+                    
                     if(bookOn == NULL||opp.CloseDate == bookOn.date()){
+                      
                         opp.CloseDate = date.today().addmonths(2);
                     }
                     else{
+                   
                         opp.CloseDate = bookOn.date();
                     }
                     
@@ -294,17 +297,15 @@ public with sharing class LogACallController {
                         opp.CloseDate = bookOn.date();
                     }
                 }
-
-                opp.LikelihoodToBook__c = likelihoodToBook;
-                opp.HearAboutUs__c = hearAboutUs;
-                opp.Destinations__c = destination;
-                opp.PreferredDuration__c = duration;
-                opp.WhenYear__c = whenYear;
-                opp.WhenMonth__c = whenMonth;
-                opp.TFBypassStageValidation__c = false;
-                update opp;
-            }
-
+                    opp.LikelihoodToBook__c = likelihoodToBook;
+                    opp.HearAboutUs__c = hearAboutUs;
+                    opp.Destinations__c = destination;
+                    opp.PreferredDuration__c = duration;
+                    opp.WhenYear__c = whenYear;
+                    opp.WhenMonth__c = whenMonth;
+                    opp.TFBypassStageValidation__c = false;
+                    update opp;
+                }
             // If a call is reached on the Lead, convert the Lead to Opportunity directly
             if(String.valueOf(recordId).substring(0, 3) == '00Q' && LogACallHelper.allReachedItems.contains(callAction.toUpperCase())) {
 
@@ -341,7 +342,7 @@ public with sharing class LogACallController {
             task.CallNotReachedType__c= subAction;
             task.ResultType__c = callResult;
             task.ActivityDateTime__c = Datetime.now();
-            task.ActivityDate = Datetime.now().Date();
+           task.ActivityDate = Datetime.now().Date();
             task.Program__c = program;
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;

@@ -31,6 +31,7 @@
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
+           
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -98,6 +99,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>CampaignID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>CreatedById</field>
             </layoutItems>
         </layoutColumns>
@@ -158,7 +163,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7E000000WcOs</masterLabel>
+         <masterLabel>00h7E000000WcOs</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>1</sizeY>
         <summaryLayoutItems>
@@ -172,6 +177,7 @@
             <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
+           
             <field>Program__c</field>
             <posX>3</posX>
             <posY>0</posY>
