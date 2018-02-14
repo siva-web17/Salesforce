@@ -70,8 +70,12 @@
                 <field>DateFrom__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>MeetingCity__c</field>
+                <behavior>Edit</behavior>
+                <field>Place__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Address__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -80,8 +84,8 @@
                 <field>DateTo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Address__c</field>
+                <behavior>Required</behavior>
+                <field>MeetingCity__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
