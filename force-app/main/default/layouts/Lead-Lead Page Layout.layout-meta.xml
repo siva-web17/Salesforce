@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -278,7 +277,9 @@
     </relatedContent>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
+        <fields>Program__c</fields>
         <fields>MeetingType__c</fields>
+        <fields>DateFrom__c</fields>
         <fields>MeetingCity__c</fields>
         <fields>MeetingSize__c</fields>
         <fields>CM.STATUS</fields>

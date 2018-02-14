@@ -219,7 +219,9 @@
     </relatedContent>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
+        <fields>Program__c</fields>
         <fields>MeetingType__c</fields>
+        <fields>DateFrom__c</fields>
         <fields>MeetingCity__c</fields>
         <fields>MeetingSize__c</fields>
         <fields>CM.STATUS</fields>
