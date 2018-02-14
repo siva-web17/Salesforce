@@ -8,7 +8,7 @@
             <contactAccessLevel>Read</contactAccessLevel>
             <opportunityAccessLevel>None</opportunityAccessLevel>
         </accountSettings>
-        <description>Rule for sharing Norway Accounts</description>
+        <description>Rule for sharing Norway Accounts.</description>
         <label>NorwayAccounts</label>
         <sharedTo>
             <group>NOO</group>
