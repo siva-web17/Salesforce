@@ -77,6 +77,7 @@ public with sharing class LogACallController {
         List<String> LTDestinations = new List<String>();
         List<String> nonLTDestinations = new List<String>();
 
+        if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
         Opportunity opportunityRecord = OpportunitiesSelector.getOpportunityRecord(recordId);
         boolean isLt = opportunityRecord.program__c == 'LT' ? true : false;
         List<Destination__c> destinationRecord = DestinationsSelector.getdestinationrecords(isLT);
@@ -96,6 +97,30 @@ public with sharing class LogACallController {
         else{
             return nonLTDestinations;
         }
+        }
+
+        if(recordId.getSobjectType() == Lead.getSObjectType() ){
+            Lead leadRecord = LeadsSelector.getLeadRecord(recordId);
+            boolean isLt = leadRecord.program__c == 'LT' ? true : false;
+            List<Destination__c> destinationRecord = DestinationsSelector.getdestinationrecords(isLT);
+            for(Destination__c destinationRec:destinationRecord){
+                if( destinationRec.IsLT__c){
+                    if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c.touppercase())) {
+                        LTDestinations.add(destinationRec.GroupedLTDestinationName__c);
+                    }
+                }
+                else if(!destinationRec.IsLt__c) {
+                    nonLTDestinations.add(destinationRec.Name);
+                }
+            }
+            if(isLt){
+                return LTDestinations;
+            }
+            else{
+                return nonLTDestinations;
+            }
+        }
+        return null;
     }
 
     @AuraEnabled

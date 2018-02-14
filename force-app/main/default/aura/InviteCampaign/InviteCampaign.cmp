@@ -63,14 +63,14 @@
 
                 <div class="slds-large-size_2-of-4 slds-form-element slds-hint-parent slds-form-element_edit">
                     <div class="slds-p-around_medium">
-                        <ui:inputDateTime aura:id="selectedfrom" label="DateFrom" class="field"
+                        <ui:inputDateTime aura:id="selectedfrom" label="Date From" class="field"
                                           value="{!v.selectedfrom}" displayDatePicker="true"/>
                     </div>
                 </div>
 
                 <div class="slds-large-size_2-of-4 slds-form-element slds-hint-parent slds-form-element_edit">
                     <div class="slds-p-around_medium">
-                        <ui:inputDateTime aura:id="selectedTo" label="DateTo" class="field"
+                        <ui:inputDateTime aura:id="selectedTo" label="Date To" class="field"
                                           value="{!v.selectedTo}" displayDatePicker="true"/>
                     </div>
                 </div>
