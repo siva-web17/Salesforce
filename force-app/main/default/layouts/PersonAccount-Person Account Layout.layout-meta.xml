@@ -3,6 +3,9 @@
     <customButtons>PrintTemplate</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>EnableCustomerPortalUser</excludeButtons>
@@ -52,7 +55,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Language__c</field>
+                <field>Nationality__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsParent__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -62,11 +69,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Nationality__c</field>
+                <field>Language__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>IsParent__c</field>
+                <field>OtherNationalities__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -211,6 +218,14 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>CAMPAIGN.NAME</fields>
+        <fields>MeetingType__c</fields>
+        <fields>MeetingCity__c</fields>
+        <fields>MeetingSize__c</fields>
+        <fields>CM.STATUS</fields>
+        <relatedList>RelatedCampaignList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>Program__c</fields>
@@ -221,12 +236,12 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
-        <fields>MeetingType__c</fields>
-        <fields>MeetingCity__c</fields>
-        <fields>MeetingSize__c</fields>
-        <fields>CM.STATUS</fields>
-        <relatedList>RelatedCampaignList</relatedList>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Program__c</fields>
+        <fields>BookingDate__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Booking__c.AccountId__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>AddRelation</excludeButtons>
@@ -277,7 +292,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0Y0000048D8e</masterLabel>
+        <masterLabel>00h7E000000RkQ4</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

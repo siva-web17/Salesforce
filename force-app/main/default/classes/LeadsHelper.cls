@@ -142,8 +142,7 @@ public class LeadsHelper {
         List<Lead> leadList = LeadsSelector.getLeadsOnId(leadID);
         for (Lead incomingRecords : leadList) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c && incomingRecords.IsDupe__c == false && incomingRecords.ReadyForRanking__c) {
-                String rankingvalue = string.valueof(ranking.get(incomingRecords.id));
-                incomingRecords.Ranking__c = integer.valueof(rankingvalue);
+                String rankingvalue = string.valueof(ranking.get(incomingRecords.id));                
                 incomingRecords.ReadyForRanking__c = false;
                 rankingLeads.add(incomingRecords);
                 rankingLeadsId.add(incomingRecords.id);
