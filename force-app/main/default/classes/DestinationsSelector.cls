@@ -19,4 +19,8 @@ public  class DestinationsSelector {
         System.debug('############################## destinationMap is count is:'+destinationMap.size());
         return destinationMap;
     }
+
+    public static List<Destination__c> getdestinationrecords(boolean isLT){
+        return[select id,Name,IsLT__c,GroupedLTDestinationName__c  from Destination__c where IsLT__c = :isLt];
+    }
 }

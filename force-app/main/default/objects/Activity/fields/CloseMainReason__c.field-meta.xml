@@ -30,9 +30,14 @@
                 <label>Has no means</label>
             </value>
             <value>
-                <fullName>Finds EF offer too expensive</fullName>
+                <fullName>Wrongly Imported</fullName>
                 <default>false</default>
-                <label>Finds EF offer too expensive</label>
+                <label>Wrongly Imported</label>
+            </value>
+            <value>
+                <fullName>Not able to contact customer</fullName>
+                <default>false</default>
+                <label>Not able to contact customer</label>
             </value>
             <value>
                 <fullName>Had intention and money, but chose to do something else (soft no, we can try next year)</fullName>

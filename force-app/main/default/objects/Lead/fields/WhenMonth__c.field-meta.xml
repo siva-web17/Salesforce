@@ -3,7 +3,7 @@
     <fullName>WhenMonth__c</fullName>
     <description>Represents the month of 'When' field in Log A Call Component</description>
     <externalId>false</externalId>
-    <label>When Month</label>
+    <label>When/Month</label>
     <length>15</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
