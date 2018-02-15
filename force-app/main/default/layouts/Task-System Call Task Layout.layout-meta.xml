@@ -29,12 +29,8 @@
                 <field>CustomerRequest__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Type</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SalesAction__c</field>
+                <behavior>Readonly</behavior>
+                <field>WhoId</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -53,18 +49,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ActivityDate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>WhoId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsClosed__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsParentClosing__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -198,7 +182,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h9E000000OBGe</masterLabel>
+        <masterLabel>00h7E000000RlBI</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
