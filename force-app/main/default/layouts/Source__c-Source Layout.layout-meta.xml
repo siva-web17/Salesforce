@@ -19,10 +19,6 @@
                 <field>Code__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Source__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IsGlobal__c</field>
             </layoutItems>
