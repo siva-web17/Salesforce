@@ -4,7 +4,7 @@
     <description>Used to display the Visa Status of the customer</description>
     <externalId>false</externalId>
     <label>Visa Status</label>
-    <length>5</length>
+    <length>50</length>
     <required>true</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

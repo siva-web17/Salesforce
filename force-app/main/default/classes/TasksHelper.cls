@@ -77,6 +77,10 @@ public class TasksHelper {
 
                         for (Id parentIds : activityMap.keySet()) {
                             for (Event parentActivity : activityMap.get(parentIds)) {
+                                if(parentActivity == null)
+                                {
+                                    return;
+                                }
                                 eventRecord = parentActivity;
                                 eventId = parentActivity.Id;
                                 //Here we are processing record by record for parent object(LEAD/OPPORTUNITY
@@ -117,9 +121,12 @@ public class TasksHelper {
         //Opportunity oppRecord = [select id, stagename from opportunity where id in: events.whatid];
 
         List<Event> eventsToBeProcessed = new List<Event>();
-        for (Event event : events) {           
+        for (Event event : events) {
+            system.debug('insidefor>>>>');
            // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
-            if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting && event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest && event.Type != system.label.IR ){
+            if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting &&
+                    event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest &&
+                    event.Type != system.label.IR ){
                 system.debug('insideifprocessevent>>>>');
                 eventsToBeProcessed.add(event);
             }

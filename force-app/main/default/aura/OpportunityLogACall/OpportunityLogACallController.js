@@ -137,14 +137,15 @@
 						component.set('v.DateTimeTemp', moment(new Date(), 'DD-MM-YYYY').add(1, 'days').format('YYYY-MM-DD') + 'T00:00');
 						component.set('v.selectedActionDate', component.get('v.DateTimeTemp'));
 					} else {
-						var modalBody;
-						var innerBody = { value: 'No data found in lead' };
-						$A.createComponent('ui:outputText', innerBody, function(content, status) {
-							if (status === 'SUCCESS') {
-								modalBody = content;
-								component.find('overlayLib').showCustomModal({ header: 'ERROR', body: modalBody, showCloseButton: !0, cssClass: 'mymodal' });
-							}
-						});
+						// var modalBody;
+						// var innerBody = { value: 'No data found in lead' };
+						// $A.createComponent('ui:outputText', innerBody, function(content, status) {
+						// 	if (status === 'SUCCESS') {
+						// 		modalBody = content;
+						// 		component.find('overlayLib').showCustomModal({ header: 'ERROR', body: modalBody, showCloseButton: !0, cssClass: 'mymodal' });
+						// 	}
+						// });
+						console.log("Commented for some reasons");
 					}
 					break;
 				case 'INCOMPLETE':
@@ -178,7 +179,7 @@
 			component.set('v.saveText', LAC_SACO);
 		}
 		var callResultAction = component.get('c.getCallResults');
-		callResultAction.setParams({ callAction: component.get('v.selectedActionType') });
+		callResultAction.setParams({ callAction: component.get('v.selectedActionType'),recordId:component.get('v.recordId') });
 		callResultAction.setCallback(this, function(res) {
 			switch (res.getState()) {
 				case 'SUCCESS':
