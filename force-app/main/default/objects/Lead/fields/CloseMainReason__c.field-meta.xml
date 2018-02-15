@@ -22,9 +22,9 @@
                 <label>Lost to competitor</label>
             </value>
             <value>
-                <fullName>Had intention and money, but chose to do something else</fullName>
+                <fullName>Chose to do something else</fullName>
                 <default>false</default>
-                <label>Had intention and money, but chose to do something else</label>
+                <label>Chose to do something else</label>
             </value>
             <value>
                 <fullName>Has no means</fullName>
