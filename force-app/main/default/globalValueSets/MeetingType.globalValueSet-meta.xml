@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>INF</fullName>
+        <default>false</default>
+        <label>Info Meeting - Offline</label>
+    </customValue>
+    <customValue>
+        <fullName>ONM</fullName>
+        <default>false</default>
+        <label>Info Meeting - Online</label>
+    </customValue>
+    <customValue>
+        <fullName>OHO</fullName>
+        <default>false</default>
+        <label>Open House</label>
+    </customValue>
+    <description>Type of infomeeting used on Campaign and Campaingn Member</description>
+    <masterLabel>Meeting Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecalculateRanking__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used for recalculating the ranking once a new activity for the existing customer is imported</description>
+    <externalId>false</externalId>
+    <label>Recalculate Ranking</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
