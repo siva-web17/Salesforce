@@ -204,4 +204,10 @@ public class LeadsSelector {
                 WHERE Id in :leadIds
         ];
     }
+     public static Lead getLeadRecord(Id recordId) {
+        return [Select Id, Program__c, Market__c
+        from Lead
+        where Id = :recordId
+        LIMIT 1];
+    }
 }
