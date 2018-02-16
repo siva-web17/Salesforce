@@ -70,26 +70,25 @@ public with sharing class LogACallController {
         }
     }
 
-     @AuraEnabled
-    public static List<String> getDestinations(Id recordId) {
+    @AuraEnabled
+   public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
         List<String> LTDestinations = new List<String>();
         List<String> nonLTDestinations = new List<String>();
 
+        if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
         Opportunity opportunityRecord = OpportunitiesSelector.getOpportunityRecord(recordId);
         boolean isLt = opportunityRecord.program__c == 'LT' ? true : false;
         List<Destination__c> destinationRecord = DestinationsSelector.getdestinationrecords(isLT);
         for(Destination__c destinationRec:destinationRecord){
             if( destinationRec.IsLT__c){
-                if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c)) {
+                if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c.touppercase())) {
                     LTDestinations.add(destinationRec.GroupedLTDestinationName__c);
                 }
             }
             else if(!destinationRec.IsLt__c) {
-               // if (uniqueGroupedLTDestinationName.add(destinationRec.Name)) {
                     nonLTDestinations.add(destinationRec.Name);
-               // }
             }
         }
         if(isLt){
@@ -98,9 +97,32 @@ public with sharing class LogACallController {
         else{
             return nonLTDestinations;
         }
-    }
+        }
 
-    @AuraEnabled
+        if(recordId.getSobjectType() == Lead.getSObjectType() ){
+            Lead leadRecord = LeadsSelector.getLeadRecord(recordId);
+            boolean isLt = leadRecord.program__c == 'LT' ? true : false;
+            List<Destination__c> destinationRecord = DestinationsSelector.getdestinationrecords(isLT);
+            for(Destination__c destinationRec:destinationRecord){
+                if( destinationRec.IsLT__c){
+                    if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c.touppercase())) {
+                        LTDestinations.add(destinationRec.GroupedLTDestinationName__c);
+                    }
+                }
+                else if(!destinationRec.IsLt__c) {
+                    nonLTDestinations.add(destinationRec.Name);
+                }
+            }
+            if(isLt){
+                return LTDestinations;
+            }
+            else{
+                return nonLTDestinations;
+            }
+        }
+        return null;
+    } 
+       @AuraEnabled
     public static List<string> getDurations(Id recordId){
         try{
             String sObjectName = recordId.getSObjectType().getDescribe().getName();
@@ -137,14 +159,26 @@ public with sharing class LogACallController {
     public static String getCallResults(String callAction,Id recordId){
         try{
             Map<String,List<String>> dependentPicklists = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
-            Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-            Integer closeIndex = -1;
-            List<String> callResults = dependentPicklists.get(callAction);
 
-            if((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())){
-                callResults.add(Label.CloseOpp.toUpperCase());
+             Integer closeIndex = -1;
+
+            List<String> callResults = dependentPicklists.get(callAction);
+            if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
+                Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
+                if ((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) {
+                    callResults.add(Label.CloseOpp.toUpperCase());
+                }
+                return JSON.serialize(callResults);
             }
-            return JSON.serialize(callResults);
+            else if(recordId.getSobjectType() == Lead.getSObjectType()) {
+                Map<String,List<String>> dependentPicklists2 = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
+                system.debug('dependentPicklists2>>>>'+dependentPicklists2);
+                system.debug('dependentPicklists23>>>>'+JSON.serialize(dependentPicklists2.get(callAction)));
+                return JSON.serialize(dependentPicklists2.get(callAction));
+
+            }
+            return null;
+
         }
         catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
@@ -225,7 +259,6 @@ public with sharing class LogACallController {
                 lead.HearAboutUs__c = hearAboutUs;
                 lead.Destinations__c = destination;
                 lead.PreferredDuration__c = duration;
-
                 if(bookOn != NULL){
                     lead.CloseDate__c = bookOn.date();
                 }
@@ -237,15 +270,20 @@ public with sharing class LogACallController {
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
 
                 // If an Opportunity is closed revive the Opportunity
-                if(opp.StageName == Label.SalesClosed ){
+                     if(opp.StageName == Label.SalesClosed ){
                     opp.TFBypassStageValidation__c = true;
                     opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    opp.TimeOutDate__c=null;
+                 
                    //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
+                    
                     if(bookOn == NULL||opp.CloseDate == bookOn.date()){
+                      
                         opp.CloseDate = date.today().addmonths(2);
                     }
                     else{
+                   
                         opp.CloseDate = bookOn.date();
                     }
                     
@@ -259,17 +297,15 @@ public with sharing class LogACallController {
                         opp.CloseDate = bookOn.date();
                     }
                 }
-
-                opp.LikelihoodToBook__c = likelihoodToBook;
-                opp.HearAboutUs__c = hearAboutUs;
-                opp.Destinations__c = destination;
-                opp.PreferredDuration__c = duration;
-                opp.WhenYear__c = whenYear;
-                opp.WhenMonth__c = whenMonth;
-                opp.TFBypassStageValidation__c = false;
-                update opp;
-            }
-
+                    opp.LikelihoodToBook__c = likelihoodToBook;
+                    opp.HearAboutUs__c = hearAboutUs;
+                    opp.Destinations__c = destination;
+                    opp.PreferredDuration__c = duration;
+                    opp.WhenYear__c = whenYear;
+                    opp.WhenMonth__c = whenMonth;
+                    opp.TFBypassStageValidation__c = false;
+                    update opp;
+                }
             // If a call is reached on the Lead, convert the Lead to Opportunity directly
             if(String.valueOf(recordId).substring(0, 3) == '00Q' && LogACallHelper.allReachedItems.contains(callAction.toUpperCase())) {
 
@@ -306,7 +342,7 @@ public with sharing class LogACallController {
             task.CallNotReachedType__c= subAction;
             task.ResultType__c = callResult;
             task.ActivityDateTime__c = Datetime.now();
-            task.ActivityDate = Datetime.now().Date();
+           task.ActivityDate = Datetime.now().Date();
             task.Program__c = program;
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;

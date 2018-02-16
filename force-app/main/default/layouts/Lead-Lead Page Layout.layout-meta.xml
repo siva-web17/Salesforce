@@ -278,11 +278,16 @@
     </relatedContent>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
+        <fields>Program__c</fields>
         <fields>MeetingType__c</fields>
+        <fields>DateFrom__c</fields>
         <fields>MeetingCity__c</fields>
         <fields>MeetingSize__c</fields>
         <fields>CM.STATUS</fields>
         <relatedList>RelatedCampaignList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -292,9 +297,6 @@
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedActivityList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>

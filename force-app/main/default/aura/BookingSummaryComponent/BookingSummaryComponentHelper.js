@@ -2,10 +2,7 @@
 	accountData: function(cmp, event, helper) {},
 
 	insertRecord: function(cmp, event) {
-		var action = cmp.get('c.createRecord');
-		//var fname = cmp.find("path_1_Field").get("v.value");
-		//console.log('fname=======>' +fname);
-		//cmp.set("v.wrapperList.personAcc.FirstName",fname);
+		var action = cmp.get('c.createRecord');	
 		var fwrapperLst = cmp.get('v.wrapperList');
 		//alert(JSON.stringify(fwrapperLst));
 		action.setParams({
@@ -24,6 +21,17 @@
 						message: 'The record has been updated successfully.',
 					});
 					toastEvent.fire();
+                         //Add navigation to detail view here
+                    //
+                 window.setTimeout(
+    $A.getCallback(function() {
+      var navEvt = $A.get("e.force:navigateToSObject");
+    navEvt.setParams({
+      "recordId": cmp.get('v.wrapperList.opp.Id')
+    });
+    navEvt.fire();
+    }), 5000
+);
 				} else {
 					var toastEvent = $A.get('e.force:showToast');
 					toastEvent.setParams({

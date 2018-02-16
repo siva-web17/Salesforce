@@ -3,9 +3,6 @@
     <customButtons>PrintTemplate</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>EnableCustomerPortalUser</excludeButtons>
@@ -37,7 +34,19 @@
                 <field>Nickname__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>OneColumn</style>
+        <layoutColumns>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsParent__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -56,10 +65,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Nationality__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsParent__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -218,12 +223,12 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
-        <fields>MeetingType__c</fields>
-        <fields>MeetingCity__c</fields>
-        <fields>MeetingSize__c</fields>
-        <fields>CM.STATUS</fields>
-        <relatedList>RelatedCampaignList</relatedList>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Program__c</fields>
+        <fields>BookingDate__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Booking__c.AccountId__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
@@ -236,14 +241,6 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Program__c</fields>
-        <fields>BookingDate__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Booking__c.AccountId__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <excludeButtons>AddRelation</excludeButtons>
         <fields>CONTACT.FULL_NAME</fields>
         <fields>ACCCONRELATION.ROLES</fields>
@@ -254,10 +251,17 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
+        <fields>CAMPAIGN.NAME</fields>
+        <fields>Program__c</fields>
+        <fields>MeetingType__c</fields>
+        <fields>DateFrom__c</fields>
+        <fields>MeetingCity__c</fields>
+        <fields>MeetingSize__c</fields>
+        <fields>CM.STATUS</fields>
+        <relatedList>RelatedCampaignList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
+        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
