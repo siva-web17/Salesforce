@@ -3,10 +3,7 @@
     <fullName>NewThisWeek</fullName>
     <columns>FULL_NAME</columns>
     <columns>ACCOUNT.NAME</columns>
-    <columns>CONTACT.TITLE</columns>
-    <columns>CONTACT.PHONE1</columns>
-    <columns>CONTACT.EMAIL</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CONTACT.CREATED_DATE</field>

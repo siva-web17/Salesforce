@@ -129,7 +129,9 @@ public class DCBusinessFlow {
                     finalLead = DCObjectMerge.leadToLeadFieldMerge(duplicateLead,sourceLead);
                     finalLead.status = finalLead.status=='closed'?'open':finalLead.status;
                     finalLead.isdupe__c = false;
-                    finalLead.isdupeprocessed__c = true;                    
+                    finalLead.readyforranking__c=false;
+                    finalLead.RecalculateRanking__c = true;
+                    update finalLead;                 
                      //DCBusinessFlowHelper.notifyForRanking(finalLead);
                      transferEvent(duplicateLead,sourceLead,finalDecision);
                      SObjectUnitOfWork.deleteLead(sourceLead);
@@ -229,19 +231,10 @@ public class DCBusinessFlow {
             eventRecord.MergeReason__c = decisionName;
             eventList.add(eventRecord);
         }
-        system.debug('updatable event list is'+eventList);
-         List<Lead> sourceLeads = new List<Lead>();
-         sourceLeads.Add(sourceLead);
-         List<RankingServiceResponse> finalResponse = DCBusinessFlowHelper.webServiceCallForRanking(sourceLeads);
+        system.debug('updatable event list is'+eventList);       
         //update the whoid with source lead id(source might be existing or incoming lead)
         SObjectUnitOfWork.executeUpdateEvents(eventList);
-         if(finalResponse!=null && finalResponse[0].SalesForceApplicationId==sourceLead.id){
-                sourceLead.ranking__c = finalResponse[0].ScaleDownRanking;               
-                sourceLead.ReadyForRanking__c = true;         
-                system.debug('ranking>>>>'+sourceLead.ranking__c);
-                //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
-                update sourceLead;
-            }
+        
     }
 
     //this method is used to avoid soql query inside for loop

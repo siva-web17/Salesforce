@@ -172,14 +172,12 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
         <fields>Program__c</fields>
-        <fields>Type__c</fields>
-        <fields>DateFrom__c</fields>
-        <fields>City__c</fields>
-        <fields>Size__c</fields>
-        <fields>STATUS</fields>
-        <relatedList>CampaignMember.Opportunity__c</relatedList>
+        <fields>BookingDate__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Booking__c.OpportunityId__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -191,15 +189,17 @@
         <relatedList>Apttus_Proposal__Proposal__c.Apttus_Proposal__Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
+        <fields>CAMPAIGN.NAME</fields>
         <fields>Program__c</fields>
-        <fields>BookingDate__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Booking__c.OpportunityId__c</relatedList>
+        <fields>MeetingType__c</fields>
+        <fields>DateFrom__c</fields>
+        <fields>City__c</fields>
+        <fields>Size__c</fields>
+        <fields>STATUS</fields>
+        <relatedList>CampaignMember.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
+        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedOpportunityHistoryList</relatedList>
