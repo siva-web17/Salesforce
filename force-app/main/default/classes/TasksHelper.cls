@@ -77,6 +77,10 @@ public class TasksHelper {
 
                         for (Id parentIds : activityMap.keySet()) {
                             for (Event parentActivity : activityMap.get(parentIds)) {
+                                if(parentActivity == null)
+                                {
+                                    return;
+                                }
                                 eventRecord = parentActivity;
                                 eventId = parentActivity.Id;
                                 //Here we are processing record by record for parent object(LEAD/OPPORTUNITY
@@ -120,7 +124,9 @@ public class TasksHelper {
         for (Event event : events) {
             system.debug('insidefor>>>>');
            // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
-            if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting && event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest && event.Type != system.label.IR ){
+            if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting &&
+                    event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest &&
+                    event.Type != system.label.IR ){
                 system.debug('insideifprocessevent>>>>');
                 eventsToBeProcessed.add(event);
             }
@@ -446,7 +452,9 @@ public class TasksHelper {
     public static Boolean canSendBrochure(List<Task> taskList, String currentRequestProgram, Lead leadRecord, opportunity oppRecord) {
         boolean canSendBR = false;
         String temp = '';
-        canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
+        //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
+        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false;
+        system.debug('canSendBR>>>'+canSendBR);
         if (!canSendBR) {
             return canSendBR;
         }

@@ -7,6 +7,7 @@
     <fields>Gender__c</fields>
     <fields>PersonMobilePhone</fields>
     <fields>PersonHomePhone</fields>
+    <fields>PersonOtherPhone</fields>
     <fields>IsParent__c</fields>
     <fields>HasBooking__c</fields>
     <label>Person Account Compact Layout</label>

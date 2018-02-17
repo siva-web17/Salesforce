@@ -17,7 +17,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Product__c</field>
+                <field>Program__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -32,24 +32,8 @@
                 <field>CloseDate</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>CurrencyIsoCode</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SampleField__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SampleField1__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DemoField__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -62,8 +46,7 @@
                 <field>SalesOffice__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Program__c</field>
+                <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -189,6 +172,14 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Program__c</fields>
+        <fields>BookingDate__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Booking__c.OpportunityId__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <fields>Program__c</fields>
         <fields>CREATED_DATE</fields>
@@ -200,7 +191,7 @@
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
         <fields>Program__c</fields>
-        <fields>Type__c</fields>
+        <fields>MeetingType__c</fields>
         <fields>DateFrom__c</fields>
         <fields>City__c</fields>
         <fields>Size__c</fields>
@@ -208,7 +199,7 @@
         <relatedList>CampaignMember.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
+        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedOpportunityHistoryList</relatedList>
@@ -243,7 +234,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000000HpQb</masterLabel>
+        <masterLabel>00h7E000000RlBC</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
