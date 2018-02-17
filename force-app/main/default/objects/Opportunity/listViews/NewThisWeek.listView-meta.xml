@@ -2,11 +2,13 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>NewThisWeek</fullName>
     <columns>OPPORTUNITY.NAME</columns>
-    <columns>ACCOUNT.NAME</columns>
-    <columns>OPPORTUNITY.AMOUNT</columns>
-    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Ranking__c</columns>
+    <columns>Program__c</columns>
     <columns>OPPORTUNITY.STAGE_NAME</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>SalesOffice__c</columns>
+    <columns>Market__c</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>HasPQorRESInPast30Days__c</field>
