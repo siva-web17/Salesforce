@@ -1,29 +1,27 @@
 public with sharing class InviteToCampaign {
 
     @AuraEnabled
-    public static String getMeetingTypes() {
-        Map<String, String> meetingType = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'MeetingType__c');
-        return JSON.serialize(meetingType.keySet());
+    public static Map<String,String> getMeetingTypes() {
+        return FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'MeetingType__c');
     }
 
     @AuraEnabled
-    public static String getMeetingCity(Id recordId) {
-        Map<String, List<String>> meetingCity = FieldUtilityClass.getFieldDependencies(Campaign.getSObjectType().getDescribe().getName(), 'Market__c', 'MeetingCity__c');
+    public static Map<String,String> getMeetingCity(Id recordId) {
+        Map<String, Map<String,String>> meetingCity = FieldUtilityClass.getFieldDependenciesMap(Campaign.getSObjectType().getDescribe().getName(), 'Market__c', 'MeetingCity__c');
         Opportunity opp = OpportunitiesSelector.getOpportunityrecord(recordId);
-        return JSON.serialize(meetingCity.get(opp.Market__c));
+        return meetingCity.get(opp.Market__c);
     }
 
     @AuraEnabled
-    public static String getProgram(Id recordId) {      
-        Map<String, String> programs = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Program__c');
-        return JSON.serialize(programs.keySet());
+    public static Map<String,String> getProgram(Id recordId) {      
+        return FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Program__c');
     }
 
     @AuraEnabled
-    public static String getSalesOffice(Id recordId) {
-        Map<String, List<String>> salesOffice = FieldUtilityClass.getFieldDependencies(Campaign.getSObjectType().getDescribe().getName(), 'Market__c', 'SalesOffice__c');
+    public static Map<String,String> getSalesOffice(Id recordId) {
+        Map<String, Map<String,String>> salesOffice = FieldUtilityClass.getFieldDependenciesMap(Campaign.getSObjectType().getDescribe().getName(), 'Market__c', 'SalesOffice__c');
         Opportunity opp = OpportunitiesSelector.getOpportunityRecord(recordId);
-        return JSON.serialize(salesOffice.get(opp.Market__c));
+        return salesOffice.get(opp.Market__c);
     }
 
     @AuraEnabled
@@ -103,6 +101,11 @@ public with sharing class InviteToCampaign {
             query = query.substring(0, query.lastIndexOf(' WHERE '));
         }
         
+        System.debug('Query :'+query);        
+        System.debug('Sales Offices :'+lstOfSalesOffice);
+        System.debug('Programs :'+lstOfProgram);
+        System.debug('Meeting Types :'+lstOfMeetingType);
+        System.debug('Meeting Cities :'+lstOfMeetingCity);
         List<campaign> campaignRecords = new List<campaign>();
         campaignRecords = Database.query(query);
         CampaignWrapper wrapperClassInitialise = new CampaignWrapper();

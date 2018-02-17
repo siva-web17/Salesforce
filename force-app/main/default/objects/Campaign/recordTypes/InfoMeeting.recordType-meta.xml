@@ -1635,6 +1635,10 @@
             <fullName>OHO</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>PDP</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>Product__c</picklist>
