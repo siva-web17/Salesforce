@@ -165,17 +165,22 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if ((opp.NumberOfUnreachedCalls__c >= 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) {
-                    callResults.add(Label.CloseOpp.toUpperCase());
+                if ((opp.NumberOfUnreachedCalls__c < 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) {
+                    for(Integer i=0; i< callResults.size() ; i++){
+                        if(callResults[i].toUpperCase() == Label.CloseOpp.toUpperCase()){
+                            callResults.remove(i);
+                        }
+                    }
                 }
                 return JSON.serialize(callResults);
             }
             else if(recordId.getSobjectType() == Lead.getSObjectType()) {
-                Map<String,List<String>> dependentPicklists2 = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
-                system.debug('dependentPicklists2>>>>'+dependentPicklists2);
-                system.debug('dependentPicklists23>>>>'+JSON.serialize(dependentPicklists2.get(callAction)));
-                return JSON.serialize(dependentPicklists2.get(callAction));
-
+               for(Integer i=0; i< callResults.size() ; i++){
+                   if(callResults[i].toUpperCase() == Label.CloseOpp.toUpperCase() && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())){
+                       callResults.remove(i);
+                   }
+               }
+				return JSON.serialize(callResults);
             }
             return null;
 
