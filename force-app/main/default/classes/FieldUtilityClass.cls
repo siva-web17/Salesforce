@@ -19,7 +19,7 @@ public with sharing class FieldUtilityClass {
         public string value { get; set; }
         public string validFor { get; set; }
         public PicklistDetails() { }
-    } 
+    }
 
     public static Boolean hasFieldAccess(SObject obj, String fieldName) {
         Schema.SObjectType type = obj.getSObjectType();
@@ -54,7 +54,7 @@ public with sharing class FieldUtilityClass {
             if (dfr.getName() == fieldName) {
                 List<Schema.PicklistEntry> items = dfr.getPicklistValues();
                 for (Schema.PicklistEntry entry : items) {
-                    picklistValues.put(entry.label, entry.value);
+                    picklistValues.put(entry.value, entry.label);
                 }
                 break;
             }
