@@ -31,7 +31,7 @@ public  class APTS_PriceMatrixEntriesSelector {
         where Apttus_Config2__PriceMatrixId__r.Apttus_Config2__PriceListItemId__c in :priceListItemIdList
         and Apttus_Config2__Dimension2Value__c in :destinationCodeList
         order by Apttus_Config2__Sequence__c  ];
-system.debug('from soql'+priceMatrixEntryList);
+        system.debug('from soql'+priceMatrixEntryList);
         String priceMatrixKey='';
 
         for  ( Apttus_Config2__PriceMatrixEntry__c priceMatricRecord:priceMatrixEntryList) {
@@ -43,7 +43,7 @@ system.debug('from soql'+priceMatrixEntryList);
                 temppriceMatrixEntryList= priceMatrixForOptionsMap.get(priceMatrixKey);
                 temppriceMatrixEntryList.add(priceMatricRecord);
                 system.debug('After adding to List'+temppriceMatrixEntryList);
-                    priceMatrixForOptionsMap.put(priceMatrixKey,temppriceMatrixEntryList);
+                priceMatrixForOptionsMap.put(priceMatrixKey,temppriceMatrixEntryList);
             }
             else
             {

@@ -128,7 +128,7 @@
         <value>Brochure</value>
     </labels>
     <labels>
-        <fullName>BrochureRequest</fullName>
+      <fullName>BrochureRequest</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -202,7 +202,7 @@
         <value>Called Us</value>
     </labels>
     <labels>
-        <fullName>CampaignBrochureRequest</fullName>
+     <fullName>CampaignBrochureRequest</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -246,7 +246,7 @@
         <value>TCC</value>
     </labels>
     <labels>
-        <fullName>CountryOfBirth</fullName>
+     <fullName>CountryOfBirth</fullName>
         <categories>Apttus,Dev</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -299,7 +299,7 @@
         <value>USB-English</value>
     </labels>
     <labels>
-        <fullName>DeleteQuoteProposalErrorMessage</fullName>
+      <fullName>DeleteQuoteProposalErrorMessage</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
@@ -465,7 +465,15 @@
         <value>Home Phone</value>
     </labels>
     <labels>
-        <fullName>IR</fullName>
+        <fullName>IntegrationstatusSentToPoseidon</fullName>
+        <categories>Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IntegrationstatusSentToPoseidon</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
+          <fullName>IR</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -847,6 +855,14 @@
         <value>Nick Name</value>
     </labels>
     <labels>
+        <fullName>NoActiveOpportunity</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoActiveOpportunity</shortDescription>
+        <value>Please create an opportunity before sending Customer info to Poseidon</value>
+    </labels>
+    <labels>
         <fullName>OppStageClosedLost</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -862,7 +878,7 @@
         <value>InActive</value>
     </labels>
     <labels>
-        <fullName>OpportunityBookingStage</fullName>
+       <fullName>OpportunityBookingStage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -1156,6 +1172,14 @@
         <value>System Administrator</value>
     </labels>
     <labels>
+        <fullName>ProgramLT</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProgramLT</shortDescription>
+        <value>Used for Lt Course Program Type in Apttus Call backs</value>
+    </labels>
+    <labels>
         <fullName>ProposalLineItemTypeOption</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1180,7 +1204,7 @@
         <value>Quantity</value>
     </labels>
     <labels>
-        <fullName>QuoteProposalStatusesToDelete</fullName>
+      <fullName>QuoteProposalStatusesToDelete</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>

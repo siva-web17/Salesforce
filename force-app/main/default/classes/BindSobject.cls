@@ -272,13 +272,25 @@ public class BindSobject {
                     'BindSobject', 'createRecord', currentrecord);
             System.debug('Dml exception :'  +ex.getMessage());
         }
-       try{
-             return true;
-        }
-        catch(Exception ex){
+        try {
+            Booking__c bookingRecord = new Booking__c();
+            bookingRecord.AccountId__c = AccountUpdate.id;
+            bookingRecord.BrochureSeason__c = PLUpdate.Version__c;
+            bookingRecord.BrochureYear__c =Decimal.valueOf(PLUpdate.Year__c);
+            bookingRecord.MainSalesResponsible__c = QuoUpdate.SalesMadeby__c;
+            bookingRecord.Program__c = oppUpdate.Program__c;
+            bookingRecord.SalesOffice__c = oppUpdate.SalesOffice__c;
+            bookingRecord.OpportunityId__c=oppUpdate.Id;
+            bookingRecord.QuoteId__c=QuoUpdate.Id;
+            bookingRecord.Status__c =QuoUpdate.BookingType__c;
+            bookingRecord.Integrationstatus__c = Label.IntegrationstatusSentToPoseidon;
+            insert bookingRecord;
+            return true;
+            //return true;
+        } catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                    'BindSobject', 'createRecord', currentrecord);
-            System.debug('Dml exception :'  +ex.getMessage());
+                    'BindSobject', 'bookingRecord', currentrecord);
+            System.debug('Dml exception :' + ex.getMessage());
             return false;
         }
     }

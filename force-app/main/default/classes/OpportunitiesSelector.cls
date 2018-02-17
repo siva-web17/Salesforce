@@ -206,6 +206,33 @@ public class OpportunitiesSelector {
         ];
     }
 
+
+    /**
+    * @author Arjun Mohan
+    * ver 1.0 16-Feb-2018
+    * @description Returns list of Active Opp records For Passed AcocuntId's
+    *
+    * @param accountIdSet Ids to select
+    *
+    * @return List<Opportunity>
+    */
+    public static  Map<Id,Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
+        List<Opportunity> oppList=new List<Opportunity>();
+        Map<Id,Opportunity> accountIdWithOpportunityMap=new Map<Id,Opportunity>();
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Name from Opportunity ';
+        query += 'where isActive__c = TRUE and AccountId in = : ' + 'accountIdSet' + ' ' ;
+        oppList= Database.query(query);
+        for (Opportunity oppRecord:oppList) {
+            accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
+        }
+        return accountIdWithOpportunityMap;
+    }
+
+
     /**
     * @author Arkadiusz Celej
     * @param List<id> opportunityIds - Opportunities to select
