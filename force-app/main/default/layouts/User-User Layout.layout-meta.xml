@@ -2,13 +2,17 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <layoutSections>
         <customLabel>false</customLabel>
-        <detailHeading>false</detailHeading>
+        <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Additional Information</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>EnabledForMarkets__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DefaultMarket__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -47,7 +51,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0Y000001daxc</masterLabel>
+        <masterLabel>00h7E000000WcOx</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -157,10 +157,6 @@
     <picklistValues>
         <picklist>CloseMainReason__c</picklist>
         <values>
-            <fullName>Finds EF offer too expensive</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Has no means</fullName>
             <default>false</default>
         </values>
@@ -187,7 +183,7 @@
     <picklistValues>
         <picklist>ResultType__c</picklist>
         <values>
-            <fullName>Call Appointment</fullName>
+            <fullName>Appointment</fullName>
             <default>false</default>
         </values>
         <values>

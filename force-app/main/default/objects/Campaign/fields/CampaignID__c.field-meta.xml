@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CampaignID__c</fullName>
+    <description>this captures the unique integer field value associated with that campaign</description>
+    <displayFormat>{0000}</displayFormat>
+    <externalId>false</externalId>
+    <label>Campaign ID</label>
+    <type>AutoNumber</type>
+</CustomField>

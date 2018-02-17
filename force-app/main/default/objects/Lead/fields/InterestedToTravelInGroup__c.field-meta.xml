@@ -4,7 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>Flag to store if customer wants to travel in group or individually</description>
     <externalId>false</externalId>
-    <label>InterestedToTravelInGroup</label>
+    <label>Travel In Group</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>

@@ -3,7 +3,7 @@
     <fullName>InterestedToTravelInGroup__c</fullName>
     <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>InterestedToTravelInGroup</label>
+    <label>Travel In Group</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

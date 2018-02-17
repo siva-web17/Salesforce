@@ -137,14 +137,15 @@
 						component.set('v.DateTimeTemp', moment(new Date(), 'DD-MM-YYYY').add(1, 'days').format('YYYY-MM-DD') + 'T00:00');
 						component.set('v.selectedActionDate', component.get('v.DateTimeTemp'));
 					} else {
-						var modalBody;
-						var innerBody = { value: 'No data found in lead' };
-						$A.createComponent('ui:outputText', innerBody, function(content, status) {
-							if (status === 'SUCCESS') {
-								modalBody = content;
-								component.find('overlayLib').showCustomModal({ header: 'ERROR', body: modalBody, showCloseButton: !0, cssClass: 'mymodal' });
-							}
-						});
+						// var modalBody;
+						// var innerBody = { value: 'No data found in lead' };
+						// $A.createComponent('ui:outputText', innerBody, function(content, status) {
+						// 	if (status === 'SUCCESS') {
+						// 		modalBody = content;
+						// 		component.find('overlayLib').showCustomModal({ header: 'ERROR', body: modalBody, showCloseButton: !0, cssClass: 'mymodal' });
+						// 	}
+						// });
+						console.log("Commented for some reasons");
 					}
 					break;
 				case 'INCOMPLETE':
@@ -178,7 +179,7 @@
 			component.set('v.saveText', LAC_SACO);
 		}
 		var callResultAction = component.get('c.getCallResults');
-		callResultAction.setParams({ callAction: component.get('v.selectedActionType') });
+		callResultAction.setParams({ callAction: component.get('v.selectedActionType'),recordId:component.get('v.recordId') });
 		callResultAction.setCallback(this, function(res) {
 			switch (res.getState()) {
 				case 'SUCCESS':
@@ -195,6 +196,7 @@
 		$A.enqueueAction(callResultAction);
 	},
 	onSaveClicked: function(component, event, helper) {
+		var validatedBtn = event.currentTarget.dataset.save;
 		var loaderComp = component.find('loaderComp');
 		$A.util.addClass(loaderComp, 'customLoaderTrue');
 		var comments = component.find('comments').get('v.value');
@@ -221,19 +223,39 @@
 						case 'SUCCESS':
 							var response = JSON.parse(res.getReturnValue());
 							if (typeof response.Result !== 'undefined' && response.Result !== null) {
+								if(validatedBtn == 'saveAndClose'){
+									var urlEvent = $A.get('e.force:navigateToURL');
+									urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
+									urlEvent.fire();
+								}else{
+									var toastEvent = $A.get('e.force:showToast');
+									var LAC_DATA_SUCCESS = $A.get('$Label.c.LAC_DATA_SUCCESS');
+									toastEvent.setParams({ title: 'Success!', type: 'success', message: LAC_DATA_SUCCESS });
+									toastEvent.fire();
+									component.set('v.readOnlyToggle', !1);
+									component.set('v.isCustomerReached', !0);
+									document.location.reload(!0);
+								}
 								var navEvt = $A.get('e.force:navigateToSObject');
 								navEvt.setParams({ recordId: response.Result.Id, slideDevName: 'related' });
 								navEvt.fire();
 								$A.util.removeClass(loaderComp, 'customLoaderTrue');
 							} else {
-								var toastEvent = $A.get('e.force:showToast');
-								var LAC_DATA_SUCCESS = $A.get('$Label.c.LAC_DATA_SUCCESS');
-								toastEvent.setParams({ title: 'Success!', type: 'success', message: LAC_DATA_SUCCESS });
-								toastEvent.fire();
-								component.set('v.readOnlyToggle', !1);
-								component.set('v.isCustomerReached', !0);
+								if(validatedBtn == 'saveAndClose'){
+									var urlEvent = $A.get('e.force:navigateToURL');
+									urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
+									urlEvent.fire();
+								} else{
+									var toastEvent = $A.get('e.force:showToast');
+									var LAC_DATA_SUCCESS = $A.get('$Label.c.LAC_DATA_SUCCESS');
+									toastEvent.setParams({ title: 'Success!', type: 'success', message: LAC_DATA_SUCCESS });
+									toastEvent.fire();
+									component.set('v.readOnlyToggle', !1);
+									component.set('v.isCustomerReached', !0);
+									document.location.reload(!0);
+								}
+								
 							}
-							document.location.reload(!0);
 							break;
 						case 'INCOMPLETE':
 							$A.util.removeClass(loaderComp, 'customLoaderTrue');
@@ -323,7 +345,6 @@
 		}
 	},
 	navigateToActionScreen: function(component, event) {
-		localStorage.setItem('lastSelectedTab', 'leadsTab');
 		var urlEvent = $A.get('e.force:navigateToURL');
 		urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
 		urlEvent.fire();

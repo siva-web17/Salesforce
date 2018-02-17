@@ -44,6 +44,7 @@ public class DCObjectMerge {
         duplicateAccount = emailLeadToAccountMerge(duplicateAccount,sourceLead);
         //6. address merge
         duplicateAccount = addressLeadtoAccountMerge(duplicateAccount,sourceLead);
+         duplicateAccount.recalculateranking__c = true;
         system.debug('^^^^^^^^^^^^ final acocunt'+duplicateAccount);
         system.debug('duplicateAccount>>>>>'+duplicateAccount);
 

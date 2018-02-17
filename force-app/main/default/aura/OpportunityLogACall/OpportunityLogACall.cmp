@@ -262,10 +262,37 @@
 			</div>
 			<div class="slds-panel__section slds-grid">
 				<div class="slds-size_1-of-2 slds-p-right_x-small">
-					<button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" onclick="{!c.onSaveClicked}">{!( v.selectedActionType == 'Call Reached' ||v.selectedActionType == 'Called Us' ||v.selectedActionType == 'Visited Us' ||v.selectedActionType == 'Emailed Us' ||v.selectedActionType == 'Social Media Reached')? ( v.find_lead_or_opp == '00Q' ? ( (v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult == 'Close' ) ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert ) : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION } 					</button>
+					<button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="save" onclick="{!c.onSaveClicked}">
+						{!( 
+							v.selectedActionType == 'Call Reached' 
+							||v.selectedActionType == 'Called Us' 
+							||v.selectedActionType == 'Visited Us' 
+							||v.selectedActionType == 'Emailed Us' 
+							||v.selectedActionType == 'Social Media Reached
+						')? ( 
+							v.find_lead_or_opp == '00Q' ? ( 
+								(v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult == 'Close' )
+								 ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert )
+								  : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION
+						} 					</button>
 				</div>
 				<div class="slds-size_1-of-2 slds-p-left_x-small">
-					<button disabled="{! v.isActiveUser == false ? true : false }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" onclick="{!c.navigateToActionScreen}">					{! (v.find_lead_or_opp == '00Q') ? ( ( v.selectedActionType == 'Call Reached' || v.selectedActionType == 'Called Us' || v.selectedActionType == 'Visited Us' || v.selectedActionType == 'Emailed Us' || v.selectedActionType == 'Social Media Reached' ) ? $Label.c.LAC_Convert_C : $Label.c.LAC_SAC ) : $Label.c.LAC_SAC}					</button>
+					<button disabled="{! v.isActiveUser == false ? true : false }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="saveAndClose" onclick="{!c.onSaveClicked}">
+						{!
+							 (v.find_lead_or_opp == '00Q')
+							  ? ( ( 
+								  v.selectedActionType == 'Call Reached' 
+								  || v.selectedActionType == 'Called Us' 
+								  || v.selectedActionType == 'Visited Us' 
+								  || v.selectedActionType == 'Emailed Us' 
+								  || v.selectedActionType == 'Social Media Reached'
+								   ) ? 
+								   (
+									   (v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult == 'Close') 
+									   ? 
+									   $Label.c.LAC_SAC : $Label.c.LAC_Convert_C
+									) : $Label.c.LAC_SAC
+								) : $Label.c.LAC_SAC}</button>
 				</div>
 			</div>
 		</div>

@@ -91,7 +91,7 @@ public with sharing class FieldUtilityClass {
             if (dfr.getName() == fieldName) {
                 List<Schema.PicklistEntry> items = dfr.getPicklistValues();
                 for (Schema.PicklistEntry entry : items) {
-                    picklistValues.put(entry.label, entry.value);
+                    picklistValues.put(entry.value, entry.label);
                 }
                 break;
             }
@@ -189,6 +189,65 @@ public with sharing class FieldUtilityClass {
                 if ((val & 1) == 1) {
                     System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 3].getLabel());
                     controllingInfo.get(controllingValues[baseCount + 3].getLabel()).add(currDependentValue.getLabel());
+                }
+
+                baseCount += 4;
+            }
+        }
+
+        System.debug('ControllingInfo: ' + controllingInfo);
+        return controllingInfo;
+    }
+    
+    public static Map<String, Map<String,String>> getFieldDependenciesMap(String objectName, String controllingField, String dependentField) {
+        Map<String, Map<String,String>> controllingInfo = new Map<String, Map<String,String>>();
+
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectName);
+
+        Schema.DescribeSObjectResult describeResult = objType.getDescribe();
+        Schema.DescribeFieldResult controllingFieldInfo = describeResult.fields.getMap().get(controllingField).getDescribe();
+        Schema.DescribeFieldResult dependentFieldInfo = describeResult.fields.getMap().get(dependentField).getDescribe();
+
+        List<Schema.PicklistEntry> controllingValues = controllingFieldInfo.getPicklistValues();
+        List<Schema.PicklistEntry> dependentValues = dependentFieldInfo.getPicklistValues();
+
+        for (Schema.PicklistEntry currControllingValue : controllingValues) {
+            System.debug('ControllingField: Label:' + currControllingValue.getLabel());
+            controllingInfo.put(currControllingValue.getValue(), new Map<String,String>());
+        }
+
+        for (Schema.PicklistEntry currDependentValue : dependentValues) {
+            String jsonString = JSON.serialize(currDependentValue);
+            PicklistDetails info = (PicklistDetails) JSON.deserialize(jsonString, PicklistDetails.class);
+            String hexString = EncodingUtil.convertToHex(EncodingUtil.base64Decode(info.validFor)).toUpperCase();
+            System.debug('DependentField: Label:' + currDependentValue.getLabel() + ' ValidForInHex:' + hexString + ' JsonString:' + jsonString);
+            Integer baseCount = 0;
+
+            for (Integer curr : hexString.getChars()) {
+                Integer val = 0;
+
+                if (curr >= 65) {
+                    val = curr - 65 + 10;
+                }
+                else {
+                    val = curr - 48;
+                }
+
+                if ((val & 8) == 8) {
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 0].getLabel());
+                    controllingInfo.get(controllingValues[baseCount + 0].getValue()).put(currDependentValue.getValue(),currDependentValue.getLabel());
+                }
+                if ((val & 4) == 4) {
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 1].getLabel());
+                    controllingInfo.get(controllingValues[baseCount + 1].getValue()).put(currDependentValue.getValue(),currDependentValue.getLabel());
+                }
+                if ((val & 2) == 2) {
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 2].getLabel());
+                    controllingInfo.get(controllingValues[baseCount + 2].getValue()).put(currDependentValue.getValue(),currDependentValue.getLabel());
+                }
+                if ((val & 1) == 1) {
+                    System.debug('Dependent Field: ' + currDependentValue.getLabel() + ' Partof ControllingField:' + controllingValues[baseCount + 3].getLabel());
+                    controllingInfo.get(controllingValues[baseCount + 3].getValue()).put(currDependentValue.getValue(),currDependentValue.getLabel());
                 }
 
                 baseCount += 4;

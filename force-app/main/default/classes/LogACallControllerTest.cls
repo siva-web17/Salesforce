@@ -216,7 +216,7 @@ public with sharing class LogACallControllerTest {
         LogACallController.isCustomerReached(recordid);
         LogACallController.getSalesActions();
         LogACallController.getSubActions();
-        LogACallController.getCallResults('Call Reached');
+        LogACallController.getCallResults('Call Reached',recordid);
 
 
     }

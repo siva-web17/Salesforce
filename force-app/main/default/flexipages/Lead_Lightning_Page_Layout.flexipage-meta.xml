@@ -77,6 +77,9 @@
         <componentInstances>
             <componentName>OpportunityLogACall</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentName>dupcheck:dc3Live</componentName>
+        </componentInstances>
         <name>rightsidebar</name>
         <type>Region</type>
     </flexiPageRegions>

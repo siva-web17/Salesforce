@@ -4,10 +4,28 @@
     <description>Used to display the status of the booking</description>
     <externalId>false</externalId>
     <label>Status</label>
-    <length>10</length>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BKN</fullName>
+                <default>false</default>
+                <label>BKN</label>
+            </value>
+            <value>
+                <fullName>PRE</fullName>
+                <default>false</default>
+                <label>PRE</label>
+            </value>
+            <value>
+                <fullName>CAX</fullName>
+                <default>false</default>
+                <label>CAX</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>
