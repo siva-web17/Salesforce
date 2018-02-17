@@ -653,7 +653,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>SAC</shortDescription>
-        <value>Save</value>
+        <value>Save and close</value>
     </labels>
     <labels>
         <fullName>LAC_SACO</fullName>
@@ -668,7 +668,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>saveAction</shortDescription>
-        <value>Save Action</value>
+        <value>Save</value>
     </labels>
     <labels>
         <fullName>LAC_Select</fullName>

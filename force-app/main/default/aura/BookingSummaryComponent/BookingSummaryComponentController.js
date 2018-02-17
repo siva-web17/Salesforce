@@ -17,61 +17,61 @@
 				console.log(json_text);
 				component.set('v.wrapperList', response.getReturnValue());
 				var u = component.get('v.wrapperList');
-				component.set('v.pickGender', u.personAcc.Gender__c);
-				var arrayGenderMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.GenderPickList;
-				var p = component.get('v.pickGender');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayGenderMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				component.set('v.GenderList', arrayGenderMapKeys);
-				//console.log('SalesMadeBy====> ' +component.get('u.Quote.SalesMadeby__r.Name'));
+component.set('v.pickGender', u.personAcc.Gender__c);
+                                var arrayGenderMapKeys = [];
+                                //Store the response of apex controller (return map)
+                               var result = u.GenderPickList;
+                                var p = component.get('v.pickGender');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayGenderMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                component.set('v.GenderList', arrayGenderMapKeys);
+                                //console.log('SalesMadeBy====> ' +component.get('u.Quote.SalesMadeby__r.Name'));
 
 				component.set('v.selectedSalesOffice', u.opp.SalesOffice__c);
-				var arraySalesMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.SalesOfficePickList;
-				var p = component.get('v.selectedSalesOffice');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arraySalesMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.SalesOfficeList', arraySalesMapKeys);
+                                var arraySalesMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.SalesOfficePickList;
+                                var p = component.get('v.selectedSalesOffice');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arraySalesMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.SalesOfficeList', arraySalesMapKeys);
 
 				component.set('v.selectedCountry', u.personAcc.PersonMailingCountry);
-				var arrayMailingCountryMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.MailingCountryPickList;
-				var p = component.get('v.selectedCountry');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayMailingCountryMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.MaillingCountryList', arrayMailingCountryMapKeys);
+                                var arrayMailingCountryMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.MailingCountryPickList;
+                                var p = component.get('v.selectedCountry');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayMailingCountryMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.MaillingCountryList', arrayMailingCountryMapKeys);
 
                 component.set('v.selectedBirthCountry', u.personAcc.BirthCountry__c);
                 				var arrayBirthCountryMapKeys = [];
@@ -94,30 +94,30 @@
 
 				//component.set('v.selectedState',u.personAcc.PersonMailingState);
 				component.set('v.selectedNationality', u.personAcc.Nationality__c);
-				var arrayNationMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.NationalityPickList;
-				var p = component.get('v.selectedNationality');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayNationMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.NationalityList', arrayNationMapKeys);
+                                var arrayNationMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.NationalityPickList;
+                                var p = component.get('v.selectedNationality');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayNationMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.NationalityList', arrayNationMapKeys);
 
 				component.set('v.selectedOtherNationality', u.personAcc.OtherNationalities__c);
-				var arrayOtherNationMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.OtherNationalityPickList;
-				var p = component.get('v.selectedOtherNationality');
-				//Set the store response[map] to component attribute, which name is map and type is map.
+                                var arrayOtherNationMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.OtherNationalityPickList;
+                                var p = component.get('v.selectedOtherNationality');
+//Set the store response[map] to component attribute, which name is map and type is map.
 				//component.set('v.companyMap', result);
 				var isSelected = false;
 				for (var key in result) {
@@ -128,89 +128,90 @@
 					arrayOtherNationMapKeys.push({ value: result[key], key: key, Selected: isSelected });
 					isSelected = false;
 				}
-				//Set the list of keys.
-				component.set('v.OtherNationalityList', arrayOtherNationMapKeys);
+				 //Set the list of keys.
+                                component.set('v.OtherNationalityList', arrayOtherNationMapKeys);
 
 				component.set('v.selectedPassportType', u.personAcc.PassportType__c);
-				var arrayPassportMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.PassportPickList;
-				var p = component.get('v.selectedPassportType');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayPassportMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.PassportList', arrayPassportMapKeys);
+                                var arrayPassportMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.PassportPickList;
+                                var p = component.get('v.selectedPassportType');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayPassportMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.PassportList', arrayPassportMapKeys);
 
 				component.set('v.selectedBookingChannel', u.Quote.BookingChannel__c);
-				var arrayBookingChannelMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.BookingChannelPickList;
-				var p = component.get('v.selectedBookingChannel');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayBookingChannelMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.BookingChannelList', arrayBookingChannelMapKeys);
+                                var arrayBookingChannelMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.BookingChannelPickList;
+                                var p = component.get('v.selectedBookingChannel');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayBookingChannelMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.BookingChannelList', arrayBookingChannelMapKeys);
 
 				component.set('v.selectedBookingType', u.Quote.BookingType__c);
-				var arrayBookingTypeMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.BookingTypePickList;
-				var p = component.get('v.selectedBookingType');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayBookingTypeMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
+                                var arrayBookingTypeMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.BookingTypePickList;
+                                var p = component.get('v.selectedBookingType');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayBookingTypeMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
 
-				//Set the list of keys.
-				component.set('v.BookingTypeList', arrayBookingTypeMapKeys);
+                                //Set the list of keys.
+                                component.set('v.BookingTypeList', arrayBookingTypeMapKeys);
 
 				component.set('v.selectedCurrency', u.Quote.CurrencyIsoCode);
-				var arrayCurrencyMapKeys = [];
-				//Store the response of apex controller (return map)
-				var result = u.CurrencyPickList;
-				var p = component.get('v.selectedCurrency');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayCurrencyMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				//Set the list of keys.
-				component.set('v.CurrencyList', arrayCurrencyMapKeys);
+                                var arrayCurrencyMapKeys = [];
+                                //Store the response of apex controller (return map)
+                                var result = u.CurrencyPickList;
+                                var p = component.get('v.selectedCurrency');
+                                //Set the store response[map] to component attribute, which name is map and type is map.
+                                //component.set('v.companyMap', result);
+                                var isSelected = false;
+                                for (var key in result) {
+                                    //arrayMapKeys.push(key);
+                                    if (p == key || p == result[key]) {
+                                        isSelected = true;
+                                    }
+                                    arrayCurrencyMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                                    isSelected = false;
+                                }
+                                //Set the list of keys.
+                                component.set('v.CurrencyList', arrayCurrencyMapKeys);
 			}
 		});
 		$A.enqueueAction(action);
 	},
+
 
 	pathWayforward: function(component, event, helper) {
 		// console.log(event.currentTarget);
@@ -221,6 +222,7 @@
 		var whichOne = event.getSource().getLocalId();
 	},
 	moveNext: function(cmp, event, helper) {
+
 		var setGender = cmp.get('v.pickGender');
 		cmp.set('v.wrapperList.personAcc.Gender__c', setGender);
 
@@ -229,35 +231,14 @@
 
 		var age = cmp.get('v.wrapperList.personAcc.age__c');
 		//alert(age);
-		var fetchAgeID = cmp.find('ageField');
-		//alert(fetchAgeID);
-		var fetchdob = cmp.get('v.wrapperList.personAcc.PersonBirthdate');
-		//alert(fetchdob);
-		var fetchDOBID = cmp.find('dob');
-		//alert(fetchDOBID);
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth() + 1; //January is 0!
-		var yyyy = today.getFullYear();
-		if (dd < 10) {
-			dd = '0' + dd;
-		}
-		if (mm < 10) {
-			mm = '0' + mm;
-		}
-		today = yyyy + '-' + mm + '-' + dd;
-		//alert(today);
-		if (fetchdob > today) {
-			fetchDOBID.set('v.errors', [{ message: 'DOB cannot be future date: ' + fetchdob }]);
-		} else if (age < 0) {
-			fetchAgeID.set('v.errors', [{ message: 'Age cannot negative: ' + age }]);
-		} else {
+
 			var path_1_Fields = cmp.find('path_1_Fields').reduce(function(validSoFar, inputCmp) {
 				inputCmp.showHelpMessageIfInvalid();
 				return validSoFar && !inputCmp.get('v.validity').valueMissing && !inputCmp.get('v.validity').patternMismatch && !inputCmp.get('v.validity').typeMismatch;
 			}, true);
 			//alert('%%%%%%%%%%%%%'+path_1_Fields);
-		}
+
+
 		if (path_1_Fields) {
 			var whichOne = event.getSource().getLocalId();
 
@@ -420,7 +401,7 @@
 	moveNext3: function(cmp, event, helper) {
 		var setNation = cmp.get('v.selectedOtherNationality');
 		cmp.set('v.wrapperList.personAcc.OtherNationalities__c', setNation);
-
+	
 		var setPassport = cmp.get('v.selectedPassportType');
 		cmp.set('v.wrapperList.personAcc.PassportType__c', setPassport);
 		var setOther = cmp.get('v.selectedNationality');
@@ -702,6 +683,23 @@
 			inputField.set('v.validity', { valid: false, badInput: true });
 		}
 	},
+    validateDate: function(cmp,event,helper){
+        var currentAge = moment().diff(cmp.get('v.wrapperList.personAcc.PersonBirthdate'), 'years',false);
+        if (cmp.get('v.wrapperList.personAcc.PersonBirthdate') != null) {
+            			if ( (!moment(cmp.get('v.wrapperList.personAcc.PersonBirthdate')).isBefore(new Date())) && (!moment(cmp.get('v.selectedActionDate')).isSame(moment().format('YYYY-MM-DD'))) ) {
+            				var toastEvent = $A.get('e.force:showToast');
+            				toastEvent.setParams({
+            					title: 'Error!',
+            					type: 'error',
+            					message: 'Future date cannot be selected',
+            				});
+            				toastEvent.fire();
+            			}else{
+            			    cmp.set('v.wrapperList.age',currentAge);
+                         }
+            		}
+        
+    }
 });
 
 /* 
