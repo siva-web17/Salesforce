@@ -161,6 +161,8 @@ public class DCBusinessFlow {
             if((finalDecision!=null &&  finalDecision=='Merge')) {
                 //hitting notifyranking. This requirement has not been confirmed.
                 sourceLead.isAccountMerge__c = true;
+                sourceLead.RecalculateRanking__c = true;
+             
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
                 //system.debug('--------duplicateAccount2-------'+sourceLead);
@@ -195,7 +197,7 @@ public class DCBusinessFlow {
         lc.setConvertedStatus(System.Label.LeadStageConverted);
         system.debug('*********** opportunity list'+opportuntyList);
         if(opportuntyList != null && !opportuntyList.isEmpty()) {
-            if(opportuntyList[0].StageName != Label.ClosedWon) {
+            if(opportuntyList[0].StageName != Label.OpportunityBookingStage) {
                 lc.setOpportunityId(opportuntyList[0].id);
                 Opportunity opportunityRecord = opportuntyList[0];
                 system.debug('*********** '+opportunityRecord);
@@ -209,7 +211,7 @@ public class DCBusinessFlow {
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
             }
             //inactive if opportunity is
-            else if(opportuntyList[0].StageName == Label.ClosedWon) {
+            else if(opportuntyList[0].StageName == Label.OpportunityBookingStage) {
                 //update the closed won opportunity. Make isActive as 'false'
                 DCObjectMerge.inActiveOpportunity(opportuntyList[0]);
             }
