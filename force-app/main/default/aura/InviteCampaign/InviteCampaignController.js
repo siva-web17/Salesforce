@@ -26,8 +26,8 @@
 
           switch(res.getState()){
               case 'SUCCESS':
-                  var meetingTypes = JSON.parse(res.getReturnValue());
-                  component.set('v.meetingtypes',meetingTypes);
+                  //var meetingTypes = JSON.parse(res.getReturnValue());
+                  component.set('v.meetingtypes',res.getReturnValue());
                   break;
               case 'INCOMPLETE':
                   break;
@@ -44,8 +44,7 @@
        meetingCityAction.setCallback(this,function(res){
           switch(res.getState()){
               case 'SUCCESS':
-                  var meetingCities = JSON.parse(res.getReturnValue());
-                  component.set('v.meetingcities',meetingCities);
+                  component.set('v.meetingcities',res.getReturnValue());
                   break;
               case 'INCOMPLETE':
                   break;
@@ -62,9 +61,9 @@
         programsAction.setCallback(this,function(res){
             switch(res.getState()){
                 case 'SUCCESS':
-                    var programs = JSON.parse(res.getReturnValue());
-                    var programSort = programs.sort();
-                    component.set('v.programs',programSort);
+                    //var programs = JSON.parse(res.getReturnValue());
+                    //var programSort = programs.sort();
+                    component.set('v.programs',res.getReturnValue());
                     break;
                 case 'INCOMPLETE':
                     break;
@@ -81,10 +80,8 @@
                        
         salesofficesAction.setCallback(this,function(res){
             switch(res.getState()){
-
                 case 'SUCCESS':
-                    var salesoffices = JSON.parse(res.getReturnValue());
-                    component.set('v.salesoffices',salesoffices);
+                    component.set('v.salesoffices',res.getReturnValue());
                     break;
                 case 'INCOMPLETE':
                     break;
