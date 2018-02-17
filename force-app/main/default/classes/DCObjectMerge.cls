@@ -94,6 +94,7 @@ public class DCObjectMerge {
                 opportunityRecord.Program__c = sourceLead.Program__c;
             }
         }
+         opportunityRecord.RecalculateRanking__c=true;
         SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
         // checking the field to false to avoid the stagechange from any other place and using a DML to update it to false
         system.debug('updated stage name is>>'+opportunityRecord.stagename);
