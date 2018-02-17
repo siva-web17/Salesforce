@@ -1,11 +1,11 @@
 <aura:component description="OwnerChange" controller="GetRecordDetails" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes">
     <aura:attribute name="label" type="string" default="Record Owner"/>
     <aura:attribute name="ownerName" type="string"/>
-    <aura:attribute name="ownerURL" type="string" />
+    <aura:attribute name="ownerURL" type="string" /> 
     <aura:attribute name="Record" type="SObject" />
+<aura:attribute name="recordId" type="string"/>
 
-
-    <aura:attribute name="OwnerRecord" type="SObject" />
+    <aura:attribute name="OwnerRecordId" type="string" />
     <aura:attribute name="ParentObjectApi" type="string" default="Apttus_Proposal__Proposal__c"/>
     <aura:handler name="change" value="{!v.Record}" action="{!c.OnOwnerChanged}"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -21,7 +21,7 @@
                                      
                                       value="{!v.ownerURL}"/>
                         <c:PopOver aura:id="Tooltip" ownerName="{!v.ownerName}" MarketCode="{!v.Record.Shrivatsa__Market__c }" ownerURL="{!v.ownerURL}" Active="{!v.OwnerRecord.IsActive}"/>
-                        <lightning:buttonIcon iconName="utility:change_owner" variant="bare" alternativeText="Change Owner" title="Change Owner" iconClass="dark" onclick="{! c.OpenChangeOwnerlookUpComponent}"/>
+                        <lightning:buttonIcon iconName="utility:change_owner" variant="bare" alternativeText="Change Sales Made by" title="Change Sales Made by" iconClass="dark" onclick="{! c.OpenChangeOwnerlookUpComponent}"/>
                         <!--<lightning:button class="slds-button__icon slds-button__icon_left slds-button__icon_small"  label="" iconName="action:change_owner" iconPosition="left" onclick="{! c.OpenChangeOwnerlookUpComponent}" />-->
 
                             <c:ModalPopUp aura:id="ModalPopUp" selectedLookUpRecord="{!v.Record}" />

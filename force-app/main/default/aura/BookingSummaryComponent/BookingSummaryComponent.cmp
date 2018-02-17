@@ -20,7 +20,12 @@
     <aura:attribute name="zMiddleName" type="String" />
     <aura:attribute name="zlastName" type="String" />
     <aura:attribute name="Language" type="String" />
-   <!--  Gender -->
+    <aura:attribute name="salesmadeby" type="String" />
+    <aura:attribute name="ownerURL" type="String" />
+    <aura:attribute name="availabelNationality" type="String[]" default="--None--"/>
+    <aura:attribute name="accSelectedNationality" type="String[]" default="--None--"/>
+
+    <!--  Gender -->
     <aura:attribute name="GenderList" type="List"/>
     <aura:attribute name="CurrencyList" type="List" />
     <aura:attribute name="BookingTypeList" type="List" />
@@ -34,7 +39,15 @@
     <aura:attribute name="BookingChannelList" type="SelectOption[]" />
     <aura:attribute name="isFinishBooking" type="Boolean" default="false" />
     <aura:attribute name="canLoadComponent" type="Boolean" default="false" />
-   <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
+    <aura:attribute name="countryState" type="Map"/>
+    <aura:attribute name="selectedOtherNationalityMulti" type="String[]"/>
+    <aura:attribute name="selectedOtherNationalityNameMulti" type="String[]"/>
+    <aura:attribute name="otherNationalityMulti" type="String[]"/>
+    <aura:attribute Name="selItem" type="object"  access="public" />
+
+
+
+    <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
         <div class="slds-grid">
             <div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
                 <h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;
@@ -44,6 +57,7 @@
 					</span>
                     <strong>&nbsp; Create Booking for {!v.wrapperList.personAcc.FirstName}&nbsp;{!v.wrapperList.personAcc.LastName} </strong>
                 </h2>
+
                 <p>&nbsp;</p>
                 <div class="demo-only"></div>
                 <div class="slds-path slds-is-expanded">
@@ -285,15 +299,15 @@
                                             </aura:iteration>
                                         </lightning:select>
                                     </div>
-                                   				<div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-										<lightning:select label="Other nationalities" value="{!v.selectedOtherNationality}" aura:id="path_3_Fields" name="zOtherNationality">
-											<!--<option text="{!v.selectedOtherNationality}" value="{!v.selectedOtherNationality}"></option>-->
+                                    <div class="slds-form-element slds-size_1-of-2 otherNationality" style="margin-top:0">
+                                        <!--<lightning:select label="Other nationalities" value="{!v.selectedOtherNationality}" aura:id="path_3_Fields" name="zOtherNationality">
                                             <option value="">Please select</option>
                                             <aura:iteration items="{!v.OtherNationalityList}" var="itemOtherNation">
-												<!--<option value="{!item.value}">{!item.label}</option>-->
 												<option text="{!itemOtherNation.key}" value="{!itemOtherNation.value}" selected="{!itemOtherNation.Selected}"/>
-											</aura:iteration>
-										</lightning:select>
+											</aura:iteration> 
+										</lightning:select>-->
+                                        <div class="slds-text-body_regular">Other nationalities</div>
+                                        <c:MultiSelect infoText="Please select" options="{!v.OtherNationalityList}" selectedItems="{!v.selectedOtherNationalityNameMulti}"/>
                                     </div>
                                 </div>
                                 <div class="slds-grid slds-p-bottom_small">
@@ -325,6 +339,8 @@
                                         <!--<ui:inputNumber aura:id="otherPhn" label="Other Phone" maxlength="10" value="{!v.wrapperList.personAcc.PersonOtherPhone}" />-->
                                     </div>
                                 </div>
+
+
                             </div>
                             <div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
                                 <div class="slds-grid  slds-p-bottom_small">
@@ -434,12 +450,13 @@
                                                     <!--</aura:iteration>-->
                                                     <!--</lightning:select>-->
                                                 </div>
-												<div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">
-                                                    <div class="overllappingElement">   
-                                                        <lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade" value="{!v.wrapperList.Quote.SalesMadeby__r.name}">
-							<!--<option value="" selected="selected">Please Select </option><option value="Lisa">Lisa</option>-->
-														</lightning:input>
-														<c:OwnerChange recordId="{!v.wrapperList.quote.Id}" ParentObjectApi="Apttus_Proposal__Proposal__c"/>
+                                                <div class="slds-form-element slds-size_1-of-2 " style="margin-top:0px">
+                                                    <div class="overllappingElement">
+                                    
+                                                   <lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade"></lightning:input>
+
+                                                            <c:OwnerChange recordId="{!v.QuoteId}" OwnerRecordId="{!v.QuoteId}" ParentObjectApi="Apttus_Proposal__Proposal__c" />
+
                                                     </div>
                                                 </div>
                                             </div>
