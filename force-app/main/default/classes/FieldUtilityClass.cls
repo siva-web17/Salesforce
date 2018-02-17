@@ -35,43 +35,6 @@ public with sharing class FieldUtilityClass {
         }
         return false;
     }
-    
-    public static Map<String, String> getCountryPickListValues() {
-        Map<String, String> picklistValues = new Map<String, String>();
-        Schema.DescribeFieldResult fieldResult = User.Countrycode.getDescribe();
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        System.debug('Picklist::'+ple);
-        for( Schema.PicklistEntry entry : ple){
-            picklistValues.put(entry.label, entry.value);
-        	//System.debug(f.getLabel() +'::'+ f.getValue());
-        }
-        return picklistValues;
-    }
-    
-    public static Map<String, String> getStatePickListValues() {
-        Map<String, String> picklistValues = new Map<String, String>();
-        Schema.DescribeFieldResult fieldResult = User.statecode.getDescribe();
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        System.debug('Picklist::'+ple);
-        for( Schema.PicklistEntry entry : ple){
-            picklistValues.put(entry.label, entry.value);
-        	//System.debug(f.getLabel() +'::'+ f.getValue());
-        }
-        return picklistValues;
-    }
-    
-    public static Map<String, String> getMaillingPickListValues() {
-        Map<String, String> picklistValues = new Map<String, String>();
-        Schema.DescribeFieldResult fieldResult = User.Countrycode.getDescribe();
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        System.debug('Picklist::'+ple);
-        for( Schema.PicklistEntry entry : ple){
-            picklistValues.put(entry.label, entry.value);
-        	//System.debug(f.getLabel() +'::'+ f.getValue());
-        }
-        return picklistValues;
-    }
-
 
     public static Map<String, String> getPickListValues(Schema.SObjectType type, String fieldName) {
         if (type == null || fieldName == null || fieldName == '') {
@@ -198,7 +161,8 @@ public with sharing class FieldUtilityClass {
         System.debug('ControllingInfo: ' + controllingInfo);
         return controllingInfo;
     }
-    
+
+
     public static Map<String, Map<String,String>> getFieldDependenciesMap(String objectName, String controllingField, String dependentField) {
         Map<String, Map<String,String>> controllingInfo = new Map<String, Map<String,String>>();
 
