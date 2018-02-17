@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Here we store all the external services details
-Ex:End Point details,Env,Target System</description>
+Ex:End Point details,Env,Target System....</description>
     <label>ExternalServiceSetting</label>
     <pluralLabel>ExternalServiceSettings</pluralLabel>
     <visibility>Public</visibility>
