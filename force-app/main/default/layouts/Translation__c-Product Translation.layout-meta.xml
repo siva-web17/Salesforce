@@ -35,6 +35,10 @@
                 <behavior>Edit</behavior>
                 <field>Incentive__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PromotionNameTranslation__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

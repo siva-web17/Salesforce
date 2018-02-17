@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SentLetter__c</fullName>
+    <description>This field is used to store the Letter that was attached when sending the brochure.</description>
+    <externalId>false</externalId>
+    <label>Sent Letter</label>
+    <length>80</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
