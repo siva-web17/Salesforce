@@ -268,7 +268,7 @@ public class APTS_TestDataUtility {
         insert account2;
         return account2;
     }
-    
+
     //create PresonAccount 
     public static Account createPersonAccount(string recordType) {
         Account personAcc = new Account(
@@ -282,7 +282,7 @@ public class APTS_TestDataUtility {
                 PersonMailingStreet =   'Test Street',
                 PersonMailingPostalCode =   '54321',
                 PersonMailingCountry    =   'United States',
-                PersonMailingState  =   'Idaho', 
+                PersonMailingState  =   'Idaho',
                 /**FirstNameEn__c       =   'Test first Name',
                 LastNameEn__c       =   'Test last name',**/
                 ShippingPostalCode  =   '54321',
@@ -294,7 +294,7 @@ public class APTS_TestDataUtility {
                 PersonEmail         =   'test@apttus.com',
                 /**Email2__pc           =   'salesforce@apttus.com',**/
                 /**ParentEmail__pc      =   'test@salesforce.com',**/
-                PersonHomePhone =   '1278643845', 
+                PersonHomePhone =   '1278643845',
                 PersonMobilePhone   =   '5796432186',
                 PersonOtherPhone    =   '4678213468'
                 /**,
@@ -500,15 +500,15 @@ public class APTS_TestDataUtility {
                 CurrencyIsoCode = currencyCode);
         return productGroupValue;
     }
-    
+
     public static Fixed_Fare__c getFixedfare()  {
         return [select Departure_Point__c,Destination__c,Flight_Season__c,From_Day__c,From_Month__c,From_To__c,Product__c,Program__c,To_Day__c,To_Month__c from Fixed_Fare__c limit 1];
     }
-    
+
     public static Apttus_Config2__ProductConfiguration__c  getTestConfig(String ConfigName) {
         return [select id,name from Apttus_Config2__ProductConfiguration__c where name=:ConfigName limit 1];
     }
-    
+
     public static Departure_Point__c createDeparturePoint(String DepPoint,String ProductCode,String ProgramCode,String MarketCode,String CurrCode) {
         Departure_Point__c depPointobj = new Departure_Point__c(
                 Active__c = true,
@@ -522,11 +522,11 @@ public class APTS_TestDataUtility {
         );
         return depPointobj;
     }
-    
-     public static List<Apttus_Config2__LineItem__c> getLineItemsForConfigId(Id ConfigId) {
+
+    public static List<Apttus_Config2__LineItem__c> getLineItemsForConfigId(Id ConfigId) {
         List<Apttus_Config2__LineItem__c> lineItems = [SELECT Id,Name,Apttus_Config2__LineType__c,FixedFareSeason__c,Apttus_Config2__LineStatus__c,APTS_Product_Type__c,
                 Apttus_Config2__ProductId__c,Apttus_Config2__BasePrice__c,Apttus_Config2__PriceListItemId__c,Apttus_Config2__Description__c
-        ,Apttus_Config2__PriceListId__c,Apttus_Config2__Quantity__c,Apttus_Config2__LineNumber__c,Apttus_Config2__StartDate__c,Apttus_Config2__EndDate__c
+                ,Apttus_Config2__PriceListId__c,Apttus_Config2__Quantity__c,Apttus_Config2__LineNumber__c,Apttus_Config2__StartDate__c,Apttus_Config2__EndDate__c
         FROM Apttus_Config2__LineItem__c WHERE Apttus_Config2__ConfigurationId__c = :ConfigId ];
         return lineItems;
     }
