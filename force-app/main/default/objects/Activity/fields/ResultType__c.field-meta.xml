@@ -71,10 +71,13 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
+            <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <controllingFieldValue>Called Us</controllingFieldValue>
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
+            <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
+            <controllingFieldValue>Social Media Sent</controllingFieldValue>
             <valueName>Close</valueName>
         </valueSettings>
         <valueSettings>

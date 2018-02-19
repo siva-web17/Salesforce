@@ -16,7 +16,7 @@
               </span>
               <span class="slds-media__body">
                   <span class="slds-listbox__option-text slds-listbox__option-text_entity" title="{!v.oRecord.Name}">{!v.oRecord.Name}</span>
-              </span>
+              </span> 
             <!-- <span class="slds-media__body">
                   <span class="slds-listbox__option-text slds-listbox__option-text_entity" title="{!v.oRecord.Shrivatsa__Market__c }">{!v.oRecord.Shrivatsa__Market__c}</span>
               </span>

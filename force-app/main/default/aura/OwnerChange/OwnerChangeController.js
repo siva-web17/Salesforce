@@ -5,7 +5,7 @@
            // var recordId = component.get(v.recordId) ;
            var action=component.get("c.GetRecordOwnerDetails");
              action.setParams({
-                    	'Id' : component.get("v.recordId")
+                    	'Id' : component.get("v.OwnerRecordId")
                 	});
            action.setCallback(this, function(response) {
                       var state = response.getState();
@@ -15,7 +15,7 @@
 
                           var ownerRecord = JSON.parse(response.getReturnValue());
                           component.set("v.ParentRecord",ownerRecord);
-                          component.set('v.ownerName',ownerRecord.Owner.Name);
+                          component.set('v.ownerName',ownerRecord.SalesMadeby__r.Name);
                          // message='Owner Changed to'+
                           component.set("v.ownerURL", "#/sObject/" + ownerRecord.OwnerId + "/view");
 
@@ -84,14 +84,14 @@
                                          	'UserId' : ownerRec.Id ,
                                          	'RecordId':component.get("v.recordId"),
                                          	'ObjectName': component.get("v.ParentObjectApi")
-                                     	});
+                                     	}); 
                                 action.setCallback(this, function(response) {
                                            var state = response.getState();
                                            var mode='pester';
                                            var message='';
                                            var duration=3000;
                                            if (component.isValid() && state === "SUCCESS") {
-                                               message= component.get("v.ParentObjectApi")+'Owner Changed to '+ownerRec.Name;
+                                               message= 'Proposal Sales made By Changed to '+ownerRec.Name;
 
                                            }
                                            else if (state === "ERROR") {

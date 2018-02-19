@@ -552,6 +552,14 @@
         <value>Action</value>
     </labels>
     <labels>
+        <fullName>LAC_ActionScreenURL</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ActionScreenURL</shortDescription>
+        <value>/one/one.app#/n/AG_Action_Screen</value>
+    </labels>
+    <labels>
         <fullName>LAC_CNR</fullName>
         <categories>LAC</categories>
         <language>en_US</language>
@@ -574,6 +582,46 @@
         <protected>false</protected>
         <shortDescription>CR</shortDescription>
         <value>Close Reason</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Call_Not_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Not Reached</shortDescription>
+        <value>Call Not Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Call_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Reached</shortDescription>
+        <value>Call Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Called_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Called Us</shortDescription>
+        <value>Called Us</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Change_Program</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change Program</shortDescription>
+        <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Close</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Close</shortDescription>
+        <value>Close</value>
     </labels>
     <labels>
         <fullName>LAC_Cmd_TXT</fullName>
@@ -637,6 +685,14 @@
         <protected>false</protected>
         <shortDescription>LAC_ERROR_PAST_MSG</shortDescription>
         <value>Past date cannot be selected</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Emailed_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Emailed Us</shortDescription>
+        <value>Emailed Us</value>
     </labels>
     <labels>
         <fullName>LAC_FILL_VALID_INFO</fullName>
@@ -723,7 +779,31 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>select</shortDescription>
-        <value>Please select</value>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Sent_Email</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sent Email</shortDescription>
+        <value>Sent Email</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Reached</shortDescription>
+        <value>Social Media Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Sent</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Sent</shortDescription>
+        <value>Social Media Sent</value>
     </labels>
     <labels>
         <fullName>LAC_TITLE</fullName>
@@ -740,6 +820,22 @@
         <protected>false</protected>
         <shortDescription>VDT</shortDescription>
         <value>Visit Date/Time</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visit</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visit</shortDescription>
+        <value>Visit</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visited_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visited Us</shortDescription>
+        <value>Visited Us</value>
     </labels>
     <labels>
         <fullName>LAC_WBO</fullName>
@@ -1290,7 +1386,7 @@
         <shortDescription>Quantity</shortDescription>
         <value>Quantity</value>
     </labels>
-   
+    
     <labels>
         <fullName>ReachedAction</fullName>
         <language>en_US</language>
