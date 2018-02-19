@@ -19,12 +19,8 @@
                 <field>IsAllDayEvent</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>StartDateTime</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>EndDateTime</field>
+                <behavior>Edit</behavior>
+                <field>ActivityDateTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -32,14 +28,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Type</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>InfoMeetingID__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>WhatId</field>
@@ -51,6 +39,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IsPrivate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>StartDateTime</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>EndDateTime</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -159,16 +155,13 @@
     <relatedLists>
         <relatedList>RelatedActivityAttachmentList</relatedList>
     </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
-    </relatedLists>
     <relatedObjects>WhoId</relatedObjects>
     <relatedObjects>WhatId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000000VUAN</masterLabel>
+        <masterLabel>00h7E000000WcPF</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

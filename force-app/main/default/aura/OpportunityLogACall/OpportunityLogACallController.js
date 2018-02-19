@@ -175,7 +175,9 @@
 		var LAC_SACO = $A.get('$Label.c.LAC_SACO');
 		component.set('v.selectedSubActionType', '');
 		component.set('v.saveText', LAC_SAVE_ACTION);
-		if (component.get('v.selectedActionType') === 'Call Reached' && component.get('v.recordId').startsWith('00Q')) {
+		var LAC_Call_Reached = $A.get('$Label.c.LAC_Call_Reached');
+		var LAC_Select = $A.get('$Label.c.LAC_Select');
+		if (component.get('v.selectedActionType') === LAC_Call_Reached && component.get('v.recordId').startsWith('00Q')) {
 			component.set('v.saveText', LAC_SACO);
 		}
 		var callResultAction = component.get('c.getCallResults');
@@ -185,7 +187,7 @@
 				case 'SUCCESS':
 					var callResults = JSON.parse(res.getReturnValue());
 					component.set('v.callResults', callResults);
-					component.set('v.selectedCallResult', 'Select');
+					component.set('v.selectedCallResult', LAC_Select);
 					break;
 				case 'INCOMPLETE':
 					break;
@@ -213,9 +215,10 @@
 		} else {
 			var saveDataAction = component.get('c.saveData');
 			var bookOnDateValue = component.get('v.bookOnDate');
+			var LAC_Select = $A.get('$Label.c.LAC_Select');
 			var validateBookOnDate = bookOnDateValue == '' || bookOnDateValue == null ? !0 : moment(bookOnDateValue).isValid() ? !0 : !1;
 			if (validateBookOnDate) {
-				saveDataAction.setParams({ callAction: component.get('v.selectedActionType') === 'Select' ? '' : component.get('v.selectedActionType'), subAction: component.get('v.selectedSubActionType') === 'Select' ? '' : component.get('v.selectedSubActionType'), callResult: component.get('v.selectedCallResult') === 'Select' ? '' : component.get('v.selectedCallResult'), actionDateTime: component.get('v.selectedActionDate') === 'Select' ? '' : new Date(component.get('v.selectedActionDate')).toISOString(), closeReason: component.get('v.selectedCloseReason') === 'Select' ? '' : component.get('v.selectedCloseReason'), recordId: component.get('v.recordId'), comments: comments, program: component.get('v.changedProgram') === 'Select' ? '' : component.get('v.changedProgram'), visitDatetime: component.get('v.selectedVisitDate') === 'Select' ? '' : new Date(component.get('v.selectedVisitDate')).toISOString(), likelihoodToBook: component.get('v.selectedLikelihoodToBook'), hearAboutUs: component.get('v.hearAboutEFValue'), destination: component.get('v.destinationsSelected'), duration: component.get('v.durationsSelected'), whenYear: component.get('v.yearSelected'), whenMonth: component.get('v.monthSelected'), bookOn: bookOnDateValue == '' || bookOnDateValue == null ? null : new Date(bookOnDateValue).toISOString() });
+				saveDataAction.setParams({ callAction: component.get('v.selectedActionType') === LAC_Select ? '' : component.get('v.selectedActionType'), subAction: component.get('v.selectedSubActionType') === LAC_Select ? '' : component.get('v.selectedSubActionType'), callResult: component.get('v.selectedCallResult') === LAC_Select ? '' : component.get('v.selectedCallResult'), actionDateTime: component.get('v.selectedActionDate') === LAC_Select ? '' : new Date(component.get('v.selectedActionDate')).toISOString(), closeReason: component.get('v.selectedCloseReason') === LAC_Select ? '' : component.get('v.selectedCloseReason'), recordId: component.get('v.recordId'), comments: comments, program: component.get('v.changedProgram') === LAC_Select ? '' : component.get('v.changedProgram'), visitDatetime: component.get('v.selectedVisitDate') === LAC_Select ? '' : new Date(component.get('v.selectedVisitDate')).toISOString(), likelihoodToBook: component.get('v.selectedLikelihoodToBook'), hearAboutUs: component.get('v.hearAboutEFValue'), destination: component.get('v.destinationsSelected'), duration: component.get('v.durationsSelected'), whenYear: component.get('v.yearSelected'), whenMonth: component.get('v.monthSelected'), bookOn: bookOnDateValue == '' || bookOnDateValue == null ? null : new Date(bookOnDateValue).toISOString() });
 				saveDataAction.setCallback(this, function(res) {
 					var responseValue = JSON.parse(res.getReturnValue()).ResponseCode;
 					var innerBody = { value: JSON.parse(res.getReturnValue()).ErrorMessage };
@@ -224,8 +227,9 @@
 							var response = JSON.parse(res.getReturnValue());
 							if (typeof response.Result !== 'undefined' && response.Result !== null) {
 								if(validatedBtn == 'saveAndClose'){
+									var LAC_ActionScreenURL = $A.get('$Label.c.LAC_ActionScreenURL');
 									var urlEvent = $A.get('e.force:navigateToURL');
-									urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
+									urlEvent.setParams({ url: LAC_ActionScreenURL });
 									urlEvent.fire();
 								}else{
 									var toastEvent = $A.get('e.force:showToast');
@@ -243,7 +247,8 @@
 							} else {
 								if(validatedBtn == 'saveAndClose'){
 									var urlEvent = $A.get('e.force:navigateToURL');
-									urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
+									var LAC_ActionScreenURL = $A.get('$Label.c.LAC_ActionScreenURL');
+									urlEvent.setParams({ url: LAC_ActionScreenURL });
 									urlEvent.fire();
 								} else{
 									var toastEvent = $A.get('e.force:showToast');
@@ -346,7 +351,8 @@
 	},
 	navigateToActionScreen: function(component, event) {
 		var urlEvent = $A.get('e.force:navigateToURL');
-		urlEvent.setParams({ url: '/one/one.app#/n/AG_Action_Screen' });
+		var LAC_ActionScreenURL = $A.get('$Label.c.LAC_ActionScreenURL');
+		urlEvent.setParams({ url: LAC_ActionScreenURL });
 		urlEvent.fire();
 	},
 });

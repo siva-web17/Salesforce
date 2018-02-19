@@ -152,4 +152,15 @@ public class UsersHelper {
         }
         return result;
     }
+
+    public static Map<Id,User> getUserDetailsForUserIds(List<Id> useridList)
+    {
+                Map<Id,User> userMap=new Map<Id,User>();
+        if (useridList!=null && useridList.size()>0) {
+            for (User userRecord:[SELECT Id, Username, LastName, FirstName, MiddleName, Name, CompanyName, Email, Title, IsActive, UserRoleId FROM User where Id in:useridList]) {
+                userMap.put(userRecord.Id,userRecord);
+            }
+        }
+        return userMap;
+    }
 }
