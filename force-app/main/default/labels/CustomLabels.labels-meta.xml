@@ -421,7 +421,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
+        <value>http://poseidonqa.eflangtech.com/RankingSFService/api/ranking.</value>
     </labels>
     <labels>
         <fullName>ExcelImport</fullName>
@@ -1640,4 +1640,4 @@
         <value>Sent To Poseidon</value>
     </labels>
    
-</CustomLabels>
+</CustomLabels>	
