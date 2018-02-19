@@ -1,7 +1,7 @@
 <aura:component description="ModalPopUp">
     <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
     <aura:attribute name="localSelectedLookUpRecord" type="sObject" default="{}"/>
-    <aura:attribute name="ModalHeader" type="string" default=" Change Lead Owner"/>
+    <aura:attribute name="ModalHeader" type="string" default=" Change Sales Made By"/>
 
     <aura:registerEvent name="LookUpEvent" type="c:HandleModalPopUpEvent"/>
 

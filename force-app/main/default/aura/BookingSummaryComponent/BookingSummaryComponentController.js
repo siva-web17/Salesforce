@@ -1,26 +1,58 @@
 ({
 	doInit: function(component, event, helper) {
+
+
 		var quoteid = component.get('v.QuoteId');
 		var Oppid = component.get('v.OpportunityID');
 		var action = component.get('c.dataBind');
 		action.setParams({
 			QuoteId: component.get('v.QuoteId'),
 		});
-
 		action.setCallback(this, function(response) {
+		    console.log(response);
 			//store state of response
 			var state = response.getState();
 
 			if (state == 'SUCCESS') {
 				//set response value in wrapperList attribute on component.
 				var json_text = JSON.stringify(response.getReturnValue());
-				console.log(json_text);
+				var SalesMadeby__c = response.getReturnValue().Quote.SalesMadeby__c;
+				component.set('v.salesmadeby', SalesMadeby__c);
 				component.set('v.wrapperList', response.getReturnValue());
+
+
+
+
+
 				var u = component.get('v.wrapperList');
-component.set('v.pickGender', u.personAcc.Gender__c);
+
+
+				 component.set("v.countryState",u.mapOfCountryStatePicklist);
+                                console.log("======================== Nationality =========");
+                               component.set("v.availabelNationality",u.availableNationality);
+                               component.set("v.accSelectedNationality",u.accSelectedNationality);
+
+//                               $A.createComponent(
+//                                 "c:MultiSelect",
+//                                 {
+//                                	 "options":component.get("v.availabelNationality"),
+//                                	 "selectedItems" : component.get("v.accSelectedNationality")
+//                                 },
+//                                 function(newCmp){
+//                                   if (component.isValid()) {
+//                                        component.set("v.otherNationalityMulti", newCmp);
+//                                    }
+//                                 }
+//                               );
+                                console.log("======================== Country State list =========");
+                                console.log(u.mapOfCountryStatePicklist);
+
+
+				component.set('v.pickGender', u.personAcc.Gender__c);
                                 var arrayGenderMapKeys = [];
                                 //Store the response of apex controller (return map)
                                var result = u.GenderPickList;
+
                                 var p = component.get('v.pickGender');
                                 //Set the store response[map] to component attribute, which name is map and type is map.
                                 //component.set('v.companyMap', result);
@@ -111,25 +143,43 @@ component.set('v.pickGender', u.personAcc.Gender__c);
                                 }
                                 //Set the list of keys.
                                 component.set('v.NationalityList', arrayNationMapKeys);
+                 debugger;
 
-				component.set('v.selectedOtherNationality', u.personAcc.OtherNationalities__c);
+
+
+
+
+				//component.set('v.OtherNationalityList', u.personAcc.OtherNationalities__c);
                                 var arrayOtherNationMapKeys = [];
                                 //Store the response of apex controller (return map)
-                                var result = u.OtherNationalityPickList;
+                                var otherNationalities = u.OtherNationalityPickList;
                                 var p = component.get('v.selectedOtherNationality');
-//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
-				var isSelected = false;
-				for (var key in result) {
-					//arrayMapKeys.push(key);
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayOtherNationMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				 //Set the list of keys.
+
+                                for (var key in otherNationalities) {
+
+                                                    //arrayMapKeys.push(key);
+                                                    if (p == key || p == result[key]) {
+                                                        isSelected = true;
+                                                    }
+                                                    arrayOtherNationMapKeys.push(key);
+                                                    isSelected = false;
+                                                }
+//
+//                                //regUserJSON = fixSFDCString(regUserJSON, "OtherNationalities__c");
+//                                //Set the list of keys.
                                 component.set('v.OtherNationalityList', arrayOtherNationMapKeys);
+                                var otherNationalities = u.OtherNationalityPickList;
+                                var selectedOtherNationalityNameMulti = [];
+
+                                u.personAcc.OtherNationalities__c && u.personAcc.OtherNationalities__c.split(";")
+                                                    .map(x=> {
+                                                                for(var i=0; i<Object.values(otherNationalities).length; i++){
+                                                                    if(x==Object.values(otherNationalities)[i]){
+                                                                        selectedOtherNationalityNameMulti.push(Object.keys(otherNationalities)[i])
+                                                                    }
+                                                                }
+                                                            }
+                                                        )
 
 				component.set('v.selectedPassportType', u.personAcc.PassportType__c);
                                 var arrayPassportMapKeys = [];
@@ -149,6 +199,8 @@ component.set('v.pickGender', u.personAcc.Gender__c);
                                 }
                                 //Set the list of keys.
                                 component.set('v.PassportList', arrayPassportMapKeys);
+
+
 
 				component.set('v.selectedBookingChannel', u.Quote.BookingChannel__c);
                                 var arrayBookingChannelMapKeys = [];
@@ -399,9 +451,10 @@ component.set('v.pickGender', u.personAcc.Gender__c);
 		//$A.enqueueAction(cmp.get('c.submit'));
 	},
 	moveNext3: function(cmp, event, helper) {
-		var setNation = cmp.get('v.selectedOtherNationality');
+	    var NationalityMultiName = cmp.get('v.selectedOtherNationalityMulti');
+
+		var setNation = cmp.get('v.selectedOtherNationalityMulti');
 		cmp.set('v.wrapperList.personAcc.OtherNationalities__c', setNation);
-	
 		var setPassport = cmp.get('v.selectedPassportType');
 		cmp.set('v.wrapperList.personAcc.PassportType__c', setPassport);
 		var setOther = cmp.get('v.selectedNationality');
@@ -488,6 +541,7 @@ component.set('v.pickGender', u.personAcc.Gender__c);
 		//$A.enqueueAction(cmp.get('c.submit'));
 	},
 	moveNext4: function(cmp, event, helper) {
+	    debugger;
 		var setChannel = cmp.get('v.selectedBookingChannel');
 		cmp.set('v.wrapperList.Quote.BookingChannel__c', setChannel);
 
