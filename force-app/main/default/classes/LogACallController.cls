@@ -172,7 +172,6 @@ public with sharing class LogACallController {
                         }
                     }
                 }
-                return JSON.serialize(callResults);
             }
 			return JSON.serialize(callResults);
         }
