@@ -157,11 +157,23 @@
     <picklistValues>
         <picklist>CloseMainReason__c</picklist>
         <values>
-            <fullName>Finds EF offer too expensive</fullName>
+            <fullName>Chose to do something else</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Has no means</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost to competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not able to contact customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wrongly Imported</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -187,7 +199,7 @@
     <picklistValues>
         <picklist>ResultType__c</picklist>
         <values>
-            <fullName>Call Appointment</fullName>
+            <fullName>Appointment</fullName>
             <default>false</default>
         </values>
         <values>

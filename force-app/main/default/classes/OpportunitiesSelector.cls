@@ -29,13 +29,14 @@ public class OpportunitiesSelector {
     * @param Set<String> oppIds 
     * @return Returns list of opportunities based on the oppIds
     * */
+    
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, FollowupDatetime__c, AccountId, StageName,Program__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
-                                    FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c
+                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
                                FROM Opportunity
                               WHERE Id IN :oppIds];
         }
@@ -111,7 +112,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
+               select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
 //                        SELECT Id, WhoId, WhatId, Subject, Status,
 //                                FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,
 //                                CloseDate__c, IsExpressCall__c,RecordType.DeveloperName
@@ -157,7 +158,7 @@ public class OpportunitiesSelector {
     //This method used to get the active opportunity
     public static List<Opportunity> dupeCheckOpportunities(Account duplicateAccount) {
         return [
-                Select id,StageName,CloseDate,Program__c,TimeOutDate__c,FirstContactDateTime__c
+                Select id,StageName,CloseDate,Program__c,RecalculateRanking__c,TimeOutDate__c,FirstContactDateTime__c
                 from Opportunity
                 Where AccountId = :duplicateAccount.id
                 /**and IsPrimary__c = TRUE**/
@@ -205,6 +206,33 @@ public class OpportunitiesSelector {
                 WHERE Id in :opportunityIds
         ];
     }
+
+
+    /**
+    * @author Arjun Mohan
+    * ver 1.0 16-Feb-2018
+    * @description Returns list of Active Opp records For Passed AcocuntId's
+    *
+    * @param accountIdSet Ids to select
+    *
+    * @return List<Opportunity>
+    */
+    public static  Map<Id,Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
+        List<Opportunity> oppList=new List<Opportunity>();
+        Map<Id,Opportunity> accountIdWithOpportunityMap=new Map<Id,Opportunity>();
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Name,AccountId from Opportunity ';
+        query += 'where isActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
+        oppList= Database.query(query);
+        for (Opportunity oppRecord:oppList) {
+            accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
+        }
+        return accountIdWithOpportunityMap;
+    }
+
 
     /**
     * @author Arkadiusz Celej

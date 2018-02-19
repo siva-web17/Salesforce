@@ -7,5 +7,10 @@
     <columns>NAME</columns>
     <columns>Code__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product__c</field>
+        <operation>equals</operation>
+        <value>LT</value>
+    </filters>
     <label>All</label>
 </ListView>

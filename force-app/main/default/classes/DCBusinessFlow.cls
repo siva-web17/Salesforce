@@ -2,7 +2,7 @@
  * Created by aditi.sharma on 9/5/2017.
  */
 
-public with sharing class DCBusinessFlow {
+public class DCBusinessFlow {
     public static Lead sourceLead ;
     public static Lead duplicateLead = new Lead();
     public static Account duplicateAccount = new Account();
@@ -129,9 +129,13 @@ public with sharing class DCBusinessFlow {
                     finalLead = DCObjectMerge.leadToLeadFieldMerge(duplicateLead,sourceLead);
                     finalLead.status = finalLead.status=='closed'?'open':finalLead.status;
                     finalLead.isdupe__c = false;
+                    finalLead.readyforranking__c=false;
+                    finalLead.RecalculateRanking__c = true;
+                    update finalLead;                 
+                     //DCBusinessFlowHelper.notifyForRanking(finalLead);
                      transferEvent(duplicateLead,sourceLead,finalDecision);
-                    DCBusinessFlowHelper.notifyForRanking(finalLead);
                      SObjectUnitOfWork.deleteLead(sourceLead);
+                     
                 }
                 else {
                     system.debug('********** exit merge');
@@ -157,6 +161,8 @@ public with sharing class DCBusinessFlow {
             if((finalDecision!=null &&  finalDecision=='Merge')) {
                 //hitting notifyranking. This requirement has not been confirmed.
                 sourceLead.isAccountMerge__c = true;
+                sourceLead.RecalculateRanking__c = true;
+             
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
                 //system.debug('--------duplicateAccount2-------'+sourceLead);
@@ -191,7 +197,7 @@ public with sharing class DCBusinessFlow {
         lc.setConvertedStatus(System.Label.LeadStageConverted);
         system.debug('*********** opportunity list'+opportuntyList);
         if(opportuntyList != null && !opportuntyList.isEmpty()) {
-            if(opportuntyList[0].StageName != Label.ClosedWon) {
+            if(opportuntyList[0].StageName != Label.OpportunityBookingStage) {
                 lc.setOpportunityId(opportuntyList[0].id);
                 Opportunity opportunityRecord = opportuntyList[0];
                 system.debug('*********** '+opportunityRecord);
@@ -205,7 +211,7 @@ public with sharing class DCBusinessFlow {
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
             }
             //inactive if opportunity is
-            else if(opportuntyList[0].StageName == Label.ClosedWon) {
+            else if(opportuntyList[0].StageName == Label.OpportunityBookingStage) {
                 //update the closed won opportunity. Make isActive as 'false'
                 DCObjectMerge.inActiveOpportunity(opportuntyList[0]);
             }
@@ -227,9 +233,10 @@ public with sharing class DCBusinessFlow {
             eventRecord.MergeReason__c = decisionName;
             eventList.add(eventRecord);
         }
-        system.debug('updatable event list is'+eventList);
+        system.debug('updatable event list is'+eventList);       
         //update the whoid with source lead id(source might be existing or incoming lead)
         SObjectUnitOfWork.executeUpdateEvents(eventList);
+        
     }
 
     //this method is used to avoid soql query inside for loop

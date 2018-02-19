@@ -185,7 +185,7 @@
          }, 3000);
          return;
          }
-         var action = component.get("c.getRecuranceDetails");
+         var action = component.get("c.getRecurrenceDetails");
          var currentId = component.get("v.recordId");
          action.setParams({ campaignId : currentId, startEndDate : nextDates
               });

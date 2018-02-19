@@ -39,63 +39,100 @@ public class TasksHelper {
     public static Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
 
 
-    public static void convertActivitiesToTask(List<Id> parentIdList) {
+    public static void convertActivitiesToTask(List<Opportunity> opportunityRecord) {
         Id parentId;
         Map<Id, List<Task>> currentTaskMap = new Map<Id, List<Task>>();
         Map<Id, List<Event>> activityMap = new Map<Id, List<Event>>();
         Map<Id, Opportunity> parentOpportunityMap = new Map<Id, Opportunity>();
+        Map<Id, String> eventTypeValues = new Map<Id, String>();
         List<Event> eventsToUpdateList = new List<Event>();
-        if (parentIdList.size() > 0) {
-            for (Opportunity opportunityRecords : OpportunitiesSelector.getAllEventsAndTasksforOpportunity(parentIdList)) {
-                currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
-                activityMap.put(opportunityRecords.id, opportunityRecords.events);
-                parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
-            }
+        if (opportunityRecord.size() > 0) {
+            {
+                for (Opportunity opportunityRecords : opportunityRecord) {
+                    {
+                        currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
+                        if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
+                            system.debug('insideBooking>>');
+                            activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
+                            system.debug('insideBookingactivityMap>>>'+activityMap);
+                        }
+                        else {
+                            system.debug('insideNotBooking>>');
+                            activityMap.put(opportunityRecords.id, opportunityRecords.events);
+                            system.debug('insideNotBookingactivityMap>>>'+activityMap);
+                        }
+                        parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
+                    }
 
-            //Here we will get mix of LEAD and opportunity records
-            //Here we are getting all the activities for parent
-            //activityMap = EventsSelector.getAllActivities(parentIdList);           
-            //taskSettingsMap = getTaskSettings();
-            //Here we are getting all the tasks for parent
+                    //Here we will get mix of LEAD and opportunity records
+                    //Here we are getting all the activities for parent
+                    //activityMap = EventsSelector.getAllActivities(parentIdList);
+                    //taskSettingsMap = getTaskSettings();
+                    //Here we are getting all the tasks for parent
 
-            //########Commented by suresh..why u need this ???*********
-            //currentTaskMap = TasksSelector.getAllTasksForparent(parentIdList) ;
+                    //########Commented by suresh..why u need this ???*********
+                    //currentTaskMap = TasksSelector.getAllTasksForparent(parentIdList) ;
 
-            try {
-                for (Id parentIds : activityMap.keySet()) {
-                    for (Event parentActivity : activityMap.get(parentIds)) {
-                        eventRecord = parentActivity;
-                        eventId = parentActivity.Id;
-                        //Here we are processing record by record for parent object(LEAD/OPPORTUNITY
-                        //parentId = parentActivity.whatId != null ? parentActivity.whatId : parentActivity.WhoId;
+                    try {
 
-                        Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
-                        //leadrecord = parentLeadMap.containsKey(parentId) ? parentLeadMap.get(parentId) : null;
-                        oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
+                        for (Id parentIds : activityMap.keySet()) {
+                            for (Event parentActivity : activityMap.get(parentIds)) {
+                                if(parentActivity == null)
+                                {
+                                    return;
+                                }
+                                eventRecord = parentActivity;
+                                eventId = parentActivity.Id;
+                                //Here we are processing record by record for parent object(LEAD/OPPORTUNITY
+                                //parentId = parentActivity.whatId != null ? parentActivity.whatId : parentActivity.WhoId;
 
-                        //Filter tasks based on task type
-                        if (currentTaskMap.containsKey(parentIds))
-                            filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
+                                Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
+                                //leadrecord = parentLeadMap.containsKey(parentId) ? parentLeadMap.get(parentId) : null;
+                                oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
 
-                        //Here we are collecting all the tasks which are to be saved(Insert/Update)
-                        tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
-                        parentActivity.ProcessedforTaskcreation__c = true;
-                        eventsToUpdateList.add(parentActivity);
+                                //Filter tasks based on task type
+                                if (currentTaskMap.containsKey(parentIds))
+                                    filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
 
+                                //Here we are collecting all the tasks which are to be saved(Insert/Update)
+                                tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
+                                parentActivity.ProcessedforTaskcreation__c = true;
+                                eventsToUpdateList.add(parentActivity);
+
+                            }
+                        }
+                        if (tasksForActivitiesList.size() > 0) {
+                            SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
+                            //Here we are Marking Field on Events as ProcessedforTaskcreation__c=true;
+                            SObjectUnitOfWork.modifyEvents(eventsToUpdateList);
+                        }
+                    } catch (exception ex) {
+                        ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                                'Tasks', 'convertActivitiesToTask', eventId);
                     }
                 }
-                if (tasksForActivitiesList.size() > 0) {
-                    SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
-                    //Here we are Marking Field on Events as ProcessedforTaskcreation__c=true;
-                    SObjectUnitOfWork.modifyEvents(eventsToUpdateList);
-                }
-            } catch (exception ex) {
-                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                        'Tasks', 'convertActivitiesToTask', eventId);
+
             }
 
         }
+    }
 
+    public static List<Event> getEventToBeProcessed(List<Event> events) {
+        //Opportunity oppRecord = [select id, stagename from opportunity where id in: events.whatid];
+
+        List<Event> eventsToBeProcessed = new List<Event>();
+        for (Event event : events) {
+            system.debug('insidefor>>>>');
+           // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
+            if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting &&
+                    event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest &&
+                    event.Type != system.label.IR ){
+                system.debug('insideifprocessevent>>>>');
+                eventsToBeProcessed.add(event);
+            }
+        }
+        system.debug('eventsToBeProcessed>>>'+eventsToBeProcessed);
+        return eventsToBeProcessed;
     }
 
     //Filter Tasks Types for parent using Map Ex:(SBR,List<3 SBR Tasks>)
@@ -109,8 +146,6 @@ public class TasksHelper {
     public static Map<String, List<Task>> filterTaskTypeTaskForparent(List<Task> currentParentTaskList,
             String CurrentProgram) {
         Map<String, List<Task>> currentParentTaskMap = new Map<String, List<Task>>();
-
-
         List<Task> brochureRequestTaskList = new List<Task>();
         List<Task> priceQuoteTaskList = new List<Task>();
         List<Task> taskClosedList = new List<Task>();
@@ -289,9 +324,9 @@ public class TasksHelper {
                             if (currentParentTaskMap.containsKey(SalesTasks.OPENCALL.name()))
                                 closedTaskList = currentParentTaskMap.get(SalesTasks.OPENCALL.name());
 
-                           // if (requestEventObject != null && (currentParentProgram == requestEventObject.Program__c))
+                            // if (requestEventObject != null && (currentParentProgram == requestEventObject.Program__c))
                             if (requestEventObject != null)
-                            objUpdateTask = updateTaskRulesForActivity(closedTaskList, currentActiveTaskToUpdate);
+                                objUpdateTask = updateTaskRulesForActivity(closedTaskList, currentActiveTaskToUpdate);
 
 
                             if (requestEventObject != null) {
@@ -352,8 +387,9 @@ public class TasksHelper {
             //we will update this only if the Sales user has not spoken to customer today.
             if (tasktoUpdate != null)
 
-            tasktoUpdate.FollowUpDate__c = Datetime.now();
-           // tasktoUpdate.IsExpressCall__c = isExpressCall;
+                tasktoUpdate.FollowUpDate__c = Datetime.now();
+                tasktoUpdate.ActivityDate = Datetime.now().Date();
+            // tasktoUpdate.IsExpressCall__c = isExpressCall;
 
         }
 
@@ -397,18 +433,14 @@ public class TasksHelper {
             newTask.Type = (objTask.Type == SalesTasks.TCC.Name()) ? SalesTasks.Call.Name() : objTask.Type;
             newTask.Program__c = eventObj.Program__c;
             newTask.FollowUpDate__c = Datetime.now();
-            newTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(Datetime.now()) ;
+            system.debug('followup>>>>'+ newTask.FollowUpDate__c );
+            newTask.ActivityDate = Datetime.now().Date();
+            system.debug('ActivityDate>>>>'+ newTask.ActivityDate );
             newTask.ActivityDateTime__c = Datetime.now();
             newTask.EventId__c = eventObj.Id;
             newTask.recordtypeid = recordTypeId;
             newTask.Subject= taskSettingsMap.get(objTask.Type).TaskSubject__c+' - '+newTask.Program__c ;
-
-
-
             mapTaskFieldsBasedonType(newTask,eventObj, objTask);
-
-
-
         } else {
             newTask = objTask;
         }
@@ -420,7 +452,9 @@ public class TasksHelper {
     public static Boolean canSendBrochure(List<Task> taskList, String currentRequestProgram, Lead leadRecord, opportunity oppRecord) {
         boolean canSendBR = false;
         String temp = '';
-        canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
+        //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
+        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport))|| (oppRecord.Account.HasAddress__c && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false;
+        system.debug('canSendBR>>>'+canSendBR);
         if (!canSendBR) {
             return canSendBR;
         }
@@ -432,10 +466,11 @@ public class TasksHelper {
 
                     if (taskRecord.IsClosed__c && (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == null
                             || marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == 0
-                            || marketProgramSetting.get(temp).AutoCloseBrochureRequest__c
+                            || (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c
                             <
-                            (SFLangUtil.ConvertDateTimeTodate(taskRecord.CloseDate__c).daysBetween(date.today())))
+                            (SFLangUtil.ConvertDateTimeTodate(taskRecord.CloseDate__c).daysBetween(date.today()))))
                             && !marketProgramSetting.get(temp).DoNotSendBrochure__c) {
+                        system.debug('inautoclose>>>');
                         canSendBR = true;
                         break;
                     } else if (taskRecord.program__c == currentRequestProgram && !taskRecord.IsClosed__c) {
@@ -469,7 +504,7 @@ public class TasksHelper {
     //Create call task only if below condition are verified
     public static Boolean canCreateCallTask() {
         //return (oppRecord != null) ? ((!oppRecord.Account.PersonDoNotCall) )  : false;
-       // system.debug('oppRecord.HasSystemCallTask__c>>>>>>>'+oppRecord.HasSystemCallTask__c);
+        // system.debug('oppRecord.HasSystemCallTask__c>>>>>>>'+oppRecord.HasSystemCallTask__c);
         return (oppRecord != null) ? (!oppRecord.Account.PersonDoNotCall && !oppRecord.HasSystemCallTask__c ) : false;
     }
 
@@ -778,7 +813,7 @@ public class TasksHelper {
             }
         }
     }
-    
+
     //accepts a list of events and returns ids of records that are related to opportunity
     public static List<Id> filterEventsRelatedToOppotunity(List<Event> lstEvents){
         List<Id> lstEventIds = new List<Id>();

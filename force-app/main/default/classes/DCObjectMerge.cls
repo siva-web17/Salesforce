@@ -44,6 +44,7 @@ public class DCObjectMerge {
         duplicateAccount = emailLeadToAccountMerge(duplicateAccount,sourceLead);
         //6. address merge
         duplicateAccount = addressLeadtoAccountMerge(duplicateAccount,sourceLead);
+         duplicateAccount.recalculateranking__c = true;
         system.debug('^^^^^^^^^^^^ final acocunt'+duplicateAccount);
         system.debug('duplicateAccount>>>>>'+duplicateAccount);
 
@@ -60,7 +61,7 @@ public class DCObjectMerge {
             opportunityRecord.TFBypassStageValidation__c = true;
             opportunityRecord.StageName =OpportunitiesSelector.getOpportunityStageName(opportunityRecord);
             system.debug('>>>Previous Opp StageName'+opportunityRecord.StageName);
-            opportunityRecord.CloseDate = System.today()+90;
+            opportunityRecord.CloseDate = System.today().addMonths(2);
             opportunityRecord.TimeOutDate__c=null;
             
             if(sourceLead.RequestType__c != 'CAM'){
@@ -93,6 +94,7 @@ public class DCObjectMerge {
                 opportunityRecord.Program__c = sourceLead.Program__c;
             }
         }
+         opportunityRecord.RecalculateRanking__c=true;
         SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
         // checking the field to false to avoid the stagechange from any other place and using a DML to update it to false
         system.debug('updated stage name is>>'+opportunityRecord.stagename);

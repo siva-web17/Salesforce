@@ -2,19 +2,15 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All_Leads2</fullName>
     <columns>FULL_NAME</columns>
-    <columns>LEAD.EMAIL</columns>
-    <columns>CreationMethod__c</columns>
-    <columns>LEAD.COMPANY</columns>
+    <columns>Ranking__c</columns>
     <columns>LEAD.STATUS</columns>
-    <columns>IsDupeProcessed__c</columns>
-    <columns>LEAD.UNREAD</columns>
-    <columns>LEAD.CREATED_DATE</columns>
-    <columns>CORE.USERS.ALIAS</columns>
-    <columns>IsDupe__c</columns>
-    <columns>LEAD.RECORDTYPE</columns>
-    <columns>Market__c</columns>
     <columns>Program__c</columns>
-    <columns>SalesOffice__c</columns>
+    <columns>DOB__c</columns>
+    <columns>Age__c</columns>
+    <columns>RequestType__c</columns>
+    <columns>Gender__c</columns>
+    <columns>Partner__c</columns>
+    <columns>Market__c</columns>
     <filterScope>Everything</filterScope>
     <label>All Leads</label>
 </ListView>

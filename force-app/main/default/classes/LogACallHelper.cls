@@ -9,6 +9,31 @@ public with sharing class LogACallHelper {
     public static Set<String> allNotReachedItems = new Set<String>{
             Label.CallNotReached.toUpperCase(), Label.SentEmail.toUpperCase(), Label.SocialMediaSent.toUpperCase()
     };
+    
+     public static Set<String> callTypes = new Set<String>{
+            Label.CallReached.toUpperCase(),Label.CallNotReached.toUpperCase(), Label.CalledUs.toUpperCase()
+    };
+    public static Set<String> emailTypes = new Set<String>{
+            Label.SentEmail.toUpperCase(), Label.EmailedUs.toUpperCase()
+    };
+    public static Set<String> taskTypes = new Set<String>{
+             Label.SocialMediaSent.toUpperCase(),Label.SocialMediaReached.toUpperCase(),Label.VisitedUs.toUpperCase()
+    };
+
+    public static String getTaskSubType(String callAction){
+        system.debug('callAction>>>'+callAction);
+        if(callTypes.contains(callAction.toUpperCase())) {
+            system.debug('insidecalltypes>>>'+callAction);
+            return 'Call';
+        }
+         if(emailTypes.contains(callAction.toUpperCase())) {
+            return 'Email';
+        }
+         if(taskTypes.contains(callAction.toUpperCase())) {
+            return 'Task';
+        }
+        return null;
+    }
 
     /**
      * @author Aneesh Bhat
@@ -98,14 +123,14 @@ public with sharing class LogACallHelper {
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                 } else if (callResult.toUpperCase() == Label.Visit.toUpperCase()) {
                     System.debug('Visit section invoked');
-                    openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUA.name();
+                    openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                     Event visitEvent = new Event();
                     visitEvent.Program__c = (String.valueOf(parentId).substring(0, 3) == '00Q') ? lead.Program__c : opp.Program__c;
                     visitEvent.FollowUpDate__c = visitDatetime;
                     visitEvent.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(TasksHelper.VISIT_EVENT_DEVELOPER_NAME).Id;
-                    visitEvent.Subject = 'one to one consultation';
+                    visitEvent.Subject = 'Office Visit';
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
                         visitEvent.WhatId = opp.Id;
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
@@ -233,7 +258,7 @@ public with sharing class LogACallHelper {
 
                 Task callTask = opp.Tasks[0];
                 System.debug('Open the existing System Call Task'+callTask.IsClosed);
-                if(callTask.IsClosed__c) {
+                if(callTask.IsClosed) {
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
                     callTask.FollowUpDate__c = followupDatetime;
@@ -245,7 +270,7 @@ public with sharing class LogACallHelper {
                     else if(opp.StageName == Label.OpportunityStageFollowUp){
                         callTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     }
-                    
+                     callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
                     update callTask;
                     callTask.IsParentClosing__c = false;
                     update callTask;

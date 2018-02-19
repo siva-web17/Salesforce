@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ResultType__c</fullName>
+    <description>Captures the result for the action of a sales user</description>
     <externalId>false</externalId>
     <inlineHelpText>Enter Result Type for call logged in.</inlineHelpText>
     <label>Result Type</label>
@@ -17,9 +18,9 @@
                 <label>Call back</label>
             </value>
             <value>
-                <fullName>Call Appointment</fullName>
+                <fullName>Appointment</fullName>
                 <default>false</default>
-                <label>Call Appointment</label>
+                <label>Appointment</label>
             </value>
             <value>
                 <fullName>Visit</fullName>
@@ -57,7 +58,7 @@
             <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
             <controllingFieldValue>Social Media Sent</controllingFieldValue>
-            <valueName>Call Appointment</valueName>
+            <valueName>Appointment</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
@@ -70,10 +71,13 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
+            <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <controllingFieldValue>Called Us</controllingFieldValue>
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
+            <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
+            <controllingFieldValue>Social Media Sent</controllingFieldValue>
             <valueName>Close</valueName>
         </valueSettings>
         <valueSettings>

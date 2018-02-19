@@ -17,7 +17,7 @@ public class StartDateHelper {
         String dateString = String.valueOf(System.today()).split(' ')[0];
         String blockPastDateCheck = (canCheckOldDates) ? '' : ' AND StartDate__c > ' + dateString;
         String IsBeginnerCheck = (isBeginner) ? ' AND Is_Beginner__c=TRUE ' : ' ';
-        String selectQuery = 'select Id,Name,Course__c,Destination__c,StartDate__c,Is_Beginner__c,Is_Preferred__c from  Start_Dates__c';
+        String selectQuery = 'select Id,Name,Course__c,Destination__c,StartDate__c,Is_Beginner__c,APTSCourseNumberofWeeks__c,APTSEndDate__c,Is_Preferred__c from  Start_Dates__c';
         String whereClause = ' Where Course__c =\'' + courseCode + '\' AND Destination__c =\'' + destination + '\' AND Program__c =\'' + programCode + '\' ' + blockPastDateCheck + ' ' + IsBeginnerCheck;
         String Query = selectQuery + whereClause;
         System.debug('##############' + Query);
@@ -32,10 +32,10 @@ public class StartDateHelper {
     }*/
 
     //This Method will update the related articles start date end date and quantity which are specific to that destination
-    public static void updateStartDateAndEndDateOfRelatedArticles(List<Apttus_Config2__LineItem__c> lineItemList, String destinationCode, Date startDate, Date endDate, Integer quantity) {
+    public static void updateStartDateAndEndDateOfRelatedArticles(List<Apttus_Config2__LineItem__c> lineItemList, String destinationCode, Date startDate, Date endDate, Integer quantity,String program) {
         Id currentRecordId;
         try {
-            List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(destinationCode);
+            List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(destinationCode,program);
             String currentLineItemSubType = '';
             String currentLineItemType = '';
             for (Apttus_Config2__LineItem__c lineItemRecord : lineItemList) {
@@ -52,8 +52,9 @@ public class StartDateHelper {
                     lineItemRecord.Apttus_Config2__StartDate__c = startdate.addDays(Integer.valueOf(startdateSettingsList[0].StartDateOffSet__c));
                     lineItemRecord.Apttus_Config2__EndDate__c = enddate.addDays(Integer.valueOf(startdateSettingsList[0].EndDateOffSet__c));
                     lineItemRecord.Apttus_Config2__Quantity__c = (!String.isBlank(lineItemRecord.Product_Code__c) && lineItemRecord.Product_Code__c == System.Label.FixedFareFlightCode) ? 1 : quantity;
-                	lineItemRecord.Apttus_Config2__ExtendedQuantity__c = lineItemRecord.Apttus_Config2__Quantity__c;
-                        }
+                    lineItemRecord.APTS_Course_Number_of_Weeks__c=(!String.isBlank(lineItemRecord.Product_Code__c) && lineItemRecord.Product_Code__c == System.Label.FixedFareFlightCode) ? 1 : quantity;
+                    lineItemRecord.Apttus_Config2__ExtendedQuantity__c = lineItemRecord.Apttus_Config2__Quantity__c;
+                }
                 else {
                     System.debug('In Else Loop hello %%%%%%%%%%%%%%%%%%%%%%%%');
                 }

@@ -1,0 +1,61 @@
+Active,Adjustment Applies To (Deprecated),Application Level,Application Method,APTS Ext ID,APTS Migration Ext ID,Category,Charge Type,Description,Effective Date,Expiration Date,Has Ruleset Criteria,Product Category,Product Family,Ruleset Criteria,Ruleset Exclusion Criteria,Ruleset Name,Sequence,Stop Processing More Rules,Type,Apttus_Config2__IncentiveId__r.Incentive Name,Apttus_Config2__PriceListId__r.APTS Migration Ext ID,Apttus_Config2__ProductGroupId__r.Group Name
+FALSE,Base Price,Bundle,,1,1,All,,,,,TRUE,,,"{
+  ""sObjectName"" : ""Apttus_Config2__LineItem__c"",
+  ""sObjectLabel"" : ""Line Item"",
+  ""searchText"" : null,
+  ""filter"" : {
+    ""predicates"" : [ {
+      ""RowNum"" : 1,
+      ""RHSSObjectName"" : null,
+      ""RHSFieldType"" : null,
+      ""RHSFieldName"" : null,
+      ""RHSFieldLabel"" : null,
+      ""RHSChildFilterName"" : null,
+      ""RefFieldName"" : null,
+      ""OffsetValue"" : null,
+      ""LHSSObjectName"" : null,
+      ""LHSChildFilterName"" : null,
+      ""FieldValue"" : ""Enrollment Fee"",
+      ""FieldType"" : ""STRING"",
+      ""FieldName"" : ""APTS_Product_Type__c"",
+      ""FieldLabel"" : ""Product Type"",
+      ""CompOper"" : ""equal to"",
+      ""BoolOper"" : null
+    } ],
+    ""hasRHSFields"" : false,
+    ""condExpr"" : ""1"",
+    ""childFilter"" : null
+  },
+  ""fields"" : [ ""APTS_Product_Type__c"" ],
+  ""exprStr"" : ""(Product Type = Enrollment Fee)""
+}",,Enrollment Fee Price Rule Set,1,FALSE,Standard,,,
+TRUE,Base Price,Line Item,,2,2,All,,,02/01/2018T00:00:00.000Z,02/02/2019T00:00:00.000Z,TRUE,,,"{
+  ""sObjectName"" : ""Apttus_Config2__LineItem__c"",
+  ""sObjectLabel"" : ""Apttus_Config2__LineItem__c"",
+  ""searchText"" : null,
+  ""filter"" : {
+    ""predicates"" : [ {
+      ""RowNum"" : 1,
+      ""RHSSObjectName"" : null,
+      ""RHSFieldType"" : null,
+      ""RHSFieldName"" : "" "",
+      ""RHSFieldLabel"" : null,
+      ""RHSChildFilterName"" : """",
+      ""RefFieldName"" : null,
+      ""OffsetValue"" : null,
+      ""LHSSObjectName"" : ""Apttus_Config2__LineItem__c"",
+      ""LHSChildFilterName"" : null,
+      ""FieldValue"" : ""FRP"",
+      ""FieldType"" : ""STRING"",
+      ""FieldName"" : ""Market__c"",
+      ""FieldLabel"" : ""Market"",
+      ""CompOper"" : ""equal to"",
+      ""BoolOper"" : null
+    } ],
+    ""hasRHSFields"" : false,
+    ""condExpr"" : ""1 "",
+    ""childFilter"" : null
+  },
+  ""fields"" : [ ""Market__c"" ],
+  ""exprStr"" : ""(Market = FRP) ""
+}",,10% off Intensive,1,FALSE,Incentive,10% off Intensive,,
