@@ -120,9 +120,9 @@
 							</lightning:select>
 						</aura:if>
 						<aura:if isTrue="{!v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == false}">
-							<aura:if isTrue="{!v.selectedActionType == 'Call Not Reached'?true:false}">
+							<aura:if isTrue="{!v.selectedActionType == $Label.c.LAC_Call_Not_Reached?true:false}">
 								<div class="slds-p-horizontal_x_small slds-size_1-of-1">
-									<lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == 'Call Not Reached' ? true : false }">
+									<lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
 										<option value="">{!$Label.c.LAC_Select}</option>
 										<aura:iteration items="{!v.subActions}" var="subAction">
 											<ui:inputSelectOption text="{!subAction}" label="{!subAction}" />
@@ -132,9 +132,9 @@
 							</aura:if>
 						</aura:if>
 						<aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
-							<aura:if isTrue="{!v.selectedActionType == 'Call Not Reached'?true:false}">
+							<aura:if isTrue="{!v.selectedActionType == $Label.c.LAC_Call_Not_Reached?true:false}">
 								<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-									<lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == 'Call Not Reached' ? true : false }">
+									<lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
 										<option value="">{!$Label.c.LAC_Select}</option>
 										<aura:iteration items="{!v.subActions}" var="subAction">
 											<ui:inputSelectOption text="{!subAction}" label="{!subAction}" />
@@ -145,7 +145,7 @@
 						</aura:if>
 						<aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-								<lightning:select aura:id="required" disabled="{!(v.likelihoodToBook == 'null' || v.likelihoodToBook == '' || v.likelihoodToBook == 'undefined' || empty(v.likelihoodToBook) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedLikelihoodToBook}" label="{!$Label.c.LAC_LHTB}" required="{! ( (v.selectedActionType == 'Called Us' &amp;&amp; v.selectedCallResult != 'Close') || (v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult != 'Close' ) || (v.selectedActionType == 'Visited Us' &amp;&amp; v.selectedCallResult != 'Close' ) || (v.selectedActionType == 'Emailed Us' &amp;&amp; v.selectedCallResult != 'Close' ) || (v.selectedActionType == 'Social Media Reached' &amp;&amp; v.selectedCallResult != 'Close' )  ) ? true : false }">
+								<lightning:select aura:id="required" disabled="{!(v.likelihoodToBook == 'null' || v.likelihoodToBook == '' || v.likelihoodToBook == 'undefined' || empty(v.likelihoodToBook) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedLikelihoodToBook}" label="{!$Label.c.LAC_LHTB}" required="{! ( (v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) || (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close )  ) ? true : false }">
 									<option value="">{!$Label.c.LAC_Select}</option>
 									<aura:iteration items="{!v.likelihoodToBook}" var="option">
 										<ui:inputSelectOption text="{!option}" label="{!option}" />
@@ -153,7 +153,7 @@
 								</lightning:select>
 							</div>
 							<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-								<lightning:select disabled="{!(v.hearAboutEF == 'null' || v.hearAboutEF == '' || v.hearAboutEF == 'undefined' || empty(v.hearAboutEF) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit label_adj" value="{!v.hearAboutEFValue}" label="{!$Label.c.LAC_HDYHA_EF}" required="{! (v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult != 'Close' ) ? true : false}">
+								<lightning:select disabled="{!(v.hearAboutEF == 'null' || v.hearAboutEF == '' || v.hearAboutEF == 'undefined' || empty(v.hearAboutEF) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit label_adj" value="{!v.hearAboutEFValue}" label="{!$Label.c.LAC_HDYHA_EF}" required="{! (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) ? true : false}">
 									<option value="">{!$Label.c.LAC_Select}</option>
 									<aura:iteration items="{!v.hearAboutEF}" var="option">
 										<ui:inputSelectOption text="{!option}" label="{!option}" />
@@ -208,7 +208,7 @@
 							<lightning:textarea aura:id="comments" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit commentsArea" maxlength="9985" label="{!$Label.c.LAC_Comments}" placeholder="{!$Label.c.LAC_Cmd_TXT}" />
 						</div>
 						<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-							<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != 'Select'?false:true) )}" label="{!$Label.c.LAC_RNA}" required="true" value="{!v.selectedCallResult}">
+							<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != $Label.c.LAC_Select?false:true) )}" label="{!$Label.c.LAC_RNA}" required="true" value="{!v.selectedCallResult}">
 								<option value="">{!$Label.c.LAC_Select}</option>
 								<aura:iteration items="{!v.callResults}" var="callResult">
 									<ui:inputSelectOption text="{!callResult}" label="{!callResult}" />
@@ -218,18 +218,18 @@
 						<aura:if isTrue="{!
 							(v.multi == true) ? (
 							( 
-							(v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult != 'Close') ||
-							(v.selectedActionType == 'Called Us' &amp;&amp; v.selectedCallResult != 'Close') ||
-							(v.selectedActionType == 'Visited Us' &amp;&amp; v.selectedCallResult != 'Close') ||
-							(v.selectedActionType == 'Emailed Us' &amp;&amp; v.selectedCallResult != 'Close') ||
-							(v.selectedActionType == 'Social Media Reached' &amp;&amp; v.selectedCallResult != 'Close')
+							(v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close)
 							) ? true : false
 							) : (
-							(v.selectedCallResult == 'Change Program') ? true : false
+							(v.selectedCallResult == $Label.c.LAC_Change_Program) ? true : false
 							) 
 							}">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != 'Select'?false:true) ) )}" value="{!v.changedProgram}">
+								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != $Label.c.LAC_Select?false:true) ) )}" value="{!v.changedProgram}">
 									<option value="">{!$Label.c.LAC_Select}</option>
 									<aura:iteration items="{!v.programs}" var="program">
 										<ui:inputSelectOption text="{!program}" label="{!program}" />
@@ -237,9 +237,9 @@
 								</lightning:select>
 							</div>
 						</aura:if>
-						<aura:if isTrue="{!v.selectedCallResult == 'Close'?true:false}">
+						<aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close?true:false}">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedCloseReason}" label="{!$Label.c.LAC_CR}" required="{!v.selectedCallResult == 'Close'?true:false}">
+								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedCloseReason}" label="{!$Label.c.LAC_CR}" required="{!v.selectedCallResult == $Label.c.LAC_Close?true:false}">
 									<option value="">{!$Label.c.LAC_Select}</option>
 									<aura:iteration items="{!v.closeReasons}" var="closeReason">
 										<ui:inputSelectOption text="{!closeReason}" label="{!closeReason}" />
@@ -247,14 +247,14 @@
 								</lightning:select>
 							</div>
 						</aura:if>
-						<aura:if isTrue="{!v.selectedCallResult == 'Close'? false : true}">
+						<aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-1">
-								<lightning:input onchange="{!c.pastDateValidation}" onblur="{!c.pastDateValidation}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}" disabled="{!v.selectedActionType != 'Select'?false:true}" required="{!v.selectedCallResult == 'Close'?false:true}" name="datetime" />
+								<lightning:input onchange="{!c.pastDateValidation}" onblur="{!c.pastDateValidation}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
 							</div>
 						</aura:if>
-						<aura:if isTrue="{!v.selectedCallResult == 'Visit'?true:false}">
+						<aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Visit?true:false}">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-1">
-								<lightning:input aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != 'Select'?false:true}" required="{!v.selectedCallResult == 'Close'?false:true}" name="datetime" />
+								<lightning:input aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
 							</div>
 						</aura:if>
 					</div>
@@ -264,14 +264,14 @@
 				<div class="slds-size_1-of-2 slds-p-right_x-small">
 					<button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="save" onclick="{!c.onSaveClicked}">
 						{!( 
-							v.selectedActionType == 'Call Reached' 
-							||v.selectedActionType == 'Called Us' 
-							||v.selectedActionType == 'Visited Us' 
-							||v.selectedActionType == 'Emailed Us' 
-							||v.selectedActionType == 'Social Media Reached
-						')? ( 
+							v.selectedActionType == $Label.c.LAC_Call_Reached 
+							||v.selectedActionType == $Label.c.LAC_Called_Us 
+							||v.selectedActionType == $Label.c.LAC_Visited_Us 
+							||v.selectedActionType == $Label.c.LAC_Emailed_Us 
+							||v.selectedActionType == $Label.c.LAC_Social_Media_Reached
+						)? ( 
 							v.find_lead_or_opp == '00Q' ? ( 
-								(v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult == 'Close' )
+								(v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close )
 								 ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert )
 								  : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION
 						} 					</button>
@@ -281,14 +281,14 @@
 						{!
 							 (v.find_lead_or_opp == '00Q')
 							  ? ( ( 
-								  v.selectedActionType == 'Call Reached' 
-								  || v.selectedActionType == 'Called Us' 
-								  || v.selectedActionType == 'Visited Us' 
-								  || v.selectedActionType == 'Emailed Us' 
-								  || v.selectedActionType == 'Social Media Reached'
+								  v.selectedActionType == $Label.c.LAC_Call_Reached 
+								  || v.selectedActionType == $Label.c.LAC_Called_Us 
+								  || v.selectedActionType == $Label.c.LAC_Visited_Us 
+								  || v.selectedActionType == $Label.c.LAC_Emailed_Us 
+								  || v.selectedActionType == $Label.c.LAC_Social_Media_Reached
 								   ) ? 
 								   (
-									   (v.selectedActionType == 'Call Reached' &amp;&amp; v.selectedCallResult == 'Close') 
+									   (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close) 
 									   ? 
 									   $Label.c.LAC_SAC : $Label.c.LAC_Convert_C
 									) : $Label.c.LAC_SAC
