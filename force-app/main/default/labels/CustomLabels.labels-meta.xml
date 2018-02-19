@@ -269,6 +269,30 @@
         <value>0120E0000002uaO</value>
     </labels>
     <labels>
+        <fullName>DMLTypeDelete</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeDelete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeInsert</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeInsert</shortDescription>
+        <value>Insert</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeUpdate</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeUpdate</shortDescription>
+        <value>Update</value>
+    </labels>
+    <labels>
         <fullName>Days</fullName>
         <language>en_US</language>
         <protected>false</protected>

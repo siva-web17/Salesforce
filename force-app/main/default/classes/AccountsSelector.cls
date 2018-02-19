@@ -32,4 +32,20 @@ public class AccountsSelector {
                 WHERE PersonContactId IN :contactIds
        ];
    }
+    public static map<Id,Account> getAccountDetailsbasedonAccountId(Set<Id> accountIdSet)
+    {
+        List<Account> accList=new List<Account>();
+        Map<Id,Account> accountMap=new Map<Id,Account>();
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Name,Id,Market__c from Account Where ';
+        query += 'Id in  : ' + 'accountIdSet' + ' ' ;
+        accList= Database.query(query);
+        for (Account accRecord:accList) {
+            accountMap.put(accRecord.Id,accRecord);
+        }
+        return accountMap;
+    }
 }
