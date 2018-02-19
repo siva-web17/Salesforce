@@ -174,16 +174,7 @@ public with sharing class LogACallController {
                 }
                 return JSON.serialize(callResults);
             }
-            else if(recordId.getSobjectType() == Lead.getSObjectType()) {
-               for(Integer i=0; i< callResults.size() ; i++){
-                   if(callResults[i].toUpperCase() == Label.CloseOpp.toUpperCase() && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())){
-                       callResults.remove(i);
-                   }
-               }
-				return JSON.serialize(callResults);
-            }
-            return null;
-
+			return JSON.serialize(callResults);
         }
         catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
