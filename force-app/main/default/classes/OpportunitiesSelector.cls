@@ -225,7 +225,7 @@ public class OpportunitiesSelector {
             query += f.getFieldPath() + ', ';
         }
         query += 'Name,AccountId from Opportunity ';
-        query += 'where isActive__c = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
+        query += 'where isActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
         oppList= Database.query(query);
         for (Opportunity oppRecord:oppList) {
             accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);

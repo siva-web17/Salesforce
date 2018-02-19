@@ -66,14 +66,15 @@ public class AccountsHelper {
             }
             Map<Id,User> UserMap= UsersHelper.getUserDetailsForUserIds(userIdList);
             for (Account accountRecord : newAccountMap.values()) {
-                if (!hasActiveOpportunity) {
-                    accountRecord.addError(Label.NoActiveOpportunity);
-                    return;
-                }
+
                 Map<String, Map<String, Map<String, String>>> changedAccountRecordMap = new Map<String, Map<String, Map<String, String>>>();
                 Map<String, Map<String, String>> changedAccountWithTableNameMap = new Map<String, Map<String, String>>();
 
                 if (accountRecord.TotalBooking__c > 0) {
+                    if (!hasActiveOpportunity) {
+                        accountRecord.addError(Label.NoActiveOpportunity);
+                        return;
+                    }
                     system.debug('has Booking');
                     Map<String, String> AddressfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Address.getFields()) {
@@ -251,6 +252,7 @@ public class AccountsHelper {
 
                 SyncAccountDetailsWrapper objwrapper = new SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
                 String JSONValue= JSON.serialize(objwrapper);
+                System.debug('Girish Account JSON '+JSONValue);
                 ExternalRouter.callUpdateAccountDetailsService(JSONValue);
                 Map<Id, AccountContactRelation> accountContactRelationMap = AccountContactRelationsSelector.getAccountContactRelationForAccountId(accountIdList);
                 if (accountContactRelationMap.size() > 0) {
