@@ -15,6 +15,7 @@ public class Accounts {
     }
 
     public static void onBeforeUpdate(List<Account> oldAccountList, List<Account> newAccountList) {
+
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {
@@ -25,6 +26,7 @@ public class Accounts {
 
     public static void onAfterUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
         AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>)newItems.values(), (Map<Id, Account>)oldItems);
+        AccountsHelper.syncAccountDetails((Map<Id,Account>)newItems);
     }
 
     public static void onAfterDelete(Map<Id, SObject> oldItems) {

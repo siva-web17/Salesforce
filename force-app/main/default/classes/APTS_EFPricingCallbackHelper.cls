@@ -62,7 +62,7 @@ public class APTS_EFPricingCallbackHelper{
             system.debug('Exception in APTS_EFPricingCallbackHelper updateCoursePricingOnMatrix :--- ');
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'APTS_EFPricingCallbackHelper', 'updateCoursePricingOnMatrix', item.Id);
         }
-        
+
         //return the current threshold for next calculation
         return currentThreshHold;
     }
@@ -86,13 +86,13 @@ public class APTS_EFPricingCallbackHelper{
                 if(lineItemPriceMatrixMap.containsKey(item.Id) && !(lineItemPriceMatrixMap.get(item.Id)).isEmpty()){
 
                     //need to calculate extended price and derive the base price
-                    double extendedPrice = (item.Apttus_Config2__SellingTerm__c * currentThreshHold * lineItemPriceMatrixMap.get(item.Id).get(0).Apttus_Config2__AdjustmentAmount__c) 
-                                            + (item.Apttus_Config2__SellingTerm__c * (item.Apttus_Config2__Quantity__c - currentThreshHold) * lineItemPriceMatrixMap.get(item.Id).get(1).Apttus_Config2__AdjustmentAmount__c);
+                    double extendedPrice = (item.Apttus_Config2__SellingTerm__c * currentThreshHold * lineItemPriceMatrixMap.get(item.Id).get(0).Apttus_Config2__AdjustmentAmount__c)
+                            + (item.Apttus_Config2__SellingTerm__c * (item.Apttus_Config2__Quantity__c - currentThreshHold) * lineItemPriceMatrixMap.get(item.Id).get(1).Apttus_Config2__AdjustmentAmount__c);
                     item.Apttus_Config2__BasePrice__c = extendedPrice / (item.Apttus_Config2__SellingTerm__c * item.Apttus_Config2__Quantity__c);
                 }
             }
             else if(item.Apttus_Config2__Quantity__c == currentThreshHold){
-                    
+
                 if(lineItemPriceMatrixMap.containsKey(item.Id) && !(lineItemPriceMatrixMap.get(item.Id)).isEmpty()){
 
                     //need to calculate extended price and derive the base price
@@ -106,4 +106,17 @@ public class APTS_EFPricingCallbackHelper{
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'APTS_EFPricingCallbackHelper', 'updatePricingForComparitive', item.Id);
         }
     }
+    public static Apttus_Config2__ProductAttributeValue__c getLTCoursePriceFromPAV(Id lineItemId)
+    {
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.LTCourseProgram__c.FieldSets.LTCourseProgramFieldSet.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Id from Apttus_Config2__ProductAttributeValue__c where Apttus_Config2__LineItemId__c = : ' + 'lineItemId' + ' ';
+        Apttus_Config2__ProductAttributeValue__c currentLineItemPAVRecord=Database.query(query);
+        System.debug('Line Item ID'+lineItemId);
+        System.debug('Current PAV' +query);
+        return currentLineItemPAVRecord;
+    }
+
 }

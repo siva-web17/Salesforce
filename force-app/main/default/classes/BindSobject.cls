@@ -40,8 +40,19 @@ public class BindSobject {
             from Opportunity where AccountID =: fetchAccount.Id];
             bindData.opp =   fetchopp;
             //bindData.SalesOfficePickList=GetSalesOffice();
-
             
+//            Schema.DescribeFieldResult fieldResult = Account.OtherNationalities__c.getDescribe();
+//            List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+//            List<String> lstOfNationality = new List<String>();
+//            for(Schema.PicklistEntry picklistFld:ple){
+//                //mapOfPicklistVal.put(picklistFld.getValue(),picklistFld.getLabel());
+//                lstOfNationality.add(picklistFld.getLabel());
+//            }
+//
+//            bindData.availableNationality = lstOfNationality;
+//
+//            bindData.accSelectedNationality = new List<String>(fetchAccount.OtherNationalities__c.split(';'));
+
             Apttus_Config2__PriceList__c fetchPrice = new Apttus_Config2__PriceList__c();
             fetchPrice = [select id,Year__c,Apttus_Config2__AccountId__c,Version__c from Apttus_Config2__PriceList__c
             where id=:fetchQuote.Apttus_QPConfig__PriceListId__c];
@@ -96,6 +107,12 @@ public class BindSobject {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'BirthCountry__c');
         // return JSON.serialize(PassportMap);
     }
+
+//    public static Map<String, String> GetMailingCountry() {
+//        return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'PersonMailingCountry');
+//        // return JSON.serialize(PassportMap);
+//    }
+
 
     public static Map<String, String> GetMailingCountry() {
         Map<String, String> MailingCountryMap = FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'MailingCountryCode');
@@ -153,7 +170,7 @@ public class BindSobject {
         system.debug('QuoUpdate.SalesMadeby__c  ' +QuoUpdate.SalesMadeby__r.name);
         system.debug('Before Integration ' +isFinishBooking);
         QuoUpdate.IntegrationStatus__c = (isFinishBooking) ? System.Label.Sent_To_Poseidon : '';
-        system.debug('After Integration '+QuoUpdate.IntegrationStatus__c );
+        system.debug('After Integration '+QuoUpdate );
         try{
             update QuoUpdate;
             System.debug('QuoUpdate :'  +QuoUpdate);

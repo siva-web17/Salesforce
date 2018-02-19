@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TotalBooking__c</fullName>
+    <description>This is used to know how many bookings we have under this account</description>
+    <externalId>false</externalId>
+    <label>TotalBooking</label>
+    <summaryForeignKey>Booking__c.AccountId__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

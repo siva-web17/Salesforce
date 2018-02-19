@@ -32,15 +32,15 @@ public class ContentNoteAndEventLink{
         
     public static void createAttachmentForQuestionAnswers(list<event>newItems){
    set<id> leadIdSet = new set<id>();     
-     for(event objEvents:[select id,whoid,type from event where id in:newItems and type='CAM']){   
-         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' && objEvents.type=='CAM'){
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and (type='CAM' or type = 'CBR')]){   
+         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
             leadIdSet.add(objEvents.whoid);
          }
       }
       map<id,lead> leadIdCamQsAns = new map<id,lead>([select id,CampaignQuestionsAnswer__c from lead where id in:leadIdSet]);
       list<attachment> attachmentForQsAnsList = new list<attachment>();     
-     for(event objEvents:[select id,whoid,type from event where id in:newItems and type='CAM']){   
-         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' && objEvents.type=='CAM' && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c!=null){              
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and (type='CAM' or type = 'CBR')]){   
+         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c!=null){              
                 //adding a content note
                 String camQsAndAnswersAsText =getTheParsedJson(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c);
                 ContentNoteAndEventLink objContentNoteAndEventLink = new ContentNoteAndEventLink();
@@ -49,7 +49,7 @@ public class ContentNoteAndEventLink{
                 objContentNoteAndEventLink.leadId =  objEvents.whoid;
                 listOfContentNoteAndEventLink.add(objContentNoteAndEventLink);                
                 ContentNote cn = new ContentNote();
-                cn.Title = String.valueOf(label.Campaign_Name);
+                cn.Title = objEvents.CampaignName__c;
                 system.debug('CamQsAns>>'+(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c));               
                 cn.Content = Blob.valueOf(camQsAndAnswersAsText);
                 listOfContentNote.add(cn);
@@ -104,7 +104,7 @@ public class ContentNoteAndEventLink{
     return returnStr;
    }
     public static void AddLeadOrContactAsCampaignMember(list<event>newItems){ 
-    list<CampaignMember> CamMemberList= new list<CampaignMember>();
+   list<CampaignMember> CamMemberList= new list<CampaignMember>();
         set<string> campaignUniqueId = new set<string>();
         for(event objEvents:[select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type='IM' and InfoMeetingID__c!=null]){
             campaignUniqueId.add(string.valueof(objEvents.InfoMeetingID__c));

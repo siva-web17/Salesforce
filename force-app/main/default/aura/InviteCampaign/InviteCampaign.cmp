@@ -6,12 +6,12 @@
     <aura:attribute name="selectedMeetingType" type="String[]"/>
     <aura:attribute name="selectedMeetingCity" type="String[]"/>
     <aura:attribute name="selectedProgram" type="String[]"/>
-    <aura:attribute name="salesoffices" type="List"/>
+    <aura:attribute name="salesoffices" type="Map"/>
     <aura:attribute name="products" type="List"/>
-    <aura:attribute name="programs" type="List"/>
+    <aura:attribute name="programs" type="Map"/>
     <aura:attribute name="initialData" type="object"/>
-    <aura:attribute name="meetingtypes" type="List"/>
-    <aura:attribute name="meetingcities" type="List"/>
+    <aura:attribute name="meetingtypes" type="Map"/>
+    <aura:attribute name="meetingcities" type="Map"/>
     <aura:attribute name="campaigns" type="campaign[]"/>
     <aura:attribute name="selectedTo" type="Datetime"/>
     <aura:attribute name="selectedfrom" type="Datetime"/>
@@ -121,7 +121,7 @@
                             <span class="slds-assistive-text">Sort </span>
                             <span class="slds-truncate" title="Program">Program</span>
                             <div class="slds-icon_container">
-                            </div>
+                   </div>
                             <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true"></span>
                         </a>
                         <div class="slds-resizable">
