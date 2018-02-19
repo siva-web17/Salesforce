@@ -116,4 +116,75 @@ public class QuoteProposalTriggerTest {
         }
         Test.stopTest();
     }
+
+    @isTest
+    private static void When_DeletingProposalWithApprovalStageDraft_Expect_ExpectedBehavior(){
+
+        TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+        opportunityBuilder.save();
+        Opportunity testOpportunity = (Opportunity) opportunityBuilder.getRecord();
+        Apttus_Proposal__Proposal__c prop = new Apttus_Proposal__Proposal__c(
+                Apttus_Proposal__Proposal_Name__c = 'Test Proposal',
+                Apttus_Proposal__Opportunity__c = testOpportunity.Id,
+                Apttus_Proposal__Approval_Stage__c = Label.QuoteProposalStatusesToDelete.split(';').get(0));
+        insert prop;
+
+        Test.startTest();
+
+        delete prop;
+
+        Test.stopTest();
+
+        List<Apttus_Proposal__Proposal__c> deletedProposal = [SELECT Id FROM Apttus_Proposal__Proposal__c WHERE Id =:prop.Id];
+        System.assert(deletedProposal.size() == 0);
+    }
+
+    @isTest
+    private static void When_DeletingProposalWithApprovalStageOtherThanDraft_Expect_ErrorPreventingDeletion(){
+
+        TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+        opportunityBuilder.save();
+        Opportunity testOpportunity = (Opportunity) opportunityBuilder.getRecord();
+        Apttus_Proposal__Proposal__c prop = new Apttus_Proposal__Proposal__c(
+                Apttus_Proposal__Proposal_Name__c = 'Test Proposal',
+                Apttus_Proposal__Opportunity__c = testOpportunity.Id,
+                Apttus_Proposal__Approval_Stage__c = 'Accepted');
+        insert prop;
+
+        Test.startTest();
+
+        try {
+            delete prop;
+            System.assert(false);
+        } catch (DMLException error) {
+            Boolean expectedExceptionThrown = error.getMessage().contains(String.format(Label.DeleteQuoteProposalErrorMessage, new List<String>{Label.QuoteProposalStatusesToDelete}));
+            System.assert(expectedExceptionThrown, true);
+        }
+
+        Test.stopTest();
+    }
+
+    @isTest
+    private static void When_DeletingProposalWithCanDeleteAllProposalQuotesCustomSetting_Expect_ExpectedBehavior(){
+
+        CustomProfilePermissions__c AllowDeletionCustomSetting = new CustomProfilePermissions__c(CanDeleteAllProposalQuotes__c = true);
+        upsert AllowDeletionCustomSetting;
+        TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+        opportunityBuilder.save();
+        Opportunity testOpportunity = (Opportunity) opportunityBuilder.getRecord();
+        Apttus_Proposal__Proposal__c prop = new Apttus_Proposal__Proposal__c(
+                Apttus_Proposal__Proposal_Name__c = 'Test Proposal',
+                Apttus_Proposal__Opportunity__c = testOpportunity.Id,
+                Apttus_Proposal__Approval_Stage__c = 'Accepted');
+        insert prop;
+
+        Test.startTest();
+
+        delete prop;
+
+        Test.stopTest();
+
+        List<Apttus_Proposal__Proposal__c> deletedProposal = [SELECT Id FROM Apttus_Proposal__Proposal__c WHERE Id =:prop.Id];
+        System.assert(deletedProposal.size() == 0);
+    }
 }
