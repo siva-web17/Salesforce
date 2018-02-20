@@ -1,0 +1,8 @@
+<!--
+ - Created by arjun.mohan on 2/19/2018.
+ -->
+
+<aura:component controller="SyncToPoseidonController" description="SyncToPoseidon" implements="force:lightningQuickAction,force:hasRecordId" >
+    <aura:attribute name="recordId" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.CallComplicatedBooking}"/>
+</aura:component>

@@ -14,7 +14,7 @@
             <value>
                 <fullName>Enteredbyuser</fullName>
                 <default>false</default>
-                <label>Entered by user</label>
+                <label>Entered By User</label>
             </value>
             <value>
                 <fullName>Excel Import</fullName>
