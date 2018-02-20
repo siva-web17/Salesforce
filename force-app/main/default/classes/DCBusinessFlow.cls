@@ -135,6 +135,7 @@ public class DCBusinessFlow {
                      //DCBusinessFlowHelper.notifyForRanking(finalLead);
                      transferEvent(duplicateLead,sourceLead,finalDecision);
                      transferNotes(duplicateLead,sourceLead,finalDecision);
+                      transferCampaignMember(duplicateLead,sourceLead,finalDecision);
                      SObjectUnitOfWork.deleteLead(sourceLead);
                      
                 }
@@ -163,7 +164,7 @@ public class DCBusinessFlow {
                 //hitting notifyranking. This requirement has not been confirmed.
                 sourceLead.isAccountMerge__c = true;
                 sourceLead.RecalculateRanking__c = true;
-               
+              
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
                 //system.debug('--------duplicateAccount2-------'+sourceLead);
@@ -212,7 +213,7 @@ public class DCBusinessFlow {
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
           
             //inactive if opportunity is
-        
+    
         }      
         Database.LeadConvertResult lcr = Database.convertLead(lc);
     }
@@ -244,6 +245,17 @@ public class DCBusinessFlow {
       }
       insert contentDocumentLink;
     
+    }
+      public static void transferCampaignMember(Lead sourceLead, Lead duplicateLead,String decisionName){
+      List<campaignMember> campaignMemberList = new List<CampaignMember>();
+        for(campaignMember objcampaignMember : [select Leadid,id,status,campaignid from campaignmember where leadid=:duplicateLead.id]){
+            campaignMember campaignMemberForTransfer = new campaignMember();
+            campaignMemberForTransfer.campaignId = objcampaignMember.campaignid;
+            campaignMemberForTransfer.status = objcampaignMember.status;
+            campaignMemberForTransfer.leadid = sourceLead.id;
+            campaignMemberList.add(campaignMemberForTransfer);
+        }
+         insert campaignMemberList;
     }
 
     //this method is used to avoid soql query inside for loop
