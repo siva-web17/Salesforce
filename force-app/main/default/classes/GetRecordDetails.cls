@@ -6,8 +6,8 @@ public with sharing class GetRecordDetails {
         /*Opportunity ObjOpportunityDetails=[SELECT OwnerId, Id, Owner.name FROM Opportunity where id=:Id];
         return JSON.serialize(ObjOpportunityDetails);*/
 
-        Apttus_Proposal__Proposal__c ObjQuoteDetails=[SELECT Id,SalesMadeby__c, SalesMadeby__r.name FROM Apttus_Proposal__Proposal__c where id=:Id];
-        system.debug('Quote is :'+ObjQuoteDetails); 
+        Apttus_Proposal__Proposal__c ObjQuoteDetails=[SELECT Id,SalesMadeby__c, SalesMadeby__r.Name,LastModifiedBy.Name FROM Apttus_Proposal__Proposal__c where id=:Id];
+        system.debug('Quote is :'+ObjQuoteDetails);
         return JSON.serialize(ObjQuoteDetails);
     }
 
@@ -18,7 +18,7 @@ public with sharing class GetRecordDetails {
         System.debug('params  '+UserId+' record is '+RecordId + ' ObjectName '+ObjectName);
         try {
             system.debug('UserId is :'+UserId);
-            String sQuery =  'select id, Name,SalesMadeby__c, SalesMadeby__r.name  from '+ObjectName+'  where id =:RecordId';
+            String sQuery =  'select id, Name,SalesMadeby__c, SalesMadeby__r.Name  from '+ObjectName+'  where id =:RecordId';
 
             if(ObjectName=='Lead')
             {
@@ -30,7 +30,7 @@ public with sharing class GetRecordDetails {
             
             else if(ObjectName=='Apttus_Proposal__Proposal__c')
             {
-                 sQuery =  'select id, Name,SalesMadeby__c,SalesMadeby__r.name  from '+ObjectName+'  where id =:RecordId';
+                 sQuery =  'select id, Name,SalesMadeby__c,SalesMadeby__r.Name  from '+ObjectName+'  where id =:RecordId';
                 Apttus_Proposal__Proposal__c quoteRecord = Database.query(sQuery);
                 system.debug('before update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
                 quoteRecord.SalesMadeby__c=UserId;
