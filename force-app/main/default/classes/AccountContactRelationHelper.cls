@@ -4,7 +4,7 @@
 
 public with sharing class AccountContactRelationHelper {
 
-    public static void validateAndSendDetailsToPoseidon(Map<Id, AccountContactRelation> AccountContactMap, String DMLType) {
+    public static void validateAndSendDetailsToPoseidon(Map<Id, AccountContactRelation> AccountContactMap, String DMLType,Boolean IsComplicatedBooking) {
         Id MasterRecordId;
         List<Map<String, String>> updateAccountInfo = new List<Map<String, String>>();
         String market='';
@@ -21,7 +21,7 @@ public with sharing class AccountContactRelationHelper {
         Map<Id,User> UserMap= UsersHelper.getUserDetailsForUserIds(userIdList);
         for (AccountContactRelation accountContactRecord : AccountContactMap.values()) {
             Map<String, String> AccountContactrelationfieldValueMap = new Map<String, String>();
-            if (accountContactRecord.TotalBooking__c > 0) {
+            if (accountContactRecord.TotalBooking__c > 0 || IsComplicatedBooking) {
                 market=accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).Market__c:'';
                 system.debug('Inside accountContactRecord.TotalBooking__c > 0)');
                 for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
