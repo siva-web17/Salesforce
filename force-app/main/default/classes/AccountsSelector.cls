@@ -15,7 +15,7 @@ public class AccountsSelector {
     public static Account getAccountOnId(Id accountId) {
         return [
                 select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
-                        PersonMailingStreet,RecalculateRanking__c, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
+                        PersonMailingStreet, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
                         PersonOtherPhone,PersonBirthdate,Market__c,Region__c,
                         HasBooking__c
                 from Account
@@ -36,12 +36,34 @@ public class AccountsSelector {
     {
         List<Account> accList=new List<Account>();
         Map<Id,Account> accountMap=new Map<Id,Account>();
+        Set<String> fieldsToSelect=new Set<String>();
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
+            fieldsToSelect.add(f.getFieldPath());
             query += f.getFieldPath() + ', ';
         }
-        query += 'Name,Id,Market__c from Account Where ';
-        query += 'Id in  : ' + 'accountIdSet' + ' ' ;
+        for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Address.getFields()) {
+            if (!fieldsToSelect.contains(f.getFieldPath())) {
+                fieldsToSelect.add(f.getFieldPath());
+                query += f.getFieldPath() + ', ';
+            }
+
+        }
+
+        for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Customer.getFields()) {
+            if (!fieldsToSelect.contains(f.getFieldPath())) {
+                fieldsToSelect.add(f.getFieldPath());
+                query += f.getFieldPath() + ', ';
+            }
+        }
+        for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.CustomerMarketingPref.getFields()) {
+            if (!fieldsToSelect.contains(f.getFieldPath())) {
+                fieldsToSelect.add(f.getFieldPath());
+                query += f.getFieldPath() + ', ';
+            }
+        }
+        query += 'Name,Id,Market__c,CreatedById,LastModifiedById from Account Where ';
+        query += 'Id in   : ' + 'accountIdSet' + ' ' ;
         accList= Database.query(query);
         for (Account accRecord:accList) {
             accountMap.put(accRecord.Id,accRecord);

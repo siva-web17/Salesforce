@@ -12,7 +12,7 @@ public  class ExternalRouter {
         gen.writeStringField('Account', accountDetails);
         gen.writeEndObject();
         String jsonS = gen.getAsString();
-        String url=getSericeURL('SyncUpdatedAccountDetails');
+        String url=getServiceURL('SyncUpdatedAccountDetails');
         InvokeService(url,jsonS);
     }
 
@@ -27,19 +27,20 @@ public  class ExternalRouter {
         req.setHeader( 'Accept', 'application/json' );
         req.setBody(body);
         HttpResponse res = h.send(req);
+        system.debug(' url '+url);
         system.debug(' response is '+res);
         return '';
     }
-    //
+    //Test
     @future (callout=true)
     public static void callUpdateAccountFamilyDetailsService(String accountPersonalDetails)
     {
         JSONGenerator gen = JSON.createGenerator(true);
         gen.writeStartObject();
-        gen.writeStringField('Account', accountPersonalDetails);
+        gen.writeStringField('SfFamilyInfo', accountPersonalDetails);
         gen.writeEndObject();
         String jsonS = gen.getAsString();
-        String url=getSericeURL('SyncUpdatedAccountFamilyDetails');
+        String url=getServiceURL('SyncUpdatedAccountFamilyDetails');
         InvokeService(url,jsonS);
     }
 
@@ -66,7 +67,7 @@ public  class ExternalRouter {
         return serviceSettingRecord;
 
     }
-    public static String getSericeURL(String serviceName)
+    public static String getServiceURL(String serviceName)
     {
         Organization orgRecord=  getOrganizationDetails();
          ExternalServiceSettings__mdt serviceRecord=  getServiceSetting(serviceName,getSandBoxNamefromUsername().toUpperCase(),orgRecord.IsSandbox);
