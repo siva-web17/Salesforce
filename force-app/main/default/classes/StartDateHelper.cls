@@ -56,10 +56,17 @@ public class StartDateHelper {
                     lineItemRecord.Apttus_Config2__ExtendedQuantity__c = lineItemRecord.Apttus_Config2__Quantity__c;
                 }
                 else {
-                    System.debug('In Else Loop hello %%%%%%%%%%%%%%%%%%%%%%%%');
+                    System.debug('In Else Loop hello ');
                 }
 
                 if(lineItemRecord.APTS_Product_Type__c == System.Label.ProductTypeCourse){
+                    lineItemRecord.Apttus_Config2__ExtendedQuantity__c = lineItemRecord.Apttus_Config2__Quantity__c;
+                }
+
+                if ((lineItemRecord.Product_Code__c == System.Label.ProductCodeEnglish
+                        || lineItemRecord.Product_Code__c == System.Label.ProductCodeNonEnglish)) {
+                    lineItemRecord.Apttus_Config2__PricingStatus__c = System.Label.LineItemPricingStatusPending;
+                    lineItemRecord.Apttus_Config2__Quantity__c=(!String.isBlank(lineItemRecord.Product_Code__c) && lineItemRecord.Product_Code__c == System.Label.FixedFareFlightCode) ? 1 : quantity;
                     lineItemRecord.Apttus_Config2__ExtendedQuantity__c = lineItemRecord.Apttus_Config2__Quantity__c;
                 }
             }

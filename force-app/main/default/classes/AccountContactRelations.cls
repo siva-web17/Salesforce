@@ -4,9 +4,9 @@
 
 public  class AccountContactRelations {
 
-    public static void sendDetailsToPoseidonAfterInsert(Map<Id, AccountContactRelation> newAccountContactMap,String DMLType)
+    public static void sendDetailsToPoseidon(Map<Id, AccountContactRelation> newAccountContactMap,String DMLType,Boolean IsComplicatedBooking)
     {
         system.debug('Inside sendDetailsToPoseidonAfterInsert');
-        AccountContactRelationHelper.validateAndSendDetailsToPoseidon(newAccountContactMap,DMLType);
+        AccountContactRelationHelper.validateAndSendDetailsToPoseidon(newAccountContactMap,DMLType,IsComplicatedBooking);
     }
 }

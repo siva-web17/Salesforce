@@ -41,6 +41,14 @@
         <value>More than 4 weeks for one accommodation type is not possible for Junior Courses.</value>
     </labels>
     <labels>
+        <fullName>APTS_ONE_COURSE_PER_BUNDLE</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS_ONE_COURSE_PER_BUNDLE</shortDescription>
+        <value>Please choose one course per Destination.</value>
+    </labels>
+    <labels>
         <fullName>APTS_Price_Override_Error_Message</fullName>
         <categories>Error, Apttus</categories>
         <language>en_US</language>
@@ -266,7 +274,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-        <value>0120E0000002uaO</value>
+        <value>0127E000000E4Kn</value>
     </labels>
     <labels>
         <fullName>DMLTypeDelete</fullName>
@@ -1386,7 +1394,7 @@
         <shortDescription>Quantity</shortDescription>
         <value>Quantity</value>
     </labels>
-    
+
     <labels>
         <fullName>ReachedAction</fullName>
         <language>en_US</language>
@@ -1462,6 +1470,14 @@
         <protected>false</protected>
         <shortDescription>Sent Email Sales action on Log a Call Component</shortDescription>
         <value>Sent Email</value>
+    </labels>
+    <labels>
+        <fullName>Sent_To_Poseidon</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sent To Poseidon</shortDescription>
+        <value>This field is used in Quote Proposal trigger for checking before invoking Scribe</value>
     </labels>
     <labels>
         <fullName>SocialMediaReached</fullName>
@@ -1631,13 +1647,4 @@
         <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
         <value>Draft</value>
     </labels>
-    <labels>
-        <fullName>Sent_To_Poseidon</fullName>
-        <categories>Apttus,Dev</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
-        <value>Sent To Poseidon</value>
-    </labels>
-   
-</CustomLabels>	
+</CustomLabels>
