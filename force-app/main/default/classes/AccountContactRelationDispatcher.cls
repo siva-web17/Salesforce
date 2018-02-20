@@ -28,21 +28,5 @@ public  class AccountContactRelationDispatcher {
             }
 
         }
-
-        // After trigger logic
-        if (Trigger.IsAfter)
-        {
-            if (Trigger.IsInsert)
-                Accounts.onAfterInsert(Trigger.newMap);
-
-            if (Trigger.IsUpdate)
-                Accounts.onAfterUpdate(trigger.newMap, trigger.oldMap);
-
-            if (trigger.IsDelete)
-                Accounts.onAfterDelete(trigger.oldMap);
-
-            if (trigger.isUndelete)
-                Accounts.onAfterUndelete(trigger.oldMap);
-        }
     }
 }
