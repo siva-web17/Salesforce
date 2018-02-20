@@ -319,4 +319,29 @@ public class OpportunitiesHelper {
 
         return systemTask;
     }
+    
+    public static void populateSalesOfficeProgram (List<Opportunity> opportunityList) {
+        Set<string> recordSharingValues= new Set<String>();
+        Map<string,id> salesOfficeMap = new Map<string,id>();
+            for(Opportunity oppRecord :opportunityList){
+                if(oppRecord.RecordSharingKey__c!='' ){
+                    recordSharingValues.add(oppRecord.RecordSharingKey__c );
+                }
+            }
+            
+        List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
+            for(SalesOfficeProgram__c salesOfficeRecord :salesofficeRecords ){
+                if(salesOfficeRecord.Name!= null){
+                    salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
+                }
+            }
+
+        for(Opportunity oppRec:opportunityList){
+            {
+                if(salesOfficeMap.containsKey(oppRec.RecordSharingKey__c)){
+                  oppRec.SalesOfficeProgram__c = salesOfficeMap.get(oppRec.RecordSharingKey__c);
+                }
+            }
+        }
+    }
 }
