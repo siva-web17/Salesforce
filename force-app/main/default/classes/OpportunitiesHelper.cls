@@ -12,6 +12,8 @@ Modification Log   :
 
 public class OpportunitiesHelper {
 
+    public static boolean isActiveChanged = false;
+
     //For after insert
     public static void createShareOnInsert(List<Opportunity> oppList) {
 
@@ -99,6 +101,8 @@ public class OpportunitiesHelper {
                 if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
                     opportunityshareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
                 }
+            }if (opportunityNewList[index].isActive__c != opportunityOldList[index].isActive__c) {
+                isActiveChanged=true;
             }
         }
         if (deleteAccess != null && deleteAccess.size() > 0) {

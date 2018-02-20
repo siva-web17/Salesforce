@@ -27,8 +27,10 @@ public  class ExternalRouter {
         req.setHeader( 'Accept', 'application/json' );
         req.setBody(body);
         HttpResponse res = h.send(req);
+        system.debug(' response is '+res);
         return '';
     }
+    //
     @future (callout=true)
     public static void callUpdateAccountFamilyDetailsService(String accountPersonalDetails)
     {
