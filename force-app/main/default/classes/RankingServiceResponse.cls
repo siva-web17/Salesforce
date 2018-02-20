@@ -3,9 +3,9 @@
  */
 
 public with sharing class RankingServiceResponse {
-    public String SalesForceApplicationId{get;set;}
+    public String LeadID{get;set;}
     public Boolean IsRanked{get;set;}
     public String Error{get;set;}
-    public Integer ScaleDownRanking{get;set;}
+    public Integer Rank{get;set;}
     public Integer OriginalScaleDownRanking{get;set;}
 }

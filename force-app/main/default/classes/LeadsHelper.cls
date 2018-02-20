@@ -436,4 +436,29 @@ public class LeadsHelper {
 
         return systemTask;
     }
+
+    public static void populateSalesOfficeProgram (List<Lead> leadList) {
+        Set<string> recordSharingValues= new Set<String>();
+        Map<string,id> salesOfficeMap = new Map<string,id>();
+        for(Lead leadRecord :leadList){
+            if(leadRecord.RecordSharingKey__c!=null && leadRecord.RecordSharingKey__c!='' ){
+                recordSharingValues.add(leadRecord.RecordSharingKey__c );
+            }
+        }
+
+        List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
+        for(SalesOfficeProgram__c salesOfficeRecord :salesofficeRecords ){
+            if(salesOfficeRecord.Name!= null){
+                salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
+            }
+        }
+
+        for(Lead leadRec:leadList){
+            {
+                if(salesOfficeMap.containsKey(leadRec.RecordSharingKey__c)){
+                    leadRec.SalesOfficeProgram__c = salesOfficeMap.get(leadRec.RecordSharingKey__c);
+                }
+            }
+        }
+    }
 }
