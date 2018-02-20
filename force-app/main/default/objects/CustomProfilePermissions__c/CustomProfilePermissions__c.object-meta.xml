@@ -3,14 +3,6 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <description>Stores custom permissions</description>
     <enableFeeds>false</enableFeeds>
-    <fields>
-        <fullName>CanDeleteAllProposalQuotes__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Can Delete all Proposal/Quotes</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <label>Custom Profile Permissions</label>
     <visibility>Public</visibility>
 </CustomObject>
