@@ -112,7 +112,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                 }
                 else{
 
-                    system.debug('Comparitive quote :--- '+lineItem.Apttus_Config2__Quantity__c);
+                    system.debug('Comparitive quote  :--- '+lineItem.Apttus_Config2__Quantity__c);
                     //there will be only 1 course for each bundle and we add the quantity
                     this.courseQuantityMap.put(lineItem.Apttus_Config2__ProductId__c,lineItem.Apttus_Config2__Quantity__c);
                 }
@@ -128,12 +128,12 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                 this.optionProductList.add(lineItemS0);
                 List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = new List<Apttus_Config2__PriceMatrixEntry__c>();
                 priceMatrixKey=lineItem.Apttus_Config2__PriceListItemId__c+lineItem.DestinationCode__c;
-                if (priceMatrixForOptionsMap.containsKey(priceMatrixKey)) {
+               /* if (priceMatrixForOptionsMap.containsKey(priceMatrixKey)) {
 
                     priceMatrixList=priceMatrixForOptionsMap.get(priceMatrixKey);
                     system.debug('Comparitive quote priceMatrixList:--- '+priceMatrixList);
-                }
-                //List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = APTS_PriceMatrixEntrySelector.getPriceMatrixForOptions(lineItem.Apttus_Config2__PriceListItemId__c, lineItem.DestinationCode__c);
+                }*/
+                priceMatrixList = APTS_PriceMatrixEntriesSelector.getPriceMatrixForOptions(lineItem.Apttus_Config2__PriceListItemId__c, lineItem.DestinationCode__c);
                 this.lineItemPriceMatrixMap.put(lineItem.Id,priceMatrixList);
                 currentThreshHold = lineItem.Apttus_Config2__PriceListId__r.Brackets_Threshold__c;
                 //priceListThreshold =  lineItem.Apttus_Config2__PriceListId__r.Brackets_Threshold__c;
@@ -186,6 +186,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                             (lineItem.Product_Code__c == System.Label.ProductCodeEnglish
                                     || lineItem.Product_Code__c == System.Label.ProductCodeNonEnglish)) {
 
+                        lineItem.Apttus_Config2__ExtendedQuantity__c = courselineItem.Apttus_Config2__Quantity__c;
                         lineItem.Apttus_Config2__Quantity__c = courselineItem.Apttus_Config2__Quantity__c;
                         break;
                     }

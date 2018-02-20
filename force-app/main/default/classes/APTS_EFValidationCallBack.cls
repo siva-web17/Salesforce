@@ -46,6 +46,12 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
             result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_Grand_Total_Discount_Error + ' '+System.Label.APTS_Grand_Total_Discount_Limit + '.'));
         }
 
+        //Added by Arjun for Restrict to finalize cart without a course /Bundle should have only one course
+        if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !CheckCoursePerBundle(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
+            result.isSuccess =  false;
+            result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_ONE_COURSE_PER_BUNDLE +'.'));
+        }
+
         //Added by Mitul Parmar for Restrict to give discount than defined limit
         if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !checkQuantityDestionationAccomodation(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
             result.isSuccess =  false;
@@ -110,7 +116,7 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
 
     /*
     Description : common method to get Product list by Product Group Name.
-    Created by : Husen sayyed
+    Created by : Husen   sayyed
     Created Date : 10-Oct-2017
     */
     private static List<Apttus_Config2__ProductGroupMember__c> getProducts(Set<String> productGroupNameSet){
@@ -148,6 +154,48 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
             }
         }
         return returnFlag;
+    }
+
+    public static Boolean CheckCoursePerBundle(Apttus_Config2.ProductConfiguration cart)
+    {
+        boolean returnFlag = TRUE;
+        Apttus_Config2__ProductConfiguration__c configuration = cart.getConfigSO();
+        lineItemList=  getLineItemData(cart);
+        List<Apttus_Config2__LineItem__c> templineItemList= new List<Apttus_Config2__LineItem__c>();
+        Map<Decimal,List<Apttus_Config2__LineItem__c>> bundleWiseMap=new Map<Decimal,List<Apttus_Config2__LineItem__c>>();
+        Set<Decimal> lineNumberSet=new Set<Decimal>();
+        Set<Decimal> missinglineNumberSet=new Set<Decimal>();
+        for (Apttus_Config2__LineItem__c lineItem:lineItemList) {
+            lineNumberSet.add(lineItem.Apttus_Config2__LineNumber__c);
+            if (!bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)) {
+                if (lineItem.APTS_Product_Type__c==Label.ProductTypeCourse) {
+                    templineItemList.add(lineItem);
+                    bundleWiseMap.put(lineItem.Apttus_Config2__LineNumber__c,templineItemList);
+                }
+            }
+            else
+            {
+                if (lineItem.APTS_Product_Type__c==Label.ProductTypeCourse) {
+                    returnFlag=FALSE;
+                    break;
+                    //Second Course for same Bundle Available throw error here
+                }
+            }
+            if (!bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)) {
+                missinglineNumberSet.add(lineItem.Apttus_Config2__LineNumber__c);
+            }
+            else if (bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)
+                    && missinglineNumberSet.contains(lineItem.Apttus_Config2__LineNumber__c) ) {
+                missinglineNumberSet.remove(lineItem.Apttus_Config2__LineNumber__c);
+            }
+        }
+        //Here add Logic to check that all the destination should have course
+        if (missinglineNumberSet.size() >0 && returnFlag) {
+            returnFlag=FALSE;
+            // Bundle Should have atleast one Course
+        }
+        return returnFlag;
+
     }
 
     /*
