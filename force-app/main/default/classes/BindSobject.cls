@@ -8,7 +8,7 @@ public class BindSobject {
         SobjectBindWrapper bindData = new SobjectBindWrapper();
         try{
             Apttus_Proposal__Proposal__c fetchQuote = new Apttus_Proposal__Proposal__c();
-            fetchQuote = [select id,CurrencyIsoCode,BookingType__c,BookingChannel__c ,SalesMadeby__c,SalesMadeby__r.name,
+            fetchQuote = [select id,Apttus_QPConfig__PriceListId__c,CurrencyIsoCode,BookingType__c,BookingChannel__c ,SalesMadeby__c,SalesMadeby__r.name,
                     Apttus_Proposal__Account__c,Apttus_Proposal__Opportunity__c
             from Apttus_Proposal__Proposal__c where id=:QuoteId];
             bindData.Quote = fetchQuote;
@@ -19,11 +19,11 @@ public class BindSobject {
 
             Account fetchAccount = new Account();
             fetchAccount = [select id,Salutation,FirstName,MiddleName,LastName,PersonBirthdate,PersonOtherCity,PersonOtherState,
-                    PersonOtherPostalCode,PersonOtherStreet,PersonEmail,PersonHomePhone,PersonMobilePhone,PersonOtherPhone,
-                    FirstNameEn__c,LastNameEn__c,Age__c,ParentEmail__c,PersonalID__c,PassportNumber__c,PassportType__c,OtherNationalities__c,
-                    PassportIssueDate__c,PassportExpiryDate__c,Nationality__c,NickName__c,Gender__c,BirthCountry__c,
-                    Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,
-                    PersonMailingState from Account where ID =:fetchQuote.Apttus_Proposal__Account__c LIMIT 1];
+                            PersonOtherPostalCode,PersonOtherStreet,PersonEmail,PersonHomePhone,PersonMobilePhone,PersonOtherPhone,
+                            FirstNameEn__c,LastNameEn__c,Age__c,ParentEmail__c,PersonalID__c,PassportNumber__c,PassportType__c,OtherNationalities__c,
+                            PassportIssueDate__c,PassportExpiryDate__c,Nationality__c,NickName__c,Gender__c,BirthCountry__c,
+                            Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,
+                            PersonMailingState from Account where ID =:fetchQuote.Apttus_Proposal__Account__c LIMIT 1];
             System.debug('^^^^^^^^^^^^^^^'+fetchAccount);
             bindData.personAcc = fetchAccount;
             bindData.age = fetchAccount.Age__c;
@@ -39,19 +39,6 @@ public class BindSobject {
             fetchopp = [select id,SalesOffice__c,Market__c
             from Opportunity where AccountID =: fetchAccount.Id];
             bindData.opp =   fetchopp;
-            //bindData.SalesOfficePickList=GetSalesOffice();
-            
-//            Schema.DescribeFieldResult fieldResult = Account.OtherNationalities__c.getDescribe();
-//            List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-//            List<String> lstOfNationality = new List<String>();
-//            for(Schema.PicklistEntry picklistFld:ple){
-//                //mapOfPicklistVal.put(picklistFld.getValue(),picklistFld.getLabel());
-//                lstOfNationality.add(picklistFld.getLabel());
-//            }
-//
-//            bindData.availableNationality = lstOfNationality;
-//
-//            bindData.accSelectedNationality = new List<String>(fetchAccount.OtherNationalities__c.split(';'));
 
             Apttus_Config2__PriceList__c fetchPrice = new Apttus_Config2__PriceList__c();
             fetchPrice = [select id,Year__c,Apttus_Config2__AccountId__c,Version__c from Apttus_Config2__PriceList__c
@@ -108,13 +95,7 @@ public class BindSobject {
         // return JSON.serialize(PassportMap);
     }
 
-//    public static Map<String, String> GetMailingCountry() {
-//        return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'PersonMailingCountry');
-//        // return JSON.serialize(PassportMap);
-//    }
-
-
-    public static Map<String, String> GetMailingCountry() {
+   public static Map<String, String> GetMailingCountry() {
         Map<String, String> MailingCountryMap = FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'MailingCountryCode');
         // Map<String,String> maplabelVal=new Map<String,String>();
 //      Get the object type of the SObject.
@@ -146,8 +127,7 @@ public class BindSobject {
         try{
             update BindWrapper.personAcc;
             update BindWrapper.opp;
-            update BindWrapper.PriceList;
-            System.debug('After updating account :'+BindWrapper);
+            System.debug('After updating account :'+BindWrapper.personAcc);
             System.debug('After updating Opportunity :'+BindWrapper.opp);
             System.debug('After updating PriceList :'+BindWrapper.PriceList);
 
@@ -160,7 +140,7 @@ public class BindSobject {
 
         Apttus_Proposal__Proposal__c QuoUpdate = new Apttus_Proposal__Proposal__c();
         QuoUpdate.Id = BindWrapper.Quote.ID;
-        system.debug('PriceList version '+BindWrapper.Quote.Apttus_QPConfig__PriceListId__r.Version__c );
+        system.debug('PriceList version '+BindWrapper.Quote.Apttus_QPConfig__PriceListId__c );
 
         QuoUpdate.CurrencyIsoCode = BindWrapper.Quote.CurrencyIsoCode;
         QuoUpdate.BookingType__c = BindWrapper.Quote.BookingType__c;
@@ -181,6 +161,18 @@ public class BindSobject {
             System.debug('Dml exception :'  +ex.getMessage());
         }
         try{
+            Booking__c bookingRecord = new Booking__c();
+            bookingRecord.AccountId__c = BindWrapper.personAcc.id;
+            bookingRecord.BrochureSeason__c = BindWrapper.PriceList.Version__c;
+            bookingRecord.BrochureYear__c =Decimal.valueOf(BindWrapper.PriceList.Year__c);
+            bookingRecord.MainSalesResponsible__c = QuoUpdate.SalesMadeby__c;
+            bookingRecord.Program__c = BindWrapper.opp.Program__c;
+            bookingRecord.SalesOffice__c = BindWrapper.opp.SalesOffice__c;
+            bookingRecord.OpportunityId__c=BindWrapper.opp.Id;
+            bookingRecord.QuoteId__c=QuoUpdate.Id;
+            bookingRecord.Status__c =QuoUpdate.BookingType__c;
+            bookingRecord.Integrationstatus__c = Label.Sent_To_Poseidon;
+            insert bookingRecord;
             return true;
         }
         catch(Exception ex){
@@ -222,12 +214,6 @@ public class BindSobject {
         public Map<String,String> CurrencyPickList{get;set;}
         @AuraEnabled
         public Map<String,String> BirthCountryPickList{get;set;}
-        @AuraEnabled
-        public List<String> availableNationality{get;set;}
-        @AuraEnabled
-        public List<String> accSelectedNationality{get;set;}
-        @AuraEnabled
-        public Map<String,List<String>> mapOfCountryStatePicklist{get;set;}
 
     }
 
