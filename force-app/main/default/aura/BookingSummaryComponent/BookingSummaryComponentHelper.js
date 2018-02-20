@@ -2,7 +2,7 @@
 	accountData: function(cmp, event, helper) {},
 
 	insertRecord: function(cmp, event) {
-		var action = cmp.get('c.createRecord');	
+		var action = cmp.get('c.createRecord');
 		var fwrapperLst = cmp.get('v.wrapperList');
 		//alert(JSON.stringify(fwrapperLst));
 		action.setParams({
@@ -18,20 +18,21 @@
 					toastEvent.setParams({
 						title: 'Success!',
 						type: 'success',
-						message: 'The record has been updated successfully.',
+						message: "You're done! Poseidon will create a booking and you will be notified as soon as it's done",
 					});
 					toastEvent.fire();
-                         //Add navigation to detail view here
-                    //
-                 window.setTimeout(
-    $A.getCallback(function() {
-      var navEvt = $A.get("e.force:navigateToSObject");
-    navEvt.setParams({
-      "recordId": cmp.get('v.wrapperList.opp.Id')
-    });
-    navEvt.fire();
-    }), 5000
-);
+					//Add navigation to detail view here
+					//
+					window.setTimeout(
+						$A.getCallback(function() { 
+							var navEvt = $A.get('e.force:navigateToSObject');
+							navEvt.setParams({
+								recordId: cmp.get('v.wrapperList.opp.Id'),
+							});
+							navEvt.fire();
+						}),
+						5000
+					);
 				} else {
 					var toastEvent = $A.get('e.force:showToast');
 					toastEvent.setParams({
