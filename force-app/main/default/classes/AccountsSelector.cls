@@ -15,7 +15,7 @@ public class AccountsSelector {
     public static Account getAccountOnId(Id accountId) {
         return [
                 select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
-                        PersonMailingStreet, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
+                        PersonMailingStreet, RecalculateRanking__c, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
                         PersonOtherPhone,PersonBirthdate,Market__c,Region__c,
                         HasBooking__c
                 from Account
