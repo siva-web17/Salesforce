@@ -8,26 +8,25 @@ public  class AccountContactRelationDispatcher {
         // Before trigger logic
         if (Trigger.isAfter )
         {
+           Boolean IsComplicatedBooking=false;
             system.debug('Inside AccountContactRelationDispatcher');
             if (Trigger.IsInsert)
             {
                 system.debug('Inside AccountContactRelationDispatcher IsInsert');
-                AccountContactRelations.sendDetailsToPoseidonAfterInsert((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeInsert);
+                AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeInsert,IsComplicatedBooking);
             }
 
             if (Trigger.IsUpdate){
                 system.debug('Inside AccountContactRelationDispatcher IsUpdate');
-                AccountContactRelations.sendDetailsToPoseidonAfterInsert((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeUpdate);
+                AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeUpdate,IsComplicatedBooking);
             }
 
             if (Trigger.IsDelete)
             {
-                system.debug('Inside AccountContactRelationDispatcher IsUpdate');
-                AccountContactRelations.sendDetailsToPoseidonAfterInsert((Map<Id, AccountContactRelation>)Trigger.oldMap,Label.DMLTypeDelete);
+                system.debug('Inside AccountContactRelationDispatcher IsDelete');
+                AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.oldMap,Label.DMLTypeDelete,IsComplicatedBooking);
             }
 
         }
-
-      
     }
 }
