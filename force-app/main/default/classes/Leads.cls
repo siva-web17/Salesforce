@@ -15,9 +15,18 @@ public class Leads {
      
     public static void onBeforeInsert(List<SObject> newItems) {
         LeadsHelper.updateHadAddressFilledOnCreation(newItems);
+        LeadsHelper.populateSalesOfficeProgram(newItems);
     }
 
     public static void onBeforeUpdate(List<Lead> oldLeadList,List<Lead> newLeadList){
+        List<Lead> leadListforSalesOfficeUpdate = new List<Lead>();
+        for(integer i=0;i< newLeadList.size();i++) {
+            if(newLeadList[i].RecordSharingKey__c!= oldLeadList[i].RecordSharingKey__c)
+            {
+                leadListforSalesOfficeUpdate.add(newLeadList[i]);
+            }
+        }
+        LeadsHelper.populateSalesOfficeProgram(leadListforSalesOfficeUpdate);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {

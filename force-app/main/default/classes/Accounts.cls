@@ -22,11 +22,15 @@ public class Accounts {
     }
 
     public static void onAfterInsert(Map<Id, SObject> newItems) {
+
     }
 
     public static void onAfterUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
         AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>)newItems.values(), (Map<Id, Account>)oldItems);
-        AccountsHelper.syncAccountDetails((Map<Id,Account>)newItems);
+        if (!OpportunitiesHelper.isActiveChanged) {
+            AccountsHelper.saveAccountInformation((Map<Id,Account>)newItems,(Map<Id,Account>)oldItems);
+        }
+        //AccountsHelper.saveAccountInformation();
     }
 
     public static void onAfterDelete(Map<Id, SObject> oldItems) {

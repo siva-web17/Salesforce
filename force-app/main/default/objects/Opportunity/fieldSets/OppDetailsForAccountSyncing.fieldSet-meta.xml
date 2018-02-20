@@ -3,11 +3,6 @@
     <fullName>OppDetailsForAccountSyncing</fullName>
     <description>Used in Syncing Account Details back to poseidon for migration</description>
     <displayedFields>
-        <field>Id</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>SalesOffice__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
