@@ -11,8 +11,8 @@ Modification Log   :
 *******************************************************************************/
 
 public class Tasks {
-    public static void onBeforeInsert(List<SObject> newItems)
-    {
+    public static void onBeforeInsert(List<SObject> newItems) { 
+        TasksHelper.populateSalesoffice(newItems);
     }
 
     public static void onBeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
