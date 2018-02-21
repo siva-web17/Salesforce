@@ -29,7 +29,6 @@ public class OpportunitiesSelector {
     * @param Set<String> oppIds 
     * @return Returns list of opportunities based on the oppIds
     * */
-    
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
@@ -207,7 +206,6 @@ public class OpportunitiesSelector {
         ];
     }
 
-
     /**
     * @author Arjun Mohan
     * ver 1.0 16-Feb-2018
@@ -311,5 +309,13 @@ public class OpportunitiesSelector {
                 (SELECT WhatId FROM Tasks WHERE RecordTypeId = :sbrRecordTypeId AND IsClosed <> TRUE)
             FROM Opportunity
             WHERE AccountId IN : accountIds];
+    }
+
+    public static Map<Id,Opportunity> getOpportunityRecords(List<Id> opportunityIds){
+        Map<Id,Opportunity> opportunityMap = new Map<Id,Opportunity>();
+        if(opportunityIds!=null) {
+            opportunityMap = new Map<Id, Opportunity>([select Id, SalesOffice__c from Opportunity where Id in :opportunityIds]);
+        }
+        return opportunityMap;
     }
 }
