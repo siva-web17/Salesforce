@@ -73,10 +73,11 @@ public class LeadsSelector {
                         PostalCode, 
                         product__c,
                         Program__c,                         
-                        ReadyForRanking__c,   
-                         PreferredDuration__c,                 
+                        ReadyForRanking__c,                    
+                        PreferredDuration__c,
                         street,
-                        TritonId__c,                       
+                        TritonId__c,
+                       
                         WhenYear__c
                    FROM Lead
                   WHERE Id in :leadId
@@ -212,5 +213,13 @@ public class LeadsSelector {
         from Lead
         where Id = :recordId
         LIMIT 1];
+    }
+
+    public static Map<Id,Lead>  getleadRecord (List<Id> leadIds) {
+        Map<Id, Lead> leadMap = new Map<Id,Lead>();
+        if (leadIds!=null) {
+            leadMap = new Map<Id, Lead>([select Id, SalesOffice__c from Lead where Id in :leadIds]);
+        }
+        return leadMap;
     }
 }
