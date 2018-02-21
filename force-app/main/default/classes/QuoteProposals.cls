@@ -13,8 +13,7 @@ public  class QuoteProposals {
    public static void onBeforeInsert(List<SObject> newItems) {
         QuoteProposalsHelper.updateQuoteProposalFieldsBeforeInsert(newItems);
     }
-    public static void onBeforeUpdate(Map<Id,Apttus_Proposal__Proposal__c> oldQuoteproposalMap,List<Apttus_Proposal__Proposal__c> newQuoteproposalList)
-    {
+    public static void onBeforeUpdate(Map<Id,Apttus_Proposal__Proposal__c> oldQuoteproposalMap,List<Apttus_Proposal__Proposal__c> newQuoteproposalList){
         QuoteProposalsHelper.updateQuoteProposalFieldsBeforeUpdate(oldQuoteproposalMap,newQuoteproposalList);
     }
     public static void onAfterUpdate(Map<Id,Apttus_Proposal__Proposal__c> oldQuoteproposalMap,List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
