@@ -1227,6 +1227,13 @@
         <value>Price</value>
     </labels>
     <labels>
+        <fullName>PrintSendProposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrintSendProposal label button</shortDescription>
+        <value>Print/Send Proposal</value>
+    </labels>
+    <labels>
         <fullName>ProductAdjustmentPriceOverride</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
