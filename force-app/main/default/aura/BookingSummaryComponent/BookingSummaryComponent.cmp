@@ -184,7 +184,7 @@
                                             </div>
                                             <div class="slds-grid">
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" pattern="^[0-9]*$" messageWhenPatternMismatch="Numbers are allowed" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" />
+                                                    <lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" pattern="^[a-zA-Z0-9_]*$" messageWhenPatternMismatch="Symbols are not allowed" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" />
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
                                                     <lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" />
@@ -197,14 +197,12 @@
                                                         <lightning:input label="{!$Label.c.PersonMailingState}" aura:id="path_1_Fields" name="zState" value="{!v.wrapperList.personAcc.PersonMailingState}"></lightning:input>
                                                     </div>
                                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small slds-m-left_none" style="margin-top:0">
-                                                        <lightning:select label="{!$Label.c.PersonMailingCountry}" name="zCountryOfResidence" required="true" aura:id="path_1_Fields" value="{!v.wrapperList.personAcc.PersonMailingCountry}">
-                                                            <!--<option text="{!v.selectedCountry}"></option>-->
-                                                            <option value="">Please select</option>
-                                                            <aura:iteration items="{!v.MaillingCountryList}" var="itemCountry">
-                                                                <!--<option value="{!item.value}">{!item.label}</option>-->
-                                                                <option text="{!itemCountry.key}" value="{!itemCountry.value}" selected="{!itemCountry.Selected}"/>
-                                                            </aura:iteration>
-                                                        </lightning:select>
+                                                            <lightning:select label="{!$Label.c.PersonMailingCountry}" value="{!v.selectedCountry}" aura:id="path_3_Fields" required="true">
+                                                                <option value="">Please select</option>
+                                                                <aura:iteration items="{!v.MaillingCountryList}" var="itemCountry">
+                                                                    <option text="{!itemCountry.key}" value="{!itemCountry.value}" selected="{!itemCountry.Selected}"/>
+                                                                </aura:iteration>
+                                                            </lightning:select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,7 +237,7 @@
                                     </div>
                                     <div class="slds-grid slds-grid slds-p-top_small">
                                         <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                            <lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" pattern="^[0-9]*$" messageWhenPatternMismatch="Numbers are allowed" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}" />
+                                            <lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" pattern="^[a-zA-Z0-9]$" messageWhenPatternMismatch="Symbols are not allowed" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}" />
                                         </div>
                                         <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
                                             <lightning:input label="{!$Label.c.PersonOtherCity}" aura:id="path_2_Fields" name="zEn_City" value="{!v.wrapperList.personAcc.PersonOtherCity}" />
@@ -346,8 +344,7 @@
                                         <lightning:select name="path_3_Fields" label="{!$Label.c.CountryOfBirth}" value="{!v.selectedBirthCountry}" aura:id="path_3_Fields">
                                             <option value="">Please select</option>
                                             <aura:iteration items="{!v.BirthCountryList}" var="itemBirthCountry">
-                                                <!--<option value="{!item.value}">{!item.label}</option>-->
-                                                <option text="{!itemBirthCountry.value}" value="{!itemBirthCountry.key}" selected="{!itemBirthCountry.Selected}"/>
+                                                <option text="{!itemBirthCountry.key}" value="{!itemBirthCountry.value}" selected="{!itemBirthCountry.Selected}"/>
                                             </aura:iteration>
                                         </lightning:select>
                                     </div>
@@ -447,7 +444,7 @@
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2 " style="margin-top:0px">
                                                     <div class="overllappingElement">
-                                                       
+                                            
                                                         <lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade"></lightning:input>
 
                                                         <c:OwnerChange recordId="{!v.QuoteId}" OwnerRecordId="{!v.QuoteId}" ParentObjectApi="Apttus_Proposal__Proposal__c" />

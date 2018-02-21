@@ -96,7 +96,7 @@ public class BindSobject {
     }
 
    public static Map<String, String> GetMailingCountry() {
-        Map<String, String> MailingCountryMap = FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'MailingCountryCode');
+        Map<String, String> MailingCountryMap = FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'PersonMailingCountry');
         // Map<String,String> maplabelVal=new Map<String,String>();
 //      Get the object type of the SObject.
         Schema.sObjectType objType = Contact.getSObjectType();

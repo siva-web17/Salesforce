@@ -15,10 +15,11 @@
 				// alert("From server: " + response.getReturnValue());
 				if (response.getReturnValue() === true) {
 					var toastEvent = $A.get('e.force:showToast');
+                    var bookingSummarySuccess = $A.get('$Label.c.bookingSummarySuccess');
 					toastEvent.setParams({
 						title: 'Success!',
 						type: 'success',
-						message: "You're done! Poseidon will create a booking and you will be notified as soon as it's done",
+						message: bookingSummarySuccess,
 					});
 					toastEvent.fire();
 					//Add navigation to detail view here
