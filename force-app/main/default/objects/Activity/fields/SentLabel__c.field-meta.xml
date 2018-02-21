@@ -4,7 +4,7 @@
     <description>This is used to store the label value that has been attached when sending the brochure.</description>
     <externalId>false</externalId>
     <label>Sent Label</label>
-    <length>80</length>
+    <length>30</length>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>
