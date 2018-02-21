@@ -79,19 +79,19 @@ public class ContentNoteAndEventLink{
                 insert listOfContentDocumentLink;
                    }
     public static string getTheParsedJson(string JsonBody){
-    
-    string finalval='';
-    JSONParser  parser = JSON.createParser(JsonBody);
-    while (parser.nextToken() != null) {
-      if ((parser.getCurrentToken() == JSONToken.FIELD_NAME)){
-        String fieldName = parser.getText();
-        parser.nextToken();
-        String fieldValue=parser.getText();
-        finalval  = finalval + '<b>' + fieldName + '</b>'+' : ' +'<b>' +fieldValue +'</b>' + '\n'; 
-      }
-  }
-  return prepareContent(finalval);
-    
+        CampaignQAndA objCampaignQAndA = (CampaignQAndA)JSON.deserialize(jsonBody, CampaignQAndA.class);
+        String campaignQAndAString = '';
+        for(QuestionAndAnswer qAndA : objCampaignQAndA.CampaignQuestionAnswer){
+            if(qAndA.ExtraQuestion != NULL){
+                for(QuestionAndAnswer qAndANested : qAndA.ExtraQuestion){
+                    if(qAndANested.Question != NULL)
+                		campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndANested.Question +'\n<b>Answer : </b>' + qAndANested.Answer + '\n'; 
+            	}
+        	}
+            if(qAndA.Question != NULL)
+            	campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndA.Question +'\n<b>Answer : </b>' + qAndA.Answer + '\n';    
+    	}
+        return prepareContent(campaignQAndAString);
     }
     public static String prepareContent(String input)
     {
