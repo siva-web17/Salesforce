@@ -335,7 +335,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
-        <value>Only Quote/Proposal records with {0} status can be deleted</value>
+        <value>You can not delete an issued price quote</value>
     </labels>
     <labels>
         <fullName>Destination</fullName>
