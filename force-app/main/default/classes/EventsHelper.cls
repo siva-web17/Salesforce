@@ -79,9 +79,9 @@ public class ContentNoteAndEventLink{
                 insert listOfContentDocumentLink;
                    }
     public static string getTheParsedJson(string JsonBody){
-        CampaignQAndA campaignQAndA = (CampaignQAndA)JSON.deserialize(jsonBody, CampaignQAndA.class);
+        CampaignQAndA objCampaignQAndA = (CampaignQAndA)JSON.deserialize(jsonBody, CampaignQAndA.class);
         String campaignQAndAString = '';
-        for(QuestionAndAnswer qAndA : campaignQAndA.CampaignQuestionAnswer){
+        for(QuestionAndAnswer qAndA : objCampaignQAndA.CampaignQuestionAnswer){
             if(qAndA.ExtraQuestion != NULL){
                 for(QuestionAndAnswer qAndANested : qAndA.ExtraQuestion){
                     if(qAndANested.Question != NULL)
