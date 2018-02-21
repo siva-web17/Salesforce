@@ -13,8 +13,10 @@ public with sharing class InviteToCampaign {
     }
 
     @AuraEnabled
-    public static Map<String,String> getProgram(Id recordId) {      
-        return FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Program__c');
+    public static Map<String,String> getProgram(Id recordId) { 
+        Map<String, Map<String,String>> marketProgram = FieldUtilityClass.getFieldDependenciesMap(Campaign.getSObjectType().getDescribe().getName(), 'Market__c', 'Program__c');
+        Opportunity opp = OpportunitiesSelector.getOpportunityRecord(recordId);
+        return marketProgram.get(opp.Market__c);
     }
 
     @AuraEnabled
@@ -193,7 +195,7 @@ public with sharing class InviteToCampaign {
     }
 
     @AuraEnabled
-    public static void AddCampaigns(string incomingCampaignList, Id opportunityId) {
+    public static void AddCampaigns(string incomingCampaignList, Id OpportunityId) {
         try {
             System.Debug('Input Params : incomingCampaignList:'+incomingCampaignList+'  OppId:'+OpportunityId);
             List<CampaignMember> campaignMemberList = new List<CampaignMember>();
