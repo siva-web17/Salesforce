@@ -130,7 +130,7 @@ public with sharing class LogACallHelper {
                     visitEvent.Program__c = (String.valueOf(parentId).substring(0, 3) == '00Q') ? lead.Program__c : opp.Program__c;
                     visitEvent.FollowUpDate__c = visitDatetime;
                     visitEvent.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(TasksHelper.VISIT_EVENT_DEVELOPER_NAME).Id;
-                    visitEvent.Subject = 'Office Visit';
+                    visitEvent.Subject = system.label.OfficeVisit;
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
                         visitEvent.WhatId = opp.Id;
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
@@ -194,7 +194,7 @@ public with sharing class LogACallHelper {
                 update openCallTask;
             }
 
-            // newTask.Type = openCallTask.NextCallType__c;
+            newTask.NextCallType__c = openCallTask.NextCallType__c;
             newTask.Status = 'Completed';
             newTask.Program__c = currentProgram;
 
