@@ -104,6 +104,52 @@
         <value>Something went wrong:</value>
     </labels>
     <labels>
+	<fullName>BookinSummaryContact_Details</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Details</shortDescription>
+        <value>Contact Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryBooking_Details</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Booking Details</shortDescription>
+        <value>Booking Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_BOOKING_INFORMATION_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_DETAIL</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR DETAIL</shortDescription>
+        <value>PERSONALIZE YOUR DETAIL</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_PRELIMINARY_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR PRELIMINARY DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR PRELIMINARY DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryback_button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>back button</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
         <fullName>Birthdate</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -119,6 +165,14 @@
         <shortDescription>Booking Channel</shortDescription>
         <value>Booking Channel</value>
     </labels>
+	<labels>
+        <fullName>Booking_Summary_create_booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used as main header to display account name for whom booking is created for.</shortDescription>
+        <value>Create Booking for</value>
+    </labels>
     <labels>
         <fullName>Booking_Type</fullName>
         <categories>Label</categories>
@@ -127,6 +181,13 @@
         <shortDescription>Booking Type</shortDescription>
         <value>Booking Type</value>
     </labels>
+	<labels>
+        <fullName>SaveFailed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>When the record is failed to save in Lightning component.</shortDescription>
+        <value>Unable to save</value>
+    </labels>
     <labels>
         <fullName>Brochure</fullName>
         <categories>Label</categories>
@@ -134,6 +195,27 @@
         <protected>false</protected>
         <shortDescription>Brochure</shortDescription>
         <value>Brochure</value>
+    </labels>
+	<labels>
+        <fullName>Review_message_before_proceeding_to_next_step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review message before proceeding to next step</shortDescription>
+        <value>* Please review your quote before proceedings to next step</value>
+    </labels>
+	<labels>
+        <fullName>PleaseSelect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used for Default value in picklist values</shortDescription>
+        <value>Please Select</value>
+    </labels>
+	<labels>
+        <fullName>Quote_Summary</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Summary</shortDescription>
+        <value>Quote Summary</value>
     </labels>
     <labels>
       <fullName>BrochureRequest</fullName>
@@ -385,6 +467,14 @@
         <shortDescription>Email</shortDescription>
         <value>Email</value>
     </labels>
+    <fullName>FTEFX_Article_Code</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This is used for selecting FTEFX under proposal Line Item Article Code</shortDescription>
+        <value>FTEFX</value>
+    </labels>
+    <labels>
     <labels>
         <fullName>Email2</fullName>
         <categories>Label</categories>
@@ -1227,6 +1317,13 @@
         <value>Price</value>
     </labels>
     <labels>
+        <fullName>PrintSendProposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrintSendProposal label button</shortDescription>
+        <value>Print/Send Proposal</value>
+    </labels>
+    <labels>
         <fullName>ProductAdjustmentPriceOverride</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1475,8 +1572,8 @@
         <categories>Apttus</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>Sent To Poseidon</shortDescription>
-        <value>This field is used in Quote Proposal trigger for checking before invoking Scribe</value>
+        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
+        <value>Sent To Poseidon</value>
     </labels>
     <labels>
         <fullName>SocialMediaReached</fullName>
@@ -1484,6 +1581,22 @@
         <protected>false</protected>
         <shortDescription>Social Media Reached Sales action on Log a Call Component</shortDescription>
         <value>Social Media Reached</value>
+    </labels>
+	<labels>
+        <fullName>bookingsummaryPersonalDetails</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Personal Details</shortDescription>
+        <value>Personal Details</value>
+    </labels>
+	<labels>
+        <fullName>bookingSummaryFinish_Booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Finish Booking</shortDescription>
+        <value>Finish Booking</value>
     </labels>
     <labels>
         <fullName>SocialMediaSent</fullName>
@@ -1653,5 +1766,13 @@
         <protected>false</protected>
         <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
         <value>Draft</value>
+    </labels>
+	<labels>
+        <fullName>bookingSummarySuccess</fullName>
+        <categories>BookingSummary</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>bookingSummarySuccess</shortDescription>
+        <value>You're done! Poseidon will create a booking and you will be notified as soon as it's done</value>
     </labels>
 </CustomLabels>

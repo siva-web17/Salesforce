@@ -1,0 +1,84 @@
+<aura:component description="PrintSendProposal" controller="PrintSendProposalController">
+    <aura:attribute name="cartId" type="String" required="true" access="public"/>
+    <aura:attribute name="proposalId" type="Id" required="true" access="public"/>
+    <aura:attribute name="proposal" type="Apttus_Proposal__Proposal__c" access="private"/>
+    <aura:attribute name="templates" type="Apttus__APTS_Template__c[]" access="private"/>
+    <aura:attribute name="selectedTemplateId" type="Id" access="private"/>
+    <aura:attribute name="generetadPDFId" type="Id" access="private"/>
+    <aura:attribute name="viewGeneretadPDFUrl" type="Id" access="private"/>
+    <aura:attribute name="finalizationDone" type="Boolean" default="false" access="private"/>
+
+<!--email attrs-->
+    <aura:attribute name="email" type="string"/>
+    <aura:attribute name="subject" type="string"/>
+    <aura:attribute name="body" type="string"/>
+    <aura:attribute name="mailStatus" type="boolean" default="false"/>
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.proposal}" action="{!c.initValues}"/>
+
+    <lightning:spinner aura:id="spinner"/>
+    <div class="apttus-header-1">
+    </div>
+    <div class="apttus-header-2">
+    </div>
+
+    <aura:if isTrue="{!!v.finalizationDone}">
+        <div class="slds-text-align--center">
+            <h1 class="slds-text-heading_large">Finalizing...</h1>
+        </div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.finalizationDone}">
+        <lightning:layout class="slds-p-around--medium">
+            <lightning:layoutItem size="6" class="slds-p-horizontal--small slds-border--right">
+                <div class="slds-text-align--center">
+                    <h1 class="slds-text-heading_medium">Print Proposal</h1>
+                </div>
+                <table class="slds-table--bordered slds-p-vertical--small">
+                    <tbody>
+                    <aura:iteration var="template" items="{!v.templates}">
+                        <tr>
+                            <td>
+                                <a onclick="{!c.onTemplateSelection}" data-templateid="{!template.Id}">{!template.Name}</a>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                    </tbody>
+                </table>
+
+                <aura:if isTrue="{!!empty(v.generetadPDFId)}">
+                    <a class="slds-button slds-button--neutral" href="{!v.viewGeneretadPDFUrl}" target="_blank">Preview</a>
+                </aura:if>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" class="slds-p-horizontal--small">
+                <div class="slds-text-align--center">
+                    <h1 class="slds-text-heading_medium">Send Proposal</h1>
+                </div>
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem size="12" >
+                        <lightning:input type="email" value="{!v.email}" required="true" label="Email"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12" >
+                        <lightning:input type="text" value="{!v.subject}" required="true" label="Subject"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12" class="slds-p-top--small">
+                        <lightning:inputRichText value="{!v.body}" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12" class="slds-p-top--small">
+                        <aura:if isTrue="{!!empty(v.generetadPDFId)}">
+                            <div>Attachment:</div>
+                            <a href="{!v.viewGeneretadPDFUrl}" target="_blank">view</a>
+                        </aura:if>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12">
+                        <lightning:button label="Send" onclick="{!c.sendMail}"/>
+                        <lightning:button label="Go back to Opportunity" onclick="{!c.goToOpportunityRecord}"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+
+</aura:component>
