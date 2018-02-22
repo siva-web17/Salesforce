@@ -38,13 +38,13 @@
 				component.set('v.selectedCountry', u.personAcc.PersonMailingCountry);
 				var arrayMailingCountryMapKeys = [];
 				var result = u.MailingCountryPickList;
-				var p = component.get('v.selectedCountry');
+                var p = component.get('v.selectedCountry');
 				var isSelected = false;
 				for (var key in result) {
 					if (p == key || p == result[key]) {
 						isSelected = true;
 					}
-					arrayMailingCountryMapKeys.push({ key: key,value: result[key], Selected: isSelected });
+					arrayMailingCountryMapKeys.push({ value: result[key],key: key, Selected: isSelected });
 					isSelected = false;
 				}
 				component.set('v.MaillingCountryList', arrayMailingCountryMapKeys);
@@ -330,6 +330,9 @@
 
 		var setOther = cmp.get('v.selectedNationality');
 		cmp.set('v.wrapperList.personAcc.Nationality__c', setOther);
+
+		var setBirthCountry = cmp.get('v.selectedBirthCountry');
+        cmp.set('v.wrapperList.personAcc.BirthCountry__c', setBirthCountry);
 
 		var path_3_Fields = cmp.find('path_3_Fields').reduce(function(validSoFar, inputCmp) {
 			inputCmp.showHelpMessageIfInvalid();

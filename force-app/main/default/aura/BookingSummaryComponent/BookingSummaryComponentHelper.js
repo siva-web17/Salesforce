@@ -36,10 +36,11 @@
 					);
 				} else {
 					var toastEvent = $A.get('e.force:showToast');
+                    var SaveFailed = $A.get('$Label.c.SaveFailed');
 					toastEvent.setParams({
 						title: 'Failure!',
 						type: 'Failure',
-						message: 'Unable to save.',
+						message: SaveFailed,
 					});
 					toastEvent.fire();
 				}
