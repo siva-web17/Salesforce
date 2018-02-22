@@ -1,0 +1,116 @@
+<!--
+ - Created by Arkadiusz Celej on 29.01.2018.
+ -->
+
+<aura:component description="DatesQuantityCalendar" controller="DatesQuantityConfiguratorController">
+    <aura:attribute name="lineItem" type="Apttus_Config2__LineItem__c" default="{}" access="public"/>
+    <aura:attribute name="startDate" type="String" access="public"/>
+    <aura:attribute name="quantity" type="Integer" default="1" access="public"/>
+
+    <aura:attribute name="endDate" type="String" access="private"/>
+    <aura:attribute name="availableDates" type="Start_Dates__c[]" default="[]" access="private"/>
+    <aura:attribute name="calendarDate" type="Date" access="private"/>
+    <aura:attribute name="year" type="Integer" default="" access="private"/>
+    <aura:attribute name="month" type="Integer" default="" access="private"/>
+    <aura:attribute name="day" type="Integer" default="" access="private"/>
+    <aura:attribute name="calendarPageItems" type="Integer[]" default="" access="private"/>
+    <aura:attribute name="weeksInMonth" type="Integer[]" default="" access="private"/>
+    <aura:attribute name="monthStartWeekday" type="Integer" default="" access="private"/>
+    <aura:attribute name="monthName" type="String" default="" access="private"/>
+    <aura:attribute name="monthNames" type="String[]" default="['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']" access="private"/>
+    <aura:attribute name="showOnlyBeginner" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.availableDates}" action="{!c.setupDates}"/>
+    <aura:handler name="change" value="{!v.startDate}" action="{!c.updateEndDate}"/>
+    <aura:handler name="change" value="{!v.quantity}" action="{!c.updateEndDate}"/>
+
+    <aura:registerEvent name="datesQuantitySelectedEvent" type="c:DatesQuantitySelectedEvent"/>
+
+    <div class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-text-align--right apttus-header-1">
+                <lightning:buttonIcon iconName="utility:close" onclick="{!c.close}" class="apttus-button"/>
+            </header>
+            <div class="slds-modal__content" >
+                <lightning:card >
+                    <aura:set attribute="title">
+                        <div class="apttus-header-2">
+                            <lightning:layout horizontalAlign="spread">
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                    <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" alternativeText="Previous" iconClass="dark" onclick="{!c.previousMonth}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                        {!v.monthName}
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                    <lightning:buttonIcon iconName="utility:chevronright" variant="bare" alternativeText="Next" iconClass="dark" onclick="{!c.nextMonth}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                    <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" alternativeText="Previous" iconClass="dark" onclick="{!c.previousYear}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                        {!v.year}
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                                    <lightning:buttonIcon iconName="utility:chevronright" variant="bare" alternativeText="Next" iconClass="dark" onclick="{!c.nextYear}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </aura:set>
+                    <aura:set attribute="body">
+                        <div class="calendar">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center" class="slds-m-top--medium slds-p-around--medium">
+                                <lightning:layoutItem size="3">
+                                    Beginner <lightning:input type="checkbox" checked="{!v.showOnlyBeginner}" onchange="{!c.setupDates}" class="apttus-inline"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="3">
+                                    Preferred Date<div class="preferred legend-item"></div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="3">
+                                    Available Date<div class="available legend-item"></div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="3">
+                                    Selected Date<div class="selected legend-item"></div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            <table class="slds-table slds-table--bordered slds-no-row-hover">
+                                <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">mon</th><th>tue</th><th>wed</th><th>thu</th><th>fri</th><th>sat</th><th>sun</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.weeksInMonth}" var="week" indexVar="weekNum">
+                                        <tr>
+                                            <aura:iteration start="{!week*7}" var="pageItem" items="{!v.calendarPageItems}" end="{!week*7+7}">
+                                                <td>
+                                                    <aura:if isTrue="{!pageItem.isAvailable}">
+                                                        <div class="{!pageItem.isSelected ? 'calendar-item clickable selected' :
+                                                                      pageItem.isPreferred ? 'calendar-item clickable preferred' :
+                                                                                            'calendar-item clickable available'}" onclick="{!c.onDaySelected}" data-day="{!pageItem.day}">
+                                                            {!pageItem.day}
+                                                        </div>
+                                                        <aura:set attribute="else">
+                                                            <div class="{!pageItem.isEndDate ? 'calendar-item selected-endDate' : ''}">
+                                                                {!pageItem.day}
+                                                            </div>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </td>
+                                            </aura:iteration>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div>
+                    </aura:set>
+                </lightning:card>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" onclick="{!c.onApply}">Apply</button>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</aura:component>
