@@ -271,7 +271,13 @@
 							||v.selectedActionType == $Label.c.LAC_Social_Media_Reached
 						)? ( 
 							v.find_lead_or_opp == '00Q' ? ( 
-								(v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close )
+								(
+									v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									|| v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									|| v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									|| v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									|| v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									)
 								 ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert )
 								  : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION
 						} 					</button>
@@ -288,7 +294,13 @@
 								  || v.selectedActionType == $Label.c.LAC_Social_Media_Reached
 								   ) ? 
 								   (
-									   (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close) 
+									   (
+										v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+										||v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+										||v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+										||v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+										||v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close
+									   ) 
 									   ? 
 									   $Label.c.LAC_SAC : $Label.c.LAC_Convert_C
 									) : $Label.c.LAC_SAC
