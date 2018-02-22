@@ -69,6 +69,10 @@
                 <behavior>Required</behavior>
                 <field>MaxEndDate__c</field>
             </layoutItems>
+			<layoutItems>
+                <behavior>Edit</behavior>
+                <field>Integrationstatus__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
