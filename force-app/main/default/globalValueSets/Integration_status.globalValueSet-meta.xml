@@ -10,6 +10,11 @@
         <default>false</default>
         <label>Booking Created</label>
     </customValue>
+    <customValue>
+        <fullName>Error</fullName>
+        <default>false</default>
+        <label>Error</label>
+    </customValue>
     <description>Used to track the details of record of Integration</description>
     <masterLabel>Integration status</masterLabel>
     <sorted>false</sorted>

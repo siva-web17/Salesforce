@@ -36,7 +36,7 @@ public class BindSobject {
             System.debug('^^^^^^^^ bindData.personAcc^^^^^^^'+ bindData.personAcc);
 
             Opportunity fetchopp = new Opportunity();
-            fetchopp = [select id,SalesOffice__c,Market__c
+            fetchopp = [select id,SalesOffice__c,Market__c,Program__c
             from Opportunity where AccountID =: fetchAccount.Id];
             bindData.opp =   fetchopp;
             System.debug('^^^^^^^^ bindData.opp^^^^^^^'+ bindData.opp);

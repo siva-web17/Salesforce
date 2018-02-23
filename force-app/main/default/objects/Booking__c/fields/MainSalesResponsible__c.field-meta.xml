@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <description>Used to capture Main Sales Responsible</description>
     <externalId>false</externalId>
-    <label>MainSalesResponsible</label>
+    <label>Main Sales Responsible</label>
     <referenceTo>User</referenceTo>
     <relationshipName>BookingsQuote</relationshipName>
     <required>false</required>
