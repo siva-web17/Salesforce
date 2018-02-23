@@ -19,7 +19,7 @@ public class StartDateHelper {
         String IsBeginnerCheck = (isBeginner) ? ' AND Is_Beginner__c=TRUE ' : ' ';
         String selectQuery = 'select Id,Name,Course__c,Destination__c,StartDate__c,Is_Beginner__c,APTSCourseNumberofWeeks__c,APTSEndDate__c,Is_Preferred__c from  Start_Dates__c';
         String whereClause = ' Where Course__c =\'' + courseCode + '\' AND Destination__c =\'' + destination + '\' AND Program__c =\'' + programCode + '\' ' + blockPastDateCheck + ' ' + IsBeginnerCheck;
-        String Query = selectQuery + whereClause;
+        String Query = selectQuery + whereClause + ' ORDER BY StartDate__c';
         System.debug('##############' + Query);
         return StartDatesSelector.getStartDatesForSelectedBundle(Query);
     }

@@ -1,0 +1,39 @@
+<!--
+ - Created by Arkadiusz Celej on 29.01.2018.
+ -->
+
+<aura:component description="DatesQuantityConfigurator" controller="DatesQuantityConfiguratorController">
+    <aura:attribute name="cartId" type="String" default="" access="public"/>
+    <aura:attribute name="backToCartUrl" type="String" default="" access="public"/>
+    <aura:attribute name="lineItemsByItemNumber" type="Map" default="{}" access="private"/>
+    <aura:attribute name="changedLineItemsByLineNumber" type="Map" default="{}" access="private"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="itemsChangedEvent" event="c:DatesQuantityItemsChangedEvent" action="{!c.onItemsChange}" />
+
+    <lightning:spinner aura:id="spinner" class="slds-hide"/>
+
+    <div class="apttus-header-1">
+    </div>
+    <div class="apttus-header-2 slds-text-align_right">
+        <lightning:button label="Go back"  onclick="{!c.back}"/>
+        <lightning:button label="Reprice and go back" onclick="{!c.saveCartLineItems}"/>
+    </div>
+    <table class="slds-table slds-table--bordered slds-no-row-hover apttus-table">
+        <thead>
+        <tr>
+            <th class="slds-text-align--center">#</th>
+            <th class="slds-text-align--center">Product</th>
+            <th class="slds-text-align--center">Product Code</th>
+            <th class="slds-text-align--center">Product Type</th>
+            <th class="slds-text-align--center">Start Date</th>
+            <th class="slds-text-align--center">Quantity</th>
+            <th class="slds-text-align--center">End Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            {!v.body}
+        </tbody>
+    </table>
+
+</aura:component>

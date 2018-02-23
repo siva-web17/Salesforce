@@ -213,9 +213,14 @@ public class DCBusinessFlow {
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
           
             //inactive if opportunity is
-    
-        }      
+ 
+        }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
+        opportunity inactiveOpportunity = [select id,Ranking__c from opportunity where accountid=:lcr.getAccountId() and isactive__c=false order by createddate desc];
+        opportunity newlyCreatedActiveOpportunity = new opportunity();
+        newlyCreatedActiveOpportunity.id = lcr.getOpportunityId();
+        newlyCreatedActiveOpportunity.Ranking__c = inactiveOpportunity.Ranking__c!=null?inactiveOpportunity.Ranking__c:null;
+        update newlyCreatedActiveOpportunity;
     }
 
     //transfer the event from duplicate lead to source lead
