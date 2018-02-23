@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CustomConfigureProducts__c</fullName>
     <externalId>false</externalId>
-    <formula>IF ( AND(LEN( Apttus_QPConfig__PriceListId__c ) > 0, Apttus_Proposal__Valid_Until_Date__c>=TODAY()), HYPERLINK("/apex/Apttus_QPConfig__ProposalConfiguration?id=" &amp;Id &amp; "&amp;flow=NGDefault", IMAGE("/resource/Apttus_QPConfig__Button_Configure", "Configure Products"),"_self"), NULL)</formula>
+    <formula>IF ( AND(LEN( Apttus_QPConfig__PriceListId__c ) > 0, Apttus_Proposal__Valid_Until_Date__c>=TODAY(), ISPICKVAL( Apttus_Proposal__Approval_Stage__c , "Draft")), HYPERLINK("/apex/Apttus_QPConfig__ProposalConfiguration?id=" &amp;Id &amp; "&amp;flow=NGDefault", "Edit","_self"), NULL)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Configure Products</label>
     <required>false</required>
