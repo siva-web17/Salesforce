@@ -467,6 +467,7 @@
         <shortDescription>Email</shortDescription>
         <value>Email</value>
     </labels>
+	<labels>
     <fullName>FTEFX_Article_Code</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -474,7 +475,6 @@
         <shortDescription>This is used for selecting FTEFX under proposal Line Item Article Code</shortDescription>
         <value>FTEFX</value>
     </labels>
-    <labels>
     <labels>
         <fullName>Email2</fullName>
         <categories>Label</categories>
