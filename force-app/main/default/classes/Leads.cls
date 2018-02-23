@@ -16,6 +16,8 @@ public class Leads {
     public static void onBeforeInsert(List<SObject> newItems) {
         LeadsHelper.updateHadAddressFilledOnCreation(newItems);
         LeadsHelper.populateSalesOfficeProgram(newItems);
+        LeadsHelper.populateSourceBasedonSourceCodeAuto(newItems);
+        Leadshelper.populateSourceCodeAutoAndPartnerFromSource(newItems); 
     }
 
     public static void onBeforeUpdate(List<Lead> oldLeadList,List<Lead> newLeadList){
