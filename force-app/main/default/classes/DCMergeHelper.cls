@@ -10,7 +10,8 @@ Created Date       : 7/25/2017
 * ----------------------------------------------------------------------------
 * Aditi Sharma                7/25/2017            This class helps in implementing business scenarios on opportunities and task after account merge
 *******************************************************************************/
-public with sharing class DCMergeHelper {
+public with sharing class DCMergeHelper{
+    public class My1Exception extends Exception {}
     //************************************** DCMergePlugin Codes here ***********************************
     //This function is invoked when there is a manual merge of objects using DC (Lead to Lead or Account to Account)
     public static void OnManualMerge(String objectPrefix, Sobject masterRecord, Set < id > mergedRecordIds)
@@ -24,7 +25,9 @@ public with sharing class DCMergeHelper {
             List<Opportunity> freezableOpps=OpportunityStageUpdateOnMergeAccount(masterAccount,opps);
             if (freezableOpps != null && freezableOpps.size() > 0) {
                 for (Opportunity freezableOpp : freezableOpps) {
-                    freezableOpp.StageName='InActive';   //*********need to decide the stage here.
+                    freezableOpp.isactive__c = false;
+                    freezableOpp.StageName=label.SalesClosed;
+                    freezableOpp.CloseMainReason__c = 'Closed by System';
                 }
                 SObjectUnitOfWork.ExecuteUpdateOpportunities(freezableOpps);
             }
@@ -68,7 +71,7 @@ Version    Method   : 7/25/2017
         //please do not add any if block inside this. It has been followed as per the order
         if(stageNameSet.contains(System.Label.LeadStageWon)) {
             for (Opportunity opp : wonOpportuntyList) {
-                if (opp.StageName == System.Label.LeadStageWon && isFound) {
+                if (opp.StageName == Label.OpportunityBookingStage && isFound) {
                     isFound = false;
                     continue;
                 }
@@ -149,4 +152,82 @@ Version    Method   : 7/25/2017
              SObjectUnitOfWork.executeUpdateEvents(mergedEvent);
         }
     }
-}
+
+    public static void ChangeProgramOrStatusForMasterREcord(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList) {
+        List<Id> mergedIds = new List<Id>();
+        for (sobject sObj : mergedRecordList) {
+            mergedIds.add(sObj.Id);
+        }
+        //When Leads are Merged Manually
+        if (objectPrefix == System.Label.LeadPrefix)  // =="00Q"
+        {
+            Lead retainedLead = (Lead) masterRecord;
+            retainedLead =
+                [select id,program__c,product__c, createddate from lead where id=:retainedLead.id];
+            lead latestobjlead =
+                [select id,program__C,product__c,status, createddate from lead where id in:mergedIds
+                    order by createddate desc limit 1];
+
+            if(retainedLead.createddate > latestobjlead.createddate)
+            {
+                latestobjlead = retainedLead;
+            }
+            //If the retained Lead is in closed status change the status to open and get the program from the latest activity
+            if(!(retainedLead.status=='open')){
+                retainedLead.status='open';
+                retainedLead.program__c = latestobjlead.program__c;
+            }
+            // If the latest activity is RES or the retained program is multi change the program to the latest activity
+            else if(latestobjlead.RequestType__c == 'RES' || retainedLead.program__c=='MULTI'){
+                  retainedLead.program__c=latestobjlead.program__c;
+            }
+            update retainedLead;
+        }
+
+    }
+    public static void changeProgramOnOpportunityForPersonAccountMerge(String objectPrefix, Sobject masterRecord ,set<id> mergedRecordList){
+        if(masterRecord.getSObjectType() == account.getSObjectType()){
+            Account retainedAccount = (account) masterRecord;
+            retainedAccount = [Select PersonContactId From Account Where Id = :retainedAccount.id];
+            opportunity ActiveOpportunity = [select id,program__c,stagename,createddate from opportunity where accountid=:retainedAccount.id and isactive__c=true limit 1];
+             List<Event> CustomerRequestActivityList = [select id,program__c,type from event where whoid=:retainedAccount.PersonContactId order by createddate desc limit 2];
+            If(!(ActiveOpportunity.stageName == label.OpportunityBookingStage) && CustomerRequestActivityList[0].type == 'RES'){
+                ActiveOpportunity.Program__c = CustomerRequestActivityList[0].program__c;
+            }
+             If(ActiveOpportunity.Program__c == 'MULTI')
+            {
+                if(CustomerRequestActivityList[0].Program__c != 'MULTI'){
+                    ActiveOpportunity.Program__c = CustomerRequestActivityList[0].Program__c;
+                }else{
+                    ActiveOpportunity.Program__c = CustomerRequestActivityList[1].Program__c;
+                }
+            }
+            update ActiveOpportunity;
+        }
+    }
+        public static void validationForHasBookingAccountMerge(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList){
+            List<Id> mergedIds = new List<Id>();
+            for (sobject sObj : mergedRecordList) {
+                mergedIds.add(sObj.Id);
+            }
+            String MyProflieName = [SELECT Id, Name FROM Profile WHERE Id=:userinfo.getProfileId() LIMIT 1].name;
+            if(MyProflieName!=label.ProfileSystemAdmin && masterRecord.getSObjectType() == account.getSObjectType()){
+                boolean hasBooking = false;
+                Account retainedAccount = (account) masterRecord;
+                retainedAccount = [select id,HasBooking__c from account where id=:retainedAccount.id];
+                lIST<Account>  LatestmergedAccount = [select id,HasBooking__c from account where id in:mergedIds];
+                FOR(account objAccount: LatestmergedAccount){
+                    if(objAccount.HasBooking__c){
+                        hasBooking = true;
+                        break;
+                    }
+                }
+                if(retainedAccount.HasBooking__c || hasBooking){
+                    throw new My1Exception('First exception');
+                }
+            }
+        }
+
+
+
+    }
