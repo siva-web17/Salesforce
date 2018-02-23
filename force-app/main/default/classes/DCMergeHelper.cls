@@ -11,7 +11,7 @@ Created Date       : 7/25/2017
 * Aditi Sharma                7/25/2017            This class helps in implementing business scenarios on opportunities and task after account merge
 *******************************************************************************/
 public with sharing class DCMergeHelper{
-    public class My1Exception extends Exception {}
+    public class CustomException extends Exception {}
     //************************************** DCMergePlugin Codes here ***********************************
     //This function is invoked when there is a manual merge of objects using DC (Lead to Lead or Account to Account)
     public static void OnManualMerge(String objectPrefix, Sobject masterRecord, Set < id > mergedRecordIds)
@@ -223,7 +223,7 @@ Version    Method   : 7/25/2017
                     }
                 }
                 if(retainedAccount.HasBooking__c || hasBooking){
-                    throw new My1Exception('First exception');
+                    throw new CustomException('Can Not Merge Booking Accounts');
                 }
             }
         }
