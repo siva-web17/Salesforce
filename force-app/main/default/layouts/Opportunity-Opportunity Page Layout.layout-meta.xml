@@ -185,7 +185,9 @@
         <fields>CREATED_DATE</fields>
         <fields>Apttus_Proposal__Valid_Until_Date__c</fields>
         <fields>CREATEDBY_USER</fields>
-        <fields>Apttus_Proposal__Present__c</fields>
+        <fields>Apttus_Proposal__Approval_Stage__c</fields>
+        <fields>Reprint__c</fields>
+        <fields>CustomConfigureProducts__c</fields>
         <relatedList>Apttus_Proposal__Proposal__c.Apttus_Proposal__Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
