@@ -1,0 +1,21 @@
+.THIS table tr th, .THIS table tr td{
+    cursor: pointer;
+}
+.THIS .dates-row:hover .selection-icon{
+    visibility: visible;
+}
+.THIS .selection-icon-container{
+    max-width: 20px;
+}
+.THIS .selection-icon{
+    visibility: hidden;
+}
+.THIS .selected-icon{
+    visibility: visible;
+}
+.THIS .apttus-button{
+    background: white;
+}
+.THIS .fill-green svg{
+    fill: green;
+}
