@@ -1,8 +1,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <bean id="LeadRankingSettingsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="LeadRankingSettingsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>Lead Ranking Custom Settings</description>
         <property name="name" value="LeadRankingSettingsProcess"/>
         <property name="configOverrideMap">
@@ -27,9 +25,7 @@
             </map>
         </property>
     </bean>
-    <bean id="LeadAccountMappingSettingsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="LeadAccountMappingSettingsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="LeadAccountMappingSettingsProcess"/>
         <property name="configOverrideMap">
@@ -54,9 +50,7 @@
             </map>
         </property>
     </bean>
-    <bean id="LeadMergeRuleConfigSettingsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="LeadMergeRuleConfigSettingsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="LeadMergeRuleConfigSettingsProcess"/>
         <property name="configOverrideMap">
@@ -81,9 +75,7 @@
             </map>
         </property>
     </bean>
-    <bean id="LegalSettingsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="LegalSettingsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="LegalSettingsProcess"/>
         <property name="configOverrideMap">
@@ -108,9 +100,7 @@
             </map>
         </property>
     </bean>
-    <bean id="MarketProgramSettingDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="MarketProgramSettingDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="MarketProgramSettingProcess"/>
         <property name="configOverrideMap">
@@ -135,9 +125,7 @@
             </map>
         </property>
     </bean>
-    <bean id="BypassTriggerValidationSettingDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="BypassTriggerValidationSettingDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="BypassTriggerValidationSettingProcess"/>
         <property name="configOverrideMap">
@@ -162,9 +150,7 @@
             </map>
         </property>
     </bean>
-    <bean id="ProposalSystemPropertiesDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="ProposalSystemPropertiesDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="ProposalSystemPropertiesProcess"/>
         <property name="configOverrideMap">
@@ -189,9 +175,7 @@
             </map>
         </property>
     </bean>
-    <bean id="ConfigSystemPropertiesDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="ConfigSystemPropertiesDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="ConfigSystemPropertiesProcess"/>
         <property name="configOverrideMap">
@@ -216,9 +200,7 @@
             </map>
         </property>
     </bean>
-    <bean id="ConfigCustomClassesDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="ConfigCustomClassesDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="ConfigCustomClassesProcess"/>
         <property name="configOverrideMap">
@@ -243,9 +225,7 @@
             </map>
         </property>
     </bean>
-    <bean id="ConfigLineItemCustomFieldsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="ConfigLineItemCustomFieldsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="ConfigLineItemCustomFieldsProcess"/>
         <property name="configOverrideMap">
@@ -270,9 +250,7 @@
             </map>
         </property>
     </bean>
-    <bean id="ConfigLineItemCriteriaFieldsDeploy"
-          class="com.salesforce.dataloader.process.ProcessRunner"
-          singleton="false">
+    <bean id="ConfigLineItemCriteriaFieldsDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
         <property name="name" value="ConfigLineItemCriteriaFieldsProcess"/>
         <property name="configOverrideMap">
@@ -294,6 +272,136 @@
                 <entry key="dataAccess.name" value="..\data\ConfigLineItemCriteriaFields.csv"/>
                 <entry key="dataAccess.type" value="csvRead"/>
                 <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
+            </map>
+        </property>
+    </bean>
+    <bean id="Destination__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="Destination__c"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Destination__c"/>
+                <entry key="sfdc.entity" value="Destination__c"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Destination__c.csv"/>
+                <entry key="dataAccess.type" value="csvWrite" />
+                <entry key="dataAccess.writeBatchSize" value="1" />
+                <entry key="sfdc.extractionRequestSize" value="1" />
+                <entry key="process.enableExtractSuccessOutput" value="true" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, Country__c, DestinationCode__c, EndDateOffSet__c, GroupedLTDestinationName__c, IsLT__c, Language__c, StartDateOffSet__c FROM Destination__c" />
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+        <bean id="Fixed_Fare__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="Fixed_Fare__c"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Fixed_Fare__c"/>
+                <entry key="sfdc.entity" value="Fixed_Fare__c"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Fixed_Fare__c.csv"/>
+                <entry key="dataAccess.type" value="csvWrite" />
+                <entry key="dataAccess.writeBatchSize" value="1" />
+                <entry key="sfdc.extractionRequestSize" value="1" />
+                <entry key="process.enableExtractSuccessOutput" value="true" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, Departure_Point__c, Destination__c, Name, Flight_Season__c, From_Day__c, From_Month__c, From_To__c, Product__c, Program__c, To_Day__c, To_Month__c, Transformed_To_Month__c, Unique_Value__c FROM Fixed_Fare__c" />
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+        <bean id="Departure_Point__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="Departure_Point__c"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Departure_Point__c"/>
+                <entry key="sfdc.entity" value="Departure_Point__c"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Departure_Point__c.csv"/>
+                <entry key="dataAccess.type" value="csvWrite" />
+                <entry key="dataAccess.writeBatchSize" value="1" />
+                <entry key="sfdc.extractionRequestSize" value="1" />
+                <entry key="process.enableExtractSuccessOutput" value="true" />
+                <entry key="sfdc.extractionSOQL" value="SELECT Active__c, APTSExtID__c, Code__c, APTS_Default_Unique_Identifier__c, Market__c, Product__c, Program__c FROM Departure_Point__c" />
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+        <bean id="Start_Dates__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="Start_Dates__c"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Start_Dates__c"/>
+                <entry key="sfdc.entity" value="Start_Dates__c"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Start_Dates__c.csv"/>
+                <entry key="dataAccess.type" value="csvWrite" />
+                <entry key="dataAccess.writeBatchSize" value="1" />
+                <entry key="sfdc.extractionRequestSize" value="1" />
+                <entry key="process.enableExtractSuccessOutput" value="true" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, APTSBreak1EndDate__c, APTSBreak1NumberofWeeks__c, APTSBreak1StartDate__c, APTSBreak2EndDate__c, APTSBreak2NumberofWeeks__c, APTSBreak2StartDate__c, APTSBreak3EndDate__c, APTSBreak3NumberofWeeks__c, APTSBreak3StartDate__c, Course__c, APTSCourseNumberofWeeks__c, DateofBirthFrom__c, DateofBirthTo__c, Destination__c, APTSEndDate__c, Is_Beginner__c, Is_Preferred__c, Name, Preferred__c, Program__c, StartDate__c, Start_Date_Converted__c, APTSTerm1EndDate__c, APTSTerm1NumberofWeeks__c, APTSTerm1StartDate__c, APTSTerm2EndDate__c, APTSTerm2NumberofWeeks__c, APTSTerm2StartDate__c, APTSTerm3EndDate__c, APTSTerm3NumberofWeeks__c, APTSTerm3StartDate__c, APTSTerm4EndDate__c, APTSTerm4NumberofWeeks__c, APTSTerm4StartDate__c FROM Start_Dates__c" />
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+        <bean id="Product2" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
+        <property name="name" value="Product2"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.externalIdField" value="Product2"/>
+                <entry key="sfdc.entity" value="Product2"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Product2.csv"/>
+                <entry key="dataAccess.type" value="csvWrite" />
+                <entry key="dataAccess.writeBatchSize" value="1" />
+                <entry key="sfdc.extractionRequestSize" value="1" />
+                <entry key="process.enableExtractSuccessOutput" value="true" />
+                <entry key="sfdc.extractionSOQL" value="SELECT Apttus_Config2__IconSize__c, APTS_Ext_ID__c, Available_Programs__c, APTS_AY_Course_Type__c, Apttus_Config2__BundleInvoiceLevel__c, Apttus_Config2__ConfigurationType__c, Apts_CoursePricing__c, APTS_Destination_Location__c, Apttus_Config2__DiscontinuedDate__c, Apttus_Config2__EffectiveDate__c, Apttus_Config2__EffectiveStartDate__c, EnableStartDateEndDate__c, Apttus_Config2__ExcludeFromSitemap__c, Apttus_Config2__ExpirationDate__c, Apttus_Config2__HasAttributes__c, Apttus_Config2__HasDefaults__c, Apttus_Config2__HasOptions__c, Apttus_Config2__HasSearchAttributes__c, Apttus_Config2__Icon__c, Apttus_Config2__IconId__c, APTS_Is_Optional__c, Apttus_Config2__LaunchDate__c, Apttus_Config2__Customizable__c, APTS_PriceOverrideAllowed__c, ProductSubtype__c, Apttus_Config2__ProductType__c, QunatityModifiable__c, Apts_TI_Pricing__c, Apttus_Config2__Uom__c, Apttus_Config2__Version__c FROM Product2" />
+                <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
     </bean>
