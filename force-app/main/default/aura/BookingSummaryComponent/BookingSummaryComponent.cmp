@@ -142,7 +142,7 @@
                                                     <lightning:input label="{!$Label.c.Middle_Name}" aura:id="path_1_Fields" name="zMiddleName" value="{!v.wrapperList.personAcc.MiddleName}" />
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}" />
+                                                    <lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}" />
                                                 </div>
                                             </div>
                                             <div class="slds-grid slds-p-top_small">
@@ -171,7 +171,7 @@
                                         <div class="slds-form-element__group">
                                             <div class="slds-form-element__row">
                                                 <div class="slds-form-element slds-size_1-of-1">
-                                                    <lightning:textarea label="{!$Label.c.PersonMailingStreet}" name="zAddress" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address" />
+                                                    <lightning:textarea label="{!$Label.c.PersonMailingStreet}" name="zAddress" required="true" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address" />
                                                 </div>
                                             </div>
                                             <div class="slds-grid">
@@ -179,7 +179,7 @@
                                                     <lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" />
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" pattern="^[a-zA-Z]+$" messageWhenPatternMismatch="Only alphabets are allowed" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" />
+                                                    <lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" />
                                                 </div>
                                             </div>
                                             <div class="slds-grid slds-p-top_small">
