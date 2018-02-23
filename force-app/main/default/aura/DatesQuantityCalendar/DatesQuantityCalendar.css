@@ -1,0 +1,75 @@
+/**
+ * Created by Arkadiusz Celej on 29.01.2018.
+ */
+.THIS {
+}
+.THIS table tr th, .THIS table tr td{
+    text-align: center;
+}
+.THIS table tr td{
+    width: 30px;
+    height: 30px;
+}
+
+.THIS .calendar-item{
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    padding-top: 5px;
+    border-radius: 20px;
+    border: 1px solid silver;
+}
+.THIS .clickable{
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.THIS .calendar{
+    min-height: 250px;
+}
+
+.THIS .legend-item{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: -5px 5px;
+}
+
+.THIS .preferred{
+    background-color: #009900;
+    color: white;
+}
+
+.THIS .selected{
+    background-color: #005fb2;
+    color: white;
+}
+
+.THIS .available{
+    background-color: #009ddc;
+    color: white;
+}
+
+.THIS .apttus-button{
+    background: white;
+}
+
+.THIS .slds-card__header{
+    background: #334A60;
+    color: white;
+    padding: 0;
+}
+
+.THIS .selected-endDate{
+    background-color: darkgray;
+}
+.THIS .apttus-inline{
+    display: inline-block;
+}

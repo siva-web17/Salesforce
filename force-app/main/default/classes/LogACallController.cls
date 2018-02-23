@@ -14,7 +14,7 @@ public with sharing class LogACallController {
             }
             else if(recordId.getSobjectType() == Opportunity.getSObjectType()) {
                 Opportunity opp = OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
-                String data = JSON.serialize(new LogACallData(opp.Id,opp.CloseDate,opp.LikelihoodToBook__c,opp.HearAboutUs__c,opp.Destinations__c,opp.PreferredDuration__c,opp.WhenYear__c,opp.WhenMonth__c,opp.IsActive__c,opp.NumberOfUnreachedCalls__c, opp.Program__c));
+               String data = JSON.serialize(new LogACallData(opp.Id,opp.CloseDate,opp.LikelihoodToBook__c,opp.HearAboutUs__c,opp.Destinations__c,opp.PreferredDuration__c,opp.WhenYear__c,opp.WhenMonth__c,opp.IsActive__c,opp.NumberOfUnreachedCalls__c, opp.Program__c));
                 System.debug('Data :'+data);
                 return data;
             }
@@ -71,7 +71,7 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-   public static List<String> getDestinations(Id recordId) {
+      public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
         List<String> LTDestinations = new List<String>();
@@ -106,7 +106,7 @@ public with sharing class LogACallController {
 
         return null;
     } 
-       @AuraEnabled
+        @AuraEnabled
     public static List<string> getDurations(Id recordId){
         try{
             String sObjectName = recordId.getSObjectType().getDescribe().getName();
@@ -140,7 +140,7 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-    public static String getCallResults(String callAction,Id recordId){
+   public static String getCallResults(String callAction,Id recordId){
         try{
             Map<String,List<String>> dependentPicklists = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
 
@@ -158,8 +158,8 @@ public with sharing class LogACallController {
                 }
             }
 			return JSON.serialize(callResults);
-        }
-        catch (Exception e){
+        }  
+              catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
             return null;
         }
@@ -256,13 +256,13 @@ public with sharing class LogACallController {
                  
                    //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
-                    
+                  
                     if(bookOn == NULL||opp.CloseDate == bookOn.date()){
-                      
+                     
                         opp.CloseDate = date.today().addmonths(2);
                     }
                     else{
-                   
+                  
                         opp.CloseDate = bookOn.date();
                     }
                     
@@ -295,6 +295,8 @@ public with sharing class LogACallController {
                 }
 
                 if(callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
+                    // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
+                    dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
                     Database.LeadConvert leadConversion = new database.LeadConvert();
                     leadConversion.setLeadId(recordId);
                     leadConversion.setConvertedStatus(System.Label.LeadStageConverted);
@@ -321,11 +323,11 @@ public with sharing class LogACallController {
             task.CallNotReachedType__c= subAction;
             task.ResultType__c = callResult;
             task.ActivityDateTime__c = Datetime.now();
-           task.ActivityDate = Datetime.now().Date();
+            task.ActivityDate = Datetime.now().Date();
             task.Program__c = program;
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;
-            task.TaskSubtype = LogACallHelper.getTaskSubType(callAction);
+             task.TaskSubtype = LogACallHelper.getTaskSubType(callAction);
             task.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.getSObjectType()).get(Label.CallTaskRecordTypeDeveloperName).Id;
             if(recordId.getSobjectType() == Lead.getSObjectType()&& response.Result == null) {
                 task.WhoId = recordId;
