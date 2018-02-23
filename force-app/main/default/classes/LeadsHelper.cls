@@ -440,6 +440,7 @@ public class LeadsHelper {
     public static void populateSalesOfficeProgram (List<Lead> leadList) {
         Set<string> recordSharingValues= new Set<String>();
         Map<string,id> salesOfficeMap = new Map<string,id>();
+        
         for(Lead leadRecord :leadList){
             if(leadRecord.RecordSharingKey__c!=null && leadRecord.RecordSharingKey__c!='' ){
                 recordSharingValues.add(leadRecord.RecordSharingKey__c );
@@ -457,6 +458,62 @@ public class LeadsHelper {
             {
                 if(salesOfficeMap.containsKey(leadRec.RecordSharingKey__c)){
                     leadRec.SalesOfficeProgram__c = salesOfficeMap.get(leadRec.RecordSharingKey__c);
+                }
+            }
+        }
+    }
+
+    public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList){
+        Set<String> sourceAutoCodeValues = new Set<String>();
+        Map<string,string> sourceMap = new Map<string,string>();
+
+        for(Lead leadRecord:leadList){
+            if(leadRecord.SourceCodeAuto__c!=null && leadRecord.SourceCodeAuto__c!='' ){
+                sourceAutoCodeValues.add(leadRecord.SourceCodeAuto__c);
+            }
+        }
+
+        List<Source__c> sourceRecords =SourcesSelector.getSourceRecords(sourceAutoCodeValues);
+        for(Source__c sourceRec:sourceRecords){
+            if(sourceRec.Code__c!=null){
+                sourceMap.put(sourceRec.Code__c,sourceRec.Name );
+            }
+        }
+
+        for(Lead leadRec:leadList){
+            {
+                if(leadRec.CreationMethod__c!=system.label.CreationMethodEnteredByUser) {
+                    if (sourceMap.containsKey(leadRec.SourceCodeAuto__c)) {
+                        system.debug('inside if>>>');
+                        leadRec.Partner__c = sourceMap.get(leadRec.SourceCodeAuto__c);
+                        system.debug(' leadRec.Partner__c>>>'+ leadRec.Partner__c);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void populateSourceCodeAutoAndPartnerFromSource(List<Lead> leadList){ 
+        Set<Id> sourceIds = new Set<Id>();
+        Map<Id,List<Lead>> leadMap = new Map<Id, List<Lead>>();
+        Map<Id,Source__c> sourceMap = new  Map<Id, Source__c>();
+        List<lead> leadListRec = new List<Lead>();
+
+        for(Lead leadRecord: leadList){
+            if(leadRecord.Source__c != null){
+                if(!leadMap.containsKey(leadRecord.Source__c)){
+                    leadMap.put(leadRecord.Source__c, new List<Lead>());
+                }
+                leadMap.get(leadRecord.Source__c).add(leadRecord);
+            }
+        }
+        sourceMap=SourcesSelector.getSourceMapRecordforLead(leadMap);
+
+        for(Id recordId:leadMap.keyset()){
+            for (Lead leadRec : leadMap.get(recordId)){
+                if(sourceMap.containskey(leadRec.source__c)&& sourceMap.get(leadRec.Source__c)!=null){
+                    leadRec.Partner__c=(sourceMap.get(leadRec.Source__c).Name);
+                    leadRec.SourceCodeAuto__c=(sourceMap.get(leadRec.Source__c).Code__c);
                 }
             }
         }

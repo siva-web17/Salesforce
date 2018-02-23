@@ -14,6 +14,7 @@ public class Opportunities {
  
     public static void onBeforeInsert(List<Opportunity> oppItems) {
         OpportunitiesHelper.populateSalesOfficeProgram((List<Opportunity>)oppItems);
+        OpportunitiesHelper.populateSourceBasedonSorceCodeAuto((List<Opportunity>)oppItems); 
     }
  
     public static void onBeforeUpdate(Map<Id,Sobject> newItems, Map<Id, Sobject> oldItems) {

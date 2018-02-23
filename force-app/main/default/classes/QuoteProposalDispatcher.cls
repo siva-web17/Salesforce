@@ -8,6 +8,7 @@ Modification Log   :
  * Developer                   Date                   Description
  * ----------------------------------------------------------------------------
  * Arjun.Mohan                 09/14/2017              Original Version
+ * Patryk Zak                  02/20/2017              Update   
 *******************************************************************************/
 
 public with sharing class QuoteProposalDispatcher {
