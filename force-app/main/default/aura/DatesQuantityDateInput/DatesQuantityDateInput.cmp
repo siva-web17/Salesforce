@@ -1,0 +1,82 @@
+<!--
+ - Created by Arkadiusz Celej on 07.02.2018.
+ -->
+
+<aura:component description="DatesQuantityDateInput">
+    <aura:attribute name="value" type="Date" required="true" access="public"/>
+    <aura:attribute name="calendarDate" type="Date" access="public"/>
+    <aura:attribute name="visible" type="Boolean" default="false" access="private"/>
+    <aura:attribute name="year" type="Integer" default="" access="private"/>
+    <aura:attribute name="month" type="Integer" default="" access="private"/>
+    <aura:attribute name="day" type="Integer" default="" access="private"/>
+    <aura:attribute name="calendarPageItems" type="Integer[]" default="" access="private"/>
+    <aura:attribute name="weeksInMonth" type="Integer[]" default="" access="private"/>
+    <aura:attribute name="monthStartWeekday" type="Integer" default="" access="private"/>
+    <aura:attribute name="monthName" type="String" default="" access="private"/>
+    <aura:attribute name="monthNames" type="String[]" default="['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']" access="private"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="slds-input apttus-input apttus-input-date">
+        <span onclick="{!c.toggle}">
+            <aura:if isTrue="{!v.value}">
+                <ui:outputDate format="{!$Locale.dateFormat}" value="{!v.value}"/>
+                <aura:set attribute="else">
+                    Select
+                </aura:set>
+            </aura:if>
+        </span>
+        <aura:if isTrue="{!v.visible}">
+            <div class="apttus-back" onclick="{!c.toggle}"></div>
+            <div class="date-input-calendar">
+                <lightning:layout horizontalAlign="spread" class="calendar-header">
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                        <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" alternativeText="Previous" iconClass="dark" onclick="{!c.previousMonth}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                            {!v.monthName}
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                        <lightning:buttonIcon iconName="utility:chevronright" variant="bare" alternativeText="Next" iconClass="dark" onclick="{!c.nextMonth}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                        <lightning:buttonIcon iconName="utility:chevronleft" variant="bare" alternativeText="Previous" iconClass="dark" onclick="{!c.previousYear}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                            {!v.year}
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="2" flexibility="auto" padding="around-small">
+                        <lightning:buttonIcon iconName="utility:chevronright" variant="bare" alternativeText="Next" iconClass="dark" onclick="{!c.nextYear}"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <table class="slds-table slds-table--bordered slds-no-row-hover">
+                    <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">mon</th><th>tue</th><th>wed</th><th>thu</th><th>fri</th><th>sat</th><th>sun</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <aura:iteration items="{!v.weeksInMonth}" var="week" indexVar="weekNum">
+                        <tr>
+                            <aura:iteration start="{!week*7}" var="pageItem" items="{!v.calendarPageItems}" end="{!week*7+7}">
+                                <td>
+                                    <aura:if isTrue="{!pageItem.isAvailable}">
+                                        <div class="{!pageItem.isSelected ? 'calendar-item clickable selected' : 'calendar-item clickable available'}" onclick="{!c.onDaySelected}" data-day="{!pageItem.day}">
+                                            {!pageItem.day}
+                                        </div>
+                                        <aura:set attribute="else">
+                                            <div class="{!pageItem.isEndDate ? 'calendar-item selected-endDate' : ''}">
+                                                {!pageItem.day}
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                </td>
+                            </aura:iteration>
+                        </tr>
+                    </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

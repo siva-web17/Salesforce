@@ -8,4 +8,8 @@ public with sharing class CustomProfilePermissionsUtil {
     public static Boolean getSkipProposalQuoteDeletePrevent(){
         return SETTINGS != null ? SETTINGS.CanDeleteAllProposalQuotes__c : false;
     }
+
+    public static Boolean getCanSelectPastStartDates(){
+        return SETTINGS != null ? SETTINGS.CanSelectPastStartDates__c : false;
+    }
 }
