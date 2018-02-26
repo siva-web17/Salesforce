@@ -1,9 +1,9 @@
 {
 	"loginDetails": { "login_URL": "https://login.salesforce.com", "Alias": "Prod", "UserName": "" },
-	"ScratchOrgs": [{ "OrgAlias": "THEQA", "UserName": "sivaraj.v@ef.com.lang.theqa", "InstanceURL": "https://eflangandbox--TheQA.cs85.my.salesforce.com", "EncryptedPassword": "5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157" }],
+	"ScratchOrgs": [{ "OrgAlias": "THEQA", "UserName": "sivaraj.v@ef.com.lang.theqa", "InstanceURL": "https://eflangandbox--TheQA.cs85.my.salesforce.com", "EncryptedPassword": "5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157","key":"C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf\\Key.txt","debug_Log":"C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\docs\\logs\\log.txt" }],
 	"BeanIDs": ["LeadRankingSettingsDeploy", "LeadAccountMappingSettingsDeploy", "LeadMergeRuleConfigSettingsDeploy", "LegalSettingsDeploy", "MarketProgramSettingDeploy", "BypassTriggerValidationSettingDeploy", "ProposalSystemPropertiesDeploy", "ConfigSystemPropertiesDeploy", "ConfigCustomClassesDeploy", "ConfigLineItemCustomFieldsDeploy", "ConfigLineItemCriteriaFieldsDeploy"],
-	"ApttusRetrieveDataBeanIDs":["Destination__c","Fixed_Fare__c","Departure_Point__c","Start_Dates__c","Product2"],
-	"ApttusInsertDataBeanIDs":[""],
+	"ApttusRetrieveDataBeanIDs":["retrive_Destination__c","retrive_Fixed_Fare__c","retrive_Departure_Point__c","retrive_Start_Dates__c","retrive_Product2"],
+	"ApttusInsertDataBeanIDs":["update_Product2"],
 	"Packages": [
 		{
 			"package_name": "Apttus Configuration & Pricing",

@@ -275,7 +275,7 @@
             </map>
         </property>
     </bean>
-    <bean id="Destination__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+    <bean id="retrive_Destination__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
         <property name="name" value="Destination__c"/>
         <property name="configOverrideMap">
@@ -301,7 +301,7 @@
             </map>
         </property>
     </bean>
-        <bean id="Fixed_Fare__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+    <bean id="retrive_Fixed_Fare__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
         <property name="name" value="Fixed_Fare__c"/>
         <property name="configOverrideMap">
@@ -327,7 +327,7 @@
             </map>
         </property>
     </bean>
-        <bean id="Departure_Point__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+    <bean id="retrive_Departure_Point__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
         <property name="name" value="Departure_Point__c"/>
         <property name="configOverrideMap">
@@ -353,7 +353,7 @@
             </map>
         </property>
     </bean>
-        <bean id="Start_Dates__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+    <bean id="retrive_Start_Dates__c" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
         <property name="name" value="Start_Dates__c"/>
         <property name="configOverrideMap">
@@ -379,7 +379,7 @@
             </map>
         </property>
     </bean>
-        <bean id="Product2" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+    <bean id="retrive_Product2" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description>AccountMaster job gets the Customer record updates from ERP (Oracle financials) and uploads them to salesforce using 'upsert'.</description>
         <property name="name" value="Product2"/>
         <property name="configOverrideMap">
@@ -402,6 +402,27 @@
                 <entry key="process.enableExtractSuccessOutput" value="true" />
                 <entry key="sfdc.extractionSOQL" value="SELECT Apttus_Config2__IconSize__c, APTS_Ext_ID__c, Available_Programs__c, APTS_AY_Course_Type__c, Apttus_Config2__BundleInvoiceLevel__c, Apttus_Config2__ConfigurationType__c, Apts_CoursePricing__c, APTS_Destination_Location__c, Apttus_Config2__DiscontinuedDate__c, Apttus_Config2__EffectiveDate__c, Apttus_Config2__EffectiveStartDate__c, EnableStartDateEndDate__c, Apttus_Config2__ExcludeFromSitemap__c, Apttus_Config2__ExpirationDate__c, Apttus_Config2__HasAttributes__c, Apttus_Config2__HasDefaults__c, Apttus_Config2__HasOptions__c, Apttus_Config2__HasSearchAttributes__c, Apttus_Config2__Icon__c, Apttus_Config2__IconId__c, APTS_Is_Optional__c, Apttus_Config2__LaunchDate__c, Apttus_Config2__Customizable__c, APTS_PriceOverrideAllowed__c, ProductSubtype__c, Apttus_Config2__ProductType__c, QunatityModifiable__c, Apts_TI_Pricing__c, Apttus_Config2__Uom__c, Apttus_Config2__Version__c FROM Product2" />
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="update_Product2" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+        <description>Lead Ranking Custom Settings</description>
+        <property name="name" value="update_Product2"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\docs\logs\log.txt"/>
+                <entry key="sfdc.endpoint" value="https://eflangandbox--TheQA.cs85.my.salesforce.com"/>
+                <entry key="sfdc.username" value="sivaraj.v@ef.com.lang.theqa"/>
+                <entry key="sfdc.password" value="5f5c7f0df8bf68b87451334ec5f9c87d30ea934a444d3475a69f6406f56a72ab426467fe5999c157"/>
+                <entry key="process.encryptionKeyFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\conf\Key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="Product2"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Product2.csv"/>
+                <entry key="dataAccess.name" value="C:\Work\salesforce\clean-script-mine\DATALOADER\samples\data\Product2.sdl"/>
+                <entry key="dataAccess.type" value="csvRead"/>
             </map>
         </property>
     </bean>

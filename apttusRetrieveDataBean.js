@@ -71,7 +71,7 @@ function loopCmd(count) {
 			setTimeout(() => {
 				obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
 				loopCmd_temp(count);
-			}, 10000);
+			}, 120000);
 			ls.stderr.on('data', function(data) {
 				console.log(error('Invalid Comment, Please contact administrator'));
 			});
@@ -120,6 +120,12 @@ function readProcessConf(count) {
 					}
 					if (map[j]['$'].key == 'sfdc.endpoint') {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
+					}
+					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
+						map[j]['$'].value = scratchOrgs[count].debug_Log;
+                    }
+                    if (map[j]['$'].key == 'process.encryptionKeyFile') {
+						map[j]['$'].value = scratchOrgs[count].key;
 					}
 				}
 			}
