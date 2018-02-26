@@ -10,13 +10,13 @@ public class QuotePreview {
         try{
 
             fetchLineItems = [select id,name,Apttus_Proposal__Product__c,Product_Code__c ,Apttus_Proposal__Description__c ,Apttus_Proposal__Product__r.ProductCode,
-                    Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,
-                    Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,Apttus_Proposal__Quantity__c,
-                    Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,
+                    Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
+                    Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,Apttus_Proposal__Quantity__c,Apttus_Proposal__Proposal__r.Program__c,
+                    Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,LTDestinationCode__c,LTCourseNumber__c,
                     APTS_Discount_Reason__c,Apttus_QPConfig__NetPrice__c,CurrencyIsoCode,
                     Apttus_QPConfig__IsOptional__c,(Select Id,Apttus_QPConfig__IncentiveCode__c,Apttus_QPConfig__IncentiveId__r.name,Apttus_QPConfig__IncentiveAdjustmentAmount__c FROM Apttus_QPConfig__AdjustmentLineItems__r)
             from Apttus_Proposal__Proposal_Line_Item__c where Apttus_Proposal__Proposal__c =:rcrdId];
-            system.debug(' array size is '+fetchLineItems.size());
+            system.debug(' array size is '+fetchLineItems);
             for(Apttus_Proposal__Proposal_Line_Item__c lineItemrecord : fetchLineItems){
                 system.debug(' lineItemrecord'+lineItemrecord);
                 if(!(lineItemrecord.APTS_Product_Code__c ==Label.FTEFX_Article_Code && lineItemrecord.Non_Discounted_Price__c == 0)){
@@ -54,9 +54,9 @@ public class QuotePreview {
             }
             if(fetchLineItems==null || fetchLineItems.isEmpty()){
                 fetchLineItems = [select id,name,Apttus_Proposal__Product__c,Product_Code__c ,Apttus_Proposal__Description__c ,Apttus_Proposal__Product__r.ProductCode,
-                        Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,
-                        Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,
-                        Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,
+                        Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
+                        Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,LTDestinationCode__c,Apttus_Proposal__Proposal__r.Program__c,
+                        Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,LTCourseNumber__c,
                         APTS_Discount_Reason__c,Apttus_QPConfig__NetPrice__c,CurrencyIsoCode,
                         Apttus_QPConfig__IsOptional__c,(Select Id,Apttus_QPConfig__IncentiveCode__c,Apttus_QPConfig__IncentiveId__r.name,Apttus_QPConfig__IncentiveAdjustmentAmount__c FROM Apttus_QPConfig__AdjustmentLineItems__r)
                 from Apttus_Proposal__Proposal_Line_Item__c where Apttus_Proposal__Proposal__c =:rcrdId];
@@ -68,9 +68,13 @@ public class QuotePreview {
                 if(ar.get('APTS_Discount_Reason__c')!=null && String.valueOf(ar.get('APTS_Discount_Reason__c'))!=''){
                     LineItemGroupWrapper lineItemWrp = new LineItemGroupWrapper();
                     lineItemWrp.ProductCode = String.valueOf(ar.get('APTS_Discount_Reason__c'));
+                    //lineItemWrp.ProductCode = mapOfPicklistVal.get(String.valueOf(ar.get('APTS_Discount_Reason__c')));
+                    System.debug('lineItemWrp.ProductCode== '+lineItemWrp.ProductCode);
                     lineItemWrp.netPrice = (Decimal)ar.get('netPrice')-(Decimal)ar.get('orgPrice');
                     lineItemWrp.DiscountQuantity = (Decimal)ar.get('DiscountQuantity');
                     lineItemWrp.ProductName = mapOfPicklistVal.get(String.valueOf(ar.get('APTS_Discount_Reason__c')));
+                    //lineItemWrp.ProductName = String.valueOf(ar.get('APTS_Discount_Reason__c'));
+                    System.debug('lineItemWrp.ProductName== '+lineItemWrp.ProductName);
                     lineItemWrp.CurrencyPreview = String.valueOf(ar.get('currency'));
                     lineItemWrp.calculatedPrice = lineItemWrp.netPrice * lineItemWrp.DiscountQuantity;
                     lstOfSummary.add(lineItemWrp);

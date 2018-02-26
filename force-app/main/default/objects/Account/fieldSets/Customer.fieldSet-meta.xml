@@ -13,6 +13,11 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>Salutation</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>PersonBirthdate</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
