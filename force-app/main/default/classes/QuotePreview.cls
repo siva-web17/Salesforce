@@ -61,8 +61,8 @@ public class QuotePreview {
                         Apttus_QPConfig__IsOptional__c,(Select Id,Apttus_QPConfig__IncentiveCode__c,Apttus_QPConfig__IncentiveId__r.name,Apttus_QPConfig__IncentiveAdjustmentAmount__c FROM Apttus_QPConfig__AdjustmentLineItems__r)
                 from Apttus_Proposal__Proposal_Line_Item__c where Apttus_Proposal__Proposal__c =:rcrdId];
             }
-            AggregateResult[] groupedResults =[Select Sum(Apttus_QPConfig__NetPrice__c)netPrice,Sum(Non_Discounted_Price__c)orgPrice,APTS_Discount_Reason__c, Sum(Apttus_QPConfig__Quantity2__c)DiscountQuantity
-            from Apttus_Proposal__Proposal_Line_Item__c WHERE (Apttus_Proposal__Proposal__c =: rcrdId AND (NOT(APTS_Product_Code__c=:Label.FTEFX_Article_Code AND Non_Discounted_Price__c =: 0))) group by APTS_Discount_Reason__c];
+            AggregateResult[] groupedResults =[Select Sum(Apttus_QPConfig__NetPrice__c)netPrice,Sum(Non_Discounted_Price__c)orgPrice,APTS_Discount_Reason__c,Sum(Apttus_QPConfig__Quantity2__c)DiscountQuantity,MAX(CurrencyIsoCode)currency
+                                                from Apttus_Proposal__Proposal_Line_Item__c WHERE (Apttus_Proposal__Proposal__c =: rcrdId AND (NOT(APTS_Product_Code__c=:Label.FTEFX_Article_Code AND Non_Discounted_Price__c =: 0))) group by APTS_Discount_Reason__c];
             for(AggregateResult ar:groupedResults){
                 currencyCode = String.valueOf(ar.get('currency'));
                 if(ar.get('APTS_Discount_Reason__c')!=null && String.valueOf(ar.get('APTS_Discount_Reason__c'))!=''){
