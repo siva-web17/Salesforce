@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Global Action to enter a new lead in the system</description>
+    <description>Global Action to enter a new lead in the system.</description>
     <fieldOverrides>
         <field>CreationMethod__c</field>
         <literalValue>Enteredbyuser</literalValue>
@@ -85,8 +85,8 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Partner__c</field>
-                <uiBehavior>Edit</uiBehavior>
+                <field>Source__c</field>
+                <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>

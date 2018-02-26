@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Global action to add new opportunity to the system</description>
+    <description>Global action to add new opportunity to the system.</description>
     <fieldOverrides>
         <field>CloseDate</field>
-         <formula>DATE( 
+         <formula>DATE(
 YEAR(TODAY()) + IF(MONTH(TODAY()) > 2, 1, 0), 
 MOD(MONTH(TODAY()) + 2, 12), 
 DAY(TODAY()) 
-)</formula>    
+)</formula>
 </fieldOverrides>
     <fieldOverrides>
         <field>CreationMethod__c</field>
@@ -72,7 +72,7 @@ DAY(TODAY())
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Partner__c</field>
+                <field>Source__c</field>
                 <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>

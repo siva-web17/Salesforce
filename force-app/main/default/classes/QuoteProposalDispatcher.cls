@@ -8,6 +8,7 @@ Modification Log   :
  * Developer                   Date                   Description
  * ----------------------------------------------------------------------------
  * Arjun.Mohan                 09/14/2017              Original Version
+ * Patryk Zak                  02/20/2017              Update   
 *******************************************************************************/
 
 public with sharing class QuoteProposalDispatcher {
@@ -25,8 +26,8 @@ public with sharing class QuoteProposalDispatcher {
             }
         }
         if (Trigger.IsAfter) {
-              if (Trigger.IsUpdate) {
-                QuoteProposals.onAfterUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new);
+            if (Trigger.IsUpdate){
+                QuoteProposals.onAfterUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new, (Map<Id, Apttus_Proposal__Proposal__c>) trigger.newMap) ;
             }
         }
     }

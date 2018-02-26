@@ -36,9 +36,11 @@ public class BindSobject {
             System.debug('^^^^^^^^ bindData.personAcc^^^^^^^'+ bindData.personAcc);
 
             Opportunity fetchopp = new Opportunity();
-            fetchopp = [select id,SalesOffice__c,Market__c
+            fetchopp = [select id,SalesOffice__c,Market__c,Program__c
             from Opportunity where AccountID =: fetchAccount.Id];
             bindData.opp =   fetchopp;
+            System.debug('^^^^^^^^ bindData.opp^^^^^^^'+ bindData.opp);
+
 
             Apttus_Config2__PriceList__c fetchPrice = new Apttus_Config2__PriceList__c();
             fetchPrice = [select id,Year__c,Apttus_Config2__AccountId__c,Version__c from Apttus_Config2__PriceList__c
@@ -95,25 +97,10 @@ public class BindSobject {
         // return JSON.serialize(PassportMap);
     }
 
-   public static Map<String, String> GetMailingCountry() {
-        Map<String, String> MailingCountryMap = FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'MailingCountryCode');
-        // Map<String,String> maplabelVal=new Map<String,String>();
-//      Get the object type of the SObject.
-        Schema.sObjectType objType = Contact.getSObjectType();
-//      Describe the SObject using its object type.
-        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
-//      Get a map of fields for the SObject
-        map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
-//      Get the list of picklist values for this field.
-        list<Schema.PicklistEntry> values = fieldMap.get('MailingCountryCode').getDescribe().getPickListValues();
-//      Add these values to the selectoption list.
-        for (Schema.PicklistEntry a : values){
-            MailingCountryMap.put(a.getLabel(), a.getValue());
-        }
-        system.debug('Hello from server '+MailingCountryMap);
-        return MailingCountryMap;
+    public static Map<String, String> GetMailingCountry() {
+        return FieldUtilityClass.getPickListValues(Contact.getSObjectType(), 'MailingCountryCode');
+        // return JSON.serialize(PassportMap);
     }
-
 
 
     @AuraEnabled
@@ -126,7 +113,8 @@ public class BindSobject {
         SobjectBindWrapper BindWrapper = (SobjectBindWrapper)JSON.deserialize(wrapperData, SobjectBindWrapper.class);
         try{
             update BindWrapper.personAcc;
-            update BindWrapper.opp;
+            //update BindWrapper.opp;
+            //update BindWrapper.PriceList;
             System.debug('After updating account :'+BindWrapper.personAcc);
             System.debug('After updating Opportunity :'+BindWrapper.opp);
             System.debug('After updating PriceList :'+BindWrapper.PriceList);
@@ -145,9 +133,9 @@ public class BindSobject {
         QuoUpdate.CurrencyIsoCode = BindWrapper.Quote.CurrencyIsoCode;
         QuoUpdate.BookingType__c = BindWrapper.Quote.BookingType__c;
         QuoUpdate.BookingChannel__c = BindWrapper.Quote.BookingChannel__c;
-        system.debug('Sales user ' +BindWrapper.Quote.SalesMadeby__c);
-        QuoUpdate.SalesMadeby__c = BindWrapper.Quote.SalesMadeby__c;
-        system.debug('QuoUpdate.SalesMadeby__c  ' +QuoUpdate.SalesMadeby__r.name);
+//        system.debug('Sales user ' +BindWrapper.Quote.SalesMadeby__c);
+//        QuoUpdate.SalesMadeby__c = BindWrapper.Quote.SalesMadeby__c;
+//        system.debug('QuoUpdate.SalesMadeby__c  ' +QuoUpdate.SalesMadeby__r.name);
         system.debug('Before Integration ' +isFinishBooking);
         QuoUpdate.IntegrationStatus__c = (isFinishBooking) ? System.Label.Sent_To_Poseidon : '';
         system.debug('After Integration '+QuoUpdate );

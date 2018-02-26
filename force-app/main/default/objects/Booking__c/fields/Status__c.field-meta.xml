@@ -14,17 +14,17 @@
             <value>
                 <fullName>BKN</fullName>
                 <default>false</default>
-                <label>BKN</label>
+                <label>Booking</label>
             </value>
             <value>
                 <fullName>PRE</fullName>
                 <default>false</default>
-                <label>PRE</label>
+                <label>Pre Application</label>
             </value>
             <value>
                 <fullName>CAX</fullName>
                 <default>false</default>
-                <label>CAX</label>
+                <label>Cancelled Booking</label>
             </value>
         </valueSetDefinition>
     </valueSet>
