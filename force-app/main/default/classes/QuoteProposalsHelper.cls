@@ -32,17 +32,14 @@ public class QuoteProposalsHelper {
             Id recordTypeId = GetRecordTypeId(System.Label.StaticTextTranslation);
             //System.debug('######################### marketStrings '+marketStrings.size());
             if (marketStrings.size() > 0 && (recordTypeId != NULL) && uniqueStrings.size()>0) {
-
                 String uniqueRecord = '';
                 Map<string, Translation__C> translationsMap = TranslationsSelector.getTranslationRecDetails(true, marketStrings, recordTypeId, null);
                 Map<Id, Opportunity> opportunityMap = OpportunitiesSelector.getopportunityMap(oppIdList);
-
                 Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
                 for (Apttus_Proposal__Proposal__c proposalRecord : quoteProposalNewList) {
                     //System.debug('######################### Apttus_Proposal__Opportunity__c'+proposalRecord.Apttus_Proposal__Opportunity__c);
                     uniqueRecord = proposalRecord.APTS_Market__c + ' '+proposalRecord.APTS_Language__c;
                     if (opportunityMap.containsKey(proposalRecord.Apttus_Proposal__Opportunity__c)) {
-
                         proposalRecord.Market__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Market__c;
                         proposalRecord.Program__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Program__c;
                         proposalRecord.Product__c =opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Product__c;
@@ -55,7 +52,6 @@ public class QuoteProposalsHelper {
                             uniqueRecord=defaultArrayString[0]+' '+defaultArrayString[1];
                         }
                     }
-
                     //System.debug('######################### uniqueRecord'+uniqueRecord);
                     if (translationsMap.containsKey(uniqueRecord)) {
                         //System.debug('######################### It has Unique Key');
@@ -77,9 +73,7 @@ public class QuoteProposalsHelper {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeCreation', currentRecordId);
         }
-
     }
-
 
 //This method will get the record Id based on record name which is stored in custom label
     Public static Id GetRecordTypeId(String recordTypeName) {
@@ -97,10 +91,8 @@ public class QuoteProposalsHelper {
                 currentRecordId = proposalRecord.Id;
                 uniqueStrings.add(proposalRecord.Market__c +proposalRecord.Program__c+proposalRecord.CurrencyIsoCode+'TRUE');
                 proposalRecord.Apttus_QPConfig__PriceListId__c = proposalRecord.Apts_Price_List__c;
-
             }
             if (uniqueStrings.size()>0 ) {
-
                     Map<String,Apttus_Config2__PriceList__c> priceListMap = PriceListsSelector.getPriceListForMarketProgramCurrency(uniqueStrings);
                     for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalList) {
                         currentRecordId = proposalRecord.Id;
@@ -129,7 +121,6 @@ public class QuoteProposalsHelper {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeUpdate', currentRecordId);
         }
-
     }
     public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
         System.debug('######################### Invoke');
@@ -140,7 +131,6 @@ public class QuoteProposalsHelper {
                               InvokeScribe.InvokeScribeAfterFinishBooking_Async(proposalIntegration.Id);
 
                         }
-
                     }
 }
     public static void preventQuoteProposalDelete(List<Apttus_Proposal__Proposal__c> oldQuoteProposals){
@@ -153,5 +143,35 @@ public class QuoteProposalsHelper {
                 }
             }
         }
+
+    public static void closeSPQTasks(Map<Id,Apttus_Proposal__Proposal__c> oldQuoteproposalMap,Map<Id,Apttus_Proposal__Proposal__c> newQuoteproposalMap) {
+        /*
+        1. Create a set of string for status, values - approved, presented, generated
+        2. Loop on new map
+        3. For each record check if the status value set contains the value, AND old status is NOT IN set
+        4. if it satisfies the condition, add opportunity id in a set
+        5. Call method to close SPQ tasks, pass it the set of opportunity ids
+         */
+        Set<String> statusValues = new set<String>{'Approved', 'Presented', 'Generated'};
+        Set<Id> opportunityId = new Set<Id>();
+        for (Apttus_Proposal__Proposal__c proposalRecord : newQuoteproposalMap.values()) {
+            if ((statusValues.contains(proposalRecord.Apttus_Proposal__Approval_Stage__c) &&
+                    (!statusValues.contains(oldQuoteproposalMap.get(proposalRecord.id).Apttus_Proposal__Approval_Stage__c)))) {
+                opportunityId.add(proposalRecord.Apttus_Proposal__Opportunity__c);
+            }
+            if(opportunityId!=null) {
+                closeTask(opportunityId, system.label.SPQTask); 
+            }
+        }
+    }
+
+    public static void closeTask(Set<Id> opportunityId, String typeofTask){
+        List<Task> taskRecList= new List<Task>();
+        List<Task> taskList = TasksSelector.getSPQTasks(opportunityId,typeofTask);
+            for(Task taskRecord:taskList){
+                taskRecord.Status='Completed';
+                taskRecList.add(taskRecord);
+            }
+        update taskRecList;
     }
 }

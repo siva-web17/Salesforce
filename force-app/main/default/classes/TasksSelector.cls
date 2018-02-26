@@ -32,4 +32,10 @@ public class TasksSelector {
                 AND IsClosed = TRUE
         ];
     }
+
+    public static List<Task> getSPQTasks(Set<Id> opportunityId,String typeoftask){
+        Id recordId = Schema.SObjectType.Task.getRecordTypeInfosByName().get(typeofTask).getRecordTypeId();
+        return [select id,RecordTypeId,Status from Task where whatid =: opportunityId and RecordTypeId =:recordId and status!='Completed'
+        ];
+    }
 }

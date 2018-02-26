@@ -873,25 +873,27 @@ public class TasksHelper {
         if(task.WhatId != null && task.WhatId.getSobjectType() == Opportunity.getSObjectType()){
             return Opportunity.getSObjectType();
         }
-        else if(task.WhoId.getSobjectType() == Lead.getSObjectType()&& task.WhatId == NULL){
+        else if((task.WhoId != NULL && task.WhoId.getSobjectType() == Lead.getSObjectType()) && task.WhatId == NULL ) {
             return Lead.getSObjectType();
         }
 
         return null;
     }
 
-    public static void populateSalesoffice(List<Task> taskList){ 
-        Set<Id> recordId= new Set<Id>();
+    public static void populateSalesoffice(List<Task> taskList) {
+        Set<Id> recordId = new Set<Id>();
         List<Id> leadIds = new List<Id>();
         List<Id> opportunityIds = new List<Id>();
         for(Task taskRecord: taskList) {
+            if (taskRecord != null) {
             if (getTaskParentType(taskRecord)== Lead.getSObjectType()) {
                 leadIds.add(taskRecord.WhoId);
             }
-            else if(getTaskParentType(taskRecord)== Opportunity.getSObjectType()){
+            else if(getTaskParentType(taskRecord) == Opportunity.getSObjectType()) {
                 opportunityIds.add(taskRecord.WhatId);
             }
         }
+    }
 
         Map<Id,Lead> leadMap = LeadsSelector.getleadRecord(leadIds);
         Map<Id,Opportunity> opportunityMap = OpportunitiesSelector.getOpportunityRecords(opportunityIds);

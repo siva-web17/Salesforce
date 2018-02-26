@@ -26,8 +26,8 @@ public with sharing class QuoteProposalDispatcher {
             }
         }
         if (Trigger.IsAfter) {
-              if (Trigger.IsUpdate) {
-                QuoteProposals.onAfterUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new);
+            if (Trigger.IsUpdate){
+                QuoteProposals.onAfterUpdate((Map<Id, Apttus_Proposal__Proposal__c>) trigger.oldMap, trigger.new, (Map<Id, Apttus_Proposal__Proposal__c>) trigger.newMap) ;
             }
         }
     }

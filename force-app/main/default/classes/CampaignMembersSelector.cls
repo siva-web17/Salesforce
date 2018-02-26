@@ -23,4 +23,9 @@ public class CampaignMembersSelector {
                 from CampaignMember
                 where CampaignId in :campaignRecords];
     }
+
+    public static list<campaignmember> getCampaignMemberByLeadID(set<id> leadsID){
+        return [select Id,LeadId from CampaignMember where leadid in :leadsID];
+
+    }
 }
