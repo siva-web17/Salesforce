@@ -29,6 +29,7 @@ var obj_temp = {
 	BeanIDs_count_temp: 0,
 	ls: '',
 };
+var customDetails = {};
 var scratchOrgs = {};
 var child_process = require('child_process');
 var spawn = require('child_process').spawn;
@@ -47,6 +48,7 @@ function convertToJson(value) {
 }
 fs.readFile(config.configdataFile, 'utf8', function readFileCallback(err, data) {
 	scratchOrgs = JSON.parse(data).ScratchOrgs;
+	customDetails = JSON.parse(data).customDetails;
 	obj_temp.xmlTojson_count = JSON.parse(data).ApttusInsertDataBeanIDs.length;
 	obj_temp.xmlTojson_count_temp = 0;
 	obj_temp.BeanIDs = JSON.parse(data).ApttusInsertDataBeanIDs;
@@ -122,16 +124,16 @@ function readProcessConf(count) {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
 					}
 					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
 					}
 					if (map[j]['$'].key == 'process.encryptionKeyFile') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].key;
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].key;
 					}
 					if (map[j]['$'].key == 'dataAccess.name') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].csvPath + map[j]['$'].value;
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
 					if (map[j]['$'].key == 'process.mappingFile') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].csvPath + map[j]['$'].value;
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
 				}
 			}

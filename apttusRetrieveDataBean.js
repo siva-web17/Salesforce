@@ -7,7 +7,6 @@ const config = {
 	configdataFile: './config/configdata.json',
 	read_XML: './config/process-conf.xml', // update process-conf.xml file in dataloader eg: C:\\Work\\salesforce\\prod\\samples\\conf\\process-conf.xml
 	write_XML: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf\\process-conf.xml',
-	gitPath: 'C:\\Work\\salesforce\\clean-script-mine\\THEQA\\data\\ApttusData\\eflang--TestGitDep.cs84.my.salesforce.com',
 };
 var fs = require('fs'),
 	parseString = require('xml2js').parseString,
@@ -31,6 +30,7 @@ var obj_temp = {
 	ls: '',
 };
 var scratchOrgs = {};
+var customDetails = {};
 var child_process = require('child_process');
 var spawn = require('child_process').spawn;
 // Function
@@ -48,6 +48,7 @@ function convertToJson(value) {
 }
 fs.readFile(config.configdataFile, 'utf8', function readFileCallback(err, data) {
 	scratchOrgs = JSON.parse(data).ScratchOrgs;
+	customDetails = JSON.parse(data).customDetails;
 	obj_temp.xmlTojson_count = JSON.parse(data).ApttusRetrieveDataBeanIDs.length;
 	obj_temp.xmlTojson_count_temp = 0;
 	obj_temp.BeanIDs = JSON.parse(data).ApttusRetrieveDataBeanIDs;
@@ -123,13 +124,13 @@ function readProcessConf(count) {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
 					}
 					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
 					}
 					if (map[j]['$'].key == 'process.encryptionKeyFile') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].key;
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].key;
 					}
 					if (map[j]['$'].key == 'dataAccess.name') {
-						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].csvPath + map[j]['$'].value;
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
 				}
 			}
