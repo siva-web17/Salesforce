@@ -7,7 +7,7 @@ public with sharing class RankingServiceParams {
     public String OpportunityID{get;set;}
     public String RankingType{get;set;}
     public String RequestType {get;set;}
-    public boolean HasAddressonCreation{get;set;}
+    public boolean HadAddressOnCreation{get;set;}
     public DateTime LastPQDateTime{get;set;}
     public DateTime LastRESDateTime{get;set;}
     public Boolean IsParent{get;set;}
