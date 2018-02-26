@@ -16,6 +16,8 @@ public class Leads {
     public static void onBeforeInsert(List<SObject> newItems) {
         LeadsHelper.updateHadAddressFilledOnCreation(newItems);
         LeadsHelper.populateSalesOfficeProgram(newItems);
+        LeadsHelper.populateSourceBasedonSourceCodeAuto(newItems);
+        Leadshelper.populateSourceCodeAutoAndPartnerFromSource(newItems); 
     }
 
     public static void onBeforeUpdate(List<Lead> oldLeadList,List<Lead> newLeadList){
@@ -42,6 +44,8 @@ public class Leads {
         LeadsHelper.handleOwnerChange((List<Lead>)newItems, (Map<Id, Lead>)oldItems);
         LeadsHelper.handleProgramChange((List<Lead>)newItems, (Map<Id, Lead>)oldItems);
         LeadsHelper.createShareOnUpdateTypes((List<Lead>)newItems, (List<Lead>)oldItems.values());
+        CampaignMembersHelper.addOppToIMOnLeadConvert((List<Lead>)newItems);
+        
     }
     
     public static void onAfterDelete(Map<Id, SObject> oldItems) {

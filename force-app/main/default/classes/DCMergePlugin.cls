@@ -11,23 +11,19 @@ Modification Log   :
 *******************************************************************************/
 
 global class DCMergePlugin implements dupcheck.dc3Plugin.InterfaceMerge {
-
-    global void beforeMerge(String objectPrefix, Sobject masterRecord, List < sobject > mergedRecordList) {
-        system.debug('DCMergePlugin-beforeMerge Started');
+       global void beforeMerge(String objectPrefix, Sobject masterRecord, List < sobject > mergedRecordList) {
+        DcMergeHelper.validationForHasBookingAccountMerge(objectPrefix,masterRecord,mergedRecordList);
         DcMergeHelper.taskMergeReasonUpdateonMergeLead(objectPrefix,masterRecord,mergedRecordList);
+        DcMergeHelper.ChangeProgramOrStatusForMasterREcord(objectPrefix,masterRecord,mergedRecordList);
         system.debug('DCMergePlugin-beforeMerge Ends');
         return;
-
     }
-
     global void mergeFailed(String objectPrefix, Sobject masterRecord, Set < id > mergedRecordsIds, dupcheck.dc3Exception.MergeException exceptionData) {
         return;
     }
-
     global void afterMerge(String objectPrefix, Sobject masterRecord, Set < id > mergedRecordIds) {
         system.debug('DCMergePlugin-afterMerge Started');
         DCMergeHelper.OnManualMerge(objectPrefix, masterRecord, mergedRecordIds);
-        system.debug('DCMergePlugin-afterMerge Ends');
-
+        DCMergeHelper.changeProgramOnOpportunityForPersonAccountMerge(objectPrefix, masterRecord, mergedRecordIds);
     }
 }
