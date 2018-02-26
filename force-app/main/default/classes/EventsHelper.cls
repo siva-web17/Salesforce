@@ -33,7 +33,7 @@ public class ContentNoteAndEventLink{
     public static void createAttachmentForQuestionAnswers(list<event>newItems){
    set<id> leadIdSet = new set<id>();     
      for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){   
-         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
+          if(objEvents.whoId != null && objEvents.whoId != '' && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
             leadIdSet.add(objEvents.whoid);
          }
       }
@@ -117,6 +117,9 @@ public class ContentNoteAndEventLink{
 
 
      for(event objEvents:[select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type='IM' and InfoMeetingID__c!=null]){
+         if(objEvents.whoId == null || objEvents.whoId == ''){
+            continue;
+        }
         id objId =objEvents.whoid;
         String sObjName = objId.getSObjectType().getDescribe().getName();
         system.debug('My object name is'+sObjName);

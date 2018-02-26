@@ -4,7 +4,7 @@
     <description>Used to display the  minimum start date of all active courses in the booking</description>
     <externalId>false</externalId>
     <label>Min Start Date</label>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>
