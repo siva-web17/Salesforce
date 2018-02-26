@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastAutomationUpdateDateTime__c</fullName>
+    <description>Indicates when the record has been last updated due to some automation like workflow/Process builder or Trigger. This will be used to differentiate direct (User initiated) updates vs Updates which were caused by an indirect action</description>
+    <externalId>false</externalId>
+    <label>Last Automation Update DateTime</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

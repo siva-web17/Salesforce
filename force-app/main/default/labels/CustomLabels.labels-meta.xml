@@ -1791,4 +1791,12 @@
         <shortDescription>OfficeVisit</shortDescription>
         <value>Office Visit</value>
     </labels>
+    <labels>
+        <fullName>SPQTask</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SPQTask</shortDescription>
+        <value>SPQ Task</value>
+    </labels>    
 </CustomLabels>
