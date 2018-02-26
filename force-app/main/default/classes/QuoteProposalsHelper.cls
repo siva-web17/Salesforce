@@ -52,7 +52,7 @@ public class QuoteProposalsHelper {
                             uniqueRecord = defaultArrayString[0] + ' ' + defaultArrayString[1];
                         }
                     }
-                   //System.debug('######################### uniqueRecord'+uniqueRecord);
+                    //System.debug('######################### uniqueRecord'+uniqueRecord);
                     if (translationsMap.containsKey(uniqueRecord)) {
                         //System.debug('######################### It has Unique Key');
                         for (Schema.FieldSetMember f : SObjectType.Translation__c.FieldSets.StaticTextTranslationFieldSet.getFields()) {
@@ -120,7 +120,7 @@ public class QuoteProposalsHelper {
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeUpdate', currentRecordId);
         }
     }
-    public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
+    /*public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
         System.debug('######################### Invoke');
         for (Apttus_Proposal__Proposal__c proposalIntegration : newQuoteproposalList) {
             System.debug('######################### Invoke IntegrationStatus__c :' + proposalIntegration.IntegrationStatus__c);
@@ -129,7 +129,7 @@ public class QuoteProposalsHelper {
 
             }
         }
-    }
+    }*/
     public static void preventQuoteProposalDelete(List<Apttus_Proposal__Proposal__c> oldQuoteProposals) {
         if (!CustomProfilePermissionsUtil.getSkipProposalQuoteDeletePrevent()) {
             for (Apttus_Proposal__Proposal__c prop : oldQuoteProposals) {
