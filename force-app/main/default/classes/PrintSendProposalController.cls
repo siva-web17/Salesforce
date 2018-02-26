@@ -65,7 +65,7 @@ public with sharing class PrintSendProposalController {
             return new AttachmentWrapper(opportunityAttachment);
         }catch (Exception ex){
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'PrintSendProposalController', 'printTemplate', proposalId);
-            throw new AuraException(ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
         }
     }
 
@@ -74,7 +74,7 @@ public with sharing class PrintSendProposalController {
             update new Apttus_Proposal__Proposal__c(Id = proposalId, LatestGeneratedProposal__c = attachmentId);
         }catch (Exception ex){
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'PrintSendProposalController', 'passLatestAttachmentIdToProposal', proposalId);
-            throw new AuraException(ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
         }
     }
 
@@ -118,7 +118,7 @@ public with sharing class PrintSendProposalController {
             Messaging.sendEmail(mails);
         }catch (Exception ex){
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'PrintSendProposalController', 'sendMailMethod', opportunityId);
-            throw new AuraException(ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
         }
     }
 
@@ -170,6 +170,4 @@ public with sharing class PrintSendProposalController {
             this.name = att.name;
         }
     }
-
-    public class AuraException extends Exception{}
 }
