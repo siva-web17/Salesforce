@@ -162,7 +162,7 @@
             $A.enqueueAction(action);
         },
 
-    sendHelper: function(component, email, subject, body, attachmentIds, opportunityId) {
+    sendHelper: function(component, email, subject, body, attachmentIds, opportunityId, proposalId) {
         var helper = this;
         helper.showSpinner(component);
 
@@ -172,7 +172,8 @@
             'subject': subject,
             'body': body,
             'attachmentIds': attachmentIds,
-            'opportunityId': opportunityId
+            'opportunityId': opportunityId,
+            'proposalId' : proposalId
         });
         action.setCallback(this, function(response) {
             var state = response.getState();

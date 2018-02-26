@@ -20,6 +20,7 @@
         var body = component.get("v.body");
         var attachmentIds = [];
         var generatedPDF = component.get("v.generatedPDF");
+        var proposalId = component.get('v.proposalId');
         if(generatedPDF && generatedPDF.id){
             attachmentIds.push(generatedPDF.id);
         }
@@ -31,7 +32,7 @@
         if ($A.util.isEmpty(body)) {
             component.set('v.errorMessage', 'Email body cannot be blank');
         } else {
-            helper.sendHelper(component, email, subject, body, attachmentIds, opportunityId);
+            helper.sendHelper(component, email, subject, body, attachmentIds, opportunityId, proposalId);
         }
     },
     goToOpportunityRecord: function(component, event, helper){

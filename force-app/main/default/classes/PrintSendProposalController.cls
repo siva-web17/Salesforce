@@ -88,7 +88,7 @@ public with sharing class PrintSendProposalController {
     }
 
     @AuraEnabled
-    public static void sendMailMethod(String email ,String subject ,String body, List<String> attachmentIds, Id opportunityId){
+    public static void sendMailMethod(String email ,String subject ,String body, List<String> attachmentIds, Id opportunityId, Id proposalId){
         List<Messaging.SingleEmailMessage> mails =  new List<Messaging.SingleEmailMessage>();
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         List<String> sendTo = new List<String>();
@@ -116,6 +116,7 @@ public with sharing class PrintSendProposalController {
         mails.add(mail);
         try{
             Messaging.sendEmail(mails);
+            update new Apttus_Proposal__Proposal__c(Id = proposalId, Apttus_Proposal__Approval_Stage__c = 'Presented');
         }catch (Exception ex){
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'PrintSendProposalController', 'sendMailMethod', opportunityId);
             throw new AuraHandledException(ex.getMessage());
