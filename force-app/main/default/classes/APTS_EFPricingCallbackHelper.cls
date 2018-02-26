@@ -106,17 +106,24 @@ public class APTS_EFPricingCallbackHelper{
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'APTS_EFPricingCallbackHelper', 'updatePricingForComparitive', item.Id);
         }
     }
-    public static Apttus_Config2__ProductAttributeValue__c getLTCoursePriceFromPAV(Id lineItemId)
+    public static Map<Id,Apttus_Config2__ProductAttributeValue__c> getLTCoursePriceFromPAV(List<Id> lineItemIds)
     {
+        Map<Id,Apttus_Config2__ProductAttributeValue__c> PavMap=new Map<Id,Apttus_Config2__ProductAttributeValue__c>();
+        System.debug('Line Item ID'+lineItemIds);
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.LTCourseProgram__c.FieldSets.LTCourseProgramFieldSet.getFields()) {
             query += f.getFieldPath() + ', ';
         }
-        query += 'Id from Apttus_Config2__ProductAttributeValue__c where Apttus_Config2__LineItemId__c = : ' + 'lineItemId' + ' ';
-        Apttus_Config2__ProductAttributeValue__c currentLineItemPAVRecord=Database.query(query);
-        System.debug('Line Item ID'+lineItemId);
+        query += 'Id,Apttus_Config2__LineItemId__c from Apttus_Config2__ProductAttributeValue__c where Apttus_Config2__LineItemId__c in : ' + 'lineItemIds' + ' ';
+        System.debug('query '+query);
+        List<Apttus_Config2__ProductAttributeValue__c> PAVLIST=Database.query(query);
+        for (Apttus_Config2__ProductAttributeValue__c PAVRecord:PAVLIST) {
+            PavMap.put(PAVRecord.Apttus_Config2__LineItemId__c,PAVRecord);
+        }
+        //Apttus_Config2__ProductAttributeValue__c currentLineItemPAVRecord=
+        System.debug('Line Item ID'+lineItemIds);
         System.debug('Current PAV' +query);
-        return currentLineItemPAVRecord;
+        return PavMap;
     }
 
 }
