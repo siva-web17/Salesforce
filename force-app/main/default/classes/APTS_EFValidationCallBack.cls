@@ -148,7 +148,7 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
                     && !lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c)
                     || (lineItem.Apttus_Config2__AdjustmentType__c == System.Label.ProductAdjustmentPriceOverride
                     && lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c
-                    && lineItem.Apttus_Config2__AdjustmentAmount__c < 0)){
+                && lineItem.Apttus_Config2__AdjustmentAmount__c < 0)){
 
                 returnFlag = FALSE;
             }
@@ -372,46 +372,75 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
     */
     public static boolean validateCartByDestinationAndTotalCourceWeek(Apttus_Config2.ProductConfiguration cart) {
 
-        boolean returnFlag = TRUE;
+        boolean returnFlag = False;
         set<String> destinationCodeSet = new set<String>{'AU-BRS','AU-SYD','AU-PER'};
         map<Decimal, Apttus_Config2__LineItem__c> bundleWiseLineCourseItemsMap = new map<Decimal, Apttus_Config2__LineItem__c>();
         map<Decimal, Apttus_Config2__LineItem__c> bundleWiseLineOSHCItemsMap = new map<Decimal, Apttus_Config2__LineItem__c>();
-
+Boolean isComparativeQuote=true;
         for(Apttus_Config2__LineItem__c lineItem : lineItemList){
-            if(!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c  && destinationCodeSet.contains(lineItem.DestinationCode__c) && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination && lineItem.APTS_Total_Course_Weeks__c > 12){
+            System.debug('lineItem validation cart' +lineItem.Apttus_Config2__ProductId__r.Family);
+            System.debug('lineItem validation cart Product code' +lineItem.Product_Code__c);
+            System.debug('lineItem  cart dest code' +lineItem.DestinationCode__c);
+            System.debug('lineItem  Comparitive' +lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c);
+            /*System.debug('In IF LOOP ' +lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c);
+            System.debug('lineItem.Apttus_Config2__ProductId__r.Family '+lineItem.Apttus_Config2__ProductId__r.Family);
+            System.debug('destinationCodeSet.contains(lineItem.DestinationCode__c) ' +destinationCodeSet.contains(lineItem.DestinationCode__c));*/
+            isComparativeQuote=lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c;
+            if(!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    && destinationCodeSet.contains(lineItem.DestinationCode__c)
+                    && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination
+                    && lineItem.APTS_Total_Course_Weeks__c > 12){
+                System.debug('lineItem.Product_Code__c'+ lineItem.Product_Code__c);
                 if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
-                    returnFlag = true;
-                }else{
-                    returnFlag = false;
-                }
+                    System.debug('Setting Return flag to true here');
+                            returnFlag = true;
             }
-            else if(lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c && destinationCodeSet.contains(lineItem.DestinationCode__c) && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination){
-                if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeCourse && lineItem.Apttus_Config2__Quantity__c > 12){
+            }
+            else if(lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    && destinationCodeSet.contains(lineItem.DestinationCode__c)
+                    && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination){
+                if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeCourse
+                        && lineItem.Apttus_Config2__Quantity__c > 12){
                     bundleWiseLineCourseItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
                 if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
                     bundleWiseLineOSHCItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
             }
+            else if(!destinationCodeSet.contains(lineItem.DestinationCode__c) ||
+                    (!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    &&  lineItem.APTS_Total_Course_Weeks__c <= 12))
+            {
+                returnFlag = true;
+            }
         }
         system.debug('==bundleWiseLineCourseItemsMap=='+bundleWiseLineCourseItemsMap);
         system.debug('==bundleWiseLineOSHCItemsMap=='+bundleWiseLineOSHCItemsMap);
-        if(!bundleWiseLineCourseItemsMap.isEmpty()){
+        if(!bundleWiseLineCourseItemsMap.isEmpty())
+        {
             if(bundleWiseLineOSHCItemsMap.isEmpty()){
                 returnFlag = false;
+                System.debug('returnFlag bundleWiseLineOSHCItemsMap' +returnFlag);
             }
             else{
                 for(Decimal  lineItemNumber : bundleWiseLineCourseItemsMap.keySet()){
-                    if(bundleWiseLineOSHCItemsMap.get(lineItemNumber) == null){
-                        returnFlag = false;
+                    if(bundleWiseLineOSHCItemsMap.get(lineItemNumber) != null){
+                        returnFlag = true;
+                        System.debug('returnFlag Decimal  lineItemNumber' +returnFlag);
                     }
                     else{
-                        returnFlag = true;
+                        returnFlag = false;
+                        break;
                     }
                 }
             }
         }
+        else if(isComparativeQuote && bundleWiseLineCourseItemsMap.isEmpty())
+        {
+            returnFlag = true;
+        }
 
+System.debug('returnFlag' +returnFlag);
         return returnFlag;
     }
 

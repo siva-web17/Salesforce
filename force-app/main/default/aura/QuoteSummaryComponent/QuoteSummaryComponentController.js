@@ -15,47 +15,45 @@
               var json_text = JSON.stringify(response.getReturnValue());
               console.log(json_text);
               cmp.set('v.wrapperList', response.getReturnValue());
+              var getSummary = cmp.get("c.getSummaryData");
+                debugger;
+              getSummary.setParams({
+                            "rcrdId": cmp.get("v.recordId"),
+                         });
+              getSummary.setCallback(this, function(response) {
+                  var state = response.getState();
+                  console.log(JSON.stringify(response.getReturnValue()));
+                  if (state == "SUCCESS") {
+                     cmp.set('v.summaryData', response.getReturnValue());
+                  }
+              });
+              $A.enqueueAction(getSummary);
             }
           });
           $A.enqueueAction(action);
     },
-    
+
     navigateToBooking : function(component, event, helper) {
-        var evt = $A.get("e.force:navigateToComponent");
-        evt.setParams({
-            componentDef: "c:BookingSummaryComponent",
-            componentAttributes: {
-                QuoteId: component.get("v.recordId")
-            }
-        });
-        evt.fire();    
+        helper.insertQLI(component,event);
 	},
-    
+
     goBack: function(component, event, helper){
         debugger;
         var evt=$A.get("e.force:navigateToURL");
-        //alert(component.get("v.OrgUrl"));
-        //evt.setParams({"url":"https://bookingsummary--apttusplay.cs89.my.salesforce.com/apex/Apttus_Config2__Cart"}); configRequestId=a340E0000004vbJQAQ&cartStatus=New&id=a2N0E0000006hH7UAI&
         var sUrl1='';
         if(component.get("v.ConfigIdList").length >1)
         {
             sUrl1=component.get("v.OrgUrl")+'/apex/Apttus_Config2__Cart?id='+component.get("v.ConfigIdList")[0]+'&configRequestId='+component.get("v.ConfigIdList")[1]+'&flow=NGDefault';
         }
-    
-        ///apex/Apttus_Config2__Cart?id=a2N0E0000009mRWUAY&configRequestId=a340E000000CvXMQA0&flow=NGDefault
-        //var sUrl1='https://bookingsummary--apttusplay--apttus-qpconfig.cs89.visual.force.com/apex/ProposalConfiguration?flow=NGDefault&id='+component.get("v.recordId");
-        //var sUrl='https://bookingsummary--apttusplay--apttus-config2.cs89.visual.force.com/apex/Apttus_QPConfig__ProposalConfiguration?id='+component.get("v.recordId");
+
        	var str = '&&flow=NGDefault';
-         //var sUrl = sUrl1.concat(str);
-        //alert(sUrl1);
-        //window.parent.location =sUrl1;
         evt.setParams({"url":sUrl1});
-        
+
        //evt.setParams({"url":"https://www.google.com"});
-        
+
         evt.fire();
-        
-        console.log('IN URL Testing');    
+
+        console.log('IN URL Testing');
     }
 
 })
