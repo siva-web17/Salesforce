@@ -37,4 +37,24 @@ public class CampaignMembersHelper {
             }
         }
     }
+
+    /**
+     * author Aditi Sharma
+     *
+     * @description This method updates Opportunity__c reference on given Campaign Member records when a IM activity is imported from EF.com
+     * */
+    public static void addOppToIMOnLeadConvert(List<Lead> newItems){
+        Map<Id,Id> leadToOppMap =  new Map<Id,Id>();
+        For(Lead objLead:newItems){
+            if(objLead.IsConverted && objLead.ConvertedOpportunityId !=null){
+                leadToOppMap.put(objLead.Id,objLead.ConvertedOpportunityId);
+            }
+        }
+
+        List<CampaignMember> CampaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
+        for(CampaignMember campaignMember:CampaignMemberList){
+            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId);
+        }
+        update CampaignMemberList;
+    }
 }

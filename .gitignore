@@ -8,3 +8,4 @@ build
 mdapioutput
 force-app - Copy
 Salesforce
+package-lock.json

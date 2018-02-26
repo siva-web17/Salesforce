@@ -9,6 +9,6 @@ IsActive__c = TRUE
 &amp;&amp;
 ISCHANGED( StageName )
 &amp;&amp;
-TFBypassStageValidation__c = FALSE</errorConditionFormula>
+NOT(ISCHANGED( LastAutomationUpdateDateTime__c ))</errorConditionFormula>
     <errorMessage>Please do not update the Stage of the Opportunity. Only automatic Stage Movements are allowed.</errorMessage>
 </ValidationRule>

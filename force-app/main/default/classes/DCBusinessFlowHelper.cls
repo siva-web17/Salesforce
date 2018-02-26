@@ -41,7 +41,7 @@ public class DCBusinessFlowHelper {
             serviceParams.OpportunityID = '';
             serviceParams.RankingType = 'Original';
             serviceParams.RequestType = sourcelead.requesttype__c;
-            serviceParams.HasAddressonCreation = sourceLead.HadAddressonCreation__c;
+            serviceParams.HadAddressOnCreation = sourceLead.HadAddressonCreation__c;
             serviceParams.LastPQDateTime = sourcelead.requesttype__c=='PQ'?sourcelead.createddate:null;
             serviceParams.LastRESDateTime = sourcelead.requesttype__c=='RES'?sourcelead.createddate:null;
             serviceParams.IsParent = sourcelead.isparent__c;

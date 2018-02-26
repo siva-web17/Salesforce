@@ -1465,7 +1465,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ProgramLT</shortDescription>
-        <value>Used for Lt Course Program Type in Apttus Call backs</value>
+        <value>LT</value>
     </labels>
     <labels>
         <fullName>ProposalLineItemTypeOption</fullName>
@@ -1790,5 +1790,21 @@
         <protected>false</protected>
         <shortDescription>OfficeVisit</shortDescription>
         <value>Office Visit</value>
+    </labels>
+    <labels>
+        <fullName>SPQTask</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SPQTask</shortDescription>
+        <value>SPQ Task</value>
+    </labels>
+    <labels>
+        <fullName>TemplateBuilderCongaQueryId</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
+        <value>a5J6E0000000CikUAE</value>
     </labels>
 </CustomLabels>
