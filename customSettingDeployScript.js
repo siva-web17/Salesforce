@@ -2,11 +2,12 @@
 const config = {
 	// Important + exec.bat
 	bat: require.resolve('./config/process.bat'),
-	processBatPath: '', //dataloader conf folder path eg: C:\\Work\\salesforce\\prod\\samples\\conf
-	dataloaderJar: '', //Update your dataloader-41.0.0-uber.jar in dataloader eg:  C:\\Work\\salesforce\\prod\\dataloader-41.0.0-uber.jar
+	processBatPath: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf', //dataloader conf folder path eg: C:\\Work\\salesforce\\prod\\samples\\conf
+	dataloaderJar: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\dataloader-41.0.0-uber.jar ', //Update your dataloader-41.0.0-uber.jar in dataloader eg:  C:\\Work\\salesforce\\prod\\dataloader-41.0.0-uber.jar
 	configdataFile: './config/configdata.json',
 	read_XML: './config/process-conf.xml', // update process-conf.xml file in dataloader eg: C:\\Work\\salesforce\\prod\\samples\\conf\\process-conf.xml
 	write_XML: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf\\process-conf.xml',
+	gitPath: 'C:\\Work\\salesforce\\clean-script-mine\\THEQA\\data\\ApttusData\\eflang--TestGitDep.cs84.my.salesforce.com'
 };
 var fs = require('fs'),
 	parseString = require('xml2js').parseString,
@@ -65,16 +66,14 @@ function loopCmd(count) {
 			var ls = spawn(config.bat, [config.processBatPath, dynamicBean]);
 			ls.stdout.on('data', function(data) {
 				// continuous process
-				console.log(success(dynamicBean + '------------------------------------------------------'));
+				//console.log(success(dynamicBean + '------------------------------------------------------'));
 				console.log(data.toString());
 				loopCmd_temp(count);
 			});
-			// ls.on('exit', function(data) {
-			// 	console.log(success(dynamicBean + '-----------'));
-			// 	console.log(data.toString());
-			// 	obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
-			// 	loopCmd_temp(count);
-			// });
+			setTimeout(() => {
+				obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
+				loopCmd_temp(count);
+			}, 120000);
 			ls.stderr.on('data', function(data) {
 				console.log(error('Invalid Comment, Please contact administrator'));
 			});
@@ -104,7 +103,7 @@ function writeProcessConf(count, value) {
 	var xml = builder.buildObject(value);
 	fs.writeFile(config.write_XML, xml, function(err, data) {
 		if (err) console.log(err);
-		//loopCmd(count);
+		loopCmd(count);
 	});
 }
 function readProcessConf(count) {
@@ -127,6 +126,15 @@ function readProcessConf(count) {
 					}
 					if (map[j]['$'].key == 'sfdc.endpoint') {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
+					}
+					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
+                    }
+                    if (map[j]['$'].key == 'process.encryptionKeyFile') {
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].key;
+					}
+					if (map[j]['$'].key == 'dataAccess.name') {
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].csvPath + map[j]['$'].value;
 					}
 				}
 			}

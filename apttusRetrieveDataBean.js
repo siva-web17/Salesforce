@@ -7,6 +7,7 @@ const config = {
 	configdataFile: './config/configdata.json',
 	read_XML: './config/process-conf.xml', // update process-conf.xml file in dataloader eg: C:\\Work\\salesforce\\prod\\samples\\conf\\process-conf.xml
 	write_XML: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf\\process-conf.xml',
+	gitPath: 'C:\\Work\\salesforce\\clean-script-mine\\THEQA\\data\\ApttusData\\eflang--TestGitDep.cs84.my.salesforce.com',
 };
 var fs = require('fs'),
 	parseString = require('xml2js').parseString,
@@ -65,7 +66,7 @@ function loopCmd(count) {
 			ls.stdout.on('data', function(data) {
 				// continuous process
 				//process.stdout.write(data + '\n');
-				console.log(success(dynamicBean + '------------------------------------------------------'));
+				//console.log(success(dynamicBean + '------------------------------------------------------'));
 				console.log(data.toString());
 			});
 			setTimeout(() => {
@@ -122,10 +123,13 @@ function readProcessConf(count) {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
 					}
 					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
-						map[j]['$'].value = scratchOrgs[count].debug_Log;
-                    }
-                    if (map[j]['$'].key == 'process.encryptionKeyFile') {
-						map[j]['$'].value = scratchOrgs[count].key;
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
+					}
+					if (map[j]['$'].key == 'process.encryptionKeyFile') {
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].key;
+					}
+					if (map[j]['$'].key == 'dataAccess.name') {
+						map[j]['$'].value = scratchOrgs[count].gitPath + scratchOrgs[count].csvPath + map[j]['$'].value;
 					}
 				}
 			}
