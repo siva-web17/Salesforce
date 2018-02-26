@@ -3,7 +3,7 @@
     <fullName>Customer_Request</fullName>
     <fields>Program__c</fields>
     <fields>ActivityDateTime__c</fields>
-    <fields>Channel__c</fields>
+    <fields>Partner__c</fields>
     <fields>Etag__c</fields>
     <fields>CampaignName__c</fields>
     <fields>Course__c</fields>
