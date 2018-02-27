@@ -93,7 +93,7 @@
                 <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
                 <entry key="sfdc.entity" value="LegalSettings__c"/>
                 <entry key="process.operation" value="insert"/>
-                <entry key="process.mappingFile" value=".LegalSettings.sdl"/>
+                <entry key="process.mappingFile" value="LegalSettings.sdl"/>
                 <entry key="dataAccess.name" value="LegalSettings.csv"/>
                 <entry key="dataAccess.type" value="csvRead"/>
                 <!-- <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/> -->
