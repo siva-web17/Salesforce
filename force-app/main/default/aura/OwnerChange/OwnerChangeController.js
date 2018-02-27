@@ -37,11 +37,26 @@
 //                  $A.enqueueAction(action);
 
                     var action = component.get("c.GetRecordOwnerDetails");
+                    action.setParams({
+                            'Id' : component.get("v.OwnerRecordId")
+                        });
                         action.setCallback(this, function(response){
                             var state = response.getState();
-                            if (state === "SUCCESS") {
+                            if (component.isValid() && state === "SUCCESS") {
+                                //var ownerRecord = JSON.parse(response.getReturnValue());
                                 component.set("v.ownerName", response.getReturnValue());
                              }
+                             else if (state === "ERROR") {
+                                                       var errors = response.getError();
+                                                       if (errors) {
+                                                           if (errors[0] && errors[0].message) {
+                                                               console.log("Error message: " +
+                                                                           errors[0].message);
+                                                           }
+                                                       } else {
+                                                           console.log("Unknown error");
+                                                       }
+                                                   }
                           });
                            $A.enqueueAction(action);
                   },
