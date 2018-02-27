@@ -157,7 +157,7 @@ public class QuoteProposalTriggerTest {
             delete prop;
             System.assert(false);
         } catch (DMLException error) {
-            Boolean expectedExceptionThrown = error.getMessage().contains(String.format(Label.DeleteQuoteProposalErrorMessage, new List<String>{Label.QuoteProposalStatusesToDelete}));
+            Boolean expectedExceptionThrown = error.getMessage().contains(Label.DeleteQuoteProposalErrorMessage);
             System.assert(expectedExceptionThrown, true);
         }
 
