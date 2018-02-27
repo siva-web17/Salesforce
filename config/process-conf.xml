@@ -296,7 +296,7 @@
                 <entry key="dataAccess.writeBatchSize" value="1" />
                 <entry key="sfdc.extractionRequestSize" value="1" />
                 <entry key="process.enableExtractSuccessOutput" value="true" />
-                <entry key="sfdc.extractionSOQL" value="SELECT  Country__c, DestinationCode__c, EndDateOffSet__c, IsLT__c, Language__c, StartDateOffSet__c FROM Destination__c" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, Country__c, DestinationCode__c, EndDateOffSet__c, GroupedLTDestinationName__c, IsLT__c, Language__c, StartDateOffSet__c FROM Destination__c" />
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
@@ -322,7 +322,7 @@
                 <entry key="dataAccess.writeBatchSize" value="1" />
                 <entry key="sfdc.extractionRequestSize" value="1" />
                 <entry key="process.enableExtractSuccessOutput" value="true" />
-                <entry key="sfdc.extractionSOQL" value="SELECT  Departure_Point__c, Destination__c, Name, Flight_Season__c, From_Day__c, From_Month__c, From_To__c, Product__c, Program__c, To_Day__c, To_Month__c, Transformed_To_Month__c, Unique_Value__c FROM Fixed_Fare__c" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, Departure_Point__c, Destination__c, Name, Flight_Season__c, From_Day__c, From_Month__c, From_To__c, Product__c, Program__c, To_Day__c, To_Month__c, Transformed_To_Month__c, Unique_Value__c FROM Fixed_Fare__c" />
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
@@ -348,7 +348,7 @@
                 <entry key="dataAccess.writeBatchSize" value="1" />
                 <entry key="sfdc.extractionRequestSize" value="1" />
                 <entry key="process.enableExtractSuccessOutput" value="true" />
-                <entry key="sfdc.extractionSOQL" value="SELECT Active__c,  Code__c, APTS_Default_Unique_Identifier__c, Market__c, Product__c, Program__c FROM Departure_Point__c" />
+                <entry key="sfdc.extractionSOQL" value="SELECT Active__c,APTSExtID__c,  Code__c, APTS_Default_Unique_Identifier__c, Market__c, Product__c, Program__c FROM Departure_Point__c" />
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
@@ -374,7 +374,7 @@
                 <entry key="dataAccess.writeBatchSize" value="1" />
                 <entry key="sfdc.extractionRequestSize" value="1" />
                 <entry key="process.enableExtractSuccessOutput" value="true" />
-                <entry key="sfdc.extractionSOQL" value="SELECT APTSBreak1EndDate__c, APTSBreak1NumberofWeeks__c, APTSBreak1StartDate__c, APTSBreak2EndDate__c, APTSBreak2NumberofWeeks__c, APTSBreak2StartDate__c, APTSBreak3EndDate__c, APTSBreak3NumberofWeeks__c, APTSBreak3StartDate__c, Course__c, APTSCourseNumberofWeeks__c, DateofBirthFrom__c, DateofBirthTo__c, Destination__c, APTSEndDate__c, Is_Beginner__c, Is_Preferred__c, Name, Preferred__c, Program__c, StartDate__c, Start_Date_Converted__c, APTSTerm1EndDate__c, APTSTerm1NumberofWeeks__c, APTSTerm1StartDate__c, APTSTerm2EndDate__c, APTSTerm2NumberofWeeks__c, APTSTerm2StartDate__c, APTSTerm3EndDate__c, APTSTerm3NumberofWeeks__c, APTSTerm3StartDate__c, APTSTerm4EndDate__c, APTSTerm4NumberofWeeks__c, APTSTerm4StartDate__c FROM Start_Dates__c" />
+                <entry key="sfdc.extractionSOQL" value="SELECT APTSExtID__c, APTSBreak1EndDate__c, APTSBreak1NumberofWeeks__c, APTSBreak1StartDate__c, APTSBreak2EndDate__c, APTSBreak2NumberofWeeks__c, APTSBreak2StartDate__c, APTSBreak3EndDate__c, APTSBreak3NumberofWeeks__c, APTSBreak3StartDate__c, Course__c, APTSCourseNumberofWeeks__c, DateofBirthFrom__c, DateofBirthTo__c, Destination__c, APTSEndDate__c, Is_Beginner__c, Is_Preferred__c, Name, Preferred__c, Program__c, StartDate__c, Start_Date_Converted__c, APTSTerm1EndDate__c, APTSTerm1NumberofWeeks__c, APTSTerm1StartDate__c, APTSTerm2EndDate__c, APTSTerm2NumberofWeeks__c, APTSTerm2StartDate__c, APTSTerm3EndDate__c, APTSTerm3NumberofWeeks__c, APTSTerm3StartDate__c, APTSTerm4EndDate__c, APTSTerm4NumberofWeeks__c, APTSTerm4StartDate__c FROM Start_Dates__c" />
                 <entry key="process.initialLastRunDate" value="2005-12-01T00:00:00.000-0800"/>
             </map>
         </property>
