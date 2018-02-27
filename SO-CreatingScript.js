@@ -174,6 +174,8 @@ function processInstallation_emit(i) {
 		})();
 	} else {
 		console.log(success('Package installation process completed'));
+		spinner.stop();
+		process.exit();
 	}
 }
 
