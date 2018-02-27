@@ -161,8 +161,8 @@ public class BindSobject {
             QuoteAfterUpdate = [select id,SalesMadeby__c,Apttus_Proposal__Proposal_Name__c from Apttus_Proposal__Proposal__c where id=: QuoteId LIMIT 1];
             system.debug('QuoteAfterUpdate'+QuoteAfterUpdate);
             Booking__c bookingRecord = new Booking__c();
-            //bookingRecord.BrochureSeason__c = BindWrapper.PriceList.Version__c;
-            //bookingRecord.BrochureYear__c =Decimal.valueOf(BindWrapper.PriceList.Year__c);
+            bookingRecord.BrochureSeason__c = BindWrapper.PriceList.Version__c;
+            bookingRecord.BrochureYear__c =Decimal.valueOf(BindWrapper.PriceList.Year__c);
             bookingRecord.AccountId__c = BindWrapper.personAcc.id;
             System.debug('SalesMadeby__c before :'  + QuoteAfterUpdate.SalesMadeby__c);
             bookingRecord.MainSalesResponsible__c = QuoteAfterUpdate.SalesMadeby__c;
