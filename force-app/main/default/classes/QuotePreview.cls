@@ -10,13 +10,13 @@ public class QuotePreview {
         try{
 
             fetchLineItems = [select id,name,Apttus_Proposal__Product__c,Product_Code__c ,Apttus_Proposal__Description__c ,Apttus_Proposal__Product__r.ProductCode,
-                    Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,
-                    Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,Apttus_Proposal__Quantity__c,
-                    Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,
+                     Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
+                    Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,Apttus_Proposal__Quantity__c,Apttus_Proposal__Proposal__r.Program__c,
+                    Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,LTDestinationCode__c,LTCourseNumber__c,
                     APTS_Discount_Reason__c,Apttus_QPConfig__NetPrice__c,CurrencyIsoCode,
                     Apttus_QPConfig__IsOptional__c,(Select Id,Apttus_QPConfig__IncentiveCode__c,Apttus_QPConfig__IncentiveId__r.name,Apttus_QPConfig__IncentiveAdjustmentAmount__c FROM Apttus_QPConfig__AdjustmentLineItems__r)
             from Apttus_Proposal__Proposal_Line_Item__c where Apttus_Proposal__Proposal__c =:rcrdId];
-            system.debug(' array size is '+fetchLineItems.size());
+            system.debug(' array size is '+fetchLineItems);
             for(Apttus_Proposal__Proposal_Line_Item__c lineItemrecord : fetchLineItems){
                 system.debug(' lineItemrecord'+lineItemrecord);
                 if(!(lineItemrecord.APTS_Product_Code__c ==Label.FTEFX_Article_Code && lineItemrecord.Non_Discounted_Price__c == 0)){
@@ -54,9 +54,9 @@ public class QuotePreview {
             }
             if(fetchLineItems==null || fetchLineItems.isEmpty()){
                 fetchLineItems = [select id,name,Apttus_Proposal__Product__c,Product_Code__c ,Apttus_Proposal__Description__c ,Apttus_Proposal__Product__r.ProductCode,
-                        Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,
-                        Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,
-                        Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,
+                        Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
+                        Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,LTDestinationCode__c,Apttus_Proposal__Proposal__r.Program__c,
+                        Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,LTCourseNumber__c,
                         APTS_Discount_Reason__c,Apttus_QPConfig__NetPrice__c,CurrencyIsoCode,
                         Apttus_QPConfig__IsOptional__c,(Select Id,Apttus_QPConfig__IncentiveCode__c,Apttus_QPConfig__IncentiveId__r.name,Apttus_QPConfig__IncentiveAdjustmentAmount__c FROM Apttus_QPConfig__AdjustmentLineItems__r)
                 from Apttus_Proposal__Proposal_Line_Item__c where Apttus_Proposal__Proposal__c =:rcrdId];
@@ -140,7 +140,7 @@ public class QuotePreview {
         List<TemporaryQuoteLineItem__c> lstOfQuoteData = new List<TemporaryQuoteLineItem__c>();
         List<LineItemGroupWrapper> lstOfSummaryData = (List<LineItemGroupWrapper>)JSON.deserialize(summaryData,List<LineItemGroupWrapper>.class);
         try{
-            lstOfQuoteData = [Select id from TemporaryQuoteLineItem__c where Quote_Proposal__c =: rcrdId];
+            lstOfQuoteData = [Select id from TemporaryQuoteLineItem__c where QuoteProposal__c =: rcrdId];
         }catch(Exception ex){
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'QuotePreview', 'Preview', currentrecord);
@@ -157,11 +157,11 @@ public class QuotePreview {
             TemporaryQuoteLineItem__c QLine;
             for(LineItemGroupWrapper lst: lstOfSummaryData){
                 QLine = new TemporaryQuoteLineItem__c();
-                QLine.Quote_Proposal__c = (Id) rcrdId;
+                QLine.QuoteProposal__c = (Id) rcrdId;
                 QLine.Quantity__c = lst.DiscountQuantity;
-                QLine.Discount_Reason__c = lst.ProductCode;
-                QLine.Article_Name__c = lst.ProductName;
-                QLine.Net_Price__c = lst.netPrice;
+                QLine.ArticleCode__c = lst.ProductCode;
+                QLine.Description__c = lst.ProductName;
+                QLine.NetPrice__c = lst.netPrice;
                 lstOfQuoteData.add(QLine);
             }
         }catch(Exception ex){

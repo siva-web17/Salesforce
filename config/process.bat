@@ -41,11 +41,8 @@ IF "%JAVA_HOME%" == "" (
     IF NOT EXIST "%JAVA_HOME%" (
         echo We couldn't find the Java Runtime Environment ^(JRE^) in directory "%JAVA_HOME%". To run process.bat, set the JAVA_HOME environment variable to the directory where the JRE is installed.
     ) ELSE (
-        "%JAVA_HOME%\bin\java" -cp C:\Work\salesforce\prod\dataloader-41.0.0-uber.jar -Dsalesforce.config.dir=%1 com.salesforce.dataloader.process.ProcessRunner %PROCESS_OPTION%
+        "%JAVA_HOME%\bin\java" -cp C:\Work\salesforce\clean-script-mine\DATALOADER\dataloader-41.0.0-uber.jar;ojdbc14.jar -Dsalesforce.config.dir=%1 com.salesforce.dataloader.process.ProcessRunner %PROCESS_OPTION%
     )
 )
 
 :end
-
-
-REM Updated absolute path of dataloader-41.0.0-uber.jar eg:C:\Work\salesforce\prod\dataloader-41.0.0-uber.jar

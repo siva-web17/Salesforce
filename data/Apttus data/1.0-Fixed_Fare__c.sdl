@@ -1,0 +1,15 @@
+#Mapping values
+#Mon Feb 26 13:41:23 IST 2018
+TO_MONTH__C=To_Month__c
+OWNERID=OwnerId
+PRODUCT__C=Product__c
+FROM_MONTH__C=From_Month__c
+TO_DAY__C=To_Day__c
+DEPARTURE_POINT__C=Departure_Point__c
+CURRENCYISOCODE=CurrencyIsoCode
+FLIGHT_SEASON__C=Flight_Season__c
+DESTINATION__C=Destination__c
+FROM_TO__C=From_To__c
+PROGRAM__C=Program__c
+FROM_DAY__C=From_Day__c
+NAME=Name
