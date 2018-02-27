@@ -2,10 +2,11 @@
 const config = {
 	// Important + exec.bat
 	bat: require.resolve('./config/process.bat'),
-	processBatPath: '', //dataloader conf folder path eg: C:\\Work\\salesforce\\prod\\samples\\conf
-	dataloaderJar: '', //Update your dataloader-41.0.0-uber.jar in dataloader eg:  C:\\Work\\salesforce\\prod\\dataloader-41.0.0-uber.jar
+	processBatPath: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf', //dataloader conf folder path eg: C:\\Work\\salesforce\\prod\\samples\\conf
+	dataloaderJar: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\dataloader-41.0.0-uber.jar ', //Update your dataloader-41.0.0-uber.jar in dataloader eg:  C:\\Work\\salesforce\\prod\\dataloader-41.0.0-uber.jar
 	configdataFile: './config/configdata.json',
-	read_WriteXML: '', // update process-conf.xml file in dataloader eg: C:\\Work\\salesforce\\prod\\samples\\conf\\process-conf.xml
+	read_XML: './config/process-conf.xml', // update process-conf.xml file in dataloader eg: C:\\Work\\salesforce\\prod\\samples\\conf\\process-conf.xml
+	write_XML: 'C:\\Work\\salesforce\\clean-script-mine\\DATALOADER\\samples\\conf\\process-conf.xml'
 };
 var fs = require('fs'),
 	parseString = require('xml2js').parseString,
@@ -25,9 +26,10 @@ var obj_temp = {
 	xmlTojson_count_temp: 0,
 	BeanIDs: 0,
 	BeanIDs_Count: 0,
-	BeanIDs_count_temp: 0,
+	interval: false,
 };
 var scratchOrgs = {};
+var customDetails = {};
 var child_process = require('child_process');
 var spawn = require('child_process').spawn;
 // Function
@@ -45,6 +47,7 @@ function convertToJson(value) {
 }
 fs.readFile(config.configdataFile, 'utf8', function readFileCallback(err, data) {
 	scratchOrgs = JSON.parse(data).ScratchOrgs;
+	customDetails = JSON.parse(data).customDetails;
 	obj_temp.xmlTojson_count = JSON.parse(data).ScratchOrgs.length;
 	obj_temp.xmlTojson_count_temp = 0;
 	obj_temp.BeanIDs = JSON.parse(data).BeanIDs;
@@ -64,17 +67,14 @@ function loopCmd(count) {
 			var ls = spawn(config.bat, [config.processBatPath, dynamicBean]);
 			ls.stdout.on('data', function(data) {
 				// continuous process
-				console.log(success(dynamicBean + '------------------------------------------------------'));
+				//console.log(success(dynamicBean + '------------------------------------------------------'));
 				console.log(data.toString());
-				obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
 				loopCmd_temp(count);
 			});
-			// ls.on('exit', function(data) {
-			// 	console.log(success(dynamicBean + '-----------'));
-			// 	console.log(data.toString());
-			// 	obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
-			// 	loopCmd_temp(count);
-			// });
+			setTimeout(() => {
+				obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
+				loopCmd_temp(count);
+			}, 120000);
 			ls.stderr.on('data', function(data) {
 				console.log(error('Invalid Comment, Please contact administrator'));
 			});
@@ -83,9 +83,11 @@ function loopCmd(count) {
 }
 function loopCmd_temp(count) {
 	if (obj_temp.BeanIDs_Count > obj_temp.BeanIDs_count_temp) {
+		obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
 		loopCmd(count, obj_temp.BeanIDs_count_temp);
 	} else {
-		scratchOrgsFun(count + 1);
+		console.log(obj_temp.BeanIDs_count_temp);
+		obj_temp.interval = false;
 	}
 }
 
@@ -100,14 +102,14 @@ function writeProcessConf(count, value) {
 		doctype: { pubID: '-//SPRING//DTD BEAN//EN', sysID: 'http://www.springframework.org/dtd/spring-beans.dtd' },
 	});
 	var xml = builder.buildObject(value);
-	fs.writeFile(config.read_WriteXML, xml, function(err, data) {
+	fs.writeFile(config.write_XML, xml, function(err, data) {
 		if (err) console.log(err);
 		loopCmd(count);
 	});
 }
 function readProcessConf(count) {
 	var temp_username = '';
-	fs.readFile(config.read_WriteXML, 'utf-8', function(err, data) {
+	fs.readFile(config.read_XML, 'utf-8', function(err, data) {
 		if (err) console.log(err);
 		parseString(data, function(err, result) {
 			if (err) console.log(err);
@@ -125,6 +127,15 @@ function readProcessConf(count) {
 					}
 					if (map[j]['$'].key == 'sfdc.endpoint') {
 						map[j]['$'].value = scratchOrgs[count].InstanceURL;
+					}
+					if (map[j]['$'].key == 'sfdc.debugMessagesFile') {
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].debug_Log + map[j]['$'].value;
+                    }
+                    if (map[j]['$'].key == 'process.encryptionKeyFile') {
+						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].key;
+					}
+					if (map[j]['$'].key == 'dataAccess.name') {
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
 				}
 			}

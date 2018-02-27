@@ -57,11 +57,13 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Booking</label>
     <nameField>
+        <displayFormat>B-{00000000}</displayFormat>
         <label>Booking Number</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Bookings</pluralLabel>
     <searchLayouts/>

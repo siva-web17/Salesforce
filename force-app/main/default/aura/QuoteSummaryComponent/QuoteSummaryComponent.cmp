@@ -76,15 +76,34 @@
                                 <tbody>
                                 <aura:iteration items="{!v.wrapperList}" var="wrapper" indexVar="row">
                                     <tr>
-                                        <td data-label="ARTICLE CODE">
-                                            <div class="slds-truncate" title="ARTICLE CODE">{!wrapper.lineitem.APTS_Product_Code__c}</div>
-                                        </td>
+
+                                        <aura:If isTrue="{!and(wrapper.lineitem.Apttus_QPConfig__LineType__c=='Product/Service'  , wrapper.lineitem.LTDestinationCode__c != '')}">
+                                            <td data-label="ARTICLE CODE">
+                                                <div class="slds-truncate" title="ARTICLE CODE">{!wrapper.lineitem.LTCourseNumber__c}</div>
+                                            </td>
+                                            <aura:set attribute="else">
+                                                <td data-label="ARTICLE CODE">
+                                                    <div class="slds-truncate" title="ARTICLE CODE">{!wrapper.lineitem.APTS_Product_Code__c}</div>
+                                                </td>
+                                            </aura:set>
+                                        </aura:If>
+
+
                                         <td data-label="ARTICLE NAME">
                                             <div class="slds-truncate" title="ARTICLE NAME">{!wrapper.lineitem.Apttus_Proposal__Description__c}</div>
                                         </td>
-                                        <td data-label="DESTINATION">
-                                            <div class="slds-truncate" title="DESTINATION"> {!wrapper.lineitem.Apttus_Proposal__Product__r.ProductCode}</div>
-                                        </td>
+
+                                            <aura:If isTrue="{!wrapper.lineitem.LTDestinationCode__c!=''}">
+                                                <td data-label="DESTINATION">
+                                                    <div class="slds-truncate" title="DESTINATION"> {!wrapper.lineitem.LTDestinationCode__c}</div>
+                                                </td>
+                                                <aura:set attribute="else">
+                                                    <td data-label="DESTINATION">
+                                                        <div class="slds-truncate" title="DESTINATION"> {!wrapper.lineitem.Apttus_Proposal__Product__r.ProductCode}</div>
+                                                    </td>
+                                                </aura:set>
+                                            </aura:If>
+
                                         <td data-label="QUANTITY">
                                             <div class="slds-truncate" title="QUANTITY">{!wrapper.lineitem.Apttus_QPConfig__Quantity2__c}</div>
                                         </td>
@@ -130,7 +149,7 @@
                                         </td>
 
                                         <td data-label="CURRENCY">
-                                            <div class="slds-truncate" title="CURRENCY">{!wrapper.CurrencyPreview}/></div>
+                                            <div class="slds-truncate" title="CURRENCY">{!wrapper.CurrencyPreview}</div>
                                         </td>
 
                                         <td data-label="Calculate Price">

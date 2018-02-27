@@ -69,13 +69,40 @@ public class LTCourseProgramController {
                         selectedLTCourse.APTS_End_Date__c,
                         Double.valueOf(selectedLTCourse.APTS_LT_Course_Price__c));
 
+
                 if (createdLineItem != null && createdLineItem.addedOptionLineItems.size() > 0) {
                     Apttus_Config2__ProductAttributeValue__c PAVRecord = new Apttus_Config2__ProductAttributeValue__c();
                     PAVRecord.Apttus_Config2__LineItemId__c = createdLineItem.addedOptionLineItems[0].Id;
+                    List<Apttus_Config2__ProductAttributeValue__c> PAVList=new List<Apttus_Config2__ProductAttributeValue__c>();
+                    //List<Id> LineItemIdList=new List<Id>();
+                    LineItemIdList.Clear();
                     for (Schema.FieldSetMember f : SObjectType.LTCourseProgram__c.FieldSets.LTCourseProgramFieldSet.getFields()) {
                         PAVRecord.put(f.getFieldPath(), selectedLTCourse.get(f.getFieldPath()));
                     }
-                    insert PAVRecord;
+                    Insert PAVRecord;
+                    //PAVList.add(PAVRecord);
+                    System.debug('PAVList' +PAVList);
+                    for (Apttus_Config2__LineItem__c LineItem:currentLineItems) {
+                        //Apttus_Config2__ProductAttributeValue__c ObjectPAVToUpdate= new Apttus_Config2__ProductAttributeValue__c();
+                        //System.debug('ObjectPAVToUpdate LineItem.Apttus_Config2__AttributeValueId__c' +LineItem.Apttus_Config2__AttributeValueId__c);
+                        //ObjectPAVToUpdate.Id=LineItem.Apttus_Config2__AttributeValueId__c;
+                        //ObjectPAVToUpdate.LTDestinationCode__c=selectedLTCourse.LTDestinationCode__c;
+                        LineItemIdList.add(LineItem.Id);
+                        //if (!PAVId.contains(ObjectPAVToUpdate.Id)) {
+                            //PAVList.add(ObjectPAVToUpdate);
+                        //}
+                        System.debug('ObjectPAVToUpdate Next' +LineItemIdList);
+                    }
+                    Map<Id,Apttus_Config2__ProductAttributeValue__c> PavMap= APTS_EFPricingCallbackHelper.getLTCoursePriceFromPAV(LineItemIdList);
+                    System.debug('Before Update' +PavMap);
+                    for (Apttus_Config2__ProductAttributeValue__c pavLoopRecord:PavMap.values()) {
+                        for (Schema.FieldSetMember f : SObjectType.LTCourseProgram__c.FieldSets.LTCourseProgramFieldSet.getFields()) {
+                            pavLoopRecord.put(f.getFieldPath(), selectedLTCourse.get(f.getFieldPath()));
+                        }
+                        //pavLoopRecord.LTDestinationCode__c=selectedLTCourse.get(f.getFieldPath());
+                    }
+                    update PavMap.values();
+                    System.debug('After Update' +PavMap.values());
                 }
                 System.debug('Repriceing cart here');
                 //After adding Line item we ar repricing the cart
