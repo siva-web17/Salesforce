@@ -340,7 +340,7 @@
 	},
 	pastDateValidation: function(cmp, evt, helper) {
 		if (cmp.get('v.selectedActionDate') != null) {
-			if (!moment(cmp.get('v.selectedActionDate')).isAfter(new Date()) && !moment(cmp.get('v.selectedActionDate')).isSame(moment().format('YYYY-MM-DD'))) {
+			if (!moment(cmp.get('v.selectedActionDate')).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(cmp.get('v.selectedActionDate')).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
 				var toastEvent = $A.get('e.force:showToast');
 				var LAC_ERROR_PAST_MSG = $A.get('$Label.c.LAC_ERROR_PAST_MSG');
 				toastEvent.setParams({ title: 'Error!', type: 'error', message: LAC_ERROR_PAST_MSG });
