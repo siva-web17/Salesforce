@@ -34,7 +34,8 @@ public  class LTCourseProgramHelper {
         //Here we are deleting the current Course Line item from the Bundle
         Apttus_Config2__LineItem__c deletecurrentCourseLineItem=null;
         for (Apttus_Config2__LineItem__c lineitemrecord:lineItemList) {
-            if (lineitemrecord.APTS_Product_Type__c=='Course') {
+            System.debug('lineitemrecord'+lineitemrecord);
+            if (lineitemrecord.APTS_Product_Type__c==Label.ProductTypeCourse) {
                 deletecurrentCourseLineItem=new Apttus_Config2__LineItem__c();
                 deletecurrentCourseLineItem=lineitemrecord;
                 break;
@@ -96,11 +97,11 @@ public  class LTCourseProgramHelper {
 
         query += 'Id, Product_Subtype__c, Name, Beginner__c, Apttus_Config2__ProductId__r.Name, Apttus_Config2__LineType__c, APTS_EnableStartDateEndDate__c, Program__c, ';
         query += 'Apttus_Config2__Uom__c, Apttus_Config2__EndDate__c, APTS_QunatityModifiable__c, Apttus_Config2__StartDate__c, Apttus_Config2__Quantity__c, ';
-        query += 'DestinationCode__c, Apttus_Config2__ProductId__r.APTS_Destination_Location__c, Apttus_Config2__OptionId__r.APTS_AY_Course_Type__c,Apttus_Config2__OptionId__r.Available_Programs__c,Apttus_Config2__LineNumber__c, Apttus_Config2__OptionId__c, ';
+        query += 'DestinationCode__c, Apttus_Config2__AttributeValueId__c,Apttus_Config2__ProductId__r.APTS_Destination_Location__c, Apttus_Config2__OptionId__r.APTS_AY_Course_Type__c,Apttus_Config2__OptionId__r.Available_Programs__c,Apttus_Config2__LineNumber__c, Apttus_Config2__OptionId__c, ';
         query += 'Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.Market__c,Apttus_Config2__PriceListId__c ';
         query += 'from Apttus_Config2__LineItem__c ';
         query += 'where Apttus_Config2__ConfigurationId__c = : ' + 'currentCartId' + ' ' ;
-        query += ' and APTS_EnableStartDateEndDate__c = TRUE ORDER BY Apttus_Config2__LineNumber__c,Product_Code__c' ;
+        query += '  ORDER BY Apttus_Config2__LineNumber__c,Product_Code__c' ;
         System.debug('#################################### ' + query);
         LineItems = Database.query(query);
 
