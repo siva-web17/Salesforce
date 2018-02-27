@@ -175,8 +175,8 @@ function processInstallation_emit(i) {
 }
 
 function processInstallation_init(value) {
-	obj_temp.packages_data = JSON.parse(value).result;
-	obj_temp.count_LifeCycle_install_pkg = JSON.parse(value).result.length;
+	obj_temp.packages_data = JSON.parse(value).Packages;
+	obj_temp.count_LifeCycle_install_pkg = JSON.parse(value).Packages.length;
 	if (obj_temp.count_LifeCycle_install_pkg > 0) processInstallation_emit(0);
 	else console.log('No packages to install');
 }
@@ -217,7 +217,7 @@ function create_scratch_org(value, process) {
 					},
 				],
 				function(err, result) {
-					fs.readFile('install_packages.json', 'utf8', function readFileCallback(err, data) {
+					fs.readFile('config/configdata.json', 'utf8', function readFileCallback(err, data) {
 						processInstallation_init(data);
 					});
 				}
