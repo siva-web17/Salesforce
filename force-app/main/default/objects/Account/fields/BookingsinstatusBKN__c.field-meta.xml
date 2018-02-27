@@ -3,11 +3,11 @@
     <fullName>BookingsinstatusBKN__c</fullName>
     <description>This field is used to calculate the number of Bookings linked to the Account which are in status 'BKN'</description>
     <externalId>false</externalId>
-    <label># Bookings in status BKN</label>
+    <label># Bookings in status Booking</label>
     <summaryFilterItems>
         <field>Booking__c.Status__c</field>
         <operation>equals</operation>
-        <value>BKN</value>
+        <value>Booking</value>
     </summaryFilterItems>
     <summaryForeignKey>Booking__c.AccountId__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>
