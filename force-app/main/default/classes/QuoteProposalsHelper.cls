@@ -132,11 +132,10 @@ public class QuoteProposalsHelper {
     }*/
     public static void preventQuoteProposalDelete(List<Apttus_Proposal__Proposal__c> oldQuoteProposals) {
         if (!CustomProfilePermissionsUtil.getSkipProposalQuoteDeletePrevent()) {
+            Set<String> quoteProposalStatuses = new Set<String>(Label.QuoteProposalStatusesToDelete.Split(';'));
             for (Apttus_Proposal__Proposal__c prop : oldQuoteProposals) {
-                if (prop.Apttus_Proposal__Approval_Stage__c != Label.QuoteProposalStatusesToDelete) {
-                    prop.addError(String.format(Label.DeleteQuoteProposalErrorMessage, new List<String>{
-                            Label.QuoteProposalStatusesToDelete
-                    }));
+                if (!quoteProposalStatuses.contains(prop.Apttus_Proposal__Approval_Stage__c)){
+                    prop.addError(Label.DeleteQuoteProposalErrorMessage);
                 }
             }
         }

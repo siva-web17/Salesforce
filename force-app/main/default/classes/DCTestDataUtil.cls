@@ -413,7 +413,7 @@ public class DCTestDataUtil {
         anotheraccount.PersonEmail= studentemail1;
         anotheraccount.Email2__c = studentemail2;
         anotheraccount.Region__c = Region ;
-        anotheraccount.HasBooking__c = hasbooking;
+        //anotheraccount.HasBooking__c = hasbooking;
         anotheraccount.PersonBirthdate= DOB;
         //anotheraccount.BookingDate__c = bookingdate;
 
@@ -435,7 +435,7 @@ public class DCTestDataUtil {
         anotheraccount.personotherphone = '9988776666';
         anotheraccount.PersonBirthdate= system.today();
         //anotheraccount.BookingDate__c = system.today().addDays(-200);
-        anotheraccount.HasBooking__c = true;
+        //anotheraccount.HasBooking__c = true;
         anotheraccount.PersonEmail= 'StudentEmail1@email.com';
         anotheraccount.Email2__c = 'StudentEmail2@email.com';
         anotheraccount.Region__c = 'Region' ;
@@ -497,7 +497,7 @@ public class DCTestDataUtil {
         acc1.personotherphone = '9988776666';
         acc1.PersonBirthdate= system.today();
         //acc1.BookingDate__c = system.today().addDays(-200);
-        acc1.HasBooking__c = true;
+        //acc1.HasBooking__c = true;
         acc1.PersonEmail= 'StudentEmail1@email.com';
         acc1.Email2__c = 'StudentEmail2@email.com';
         acc1.Region__c = 'Region' ;
@@ -515,7 +515,7 @@ public class DCTestDataUtil {
         acc2.personotherphone = '9988776666';
         acc2.PersonBirthdate= system.today();
         //acc2.BookingDate__c = system.today().addDays(-200);
-        acc2.HasBooking__c = true;
+        //acc2.HasBooking__c = true;
         acc2.PersonEmail= 'StudentEmail1@email.com';
         acc2.Email2__c = 'StudentEmail2@email.com';
         acc2.Region__c = 'Region' ;
@@ -541,7 +541,7 @@ public class DCTestDataUtil {
         acc1.personotherphone = '3569874521';
         acc1.PersonBirthdate= system.today();
         //acc1.BookingDate__c = system.today().addDays(-200);
-        acc1.HasBooking__c = true;
+        //acc1.HasBooking__c = true;
         acc1.PersonEmail= 'trtsdh56@email.com';
         acc1.Email2__c = 'desfcrse4@email.com';
         acc1.Region__c = 'ZIMBAV' ;
@@ -559,7 +559,7 @@ public class DCTestDataUtil {
         acc2.personotherphone = '0001245786';
         acc2.PersonBirthdate= system.today();
         //acc2.BookingDate__c = system.today().addDays(-300);
-        acc2.HasBooking__c = true;
+        //acc2.HasBooking__c = true;
         acc2.PersonEmail= 'rte567@email.com';
         acc2.Email2__c = 'retwyw32@email.com';
         acc2.Region__c = 'AUSTRA' ;

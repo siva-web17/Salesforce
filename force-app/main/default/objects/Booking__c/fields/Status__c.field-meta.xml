@@ -15,7 +15,7 @@
                 <fullName>BKN</fullName>
                 <default>false</default>
                 <label>Booking</label>
-            </value>
+            </value>          
             <value>
                 <fullName>PRE</fullName>
                 <default>false</default>
@@ -26,6 +26,16 @@
                 <default>false</default>
                 <label>Cancelled Booking</label>
             </value>
+            <value>
+                <fullName>STP</fullName>
+                <default>false</default>
+                <label>Sent To Poseidon</label>
+            </value>
+            <value>
+                <fullName>ERR</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>            
         </valueSetDefinition>
     </valueSet>
 </CustomField>

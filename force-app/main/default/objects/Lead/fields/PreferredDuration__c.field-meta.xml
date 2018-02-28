@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>PreferredDuration__c</fullName>
-    <description>This is the preferred duration of customer which is stored from Lead/Opportunity screen.</description>
+    <description>This is the preferred duration of customer which is stored from Lead/Opportunity screen</description>
     <externalId>false</externalId>
     <label>Preferred Duration</label>
     <required>false</required>
@@ -94,105 +94,11 @@
             </value>
         </valueSetDefinition>
         <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>LT</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>1 week</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>LT</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>2 weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>LT</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>3 weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>LT</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>4 weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>5 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>6 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>7 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>8 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>9 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>10 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>11 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>12 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>ILSU</controllingFieldValue>
-            <controllingFieldValue>ILSH</controllingFieldValue>
-            <controllingFieldValue>ILS</controllingFieldValue>
-            <controllingFieldValue>ILSP</controllingFieldValue>
-            <valueName>>12 Weeks</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>MLYP</controllingFieldValue>
             <controllingFieldValue>AY</controllingFieldValue>
             <controllingFieldValue>AYP</controllingFieldValue>
             <controllingFieldValue>MLY</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
             <valueName>Semester</valueName>
         </valueSettings>
         <valueSettings>
@@ -200,6 +106,7 @@
             <controllingFieldValue>AY</controllingFieldValue>
             <controllingFieldValue>AYP</controllingFieldValue>
             <controllingFieldValue>MLY</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
             <valueName>Year</valueName>
         </valueSettings>
         <valueSettings>
@@ -207,7 +114,116 @@
             <controllingFieldValue>AY</controllingFieldValue>
             <controllingFieldValue>AYP</controllingFieldValue>
             <controllingFieldValue>MLY</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
             <valueName>Extended Year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>LT</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>1 week</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>LT</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>2 weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>LT</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>3 weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>LT</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>4 weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>5 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>6 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>7 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>8 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>9 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>10 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>11 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>12 Weeks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILS</controllingFieldValue>
+            <controllingFieldValue>ILSU</controllingFieldValue>
+            <controllingFieldValue>ILSH</controllingFieldValue>
+            <controllingFieldValue>ILSP</controllingFieldValue>
+            <controllingFieldValue>MULTI</controllingFieldValue>
+            <valueName>>12 Weeks</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

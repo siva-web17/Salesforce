@@ -161,6 +161,14 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Finds EF offer too expensive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Had no intention</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Has no means</fullName>
             <default>false</default>
         </values>

@@ -9,29 +9,29 @@
     <formFactors>Large</formFactors>
     <label>PQ Support</label>
     <navType>Standard</navType>
-    <tab>standard-Opportunity</tab>
-    <tab>Apttus_Proposal__Proposal__c</tab>
-    <tab>standard-Product2</tab>
-    <tab>Apttus_Config2__PriceList__c</tab>
-    <tab>LTCourseProgram__c</tab>
-    <tab>Destination__c</tab>
-    <tab>Departure_Point__c</tab>
-    <tab>Fixed_Fare__c</tab>
-    <tab>Start_Dates__c</tab>
-    <tab>Apttus_Config2__Incentive__c</tab>
-    <tab>Apttus_Config2__ClassificationName__c</tab>
-    <tab>Apttus_Config2__ConstraintRule__c</tab>
-    <tab>Apttus_Config2__ConfigSettings</tab>
-    <tab>CRMC_PP__ActionGrid_Explorer</tab>
-    <tab>Apttus_Config2__HierarchyViewUpdate</tab>
-    <tab>Apttus_Config2__CategoryUpdate</tab>
-    <tab>Apttus_Config2__BundleMaintenance</tab>
-    <tab>Apttus_Config2__ConstraintRuleMaintenance</tab>
-    <tab>Apttus_Config2__ProductFilterMaintenance</tab>
-    <tab>Apttus_Config2__AttributeMaintenance</tab>
-    <tab>Apttus_Config2__ProductGroup__c</tab>
-    <tab>Apttus_Config2__ProductAttributeGroup__c</tab>
-    <tab>Apttus_Proposal__Proposal_Document_Output_Formats</tab>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>Apttus_Proposal__Proposal__c</tabs>
+    <tabs>standard-Product2</tabs>
+    <tabs>Apttus_Config2__PriceList__c</tabs>
+    <tabs>LTCourseProgram__c</tabs>
+    <tabs>Destination__c</tabs>
+    <tabs>Departure_Point__c</tabs>
+    <tabs>Fixed_Fare__c</tabs>
+    <tabs>Start_Dates__c</tabs>
+    <tabs>Apttus_Config2__Incentive__c</tabs>
+    <tabs>Apttus_Config2__ClassificationName__c</tabs>
+    <tabs>Apttus_Config2__ConstraintRule__c</tabs>
+    <tabs>Apttus_Config2__ConfigSettings</tabs>
+    <tabs>CRMC_PP__ActionGrid_Explorer</tabs>
+    <tabs>Apttus_Config2__HierarchyViewUpdate</tabs>
+    <tabs>Apttus_Config2__CategoryUpdate</tabs>
+    <tabs>Apttus_Config2__BundleMaintenance</tabs>
+    <tabs>Apttus_Config2__ConstraintRuleMaintenance</tabs>
+    <tabs>Apttus_Config2__ProductFilterMaintenance</tabs>
+    <tabs>Apttus_Config2__AttributeMaintenance</tabs>
+    <tabs>Apttus_Config2__ProductGroup__c</tabs>
+    <tabs>Apttus_Config2__ProductAttributeGroup__c</tabs>
+    <tabs>Apttus_Proposal__Proposal_Document_Output_Formats</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>PQ_Support_UtilityBar</utilityBar>
+    <!--<utilityBar>PQ_Support_UtilityBar</utilityBar>-->
 </CustomApplication>
