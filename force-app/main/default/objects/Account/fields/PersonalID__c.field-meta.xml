@@ -3,7 +3,7 @@
     <fullName>PersonalID__c</fullName>
     <description>Option to enter the ID number of the Account.</description>
     <externalId>false</externalId>
-    <label>Personal ID</label>
+    <label>National ID</label>
     <length>40</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
