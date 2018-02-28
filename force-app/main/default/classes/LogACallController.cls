@@ -165,28 +165,32 @@ public with sharing class LogACallController {
         }
     }
 
-    @AuraEnabled
+     @AuraEnabled
     public static List<String> getProgramsForChange(Id recordId){
-        Set<String> programs = null;
+        Set<String> programs = new Set<String>();
         try{
             String program = '';
             if(recordId.getSobjectType() == Opportunity.getSObjectType()){
                 Opportunity opportunity = OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
-                programs = FieldUtilityClass.getPickListValues(Opportunity.getSObjectType(),'Program__c').keySet();
+                Map<String, Map<String,String>> marketProgramMap = FieldUtilityClass.getFieldDependenciesMap(Opportunity.getSObjectType().getDescribe().getName(),'Market__c','Program__c');
+                if(marketProgramMap.containsKey(opportunity.Market__c)){
+                    programs = marketProgramMap.get(opportunity.Market__c).keySet();
+                }
                 program = opportunity.Program__c;
             }
             else if(recordId.getSobjectType() == Lead.getSObjectType()){
                 Lead lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
-                programs = FieldUtilityClass.getPickListValues(Lead.getSObjectType(),'Program__c').keySet();
+                Map<String, Map<String,String>> marketProgramMap = FieldUtilityClass.getFieldDependenciesMap(Lead.getSObjectType().getDescribe().getName(),'Market__c','Program__c');
+                if(marketProgramMap.containsKey(lead.Market__c)){
+                    programs = marketProgramMap.get(lead.Market__c).keySet();
+                }
                 program = lead.Program__c;
             }
 
             if(programs.contains(program)){
                 programs.remove(program);
             }
-            if(programs.contains('MULTI')){
-                programs.remove('MULTI');
-            }
+            
             return new List<String>(programs);
         }
         catch (Exception e){
