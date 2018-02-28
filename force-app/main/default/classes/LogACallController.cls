@@ -306,7 +306,13 @@ public with sharing class LogACallController {
                     if(lcr.opportunityId != null){
                         objOpp.id = lcr.opportunityId;
                         objOpp.FirstContactDateTime__c = Datetime.now();
+                        objOpp.ownerid = UserInfo.getUserId();
                         update objOpp;
+                    }
+                    if(lcr.accountid!=null){
+                      objAccount.id = lcr.accountid;
+                      objAccount.ownerid = UserInfo.getUserId();
+                      update objAccount;
                     }
 
                     Map<String,String> result = new Map<String,String>();

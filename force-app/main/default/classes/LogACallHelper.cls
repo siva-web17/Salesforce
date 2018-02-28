@@ -214,11 +214,20 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds);
+        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
-                Task callTask = lead.Tasks[0];
+                Task callTask = null;
+                for(Task objTask:lead.Tasks){
+                    objTask.ownerid = UserInfo.getUserId();
+                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
+                        callTask = objTask;
+                    }
+                }
+                
+                update lead.Tasks;
+                //Task callTask = lead.Tasks[0];
                 if(callTask.IsClosed) {
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
@@ -226,6 +235,11 @@ public with sharing class LogACallHelper {
                     update callTask;
                     callTask.IsParentClosing__c = false;
                     update callTask;
+                }
+                if(callTask == null){
+                    System.debug('Created a new Task');
+                    callTask = LeadsHelper.createSystemCallTaskRecordForLead(lead);
+                    insert callTask;
                 }
             }
             else{
