@@ -12,19 +12,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Quote_Proposal__c</field>
+                <field>QuoteProposal__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Discount_Reason__c</field>
+                <field>ArticleCode__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Article_Name__c</field>
+                <field>Description__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Net_Price__c</field>
+                <field>NetPrice__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
