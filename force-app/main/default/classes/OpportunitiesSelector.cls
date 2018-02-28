@@ -33,7 +33,7 @@ public class OpportunitiesSelector {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
                                      FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
                                FROM Opportunity
