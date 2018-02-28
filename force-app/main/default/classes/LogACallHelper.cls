@@ -141,16 +141,6 @@ public with sharing class LogACallHelper {
                     insert visitEvent;
                 } else if (callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) {
                     System.debug('Change program section invoked');
-                    Map<String, List<String>> picklistDependencies = FieldUtilityClass.getFieldDependencies(getSObjectName(parentId), 'Product__c', 'Program__c');
-                    String product = '';
-                    for (String products : picklistDependencies.keySet()) {
-                        for (String program : picklistDependencies.get(products)) {
-                            if (program == selectedProgram) {
-                                product = products;
-                                break;
-                            }
-                        }
-                    }
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
@@ -161,14 +151,12 @@ public with sharing class LogACallHelper {
                         openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                     }
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Product__c != product || opp.Program__c != selectedProgram) {
-                            opp.Product__c = product;
+                        if (opp.Program__c != selectedProgram) {                            
                             opp.Program__c = selectedProgram;
                             update opp;
                         }
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if (lead.Product__c != product || lead.Program__c != selectedProgram) {
-                            lead.Product__c = product;
+                        if ( lead.Program__c != selectedProgram) {                           
                             lead.Program__c = selectedProgram;
                             update lead;
                         }
