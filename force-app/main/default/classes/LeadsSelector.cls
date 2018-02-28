@@ -196,6 +196,20 @@ public class LeadsSelector {
         ];
     }
 
+    public static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> leadIds, Boolean allTask) {
+            // allTask - default value is bool always
+        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        return [
+                SELECT
+                        Id, Name, Status, Product__c, Program__c,OwnerId,
+                        (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
+                        FROM Tasks
+                        WHERE IsClosed = False)
+                FROM Lead
+                WHERE Id IN :leadIds
+        ];
+    }
+
     /**
     * @author Arkadiusz Celej
     * @param List<id> leadIds - Leads to select

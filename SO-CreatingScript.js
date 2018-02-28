@@ -49,8 +49,23 @@ function displayScratchOrg(value) {
 		var response = yield cmd.run('sfdx force:org:display -u ' + obj_temp.scratch_org_alias);
 		if (response.success) {
 			spinner.stop();
-			spinner.succeed('Command executed successfully');
 			prompt.start();
+			prompt.get(
+				[
+					{
+						name: 'install_packages',
+						required: true,
+						hidden: false,
+						description: Head('Enter to install packages:'),
+						default: 'yes',
+					},
+				],
+				function(err, result) {
+					fs.readFile('config/configdata.json', 'utf8', function readFileCallback(err, data) {
+						processInstallation_init(data);
+					});
+				}
+			);
 		} else {
 			console.log(error('Invalid Comment, Please contact administrator'));
 			spinner.stop();
@@ -158,25 +173,15 @@ function processInstallation_emit(i) {
 			}
 		})();
 	} else {
-		prompt.get(
-			[
-				{
-					name: 'generatePasswordEnter',
-					required: true,
-					description: Head('Press enter to generate password :'),
-					default: 'yes',
-				},
-			],
-			function(err, result) {
-				generatePassword();
-			}
-		);
+		console.log(success('Package installation process completed'));
+		spinner.stop();
+		process.exit();
 	}
 }
 
 function processInstallation_init(value) {
-	obj_temp.packages_data = JSON.parse(value).result;
-	obj_temp.count_LifeCycle_install_pkg = JSON.parse(value).result.length;
+	obj_temp.packages_data = JSON.parse(value).Packages;
+	obj_temp.count_LifeCycle_install_pkg = JSON.parse(value).Packages.length;
 	if (obj_temp.count_LifeCycle_install_pkg > 0) processInstallation_emit(0);
 	else console.log('No packages to install');
 }
@@ -204,22 +209,18 @@ function create_scratch_org(value, process) {
 				obj_temp.scratch_org_username = emailPatternResolvedArray[0];
 			}
 			if (!obj_temp.scratch_org_id || !obj_temp.scratch_org_username) return;
-
 			prompt.start();
 			prompt.get(
 				[
 					{
-						name: 'install_packages',
+						name: 'generatePasswordEnter',
 						required: true,
-						hidden: false,
-						description: Head('Enter to install packages:'),
+						description: Head('Press enter to generate password :'),
 						default: 'yes',
 					},
 				],
 				function(err, result) {
-					fs.readFile('install_packages.json', 'utf8', function readFileCallback(err, data) {
-						processInstallation_init(data);
-					});
+					generatePassword();
 				}
 			);
 		} else {

@@ -10,7 +10,7 @@ public class QuotePreview {
         try{
 
             fetchLineItems = [select id,name,Apttus_Proposal__Product__c,Product_Code__c ,Apttus_Proposal__Description__c ,Apttus_Proposal__Product__r.ProductCode,
-                    Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
+                     Apttus_Proposal__Product__r.name,Apttus_Proposal__Proposal__c,APTS_Product_Code__c,Apttus_QPConfig__LineType__c,
                     Non_Discounted_Price__c,Apttus_QPConfig__Quantity2__c,Apttus_Proposal__Quantity__c,Apttus_Proposal__Proposal__r.Program__c,
                     Apttus_QPConfig__StartDate__c,Apttus_QPConfig__EndDate__c,Discount__c,LTDestinationCode__c,LTCourseNumber__c,
                     APTS_Discount_Reason__c,Apttus_QPConfig__NetPrice__c,CurrencyIsoCode,
@@ -68,13 +68,9 @@ public class QuotePreview {
                 if(ar.get('APTS_Discount_Reason__c')!=null && String.valueOf(ar.get('APTS_Discount_Reason__c'))!=''){
                     LineItemGroupWrapper lineItemWrp = new LineItemGroupWrapper();
                     lineItemWrp.ProductCode = String.valueOf(ar.get('APTS_Discount_Reason__c'));
-                    //lineItemWrp.ProductCode = mapOfPicklistVal.get(String.valueOf(ar.get('APTS_Discount_Reason__c')));
-                    System.debug('lineItemWrp.ProductCode== '+lineItemWrp.ProductCode);
                     lineItemWrp.netPrice = (Decimal)ar.get('netPrice')-(Decimal)ar.get('orgPrice');
                     lineItemWrp.DiscountQuantity = (Decimal)ar.get('DiscountQuantity');
                     lineItemWrp.ProductName = mapOfPicklistVal.get(String.valueOf(ar.get('APTS_Discount_Reason__c')));
-                    //lineItemWrp.ProductName = String.valueOf(ar.get('APTS_Discount_Reason__c'));
-                    System.debug('lineItemWrp.ProductName== '+lineItemWrp.ProductName);
                     lineItemWrp.CurrencyPreview = String.valueOf(ar.get('currency'));
                     lineItemWrp.calculatedPrice = lineItemWrp.netPrice * lineItemWrp.DiscountQuantity;
                     lstOfSummary.add(lineItemWrp);
@@ -144,7 +140,7 @@ public class QuotePreview {
         List<TemporaryQuoteLineItem__c> lstOfQuoteData = new List<TemporaryQuoteLineItem__c>();
         List<LineItemGroupWrapper> lstOfSummaryData = (List<LineItemGroupWrapper>)JSON.deserialize(summaryData,List<LineItemGroupWrapper>.class);
         try{
-            lstOfQuoteData = [Select id from TemporaryQuoteLineItem__c where Quote_Proposal__c =: rcrdId];
+            lstOfQuoteData = [Select id from TemporaryQuoteLineItem__c where QuoteProposal__c =: rcrdId];
         }catch(Exception ex){
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'QuotePreview', 'Preview', currentrecord);
@@ -161,11 +157,11 @@ public class QuotePreview {
             TemporaryQuoteLineItem__c QLine;
             for(LineItemGroupWrapper lst: lstOfSummaryData){
                 QLine = new TemporaryQuoteLineItem__c();
-                QLine.Quote_Proposal__c = (Id) rcrdId;
+                QLine.QuoteProposal__c = (Id) rcrdId;
                 QLine.Quantity__c = lst.DiscountQuantity;
-                QLine.Discount_Reason__c = lst.ProductCode;
-                QLine.Article_Name__c = lst.ProductName;
-                QLine.Net_Price__c = lst.netPrice;
+                QLine.ArticleCode__c = lst.ProductCode;
+                QLine.Description__c = lst.ProductName;
+                QLine.NetPrice__c = lst.netPrice;
                 lstOfQuoteData.add(QLine);
             }
         }catch(Exception ex){

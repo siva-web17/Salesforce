@@ -7,26 +7,28 @@ public class BindSobject {
         System.debug('&&&&&&&&&&&QuoteId&&&&&&&&&'+QuoteId);
         SobjectBindWrapper bindData = new SobjectBindWrapper();
         try{
-            Apttus_Proposal__Proposal__c fetchQuote = new Apttus_Proposal__Proposal__c();
+            List<Apttus_Proposal__Proposal__c> fetchQuote = new List<Apttus_Proposal__Proposal__c>();
             fetchQuote = [select id,Apttus_QPConfig__PriceListId__c,CurrencyIsoCode,BookingType__c,BookingChannel__c ,SalesMadeby__c,SalesMadeby__r.name,
-                    Apttus_Proposal__Account__c,Apttus_Proposal__Opportunity__c
-            from Apttus_Proposal__Proposal__c where id=:QuoteId];
-            bindData.Quote = fetchQuote;
-            bindData.BookingTypePickList=GetBookingType();
-            bindData.BookingChannelPickList=GetBookingChannel();
-            bindData.CurrencyPickList=GetCurrency();
-            System.debug('&&&&&&&&&&&Quote&&&&&&&&&'+bindData.Quote);
+                    Apttus_Proposal__Account__c,Apttus_Proposal__Opportunity__c,Apttus_Proposal__Opportunity__r.AccountId from Apttus_Proposal__Proposal__c where id=: QuoteId LIMIT 1];
+            if(fetchQuote == null || fetchQuote.size() == 0) {
+                return null;
+            }
+                bindData.Quote = fetchQuote[0];
+                bindData.BookingTypePickList = GetBookingType();
+                bindData.BookingChannelPickList = GetBookingChannel();
+                bindData.CurrencyPickList = GetCurrency();
+                System.debug('&&&&&&&&&&&Quote&&&&&&&&&' + bindData.Quote);
 
-            Account fetchAccount = new Account();
+            List<Account> fetchAccount = new List<Account>();
             fetchAccount = [select id,Salutation,FirstName,MiddleName,LastName,PersonBirthdate,PersonOtherCity,PersonOtherState,
-                            PersonOtherPostalCode,PersonOtherStreet,PersonEmail,PersonHomePhone,PersonMobilePhone,PersonOtherPhone,
-                            FirstNameEn__c,LastNameEn__c,Age__c,ParentEmail__c,PersonalID__c,PassportNumber__c,PassportType__c,OtherNationalities__c,
-                            PassportIssueDate__c,PassportExpiryDate__c,Nationality__c,NickName__c,Gender__c,BirthCountry__c,
-                            Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,
-                            PersonMailingState from Account where ID =:fetchQuote.Apttus_Proposal__Account__c LIMIT 1];
+                    PersonOtherPostalCode,PersonOtherStreet,PersonEmail,PersonHomePhone,PersonMobilePhone,PersonOtherPhone,
+                    FirstNameEn__c,LastNameEn__c,Age__c,ParentEmail__c,PersonalID__c,PassportNumber__c,PassportType__c,OtherNationalities__c,
+                    PassportIssueDate__c,PassportExpiryDate__c,Nationality__c,NickName__c,Gender__c,BirthCountry__c,
+                    Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,
+                    PersonMailingState from Account where ID =: bindData.Quote.Apttus_Proposal__Opportunity__r.AccountId LIMIT 1];
             System.debug('^^^^^^^^^^^^^^^'+fetchAccount);
-            bindData.personAcc = fetchAccount;
-            bindData.age = fetchAccount.Age__c;
+            bindData.personAcc = fetchAccount[0];
+            bindData.age = fetchAccount[0].Age__c;
             bindData.GenderPickList=GetGender();
             bindData.NationalityPickList=GetNationality();
             bindData.OtherNationalityPickList=GetOtherNationality();
@@ -35,17 +37,18 @@ public class BindSobject {
             bindData.BirthCountryPickList=GetBirthCountry();
             System.debug('^^^^^^^^ bindData.personAcc^^^^^^^'+ bindData.personAcc);
 
-            Opportunity fetchopp = new Opportunity();
+            List<Opportunity> fetchopp = new List<Opportunity>();
             fetchopp = [select id,SalesOffice__c,Market__c,Program__c
-            from Opportunity where AccountID =: fetchAccount.Id];
-            bindData.opp =   fetchopp;
+            from Opportunity where ID =: bindData.Quote.Apttus_Proposal__Opportunity__c LIMIT 1];
+            bindData.opp =   fetchopp[0];
+            bindData.SalesOfficePickList = GetSalesOffice();
             System.debug('^^^^^^^^ bindData.opp^^^^^^^'+ bindData.opp);
 
 
-            Apttus_Config2__PriceList__c fetchPrice = new Apttus_Config2__PriceList__c();
+            List<Apttus_Config2__PriceList__c> fetchPrice = new List<Apttus_Config2__PriceList__c>();
             fetchPrice = [select id,Year__c,Apttus_Config2__AccountId__c,Version__c from Apttus_Config2__PriceList__c
-            where id=:fetchQuote.Apttus_QPConfig__PriceListId__c];
-            bindData.PriceList =   fetchPrice;
+            where ID=: bindData.Quote.Apttus_QPConfig__PriceListId__c LIMIT 1];
+            bindData.PriceList =   fetchPrice[0];
             System.debug('^^^^^^^^ bindData.PriceList^^^^^^^'+ bindData.PriceList);
 
         }
@@ -59,6 +62,11 @@ public class BindSobject {
 
     public static Map<String,String> GetGender() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'Gender__c');
+        //return JSON.serialize(genderMap);
+    }
+
+    public static Map<String,String> GetSalesOffice() {
+        return FieldUtilityClass.getPickListValues(Opportunity.getSObjectType(), 'SalesOffice__c');
         //return JSON.serialize(genderMap);
     }
 
@@ -104,7 +112,8 @@ public class BindSobject {
 
 
     @AuraEnabled
-    public static boolean createRecord(String wrapperData,Boolean isFinishBooking){
+    public static boolean createRecord(String wrapperData,Boolean isFinishBooking, String QuoteId){
+        system.debug('QuoteIdincreateRecord>>'+QuoteId);
         Id currentrecord;
 
         System.debug('*************'+isFinishBooking);
@@ -113,10 +122,9 @@ public class BindSobject {
         SobjectBindWrapper BindWrapper = (SobjectBindWrapper)JSON.deserialize(wrapperData, SobjectBindWrapper.class);
         try{
             update BindWrapper.personAcc;
-            //update BindWrapper.opp;
-            //update BindWrapper.PriceList;
             System.debug('After updating account :'+BindWrapper.personAcc);
             System.debug('After updating Opportunity :'+BindWrapper.opp);
+            System.debug('After updating Opportunity :'+BindWrapper.opp.SalesOffice__c);
             System.debug('After updating PriceList :'+BindWrapper.PriceList);
 
         }
@@ -133,15 +141,14 @@ public class BindSobject {
         QuoUpdate.CurrencyIsoCode = BindWrapper.Quote.CurrencyIsoCode;
         QuoUpdate.BookingType__c = BindWrapper.Quote.BookingType__c;
         QuoUpdate.BookingChannel__c = BindWrapper.Quote.BookingChannel__c;
-//        system.debug('Sales user ' +BindWrapper.Quote.SalesMadeby__c);
-//        QuoUpdate.SalesMadeby__c = BindWrapper.Quote.SalesMadeby__c;
-//        system.debug('QuoUpdate.SalesMadeby__c  ' +QuoUpdate.SalesMadeby__r.name);
         system.debug('Before Integration ' +isFinishBooking);
         QuoUpdate.IntegrationStatus__c = (isFinishBooking) ? System.Label.Sent_To_Poseidon : '';
         system.debug('After Integration '+QuoUpdate );
         try{
             update QuoUpdate;
             System.debug('QuoUpdate :'  +QuoUpdate);
+            //Call Scribe Service after updating the quote
+            InvokeScribe.InvokeScribeAfterFinishBooking_Async(QuoUpdate.Id);
         }
         catch(Exception ex){
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
@@ -149,18 +156,31 @@ public class BindSobject {
             System.debug('Dml exception :'  +ex.getMessage());
         }
         try{
+
+            Apttus_Proposal__Proposal__c QuoteAfterUpdate = new Apttus_Proposal__Proposal__c();
+            QuoteAfterUpdate = [select id,SalesMadeby__c,Apttus_Proposal__Proposal_Name__c from Apttus_Proposal__Proposal__c where id=: QuoteId LIMIT 1];
+            system.debug('QuoteAfterUpdate'+QuoteAfterUpdate);
             Booking__c bookingRecord = new Booking__c();
-            bookingRecord.AccountId__c = BindWrapper.personAcc.id;
             bookingRecord.BrochureSeason__c = BindWrapper.PriceList.Version__c;
             bookingRecord.BrochureYear__c =Decimal.valueOf(BindWrapper.PriceList.Year__c);
-            bookingRecord.MainSalesResponsible__c = QuoUpdate.SalesMadeby__c;
+            bookingRecord.AccountId__c = BindWrapper.personAcc.id;            
+            System.debug('SalesMadeby__c before :'  + QuoteAfterUpdate.SalesMadeby__c);
+            bookingRecord.MainSalesResponsible__c = UserInfo.getUserId();
+            if(QuoteAfterUpdate.SalesMadeby__c != null){
+                bookingRecord.MainSalesResponsible__c = QuoteAfterUpdate.SalesMadeby__c;
+            }
+            System.debug('Null after :'  + UserInfo.getUserId());
+            System.debug('MainSalesResponsible__c after :'  + bookingRecord.MainSalesResponsible__c);
             bookingRecord.Program__c = BindWrapper.opp.Program__c;
+            bookingRecord.CurrencyIsoCode = QuoUpdate.CurrencyIsoCode;
             bookingRecord.SalesOffice__c = BindWrapper.opp.SalesOffice__c;
+            System.debug('bookingRecord.SalesOffice__c :'  + bookingRecord.SalesOffice__c);
+            System.debug('BindWrapper.opp.SalesOffice__c :'  + BindWrapper.opp.SalesOffice__c);
             bookingRecord.OpportunityId__c=BindWrapper.opp.Id;
             bookingRecord.QuoteId__c=QuoUpdate.Id;
-            bookingRecord.Status__c =QuoUpdate.BookingType__c;
-            bookingRecord.Integrationstatus__c = Label.Sent_To_Poseidon;
+            bookingRecord.Status__c = System.Label.STP_Booking;
             insert bookingRecord;
+            System.debug('bookingRecord :'  + bookingRecord);
             return true;
         }
         catch(Exception ex){
