@@ -356,7 +356,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-          <value>0127E000000E4Kn</value>
+          <value>0120Y0000002mXn</value>
     </labels>
     <labels>
     <fullName>DMLTypeDelete</fullName>
@@ -631,7 +631,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>InfoMeeting</shortDescription>
-        <value>InfoMeeting</value>
+        <value>IM</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
