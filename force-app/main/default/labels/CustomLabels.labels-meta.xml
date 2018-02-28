@@ -1807,4 +1807,12 @@
         <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
         <value>a5J6E0000000CikUAE</value>
     </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
+    </labels>
 </CustomLabels>

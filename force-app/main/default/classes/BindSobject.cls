@@ -156,7 +156,7 @@ public class BindSobject {
             System.debug('Dml exception :'  +ex.getMessage());
         }
         try{
-
+            
             Apttus_Proposal__Proposal__c QuoteAfterUpdate = new Apttus_Proposal__Proposal__c();
             QuoteAfterUpdate = [select id,SalesMadeby__c,Apttus_Proposal__Proposal_Name__c from Apttus_Proposal__Proposal__c where id=: QuoteId LIMIT 1];
             system.debug('QuoteAfterUpdate'+QuoteAfterUpdate);
@@ -174,7 +174,7 @@ public class BindSobject {
             System.debug('BindWrapper.opp.SalesOffice__c :'  + BindWrapper.opp.SalesOffice__c);
             bookingRecord.OpportunityId__c=BindWrapper.opp.Id;
             bookingRecord.QuoteId__c=QuoUpdate.Id;
-            bookingRecord.Integrationstatus__c = System.Label.Sent_To_Poseidon;
+            bookingRecord.Status__c = System.Label.STP_Booking;
             insert bookingRecord;
             System.debug('bookingRecord :'  + bookingRecord);
             return true;
