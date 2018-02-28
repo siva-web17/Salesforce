@@ -307,6 +307,7 @@ public with sharing class LogACallController {
                     leadConversion.setOpportunityName(leadToConvert.FirstName + ' ' + leadToConvert.LastName);
                     Database.LeadConvertResult lcr = Database.convertLead(leadConversion);
                     opportunity objOpp = new opportunity();
+                    Account objAccount = new Account();
                     if(lcr.opportunityId != null){
                         objOpp.id = lcr.opportunityId;
                         objOpp.FirstContactDateTime__c = Datetime.now();
