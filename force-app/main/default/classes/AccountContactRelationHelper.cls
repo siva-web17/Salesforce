@@ -33,8 +33,8 @@ public with sharing class AccountContactRelationHelper {
 
                     AccountContactrelationfieldValueMap.put('Roles',String.valueOf(accountContactRecord.Roles));
                     if (UserMap.containsKey(accountContactRecord.CreatedById) && UserMap.containsKey(accountContactRecord.LastModifiedById)) {
-                        AccountContactrelationfieldValueMap.put('CreatedBy',String.valueOf(UserMap.get(accountContactRecord.CreatedById).Name));
-                        AccountContactrelationfieldValueMap.put('LastModifiedBy',String.valueOf(UserMap.get(accountContactRecord.LastModifiedById).Name));
+                        AccountContactrelationfieldValueMap.put('CreatedBy',String.valueOf(UserMap.get(accountContactRecord.CreatedById).Email.substringBefore('@')));
+                        AccountContactrelationfieldValueMap.put('LastModifiedBy',String.valueOf(UserMap.get(accountContactRecord.LastModifiedById).Email.substringBefore('@')));
                     }
                     else
                     {
@@ -46,6 +46,8 @@ public with sharing class AccountContactRelationHelper {
                     AccountContactrelationfieldValueMap.put('LastModifiedDate',String.valueOf(accountContactRecord.LastModifiedDate));
                     AccountContactrelationfieldValueMap.put('AccountId', String.valueOf(accountContactRecord.AccountContactID__c));
                     AccountContactrelationfieldValueMap.put('DMLType', DMLType);
+                    AccountContactrelationfieldValueMap.put('FirstName',  (accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c)))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).Firstname:'');
+                    AccountContactrelationfieldValueMap.put('LastName', (accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c)))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).LastName:'');
                     AccountContactrelationfieldValueMap.put('MasterRecordId', String.valueOf(accountContactRecord.accountid));
                     updateAccountInfo.add(AccountContactrelationfieldValueMap);
                 }

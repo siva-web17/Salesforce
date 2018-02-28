@@ -83,6 +83,7 @@ public class AccountsHelper {
                         }
                     }
                     if (AddressfieldValueMap.size() > 0) {
+                        AddressfieldValueMap.putAll(AccountsService.MissingAddressfields(accountRecord));
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Address.getName(), AddressfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
@@ -95,7 +96,9 @@ public class AccountsHelper {
                             CustomerfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
+
                     if (CustomerfieldValueMap.size() > 0) {
+                        CustomerfieldValueMap.putAll(AccountsService.MissingCustomerDetails(accountRecord));
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Customer.getName(), CustomerfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
@@ -144,8 +147,9 @@ public class AccountsHelper {
 
                 Map<String, String> userDetailsMap = new Map<String, String>();
                 if (UserMap.containsKey(newAccountMap.values()[0].CreatedById) && UserMap.containsKey(newAccountMap.values()[0].LastModifiedById)) {
-                    userDetailsMap.put('CreatedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].CreatedById).Name));
-                    userDetailsMap.put('LastModifiedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].LastModifiedById).Name));
+                    userDetailsMap.put('CreatedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].CreatedById).Email.substringBefore('@')));
+                    userDetailsMap.put('LastModifiedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].LastModifiedById).Email.substringBefore('@')));
+
                 }
                 else
                 {
