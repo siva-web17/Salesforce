@@ -234,9 +234,10 @@ public with sharing class LogACallController {
         ApexResponse response = new ApexResponse();
         try
         {
+            Lead lead = new Lead();
             // Update the values selected in the UI on the Lead or Opportunity
             if(recordId.getSobjectType() == Lead.getSObjectType()){
-                Lead lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
+                lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
                 lead.status = lead.status=='closed'?'open':lead.status;
                 lead.LikelihoodToBook__c = likelihoodToBook;
                 lead.HearAboutUs__c = hearAboutUs;
@@ -247,7 +248,7 @@ public with sharing class LogACallController {
                 }
                 lead.WhenYear__c = whenYear;
                 lead.WhenMonth__c = whenMonth;
-                update lead;
+                //update lead;
             }
             else if(recordId.getSobjectType() == Opportunity.getSObjectType()){
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
@@ -262,14 +263,11 @@ public with sharing class LogACallController {
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
                   
                     if(bookOn == NULL||opp.CloseDate == bookOn.date()){
-                     
                         opp.CloseDate = date.today().addmonths(2);
                     }
                     else{
-                  
                         opp.CloseDate = bookOn.date();
                     }
-                    
                     update opp;
                 }
                 else {
@@ -289,41 +287,43 @@ public with sharing class LogACallController {
                     opp.TFBypassStageValidation__c = false;
                     update opp;
                 }
+            
+            Boolean isLeadReached = String.valueOf(recordId).substring(0, 3) == '00Q' && LogACallHelper.allReachedItems.contains(callAction.toUpperCase());
             // If a call is reached on the Lead, convert the Lead to Opportunity directly
-            if(String.valueOf(recordId).substring(0, 3) == '00Q' && LogACallHelper.allReachedItems.contains(callAction.toUpperCase())) {
-
-                Lead leadToConvert = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
-                if (leadToConvert.FirstContactDateTime__c == NULL) {
-                    leadToConvert.FirstContactDateTime__c = Datetime.now();
-                    update leadToConvert;
+            if(isLeadReached) {
+                //Lead leadToConvert = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
+                if (lead.FirstContactDateTime__c == NULL) {
+                    lead.FirstContactDateTime__c = Datetime.now();
                 }
+            }
+            update lead;
 
-                if(callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
-                    // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
-                    dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
-                    Database.LeadConvert leadConversion = new database.LeadConvert();
-                    leadConversion.setLeadId(recordId);
-                    leadConversion.setConvertedStatus(System.Label.LeadStageConverted);
-                    leadConversion.setOpportunityName(leadToConvert.FirstName + ' ' + leadToConvert.LastName);
-                    Database.LeadConvertResult lcr = Database.convertLead(leadConversion);
-                    opportunity objOpp = new opportunity();
-                    if(lcr.opportunityId != null){
-                        objOpp.id = lcr.opportunityId;
-                        objOpp.FirstContactDateTime__c = Datetime.now();
-                        objOpp.ownerid = UserInfo.getUserId();
-                        update objOpp;
-                    }
-                    if(lcr.accountid!=null){
-                      objAccount.id = lcr.accountid;
-                      objAccount.ownerid = UserInfo.getUserId();
-                      update objAccount;
-                    }
-
-                    Map<String,String> result = new Map<String,String>();
-                    result.put('Id',lcr.opportunityId);
-                    result.put('Type','Opportunity');
-                    response.Result = result;
+            if(isLeadReached && callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
+                // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
+                dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
+                Database.LeadConvert leadConversion = new database.LeadConvert();
+                leadConversion.setLeadId(recordId);
+                leadConversion.setConvertedStatus(System.Label.LeadStageConverted);
+                leadConversion.setOpportunityName(lead.FirstName + ' ' + lead.LastName);
+                Database.LeadConvertResult lcr = Database.convertLead(leadConversion);
+                opportunity objOpp = new opportunity();
+                Account objAccount = new Account();
+                if(lcr.opportunityId != null){
+                    objOpp.id = lcr.opportunityId;
+                    objOpp.FirstContactDateTime__c = Datetime.now();
+                    objOpp.ownerid = UserInfo.getUserId();
+                    update objOpp;
                 }
+                if(lcr.accountid!=null){
+                    objAccount.id = lcr.accountid;
+                    objAccount.ownerid = UserInfo.getUserId();
+                    update objAccount;
+                }
+                
+                Map<String,String> result = new Map<String,String>();
+                result.put('Id',lcr.opportunityId);
+                result.put('Type','Opportunity');
+                response.Result = result;
             }
 
             // Create a new Task representing the Action that was just done and fill it with details
