@@ -33,10 +33,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Integrationstatus__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>BookingLineInfo__c</field>
             </layoutItems>
         </layoutColumns>
