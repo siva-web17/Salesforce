@@ -533,7 +533,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_5361029607</name>
+        <name>formula_4_myRule_1_A1_8205870830</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -544,7 +544,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_2356357618</name>
+        <name>formula_5_myRule_1_A1_6244905614</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -587,7 +587,7 @@ NOT(ISNULL([Account].MaxActiveBookingEndDate__c) )</stringValue>
         <expression>ISCHANGED({!myVariable_old.MaxActiveBookingEndDate__c})  &amp;&amp;
 NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
     </formulas>
-    <interviewLabel>EF_Account_PB_Create_Update-3_InterviewLabel</interviewLabel>
+    <interviewLabel>EF_Account_PB_Create_Update-4_InterviewLabel</interviewLabel>
     <label>EF_Account_PB_Create_Update</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -637,6 +637,9 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
         <label>Unset Ready for Happy Call</label>
         <locationX>1100</locationX>
         <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_11_A2</targetReference>
+        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -736,6 +739,129 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
             </value>
         </inputAssignments>
         <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Account].Opportunities</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A2</name>
+        <label>Set Active Opportunities To Inactive</label>
+        <locationX>1100</locationX>
+        <locationY>300</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>is Active</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>IsActive__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>is Active</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>IsActive__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
@@ -871,7 +997,7 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
             <field>Name</field>
             <operator>NotEqualTo</operator>
             <value>
-                <elementReference>formula_4_myRule_1_A1_5361029607</elementReference>
+                <elementReference>formula_4_myRule_1_A1_8205870830</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -907,7 +1033,7 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
             </processMetadataValues>
             <field>Name</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_2356357618</elementReference>
+                <elementReference>formula_5_myRule_1_A1_6244905614</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>

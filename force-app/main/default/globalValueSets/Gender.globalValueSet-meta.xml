@@ -13,10 +13,9 @@
     <customValue>
         <fullName>Other</fullName>
         <default>false</default>
-        <isActive>false</isActive>
         <label>Other</label>
     </customValue>
-    <description>Gender of customer</description>
+    <description>Gender of customer.</description>
     <masterLabel>Gender</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>
