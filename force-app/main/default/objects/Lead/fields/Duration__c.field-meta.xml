@@ -33,21 +33,6 @@
                 <label>4 weeks</label>
             </value>
             <value>
-                <fullName>Semester</fullName>
-                <default>false</default>
-                <label>Semester</label>
-            </value>
-            <value>
-                <fullName>Year</fullName>
-                <default>false</default>
-                <label>Year</label>
-            </value>
-            <value>
-                <fullName>Extended Year</fullName>
-                <default>false</default>
-                <label>Extended Year</label>
-            </value>
-            <value>
                 <fullName>5 Weeks</fullName>
                 <default>false</default>
                 <label>5 Weeks</label>
@@ -91,6 +76,21 @@
                 <fullName>>12 Weeks</fullName>
                 <default>false</default>
                 <label>>12 Weeks</label>
+            </value>
+            <value>
+                <fullName>Semester</fullName>
+                <default>false</default>
+                <label>Semester</label>
+            </value>
+            <value>
+                <fullName>Year</fullName>
+                <default>false</default>
+                <label>Year</label>
+            </value>
+            <value>
+                <fullName>Extended Year</fullName>
+                <default>false</default>
+                <label>Extended Year</label>
             </value>
         </valueSetDefinition>
         <valueSettings>

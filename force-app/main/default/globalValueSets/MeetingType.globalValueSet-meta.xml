@@ -22,5 +22,5 @@
     </customValue>
     <description>Type of infomeeting used on Campaign and Campaingn Member</description>
     <masterLabel>Meeting Type</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

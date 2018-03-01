@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customValue>
+     <customValue>
         <fullName>Had no intention</fullName>
         <default>false</default>
         <label>Had no intention</label>
@@ -37,5 +37,5 @@
         <label>Closed by System</label>
     </customValue>
     <masterLabel>Close Reason</masterLabel>
-    <sorted>false</sorted>
-</GlobalValueSet>
+    <sorted>true</sorted>
+    </GlobalValueSet>

@@ -10,16 +10,26 @@
     <valueSet>
         <controllingField>Apttus_Config2__UseType__c</controllingField>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Loyalty</fullName>
+                <default>false</default>
+                <label>Loyalty</label>
+            </value>
+            <value>
+                <fullName>Milestone Incentive</fullName>
+                <default>false</default>
+                <label>Milestone Incentive</label>
+            </value>
             <value>
                 <fullName>Point Accrual</fullName>
                 <default>true</default>
                 <label>Point Accrual</label>
             </value>
             <value>
-                <fullName>Loyalty</fullName>
+                <fullName>Price Program</fullName>
                 <default>false</default>
-                <label>Loyalty</label>
+                <label>Price Program</label>
             </value>
             <value>
                 <fullName>Promotion</fullName>
@@ -30,16 +40,6 @@
                 <fullName>Rebate</fullName>
                 <default>false</default>
                 <label>Rebate</label>
-            </value>
-            <value>
-                <fullName>Milestone Incentive</fullName>
-                <default>false</default>
-                <label>Milestone Incentive</label>
-            </value>
-            <value>
-                <fullName>Price Program</fullName>
-                <default>false</default>
-                <label>Price Program</label>
             </value>
         </valueSetDefinition>
         <valueSettings>
@@ -60,11 +60,11 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Loyalty</controllingFieldValue>
-            <valueName>Point Accrual</valueName>
+            <valueName>Loyalty</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Loyalty</controllingFieldValue>
-            <valueName>Loyalty</valueName>
+            <valueName>Point Accrual</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
