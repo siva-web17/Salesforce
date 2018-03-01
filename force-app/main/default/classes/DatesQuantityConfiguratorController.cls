@@ -40,6 +40,7 @@ public class DatesQuantityConfiguratorController {
             List<Apttus_Config2__LineItem__c> lineItems = Database.query(query);
             return mapLineItems(lineItems);
         }catch(Exception ex){
+            ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'DatesQuantityConfiguratorController', 'saveLineItems', null);
             throw new AuraHandledException(ex.getMessage());
         }
     }
@@ -51,6 +52,7 @@ public class DatesQuantityConfiguratorController {
             update lineItems;
             resetSeasonSupplements(cartId, mapLineItems(lineItems));
         }catch (Exception ex){
+            ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'DatesQuantityConfiguratorController', 'saveLineItems', null);
             throw new AuraHandledException(ex.getMessage());
         }
     }
