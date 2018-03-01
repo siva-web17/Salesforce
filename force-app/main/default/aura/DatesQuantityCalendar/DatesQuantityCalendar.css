@@ -67,6 +67,10 @@
     padding: 0;
 }
 
+.THIS .slds-modal__content{
+    height: 480px;
+}
+
 .THIS .selected-endDate{
     background-color: darkgray;
 }

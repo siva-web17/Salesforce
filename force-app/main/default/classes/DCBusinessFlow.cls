@@ -224,7 +224,6 @@ public class DCBusinessFlow {
             newlyCreatedActiveOpportunity.Ranking__c = inactiveOpportunity[0].Ranking__c!=null?inactiveOpportunity[0].Ranking__c:null;
             update newlyCreatedActiveOpportunity;
         }
-      
     }
 
     //transfer the event from duplicate lead to source lead
