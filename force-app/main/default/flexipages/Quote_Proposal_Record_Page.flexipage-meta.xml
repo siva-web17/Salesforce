@@ -10,6 +10,29 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;div style="text-align: center;">&lt;span style="color:#FF0000;">&lt;b>DDP for LT Quote can not be blank&lt;/b>&lt;/span>&lt;/div></value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+            <visibilityRule>
+                <booleanFilter>1 AND 2</booleanFilter>
+                <criteria>
+                    <leftValue>{!Record.Program__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>LT</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.APTS_Departure_Point__r.Name}</leftValue>
+                    <operator>EQUAL</operator>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
         <mode>Replace</mode>

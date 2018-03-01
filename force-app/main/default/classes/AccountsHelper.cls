@@ -82,8 +82,8 @@ public class AccountsHelper {
                             AddressfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
+                    AddressfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id),AccountsService.MissingAddressfields(accountRecord)));
                     if (AddressfieldValueMap.size() > 0) {
-                        AddressfieldValueMap.putAll(AccountsService.MissingAddressfields(accountRecord));
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Address.getName(), AddressfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
@@ -96,9 +96,8 @@ public class AccountsHelper {
                             CustomerfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
-
+                    CustomerfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id),AccountsService.MissingCustomerDetails(accountRecord)));
                     if (CustomerfieldValueMap.size() > 0) {
-                        CustomerfieldValueMap.putAll(AccountsService.MissingCustomerDetails(accountRecord));
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Customer.getName(), CustomerfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
@@ -175,6 +174,21 @@ public class AccountsHelper {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
                     'AccountsHelper', 'saveAccountInformation', '');
         }
+    }
+
+    public static Map<String,String> FieldChangedvalues(Account OldAccount,Map<String,String> newAccountValues)
+    {
+        Map<String,String> changedValues=new Map<String,String>();
+        for (String fieldApi:newAccountValues.keySet()) {
+            System.debug('OldAccount.get(fieldApi) '+OldAccount.get(fieldApi));
+            System.debug('newAccountValues.get(fieldApi) '+newAccountValues.get(fieldApi));
+            if (OldAccount.get(fieldApi)!=newAccountValues.get(fieldApi)) {
+                changedValues.put(fieldApi,newAccountValues.get(fieldApi));
+            }
+        }
+        System.debug('changedValues '+changedValues);
+        return changedValues;
+        //pavLoopRecord.put(f.getFieldPath(), selectedLTCourse.get(f.getFieldPath()));
     }
 
 
