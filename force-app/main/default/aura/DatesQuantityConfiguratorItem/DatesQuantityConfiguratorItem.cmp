@@ -68,7 +68,12 @@
             <td>{!item.APTS_Product_Type__c}</td>
             <td>
                 <aura:if isTrue="{!and(or(item.APTS_Product_Type__c == 'Accommodation',item.APTS_QunatityModifiable__c == true), item.Apttus_Config2__Uom__c != $Label.c.LineItemUOMEach)}">
-                    <c:DatesQuantityDateInput value="{!item.Apttus_Config2__StartDate__c}"/>
+                    <aura:if isTrue="{!item.Apttus_Config2__StartDate__c}">
+                        <c:DatesQuantityDateInput value="{!item.Apttus_Config2__StartDate__c}"/>
+                        <aura:set attribute="else">
+                            <c:DatesQuantityDateInput value="{!item.Apttus_Config2__StartDate__c}"/>
+                        </aura:set>
+                    </aura:if>
                     <aura:set attribute="else">
                         <ui:outputDate format="{!$Locale.dateFormat}" value="{!item.Apttus_Config2__StartDate__c}"/>
                     </aura:set>
@@ -84,7 +89,12 @@
             </td>
             <td>
                 <aura:if isTrue="{!item.APTS_Product_Type__c == 'Accommodation'}">
-                    <c:DatesQuantityDateInput value="{!item.Apttus_Config2__EndDate__c}" />
+                    <aura:if isTrue="{!item.Apttus_Config2__StartDate__c}">
+                        <c:DatesQuantityDateInput value="{!item.Apttus_Config2__EndDate__c}" />
+                        <aura:set attribute="else">
+                            <c:DatesQuantityDateInput value="{!item.Apttus_Config2__EndDate__c}" />
+                        </aura:set>
+                    </aura:if>
                     <aura:set attribute="else">
                         <ui:outputDate format="{!$Locale.dateFormat}" value="{!item.Apttus_Config2__EndDate__c}"/>
                     </aura:set>
