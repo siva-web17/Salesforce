@@ -43,7 +43,7 @@ public class QuoteProposalsHelper {
                         proposalRecord.Market__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Market__c;
                         proposalRecord.Program__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Program__c;
                         proposalRecord.Product__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).Product__c;
-                        proposalRecord.SalesMadeby__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).owner.Id;
+                        //proposalRecord.SalesMadeby__c = opportunityMap.get(proposalRecord.Apttus_Proposal__Opportunity__c).owner.Id;
                         //System.debug('######################### proposalRecord'+proposalRecord);
                     }
                     if (!translationsMap.containsKey(uniqueRecord)) {
@@ -52,7 +52,7 @@ public class QuoteProposalsHelper {
                             uniqueRecord = defaultArrayString[0] + ' ' + defaultArrayString[1];
                         }
                     }
-                   //System.debug('######################### uniqueRecord'+uniqueRecord);
+                    //System.debug('######################### uniqueRecord'+uniqueRecord);
                     if (translationsMap.containsKey(uniqueRecord)) {
                         //System.debug('######################### It has Unique Key');
                         for (Schema.FieldSetMember f : SObjectType.Translation__c.FieldSets.StaticTextTranslationFieldSet.getFields()) {
@@ -120,7 +120,7 @@ public class QuoteProposalsHelper {
                     'QuoteProposalsHelper', 'updateQuoteProposalFieldsBeforeUpdate', currentRecordId);
         }
     }
-    public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
+    /*public static void InvokeScribeServiceAfterFinishBooking(List<Apttus_Proposal__Proposal__c> newQuoteproposalList) {
         System.debug('######################### Invoke');
         for (Apttus_Proposal__Proposal__c proposalIntegration : newQuoteproposalList) {
             System.debug('######################### Invoke IntegrationStatus__c :' + proposalIntegration.IntegrationStatus__c);
@@ -129,14 +129,13 @@ public class QuoteProposalsHelper {
 
             }
         }
-    }
+    }*/
     public static void preventQuoteProposalDelete(List<Apttus_Proposal__Proposal__c> oldQuoteProposals) {
         if (!CustomProfilePermissionsUtil.getSkipProposalQuoteDeletePrevent()) {
+            Set<String> quoteProposalStatuses = new Set<String>(Label.QuoteProposalStatusesToDelete.Split(';'));
             for (Apttus_Proposal__Proposal__c prop : oldQuoteProposals) {
-                if (prop.Apttus_Proposal__Approval_Stage__c != Label.QuoteProposalStatusesToDelete) {
-                    prop.addError(String.format(Label.DeleteQuoteProposalErrorMessage, new List<String>{
-                            Label.QuoteProposalStatusesToDelete
-                    }));
+                if (!quoteProposalStatuses.contains(prop.Apttus_Proposal__Approval_Stage__c)){
+                    prop.addError(Label.DeleteQuoteProposalErrorMessage);
                 }
             }
         }

@@ -35,6 +35,20 @@
 				}
 				component.set('v.GenderList', arrayGenderMapKeys);
 				//---------------------------------------------------------------
+				component.set('v.selectedSalesOffice', u.opp.SalesOffice__c);
+                var arraySalesMapKeys = [];
+                var result = u.SalesOfficePickList;
+                var p = component.get('v.selectedSalesOffice');
+                var isSelected = false;
+                for (var key in result) {
+                    if (p == key || p == result[key]) {
+                        isSelected = true;
+                    }
+                    arraySalesMapKeys.push({ value: result[key], key: key, Selected: isSelected });
+                    isSelected = false;
+                }
+                component.set('v.SalesOfficeList', arraySalesMapKeys);
+				//---------------------------------------------------------------
 				component.set('v.selectedCountry', u.personAcc.PersonMailingCountry);
 				var arrayMailingCountryMapKeys = [];
 				var result = u.MailingCountryPickList;
@@ -50,6 +64,7 @@
 				component.set('v.MaillingCountryList', arrayMailingCountryMapKeys);
 				//---------------------------------------------------------------
 				component.set('v.selectedBirthCountry', u.personAcc.BirthCountry__c);
+				debugger;
 				var arrayBirthCountryMapKeys = [];
 				var result = u.BirthCountryPickList;
 				var p = component.get('v.selectedBirthCountry');
@@ -414,16 +429,13 @@
 		}
 		//$A.enqueueAction(cmp.get('c.submit'));
 	},
-	moveNext4: function(cmp, event, helper) {
-		debugger;
+	moveNext4: function(cmp, event, helper){
+	debugger;
 		var setChannel = cmp.get('v.selectedBookingChannel');
 		cmp.set('v.wrapperList.Quote.BookingChannel__c', setChannel);
 
 		var setBooking = cmp.get('v.selectedBookingType');
 		cmp.set('v.wrapperList.Quote.BookingType__c', setBooking);
-
-		var setSales = cmp.get('v.selectedSalesOffice');
-		cmp.set('v.wrapperList.opp.SalesOffice__c', setSales);
 
 		var setCurrency = cmp.get('v.selectedCurrency');
 		cmp.set('v.wrapperList.Quote.CurrencyIsoCode', setCurrency);

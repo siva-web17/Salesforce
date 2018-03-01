@@ -33,6 +33,11 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>LTDestinationCode__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>APTS_LTCourseNumber__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>

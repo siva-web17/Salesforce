@@ -356,7 +356,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-          <value>0127E000000E4Kn</value>
+          <value>0120Y0000002mXn</value>
     </labels>
     <labels>
     <fullName>DMLTypeDelete</fullName>
@@ -631,7 +631,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>InfoMeeting</shortDescription>
-        <value>InfoMeeting</value>
+        <value>IM</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -1465,7 +1465,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ProgramLT</shortDescription>
-        <value>Used for Lt Course Program Type in Apttus Call backs</value>
+        <value>LT</value>
     </labels>
     <labels>
         <fullName>ProposalLineItemTypeOption</fullName>
@@ -1798,5 +1798,21 @@
         <protected>false</protected>
         <shortDescription>SPQTask</shortDescription>
         <value>SPQ Task</value>
-    </labels>    
+    </labels>
+    <labels>
+        <fullName>TemplateBuilderCongaQueryId</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
+        <value>a5J6E0000000CikUAE</value>
+    </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
+    </labels>
 </CustomLabels>

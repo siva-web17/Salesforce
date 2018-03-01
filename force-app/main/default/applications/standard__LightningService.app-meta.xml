@@ -4,36 +4,13 @@
     <label>Service Console</label>
     <navType>Console</navType>
     <setupExperience>ServiceSetup</setupExperience>
-    <tab>standard-Case</tab>
-    <tab>standard-Contact</tab>
-    <tab>standard-Account</tab>
-    <tab>standard-report</tab>
-    <tab>standard-Dashboard</tab>
-    <tab>standard-home</tab>
-    <tab>Booking__c</tab>
+    <tabs>standard-Case</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-home</tabs>
+    <tabs>Booking__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningService_UtilityBar</utilityBar>
-    <workspaceMappings>
-        <mapping>
-            <tab>Booking__c</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-Account</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-Case</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-Contact</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-Dashboard</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-home</tab>
-        </mapping>
-        <mapping>
-            <tab>standard-report</tab>
-        </mapping>
-    </workspaceMappings>
 </CustomApplication>

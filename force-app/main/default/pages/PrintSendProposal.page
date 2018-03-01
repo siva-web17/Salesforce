@@ -5,8 +5,11 @@
     <script>
         $Lightning.use("c:PrintSendProposalAppOut", function() {
             $Lightning.createComponent("c:PrintSendProposal",
-                    { cartId : "{!cartId}" ,
-                      proposalId : "{!proposalId}"},
+                    {
+                        cartId : "{!cartId}" ,
+                        proposalId : "{!proposalId}",
+                        backToCartUrl : "{!backCartUrl}"
+                    },
                     "lightning",
                     function(cmp) {
                         $A.eventService.addHandler({
@@ -20,45 +23,10 @@
     </script>
     <style>
         body{
+            background-color: #D9D9D9;
             margin: 0;
         }
-        .apttus-table{
-            color: #7c818e !important;
-            font-size: 12px!important;
-            font-weight: 600!important;
-        }
-        .apttus-table > thead tr{
-            height: 60px;
-        }
-        .apttus-table > thead th{
-            background-color: #F0F1F2 !important;
-            border-right: 1px solid #d4d4d4;
-            border-top: 1px solid #d4d4d4;
-        }
-        .apttus-table .apttus-product-row td{
-            border-top: 1px solid #d4d4d4!important;
-        }
-        .apttus-table > tbody tr td{
-            border-top: 1px solid #f6f6f7!important;
-            height: 50px;
-            vertical-align: top!important;
-        }
-        .apttus-table .apttus-product{
-            padding-left: 15px !important;
-            color: #2093DA;
-        }
-        .apttus-header-1{
-            background: #2093DA !important;
-            border-bottom: none !important;
-            min-height: 2.2rem;
-        }
 
-        .apttus-header-2{
-            background: #334A60;
-            color: white;
-            padding: 5px;
-            min-height: 3rem;
-        }
         .slds-scope .slds-input{
             border: none;
             border-bottom: 2px solid #2093DA;
@@ -67,12 +35,6 @@
             line-height: unset;
             min-height: unset;
             cursor: pointer;
-        }
-        .apttus-input-date{
-            max-width: 125px;
-        }
-        .apttus-input-number{
-            max-width: 60px;
         }
     </style>
 </apex:page>

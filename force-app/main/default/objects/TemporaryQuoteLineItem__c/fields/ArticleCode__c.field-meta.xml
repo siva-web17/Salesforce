@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Article_Name__c</fullName>
-    <description>This will contain Discount reason value and Incentive name of the proposal adjustment line items.</description>
+    <fullName>ArticleCode__c</fullName>
+    <description>This will contain Discount reason code and Incentive code of the proposal adjustment line items.</description>
     <externalId>false</externalId>
-    <label>Article Name</label>
+    <label>Article Code</label>
     <length>100</length>
     <required>false</required>
     <trackTrending>false</trackTrending>

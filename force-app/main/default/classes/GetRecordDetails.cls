@@ -5,10 +5,10 @@ public with sharing class GetRecordDetails {
     {
         /*Opportunity ObjOpportunityDetails=[SELECT OwnerId, Id, Owner.name FROM Opportunity where id=:Id];
         return JSON.serialize(ObjOpportunityDetails);*/
-
-        Apttus_Proposal__Proposal__c ObjQuoteDetails=[SELECT Id,SalesMadeby__c, SalesMadeby__r.Name,LastModifiedBy.Name FROM Apttus_Proposal__Proposal__c where id=:Id];
-        system.debug('Quote is :'+ObjQuoteDetails);
-        return JSON.serialize(ObjQuoteDetails);
+        return userinfo.getName();
+//        Apttus_Proposal__Proposal__c ObjQuoteDetails=[SELECT Id,SalesMadeby__c, SalesMadeby__r.Name,LastModifiedBy.Name FROM Apttus_Proposal__Proposal__c where id=:Id];
+//        system.debug('Quote is :'+ObjQuoteDetails);
+//        return JSON.serialize(ObjQuoteDetails);
     }
 
     @AuraEnabled
@@ -34,7 +34,9 @@ public with sharing class GetRecordDetails {
                 Apttus_Proposal__Proposal__c quoteRecord = Database.query(sQuery);
                 system.debug('before update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
                 quoteRecord.SalesMadeby__c=UserId;
-                system.debug('before update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
+                system.debug('After update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
+                quoteRecord.OwnerId=UserId;
+                system.debug('After update OwnerId is :'+quoteRecord.OwnerId);
                 update quoteRecord;
 
             }

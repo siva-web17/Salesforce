@@ -97,8 +97,8 @@ public  class AccountsService {
             if (updatedAccountList.size() > 0) {
                 Map<String, String> userDetailsMap = new Map<String, String>();
                 if (UserMap.containsKey(newAccountMap.values()[0].CreatedById) && UserMap.containsKey(newAccountMap.values()[0].LastModifiedById)) {
-                    userDetailsMap.put('CreatedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].CreatedById).Name));
-                    userDetailsMap.put('LastModifiedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].LastModifiedById).Name));
+                    userDetailsMap.put('CreatedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].CreatedById).Email.substringBefore('@')));
+                    userDetailsMap.put('LastModifiedBy',String.valueOf(UserMap.get(newAccountMap.values()[0].LastModifiedById).Email.substringBefore('@')));
                 }
                 else
                 {
@@ -113,7 +113,7 @@ public  class AccountsService {
                 AccountsHelper.SyncAccountDetailsWrapper objwrapper = new AccountsHelper.SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
                 String JSONValue= JSON.serialize(objwrapper);
                 System.debug('Girish Account JSON '+JSONValue);
-                ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+                ExternalRouter.callNewAccountFamilyDetailsService(JSONValue);
                 Map<Id, AccountContactRelation> accountContactRelationMap = AccountContactRelationsSelector.getAccountContactRelationForAccountId(accountIdList);
                 if (accountContactRelationMap.size() > 0) {
                     Boolean IsComplicatedBooking=true;
