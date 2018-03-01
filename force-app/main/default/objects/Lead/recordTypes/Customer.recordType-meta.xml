@@ -2608,6 +2608,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HUG</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>ILS</fullName>
             <default>false</default>
         </values>
@@ -2633,6 +2637,10 @@
         </values>
         <values>
             <fullName>MLYP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MULTI</fullName>
             <default>false</default>
         </values>
         <values>
