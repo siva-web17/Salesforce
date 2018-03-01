@@ -49,9 +49,9 @@ public class DatesQuantityConfiguratorController {
         try {
             updateItemsBeforeSave(lineItems);
             update lineItems;
-            resetSeasonSuplements(cartId, mapLineItems(lineItems));
+            resetSeasonSupplements(cartId, mapLineItems(lineItems));
         }catch (Exception ex){
-            throw new AuraException(ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
         }
     }
 
@@ -61,7 +61,7 @@ public class DatesQuantityConfiguratorController {
         }
     }
 
-    private static void resetSeasonSuplements(String cartId, Map<Decimal, List<Apttus_Config2__LineItem__c>> itemsByLineNumber){
+    private static void resetSeasonSupplements(String cartId, Map<Decimal, List<Apttus_Config2__LineItem__c>> itemsByLineNumber){
         for(Decimal lineNumber: itemsByLineNumber.keySet()){
             for(Apttus_Config2__LineItem__c lineItem : itemsByLineNumber.get(lineNumber)) {
                 if (lineItem.APTS_Product_Type__c == 'Course') {
@@ -81,9 +81,13 @@ public class DatesQuantityConfiguratorController {
 
     @AuraEnabled
     public static List<Start_Dates__c> getAvailableStartDates(Apttus_Config2__LineItem__c item) {
-        System.debug('ITEM '+item);
-        Boolean isAdmin = [SELECT Name FROM Profile WHERE Id = :UserInfo.getProfileId()].Name == 'System Administrator';
-        return StartDateHelper.getAvailableStartDates(item.Product_Code__c, item.DestinationCode__c, item.Beginner__c, isAdmin, item.Program__c);
+        Boolean canSelectPastDates = CustomProfilePermissionsUtil.getCanSelectPastStartDates();
+        try {
+            return StartDateHelper.getAvailableStartDates(item.Product_Code__c, item.DestinationCode__c, item.Beginner__c, canSelectPastDates, item.Program__c);
+        }catch (Exception ex){
+            ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(), 'DatesQuantityConfiguratorController', 'getAvailableStartDates', null);
+            throw new AuraHandledException(ex.getMessage());
+        }
     }
 
     @AuraEnabled
@@ -101,6 +105,4 @@ public class DatesQuantityConfiguratorController {
         }
         return mappedItems;
     }
-
-    public class AuraException extends Exception{}
 }

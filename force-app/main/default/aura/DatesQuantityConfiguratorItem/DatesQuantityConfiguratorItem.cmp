@@ -8,6 +8,7 @@
     <aura:attribute name="calendarVisible" type="Boolean" default="false" access="public" />
     <aura:attribute name="courseItem" type="Apttus_Config2__LineItem__c" access="private" />
     <aura:attribute name="startDateSettings" type="StartDateSettings__mdt" access="private"/>
+    <aura:attribute name="errorMessage" type="String" default="" access="private"/>
 
     <aura:registerEvent name="itemsChangedEvent" type="c:DatesQuantityItemsChangedEvent"/>
 
@@ -16,7 +17,16 @@
     <aura:handler name="change" value="{!v.items}" action="{!c.onItemsChange}"/>
 
     {!v.body}
-
+    <aura:if isTrue="{!v.errorMessage}">
+        <div class="slds-notify_container slds-is-absolute">
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{!v.errorMessage}</h2>
+                </div>
+                <lightning:buttonIcon iconName="utility:close" variant="bare" class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" alternativeText="Close" onclick="{!c.clearError}"/>
+            </div>
+        </div>
+    </aura:if>
     <tr class="apttus-product-row">
         <td class="slds-text-align--center">{!v.lineNumber}</td>
         <td colspan="6" class="apttus-product">{!v.items[0].Apttus_Config2__Description__c}</td>
@@ -28,9 +38,7 @@
         <td class="apttus-product">{!v.courseItem.Apttus_Config2__Description__c}</td>
         <td>{!v.courseItem.Product_Code__c}</td>
         <td>{!v.courseItem.APTS_Product_Type__c}</td>
-        <td>{!v.courseItem.Apttus_Config2__Uom__c}</td>
         <td>
-            <!--format fix -->
             <a href="" class="slds-input apttus-input apttus-input-date calendar-link" onclick="{!c.showCalendar}">
                 <aura:if isTrue="{!v.courseItem.Apttus_Config2__StartDate__c}">
                     <ui:outputDate format="{!$Locale.dateFormat}" value="{!v.courseItem.Apttus_Config2__StartDate__c}"/>
@@ -49,7 +57,6 @@
             </aura:if>
         </td>
         <td>
-            <!--format fix -->
             <ui:outputDate format="{!$Locale.dateFormat}" value="{!v.courseItem.Apttus_Config2__EndDate__c}"/>
         </td>
     </tr>
@@ -59,11 +66,9 @@
             <td class="apttus-product">{!item.Apttus_Config2__Description__c}</td>
             <td>{!item.Product_Code__c}</td>
             <td>{!item.APTS_Product_Type__c}</td>
-            <td>{!item.Apttus_Config2__Uom__c}</td>
             <td>
                 <aura:if isTrue="{!and(or(item.APTS_Product_Type__c == 'Accommodation',item.APTS_QunatityModifiable__c == true), item.Apttus_Config2__Uom__c != $Label.c.LineItemUOMEach)}">
-                    <!--format fix -->
-                        <c:DatesQuantityDateInput value="{!item.Apttus_Config2__StartDate__c}"/>
+                    <c:DatesQuantityDateInput value="{!item.Apttus_Config2__StartDate__c}"/>
                     <aura:set attribute="else">
                         <ui:outputDate format="{!$Locale.dateFormat}" value="{!item.Apttus_Config2__StartDate__c}"/>
                     </aura:set>
@@ -71,7 +76,7 @@
             </td>
             <td>
                 <aura:if isTrue="{!and(and(item.APTS_Product_Type__c != 'Destination', item.APTS_Product_Type__c != 'Accommodation'),!item.APTS_QunatityModifiable__c)}">
-                {!item.Apttus_Config2__Quantity__c}
+                    {!item.Apttus_Config2__Quantity__c}
                     <aura:set attribute="else">
                         <lightning:input label="" class="apttus-input apttus-input-number" name="quantity" type="number" value="{!item.Apttus_Config2__Quantity__c}" onchange="{!c.onItemsChange}"/>
                     </aura:set>
@@ -79,13 +84,9 @@
             </td>
             <td>
                 <aura:if isTrue="{!item.APTS_Product_Type__c == 'Accommodation'}">
-                    <!--format fix -->
                     <c:DatesQuantityDateInput value="{!item.Apttus_Config2__EndDate__c}" />
-
                     <aura:set attribute="else">
-                        <!--format fix -->
                         <ui:outputDate format="{!$Locale.dateFormat}" value="{!item.Apttus_Config2__EndDate__c}"/>
-
                     </aura:set>
                 </aura:if>
             </td>
