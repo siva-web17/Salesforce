@@ -11,6 +11,10 @@
         helper.loadAvailableStartDateSettings(component);
     },
 
+    clearError: function (component, event, helper) {
+        component.set('v.errorMessage','');
+    },
+
     showCalendar: function (component, event, helper) {
         helper.createDatesQuantityCalendar(component);
     },

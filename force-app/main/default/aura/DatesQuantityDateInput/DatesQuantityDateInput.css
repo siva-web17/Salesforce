@@ -15,6 +15,7 @@
 
 .THIS .date-input-calendar{
     position: absolute;
+    left: -100%;
     z-index: 2;
     font-size: smaller;
     border: 1px solid silver;
@@ -42,3 +43,5 @@
     background-color: #005fb2;
     color: white;
 }
+
+
