@@ -328,5 +328,5 @@
     </customValue>
     <description>The picklist will store EF.COMMarket Information</description>
     <masterLabel>EFCOMMarket</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

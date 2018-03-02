@@ -17,5 +17,5 @@
     </customValue>
     <description>Gender of customer.</description>
     <masterLabel>Gender</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

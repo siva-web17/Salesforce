@@ -9,7 +9,12 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
             <value>
                 <fullName>Sent Brochure</fullName>
                 <default>false</default>
@@ -24,11 +29,6 @@
                 <fullName>Will not Send Brochure</fullName>
                 <default>false</default>
                 <label>Will not Send Brochure</label>
-            </value>
-            <value>
-                <fullName>N/A</fullName>
-                <default>false</default>
-                <label>N/A</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -10,12 +10,7 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Standalone</fullName>
-                <default>true</default>
-                <label>Standalone</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Bundle</fullName>
                 <default>false</default>
@@ -25,6 +20,11 @@
                 <fullName>Option</fullName>
                 <default>false</default>
                 <label>Option</label>
+            </value>
+            <value>
+                <fullName>Standalone</fullName>
+                <default>true</default>
+                <label>Standalone</label>
             </value>
         </valueSetDefinition>
     </valueSet>

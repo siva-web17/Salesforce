@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customValue>
+<customValue>
         <fullName>FR</fullName>
         <default>false</default>
         <label>French</label>
@@ -152,5 +152,5 @@
     </customValue>
     <description>Customer native language (this language will be used to communicate with customer)</description>
     <masterLabel>Language</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

@@ -1267,5 +1267,5 @@
     </customValue>
     <description>The Picklist will store All the countries</description>
     <masterLabel>Countries</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

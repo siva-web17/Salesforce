@@ -10,11 +10,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>Not Strategic</fullName>
+                <fullName>High</fullName>
                 <default>false</default>
-                <label>Not Strategic</label>
+                <label>High</label>
             </value>
             <value>
                 <fullName>Medium</fullName>
@@ -22,14 +22,14 @@
                 <label>Medium</label>
             </value>
             <value>
-                <fullName>High</fullName>
-                <default>false</default>
-                <label>High</label>
-            </value>
-            <value>
                 <fullName>Must Win</fullName>
                 <default>false</default>
                 <label>Must Win</label>
+            </value>
+            <value>
+                <fullName>Not Strategic</fullName>
+                <default>false</default>
+                <label>Not Strategic</label>
             </value>
         </valueSetDefinition>
     </valueSet>

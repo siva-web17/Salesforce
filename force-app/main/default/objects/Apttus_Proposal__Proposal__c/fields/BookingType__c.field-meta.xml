@@ -9,16 +9,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>PRE</fullName>
-                <default>false</default>
-                <label>PRE</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>BKN</fullName>
                 <default>false</default>
                 <label>BKN</label>
+            </value>
+            <value>
+                <fullName>PRE</fullName>
+                <default>false</default>
+                <label>PRE</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -1766,5 +1766,5 @@
         <label>Yorkshire Residence</label>
     </customValue>
     <masterLabel>Destinations</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>
