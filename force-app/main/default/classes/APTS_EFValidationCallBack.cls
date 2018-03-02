@@ -391,10 +391,15 @@ Boolean isComparativeQuote=true;
                     && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination
                     && lineItem.APTS_Total_Course_Weeks__c > 12){
                 System.debug('lineItem.Product_Code__c'+ lineItem.Product_Code__c);
-                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
-                    System.debug('Setting Return flag to true here');
+                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC || lineItem.Product_Code__c == System.Label.ProductCodeOSHCAY){
+                    System.debug('Setting Return flag to true here 1st if loop');
                             returnFlag = true;
+                    break;
             }
+                else
+                {
+                    returnFlag = false;
+                }
             }
             else if(lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
                     && destinationCodeSet.contains(lineItem.DestinationCode__c)
@@ -403,7 +408,7 @@ Boolean isComparativeQuote=true;
                         && lineItem.Apttus_Config2__Quantity__c > 12){
                     bundleWiseLineCourseItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
-                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
+                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC|| lineItem.Product_Code__c == System.Label.ProductCodeOSHCAY){
                     bundleWiseLineOSHCItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
             }
@@ -411,6 +416,7 @@ Boolean isComparativeQuote=true;
                     (!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
                     &&  lineItem.APTS_Total_Course_Weeks__c <= 12))
             {
+                System.debug('Setting Return flag to true here 2nd if loop');
                 returnFlag = true;
             }
         }
@@ -425,6 +431,7 @@ Boolean isComparativeQuote=true;
             else{
                 for(Decimal  lineItemNumber : bundleWiseLineCourseItemsMap.keySet()){
                     if(bundleWiseLineOSHCItemsMap.get(lineItemNumber) != null){
+                        System.debug('Setting Return flag to true here 3rd if loop');
                         returnFlag = true;
                         System.debug('returnFlag Decimal  lineItemNumber' +returnFlag);
                     }
@@ -437,6 +444,7 @@ Boolean isComparativeQuote=true;
         }
         else if(isComparativeQuote && bundleWiseLineCourseItemsMap.isEmpty())
         {
+            System.debug('Setting Return flag to true here 4th if loop');
             returnFlag = true;
         }
 
