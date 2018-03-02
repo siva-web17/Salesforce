@@ -9,36 +9,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>Expected</fullName>
                 <default>false</default>
                 <label>Expected</label>
-            </value>
-            <value>
-                <fullName>Received</fullName>
-                <default>false</default>
-                <label>Received</label>
-            </value>
-            <value>
-                <fullName>First Revision</fullName>
-                <default>false</default>
-                <label>First Revision</label>
-            </value>
-            <value>
-                <fullName>Technical Input</fullName>
-                <default>false</default>
-                <label>Technical Input</label>
-            </value>
-            <value>
-                <fullName>Pricing</fullName>
-                <default>false</default>
-                <label>Pricing</label>
-            </value>
-            <value>
-                <fullName>Internal Approval</fullName>
-                <default>false</default>
-                <label>Internal Approval</label>
             </value>
             <value>
                 <fullName>Final Draft</fullName>
@@ -46,9 +21,34 @@
                 <label>Final Draft</label>
             </value>
             <value>
+                <fullName>First Revision</fullName>
+                <default>false</default>
+                <label>First Revision</label>
+            </value>
+            <value>
+                <fullName>Internal Approval</fullName>
+                <default>false</default>
+                <label>Internal Approval</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
                 <fullName>Submitted</fullName>
                 <default>false</default>
                 <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Technical Input</fullName>
+                <default>false</default>
+                <label>Technical Input</label>
             </value>
         </valueSetDefinition>
     </valueSet>

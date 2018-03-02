@@ -27,6 +27,11 @@
                 <label>Day</label>
             </value>
             <value>
+                <fullName>Week</fullName>
+                <default>false</default>
+                <label>Week</label>
+            </value>
+            <value>
                 <fullName>Month</fullName>
                 <default>false</default>
                 <label>Month</label>
@@ -35,11 +40,6 @@
                 <fullName>Year</fullName>
                 <default>false</default>
                 <label>Year</label>
-            </value>
-            <value>
-                <fullName>Week</fullName>
-                <default>false</default>
-                <label>Week</label>
             </value>
         </valueSetDefinition>
     </valueSet>

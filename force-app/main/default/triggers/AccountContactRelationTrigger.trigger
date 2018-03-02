@@ -3,5 +3,5 @@
  */
 
 trigger AccountContactRelationTrigger on AccountContactRelation (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
-
+    AccountContactRelationDispatcher.run();
 }

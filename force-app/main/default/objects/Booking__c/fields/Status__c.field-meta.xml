@@ -10,16 +10,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>BKN</fullName>
                 <default>false</default>
                 <label>Booking</label>
-            </value>          
-            <value>
-                <fullName>PRE</fullName>
-                <default>false</default>
-                <label>Pre Application</label>
             </value>
             <value>
                 <fullName>CAX</fullName>
@@ -27,15 +22,20 @@
                 <label>Cancelled Booking</label>
             </value>
             <value>
+                <fullName>ERR</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>  
+            <value>
+                <fullName>PRE</fullName>
+                <default>false</default>
+                <label>Pre Application</label>
+            </value>
+            <value>
                 <fullName>STP</fullName>
                 <default>false</default>
                 <label>Sent To Poseidon</label>
             </value>
-            <value>
-                <fullName>ERR</fullName>
-                <default>false</default>
-                <label>Error</label>
-            </value>            
         </valueSetDefinition>
     </valueSet>
 </CustomField>

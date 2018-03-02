@@ -8,8 +8,8 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
+            <sorted>true</sorted>
+                        <value>
                 <fullName>Chose to do something else</fullName>
                 <default>false</default>
                 <label>Chose to do something else</label>

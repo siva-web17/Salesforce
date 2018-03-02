@@ -296,8 +296,11 @@ public with sharing class LogACallController {
                     lead.FirstContactDateTime__c = Datetime.now();
                 }
             }
-            update lead;
-
+                
+            if(recordId.getSobjectType() == Lead.getSObjectType()){
+                 update lead;
+            }
+			
             if(isLeadReached && callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
                 // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
                 dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
@@ -325,7 +328,6 @@ public with sharing class LogACallController {
                 result.put('Type','Opportunity');
                 response.Result = result;
             }
-
             // Create a new Task representing the Action that was just done and fill it with details
             Task task = new Task();
             task.SalesAction__c = callAction;

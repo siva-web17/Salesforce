@@ -3,6 +3,7 @@
  */
 ({
     createDatesQuantityCalendar : function (component) {
+        var helper = this;
         var item = component.get('v.courseItem');
         var datePickerComponentName = 'c:DatesQuantityCalendar';
         var params = {
@@ -13,12 +14,10 @@
         if(item && item.Apttus_Config2__OptionId__r && item.Apttus_Config2__OptionId__r.APTS_AY_Course_Type__c){
             datePickerComponentName = 'c:DatesQuantityCalendarAY';
         }
-        var helper = this;
         $A.createComponent(
             datePickerComponentName,
             params,
             function (selectorComponent, status, error) {
-                console.log('createing selector');
                 if (status === "SUCCESS") {
                     var body = component.get("v.body");
                     body.push(selectorComponent);
@@ -28,8 +27,7 @@
                     console.log("No response from server or client is offline.")
                 }
                 else if (status === "ERROR") {
-                    console.log(error);
-                    // helper.handleErrors(error);
+                    component.set('v.errorMessage', error);
                 }
             }
         );
@@ -38,9 +36,11 @@
     updateCourseDatesAndQuantity:function (component, newStartDate, newQuantity, newEndDate) {
         var course = component.get('v.courseItem');
         course.Apttus_Config2__StartDate__c = newStartDate;
-        course.Apttus_Config2__EndDate__c = newEndDate;
         course.Apttus_Config2__Quantity__c = newQuantity;
         course.Apttus_Config2__ExtendedQuantity__c = newQuantity;
+        if(newEndDate) {
+            course.Apttus_Config2__EndDate__c = newEndDate;
+        }
         component.set('v.courseItem', course);
         this.updateArticleDates(component);
     },
@@ -71,6 +71,7 @@
     },
 
     loadAvailableStartDateSettings:function (component) {
+        var helper = this;
         var action = component.get('c.getAvailableStartDateSettings');
         action.setParams({
             'item' : component.get('v.courseItem')
@@ -85,12 +86,7 @@
                 }
             }
             else if (state === "ERROR") {
-                var errors = response.getError();
-                var message = 'Unknown error';
-                if(errors && Array.isArray(errors) && errors.length > 0){
-                    message = errors[0].message;
-                }
-                this.handleErrors(message);
+                helper.handleErrors(response.getError());
             }
             else {
                 // Handle other reponse states
@@ -112,13 +108,12 @@
         var courseEndDate = new Date(courseItem.Apttus_Config2__EndDate__c);
         var courseQuantity = courseItem.Apttus_Config2__Quantity__c;
 
-
         for(var i = 0 ; i < items.length; i++){
             if(items[i].Apttus_Config2__Uom__c == $A.get("$Label.c.LineItemUOMWeek")){
-                courseStartDate = this.addDays(courseStartDate, startDatesSettings.StartDateOffSet__c);
-                courseEndDate = this.addDays(courseEndDate, startDatesSettings.EndDateOffSet__c);
-                items[i].Apttus_Config2__StartDate__c = this.formatDate(courseStartDate.getFullYear(), courseStartDate.getMonth()+1, courseStartDate.getDate());
-                items[i].Apttus_Config2__EndDate__c = this.formatDate(courseEndDate.getFullYear(), courseEndDate.getMonth()+1, courseEndDate.getDate());
+                var startDate = this.addDays(courseStartDate, startDatesSettings.StartDateOffSet__c);
+                var endDate = this.addDays(courseEndDate, startDatesSettings.EndDateOffSet__c);
+                items[i].Apttus_Config2__StartDate__c = this.formatDate(startDate.getFullYear(), startDate.getMonth()+1, startDate.getDate());
+                items[i].Apttus_Config2__EndDate__c = this.formatDate(endDate.getFullYear(), endDate.getMonth()+1, endDate.getDate());
                 items[i].Apttus_Config2__Quantity__c = courseQuantity;
             }
         }
@@ -135,25 +130,19 @@
     },
 
     addDays: function(date, days){
+        var result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
         var dateDays = date.getDate();
-        date.setDate(dateDays+days);
-        return date;
+        result.setDate(dateDays+days);
+        return result;
     },
 
     handleErrors : function(errors) {
-        // Configure error toast
-        var toastParams = {
-            title: "Error",
-            message: "Unknown error", // Default error message
-            type: "error"
-        };
-        // Pass the error message if any
-        if (errors && Array.isArray(errors) && errors.length > 0) {
-            toastParams.message = errors[0].message;
+        var message = 'Unknown error';
+        if (errors) {
+            if (errors[0] && errors[0].message) {
+                message = errors[0].message;
+            }
         }
-        // Fire error toast
-        var toastEvent = $A.get("e.force:showToast");
-        toastEvent.setParams(toastParams);
-        toastEvent.fire();
+        component.set('v.errorMessage', message);
     }
 })

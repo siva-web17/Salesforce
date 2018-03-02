@@ -33,7 +33,7 @@
                 <lightning:buttonIcon iconName="utility:close" onclick="{!c.close}" class="apttus-button"/>
             </header>
             <div class="slds-modal__content" >
-                <lightning:card >
+                <lightning:card>
                     <aura:set attribute="title">
                         <div class="apttus-header-2">
                             <lightning:layout horizontalAlign="spread">

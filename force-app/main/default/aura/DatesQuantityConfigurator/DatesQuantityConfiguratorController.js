@@ -14,7 +14,6 @@
     onItemsChange: function (component, event, helper) {
         var changedLineItemsByLineNumber = component.get('v.changedLineItemsByLineNumber');
         var eventItems = event.getParam('items');
-        console.log(eventItems);
         var eventLineNumber = event.getParam('lineNumber');
         changedLineItemsByLineNumber[eventLineNumber] = eventItems;
         component.set('v.changedLineItemsByLineNumber', changedLineItemsByLineNumber);
@@ -22,5 +21,9 @@
 
     back:function (component, event, helper) {
         window.location.href = component.get('v.backToCartUrl');
+    },
+
+    clearError: function (component, event, helper) {
+        component.set('v.errorMessage','');
     }
 })

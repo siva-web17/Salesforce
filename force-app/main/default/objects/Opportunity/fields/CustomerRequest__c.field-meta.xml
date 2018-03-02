@@ -12,16 +12,16 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Info Request</fullName>
-                <default>false</default>
-                <label>Info Request</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Brochure Request</fullName>
                 <default>false</default>
                 <label>Brochure Request</label>
+            </value>
+            <value>
+                <fullName>Info Request</fullName>
+                <default>false</default>
+                <label>Info Request</label>
             </value>
             <value>
                 <fullName>Price Quotation</fullName>

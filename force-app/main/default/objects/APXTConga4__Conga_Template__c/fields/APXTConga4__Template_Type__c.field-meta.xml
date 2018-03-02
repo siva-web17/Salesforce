@@ -9,11 +9,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>Letter</fullName>
-                <default>true</default>
-                <label>Letter</label>
+                <fullName>Envelope</fullName>
+                <default>false</default>
+                <label>Envelope</label>
             </value>
             <value>
                 <fullName>Label</fullName>
@@ -21,9 +21,9 @@
                 <label>Label</label>
             </value>
             <value>
-                <fullName>Envelope</fullName>
-                <default>false</default>
-                <label>Envelope</label>
+                <fullName>Letter</fullName>
+                <default>true</default>
+                <label>Letter</label>
             </value>
         </valueSetDefinition>
     </valueSet>
