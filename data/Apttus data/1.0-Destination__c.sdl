@@ -1,0 +1,11 @@
+#Mapping values
+#Mon Feb 26 13:35:03 IST 2018
+DESTINATIONCODE__C=DestinationCode__c
+OWNERID=OwnerId
+ISLT__C=IsLT__c
+ENDDATEOFFSET__C=EndDateOffSet__c
+LANGUAGE__C=Language__c
+CURRENCYISOCODE=CurrencyIsoCode
+STARTDATEOFFSET__C=StartDateOffSet__c
+COUNTRY__C=Country__c
+NAME=Name

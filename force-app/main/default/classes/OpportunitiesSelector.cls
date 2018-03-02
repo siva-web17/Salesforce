@@ -29,12 +29,11 @@ public class OpportunitiesSelector {
     * @param Set<String> oppIds 
     * @return Returns list of opportunities based on the oppIds
     * */
-    
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
                                      FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
                                FROM Opportunity
@@ -66,7 +65,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunitiesOnAccountId(Id accId) {
         return [
-                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c
+                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c,isactive__c,CloseMainReason__c
                 from Opportunity
                 where AccountId = :accId
                 order by FollowupDateTime__c ASC
@@ -92,11 +91,11 @@ public class OpportunitiesSelector {
     }
     public static list<opportunity> getLstOpportunityOrderByCrtdDateASC(list<opportunity> mergedOpps) {
 
-        list<opportunity> opportunityOrderByCreatedDateASC = [select id,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps ORDER BY createddate ASC];
+        list<opportunity> opportunityOrderByCreatedDateASC = [select id,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps and isactive__c=true ORDER BY createddate ASC];
         return opportunityOrderByCreatedDateASC;
     }
     public static list<opportunity> getLstOfFollowupOpportunity(list<opportunity> mergedOpps) {
-        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c from opportunity where id in:mergedOpps AND stageName = 'FOLLOWUP' ORDER BY FollowupDateTime__c ASC];
+        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c from opportunity where id in:mergedOpps AND stageName = 'FOLLOWUP' and isactive__c=true ORDER BY FollowupDateTime__c ASC];
         return lstOfOpportunity;
 
     }
@@ -104,7 +103,7 @@ public class OpportunitiesSelector {
         list<opportunity> lstOfOpportunity = [
                 select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c
                 from Opportunity
-                Where accountId = :masterAccount.id
+                Where accountId = :masterAccount.id AND isactive__c = true
                 ORDER BY CreatedDate DESC
         ];
         return lstOfOpportunity;
@@ -206,7 +205,6 @@ public class OpportunitiesSelector {
                 WHERE Id in :opportunityIds
         ];
     }
-
 
     /**
     * @author Arjun Mohan
@@ -311,5 +309,13 @@ public class OpportunitiesSelector {
                 (SELECT WhatId FROM Tasks WHERE RecordTypeId = :sbrRecordTypeId AND IsClosed <> TRUE)
             FROM Opportunity
             WHERE AccountId IN : accountIds];
+    }
+
+    public static Map<Id,Opportunity> getOpportunityRecords(List<Id> opportunityIds){
+        Map<Id,Opportunity> opportunityMap = new Map<Id,Opportunity>();
+        if(opportunityIds!=null) {
+            opportunityMap = new Map<Id, Opportunity>([select Id, SalesOffice__c from Opportunity where Id in :opportunityIds]);
+        }
+        return opportunityMap;
     }
 }

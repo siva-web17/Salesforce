@@ -7,12 +7,12 @@ public  class ExternalRouter {
     @future (callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails)
     {
-        JSONGenerator gen = JSON.createGenerator(true);
+        /*JSONGenerator gen = JSON.createGenerator(true);
         gen.writeStartObject();
-        gen.writeStringField('Account', accountDetails);
-        gen.writeEndObject();
-        String jsonS = gen.getAsString();
-        String url=getSericeURL('SyncUpdatedAccountDetails');
+        gen.writeStringField(accountDetails);
+        gen.writeEndObject();*/
+        String jsonS = accountDetails;
+        String url=getServiceURL('SyncUpdatedAccountDetails');
         InvokeService(url,jsonS);
     }
 
@@ -25,23 +25,41 @@ public  class ExternalRouter {
         req.setMethod('POST');
         req.setHeader( 'Content-Type', 'application/json' );
         req.setHeader( 'Accept', 'application/json' );
+        system.debug( 'Accept ' + req );
         req.setBody(body);
+        system.debug( 'body'+ body );
+        //req.setBody(body);
         HttpResponse res = h.send(req);
+        system.debug(' url '+url);
         system.debug(' response is '+res);
         return '';
     }
-    //
+    //Test
     @future (callout=true)
     public static void callUpdateAccountFamilyDetailsService(String accountPersonalDetails)
     {
-        JSONGenerator gen = JSON.createGenerator(true);
+        /*JSONGenerator gen = JSON.createGenerator(true);
         gen.writeStartObject();
-        gen.writeStringField('Account', accountPersonalDetails);
-        gen.writeEndObject();
-        String jsonS = gen.getAsString();
-        String url=getSericeURL('SyncUpdatedAccountFamilyDetails');
+        gen.writeStringField('SfFamilyInfo', accountPersonalDetails);
+        gen.writeEndObject();*/
+        String jsonS = accountPersonalDetails;
+        String url=getServiceURL('SyncUpdatedAccountFamilyDetails');
         InvokeService(url,jsonS);
     }
+
+    @future (callout=true)
+    public static void callNewAccountFamilyDetailsService(String accountPersonalDetails)
+    {
+        /*JSONGenerator gen = JSON.createGenerator(true);
+        gen.writeStartObject();
+        gen.writeStringField(accountPersonalDetails);
+        gen.writeEndObject();*/
+        String jsonS = accountPersonalDetails;
+        String url=getServiceURL('SyncNewAccountDetails');
+        InvokeService(url,jsonS);
+    }
+
+    //SyncNewAccountDetails
 
     public static Organization getOrganizationDetails()
     {
@@ -66,7 +84,7 @@ public  class ExternalRouter {
         return serviceSettingRecord;
 
     }
-    public static String getSericeURL(String serviceName)
+    public static String getServiceURL(String serviceName)
     {
         Organization orgRecord=  getOrganizationDetails();
          ExternalServiceSettings__mdt serviceRecord=  getServiceSetting(serviceName,getSandBoxNamefromUsername().toUpperCase(),orgRecord.IsSandbox);

@@ -11,10 +11,10 @@ public with sharing class TemplateBuilderApexController {
     @AuraEnabled
     public static List<SObject> getRecords(String prefix){
         if(prefix == '006'){
-            return [SELECT Id,Name FROM Lead];
+            return [SELECT Id,Name,LastModifiedDate FROM Lead ORDER BY Name ASC, LastModifiedDate DESC LIMIT 1000 ];
         }
         else if(prefix == '00Q'){
-            return [SELECT Id,Name FROM Opportunity];
+            return [SELECT Id,Name,LastModifiedDate FROM Opportunity ORDER BY Name ASC, LastModifiedDate DESC LIMIT 1000 ];
         }
         return new List<SObject>();
     }

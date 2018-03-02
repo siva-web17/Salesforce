@@ -4,7 +4,7 @@
     <description>This field is used to store the Letter that was attached when sending the brochure.</description>
     <externalId>false</externalId>
     <label>Sent Letter</label>
-    <length>80</length>
+    <length>30</length>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>

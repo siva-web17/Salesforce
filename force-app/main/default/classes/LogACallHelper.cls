@@ -130,7 +130,7 @@ public with sharing class LogACallHelper {
                     visitEvent.Program__c = (String.valueOf(parentId).substring(0, 3) == '00Q') ? lead.Program__c : opp.Program__c;
                     visitEvent.FollowUpDate__c = visitDatetime;
                     visitEvent.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(TasksHelper.VISIT_EVENT_DEVELOPER_NAME).Id;
-                    visitEvent.Subject = 'Office Visit';
+                    visitEvent.Subject = system.label.OfficeVisit;
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
                         visitEvent.WhatId = opp.Id;
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
@@ -141,16 +141,6 @@ public with sharing class LogACallHelper {
                     insert visitEvent;
                 } else if (callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) {
                     System.debug('Change program section invoked');
-                    Map<String, List<String>> picklistDependencies = FieldUtilityClass.getFieldDependencies(getSObjectName(parentId), 'Product__c', 'Program__c');
-                    String product = '';
-                    for (String products : picklistDependencies.keySet()) {
-                        for (String program : picklistDependencies.get(products)) {
-                            if (program == selectedProgram) {
-                                product = products;
-                                break;
-                            }
-                        }
-                    }
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
@@ -161,14 +151,12 @@ public with sharing class LogACallHelper {
                         openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                     }
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Product__c != product || opp.Program__c != selectedProgram) {
-                            opp.Product__c = product;
+                        if (opp.Program__c != selectedProgram) {                            
                             opp.Program__c = selectedProgram;
                             update opp;
                         }
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if (lead.Product__c != product || lead.Program__c != selectedProgram) {
-                            lead.Product__c = product;
+                        if ( lead.Program__c != selectedProgram) {                           
                             lead.Program__c = selectedProgram;
                             update lead;
                         }
@@ -194,7 +182,7 @@ public with sharing class LogACallHelper {
                 update openCallTask;
             }
 
-            // newTask.Type = openCallTask.NextCallType__c;
+            newTask.NextCallType__c = openCallTask.NextCallType__c;
             newTask.Status = 'Completed';
             newTask.Program__c = currentProgram;
 
@@ -214,11 +202,20 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds);
+        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
-                Task callTask = lead.Tasks[0];
+                Task callTask = null;
+                for(Task objTask:lead.Tasks){
+                    objTask.ownerid = UserInfo.getUserId();
+                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
+                        callTask = objTask;
+                    }
+                }
+                
+                update lead.Tasks;
+                //Task callTask = lead.Tasks[0];
                 if(callTask.IsClosed) {
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
@@ -226,6 +223,11 @@ public with sharing class LogACallHelper {
                     update callTask;
                     callTask.IsParentClosing__c = false;
                     update callTask;
+                }
+                if(callTask == null){
+                    System.debug('Created a new Task');
+                    callTask = LeadsHelper.createSystemCallTaskRecordForLead(lead);
+                    insert callTask;
                 }
             }
             else{

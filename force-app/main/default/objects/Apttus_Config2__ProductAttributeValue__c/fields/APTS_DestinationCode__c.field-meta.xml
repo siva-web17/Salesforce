@@ -3,7 +3,8 @@
     <fullName>APTS_DestinationCode__c</fullName>
     <description>This Field is created to get Product Code in Product Attribute table to map with destination code in before insert of Product Attribute value trigger</description>
     <externalId>false</externalId>
-    <formula>Apttus_Config2__LineItemId__r.Apttus_Config2__ProductId__r.ProductCode</formula>
+    <formula>IF(Apttus_Config2__LineItemId__r.Program__c = 'LT', LTDestinationCode__c, 
+Apttus_Config2__LineItemId__r.Apttus_Config2__ProductId__r.ProductCode)</formula>
     <label>Destination Code</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

@@ -34,7 +34,7 @@ global class EditStartEndDateController {
 
     //This Constructor will get line items for all the selected bundles where start date is enabled
     public EditStartEndDateController() {
-        System.debug('####################################  in constructor' );
+        System.debug('############################  in constructor' );
         currentRecordId = ApexPages.CurrentPage().getparameters().get('id');
         this.bundleWrapperList = new list<BundleWrapper>();
         this.AYstartDateList = new List<Start_Dates__c>();
@@ -229,7 +229,7 @@ global class EditStartEndDateController {
             currentLineItemGroup = lineItem.Apttus_Config2__ProductId__r.Name;
             if (lineItem.Id == currentId && lineItem.Apttus_Config2__StartDate__c != null) {
 
-                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(lineItem.DestinationCode__c,lineItem.Apttus_Config2__OptionId__r.Available_Programs__c);
+                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(lineItem.DestinationCode__c,lineItem.Program__c);
                 Integer SumOffset=0;
                 System.debug('!!!!!!!!!!!!!!!!!!!!!! offset has value'+startdateSettingsList.size());
                 if (startdateSettingsList.size()>0) {
@@ -303,7 +303,7 @@ global class EditStartEndDateController {
             System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+lineItem.Id);
             if (lineItem.Id == currentId) {
                 System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+lineItem.DestinationCode__c);
-                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartdateSettings(lineItem.DestinationCode__c,lineItem.Apttus_Config2__OptionId__r.Available_Programs__c);
+                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartdateSettings(lineItem.DestinationCode__c,lineItem.Program__c);
                 System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+startdateSettingsList.size());
                 for (Apttus_Config2__LineItem__c lineItemrecord : configLineItemList) {
                     if (lineItemrecord.Apttus_Config2__ProductId__r.Name == currentLineItemGroup
@@ -404,7 +404,7 @@ global class EditStartEndDateController {
     global static string updateStartDate(String startdate, String endDate, String quantity,
             String currentLineItemString, String configLineItemListJSON, String configId, String configReqId) {
         System.debug('startdate '+startdate);
-        System.debug('endDate '+endDate);
+        System.debug('endate '+endDate);
         System.debug('quantity '+quantity);
         configLineItemList = (List<Apttus_Config2__LineItem__c>) JSON.deserialize(configLineItemListJSON, List<Apttus_Config2__LineItem__c>.Class);
         System.debug('Total Line Items '+configLineItemList.size());

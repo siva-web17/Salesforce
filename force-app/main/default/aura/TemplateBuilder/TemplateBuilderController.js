@@ -43,7 +43,7 @@
         //var = window.location.url.host;
         var urlEvent = $A.get("e.force:navigateToURL");
         urlEvent.setParams({
-          "url": 'https://composer.congamerge.com?serverUrl='+component.get('v.serverURL')+'&id=' + component.get('v.selectedRecord')
+            "url": 'https://composer.congamerge.com?serverUrl='+component.get('v.serverURL')+'&id=' + component.get('v.selectedRecord')+ '&QueryId=[SalesOfficePrograms]'+$A.get("$Label.c.TemplateBuilderCongaQueryId")+'&pv0='+component.get('v.selectedRecord')
         });
         urlEvent.fire();
 

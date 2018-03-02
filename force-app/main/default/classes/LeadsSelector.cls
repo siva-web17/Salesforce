@@ -73,10 +73,11 @@ public class LeadsSelector {
                         PostalCode, 
                         product__c,
                         Program__c,                         
-                        ReadyForRanking__c,   
-                         PreferredDuration__c,                 
+                        ReadyForRanking__c,                    
+                        PreferredDuration__c,
                         street,
-                        TritonId__c,                       
+                        TritonId__c,
+                       
                         WhenYear__c
                    FROM Lead
                   WHERE Id in :leadId
@@ -195,6 +196,20 @@ public class LeadsSelector {
         ];
     }
 
+    public static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> leadIds, Boolean allTask) {
+            // allTask - default value is bool always
+        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        return [
+                SELECT
+                        Id, Name, Status, Product__c, Program__c,OwnerId,
+                        (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
+                        FROM Tasks
+                        WHERE IsClosed = False)
+                FROM Lead
+                WHERE Id IN :leadIds
+        ];
+    }
+
     /**
     * @author Arkadiusz Celej
     * @param List<id> leadIds - Leads to select
@@ -212,5 +227,13 @@ public class LeadsSelector {
         from Lead
         where Id = :recordId
         LIMIT 1];
+    }
+
+    public static Map<Id,Lead>  getleadRecord (List<Id> leadIds) {
+        Map<Id, Lead> leadMap = new Map<Id,Lead>();
+        if (leadIds!=null) {
+            leadMap = new Map<Id, Lead>([select Id, SalesOffice__c from Lead where Id in :leadIds]);
+        }
+        return leadMap;
     }
 }

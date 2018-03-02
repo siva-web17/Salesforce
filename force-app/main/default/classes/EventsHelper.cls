@@ -32,14 +32,14 @@ public class ContentNoteAndEventLink{
         
     public static void createAttachmentForQuestionAnswers(list<event>newItems){
    set<id> leadIdSet = new set<id>();     
-     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and (type='CAM' or type = 'CBR')]){   
-         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){   
+          if(objEvents.whoId != null && objEvents.whoId != '' && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
             leadIdSet.add(objEvents.whoid);
          }
       }
       map<id,lead> leadIdCamQsAns = new map<id,lead>([select id,CampaignQuestionsAnswer__c from lead where id in:leadIdSet]);
       list<attachment> attachmentForQsAnsList = new list<attachment>();     
-     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and (type='CAM' or type = 'CBR')]){   
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){   
          if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c!=null){              
                 //adding a content note
                 String camQsAndAnswersAsText =getTheParsedJson(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c);
@@ -79,19 +79,19 @@ public class ContentNoteAndEventLink{
                 insert listOfContentDocumentLink;
                    }
     public static string getTheParsedJson(string JsonBody){
-    
-    string finalval='';
-    JSONParser  parser = JSON.createParser(JsonBody);
-    while (parser.nextToken() != null) {
-      if ((parser.getCurrentToken() == JSONToken.FIELD_NAME)){
-        String fieldName = parser.getText();
-        parser.nextToken();
-        String fieldValue=parser.getText();
-        finalval  = finalval + '<b>' + fieldName + '</b>'+' : ' +'<b>' +fieldValue +'</b>' + '\n'; 
-      }
-  }
-  return prepareContent(finalval);
-    
+        CampaignQAndA objCampaignQAndA = (CampaignQAndA)JSON.deserialize(jsonBody, CampaignQAndA.class);
+        String campaignQAndAString = '';
+        for(QuestionAndAnswer qAndA : objCampaignQAndA.CampaignQuestionAnswer){
+            if(qAndA.ExtraQuestion != NULL){
+                for(QuestionAndAnswer qAndANested : qAndA.ExtraQuestion){
+                    if(qAndANested.Question != NULL)
+                		campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndANested.Question +'\n<b>Answer : </b>' + qAndANested.Answer + '\n'; 
+            	}
+        	}
+            if(qAndA.Question != NULL)
+            	campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndA.Question +'\n<b>Answer : </b>' + qAndA.Answer + '\n';    
+    	}
+        return prepareContent(campaignQAndAString);
     }
     public static String prepareContent(String input)
     {
@@ -117,6 +117,9 @@ public class ContentNoteAndEventLink{
 
 
      for(event objEvents:[select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type='IM' and InfoMeetingID__c!=null]){
+         if(objEvents.whoId == null || objEvents.whoId == ''){
+            continue;
+        }
         id objId =objEvents.whoid;
         String sObjName = objId.getSObjectType().getDescribe().getName();
         system.debug('My object name is'+sObjName);
