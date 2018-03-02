@@ -23,6 +23,10 @@
         <value xsi:type="xsd:string">Accommodation,Insurance,Other,Travel</value>
     </values>
     <values>
+        <field>Program__c</field>
+        <value xsi:type="xsd:string">ILSU;ILSH;MLY;ILSP;PRW;ILS</value>
+    </values>
+    <values>
         <field>StartDateOffSet__c</field>
         <value xsi:type="xsd:double">-1.0</value>
     </values>

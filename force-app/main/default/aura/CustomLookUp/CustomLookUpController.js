@@ -27,7 +27,7 @@
           }
 
 	},
-
+ 
   // function for clear the Record Selaction
     clear :function(component,event,heplper){
 

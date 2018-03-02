@@ -11,16 +11,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Fixed</fullName>
-                <default>false</default>
-                <label>Fixed</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Evergreen</fullName>
                 <default>false</default>
                 <label>Evergreen</label>
+            </value>
+            <value>
+                <fullName>Fixed</fullName>
+                <default>false</default>
+                <label>Fixed</label>
             </value>
         </valueSetDefinition>
     </valueSet>

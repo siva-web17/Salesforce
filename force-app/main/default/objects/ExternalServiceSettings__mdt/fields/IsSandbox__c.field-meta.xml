@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsSandbox__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to identify weather URL is production URL or sandbox URL</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>IsSandbox</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -9,7 +9,7 @@
             <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
                 <c:svgIcon ariaHidden="true" class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
                            xlinkHref="/resource/LDS_Resource/assets/icons/utility-sprite/svg/symbols.svg#switch"/>
-                <span class="slds-truncate" title="Section Title">Filter Campaign</span>
+                <span class="slds-truncate" title="Section Title">Search</span>
             </button>
         </h3>
         <div aria-hidden="false" class="slds-section__content" aura:id="content" id="expando-unique-id">

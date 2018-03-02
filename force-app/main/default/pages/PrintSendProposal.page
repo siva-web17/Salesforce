@@ -1,0 +1,40 @@
+<apex:page id="PrintSendProposal" controller="PrintSendProposalController" sidebar="false" standardStylesheets="false" title="Print/Send Proposal" docType="html-5.0" showHeader="false">
+    <apex:includeLightning />
+    <div id="lightning" />
+
+    <script>
+        $Lightning.use("c:PrintSendProposalAppOut", function() {
+            $Lightning.createComponent("c:PrintSendProposal",
+                    {
+                        cartId : "{!cartId}" ,
+                        proposalId : "{!proposalId}",
+                        backToCartUrl : "{!backCartUrl}"
+                    },
+                    "lightning",
+                    function(cmp) {
+                        $A.eventService.addHandler({
+                        event: 'force:navigateToSObject',
+                            handler: function(event) {
+                                window.parent.location = '/' + event.getParams().recordId;
+                            }
+                        });
+                    });
+        });
+    </script>
+    <style>
+        body{
+            background-color: #D9D9D9;
+            margin: 0;
+        }
+
+        .slds-scope .slds-input{
+            border: none;
+            border-bottom: 2px solid #2093DA;
+            border-radius: unset;
+            padding: 0;
+            line-height: unset;
+            min-height: unset;
+            cursor: pointer;
+        }
+    </style>
+</apex:page>

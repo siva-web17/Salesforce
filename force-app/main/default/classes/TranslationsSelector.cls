@@ -68,4 +68,21 @@ public  class TranslationsSelector {
         System.debug('#######################################   '+query);
         return query;
     }
+        Public static Map<string,Translation__C> getTranslationRecodrDetailsForIncentive(List<String> uniqueKey)
+    {
+        String query = 'SELECT ';
+        String whereclause='';
+        Map<String,Translation__C> translationRecordMap=new Map<String,Translation__C>();
+        for(Schema.FieldSetMember f : SObjectType.Translation__c.FieldSets.IncentiveTranslationFieldSet.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query+='ID,Unique_Record_Identifier__c FROM Translation__C' ;
+        whereclause=' where Market__C IN:  marketStrings AND Unique_Record_Identifier__c IN=: uniqueKey';
+        query += whereclause ;
+        List<Translation__C> translationList=Database.query(query);
+        for (Translation__C translationRecord:translationList) {
+            translationRecordMap.put(translationRecord.Unique_Record_Identifier__c,translationRecord);
+        }
+return translationRecordMap;
+    }
 }

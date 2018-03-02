@@ -41,6 +41,14 @@
         <value>More than 4 weeks for one accommodation type is not possible for Junior Courses.</value>
     </labels>
     <labels>
+        <fullName>APTS_ONE_COURSE_PER_BUNDLE</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS_ONE_COURSE_PER_BUNDLE</shortDescription>
+        <value>Please choose one course per Destination.</value>
+    </labels>
+    <labels>
         <fullName>APTS_Price_Override_Error_Message</fullName>
         <categories>Error, Apttus</categories>
         <language>en_US</language>
@@ -96,6 +104,52 @@
         <value>Something went wrong:</value>
     </labels>
     <labels>
+	<fullName>BookinSummaryContact_Details</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Details</shortDescription>
+        <value>Contact Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryBooking_Details</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Booking Details</shortDescription>
+        <value>Booking Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_BOOKING_INFORMATION_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_DETAIL</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR DETAIL</shortDescription>
+        <value>PERSONALIZE YOUR DETAIL</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_PRELIMINARY_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR PRELIMINARY DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR PRELIMINARY DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryback_button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>back button</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
         <fullName>Birthdate</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -111,6 +165,14 @@
         <shortDescription>Booking Channel</shortDescription>
         <value>Booking Channel</value>
     </labels>
+	<labels>
+        <fullName>Booking_Summary_create_booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used as main header to display account name for whom booking is created for.</shortDescription>
+        <value>Create Booking for</value>
+    </labels>
     <labels>
         <fullName>Booking_Type</fullName>
         <categories>Label</categories>
@@ -118,6 +180,13 @@
         <protected>false</protected>
         <shortDescription>Booking Type</shortDescription>
         <value>Booking Type</value>
+    </labels>
+	<labels>
+        <fullName>SaveFailed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>When the record is failed to save in Lightning component.</shortDescription>
+        <value>Unable to save</value>
     </labels>
     <labels>
         <fullName>Brochure</fullName>
@@ -127,8 +196,29 @@
         <shortDescription>Brochure</shortDescription>
         <value>Brochure</value>
     </labels>
+	<labels>
+        <fullName>Review_message_before_proceeding_to_next_step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review message before proceeding to next step</shortDescription>
+        <value>* Please review your quote before proceedings to next step</value>
+    </labels>
+	<labels>
+        <fullName>PleaseSelect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used for Default value in picklist values</shortDescription>
+        <value>Please Select</value>
+    </labels>
+	<labels>
+        <fullName>Quote_Summary</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Summary</shortDescription>
+        <value>Quote Summary</value>
+    </labels>
     <labels>
-        <fullName>BrochureRequest</fullName>
+      <fullName>BrochureRequest</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -164,7 +254,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Call Appointment Call Result on Log an Action component</shortDescription>
-        <value>Appointment</value>
+         <value>Appointment</value>
     </labels>
     <labels>
         <fullName>CallBack</fullName>
@@ -202,7 +292,7 @@
         <value>Called Us</value>
     </labels>
     <labels>
-        <fullName>CampaignBrochureRequest</fullName>
+     <fullName>CampaignBrochureRequest</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -246,6 +336,14 @@
         <value>TCC</value>
     </labels>
     <labels>
+    <fullName>CountryOfBirth</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is created to select the country of birth.</shortDescription>
+        <value>Country Of Birth</value>
+    </labels>
+    <labels>
         <fullName>Currency</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -258,7 +356,31 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-        <value>0120E0000002uaO</value>
+          <value>0120Y0000002mXn</value>
+    </labels>
+    <labels>
+    <fullName>DMLTypeDelete</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeDelete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeInsert</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeInsert</shortDescription>
+        <value>Insert</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeUpdate</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeUpdate</shortDescription>
+        <value>Update</value>
     </labels>
     <labels>
         <fullName>Days</fullName>
@@ -289,6 +411,13 @@
         <protected>false</protected>
         <shortDescription>DefaultTranslation</shortDescription>
         <value>USB-English</value>
+    </labels>
+    <labels>
+      <fullName>DeleteQuoteProposalErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
+        <value>You can not delete an issued price quote</value>
     </labels>
     <labels>
         <fullName>Destination</fullName>
@@ -338,6 +467,14 @@
         <shortDescription>Email</shortDescription>
         <value>Email</value>
     </labels>
+	<labels>
+    <fullName>FTEFX_Article_Code</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This is used for selecting FTEFX under proposal Line Item Article Code</shortDescription>
+        <value>FTEFX</value>
+    </labels>
     <labels>
         <fullName>Email2</fullName>
         <categories>Label</categories>
@@ -382,7 +519,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFWebAPI/api/rank/post</value>
+        <value>http://poseidonqa.eflangtech.com/RankingSFService/api/ranking</value>
     </labels>
     <labels>
         <fullName>ExcelImport</fullName>
@@ -473,6 +610,14 @@
         <value>Home Phone</value>
     </labels>
     <labels>
+        <fullName>IntegrationstatusSentToPoseidon</fullName>
+        <categories>Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IntegrationstatusSentToPoseidon</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
         <fullName>IR</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -486,7 +631,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>InfoMeeting</shortDescription>
-        <value>InfoMeeting</value>
+        <value>IM</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -503,6 +648,14 @@
         <protected>false</protected>
         <shortDescription>Action</shortDescription>
         <value>Action</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ActionScreenURL</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ActionScreenURL</shortDescription>
+        <value>/one/one.app#/n/AG_Action_Screen</value>
     </labels>
     <labels>
         <fullName>LAC_CNR</fullName>
@@ -529,6 +682,46 @@
         <value>Close Reason</value>
     </labels>
     <labels>
+     <fullName>LAC_Call_Not_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Not Reached</shortDescription>
+        <value>Call Not Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Call_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Reached</shortDescription>
+        <value>Call Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Called_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Called Us</shortDescription>
+        <value>Called Us</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Change_Program</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change Program</shortDescription>
+        <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Close</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Close</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
         <fullName>LAC_Cmd_TXT</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -544,7 +737,7 @@
         <value>Comments</value>
     </labels>
     <labels>
-        <fullName>LAC_Convert</fullName>
+     <fullName>LAC_Convert</fullName>
         <categories>Convert</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -584,12 +777,20 @@
         <value>Duration</value>
     </labels>
     <labels>
-        <fullName>LAC_ERROR_PAST_MSG</fullName>
+    <fullName>LAC_ERROR_PAST_MSG</fullName>
         <categories>Past date cannot be selected</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LAC_ERROR_PAST_MSG</shortDescription>
         <value>Past date cannot be selected</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Emailed_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Emailed Us</shortDescription>
+        <value>Emailed Us</value>
     </labels>
     <labels>
         <fullName>LAC_FILL_VALID_INFO</fullName>
@@ -653,7 +854,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>SAC</shortDescription>
-        <value>Save</value>
+        <value>Save and close</value>
     </labels>
     <labels>
         <fullName>LAC_SACO</fullName>
@@ -668,7 +869,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>saveAction</shortDescription>
-        <value>Save Action</value>
+        <value>Save</value>
     </labels>
     <labels>
         <fullName>LAC_Select</fullName>
@@ -676,7 +877,31 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>select</shortDescription>
-        <value>Please select</value>
+         <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Sent_Email</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sent Email</shortDescription>
+        <value>Sent Email</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Reached</shortDescription>
+        <value>Social Media Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Sent</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Sent</shortDescription>
+        <value>Social Media Sent</value>
     </labels>
     <labels>
         <fullName>LAC_TITLE</fullName>
@@ -693,6 +918,22 @@
         <protected>false</protected>
         <shortDescription>VDT</shortDescription>
         <value>Visit Date/Time</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visit</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visit</shortDescription>
+        <value>Visit</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visited_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visited Us</shortDescription>
+        <value>Visited Us</value>
     </labels>
     <labels>
         <fullName>LAC_WBO</fullName>
@@ -895,6 +1136,14 @@
         <value>Nick Name</value>
     </labels>
     <labels>
+        <fullName>NoActiveOpportunity</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoActiveOpportunity</shortDescription>
+        <value>Please create an opportunity before sending Customer info to Poseidon</value>
+    </labels>
+    <labels>
         <fullName>OppStageClosedLost</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -910,7 +1159,7 @@
         <value>InActive</value>
     </labels>
     <labels>
-        <fullName>OpportunityBookingStage</fullName>
+       <fullName>OpportunityBookingStage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -1068,6 +1317,13 @@
         <value>Price</value>
     </labels>
     <labels>
+        <fullName>PrintSendProposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrintSendProposal label button</shortDescription>
+        <value>Print/Send Proposal</value>
+    </labels>
+    <labels>
         <fullName>ProductAdjustmentPriceOverride</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1204,6 +1460,14 @@
         <value>System Administrator</value>
     </labels>
     <labels>
+        <fullName>ProgramLT</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProgramLT</shortDescription>
+        <value>LT</value>
+    </labels>
+    <labels>
         <fullName>ProposalLineItemTypeOption</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1304,11 +1568,35 @@
         <value>Sent Email</value>
     </labels>
     <labels>
+        <fullName>Sent_To_Poseidon</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
         <fullName>SocialMediaReached</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Social Media Reached Sales action on Log a Call Component</shortDescription>
         <value>Social Media Reached</value>
+    </labels>
+	<labels>
+        <fullName>bookingsummaryPersonalDetails</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Personal Details</shortDescription>
+        <value>Personal Details</value>
+    </labels>
+	<labels>
+        <fullName>bookingSummaryFinish_Booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Finish Booking</shortDescription>
+        <value>Finish Booking</value>
     </labels>
     <labels>
         <fullName>SocialMediaSent</fullName>
@@ -1390,6 +1678,14 @@
         <value>0</value>
     </labels>
     <labels>
+        <fullName>SystemCallTaskLabelName</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SystemCallTaskLabelName</shortDescription>
+        <value>System Call Task</value>
+    </labels>
+    <labels>
         <fullName>SystemCallTaskRecordTypeDeveloperName</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -1463,13 +1759,7 @@
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
     </labels>
-    <labels>
-        <fullName>DeleteQuoteProposalErrorMessage</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
-        <value>Only Quote/Proposal records with {0} status can be deleted</value>
-    </labels>
+     
    <labels>
         <fullName>QuoteProposalStatusesToDelete</fullName>
         <language>en_US</language>
@@ -1478,19 +1768,66 @@
         <value>Draft</value>
     </labels>
     <labels>
-        <fullName>Sent_To_Poseidon</fullName>
-        <categories>Apttus,Dev</categories>
+
+        <fullName>ProductCodeOSHCAY</fullName>
+ 
+       <categories>Apttus</categories>
+ 
+      <language>en_US</language>
+  
+      <protected>false</protected>
+    
+    <shortDescription>Product Code OSHCAY</shortDescription>
+
+        <value>OSHCAY</value>
+    </labels>
+>
+	<labels>
+        <fullName>bookingSummarySuccess</fullName>
+        <categories>BookingSummary</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
-        <value>Sent To Poseidon</value>
+        <shortDescription>bookingSummarySuccess</shortDescription>
+        <value>You're done! Poseidon will create a booking and you will be notified as soon as it's done</value>
     </labels>
     <labels>
-        <fullName>CountryOfBirth</fullName>
-        <categories>Apttus,Dev</categories>
+        <fullName>CreationMethodEnteredByUser</fullName>
+        <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>This field is created to select the country of birth.</shortDescription>
-        <value>Country Of Birth</value>
+        <shortDescription>CreationMethodEnteredByUser</shortDescription>
+        <value>Enteredbyuser</value>
+    </labels>
+    <labels>
+        <fullName>OfficeVisit</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OfficeVisit</shortDescription>
+        <value>Office Visit</value>
+    </labels>
+    <labels>
+        <fullName>SPQTask</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SPQTask</shortDescription>
+        <value>SPQ Task</value>
+    </labels>
+    <labels>
+        <fullName>TemplateBuilderCongaQueryId</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
+        <value>a5J6E0000000CikUAE</value>
+    </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
     </labels>
 </CustomLabels>

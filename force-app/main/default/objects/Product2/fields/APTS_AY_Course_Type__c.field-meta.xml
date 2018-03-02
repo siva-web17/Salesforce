@@ -10,7 +10,27 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>ACDP</fullName>
+                <default>false</default>
+                <label>ACDP</label>
+            </value>
+            <value>
+                <fullName>AD</fullName>
+                <default>false</default>
+                <label>AD</label>
+            </value>
+            <value>
+                <fullName>DBM</fullName>
+                <default>false</default>
+                <label>DBM</label>
+            </value>
+            <value>
+                <fullName>E</fullName>
+                <default>false</default>
+                <label>E</label>
+            </value>
             <value>
                 <fullName>G</fullName>
                 <default>false</default>
@@ -20,26 +40,6 @@
                 <fullName>I</fullName>
                 <default>false</default>
                 <label>I</label>
-            </value>
-            <value>
-                <fullName>E</fullName>
-                <default>false</default>
-                <label>E</label>
-            </value>
-            <value>
-                <fullName>ACDP</fullName>
-                <default>false</default>
-                <label>ACDP</label>
-            </value>
-            <value>
-                <fullName>UF</fullName>
-                <default>false</default>
-                <label>UF</label>
-            </value>
-            <value>
-                <fullName>DBM</fullName>
-                <default>false</default>
-                <label>DBM</label>
             </value>
             <value>
                 <fullName>PM</fullName>
@@ -57,14 +57,14 @@
                 <label>PPHD</label>
             </value>
             <value>
+                <fullName>UF</fullName>
+                <default>false</default>
+                <label>UF</label>
+            </value>
+            <value>
                 <fullName>UTP</fullName>
                 <default>false</default>
                 <label>UTP</label>
-            </value>
-            <value>
-                <fullName>AD</fullName>
-                <default>false</default>
-                <label>AD</label>
             </value>
         </valueSetDefinition>
     </valueSet>

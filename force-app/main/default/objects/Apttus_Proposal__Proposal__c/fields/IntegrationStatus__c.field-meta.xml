@@ -9,16 +9,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Sent To Poseidon</fullName>
-                <default>false</default>
-                <label>Sent To Poseidon</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Booking Created</fullName>
                 <default>false</default>
                 <label>Booking Created</label>
+            </value>
+            <value>
+                <fullName>Sent To Poseidon</fullName>
+                <default>false</default>
+                <label>Sent To Poseidon</label>
             </value>
         </valueSetDefinition>
     </valueSet>

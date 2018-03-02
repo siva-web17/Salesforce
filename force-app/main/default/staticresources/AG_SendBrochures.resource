@@ -128,6 +128,8 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                     var record = new sforce.SObject('Task');
                     record.Id = sbrTasks[i].Id;
                     record.TaskResult__c = TASK_RESULT_SENT_BROCHURE;
+                    record.SentLetter__c = context.selectedRows[i].Letter__c;
+                    record.SentLabel__c = context.selectedRows[i].Label__c;
                     record.Status = 'Completed';
                     records.push(record);
                 }

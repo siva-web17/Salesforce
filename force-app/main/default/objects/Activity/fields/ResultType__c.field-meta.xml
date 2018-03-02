@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ResultType__c</fullName>
-    <description>Captures the result for the action of a sales user</description>
     <externalId>false</externalId>
     <inlineHelpText>Enter Result Type for call logged in.</inlineHelpText>
     <label>Result Type</label>
@@ -11,21 +10,21 @@
         <controllingField>SalesAction__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Call back</fullName>
-                <default>false</default>
-                <label>Call back</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Appointment</fullName>
                 <default>false</default>
                 <label>Appointment</label>
             </value>
             <value>
-                <fullName>Visit</fullName>
+                <fullName>Call back</fullName>
                 <default>false</default>
-                <label>Visit</label>
+                <label>Call back</label>
+            </value>
+            <value>
+                <fullName>Change Program</fullName>
+                <default>false</default>
+                <label>Change Program</label>
             </value>
             <value>
                 <fullName>Close</fullName>
@@ -33,22 +32,11 @@
                 <label>Close</label>
             </value>
             <value>
-                <fullName>Change Program</fullName>
+                <fullName>Visit</fullName>
                 <default>false</default>
-                <label>Change Program</label>
+                <label>Visit</label>
             </value>
         </valueSetDefinition>
-        <valueSettings>
-            <controllingFieldValue>Call Reached</controllingFieldValue>
-            <controllingFieldValue>Call Not Reached</controllingFieldValue>
-            <controllingFieldValue>Called Us</controllingFieldValue>
-            <controllingFieldValue>Visited Us</controllingFieldValue>
-            <controllingFieldValue>Emailed Us</controllingFieldValue>
-            <controllingFieldValue>Sent Email</controllingFieldValue>
-            <controllingFieldValue>Social Media Reached</controllingFieldValue>
-            <controllingFieldValue>Social Media Sent</controllingFieldValue>
-            <valueName>Call back</valueName>
-        </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
             <controllingFieldValue>Call Not Reached</controllingFieldValue>
@@ -62,12 +50,22 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
+            <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <controllingFieldValue>Called Us</controllingFieldValue>
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
             <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
-            <valueName>Visit</valueName>
+            <controllingFieldValue>Social Media Sent</controllingFieldValue>
+            <valueName>Call back</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call Reached</controllingFieldValue>
+            <controllingFieldValue>Called Us</controllingFieldValue>
+            <controllingFieldValue>Visited Us</controllingFieldValue>
+            <controllingFieldValue>Emailed Us</controllingFieldValue>
+            <controllingFieldValue>Social Media Reached</controllingFieldValue>
+            <valueName>Change Program</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
@@ -82,8 +80,9 @@
             <controllingFieldValue>Called Us</controllingFieldValue>
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
+            <controllingFieldValue>Sent Email</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
-            <valueName>Change Program</valueName>
+            <valueName>Visit</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

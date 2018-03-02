@@ -1,5 +1,6 @@
 ({
    selectRecord : function(component, event, helper){
+       debugger;
     // get the selected record from list
       var getSelectRecord = component.get("v.oRecord");
     // call the event

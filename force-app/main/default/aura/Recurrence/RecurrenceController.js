@@ -20,7 +20,6 @@
         component.set('v.endDate',endDate.toISOString());
     },
     onRepeatPatternChanged:function(component,event,helper){
-        //debugger;
         if(component.get('v.isDailyChecked')){
             var picklist = component.find('dailyRepeatPicklist');
             component.set('v.isCustomPatternSelected',picklist.get('v.value') === 'Custom');
@@ -66,7 +65,6 @@
                    recurrence = moment().recur(startDate,endDate).every(2).days();
              }
              else{
-                  //debugger;
                   var customEveryDate = component.find('DailyEveryId').get('v.value');
                    recurrence = moment().recur(startDate,endDate).every(customEveryDate).days();
              }
@@ -111,6 +109,18 @@
 
              }
          }
+         else if (component.get('v.isYearlyChecked')){
+            var repeatPattern = component.find('yearlyRepeatPicklist').get('v.value');
+             if(repeatPattern == 'Specific Date'){
+                  recurrence = moment().recur(startDate, endDate).every(1).years();
+             }
+             else{
+                var yearlyWhichWeekId = component.find('yearlyWhichWeekId').get('v.value');
+                var yearlyRepeatWeekId = component.find('yearlyRepeatWeekId').get('v.value');
+                var yearlyRepeatMonthId = component.find('yearlyRepeatMonthId').get('v.value');
+                recurrence = moment.recur(startDate,endDate).every(yearlyRepeatMonthId).monthsOfYear().every(yearlyRepeatWeekId).daysOfWeek().every(helper.getWeekNumberOfWeek( yearlyWhichWeekId)).weeksOfMonthByDay();
+             }
+        }
          else{
              var repeatPattern = component.find('monthlyRepeatPicklist').get('v.value');
              if(repeatPattern == 'Specific Date'){
@@ -124,7 +134,6 @@
              }
 
          }
-         //debugger;
           if(startDate=="" || startDate== null  ){
               component.set('v.messageTitle','Warning');
               component.set('v.message','Please select Start Date to create recurrence!');
@@ -136,7 +145,7 @@
                console.log('em here');
                return;
            }
-          debugger;
+          
           var date1 =  new Date(new Date().toDateString());
           var startDate1 = new Date(new Date(startDate).toDateString());
 
@@ -185,7 +194,7 @@
          }, 3000);
          return;
          }
-         var action = component.get("c.getRecuranceDetails");
+         var action = component.get("c.getRecurrenceDetails");
          var currentId = component.get("v.recordId");
          action.setParams({ campaignId : currentId, startEndDate : nextDates
               });
@@ -245,6 +254,14 @@
                 component.set('v.endDate',endDate.toISOString());
 
             }
+            else if(targetName === 'Yearly'){
+                var startDate = new Date();
+                var endDate = new Date();
+                endDate.setDate(startDate.getDate() + helper.getDaysInMonth());
+               component.set('v.StartDate',startDate.toISOString());
+               component.set('v.endDate',(moment().add(1, 'year')).toISOString());
+
+           }
             else{
                 var startDate = new Date();
                  var endDate = new Date();

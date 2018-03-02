@@ -2,14 +2,15 @@
     setInitialData:function(component){
           var options = component.get('v.options');
           var options_Internal = [];
-          debugger;
           if(options === null || typeof options === undefined){
               return;
           }
-          //options_Internal.push({'label':'All','isSelected':false});
-          options.forEach(function(option){
-              options_Internal.push({'label':option,'isSelected':false});
-          });
+
+        var selectedItems = component.get('v.selectedItems');
+        for(var key in options){
+            options_Internal.push({'label':options[key],'value':key,'isSelected':(selectedItems != null && selectedItems.indexOf(key) > -1)});
+          }
+
           component.set('v.options_internal',options_Internal);
     },
   getSelectedValues: function(component){
@@ -20,7 +21,7 @@
               }
     options.forEach(function(element) {
       if (element.isSelected) {
-        values.push(element.label);
+        values.push(element.value);
       }
     });
     return values;

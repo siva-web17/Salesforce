@@ -14,7 +14,7 @@ public class DCBusinessFlow {
 
     public static void dcSearchResults(String methodName, Id sourceId, Map <String, Object> searchResults) {
         try {
-            system.debug('search result *** ' + searchResults);
+            system.debug('search result ' + searchResults);
             List<Lead> sourceLeadList = new List<Lead>();
             sourceLeadList = LeadsSelector.getLeadsOnId(new Set<id>{sourceId});
 
@@ -129,9 +129,13 @@ public class DCBusinessFlow {
                     finalLead = DCObjectMerge.leadToLeadFieldMerge(duplicateLead,sourceLead);
                     finalLead.status = finalLead.status=='closed'?'open':finalLead.status;
                     finalLead.isdupe__c = false;
-                    finalLead.isdupeprocessed__c = true;                    
+                    finalLead.readyforranking__c=false;
+                    finalLead.RecalculateRanking__c = true;
+                    update finalLead;                 
                      //DCBusinessFlowHelper.notifyForRanking(finalLead);
                      transferEvent(duplicateLead,sourceLead,finalDecision);
+                     transferNotes(duplicateLead,sourceLead,finalDecision);
+                      transferCampaignMember(duplicateLead,sourceLead,finalDecision);
                      SObjectUnitOfWork.deleteLead(sourceLead);
                      
                 }
@@ -159,6 +163,8 @@ public class DCBusinessFlow {
             if((finalDecision!=null &&  finalDecision=='Merge')) {
                 //hitting notifyranking. This requirement has not been confirmed.
                 sourceLead.isAccountMerge__c = true;
+                sourceLead.RecalculateRanking__c = true;
+              
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
                 //system.debug('--------duplicateAccount2-------'+sourceLead);
@@ -166,6 +172,7 @@ public class DCBusinessFlow {
                 convertsourcelead();
                 //3. update the fields
                 system.debug('^^^^^^^^^^^^^^ modify account'+duplicateAccount);
+               // duplicateAccount.RecalculateRanking__c = true;
                 update duplicateAccount;
                
             }
@@ -192,8 +199,7 @@ public class DCBusinessFlow {
         lc.setAccountId(duplicateAccount.id);
         lc.setConvertedStatus(System.Label.LeadStageConverted);
         system.debug('*********** opportunity list'+opportuntyList);
-        if(opportuntyList != null && !opportuntyList.isEmpty()) {
-            if(opportuntyList[0].StageName != Label.ClosedWon) {
+        if(opportuntyList != null && !opportuntyList.isEmpty()) {            
                 lc.setOpportunityId(opportuntyList[0].id);
                 Opportunity opportunityRecord = opportuntyList[0];
                 system.debug('*********** '+opportunityRecord);
@@ -205,22 +211,24 @@ public class DCBusinessFlow {
                 }
 
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
-            }
+          
             //inactive if opportunity is
-            else if(opportuntyList[0].StageName == Label.ClosedWon) {
-                //update the closed won opportunity. Make isActive as 'false'
-                DCObjectMerge.inActiveOpportunity(opportuntyList[0]);
-            }
-        }
+ 
+        }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
+         list<opportunity> inactiveOpportunity = new list<opportunity>();
+          inactiveOpportunity = [select id,Ranking__c from opportunity where accountid=:lcr.getAccountId() and isactive__c=false order by createddate desc limit 1];
+         if(inactiveOpportunity!=null && !inactiveOpportunity.isempty()){
+            opportunity newlyCreatedActiveOpportunity = new opportunity();
+            newlyCreatedActiveOpportunity.id = lcr.getOpportunityId();
+            newlyCreatedActiveOpportunity.Ranking__c = inactiveOpportunity[0].Ranking__c!=null?inactiveOpportunity[0].Ranking__c:null;
+            update newlyCreatedActiveOpportunity;
+        }
     }
 
     //transfer the event from duplicate lead to source lead
     public static void transferEvent(Lead sourceLead, Lead duplicateLead,String decisionName) {
-        List<Event> eventList = new List<Event>();
-        system.debug('********** event transfer method');
-        system.debug('My current event records'+ [Select id,WhoId,Type From Event Where WhoId=:duplicateLead.id
-        ORDER BY CreatedDate DESC]);
+        List<Event> eventList = new List<Event>();        
         for(Event eventRecord : [Select id,WhoId,Type From Event Where WhoId=:duplicateLead.id
         ORDER BY CreatedDate DESC]) {
             system.debug('inside event loop **********');
@@ -229,19 +237,33 @@ public class DCBusinessFlow {
             eventRecord.MergeReason__c = decisionName;
             eventList.add(eventRecord);
         }
-        system.debug('updatable event list is'+eventList);
-         List<Lead> sourceLeads = new List<Lead>();
-         sourceLeads.Add(sourceLead);
-         List<RankingServiceResponse> finalResponse = DCBusinessFlowHelper.webServiceCallForRanking(sourceLeads);
+        system.debug('updatable event list is'+eventList);       
         //update the whoid with source lead id(source might be existing or incoming lead)
         SObjectUnitOfWork.executeUpdateEvents(eventList);
-         if(finalResponse!=null && finalResponse[0].SalesForceApplicationId==sourceLead.id){
-                sourceLead.ranking__c = finalResponse[0].ScaleDownRanking;               
-                sourceLead.ReadyForRanking__c = true;         
-                system.debug('ranking>>>>'+sourceLead.ranking__c);
-                //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
-                update sourceLead;
-            }
+        
+    }
+  public static void transferNotes(Lead sourceLead, Lead duplicateLead,String decisionName){
+      list<contentDocumentLink> contentDocumentLink = new list<contentDocumentLink>();
+      for(contentDocumentLink objContentDocLink : [select id,ContentDocumentId ,LinkedEntityId from contentDocumentLink where LinkedEntityId=:duplicateLead.id]){
+        contentDocumentLink  contentDocumentLinkTransferObject = new contentDocumentLink ();
+        contentDocumentLinkTransferObject.ContentDocumentId = objContentDocLink.ContentDocumentId;
+        contentDocumentLinkTransferObject .LinkedEntityId = sourceLead.id;
+        contentDocumentLinkTransferObject.ShareType='V';
+        contentDocumentLink.add(contentDocumentLinkTransferObject);
+      }
+      insert contentDocumentLink;
+    
+    }
+      public static void transferCampaignMember(Lead sourceLead, Lead duplicateLead,String decisionName){
+      List<campaignMember> campaignMemberList = new List<CampaignMember>();
+        for(campaignMember objcampaignMember : [select Leadid,id,status,campaignid from campaignmember where leadid=:duplicateLead.id]){
+            campaignMember campaignMemberForTransfer = new campaignMember();
+            campaignMemberForTransfer.campaignId = objcampaignMember.campaignid;
+            campaignMemberForTransfer.status = objcampaignMember.status;
+            campaignMemberForTransfer.leadid = sourceLead.id;
+            campaignMemberList.add(campaignMemberForTransfer);
+        }
+         insert campaignMemberList;
     }
 
     //this method is used to avoid soql query inside for loop

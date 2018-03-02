@@ -10,7 +10,7 @@ Modification Log   :
  * Mitul Parmar                 09/14/2017              Original Version
 *******************************************************************************/
 global with sharing class APTS_EFPricingCallback implements Apttus_Config2.CustomClass.IPricingCallback3{
-    
+
     //private static Double priceListThreshold = 0;
     private Double bracketThresholdTI = 0;
     private Double currentThreshHold = 0;
@@ -29,7 +29,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
     */
     global void setMode(Apttus_Config2.CustomClass.PricingMode mode) {
     }
-    
+
     /*
     Description : Method to override start of PCB
     Created by : Mitul Parmar
@@ -44,7 +44,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
         this.courseLanguageQuantityMap = new Map<String,Double>();
         this.courseQuantityMap = new  Map<Id,Double>();
         //Code refractroing
-       List<Id> priceListItemIdList=new  List<Id>();
+        List<Id> priceListItemIdList=new  List<Id>();
         List<String> destinationCodeList=new List<String>();
         Set<Decimal> linenumber=new Set<Decimal>();
         String priceMatrixKey='';
@@ -56,7 +56,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                 priceListItemIdList.add(lineItem.Apttus_Config2__PriceListItemId__c);
                 destinationCodeList.add(lineItem.DestinationCode__c);
             }
-           
+
 
         }
         //This method will get the all the price matrixs for
@@ -67,25 +67,25 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
             Apttus_Config2__LineItem__c lineItem = lineItemS0.getLineItemSO();
 
             system.debug('Line Item comparitiveQuoteFlag :--- '+lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c);
-            system.debug('Line Item Product Type :--- '+lineItem.Apttus_Config2__PriceListItemId__c);
+            system.debug('Line Item Product Type :--- '+lineItem.APTS_Product_Type__c);
 
             this.comparitiveQuoteFlag = lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c;
 
             //if the product type = course than consider it for course pricing
             if(lineItem.Apttus_Config2__OptionId__r.Apts_CoursePricing__c){
                 this.optionProductList.add(lineItemS0);
-               List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = new List<Apttus_Config2__PriceMatrixEntry__c>();
+                List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = new List<Apttus_Config2__PriceMatrixEntry__c>();
                 priceMatrixKey=lineItem.Apttus_Config2__PriceListItemId__c+lineItem.DestinationCode__c;
                 system.debug('THE LIST MAT IS priceMatrixKey '+priceMatrixKey);
                 if (priceMatrixForOptionsMap.containsKey(priceMatrixKey)) {
 
-                     priceMatrixList=priceMatrixForOptionsMap.get(priceMatrixKey);
+                    priceMatrixList=priceMatrixForOptionsMap.get(priceMatrixKey);
                     system.debug('THE LIST MAT IS '+priceMatrixList);
                 }
                 //List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = APTS_PriceMatrixEntrySelector.getPriceMatrixForOptions(lineItem.Apttus_Config2__PriceListItemId__c, lineItem.DestinationCode__c);
                 this.lineItemPriceMatrixMap.put(lineItem.Id,priceMatrixList);
                 currentThreshHold = lineItem.Apttus_Config2__PriceListId__r.Brackets_Threshold__c;
-                
+
                 //if its non comparitive quote than do following logic
                 if(!this.comparitiveQuoteFlag){
                     //update map for language specific course for english
@@ -112,7 +112,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                 }
                 else{
 
-                    system.debug('Comparitive quote :--- '+lineItem.Apttus_Config2__Quantity__c);
+                    system.debug('Comparitive quote  :--- '+lineItem.Apttus_Config2__Quantity__c);
                     //there will be only 1 course for each bundle and we add the quantity
                     this.courseQuantityMap.put(lineItem.Apttus_Config2__ProductId__c,lineItem.Apttus_Config2__Quantity__c);
                 }
@@ -120,20 +120,21 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
 
             //if the line item is main bundle than add it in map
             else if(lineItem.Apttus_Config2__OptionId__c == NULL){
+                system.debug('In Bundle map lineItem.Apttus_Config2__OptionId__c == NULL' +lineItem);
                 this.bundleMap.put(lineItem.Apttus_Config2__LineNumber__c,lineItemS0);
             }
 
             //if there is a TI product added than consider different threshold but only for comparitive quote
             else if(lineItem.Apttus_Config2__OptionId__r.Apts_TI_Pricing__c && this.comparitiveQuoteFlag){
                 this.optionProductList.add(lineItemS0);
-               List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = new List<Apttus_Config2__PriceMatrixEntry__c>();
+                List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = new List<Apttus_Config2__PriceMatrixEntry__c>();
                 priceMatrixKey=lineItem.Apttus_Config2__PriceListItemId__c+lineItem.DestinationCode__c;
-                if (priceMatrixForOptionsMap.containsKey(priceMatrixKey)) {
+               /* if (priceMatrixForOptionsMap.containsKey(priceMatrixKey)) {
 
                     priceMatrixList=priceMatrixForOptionsMap.get(priceMatrixKey);
                     system.debug('Comparitive quote priceMatrixList:--- '+priceMatrixList);
-                }
-                //List<Apttus_Config2__PriceMatrixEntry__c> priceMatrixList = APTS_PriceMatrixEntrySelector.getPriceMatrixForOptions(lineItem.Apttus_Config2__PriceListItemId__c, lineItem.DestinationCode__c);
+                }*/
+                priceMatrixList = APTS_PriceMatrixEntriesSelector.getPriceMatrixForOptions(lineItem.Apttus_Config2__PriceListItemId__c, lineItem.DestinationCode__c);
                 this.lineItemPriceMatrixMap.put(lineItem.Id,priceMatrixList);
                 currentThreshHold = lineItem.Apttus_Config2__PriceListId__r.Brackets_Threshold__c;
                 //priceListThreshold =  lineItem.Apttus_Config2__PriceListId__r.Brackets_Threshold__c;
@@ -149,18 +150,18 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
     */
     global void beforePricingLineItem(Apttus_Config2.ProductConfiguration.LineItemColl itemcoll, Apttus_Config2.LineItem lineItemS0){
     }
-    
+
     /*
     Description : Method to override before pricing of PCB
     Created by : Mitul Parmar
     Created Date : 14-Sep-2017
     */
     global void beforePricing(Apttus_Config2.ProductConfiguration.LineItemColl itemColl) {
-        
+
         for(Apttus_Config2.LineItem item : this.cartLineitems) {
-            
+
             Apttus_Config2__LineItem__c lineItem = item.getLineItemSO();
-			//lineItem.Apttus_Config2__PricingStatus__c = System.Label.LineItemPricingStatusPending;
+            //lineItem.Apttus_Config2__PricingStatus__c = System.Label.LineItemPricingStatusPending;
             //if its non comparitive quote than do following logic
             if(!this.comparitiveQuoteFlag){
                 if(lineItem.Product_Code__c == System.Label.ProductCodeEnglish && this.courseLanguageQuantityMap.containsKey(System.Label.ProductLanguageEnglish)){
@@ -184,8 +185,9 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                             && lineItem.Apttus_Config2__LineNumber__c==courselineItem.Apttus_Config2__LineNumber__c
                             && lineItem.DestinationCode__c==courselineItem.DestinationCode__c  &&
                             (lineItem.Product_Code__c == System.Label.ProductCodeEnglish
-                        || lineItem.Product_Code__c == System.Label.ProductCodeNonEnglish)) {
+                                    || lineItem.Product_Code__c == System.Label.ProductCodeNonEnglish)) {
 
+                        lineItem.Apttus_Config2__ExtendedQuantity__c = courselineItem.Apttus_Config2__Quantity__c;
                         lineItem.Apttus_Config2__Quantity__c = courselineItem.Apttus_Config2__Quantity__c;
                         break;
                     }
@@ -196,33 +198,34 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
             }
 
         }
-    } 
-    
+    }
+
     /*
     Description : Method to override after pricing of PCB
     Created by : Mitul Parmar
     Created Date : 14-Sep-2017
     */
     global void afterPricing(Apttus_Config2.ProductConfiguration.LineItemColl itemColl) {
-    }      
-  
+    }
+
     /*
     Description : Method to override after pricing line item of PCB
     Created by : Mitul Parmar
     Created Date : 14-Sep-2017
     */
     global void afterPricingLineItem(Apttus_Config2.ProductConfiguration.LineItemColl itemcoll, Apttus_Config2.LineItem lineItemS0){
-        
+
         //for current line item calculate course pricing and update main bundle
         Apttus_Config2__LineItem__c lineItem = lineItemS0.getLineItemSO();
-
+        system.debug('lineItem bigg boss' +lineItem);
+        System.debug('lineItem.Program__c ' +lineItem.Program__c);
         //if more than 1 bundle added for course pricing
         if(!this.optionProductList.isEmpty() && this.optionProductList.size() > 1){
-            
+
             //if its non comparitive quote than do course base pricing
             if(!this.comparitiveQuoteFlag){
                 if(lineItem.Apttus_Config2__OptionId__r.Apts_CoursePricing__c){
-                
+
                     system.debug('lineItem bigg boss' +lineItem);
                     system.debug('currentThreshHold bigg boss' +currentThreshHold);
                     system.debug('lineItemPriceMatrixMap bigg boss' +lineItemPriceMatrixMap);
@@ -242,6 +245,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
             }
             //if its comparitive quote than do pricing with other price matrix
             else{
+                system.debug('In After pricing Lineitem Metjod');
                 if(lineItem.Apttus_Config2__OptionId__r.Apts_CoursePricing__c){
                     system.debug('lineItemPriceMatrixMap bigg boss comparitive' +lineItemPriceMatrixMap);
                     APTS_EFPricingCallbackHelper.updatePricingForComparitive(lineItem,currentThreshHold,this.lineItemPriceMatrixMap);
@@ -272,8 +276,32 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
                 lineItemS0.updatePrice();
             }
         }
+
+        else if(lineItem.Program__c==Label.ProgramLT && lineItem.APTS_Product_Type__c==Label.ProductTypeCourse)
+        {
+            System.debug('I am in LT '+lineItem.Apttus_Config2__AttributeValueId__c );
+            List<Id> LineItemIdList=new List<Id>();
+            LineItemIdList.add(lineItem.Id);
+            Map<Id,Apttus_Config2__ProductAttributeValue__c> PavMap= APTS_EFPricingCallbackHelper.getLTCoursePriceFromPAV(LineItemIdList);
+            System.debug('I am in LT '+lineItem.Apttus_Config2__AttributeValueId__c );
+           //Added this condition only to avoid calculating price again for same line item
+            Apttus_Config2__ProductAttributeValue__c PAVrecord=(PavMap.containsKey(lineItem.Id)?PavMap.get(lineItem.Id):null);
+            if (PAVrecord!=null) {
+                if ((lineItem.Apttus_Config2__BasePrice__c - PAVrecord.APTS_LT_Course_Price__c)<0) {
+                    lineItem.Apttus_Config2__BasePrice__c+=PAVrecord.APTS_LT_Course_Price__c;
+                    lineItem.Apttus_Config2__BaseExtendedPrice__c+=PAVrecord.APTS_LT_Course_Price__c;
+                }
+            }
+
+
+            //lineItem.Apttus_Config2__PricingStatus__c = System.Label.LineItemPricingStatusPending;
+            lineItemS0.updatePrice();
+            System.debug('I am in LT net price '+lineItem.Apttus_Config2__NetPrice__c );
+        }
+        //System.debug('lineItem.Program__c ' +lineItem.Program__c);
+
     }
-    
+
     /*
     Description : Method to override on price item set of PCB
     Created by : Mitul Parmar
@@ -281,7 +309,7 @@ global with sharing class APTS_EFPricingCallback implements Apttus_Config2.Custo
     */
     global void onPriceItemSet(Apttus_Config2__PriceListItem__c itemSO, Apttus_Config2.LineItem lineItemMO){
     }
-    
+
     /*
     Description : Method to override finish of PCB
     Created by : Mitul Parmar
