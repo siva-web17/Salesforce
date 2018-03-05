@@ -13,7 +13,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Market__c</field>
+                 <field>Market__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
