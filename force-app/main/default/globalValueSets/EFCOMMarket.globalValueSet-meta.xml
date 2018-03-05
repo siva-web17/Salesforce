@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>DZ</fullName>
-        <default>false</default>
-        <label>DZ</label>
-    </customValue>
-    <customValue>
-        <fullName>WM</fullName>
-        <default>false</default>
-        <label>WM</label>
-    </customValue>
-    <customValue>
-        <fullName>WE</fullName>
-        <default>false</default>
-        <label>WE</label>
-    </customValue>
-    <customValue>
         <fullName>AR</fullName>
         <default>false</default>
         <label>AR</label>
-    </customValue>
-    <customValue>
-        <fullName>SK</fullName>
-        <default>false</default>
-        <label>SK</label>
-    </customValue>
-    <customValue>
-        <fullName>HU</fullName>
-        <default>false</default>
-        <label>HU</label>
     </customValue>
     <customValue>
         <fullName>AT</fullName>
@@ -41,19 +16,9 @@
         <label>AZ</label>
     </customValue>
     <customValue>
-        <fullName>RU</fullName>
-        <default>false</default>
-        <label>RU</label>
-    </customValue>
-    <customValue>
         <fullName>BE</fullName>
         <default>false</default>
         <label>BE</label>
-    </customValue>
-    <customValue>
-        <fullName>BX</fullName>
-        <default>false</default>
-        <label>BX</label>
     </customValue>
     <customValue>
         <fullName>BR</fullName>
@@ -61,24 +26,19 @@
         <label>BR</label>
     </customValue>
     <customValue>
-        <fullName>PT</fullName>
+        <fullName>BX</fullName>
         <default>false</default>
-        <label>PT</label>
-    </customValue>
-    <customValue>
-        <fullName>EN</fullName>
-        <default>false</default>
-        <label>EN</label>
-    </customValue>
-    <customValue>
-        <fullName>FC</fullName>
-        <default>false</default>
-        <label>FC</label>
+        <label>BX</label>
     </customValue>
     <customValue>
         <fullName>CA</fullName>
         <default>false</default>
         <label>CA</label>
+    </customValue>
+    <customValue>
+        <fullName>CH</fullName>
+        <default>false</default>
+        <label>CH</label>
     </customValue>
     <customValue>
         <fullName>CL</fullName>
@@ -91,11 +51,6 @@
         <label>CN</label>
     </customValue>
     <customValue>
-        <fullName>ZH</fullName>
-        <default>false</default>
-        <label>ZH</label>
-    </customValue>
-    <customValue>
         <fullName>CO</fullName>
         <default>false</default>
         <label>CO</label>
@@ -106,14 +61,14 @@
         <label>CR</label>
     </customValue>
     <customValue>
-        <fullName>WC</fullName>
+        <fullName>CS</fullName>
         <default>false</default>
-        <label>WC</label>
+        <label>CS</label>
     </customValue>
     <customValue>
-        <fullName>WL</fullName>
+        <fullName>CT</fullName>
         <default>false</default>
-        <label>WL</label>
+        <label>CT</label>
     </customValue>
     <customValue>
         <fullName>CZ</fullName>
@@ -121,9 +76,19 @@
         <label>CZ</label>
     </customValue>
     <customValue>
+        <fullName>DE</fullName>
+        <default>false</default>
+        <label>DE</label>
+    </customValue>
+    <customValue>
         <fullName>DK</fullName>
         <default>false</default>
         <label>DK</label>
+    </customValue>
+    <customValue>
+        <fullName>DZ</fullName>
+        <default>false</default>
+        <label>DZ</label>
     </customValue>
     <customValue>
         <fullName>EC</fullName>
@@ -131,9 +96,19 @@
         <label>EC</label>
     </customValue>
     <customValue>
-        <fullName>FS</fullName>
+        <fullName>EN</fullName>
         <default>false</default>
-        <label>FS</label>
+        <label>EN</label>
+    </customValue>
+    <customValue>
+        <fullName>ES</fullName>
+        <default>false</default>
+        <label>ES</label>
+    </customValue>
+    <customValue>
+        <fullName>FC</fullName>
+        <default>false</default>
+        <label>FC</label>
     </customValue>
     <customValue>
         <fullName>FI</fullName>
@@ -146,14 +121,24 @@
         <label>FR</label>
     </customValue>
     <customValue>
-        <fullName>DE</fullName>
+        <fullName>FS</fullName>
         <default>false</default>
-        <label>DE</label>
+        <label>FS</label>
+    </customValue>
+    <customValue>
+        <fullName>GB</fullName>
+        <default>false</default>
+        <label>GB</label>
     </customValue>
     <customValue>
         <fullName>HK</fullName>
         <default>false</default>
         <label>HK</label>
+    </customValue>
+    <customValue>
+        <fullName>HU</fullName>
+        <default>false</default>
+        <label>HU</label>
     </customValue>
     <customValue>
         <fullName>ID</fullName>
@@ -176,14 +161,19 @@
         <label>JP</label>
     </customValue>
     <customValue>
+        <fullName>KR</fullName>
+        <default>false</default>
+        <label>KR</label>
+    </customValue>
+    <customValue>
         <fullName>KZ</fullName>
         <default>false</default>
         <label>KZ</label>
     </customValue>
     <customValue>
-        <fullName>LY</fullName>
+        <fullName>LG</fullName>
         <default>false</default>
-        <label>LY</label>
+        <label>LG</label>
     </customValue>
     <customValue>
         <fullName>LU</fullName>
@@ -191,9 +181,9 @@
         <label>LU</label>
     </customValue>
     <customValue>
-        <fullName>LG</fullName>
+        <fullName>LY</fullName>
         <default>false</default>
-        <label>LG</label>
+        <label>LY</label>
     </customValue>
     <customValue>
         <fullName>MX</fullName>
@@ -226,24 +216,19 @@
         <label>PL</label>
     </customValue>
     <customValue>
+        <fullName>PT</fullName>
+        <default>false</default>
+        <label>PT</label>
+    </customValue>
+    <customValue>
+        <fullName>RU</fullName>
+        <default>false</default>
+        <label>RU</label>
+    </customValue>
+    <customValue>
         <fullName>SA</fullName>
         <default>false</default>
         <label>SA</label>
-    </customValue>
-    <customValue>
-        <fullName>SX</fullName>
-        <default>false</default>
-        <label>SX</label>
-    </customValue>
-    <customValue>
-        <fullName>KR</fullName>
-        <default>false</default>
-        <label>KR</label>
-    </customValue>
-    <customValue>
-        <fullName>ES</fullName>
-        <default>false</default>
-        <label>ES</label>
     </customValue>
     <customValue>
         <fullName>SE</fullName>
@@ -251,24 +236,14 @@
         <label>SE</label>
     </customValue>
     <customValue>
-        <fullName>CH</fullName>
+        <fullName>SK</fullName>
         <default>false</default>
-        <label>CH</label>
+        <label>SK</label>
     </customValue>
     <customValue>
-        <fullName>CS</fullName>
+        <fullName>SX</fullName>
         <default>false</default>
-        <label>CS</label>
-    </customValue>
-    <customValue>
-        <fullName>CT</fullName>
-        <default>false</default>
-        <label>CT</label>
-    </customValue>
-    <customValue>
-        <fullName>TW</fullName>
-        <default>false</default>
-        <label>TW</label>
+        <label>SX</label>
     </customValue>
     <customValue>
         <fullName>TH</fullName>
@@ -286,24 +261,24 @@
         <label>TR</label>
     </customValue>
     <customValue>
+        <fullName>TW</fullName>
+        <default>false</default>
+        <label>TW</label>
+    </customValue>
+    <customValue>
         <fullName>UE</fullName>
         <default>false</default>
         <label>UE</label>
     </customValue>
     <customValue>
-        <fullName>GB</fullName>
+        <fullName>US</fullName>
         <default>false</default>
-        <label>GB</label>
+        <label>US</label>
     </customValue>
     <customValue>
         <fullName>UY</fullName>
         <default>false</default>
         <label>UY</label>
-    </customValue>
-    <customValue>
-        <fullName>US</fullName>
-        <default>false</default>
-        <label>US</label>
     </customValue>
     <customValue>
         <fullName>VE</fullName>
@@ -316,9 +291,34 @@
         <label>VN</label>
     </customValue>
     <customValue>
+        <fullName>WC</fullName>
+        <default>false</default>
+        <label>WC</label>
+    </customValue>
+    <customValue>
+        <fullName>WE</fullName>
+        <default>false</default>
+        <label>WE</label>
+    </customValue>
+    <customValue>
+        <fullName>WL</fullName>
+        <default>false</default>
+        <label>WL</label>
+    </customValue>
+    <customValue>
+        <fullName>WM</fullName>
+        <default>false</default>
+        <label>WM</label>
+    </customValue>
+    <customValue>
         <fullName>WR</fullName>
         <default>false</default>
         <label>WR</label>
+    </customValue>
+    <customValue>
+        <fullName>ZH</fullName>
+        <default>false</default>
+        <label>ZH</label>
     </customValue>
     <customValue>
         <fullName>Displays EF.com Markets where the campaign should be displayed</fullName>
