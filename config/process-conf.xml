@@ -127,7 +127,7 @@
     </bean>
     <bean id="BypassTriggerValidationSettingDeploy" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
         <description></description>
-        <property name="name" value="BypassTriggerValidationSettingProcess"/>
+        <property name="name" value="BypassTriggerValidationSettingDeploy"/>
         <property name="configOverrideMap">
             <map>
                 <entry key="sfdc.debugMessages" value="true"/>
@@ -141,7 +141,7 @@
                 <entry key="sfdc.timeoutSecs" value="600"/>
                 <entry key="sfdc.loadBatchSize" value="200"/>
                 <!-- <entry key="sfdc.externalIdField" value="Oracle_Id__c"/> -->
-                <entry key="sfdc.entity" value="BypassTriggersValidations__c"/>
+                <entry key="sfdc.entity" value="BypassTriggersValidation__c"/>
                 <entry key="process.operation" value="insert"/>
                 <entry key="process.mappingFile" value="BypassTriggerValidation.sdl"/>
                 <entry key="dataAccess.name" value="BypassTriggerValidation.csv"/>
