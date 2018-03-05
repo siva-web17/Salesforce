@@ -12,16 +12,16 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Sent to Poseidon</fullName>
-                <default>false</default>
-                <label>Sent to Poseidon</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Booking Created</fullName>
                 <default>false</default>
                 <label>Booking Created</label>
+            </value>
+            <value>
+                <fullName>Sent to Poseidon</fullName>
+                <default>false</default>
+                <label>Sent to Poseidon</label>
             </value>
         </valueSetDefinition>
     </valueSet>

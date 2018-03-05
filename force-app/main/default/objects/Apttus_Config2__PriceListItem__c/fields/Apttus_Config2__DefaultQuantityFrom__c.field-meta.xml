@@ -11,11 +11,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>Product Configuration</fullName>
+                <fullName>Advanced Formula</fullName>
                 <default>false</default>
-                <label>Product Configuration</label>
+                <label>Advanced Formula</label>
             </value>
             <value>
                 <fullName>Product Attribute</fullName>
@@ -23,9 +23,9 @@
                 <label>Product Attribute</label>
             </value>
             <value>
-                <fullName>Advanced Formula</fullName>
+                <fullName>Product Configuration</fullName>
                 <default>false</default>
-                <label>Advanced Formula</label>
+                <label>Product Configuration</label>
             </value>
         </valueSetDefinition>
     </valueSet>

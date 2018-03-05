@@ -16,5 +16,5 @@
         <label>Low</label>
     </customValue>
     <masterLabel>LikelihoodToBook</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

@@ -10,16 +10,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Base Price</fullName>
-                <default>false</default>
-                <label>Base Price</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Base Extended Price</fullName>
                 <default>false</default>
                 <label>Base Extended Price</label>
+            </value>
+            <value>
+                <fullName>Base Price</fullName>
+                <default>false</default>
+                <label>Base Price</label>
             </value>
             <value>
                 <fullName>List Price</fullName>

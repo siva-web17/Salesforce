@@ -43,5 +43,5 @@
         <label>HSY</label>
     </customValue>
     <masterLabel>Product</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

@@ -11,21 +11,21 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>FUA</fullName>
                 <default>false</default>
                 <label>Appointment</label>
             </value>
             <value>
-                <fullName>FUP</fullName>
-                <default>false</default>
-                <label>Follow-up</label>
-            </value>
-            <value>
                 <fullName>TCC</fullName>
                 <default>false</default>
                 <label>Contact Customer</label>
+            </value>
+            <value>
+                <fullName>FUP</fullName>
+                <default>false</default>
+                <label>Follow-up</label>
             </value>
             <value>
                 <fullName>UCC</fullName>

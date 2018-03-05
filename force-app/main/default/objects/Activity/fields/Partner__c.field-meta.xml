@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Partner__c</fullName>
-    <description>This field is used to DISPLAY right name of the Source using Source__c or SourceCodeAuto__c</description>
+    <description>This field is used to display right name of the Source using Source__c or SourceCodeAuto__c</description>
     <externalId>false</externalId>
     <label>Source</label>
     <length>50</length>
