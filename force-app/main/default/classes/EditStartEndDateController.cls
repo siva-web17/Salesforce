@@ -12,6 +12,8 @@ Modification Log   :
 //Class is global as we are using this class as we have remoting method in this class
 global class EditStartEndDateController {
     public list<BundleWrapper> bundleWrapperList { get; set; }
+    Public  List<Start_Dates__c> AYstartDateList { get; set; }
+    public  String AYstartdateJSONString { get; set; }
     public Id currentRecordId { get; set; }
     public String selectedSite { get; set; }
     public Id currentLineItemId;
@@ -32,9 +34,10 @@ global class EditStartEndDateController {
 
     //This Constructor will get line items for all the selected bundles where start date is enabled
     public EditStartEndDateController() {
-        System.debug('####################################  in constructor' );
+        System.debug('############################  in constructor' );
         currentRecordId = ApexPages.CurrentPage().getparameters().get('id');
         this.bundleWrapperList = new list<BundleWrapper>();
+        this.AYstartDateList = new List<Start_Dates__c>();
         configLineItemList = new List<Apttus_Config2__LineItem__c>();
         prepareBundleWrapper();
 
@@ -43,8 +46,6 @@ global class EditStartEndDateController {
         cartStatus = ApexPages.currentPage().getParameters().get('cartStatus');
         cartFlow = ApexPages.currentPage().getParameters().get('flow');
         backCartUrl = Site.getPathPrefix() + '/apex/Apttus_Config2__Cart?id=' + configId2 + '&configRequestId=' + configRequestId;
-              System.debug('Path:: '+Site.getPathPrefix());
-        
         if(cartStatus != NULL){
             backCartUrl = backCartUrl +'&cartStatus=' + cartStatus;
         }
@@ -63,11 +64,32 @@ global class EditStartEndDateController {
         return null;
     }
 
-    //This Method will get available start dates for selected destination in startdate page
-    public static void GetAvailableStartDates(String courseCode, String destination, Boolean isBeginner, String programCode) {
-        startDateList = StartDateHelper.getAvailableStartDates(courseCode, destination, isBeginner, true, programCode);
-        startdateJSONString = JSON.serialize(startDateList);
+    public PageReference updateAYCourseStartDate()
+    {
+        System.debug('Calling updateAYCourseStartDate method for AYYYY');
+        return  null;
     }
+
+    //This Method will get available start dates for selected destination in startdate page
+    public  void getAvailableStartDates(String courseCode, String destination, Boolean isBeginner, String programCode,string AYStartDates) {
+        startDateList = StartDateHelper.getAvailableStartDates(courseCode, destination, isBeginner, true, programCode);
+        System.debug('Called from check box'+startDateList);
+
+        //AYstartDateList=startDateList;
+        if (AYStartDates=='' || AYStartDates == null) {
+            startdateJSONString = JSON.serialize(startDateList);
+        }
+        else
+        {
+            this.AYstartDateList=startDateList;
+            AYstartdateJSONString=JSON.serialize(startDateList);
+            System.debug('Called from check box'+AYstartDateList);
+            System.debug('Records added to AY LIST');
+        }
+
+    }
+
+
 
     //Please revisit this method
     //This method will get the profile access for the user if he is system admin then he can get to see th previous start dates
@@ -96,7 +118,7 @@ global class EditStartEndDateController {
 
         query += 'Id, Product_Subtype__c, Name, Beginner__c, Apttus_Config2__ProductId__r.Name, Apttus_Config2__LineType__c, APTS_EnableStartDateEndDate__c, Program__c, ';
         query += 'Apttus_Config2__Uom__c, Apttus_Config2__EndDate__c, APTS_QunatityModifiable__c, Apttus_Config2__StartDate__c, Apttus_Config2__Quantity__c, ';
-        query += 'DestinationCode__c, Apttus_Config2__ProductId__r.APTS_Destination_Location__c, Apttus_Config2__LineNumber__c, Apttus_Config2__OptionId__c, ';
+        query += 'DestinationCode__c, Apttus_Config2__ProductId__r.APTS_Destination_Location__c, Apttus_Config2__OptionId__r.APTS_AY_Course_Type__c,Apttus_Config2__OptionId__r.Available_Programs__c,Apttus_Config2__LineNumber__c, Apttus_Config2__OptionId__c, ';
         query += 'Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.Market__c ';
         query += 'from Apttus_Config2__LineItem__c ';
         query += 'where Apttus_Config2__ConfigurationId__c = : ' + 'currentRecordId' + ' ' ;
@@ -104,6 +126,7 @@ global class EditStartEndDateController {
         System.debug('#################################### ' + query);
         configLineItemList = Database.query(query);
         configLineItemListJSON = JSON.serialize(configLineItemList);
+        system.debug('Line item are in sprint qa2'+configLineItemList);
         return configLineItemList;
     }
 
@@ -149,7 +172,7 @@ global class EditStartEndDateController {
         if (!getSelectedLineItemsList.isEmpty()) {
             for (Apttus_Config2__LineItem__c lineItem : getSelectedLineItemsList) {
                 System.debug('######## DEstination code selected is:'+lineItem.DestinationCode__c +'@@@@@@@@@@@@@'+lineItem.Product_Code__c+'$$$$$$$$$$$$$$'+lineItem.Program__c);
-                GetAvailableStartDates(lineItem.Product_Code__c, lineItem.DestinationCode__c, lineItem.Beginner__c, lineItem.Program__c);
+                getAvailableStartDates(lineItem.Product_Code__c, lineItem.DestinationCode__c, lineItem.Beginner__c, lineItem.Program__c,lineItem.Apttus_Config2__OptionId__r.APTS_AY_Course_Type__c);
                 break;
             }
         }
@@ -172,7 +195,7 @@ global class EditStartEndDateController {
         System.debug('completedLineNumbers'+completedLineNumbers);
         return hasPendingItems;
     }
-    
+
     //Not used
     //cancel : return to cart page
     /*  public PageReference doRedirect() {
@@ -205,16 +228,18 @@ global class EditStartEndDateController {
             //here we get current line items destination
             currentLineItemGroup = lineItem.Apttus_Config2__ProductId__r.Name;
             if (lineItem.Id == currentId && lineItem.Apttus_Config2__StartDate__c != null) {
-                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(lineItem.DestinationCode__c);
+
+                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartDateSettings(lineItem.DestinationCode__c,lineItem.Program__c);
                 Integer SumOffset=0;
                 System.debug('!!!!!!!!!!!!!!!!!!!!!! offset has value'+startdateSettingsList.size());
                 if (startdateSettingsList.size()>0) {
-                 Integer startdateoffset=(startdateSettingsList[0].StartDateOffSet__c < 0)?Integer.valueOf (startdateSettingsList[0].StartDateOffSet__c*-1):Integer.valueOf(startdateSettingsList[0].StartDateOffSet__c);
+                    Integer startdateoffset=(startdateSettingsList[0].StartDateOffSet__c < 0)?Integer.valueOf (startdateSettingsList[0].StartDateOffSet__c*-1):Integer.valueOf(startdateSettingsList[0].StartDateOffSet__c);
                     Integer enddateoffset=(startdateSettingsList[0].EndDateOffSet__c < 0)?Integer.valueOf(startdateSettingsList[0].EndDateOffSet__c*-1):Integer.valueOf(startdateSettingsList[0].EndDateOffSet__c);
-                     SumOffset=startdateoffset+enddateoffset;
+                    SumOffset=startdateoffset+enddateoffset;
                 }
                 System.debug('!!!!!!!!!!!!!!!!!!!!!! SumOffset Off set sum is'+SumOffset);
                 lineItem.Apttus_Config2__Quantity__c = newQty;
+                lineItem.Apttus_Config2__ExtendedQuantity__c = newQty;
                 System.debug('!!!!!!!!!!!!!!!!!!!!!! UOM is'+lineItem.Apttus_Config2__Uom__c);
                 if (lineItem.Apttus_Config2__Uom__c != System.Label.LineItemUOMEach) {
                     // Hour Day Month Year
@@ -252,6 +277,7 @@ global class EditStartEndDateController {
             }
             else  if (lineItem.Id == currentId && lineItem.Apttus_Config2__Uom__c == System.Label.LineItemUOMEach ){
                 lineItem.Apttus_Config2__Quantity__c = newQty;
+                lineItem.Apttus_Config2__ExtendedQuantity__c = newQty;
                 selectedLineItemsList.add(lineItem);
                 break;
             }
@@ -277,7 +303,7 @@ global class EditStartEndDateController {
             System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+lineItem.Id);
             if (lineItem.Id == currentId) {
                 System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+lineItem.DestinationCode__c);
-                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartdateSettings(lineItem.DestinationCode__c);
+                List<StartDateSettings__mdt> startdateSettingsList = StartDatesSelector.getStartdateSettings(lineItem.DestinationCode__c,lineItem.Program__c);
                 System.debug('&&&&&&&&&&&&&&&&&&&&&&&&&' +currentId +'#########################'+startdateSettingsList.size());
                 for (Apttus_Config2__LineItem__c lineItemrecord : configLineItemList) {
                     if (lineItemrecord.Apttus_Config2__ProductId__r.Name == currentLineItemGroup
@@ -376,9 +402,9 @@ global class EditStartEndDateController {
     //Once the course start date is selected we update the start date and end date of some articles through this method
     @RemoteAction
     global static string updateStartDate(String startdate, String endDate, String quantity,
-                                         String currentLineItemString, String configLineItemListJSON, String configId, String configReqId) {
+            String currentLineItemString, String configLineItemListJSON, String configId, String configReqId) {
         System.debug('startdate '+startdate);
-        System.debug('endDate '+endDate);
+        System.debug('endate '+endDate);
         System.debug('quantity '+quantity);
         configLineItemList = (List<Apttus_Config2__LineItem__c>) JSON.deserialize(configLineItemListJSON, List<Apttus_Config2__LineItem__c>.Class);
         System.debug('Total Line Items '+configLineItemList.size());
@@ -395,21 +421,23 @@ global class EditStartEndDateController {
                 }
             }
         }
-        
+
         currentLineItem = (Apttus_Config2__LineItem__c) JSON.deserialize(currentLineItemString, Apttus_Config2__LineItem__c.Class);
         System.debug('Current Id '+currentLineItem.ID);
         configId2 = configId;
         configRequestId = configReqId;
         String[] urltoNavigate = Utility.splitString(configReqId, '?') ;
         Set<Id> deletedLineItemIdSet = new Set<Id>();
-        
-        if (currentLineItem != null) {            
+
+        if (currentLineItem != null) {
             list<Apttus_Config2__LineItem__c> selectedLineItemsList = new list<Apttus_Config2__LineItem__c>();
             for (Apttus_Config2__LineItem__c lineItem : configLineItemList) {
                 if (lineItem.Id == currentLineItem.Id) {
                     lineItem.Apttus_Config2__EndDate__c = Date.valueOf(endDate);
                     lineItem.Apttus_Config2__StartDate__c = Date.valueOf(startdate);
                     lineItem.Apttus_Config2__Quantity__c = Integer.valueOf(quantity);
+                    lineItem.Apttus_Config2__ExtendedQuantity__c = Integer.valueOf(quantity);
+                    lineItem.APTS_Course_Number_of_Weeks__c=Integer.valueOf(quantity);
                     selectedLineItemsList.add(lineItem);
                     deletedLineItemIdSet = SeasonSupplementsHelper.createOptionLineItem(configId2, lineItem, bundleWiseLineItemMap);
                 }
@@ -433,7 +461,7 @@ global class EditStartEndDateController {
             StartDateHelper.updateStartDateAndEndDateOfRelatedArticles(selectedLineItemsList,
                     currentLineItem.DestinationCode__c,
                     Date.valueOf(startdate),
-                    Date.valueOf(endDate), Integer.valueOf(quantity));
+                    Date.valueOf(endDate), Integer.valueOf(quantity),currentLineItem.Apttus_Config2__OptionId__r.Available_Programs__c);
         }
         else {
             System.debug('currentLineItem is: null');

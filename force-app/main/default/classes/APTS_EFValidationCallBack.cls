@@ -39,11 +39,17 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
             result.isSuccess =  false;
             result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_Price_Override_Error_Message));
         }
-        
+
         //Added by Mitul Parmar for Restrict to give discount than defined limit
         if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !validateCartTotalDiscount(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
             result.isSuccess =  false;
             result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_Grand_Total_Discount_Error + ' '+System.Label.APTS_Grand_Total_Discount_Limit + '.'));
+        }
+
+        //Added by Arjun for Restrict to finalize cart without a course /Bundle should have only one course
+        if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !CheckCoursePerBundle(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
+            result.isSuccess =  false;
+            result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_ONE_COURSE_PER_BUNDLE +'.'));
         }
 
         //Added by Mitul Parmar for Restrict to give discount than defined limit
@@ -56,8 +62,8 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !validateCartByDestinationAndTotalCourceWeek(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
             result.isSuccess =  false;
             result.Messages.add(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.APTS_Australia_Overseas_Health_Cover_Product));
-        }  
-        
+        }
+
         //Added by Husen Sayyed for Restrict users for Fixed Fare flights cannot be booked for certain amount of time before departures.
         if(this.VALIDATION_TRIGGER_VALUE && result.isSuccess && !validateCartByDestinationAndStartDate(cart) && !String.isEmpty(PageAction) && PageAction == System.Label.ValidateCartActionFinalize){
             result.isSuccess =  false;
@@ -96,32 +102,32 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         Apttus_Config2__ProductConfiguration__c configuration = cart.getConfigSO();
         List<Apttus_Config2__LineItem__c> cartLineItemList = new List<Apttus_Config2__LineItem__c>();
         cartLineItemList = [Select Id, Apttus_Config2__IsOptional__c, Apttus_Config2__NetPrice__c, Apttus_Config2__LineType__c, Non_Discounted_Price__c,
-                            Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c, Apttus_Config2__AdjustmentType__c, Apttus_Config2__AttributeValueId__r.Country__c,
-                            Apttus_Config2__AdjustmentAmount__c, APTS_Product_Type__c, Product_Subtype__c, Apttus_Config2__Quantity__c, Apttus_Config2__OptionId__r.Family,
-                            Apttus_Config2__ConfigurationId__r.APTS_Comparative_Quote__c, DestinationCode__c, Product_Code__c, APTS_Total_Course_Weeks__c,
-                            Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c, Apttus_Config2__ProductId__c, Apttus_Config2__Description__c,
-                            Departure_Point__c, Apttus_Config2__StartDate__c, Apttus_Config2__ProductId__r.Family, Apttus_Config2__ConfigurationId__r.APTS_Total_Count_FTEFX__c,
-                            Apttus_Config2__LineNumber__c
-                            from Apttus_Config2__LineItem__c
-                            where Apttus_Config2__ConfigurationId__c = :configuration.Id ORDER BY Apttus_Config2__LineNumber__c];
+                Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c, Apttus_Config2__AdjustmentType__c, Apttus_Config2__AttributeValueId__r.Country__c,
+                Apttus_Config2__AdjustmentAmount__c, APTS_Product_Type__c, Product_Subtype__c, Apttus_Config2__Quantity__c, Apttus_Config2__OptionId__r.Family,
+                Apttus_Config2__ConfigurationId__r.APTS_Comparative_Quote__c, DestinationCode__c, Product_Code__c, APTS_Total_Course_Weeks__c,
+                Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c, Apttus_Config2__ProductId__c, Apttus_Config2__Description__c,
+                Departure_Point__c, Apttus_Config2__StartDate__c, Apttus_Config2__ProductId__r.Family, Apttus_Config2__ConfigurationId__r.APTS_Total_Count_FTEFX__c,
+                Apttus_Config2__LineNumber__c
+        from Apttus_Config2__LineItem__c
+        where Apttus_Config2__ConfigurationId__c = :configuration.Id ORDER BY Apttus_Config2__LineNumber__c];
 
         return cartLineItemList;
     }
 
     /*
     Description : common method to get Product list by Product Group Name.
-    Created by : Husen sayyed
+    Created by : Husen   sayyed
     Created Date : 10-Oct-2017
     */
     private static List<Apttus_Config2__ProductGroupMember__c> getProducts(Set<String> productGroupNameSet){
         List<Apttus_Config2__ProductGroupMember__c> productGroupMemberList = new List<Apttus_Config2__ProductGroupMember__c>();
         for(Apttus_Config2__ProductGroupMember__c productGroupMemberRecord : [select Id, Apttus_Config2__ProductId__c, Apttus_Config2__ProductGroupId__c,
-                                                                              Apttus_Config2__ProductGroupId__r.Name
-                                                                              from Apttus_Config2__ProductGroupMember__c
-                                                                              where Apttus_Config2__ProductGroupId__r.Name in : productGroupNameSet]){
+                Apttus_Config2__ProductGroupId__r.Name
+        from Apttus_Config2__ProductGroupMember__c
+        where Apttus_Config2__ProductGroupId__r.Name in : productGroupNameSet]){
             productGroupMemberList.add(productGroupMemberRecord);
         }
-        return productGroupMemberList;       
+        return productGroupMemberList;
     }
 
     /*
@@ -139,15 +145,57 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         for(Apttus_Config2__LineItem__c lineItem : lineItemList){
             //for all changed line Item Status (Amended)
             if((lineItem.Apttus_Config2__AdjustmentType__c == System.Label.ProductAdjustmentPriceOverride
-                && !lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c) 
-            || (lineItem.Apttus_Config2__AdjustmentType__c == System.Label.ProductAdjustmentPriceOverride
-                && lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c
+                    && !lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c)
+                    || (lineItem.Apttus_Config2__AdjustmentType__c == System.Label.ProductAdjustmentPriceOverride
+                    && lineItem.Apttus_Config2__OptionId__r.APTS_PriceOverrideAllowed__c
                 && lineItem.Apttus_Config2__AdjustmentAmount__c < 0)){
 
                 returnFlag = FALSE;
             }
         }
         return returnFlag;
+    }
+
+    public static Boolean CheckCoursePerBundle(Apttus_Config2.ProductConfiguration cart)
+    {
+        boolean returnFlag = TRUE;
+        Apttus_Config2__ProductConfiguration__c configuration = cart.getConfigSO();
+        lineItemList=  getLineItemData(cart);
+        List<Apttus_Config2__LineItem__c> templineItemList= new List<Apttus_Config2__LineItem__c>();
+        Map<Decimal,List<Apttus_Config2__LineItem__c>> bundleWiseMap=new Map<Decimal,List<Apttus_Config2__LineItem__c>>();
+        Set<Decimal> lineNumberSet=new Set<Decimal>();
+        Set<Decimal> missinglineNumberSet=new Set<Decimal>();
+        for (Apttus_Config2__LineItem__c lineItem:lineItemList) {
+            lineNumberSet.add(lineItem.Apttus_Config2__LineNumber__c);
+            if (!bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)) {
+                if (lineItem.APTS_Product_Type__c==Label.ProductTypeCourse) {
+                    templineItemList.add(lineItem);
+                    bundleWiseMap.put(lineItem.Apttus_Config2__LineNumber__c,templineItemList);
+                }
+            }
+            else
+            {
+                if (lineItem.APTS_Product_Type__c==Label.ProductTypeCourse) {
+                    returnFlag=FALSE;
+                    break;
+                    //Second Course for same Bundle Available throw error here
+                }
+            }
+            if (!bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)) {
+                missinglineNumberSet.add(lineItem.Apttus_Config2__LineNumber__c);
+            }
+            else if (bundleWiseMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)
+                    && missinglineNumberSet.contains(lineItem.Apttus_Config2__LineNumber__c) ) {
+                missinglineNumberSet.remove(lineItem.Apttus_Config2__LineNumber__c);
+            }
+        }
+        //Here add Logic to check that all the destination should have course
+        if (missinglineNumberSet.size() >0 && returnFlag) {
+            returnFlag=FALSE;
+            // Bundle Should have atleast one Course
+        }
+        return returnFlag;
+
     }
 
     /*
@@ -182,9 +230,9 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
 
                 //for all changed line Item Status (Amended)
                 if(lineItem.Apttus_Config2__AttributeValueId__r.Country__c == System.Label.ProductCountryUK
-                    && lineItem.APTS_Product_Type__c == System.Label.ProductTypeAccommodation
-                    && (lineItem.Product_Subtype__c == System.Label.ProductSubTypeHostFamily || lineItem.Product_Subtype__c == System.Label.ProductSubTypeHotel || lineItem.Product_Subtype__c == System.Label.ProductSubTypeResidence)){
-                    
+                        && lineItem.APTS_Product_Type__c == System.Label.ProductTypeAccommodation
+                        && (lineItem.Product_Subtype__c == System.Label.ProductSubTypeHostFamily || lineItem.Product_Subtype__c == System.Label.ProductSubTypeHotel || lineItem.Product_Subtype__c == System.Label.ProductSubTypeResidence)){
+
                     //check for host family and if it has some value show error
                     if(accomodationSubTypeQuantity.containsKey(System.Label.ProductSubTypeHostFamily)){
                         Double tempQuantity = accomodationSubTypeQuantity.get(System.Label.ProductSubTypeHostFamily) + lineItem.Apttus_Config2__Quantity__c;
@@ -244,9 +292,9 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         }
 
         Apttus_Config2__SummaryGroup__c grandTotalSummary = [Select Id, Apttus_Config2__NetAdjustmentPercent__c
-                                                             from Apttus_Config2__SummaryGroup__c
-                                                             where Apttus_Config2__ConfigurationId__c =: configuration.Id
-                                                             and Apttus_Config2__LineType__c =: System.Label.ValidateCartGrandTotal];
+        from Apttus_Config2__SummaryGroup__c
+        where Apttus_Config2__ConfigurationId__c =: configuration.Id
+        and Apttus_Config2__LineType__c =: System.Label.ValidateCartGrandTotal];
 
         system.debug('Apttus_Config2__NetAdjustmentPercent__c :--- '+(grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c*-1));
         system.debug('Grand Total Discount limit :--- '+System.Label.APTS_Grand_Total_Discount_Limit);
@@ -254,11 +302,11 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
 
         Double totalDiscountLimit = Double.valueOf(System.Label.APTS_Grand_Total_Discount_Limit);
         //check if the discount amount can be more than defined amount
-        if(grandTotalSummary != NULL && grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c != NULL 
-            && (grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c*-1) > 0 && (totalDiscountLimit < (grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c*-1))){            
+        if(grandTotalSummary != NULL && grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c != NULL
+                && (grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c*-1) > 0 && (totalDiscountLimit < (grandTotalSummary.Apttus_Config2__NetAdjustmentPercent__c*-1))){
             returnFlag = FALSE;
         }
-        
+
         return returnFlag;
     }
 
@@ -267,8 +315,8 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         Map<Decimal,Decimal> bundleWiseTotal=new Map<Decimal,Decimal>();
         //Apttus_QPConfig__Proposald__c
         Apttus_Proposal__Proposal__c  Quote = [Select Id, Name, ComparativeQuote__c
-                                               from Apttus_Proposal__Proposal__c
-                                               where Id =:configuration.Apttus_QPConfig__Proposald__c];
+        from Apttus_Proposal__Proposal__c
+        where Id =:configuration.Apttus_QPConfig__Proposald__c];
         system.debug('validateCompareQuoteDiscount :--- ');
         if (Quote.ComparativeQuote__c) {
             system.debug('ComparativeQuote__c :--- ');
@@ -324,49 +372,86 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
     */
     public static boolean validateCartByDestinationAndTotalCourceWeek(Apttus_Config2.ProductConfiguration cart) {
 
-        boolean returnFlag = TRUE;
+        boolean returnFlag = False;
         set<String> destinationCodeSet = new set<String>{'AU-BRS','AU-SYD','AU-PER'};
         map<Decimal, Apttus_Config2__LineItem__c> bundleWiseLineCourseItemsMap = new map<Decimal, Apttus_Config2__LineItem__c>();
         map<Decimal, Apttus_Config2__LineItem__c> bundleWiseLineOSHCItemsMap = new map<Decimal, Apttus_Config2__LineItem__c>();
-        
+Boolean isComparativeQuote=true;
         for(Apttus_Config2__LineItem__c lineItem : lineItemList){
-            if(!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c  && destinationCodeSet.contains(lineItem.DestinationCode__c) && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination && lineItem.APTS_Total_Course_Weeks__c > 12){
-                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
-                    returnFlag = true; 
-                }else{
-                    returnFlag = false;
-                }                           
+            System.debug('lineItem validation cart' +lineItem.Apttus_Config2__ProductId__r.Family);
+            System.debug('lineItem validation cart Product code' +lineItem.Product_Code__c);
+            System.debug('lineItem  cart dest code' +lineItem.DestinationCode__c);
+            System.debug('lineItem  Comparitive' +lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c);
+            /*System.debug('In IF LOOP ' +lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c);
+            System.debug('lineItem.Apttus_Config2__ProductId__r.Family '+lineItem.Apttus_Config2__ProductId__r.Family);
+            System.debug('destinationCodeSet.contains(lineItem.DestinationCode__c) ' +destinationCodeSet.contains(lineItem.DestinationCode__c));*/
+            isComparativeQuote=lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c;
+            if(!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    && destinationCodeSet.contains(lineItem.DestinationCode__c)
+                    && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination
+                    && lineItem.APTS_Total_Course_Weeks__c > 12){
+                System.debug('lineItem.Product_Code__c'+ lineItem.Product_Code__c);
+                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC || lineItem.Product_Code__c == System.Label.ProductCodeOSHCAY){
+                    System.debug('Setting Return flag to true here 1st if loop');
+                            returnFlag = true;
+                    break;
             }
-            else if(lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c && destinationCodeSet.contains(lineItem.DestinationCode__c) && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination){
-                if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeCourse && lineItem.Apttus_Config2__Quantity__c > 12){
+                else
+                {
+                    returnFlag = false;
+                }
+            }
+            else if(lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    && destinationCodeSet.contains(lineItem.DestinationCode__c)
+                    && lineItem.Apttus_Config2__ProductId__r.Family == System.Label.ProductFamilyDestination){
+                if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeCourse
+                        && lineItem.Apttus_Config2__Quantity__c > 12){
                     bundleWiseLineCourseItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
-                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC){
+                if(lineItem.Product_Code__c == System.Label.ProductCodeOSHC|| lineItem.Product_Code__c == System.Label.ProductCodeOSHCAY){
                     bundleWiseLineOSHCItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
+            }
+            else if(!destinationCodeSet.contains(lineItem.DestinationCode__c) ||
+                    (!lineItem.Apttus_Config2__ConfigurationId__r.Apttus_QPConfig__Proposald__r.ComparativeQuote__c
+                    &&  lineItem.APTS_Total_Course_Weeks__c <= 12))
+            {
+                System.debug('Setting Return flag to true here 2nd if loop');
+                returnFlag = true;
             }
         }
         system.debug('==bundleWiseLineCourseItemsMap=='+bundleWiseLineCourseItemsMap);
         system.debug('==bundleWiseLineOSHCItemsMap=='+bundleWiseLineOSHCItemsMap);
-        if(!bundleWiseLineCourseItemsMap.isEmpty()){
+        if(!bundleWiseLineCourseItemsMap.isEmpty())
+        {
             if(bundleWiseLineOSHCItemsMap.isEmpty()){
                 returnFlag = false;
+                System.debug('returnFlag bundleWiseLineOSHCItemsMap' +returnFlag);
             }
             else{
                 for(Decimal  lineItemNumber : bundleWiseLineCourseItemsMap.keySet()){
-                    if(bundleWiseLineOSHCItemsMap.get(lineItemNumber) == null){
-                        returnFlag = false; 
+                    if(bundleWiseLineOSHCItemsMap.get(lineItemNumber) != null){
+                        System.debug('Setting Return flag to true here 3rd if loop');
+                        returnFlag = true;
+                        System.debug('returnFlag Decimal  lineItemNumber' +returnFlag);
                     }
                     else{
-                        returnFlag = true;
+                        returnFlag = false;
+                        break;
                     }
                 }
             }
         }
-        
+        else if(isComparativeQuote && bundleWiseLineCourseItemsMap.isEmpty())
+        {
+            System.debug('Setting Return flag to true here 4th if loop');
+            returnFlag = true;
+        }
+
+System.debug('returnFlag' +returnFlag);
         return returnFlag;
     }
-    
+
     /*
     Method : validateCartByDestinationandStartDate
     Description : Fixed Fare flights cannot be booked for certain amount of time before departures.
@@ -379,22 +464,22 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
         Set<String> productGroupNameSet = new set<String>{System.Label.HemisphereNorthern, System.Label.HemisphereSouthern};
         map<Id, String> productIdGroupNameMap = new map<Id, String>();
         map<Decimal, Apttus_Config2__LineItem__c> accommodationBundleLineItemsMap = new map<Decimal, Apttus_Config2__LineItem__c>();
-        
+
         for(Apttus_Config2__LineItem__c  lineItem : lineItemList){
             if(lineItem.Apttus_Config2__ConfigurationId__r.APTS_Total_Count_FTEFX__c > 0){
-              if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeAccommodation){
-                if(!accommodationBundleLineItemsMap.isEmpty() && accommodationBundleLineItemsMap.containskey(lineItem.Apttus_Config2__LineNumber__c)){
-                    if(lineItem.Apttus_Config2__StartDate__c < accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c){
-                        accommodationBundleLineItemsMap.remove(lineItem.Apttus_Config2__LineNumber__c);
+                if(lineItem.APTS_Product_Type__c == System.Label.ProductTypeAccommodation){
+                    if(!accommodationBundleLineItemsMap.isEmpty() && accommodationBundleLineItemsMap.containskey(lineItem.Apttus_Config2__LineNumber__c)){
+                        if(lineItem.Apttus_Config2__StartDate__c < accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c){
+                            accommodationBundleLineItemsMap.remove(lineItem.Apttus_Config2__LineNumber__c);
+                            accommodationBundleLineItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
+                        }
+                    }else{
                         accommodationBundleLineItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                     }
-                }else{
-                    accommodationBundleLineItemsMap.put(lineItem.Apttus_Config2__LineNumber__c, lineItem);
                 }
-              }
             }
         }
-        
+
         if(!accommodationBundleLineItemsMap.isEmpty()){
             for(Apttus_Config2__ProductGroupMember__c productGroupMemberRecord : getProducts(productGroupNameSet)){
                 productIdGroupNameMap.put(productGroupMemberRecord.Apttus_Config2__ProductId__c, productGroupMemberRecord.Apttus_Config2__ProductGroupId__r.Name);
@@ -406,15 +491,15 @@ global with sharing class APTS_EFValidationCallBack implements Apttus_Config2.Cu
                     if(!String.isBlank(lineItem.Departure_Point__c) && productIdGroupNameMap.containsKey(lineItem.Apttus_Config2__ProductId__c) && lineItem.Product_Code__c == System.Label.FixedFareFlightCode && accommodationBundleLineItemsMap.containsKey(lineItem.Apttus_Config2__LineNumber__c)){
                         if(productIdGroupNameMap.get(lineItem.Apttus_Config2__ProductId__c) == System.Label.HemisphereNorthern && accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c != null && System.today().daysBetween(accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c) < 21 ){
                             system.debug('==daysBetween=='+System.today().daysBetween(accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c));
-                            returnFlag = false; 
+                            returnFlag = false;
                         }else if(productIdGroupNameMap.get(lineItem.Apttus_Config2__ProductId__c) == System.Label.HemisphereSouthern && accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c != null && System.today().daysBetween(accommodationBundleLineItemsMap.get(lineItem.Apttus_Config2__LineNumber__c).Apttus_Config2__StartDate__c) < 42 ){
-                            returnFlag = false; 
-                        }                           
+                            returnFlag = false;
+                        }
                     }
-                } 
+                }
             }
-        }  
-        
+        }
+
         return returnFlag;
     }
 }

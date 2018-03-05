@@ -16,7 +16,7 @@ public class LeadsSelector {
                 select id, FirstName, LastName,status,City,PostalCode,phone,MobilePhone,OtherPhone__c,
                         DOB__c,street,Email,Email2__c,CreationType__c,
                         RequestType__c,Program__c,Market__c,InsertTime__c,ActivityDateTime__c,Region__c,
-                        IsDupeProcessed__c,IsDupe__c,ReadyForRanking__c,Ranking__c
+                        IsDupeProcessed__c,RecalculateRanking__c ,IsDupe__c,ReadyForRanking__c,Ranking__c
                 from Lead
                 where Id IN:leads and RequestType__c = 'RES'
                 ORDER BY ActivityDateTime__c
@@ -27,7 +27,24 @@ public class LeadsSelector {
         List<Lead> leadList = [
                  SELECT Id, 
                         ActivityDateTime__c,
-                        SourceCodeGroup__c,Country,CreatedDate,DepartureCity__c,DestinationCode__c,DeviceType__c,IsParent__c,NumberOfCalls__c,Ranking__c,Region__c,RequestType__c,SalesOffice__c,State,StateCode,WhenMonth__c,
+                        SourceCodeGroup__c,
+                        
+                        SourceCodeAuto__c,
+                        PoseidonID__c,
+                        RecalculateRanking__c ,
+                        Country,CreatedDate,
+                        DepartureCity__c,
+                        DestinationCode__c,
+                        DeviceType__c,
+                        IsParent__c,
+                        NumberOfCalls__c,
+                        Ranking__c,
+                        Region__c,RequestType__c,
+                        SalesOffice__c,
+                        HadAddressonCreation__c,
+                        IsExpressCall__c,
+                        State,StateCode,
+                        WhenMonth__c,
                         City, 
                         status,
                         CloseDate__c,
@@ -88,7 +105,8 @@ public class LeadsSelector {
         Map<Id, Lead> leadMap = new Map<Id, Lead>(
         [
                 select
-                        id, FirstName,street,LastName,City,PostalCode,phone,SourceCodeGroup__c,Country,CreatedDate,DepartureCity__c,DestinationCode__c,DeviceType__c,IsParent__c,NumberOfCalls__c,SalesOffice__c,State,StateCode,WhenMonth__c,
+                        id, FirstName,street,LastName,City,PostalCode,phone,SourceCodeGroup__c,
+                        SourceCodeAuto__c,PoseidonID__c,RecalculateRanking__c ,Country,CreatedDate,DepartureCity__c,DestinationCode__c,DeviceType__c,IsParent__c,NumberOfCalls__c,SalesOffice__c,State,StateCode,WhenMonth__c,
                         MobilePhone,OtherPhone__c,DoubleOptIn__c,DOB__c,Email,Email2__c,Product__c,
                         RequestType__c,Program__c,Market__c,InsertTime__c,ActivityDateTime__c,
                         Region__c,IsDupeProcessed__c,IsDupe__c,ReadyForRanking__c,CreationType__c,DoNotCall,
@@ -178,6 +196,20 @@ public class LeadsSelector {
         ];
     }
 
+    public static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> leadIds, Boolean allTask) {
+            // allTask - default value is bool always
+        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        return [
+                SELECT
+                        Id, Name, Status, Product__c, Program__c,OwnerId,
+                        (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
+                        FROM Tasks
+                        WHERE IsClosed = False)
+                FROM Lead
+                WHERE Id IN :leadIds
+        ];
+    }
+
     /**
     * @author Arkadiusz Celej
     * @param List<id> leadIds - Leads to select
@@ -190,10 +222,18 @@ public class LeadsSelector {
                 WHERE Id in :leadIds
         ];
     }
-    public static Lead getLeadRecord(Id recordId) {
+      public static Lead getLeadRecord(Id recordId) {
         return [Select Id, Program__c, Market__c
         from Lead
         where Id = :recordId
         LIMIT 1];
+    }
+
+    public static Map<Id,Lead>  getleadRecord (List<Id> leadIds) {
+        Map<Id, Lead> leadMap = new Map<Id,Lead>();
+        if (leadIds!=null) {
+            leadMap = new Map<Id, Lead>([select Id, SalesOffice__c from Lead where Id in :leadIds]);
+        }
+        return leadMap;
     }
 }

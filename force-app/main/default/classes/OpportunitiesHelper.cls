@@ -11,6 +11,7 @@ Modification Log   :
  *************************************************************************************/
 
 public class OpportunitiesHelper {
+    public static boolean isActiveChanged = false;
 
     //For after insert
     public static void createShareOnInsert(List<Opportunity> oppList) {
@@ -99,6 +100,8 @@ public class OpportunitiesHelper {
                 if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
                     opportunityshareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
                 }
+            }if (opportunityNewList[index].isActive__c != opportunityOldList[index].isActive__c) {
+                isActiveChanged=true;
             }
         }
         if (deleteAccess != null && deleteAccess.size() > 0) {
@@ -314,5 +317,84 @@ public class OpportunitiesHelper {
         systemTask.NextCallType__c = System.Label.ContactCustomer;
 
         return systemTask;
+    }
+    
+    public static void populateSalesOfficeProgram (List<Opportunity> opportunityList) {
+        Set<string> recordSharingValues= new Set<String>();
+        Map<string,id> salesOfficeMap = new Map<string,id>();
+            for(Opportunity oppRecord :opportunityList){
+                if(oppRecord.RecordSharingKey__c!='' ){
+                    recordSharingValues.add(oppRecord.RecordSharingKey__c );
+                }
+            }
+            
+        List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
+            for(SalesOfficeProgram__c salesOfficeRecord :salesofficeRecords ){
+                if(salesOfficeRecord.Name!= null){
+                    salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
+                }
+            }
+
+        for(Opportunity oppRec:opportunityList){
+            {
+                if(salesOfficeMap.containsKey(oppRec.RecordSharingKey__c)){
+                  oppRec.SalesOfficeProgram__c = salesOfficeMap.get(oppRec.RecordSharingKey__c);
+                }
+            }
+        }
+    }
+
+    public static void populateSourceBasedonSorceCodeAuto(List<Opportunity> oppList){ 
+        Set<String> sourceAutoCodeValues = new Set<String>();
+        Map<string,id> sourceMap = new Map<string,id>();
+
+        for(Opportunity oppRecord:oppList){
+            if(oppRecord.SourceCodeAuto__c!=null && oppRecord.SourceCodeAuto__c!='' ){
+                sourceAutoCodeValues.add(oppRecord.SourceCodeAuto__c);
+            }
+        }
+
+        List<Source__c> sourceRecords =SourcesSelector.getSourceRecords(sourceAutoCodeValues);
+        for(Source__c sourceRec:sourceRecords){
+            if(sourceRec.Code__c!=null){
+                sourceMap.put(sourceRec.Code__c,sourceRec.Id );
+            }
+        }
+
+        for(Opportunity opportunityRec:oppList){
+            {
+                if(opportunityRec.CreationMethod__c!=system.label.CreationMethodEnteredByUser) {
+                    if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
+                        opportunityRec.Source__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void populateSourceCodeAutoAndPartnerFromSource(List<Opportunity> opportunityList){
+        Set<Id> sourceIds = new Set<Id>();
+        Map<Id,List<Opportunity>> opportunityMap = new Map<Id, List<Opportunity>>();
+        Map<Id,Source__c> sourceMap = new  Map<Id, Source__c>();
+
+        for(Opportunity opportunityRecord: opportunityList){
+            if(opportunityRecord.Source__c != null){
+                if(!opportunityMap.containsKey(opportunityRecord.Source__c)){
+                    opportunityMap.put(opportunityRecord.Source__c, new List<Opportunity>());
+                }
+                opportunityMap.get(opportunityRecord.Source__c).add(opportunityRecord);
+            }
+        }
+
+        sourceMap=SourcesSelector.getSourceMapRecordforOpportunity(opportunityMap);
+
+        for(Id recordId:opportunityMap.keyset()){
+            for (Opportunity opportunityRec : opportunityMap.get(recordId)){
+                if(sourceMap.containskey(opportunityRec.source__c)&& sourceMap.get(opportunityRec.Source__c)!=null){
+                    opportunityRec.Partner__c=(sourceMap.get(opportunityRec.Source__c).Name);
+                    opportunityRec.SourceCodeAuto__c=(sourceMap.get(opportunityRec.Source__c).Code__c);
+                }
+            }
+        }
     }
 }

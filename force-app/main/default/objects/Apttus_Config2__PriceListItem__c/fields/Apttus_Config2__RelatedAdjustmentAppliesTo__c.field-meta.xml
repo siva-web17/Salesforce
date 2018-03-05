@@ -10,11 +10,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>Base Price</fullName>
+                <fullName>Average Unit Net Price</fullName>
                 <default>false</default>
-                <label>Base Price</label>
+                <label>Average Unit Net Price</label>
             </value>
             <value>
                 <fullName>Base Extended Price</fullName>
@@ -22,9 +22,19 @@
                 <label>Base Extended Price</label>
             </value>
             <value>
+                <fullName>Base Price</fullName>
+                <default>false</default>
+                <label>Base Price</label>
+            </value>
+            <value>
                 <fullName>Extended Price</fullName>
                 <default>false</default>
                 <label>Extended Price</label>
+            </value>
+            <value>
+                <fullName>List Price</fullName>
+                <default>false</default>
+                <label>List Price</label>
             </value>
             <value>
                 <fullName>Net Price</fullName>
@@ -32,24 +42,14 @@
                 <label>Net Price</label>
             </value>
             <value>
-                <fullName>Unit Net Price</fullName>
-                <default>false</default>
-                <label>Unit Net Price</label>
-            </value>
-            <value>
-                <fullName>Average Unit Net Price</fullName>
-                <default>false</default>
-                <label>Average Unit Net Price</label>
-            </value>
-            <value>
                 <fullName>Net Unit Price</fullName>
                 <default>false</default>
                 <label>Net Unit Price</label>
             </value>
             <value>
-                <fullName>List Price</fullName>
+                <fullName>Unit Net Price</fullName>
                 <default>false</default>
-                <label>List Price</label>
+                <label>Unit Net Price</label>
             </value>
         </valueSetDefinition>
     </valueSet>

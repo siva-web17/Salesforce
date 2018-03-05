@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OppDetailsForAccountSyncing</fullName>
+    <description>Used in Syncing Account Details back to poseidon for migration</description>
+    <displayedFields>
+        <field>SalesOffice__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>OppDetailsForAccountSyncing</label>
+</FieldSet>

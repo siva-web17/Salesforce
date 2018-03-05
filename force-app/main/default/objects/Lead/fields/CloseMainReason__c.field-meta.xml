@@ -10,21 +10,21 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Had no intention</fullName>
-                <default>false</default>
-                <label>Had no intention</label>
-            </value>
-            <value>
-                <fullName>Lost to competitor</fullName>
-                <default>false</default>
-                <label>Lost to competitor</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Chose to do something else</fullName>
                 <default>false</default>
                 <label>Chose to do something else</label>
+            </value>
+            <value>
+                <fullName>Finds EF offer too expensive</fullName>
+                <default>false</default>
+                <label>Finds EF offer too expensive</label>
+            </value>
+            <value>
+                <fullName>Had no intention</fullName>
+                <default>false</default>
+                <label>Had no intention</label>
             </value>
             <value>
                 <fullName>Has no means</fullName>
@@ -32,14 +32,19 @@
                 <label>Has no means</label>
             </value>
             <value>
-                <fullName>Wrongly Imported</fullName>
+                <fullName>Lost to competitor</fullName>
                 <default>false</default>
-                <label>Wrongly Imported</label>
+                <label>Lost to competitor</label>
             </value>
             <value>
                 <fullName>Not able to contact customer</fullName>
                 <default>false</default>
                 <label>Not able to contact customer</label>
+            </value>
+            <value>
+                <fullName>Wrongly Imported</fullName>
+                <default>false</default>
+                <label>Wrongly Imported</label>
             </value>
         </valueSetDefinition>
     </valueSet>

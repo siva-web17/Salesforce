@@ -6,12 +6,12 @@
     <aura:attribute name="selectedMeetingType" type="String[]"/>
     <aura:attribute name="selectedMeetingCity" type="String[]"/>
     <aura:attribute name="selectedProgram" type="String[]"/>
-    <aura:attribute name="salesoffices" type="List"/>
+    <aura:attribute name="salesoffices" type="Map"/>
     <aura:attribute name="products" type="List"/>
-    <aura:attribute name="programs" type="List"/>
+    <aura:attribute name="programs" type="Map"/>
     <aura:attribute name="initialData" type="object"/>
-    <aura:attribute name="meetingtypes" type="List"/>
-    <aura:attribute name="meetingcities" type="List"/>
+    <aura:attribute name="meetingtypes" type="Map"/>
+    <aura:attribute name="meetingcities" type="Map"/>
     <aura:attribute name="campaigns" type="campaign[]"/>
     <aura:attribute name="selectedTo" type="Datetime"/>
     <aura:attribute name="selectedfrom" type="Datetime"/>
@@ -77,7 +77,7 @@
             </div>
             <div class="slds-float_right slds-m-around_medium">
                 <button class="slds-button slds-button_neutral slds-grid--align-right" onclick="{!c.getCampaigns}" value="{!v.programs}">
-                    Filter Campaign
+                    Search
                 </button>
             </div>
         </aura:set>
@@ -100,7 +100,7 @@
                     <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col" >
                         <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
                             <span class="slds-assistive-text">Sort </span>
-                            <span class="slds-truncate" title="Name">Campaign Name</span>
+                            <span class="slds-truncate" title="Name">Info Meeting Name</span>
                             <div class="slds-icon_container">
 
                             </div>

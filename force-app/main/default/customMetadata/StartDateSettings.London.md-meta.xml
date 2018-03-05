@@ -16,11 +16,15 @@
     </values>
     <values>
         <field>ProductSubType__c</field>
-        <value xsi:type="xsd:string">Residence,Hotel,Travel Insurance,Host Family,Host Family Twin,Flight,No Subtype</value>
+        <value xsi:type="xsd:string">Residence,Hotel,Travel Insurance,Host Family,Host Family Twin,Meals,Flight,No Subtype</value>
     </values>
     <values>
         <field>ProductType__c</field>
-        <value xsi:type="xsd:string">Accommodation,Insurance,Travel</value>
+        <value xsi:type="xsd:string">Accommodation,Insurance,Other,Travel</value>
+    </values>
+    <values>
+        <field>Program__c</field>
+        <value xsi:type="xsd:string">ILSH;MLY;PRW;ILS;ILSU;ILSP;MLYP</value>
     </values>
     <values>
         <field>StartDateOffSet__c</field>

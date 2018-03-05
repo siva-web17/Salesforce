@@ -8,7 +8,7 @@
     <customValue>
         <fullName>AE</fullName>
         <default>false</default>
-        <label>UnitedArab Emirates</label>
+        <label>United Arab Emirates</label>
     </customValue>
     <customValue>
         <fullName>AF</fullName>
@@ -18,7 +18,7 @@
     <customValue>
         <fullName>AG</fullName>
         <default>false</default>
-        <label>AntiguaAnd Barbuda</label>
+        <label>Antigua and Barbuda</label>
     </customValue>
     <customValue>
         <fullName>AI</fullName>
@@ -78,7 +78,7 @@
     <customValue>
         <fullName>BA</fullName>
         <default>false</default>
-        <label>BosniaAnd Herzegovina</label>
+        <label>Bosnia and Herzegovina</label>
     </customValue>
     <customValue>
         <fullName>BB</fullName>
@@ -143,7 +143,7 @@
     <customValue>
         <fullName>BQ</fullName>
         <default>false</default>
-        <label>Bonaire, Sint EustatiusAnd Saba</label>
+        <label>Bonaire, Sint Eustatius and Saba</label>
     </customValue>
     <customValue>
         <fullName>BR</fullName>
@@ -198,7 +198,7 @@
     <customValue>
         <fullName>CF</fullName>
         <default>false</default>
-        <label>CentralAfrican Republic</label>
+        <label>Central African Republic</label>
     </customValue>
     <customValue>
         <fullName>CG</fullName>
@@ -438,7 +438,7 @@
     <customValue>
         <fullName>GS</fullName>
         <default>false</default>
-        <label>South GeorgiaAnd the South Sandwich Islands</label>
+        <label>South Georgia and the South Sandwich Islands</label>
     </customValue>
     <customValue>
         <fullName>GT</fullName>
@@ -458,7 +458,7 @@
     <customValue>
         <fullName>HM</fullName>
         <default>false</default>
-        <label>Heard IslandAnd McDonald Islands</label>
+        <label>Heard Island and McDonald Islands</label>
     </customValue>
     <customValue>
         <fullName>HN</fullName>
@@ -578,7 +578,7 @@
     <customValue>
         <fullName>KN</fullName>
         <default>false</default>
-        <label>Saint KittsAnd Nevis</label>
+        <label>Saint Kitts and Nevis</label>
     </customValue>
     <customValue>
         <fullName>KP</fullName>
@@ -868,7 +868,7 @@
     <customValue>
         <fullName>PM</fullName>
         <default>false</default>
-        <label>Saint PierreAnd Miquelon</label>
+        <label>Saint Pierre and Miquelon</label>
     </customValue>
     <customValue>
         <fullName>PN</fullName>
@@ -923,7 +923,7 @@
     <customValue>
         <fullName>SA</fullName>
         <default>false</default>
-        <label>SaudiArabia</label>
+        <label>Saudi Arabia</label>
     </customValue>
     <customValue>
         <fullName>SB</fullName>
@@ -953,7 +953,7 @@
     <customValue>
         <fullName>SH</fullName>
         <default>false</default>
-        <label>Saint Helena,AscensionAnd Tristan da Cunha</label>
+        <label>Saint Helena, Ascension and Tristan da Cunha</label>
     </customValue>
     <customValue>
         <fullName>SI</fullName>
@@ -963,7 +963,7 @@
     <customValue>
         <fullName>SJ</fullName>
         <default>false</default>
-        <label>SvalbardAnd Jan Mayen</label>
+        <label>Svalbard and Jan Mayen</label>
     </customValue>
     <customValue>
         <fullName>SK</fullName>
@@ -1003,7 +1003,7 @@
     <customValue>
         <fullName>ST</fullName>
         <default>false</default>
-        <label>Sao TomeAnd Principe</label>
+        <label>Sao Tome and Principe</label>
     </customValue>
     <customValue>
         <fullName>SV</fullName>
@@ -1018,7 +1018,7 @@
     <customValue>
         <fullName>SY</fullName>
         <default>false</default>
-        <label>SyrianArab Republic</label>
+        <label>Syrian Arab Republic</label>
     </customValue>
     <customValue>
         <fullName>SZ</fullName>
@@ -1028,7 +1028,7 @@
     <customValue>
         <fullName>TC</fullName>
         <default>false</default>
-        <label>TurksAnd Caicos Islands</label>
+        <label>Turks and Caicos Islands</label>
     </customValue>
     <customValue>
         <fullName>TD</fullName>
@@ -1088,7 +1088,7 @@
     <customValue>
         <fullName>TT</fullName>
         <default>false</default>
-        <label>TrinidadAnd Tobago</label>
+        <label>Trinidad and Tobago</label>
     </customValue>
     <customValue>
         <fullName>TV</fullName>
@@ -1138,7 +1138,7 @@
     <customValue>
         <fullName>VC</fullName>
         <default>false</default>
-        <label>Saint VincentAnd the Grenadines</label>
+        <label>Saint Vincent and the Grenadines</label>
     </customValue>
     <customValue>
         <fullName>VE</fullName>
@@ -1163,7 +1163,7 @@
     <customValue>
         <fullName>WF</fullName>
         <default>false</default>
-        <label>WallisAnd Futuna</label>
+        <label>Wallis and Futuna</label>
     </customValue>
     <customValue>
         <fullName>WS</fullName>
@@ -1183,7 +1183,7 @@
     <customValue>
         <fullName>ZA</fullName>
         <default>false</default>
-        <label>SouthAfrica</label>
+        <label>South Africa</label>
     </customValue>
     <customValue>
         <fullName>ZM</fullName>
@@ -1195,7 +1195,77 @@
         <default>false</default>
         <label>Zimbabwe</label>
     </customValue>
+    <customValue>
+        <fullName>AN</fullName>
+        <default>false</default>
+        <label>Netherlands Antilles</label>
+    </customValue>
+    <customValue>
+        <fullName>AS</fullName>
+        <default>false</default>
+        <label>American Samoa</label>
+    </customValue>
+    <customValue>
+        <fullName>FM</fullName>
+        <default>false</default>
+        <label>Micronesia</label>
+    </customValue>
+    <customValue>
+        <fullName>GU</fullName>
+        <default>false</default>
+        <label>Guam</label>
+    </customValue>
+    <customValue>
+        <fullName>HK</fullName>
+        <default>false</default>
+        <label>Hong Kong</label>
+    </customValue>
+    <customValue>
+        <fullName>MH</fullName>
+        <default>false</default>
+        <label>Marshall Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>MP</fullName>
+        <default>false</default>
+        <label>Northern Mariana Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>PR</fullName>
+        <default>false</default>
+        <label>Puerto Rico</label>
+    </customValue>
+    <customValue>
+        <fullName>PW</fullName>
+        <default>false</default>
+        <label>Palau</label>
+    </customValue>
+    <customValue>
+        <fullName>TP</fullName>
+        <default>false</default>
+        <label>East Timor</label>
+    </customValue>
+    <customValue>
+        <fullName>UM</fullName>
+        <default>false</default>
+        <label>United States Minor Outlying Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>VI</fullName>
+        <default>false</default>
+        <label>Virgin Islands (U.S.)</label>
+    </customValue>
+    <customValue>
+        <fullName>ZR</fullName>
+        <default>false</default>
+        <label>Zaire</label>
+    </customValue>
+    <customValue>
+        <fullName>XK</fullName>
+        <default>false</default>
+        <label>Kosovo</label>
+    </customValue>
     <description>The Picklist will store All the countries</description>
     <masterLabel>Countries</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

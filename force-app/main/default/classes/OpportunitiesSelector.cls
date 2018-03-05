@@ -33,9 +33,9 @@ public class OpportunitiesSelector {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, FollowupDatetime__c, AccountId, StageName,Program__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
-                                    FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c
+                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
                                FROM Opportunity
                               WHERE Id IN :oppIds];
         }
@@ -65,7 +65,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunitiesOnAccountId(Id accId) {
         return [
-                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c
+                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c,isactive__c,CloseMainReason__c
                 from Opportunity
                 where AccountId = :accId
                 order by FollowupDateTime__c ASC
@@ -91,11 +91,11 @@ public class OpportunitiesSelector {
     }
     public static list<opportunity> getLstOpportunityOrderByCrtdDateASC(list<opportunity> mergedOpps) {
 
-        list<opportunity> opportunityOrderByCreatedDateASC = [select id,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps ORDER BY createddate ASC];
+        list<opportunity> opportunityOrderByCreatedDateASC = [select id,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps and isactive__c=true ORDER BY createddate ASC];
         return opportunityOrderByCreatedDateASC;
     }
     public static list<opportunity> getLstOfFollowupOpportunity(list<opportunity> mergedOpps) {
-        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c from opportunity where id in:mergedOpps AND stageName = 'FOLLOWUP' ORDER BY FollowupDateTime__c ASC];
+        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c from opportunity where id in:mergedOpps AND stageName = 'FOLLOWUP' and isactive__c=true ORDER BY FollowupDateTime__c ASC];
         return lstOfOpportunity;
 
     }
@@ -103,7 +103,7 @@ public class OpportunitiesSelector {
         list<opportunity> lstOfOpportunity = [
                 select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c
                 from Opportunity
-                Where accountId = :masterAccount.id
+                Where accountId = :masterAccount.id AND isactive__c = true
                 ORDER BY CreatedDate DESC
         ];
         return lstOfOpportunity;
@@ -111,7 +111,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
+               select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
 //                        SELECT Id, WhoId, WhatId, Subject, Status,
 //                                FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,
 //                                CloseDate__c, IsExpressCall__c,RecordType.DeveloperName
@@ -157,7 +157,7 @@ public class OpportunitiesSelector {
     //This method used to get the active opportunity
     public static List<Opportunity> dupeCheckOpportunities(Account duplicateAccount) {
         return [
-                Select id,StageName,CloseDate,Program__c,TimeOutDate__c,FirstContactDateTime__c
+                Select id,StageName,CloseDate,Program__c,RecalculateRanking__c,TimeOutDate__c,FirstContactDateTime__c
                 from Opportunity
                 Where AccountId = :duplicateAccount.id
                 /**and IsPrimary__c = TRUE**/
@@ -205,6 +205,32 @@ public class OpportunitiesSelector {
                 WHERE Id in :opportunityIds
         ];
     }
+
+    /**
+    * @author Arjun Mohan
+    * ver 1.0 16-Feb-2018
+    * @description Returns list of Active Opp records For Passed AcocuntId's
+    *
+    * @param accountIdSet Ids to select
+    *
+    * @return List<Opportunity>
+    */
+    public static  Map<Id,Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
+        List<Opportunity> oppList=new List<Opportunity>();
+        Map<Id,Opportunity> accountIdWithOpportunityMap=new Map<Id,Opportunity>();
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Name,AccountId from Opportunity ';
+        query += 'where isActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
+        oppList= Database.query(query);
+        for (Opportunity oppRecord:oppList) {
+            accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
+        }
+        return accountIdWithOpportunityMap;
+    }
+
 
     /**
     * @author Arkadiusz Celej
@@ -283,5 +309,13 @@ public class OpportunitiesSelector {
                 (SELECT WhatId FROM Tasks WHERE RecordTypeId = :sbrRecordTypeId AND IsClosed <> TRUE)
             FROM Opportunity
             WHERE AccountId IN : accountIds];
+    }
+
+    public static Map<Id,Opportunity> getOpportunityRecords(List<Id> opportunityIds){
+        Map<Id,Opportunity> opportunityMap = new Map<Id,Opportunity>();
+        if(opportunityIds!=null) {
+            opportunityMap = new Map<Id, Opportunity>([select Id, SalesOffice__c from Opportunity where Id in :opportunityIds]);
+        }
+        return opportunityMap;
     }
 }

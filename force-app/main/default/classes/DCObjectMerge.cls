@@ -44,6 +44,7 @@ public class DCObjectMerge {
         duplicateAccount = emailLeadToAccountMerge(duplicateAccount,sourceLead);
         //6. address merge
         duplicateAccount = addressLeadtoAccountMerge(duplicateAccount,sourceLead);
+         duplicateAccount.recalculateranking__c = true;
         system.debug('^^^^^^^^^^^^ final acocunt'+duplicateAccount);
         system.debug('duplicateAccount>>>>>'+duplicateAccount);
 
@@ -68,7 +69,7 @@ public class DCObjectMerge {
                 opportunityRecord.Program__c = sourceLead.Program__c;
             }
 
-
+             LogACallHelper.getOpportunitiesWithOpenSystemCallTask(new Set<Id>{opportunityRecord.id},system.now(),'');
       /*   Id callTaskRecordTypeId = RecordTypeSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.CALL_TASK_DEVELOPER_NAME).Id;
             systemCallTask = [SELECT Id, status,type,FollowUpDate__c
             FROM Task
@@ -93,10 +94,11 @@ public class DCObjectMerge {
                 opportunityRecord.Program__c = sourceLead.Program__c;
             }
         }
+         opportunityRecord.RecalculateRanking__c=true;
         SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
         // checking the field to false to avoid the stagechange from any other place and using a DML to update it to false
         system.debug('updated stage name is>>'+opportunityRecord.stagename);
-        LogACallHelper.getOpportunitiesWithOpenSystemCallTask(new Set<Id>{opportunityRecord.id},system.now(),'');
+       
         opportunityRecord.TFBypassStageValidation__c = false;
         SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
     //    update systemCallTask;

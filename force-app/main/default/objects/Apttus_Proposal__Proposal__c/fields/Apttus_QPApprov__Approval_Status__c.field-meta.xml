@@ -10,16 +10,26 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>None</fullName>
-                <default>false</default>
-                <label>None</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Approval Required</fullName>
                 <default>false</default>
                 <label>Approval Required</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
             </value>
             <value>
                 <fullName>Not Submitted</fullName>
@@ -32,19 +42,9 @@
                 <label>Pending Approval</label>
             </value>
             <value>
-                <fullName>Approved</fullName>
-                <default>false</default>
-                <label>Approved</label>
-            </value>
-            <value>
                 <fullName>Rejected</fullName>
                 <default>false</default>
                 <label>Rejected</label>
-            </value>
-            <value>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-                <label>Cancelled</label>
             </value>
         </valueSetDefinition>
     </valueSet>

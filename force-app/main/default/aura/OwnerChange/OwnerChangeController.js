@@ -3,38 +3,62 @@
      doInit:function(component, event, helper){
          debugger;
            // var recordId = component.get(v.recordId) ;
-           var action=component.get("c.GetRecordOwnerDetails");
-             action.setParams({
-                    	'Id' : component.get("v.recordId")
-                	});
-           action.setCallback(this, function(response) {
-                      var state = response.getState();
+//           var action=component.get("c.GetRecordOwnerDetails");
+//             action.setParams({
+//                    	'Id' : component.get("v.OwnerRecordId")
+//                	});
+//           action.setCallback(this, function(response) {
+//                      var state = response.getState();
+//
+//                      if (component.isValid() && state === "SUCCESS") {
+//                          debugger;
+//
+//                          var ownerRecord = JSON.parse(response.getReturnValue());
+//                          component.set("v.ParentRecord",ownerRecord);
+//                          component.set('v.ownerName',ownerRecord.SalesMadeby__r.Name);
+//                         // message='Owner Changed to'+
+//                          component.set("v.ownerURL", "#/sObject/" + ownerRecord.OwnerId + "/view");
+//
+//
+//                      }
+//                      else if (state === "ERROR") {
+//                          var errors = response.getError();
+//                          if (errors) {
+//                              if (errors[0] && errors[0].message) {
+//                                  console.log("Error message: " +
+//                                              errors[0].message);
+//                              }
+//                          } else {
+//                              console.log("Unknown error");
+//                          }
+//                      }
+//
+//                  });
+//                  $A.enqueueAction(action);
 
-                      if (component.isValid() && state === "SUCCESS") {
-                          debugger;
-
-                          var ownerRecord = JSON.parse(response.getReturnValue());
-                          component.set("v.ParentRecord",ownerRecord);
-                          component.set('v.ownerName',ownerRecord.Owner.Name);
-                         // message='Owner Changed to'+
-                          component.set("v.ownerURL", "#/sObject/" + ownerRecord.OwnerId + "/view");
-
-
-                      }
-                      else if (state === "ERROR") {
-                          var errors = response.getError();
-                          if (errors) {
-                              if (errors[0] && errors[0].message) {
-                                  console.log("Error message: " +
-                                              errors[0].message);
-                              }
-                          } else {
-                              console.log("Unknown error");
-                          }
-                      }
-
-                  });
-                  $A.enqueueAction(action);
+                    var action = component.get("c.GetRecordOwnerDetails");
+                    action.setParams({
+                            'Id' : component.get("v.OwnerRecordId")
+                        });
+                        action.setCallback(this, function(response){
+                            var state = response.getState();
+                            if (component.isValid() && state === "SUCCESS") {
+                                //var ownerRecord = JSON.parse(response.getReturnValue());
+                                component.set("v.ownerName", response.getReturnValue());
+                             }
+                             else if (state === "ERROR") {
+                                                       var errors = response.getError();
+                                                       if (errors) {
+                                                           if (errors[0] && errors[0].message) {
+                                                               console.log("Error message: " +
+                                                                           errors[0].message);
+                                                           }
+                                                       } else {
+                                                           console.log("Unknown error");
+                                                       }
+                                                   }
+                          });
+                           $A.enqueueAction(action);
                   },
 
 //                  NavigateToOwnerInfo:function(component,helper,event)
@@ -84,14 +108,14 @@
                                          	'UserId' : ownerRec.Id ,
                                          	'RecordId':component.get("v.recordId"),
                                          	'ObjectName': component.get("v.ParentObjectApi")
-                                     	});
+                                     	}); 
                                 action.setCallback(this, function(response) {
                                            var state = response.getState();
                                            var mode='pester';
                                            var message='';
                                            var duration=3000;
                                            if (component.isValid() && state === "SUCCESS") {
-                                               message= component.get("v.ParentObjectApi")+'Owner Changed to '+ownerRec.Name;
+                                               message= 'Proposal Sales made By Changed to '+ownerRec.Name;
 
                                            }
                                            else if (state === "ERROR") {

@@ -1,6 +1,6 @@
 <aura:component >
 
-  <aura:attribute name="options" type="String[]"/>
+  <aura:attribute name="options" type="Map"/>
   <aura:attribute name="options_internal" type="object[]" access="private"/>
   <aura:attribute name="selectedItems" type="String[]" />
   <aura:attribute name="infoText" type="String" default="Select an option..." />

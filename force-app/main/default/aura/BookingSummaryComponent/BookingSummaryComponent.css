@@ -71,3 +71,25 @@
   right: 10px;
   top: 25px;
 }
+
+.THIS .overllappingElement .uiOutputURL {
+          white-space: nowrap;
+          position: absolute;
+          left: -250px;
+          top: 2px;
+      }
+.THIS .otherNationality .slds-picklist {
+    width: 100% !important;
+}
+      .THIS .otherNationality .slds-picklist button {
+          width: 100% !important;
+          height: 33px;
+          margin-top: 2px;
+      }
+
+      .THIS  .overllappingElement .slds-input,.THIS  .overllappingElement .slds-input:hover, .THIS  .overllappingElement .slds-input:focus, .THIS  .overllappingElement .slds-input:active {
+          border: none;
+          background: transparent;
+          box-shadow: none;
+          line-height: 0;
+      }

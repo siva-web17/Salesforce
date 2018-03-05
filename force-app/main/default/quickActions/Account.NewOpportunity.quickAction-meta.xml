@@ -3,12 +3,12 @@
     <description>This quick action is used to create an Opportunity from an existing Account</description>
     <fieldOverrides>
         <field>CloseDate</field>
-         <formula>DATE( 
+        <formula>DATE( 
 YEAR(TODAY()) + IF(MONTH(TODAY()) > 2, 1, 0), 
 MOD(MONTH(TODAY()) + 2, 12), 
 DAY(TODAY()) 
-)</formula>    
-</fieldOverrides>
+)</formula>
+    </fieldOverrides>
     <fieldOverrides>
         <field>CreationMethod__c</field>
         <literalValue>EnteredByUser</literalValue>
@@ -63,7 +63,7 @@ DAY(TODAY())
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Partner__c</field>
+                <field>Source__c</field>
                 <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
