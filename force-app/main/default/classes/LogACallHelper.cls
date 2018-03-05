@@ -139,7 +139,19 @@ public with sharing class LogACallHelper {
                     visitEvent.DurationInMinutes = 30;
                     visitEvent.ActivityDateTime = visitDatetime;
                     insert visitEvent;
-                } else if (callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) {
+                }else if (callResult.toUpperCase() == Label.CloseOpp.toUpperCase()) {
+                    if (String.valueOf(parentId).substring(0, 3) == '006') {
+                        opp.CloseMainReason__c = closeReason;
+                        update opp;
+                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
+                        lead.CloseMainReason__c = closeReason;
+                        update lead; 
+                    }
+                    //openCallTask.Status = 'Completed';
+                }
+
+                if ((callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) ||
+                        (allReachedItems.contains(callAction.toUpperCase()) && currentProgram == 'MULTI')) {
                     System.debug('Change program section invoked');
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
@@ -151,26 +163,18 @@ public with sharing class LogACallHelper {
                         openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                     }
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Program__c != selectedProgram) {                            
+                        if (opp.Program__c != selectedProgram) {
                             opp.Program__c = selectedProgram;
                             update opp;
                         }
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if ( lead.Program__c != selectedProgram) {                           
+                        if ( lead.Program__c != selectedProgram) {
                             lead.Program__c = selectedProgram;
                             update lead;
                         }
                     }
-                } else if (callResult.toUpperCase() == Label.CloseOpp.toUpperCase()) {
-                    if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        opp.CloseMainReason__c = closeReason;
-                        update opp;
-                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        lead.CloseMainReason__c = closeReason;
-                        update lead;
-                    }
-                    //openCallTask.Status = 'Completed';
                 }
+
                 system.debug('openCallTask.NextCallType : '+openCallTask.NextCallType__c);
                 if(TasksHelper.taskSettingsMap.containsKey(openCallTask.NextCallType__c)) {
                     openCallTask.Subject = TasksHelper.taskSettingsMap.get(openCallTask.NextCallType__c).TaskSubject__c;
