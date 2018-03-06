@@ -7,7 +7,7 @@
     <label>Customer</label>
     <picklistValues>
         <picklist>CloseMainReason__c</picklist>
-        <values>
+        <values> 
             <fullName>Chose to do something else</fullName>
             <default>false</default>
         </values>

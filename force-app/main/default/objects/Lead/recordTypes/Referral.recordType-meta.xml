@@ -6,7 +6,7 @@
     <compactLayoutAssignment>Test_Layout</compactLayoutAssignment>
     <label>Referral</label>
     <picklistValues>
-        <picklist>CloseMainReason__c</picklist>
+            <picklist>CloseMainReason__c</picklist>
         <values>
             <fullName>Chose to do something else</fullName>
             <default>false</default>
@@ -2674,7 +2674,7 @@
             <default>false</default>
         </values>
     </picklistValues>
-    <picklistValues>
+    <picklistValues> 
         <picklist>RequestType__c</picklist>
         <values>
             <fullName>BR</fullName>
