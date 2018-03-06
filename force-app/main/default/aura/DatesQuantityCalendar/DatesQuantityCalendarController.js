@@ -4,6 +4,10 @@
 ({
     doInit : function(component, event, helper){
         var now = new Date();
+        var selectedDate = component.get('v.startDate');
+        if(selectedDate){
+            now = new Date(selectedDate);
+        }
         helper.setupCalendar(component, new Date(now.getFullYear(), now.getMonth(), 1));
         helper.loadAvailableStartDates(component);
     },
@@ -73,7 +77,6 @@
             "endDate" : component.get('v.endDate'),
             "weeks" : component.get('v.quantity')
         };
-        console.log(params);
         evt.setParams(params);
         evt.fire();
         component.destroy();

@@ -10,7 +10,12 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Included Usage</fullName>
+                <default>false</default>
+                <label>Included Usage</label>
+            </value>
             <value>
                 <fullName>One Time</fullName>
                 <default>true</default>
@@ -25,11 +30,6 @@
                 <fullName>Usage</fullName>
                 <default>false</default>
                 <label>Usage</label>
-            </value>
-            <value>
-                <fullName>Included Usage</fullName>
-                <default>false</default>
-                <label>Included Usage</label>
             </value>
         </valueSetDefinition>
     </valueSet>

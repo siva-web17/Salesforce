@@ -3,6 +3,7 @@
  */
 ({
     getCartItems : function(component, cartId){
+        var helper = this;
         var action = component.get('c.getCartLineItems');
         action.setParams({
             'cartId': cartId
@@ -15,12 +16,7 @@
                     this.createDatesQuantityConfiguratorItems(component, returnValue);
                 }
                 else if (state === "ERROR") {
-                    var errors = response.getError()
-                    var message = 'Unknown error';
-                    if(errors && Array.isArray(errors) && errors.length > 0){
-                        message = errors[0].message;
-                    }
-                    this.handleErrors(message);
+                    helper.handleErrors(response.getError());
                 }
                 else {
                     // Handle other reponse states
@@ -29,11 +25,6 @@
         );
 
         $A.enqueueAction(action);
-    },
-
-    toggleSpinner : function (component) {
-        var spinner = component.find('spinner');
-        $A.util.toggleClass(spinner, "slds-hide");
     },
 
     showSpinner: function (component) {
@@ -47,6 +38,7 @@
     },
 
     saveCartItems: function(component, changedLineItemsByLineNumber){
+        var helper = this;
         this.showSpinner(component);
         var lineItems = [];
         for(var key in changedLineItemsByLineNumber) {
@@ -65,12 +57,7 @@
                     this.repriceCartItems(component);
                 }
                 else if (state === "ERROR") {
-                    var errors = response.getError()
-                    var message = 'Unknown error';
-                    if(errors && Array.isArray(errors) && errors.length > 0){
-                        message = errors[0].message;
-                    }
-                    this.handleErrors(message);
+                    helper.handleErrors(response.getError());
                     this.hideSpinner(component);
                 }
                 else {
@@ -83,6 +70,7 @@
     },
 
     repriceCartItems: function (component) {
+        var helper = this;
         this.showSpinner(component);
         var action = component.get('c.repriceCart');
         action.setParams({
@@ -100,12 +88,7 @@
                     }
                 }
                 else if (state === "ERROR") {
-                    var errors = response.getError()
-                    var message = 'Unknown error';
-                    if(errors && Array.isArray(errors) && errors.length > 0){
-                        message = errors[0].message;
-                    }
-                    this.handleErrors(message);
+                    helper.handleErrors(response.getError());
                     this.hideSpinner(component);
                 }
                 else {
@@ -118,7 +101,7 @@
     },
 
     createDatesQuantityConfiguratorItems : function (component, mappedItems) {
-        console.log('congifItems',mappedItems);
+        var helper = this;
         var numberOfCourses = Object.keys(mappedItems).length;
         var lineNumber = 0;
         for(var key in mappedItems){
@@ -142,8 +125,7 @@
                             console.log("No response from server or client is offline.")
                         }
                         else if (status === "ERROR") {
-                            console.log(error);
-                            this.handleErrors(error);
+                            helper.handleErrors(error);
                         }
                     }
                 );
@@ -156,19 +138,12 @@
     },
 
     handleErrors : function(errors) {
-        // Configure error toast
-        var toastParams = {
-            title: "Error",
-            message: "Unknown error", // Default error message
-            type: "error"
-        };
-        // Pass the error message if any
-        if (errors && Array.isArray(errors) && errors.length > 0) {
-            toastParams.message = errors[0].message;
+        var message = 'Unknown error';
+        if (errors) {
+            if (errors[0] && errors[0].message) {
+                message = errors[0].message;
+            }
         }
-        // Fire error toast
-        var toastEvent = $A.get("e.force:showToast");
-        toastEvent.setParams(toastParams);
-        toastEvent.fire();
+        component.set('v.errorMessage', message);
     }
 })

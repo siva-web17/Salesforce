@@ -107,20 +107,23 @@ public with sharing class LogACallController {
         return null;
     } 
         @AuraEnabled
-    public static List<string> getDurations(Id recordId){
+    public static List<string> getDurations(Id recordId, String program){
         try{
             String sObjectName = recordId.getSObjectType().getDescribe().getName();
-            if(String.valueOf(recordId).substring(0, 3) == '00Q') {
-                Lead objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
-                Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Lead.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
-                return dependentPicklists.get(objectToUpdate.Program__c);
+            String recordProgram = program;
+            if(program == ''){
+                if(String.valueOf(recordId).substring(0, 3) == '00Q') {
+                    Lead objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
+                    recordProgram = objectToUpdate.Program__c;
+                }
+                else if(String.valueOf(recordId).substring(0, 3) == '006'){
+                    Opportunity objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
+                    recordProgram = objectToUpdate.Program__c;
+                }
             }
-            else if(String.valueOf(recordId).substring(0, 3) == '006'){
-                Opportunity objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
-                Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Opportunity.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
-                return dependentPicklists.get(objectToUpdate.Program__c);
-            }
-            return new List<String>();
+
+             Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Opportunity.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
+            return dependentPicklists.get(recordProgram);
         }
         catch (Exception e){
             System.debug('Error in getDurations() :'+ e.getMessage());
@@ -296,8 +299,11 @@ public with sharing class LogACallController {
                     lead.FirstContactDateTime__c = Datetime.now();
                 }
             }
-            update lead;
-
+                
+            if(recordId.getSobjectType() == Lead.getSObjectType()){
+                 update lead;
+            }
+			
             if(isLeadReached && callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
                 // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
                 dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
@@ -325,7 +331,6 @@ public with sharing class LogACallController {
                 result.put('Type','Opportunity');
                 response.Result = result;
             }
-
             // Create a new Task representing the Action that was just done and fill it with details
             Task task = new Task();
             task.SalesAction__c = callAction;

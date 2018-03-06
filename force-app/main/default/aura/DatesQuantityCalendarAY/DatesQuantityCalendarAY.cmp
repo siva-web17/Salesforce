@@ -15,7 +15,7 @@
                 <lightning:buttonIcon iconName="utility:close" onclick="{!c.close}" class="apttus-button"/>
             </header>
             <div class="slds-modal__content" >
-                <lightning:card >
+                <lightning:card>
                     <aura:set attribute="body">
                         <table class="slds-table slds-table--bordered">
                             <thead>

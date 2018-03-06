@@ -12,11 +12,21 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>Accommodation</fullName>
                 <default>false</default>
                 <label>Accommodation</label>
+            </value>
+            <value>
+                <fullName>Course</fullName>
+                <default>false</default>
+                <label>Course</label>
+            </value>
+            <value>
+                <fullName>Deposit</fullName>
+                <default>false</default>
+                <label>Deposit</label>
             </value>
             <value>
                 <fullName>Destination</fullName>
@@ -27,51 +37,6 @@
                 <fullName>Enrollment Fee</fullName>
                 <default>false</default>
                 <label>Enrollment Fee</label>
-            </value>
-            <value>
-                <fullName>Insurance</fullName>
-                <default>false</default>
-                <label>Insurance</label>
-            </value>
-            <value>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <label>Other</label>
-            </value>
-            <value>
-                <fullName>Travel</fullName>
-                <default>false</default>
-                <label>Travel</label>
-            </value>
-            <value>
-                <fullName>Deposit</fullName>
-                <default>false</default>
-                <label>Deposit</label>
-            </value>
-            <value>
-                <fullName>Course</fullName>
-                <default>false</default>
-                <label>Course</label>
-            </value>
-            <value>
-                <fullName>Item</fullName>
-                <default>false</default>
-                <label>Item</label>
-            </value>
-            <value>
-                <fullName>System Article</fullName>
-                <default>false</default>
-                <label>System Article</label>
-            </value>
-            <value>
-                <fullName>Tax</fullName>
-                <default>false</default>
-                <label>Tax</label>
-            </value>
-            <value>
-                <fullName>VTM</fullName>
-                <default>false</default>
-                <label>VTM</label>
             </value>
             <value>
                 <fullName>Entitlement</fullName>
@@ -86,6 +51,16 @@
                 <label>Equipment</label>
             </value>
             <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Item</fullName>
+                <default>false</default>
+                <label>Item</label>
+            </value>
+            <value>
                 <fullName>License</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
@@ -98,6 +73,11 @@
                 <label>Maintenance</label>
             </value>
             <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
                 <fullName>Service</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
@@ -108,6 +88,26 @@
                 <default>false</default>
                 <isActive>false</isActive>
                 <label>Subscription</label>
+            </value>
+            <value>
+                <fullName>System Article</fullName>
+                <default>false</default>
+                <label>System Article</label>
+            </value>
+            <value>
+                <fullName>Tax</fullName>
+                <default>false</default>
+                <label>Tax</label>
+            </value>
+            <value>
+                <fullName>Travel</fullName>
+                <default>false</default>
+                <label>Travel</label>
+            </value>
+            <value>
+                <fullName>VTM</fullName>
+                <default>false</default>
+                <label>VTM</label>
             </value>
             <value>
                 <fullName>Wallet</fullName>

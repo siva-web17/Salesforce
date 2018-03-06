@@ -11,16 +11,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Quote</fullName>
-                <default>true</default>
-                <label>Quote</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Proposal</fullName>
                 <default>false</default>
                 <label>Proposal</label>
+            </value>
+            <value>
+                <fullName>Quote</fullName>
+                <default>true</default>
+                <label>Quote</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -10,12 +10,7 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Per Unit</fullName>
-                <default>true</default>
-                <label>Per Unit</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Flat Price</fullName>
                 <default>false</default>
@@ -25,6 +20,11 @@
                 <fullName>Percentage</fullName>
                 <default>false</default>
                 <label>Percentage</label>
+            </value>
+            <value>
+                <fullName>Per Unit</fullName>
+                <default>true</default>
+                <label>Per Unit</label>
             </value>
             <value>
                 <fullName>Related Price</fullName>

@@ -66,6 +66,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Netherlands Antilles</integrationValue>
+            <isoCode>AN</isoCode>
+            <label>Netherlands Antilles</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Angola</integrationValue>
             <isoCode>AO</isoCode>
             <label>Angola</label>
@@ -89,6 +98,15 @@
             <label>Argentina</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>American Samoa</integrationValue>
+            <isoCode>AS</isoCode>
+            <label>American Samoa</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>
@@ -1298,6 +1316,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Micronesia</integrationValue>
+            <isoCode>FM</isoCode>
+            <label>Micronesia</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Faroe Islands</integrationValue>
             <isoCode>FO</isoCode>
             <label>Faroe Islands</label>
@@ -1460,6 +1487,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Guam</integrationValue>
+            <isoCode>GU</isoCode>
+            <label>Guam</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Guinea-Bissau</integrationValue>
             <isoCode>GW</isoCode>
             <label>Guinea-Bissau</label>
@@ -1474,6 +1510,15 @@
             <label>Guyana</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>Hong Kong</integrationValue>
+            <isoCode>HK</isoCode>
+            <label>Hong Kong</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>
@@ -3269,6 +3314,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Marshall Islands</integrationValue>
+            <isoCode>MH</isoCode>
+            <label>Marshall Islands</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Macedonia, the former Yugoslav Republic of</integrationValue>
             <isoCode>MK</isoCode>
             <label>Macedonia, the former Yugoslav Republic of</label>
@@ -3310,6 +3364,15 @@
             <label>Macao</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>Northern Mariana Islands</integrationValue>
+            <isoCode>MP</isoCode>
+            <label>Northern Mariana Islands</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>
@@ -3858,6 +3921,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Puerto Rico</integrationValue>
+            <isoCode>PR</isoCode>
+            <label>Puerto Rico</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Palestine</integrationValue>
             <isoCode>PS</isoCode>
             <label>Palestine</label>
@@ -3872,6 +3944,15 @@
             <label>Portugal</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>Palau</integrationValue>
+            <isoCode>PW</isoCode>
+            <label>Palau</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>
@@ -4227,6 +4308,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>East Timor</integrationValue>
+            <isoCode>TP</isoCode>
+            <label>East Timor</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Turkey</integrationValue>
             <isoCode>TR</isoCode>
             <label>Turkey</label>
@@ -4286,6 +4376,15 @@
             <label>Uganda</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>United States Minor Outlying Islands</integrationValue>
+            <isoCode>UM</isoCode>
+            <label>United States Minor Outlying Islands</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>
@@ -4857,6 +4956,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Virgin Islands (U.S.)</integrationValue>
+            <isoCode>VI</isoCode>
+            <label>Virgin Islands (U.S.)</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Vietnam</integrationValue>
             <isoCode>VN</isoCode>
             <label>Vietnam</label>
@@ -4893,6 +5001,15 @@
         </countries>
         <countries>
             <active>true</active>
+            <integrationValue>Kosovo</integrationValue>
+            <isoCode>XK</isoCode>
+            <label>Kosovo</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
             <integrationValue>Yemen</integrationValue>
             <isoCode>YE</isoCode>
             <label>Yemen</label>
@@ -4925,6 +5042,15 @@
             <label>Zambia</label>
             <orgDefault>false</orgDefault>
             <standard>true</standard>
+            <visible>true</visible>
+        </countries>
+        <countries>
+            <active>true</active>
+            <integrationValue>Zaire</integrationValue>
+            <isoCode>ZR</isoCode>
+            <label>Zaire</label>
+            <orgDefault>false</orgDefault>
+            <standard>false</standard>
             <visible>true</visible>
         </countries>
         <countries>

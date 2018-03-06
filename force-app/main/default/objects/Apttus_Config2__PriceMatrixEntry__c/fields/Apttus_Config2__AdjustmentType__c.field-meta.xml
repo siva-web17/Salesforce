@@ -10,16 +10,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>% Discount</fullName>
                 <default>false</default>
                 <label>% Discount</label>
-            </value>
-            <value>
-                <fullName>Discount Amount</fullName>
-                <default>false</default>
-                <label>Discount Amount</label>
             </value>
             <value>
                 <fullName>% Markup</fullName>
@@ -27,9 +22,9 @@
                 <label>% Markup</label>
             </value>
             <value>
-                <fullName>Markup Amount</fullName>
+                <fullName>Discount Amount</fullName>
                 <default>false</default>
-                <label>Markup Amount</label>
+                <label>Discount Amount</label>
             </value>
             <value>
                 <fullName>List Price Override</fullName>
@@ -37,14 +32,19 @@
                 <label>List Price Override</label>
             </value>
             <value>
-                <fullName>Tier Price</fullName>
+                <fullName>Markup Amount</fullName>
                 <default>false</default>
-                <label>Tier Price</label>
+                <label>Markup Amount</label>
             </value>
             <value>
                 <fullName>Price Factor</fullName>
                 <default>false</default>
                 <label>Price Factor</label>
+            </value>
+            <value>
+                <fullName>Tier Price</fullName>
+                <default>false</default>
+                <label>Tier Price</label>
             </value>
         </valueSetDefinition>
     </valueSet>
