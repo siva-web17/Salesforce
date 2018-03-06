@@ -229,7 +229,7 @@
 							) 
 							}">
 							<div class="slds-p-horizontal_x_small slds-size_1-of-2">
-								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != $Label.c.LAC_Select?false:true) ) )}" value="{!v.changedProgram}">
+								<lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != $Label.c.LAC_Select?false:true) ) )}" value="{!v.changedProgram}" onchange="{!c.onProgramChange}">
 									<option value="">{!$Label.c.LAC_Select}</option>
 									<aura:iteration items="{!v.programs}" var="program">
 										<ui:inputSelectOption text="{!program}" label="{!program}" />

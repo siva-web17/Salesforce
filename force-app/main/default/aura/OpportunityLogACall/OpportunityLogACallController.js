@@ -72,7 +72,7 @@
 		});
 		$A.enqueueAction(destinationsAction);
 		var durationAction = component.get('c.getDurations');
-		durationAction.setParams({ recordId: component.get('v.recordId') });
+		durationAction.setParams({ recordId: component.get('v.recordId'),program : '' });
 		durationAction.setCallback(this, function(res) {
 			switch (res.getState()) {
 				case 'SUCCESS':
@@ -121,9 +121,9 @@
 				case 'SUCCESS':
 					var data = JSON.parse(res.getReturnValue());
 					if (data != null) {
-						if(data.Program == 'MULTI'){
+						if (data.Program == 'MULTI') {
 							component.set('v.multi', true);
-						}else{
+						} else {
 							component.set('v.multi', false);
 						}
 						component.set('v.selectedLikelihoodToBook', data.LikelihoodToBook);
@@ -145,7 +145,7 @@
 						// 		component.find('overlayLib').showCustomModal({ header: 'ERROR', body: modalBody, showCloseButton: !0, cssClass: 'mymodal' });
 						// 	}
 						// });
-						console.log("Commented for some reasons");
+						console.log('Commented for some reasons');
 					}
 					break;
 				case 'INCOMPLETE':
@@ -181,7 +181,7 @@
 			component.set('v.saveText', LAC_SACO);
 		}
 		var callResultAction = component.get('c.getCallResults');
-		callResultAction.setParams({ callAction: component.get('v.selectedActionType'),recordId:component.get('v.recordId') });
+		callResultAction.setParams({ callAction: component.get('v.selectedActionType'), recordId: component.get('v.recordId') });
 		callResultAction.setCallback(this, function(res) {
 			switch (res.getState()) {
 				case 'SUCCESS':
@@ -196,6 +196,22 @@
 			}
 		});
 		$A.enqueueAction(callResultAction);
+	},
+	onProgramChange: function(component, event, helper) {
+		var durationAction = component.get('c.getDurations');
+		durationAction.setParams({ recordId: component.get('v.recordId'), program: component.get('v.changedProgram')  });
+		durationAction.setCallback(this, function(res) {
+			switch (res.getState()) {
+				case 'SUCCESS':
+					component.set('v.durations', res.getReturnValue());
+					break;
+				case 'INCOMPLETE':
+					break;
+				case 'ERROR':
+					break;
+			}
+		});
+		$A.enqueueAction(durationAction);
 	},
 	onSaveClicked: function(component, event, helper) {
 		var validatedBtn = event.currentTarget.dataset.save;
@@ -226,12 +242,12 @@
 						case 'SUCCESS':
 							var response = JSON.parse(res.getReturnValue());
 							if (typeof response.Result !== 'undefined' && response.Result !== null) {
-								if(validatedBtn == 'saveAndClose'){
+								if (validatedBtn == 'saveAndClose') {
 									var LAC_ActionScreenURL = $A.get('$Label.c.LAC_ActionScreenURL');
 									var urlEvent = $A.get('e.force:navigateToURL');
 									urlEvent.setParams({ url: LAC_ActionScreenURL });
 									urlEvent.fire();
-								}else{
+								} else {
 									var toastEvent = $A.get('e.force:showToast');
 									var LAC_DATA_SUCCESS = $A.get('$Label.c.LAC_DATA_SUCCESS');
 									toastEvent.setParams({ title: 'Success!', type: 'success', message: LAC_DATA_SUCCESS });
@@ -245,12 +261,12 @@
 								navEvt.fire();
 								$A.util.removeClass(loaderComp, 'customLoaderTrue');
 							} else {
-								if(validatedBtn == 'saveAndClose'){
+								if (validatedBtn == 'saveAndClose') {
 									var urlEvent = $A.get('e.force:navigateToURL');
 									var LAC_ActionScreenURL = $A.get('$Label.c.LAC_ActionScreenURL');
 									urlEvent.setParams({ url: LAC_ActionScreenURL });
 									urlEvent.fire();
-								} else{
+								} else {
 									var toastEvent = $A.get('e.force:showToast');
 									var LAC_DATA_SUCCESS = $A.get('$Label.c.LAC_DATA_SUCCESS');
 									toastEvent.setParams({ title: 'Success!', type: 'success', message: LAC_DATA_SUCCESS });
@@ -259,7 +275,6 @@
 									component.set('v.isCustomerReached', !0);
 									document.location.reload(!0);
 								}
-								
 							}
 							break;
 						case 'INCOMPLETE':
@@ -340,7 +355,7 @@
 	},
 	pastDateValidation: function(cmp, evt, helper) {
 		if (cmp.get('v.selectedActionDate') != null) {
-			if (!moment(cmp.get('v.selectedActionDate')).isAfter(new Date()) && !moment(cmp.get('v.selectedActionDate')).isSame(moment().format('YYYY-MM-DD'))) {
+			if (!moment(cmp.get('v.selectedActionDate')).isAfter(moment().format('YYYY-MM-DD HH:mm')) && !moment(cmp.get('v.selectedActionDate')).isSame(moment().format('YYYY-MM-DD HH:mm'))) {
 				var toastEvent = $A.get('e.force:showToast');
 				var LAC_ERROR_PAST_MSG = $A.get('$Label.c.LAC_ERROR_PAST_MSG');
 				toastEvent.setParams({ title: 'Error!', type: 'error', message: LAC_ERROR_PAST_MSG });

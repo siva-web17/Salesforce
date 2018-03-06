@@ -356,7 +356,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Customer Request Type</shortDescription>
-          <value>0127E000000E4Kn</value>
+          <value>0120Y0000002mXn</value>
     </labels>
     <labels>
     <fullName>DMLTypeDelete</fullName>
@@ -631,7 +631,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>InfoMeeting</shortDescription>
-        <value>InfoMeeting</value>
+        <value>IM</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -1767,6 +1767,21 @@
         <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
         <value>Draft</value>
     </labels>
+    <labels>
+
+        <fullName>ProductCodeOSHCAY</fullName>
+ 
+       <categories>Apttus</categories>
+ 
+      <language>en_US</language>
+  
+      <protected>false</protected>
+    
+    <shortDescription>Product Code OSHCAY</shortDescription>
+
+        <value>OSHCAY</value>
+    </labels>
+>
 	<labels>
         <fullName>bookingSummarySuccess</fullName>
         <categories>BookingSummary</categories>
@@ -1806,5 +1821,13 @@
         <protected>false</protected>
         <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
         <value>a5J6E0000000CikUAE</value>
+    </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
     </labels>
 </CustomLabels>

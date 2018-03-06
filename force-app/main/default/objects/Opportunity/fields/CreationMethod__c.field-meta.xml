@@ -11,7 +11,12 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Ef.com</fullName>
+                <default>false</default>
+                <label>Ef.com</label>
+            </value>
             <value>
                 <fullName>EnteredByUser</fullName>
                 <default>false</default>
@@ -21,11 +26,6 @@
                 <fullName>Excel Import</fullName>
                 <default>false</default>
                 <label>Excel Import</label>
-            </value>
-            <value>
-                <fullName>Ef.com</fullName>
-                <default>false</default>
-                <label>Ef.com</label>
             </value>
         </valueSetDefinition>
     </valueSet>

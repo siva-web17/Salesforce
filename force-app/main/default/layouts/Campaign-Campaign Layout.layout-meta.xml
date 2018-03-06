@@ -13,7 +13,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Market__c</field>
+                 <field>Market__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -31,7 +31,6 @@
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
-           
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -64,7 +63,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Campaign Date and Place</label>
+        <label>Info Meeting Date and Place</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -140,7 +139,7 @@
             <actionType>StandardButton</actionType>
             <sortOrder>0</sortOrder>
         </platformActionListItems>
-		<platformActionListItems>
+        <platformActionListItems>
             <actionName>Clone</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
@@ -168,7 +167,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-         <masterLabel>00h7E000000WcOs</masterLabel>
+        <masterLabel>00h5E000000GcQb</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>1</sizeY>
         <summaryLayoutItems>
@@ -182,7 +181,6 @@
             <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
-           
             <field>Program__c</field>
             <posX>3</posX>
             <posY>0</posY>

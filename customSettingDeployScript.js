@@ -62,14 +62,14 @@ function loopCmd(count) {
 	if (obj_temp.xmlTojson_count > count) {
 		if (obj_temp.BeanIDs_Count > obj_temp.BeanIDs_count_temp) {
 			var dynamicBean = obj_temp.BeanIDs[obj_temp.BeanIDs_count_temp];
-			console.log(config.processBatPath);
-			console.log(dynamicBean);
+			//console.log(config.processBatPath);
+			//console.log(dynamicBean);
 			var ls = spawn(config.bat, [config.processBatPath, dynamicBean]);
 			ls.stdout.on('data', function(data) {
 				// continuous process
-				//console.log(success(dynamicBean + '------------------------------------------------------'));
+			//	console.log(success(dynamicBean + '------------------------------------------------------'));
 				console.log(data.toString());
-				loopCmd_temp(count);
+				//loopCmd_temp(count);
 			});
 			setTimeout(() => {
 				obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
@@ -83,11 +83,7 @@ function loopCmd(count) {
 }
 function loopCmd_temp(count) {
 	if (obj_temp.BeanIDs_Count > obj_temp.BeanIDs_count_temp) {
-		obj_temp.BeanIDs_count_temp = obj_temp.BeanIDs_count_temp + 1;
 		loopCmd(count, obj_temp.BeanIDs_count_temp);
-	} else {
-		console.log(obj_temp.BeanIDs_count_temp);
-		obj_temp.interval = false;
 	}
 }
 
@@ -135,6 +131,9 @@ function readProcessConf(count) {
 						map[j]['$'].value = customDetails.localProjectPath + scratchOrgs[count].key;
 					}
 					if (map[j]['$'].key == 'dataAccess.name') {
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
+					}
+					if (map[j]['$'].key == 'process.mappingFile') {
 						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
 				}

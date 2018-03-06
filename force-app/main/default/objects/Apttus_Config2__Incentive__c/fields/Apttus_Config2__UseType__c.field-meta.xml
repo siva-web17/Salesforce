@@ -11,16 +11,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>Promotion</fullName>
-                <default>true</default>
-                <label>Promotion</label>
-            </value>
-            <value>
-                <fullName>Rebate</fullName>
+                <fullName>Loyalty</fullName>
                 <default>false</default>
-                <label>Rebate</label>
+                <label>Loyalty</label>
             </value>
             <value>
                 <fullName>Milestone Incentive</fullName>
@@ -33,9 +28,14 @@
                 <label>Price Program</label>
             </value>
             <value>
-                <fullName>Loyalty</fullName>
+                <fullName>Promotion</fullName>
+                <default>true</default>
+                <label>Promotion</label>
+            </value>
+            <value>
+                <fullName>Rebate</fullName>
                 <default>false</default>
-                <label>Loyalty</label>
+                <label>Rebate</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -8,6 +8,7 @@
 		action.setParams({
 			wrapperData: JSON.stringify(fwrapperLst),
 			isFinishBooking: cmp.get('v.isFinishBooking'),
+			QuoteId: cmp.get('v.QuoteId'),
 		});
 		action.setCallback(this, function(response) {
 			var state = response.getState();

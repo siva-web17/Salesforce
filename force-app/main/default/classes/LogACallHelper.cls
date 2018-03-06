@@ -9,15 +9,15 @@ public with sharing class LogACallHelper {
     public static Set<String> allNotReachedItems = new Set<String>{
             Label.CallNotReached.toUpperCase(), Label.SentEmail.toUpperCase(), Label.SocialMediaSent.toUpperCase()
     };
-    
-     public static Set<String> callTypes = new Set<String>{
+
+    public static Set<String> callTypes = new Set<String>{
             Label.CallReached.toUpperCase(),Label.CallNotReached.toUpperCase(), Label.CalledUs.toUpperCase()
     };
     public static Set<String> emailTypes = new Set<String>{
             Label.SentEmail.toUpperCase(), Label.EmailedUs.toUpperCase()
     };
     public static Set<String> taskTypes = new Set<String>{
-             Label.SocialMediaSent.toUpperCase(),Label.SocialMediaReached.toUpperCase(),Label.VisitedUs.toUpperCase()
+            Label.SocialMediaSent.toUpperCase(),Label.SocialMediaReached.toUpperCase(),Label.VisitedUs.toUpperCase()
     };
 
     public static String getTaskSubType(String callAction){
@@ -26,10 +26,10 @@ public with sharing class LogACallHelper {
             system.debug('insidecalltypes>>>'+callAction);
             return 'Call';
         }
-         if(emailTypes.contains(callAction.toUpperCase())) {
+        if(emailTypes.contains(callAction.toUpperCase())) {
             return 'Email';
         }
-         if(taskTypes.contains(callAction.toUpperCase())) {
+        if(taskTypes.contains(callAction.toUpperCase())) {
             return 'Task';
         }
         return null;
@@ -45,7 +45,7 @@ public with sharing class LogACallHelper {
      * @param visitDatetime Represents the Visit date if the Call Result is Visit
      *
      */
-    public static void handleLogAnAction(Id parentId, Task newTask, Datetime visitDatetime) {
+    public static void handleLogAnAction(Id parentId, Task newTask, Datetime visitDatetime, String oldProgram) {
         Task openCallTask = null;
         Opportunity opp = null;
         Lead lead = null;
@@ -139,18 +139,20 @@ public with sharing class LogACallHelper {
                     visitEvent.DurationInMinutes = 30;
                     visitEvent.ActivityDateTime = visitDatetime;
                     insert visitEvent;
-                } else if (callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) {
-                    System.debug('Change program section invoked');
-                    Map<String, List<String>> picklistDependencies = FieldUtilityClass.getFieldDependencies(getSObjectName(parentId), 'Product__c', 'Program__c');
-                    String product = '';
-                    for (String products : picklistDependencies.keySet()) {
-                        for (String program : picklistDependencies.get(products)) {
-                            if (program == selectedProgram) {
-                                product = products;
-                                break;
-                            }
-                        }
+                }else if (callResult.toUpperCase() == Label.CloseOpp.toUpperCase()) {
+                    if (String.valueOf(parentId).substring(0, 3) == '006') {
+                        opp.CloseMainReason__c = closeReason;
+                        update opp;
+                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
+                        lead.CloseMainReason__c = closeReason;
+                        update lead;
                     }
+                    //openCallTask.Status = 'Completed';
+                }
+
+                if ((callResult.toUpperCase() == Label.ChangeProgram.toUpperCase()) ||
+                        (allReachedItems.contains(callAction.toUpperCase()) && oldProgram == 'MULTI')) {
+                    System.debug('Change program section invoked');
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
@@ -161,28 +163,18 @@ public with sharing class LogACallHelper {
                         openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                     }
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Product__c != product || opp.Program__c != selectedProgram) {
-                            opp.Product__c = product;
+                        if (opp.Program__c != selectedProgram) {
                             opp.Program__c = selectedProgram;
                             update opp;
                         }
                     } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if (lead.Product__c != product || lead.Program__c != selectedProgram) {
-                            lead.Product__c = product;
+                        if ( lead.Program__c != selectedProgram) {
                             lead.Program__c = selectedProgram;
                             update lead;
                         }
                     }
-                } else if (callResult.toUpperCase() == Label.CloseOpp.toUpperCase()) {
-                    if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        opp.CloseMainReason__c = closeReason;
-                        update opp;
-                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        lead.CloseMainReason__c = closeReason;
-                        update lead;
-                    }
-                    //openCallTask.Status = 'Completed';
                 }
+
                 system.debug('openCallTask.NextCallType : '+openCallTask.NextCallType__c);
                 if(TasksHelper.taskSettingsMap.containsKey(openCallTask.NextCallType__c)) {
                     openCallTask.Subject = TasksHelper.taskSettingsMap.get(openCallTask.NextCallType__c).TaskSubject__c;
@@ -196,7 +188,7 @@ public with sharing class LogACallHelper {
 
             newTask.NextCallType__c = openCallTask.NextCallType__c;
             newTask.Status = 'Completed';
-            newTask.Program__c = currentProgram;
+            newTask.Program__c = oldProgram;
 
             insert newTask;
         }
@@ -214,11 +206,20 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds);
+        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
-                Task callTask = lead.Tasks[0];
+                Task callTask = null;
+                for(Task objTask:lead.Tasks){
+                    objTask.ownerid = UserInfo.getUserId();
+                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
+                        callTask = objTask;
+                    }
+                }
+
+                update lead.Tasks;
+                //Task callTask = lead.Tasks[0];
                 if(callTask.IsClosed) {
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
@@ -226,6 +227,11 @@ public with sharing class LogACallHelper {
                     update callTask;
                     callTask.IsParentClosing__c = false;
                     update callTask;
+                }
+                if(callTask == null){
+                    System.debug('Created a new Task');
+                    callTask = LeadsHelper.createSystemCallTaskRecordForLead(lead);
+                    insert callTask;
                 }
             }
             else{
@@ -251,7 +257,7 @@ public with sharing class LogACallHelper {
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
 
-        
+
         if(opportunities.size() > 0 && callResult != Label.CloseOpp && followupDatetime != NULL) {
             Opportunity opp = opportunities[0];
             if(opp.Tasks.size() > 0) {
@@ -270,7 +276,7 @@ public with sharing class LogACallHelper {
                     else if(opp.StageName == Label.OpportunityStageFollowUp){
                         callTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     }
-                     callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
+                    callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
                     update callTask;
                     callTask.IsParentClosing__c = false;
                     update callTask;

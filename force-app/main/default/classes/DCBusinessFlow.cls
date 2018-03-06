@@ -216,11 +216,14 @@ public class DCBusinessFlow {
  
         }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
-        opportunity inactiveOpportunity = [select id,Ranking__c from opportunity where accountid=:lcr.getAccountId() and isactive__c=false order by createddate desc];
-        opportunity newlyCreatedActiveOpportunity = new opportunity();
-        newlyCreatedActiveOpportunity.id = lcr.getOpportunityId();
-        newlyCreatedActiveOpportunity.Ranking__c = inactiveOpportunity.Ranking__c!=null?inactiveOpportunity.Ranking__c:null;
-        update newlyCreatedActiveOpportunity;
+         list<opportunity> inactiveOpportunity = new list<opportunity>();
+          inactiveOpportunity = [select id,Ranking__c from opportunity where accountid=:lcr.getAccountId() and isactive__c=false order by createddate desc limit 1];
+         if(inactiveOpportunity!=null && !inactiveOpportunity.isempty()){
+            opportunity newlyCreatedActiveOpportunity = new opportunity();
+            newlyCreatedActiveOpportunity.id = lcr.getOpportunityId();
+            newlyCreatedActiveOpportunity.Ranking__c = inactiveOpportunity[0].Ranking__c!=null?inactiveOpportunity[0].Ranking__c:null;
+            update newlyCreatedActiveOpportunity;
+        }
     }
 
     //transfer the event from duplicate lead to source lead
