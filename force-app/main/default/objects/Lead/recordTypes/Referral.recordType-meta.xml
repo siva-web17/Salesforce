@@ -1481,73 +1481,7 @@
             <default>false</default>
         </values>
     </picklistValues>
-    <picklistValues>
-        <picklist>Duration__c</picklist>
-        <values>
-            <fullName>%3E12 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>1 week</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>10 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>11 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>12 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>2 weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>3 weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>4 weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>5 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>6 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>7 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>8 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>9 Weeks</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Extended Year</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Semester</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Year</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
+    
     <picklistValues>
         <picklist>Gender__c</picklist>
         <values>
@@ -2674,7 +2608,7 @@
             <default>false</default>
         </values>
     </picklistValues>
-    <picklistValues> 
+    <picklistValues>
         <picklist>RequestType__c</picklist>
         <values>
             <fullName>BR</fullName>
