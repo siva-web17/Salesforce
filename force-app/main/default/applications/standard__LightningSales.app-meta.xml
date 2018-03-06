@@ -33,22 +33,19 @@
     <label>Sales</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
-    <tabs>standard-Opportunity</tabs>
-    <tabs>standard-Lead</tabs>
-    <tabs>standard-Task</tabs>
-    <tabs>standard-File</tabs>
-    <tabs>ImportfromExcel</tabs>
+    <tabs>AG_Action_Screen</tabs>
+    <tabs>AG_Assign</tabs>
+    <tabs>AG_Send_Materials</tabs>
     <tabs>standard-Account</tabs>
-    <tabs>standard-Contact</tabs>
     <tabs>standard-Campaign</tabs>
+    <tabs>ImportfromExcel</tabs>
     <tabs>Booking__c</tabs>
+    <tabs>dcBatch</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>standard-report</tabs>
-    <tabs>standard-Feed</tabs>
-    <tabs>standard-CollaborationGroup</tabs>
+    <tabs>Source__c</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
+    <tabs>TemplateSetting__c</tabs>
+    <tabs>Translation__c</tabs>
     <tabs>standard-Event</tabs>
-    <tabs>standard-OtherUserProfile</tabs>
-    <tabs>standard-Case</tabs>
-    <tabs>standard-Forecasting3</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
