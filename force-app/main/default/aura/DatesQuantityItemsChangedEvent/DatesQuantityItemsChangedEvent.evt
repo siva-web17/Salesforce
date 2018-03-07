@@ -1,0 +1,8 @@
+<!--
+ - Created by Arkadiusz Celej on 07.02.2018.
+ -->
+
+<aura:event type="COMPONENT" description="DatesQuantityItemsChangedEvent">
+    <aura:attribute name="items" type="Apttus_Config2__LineItem__c[]"/>
+    <aura:attribute name="lineNumber" type="Integer"/>
+</aura:event>
