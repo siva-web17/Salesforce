@@ -4,7 +4,7 @@
         var evt = $A.get("e.force:navigateToComponent");
         
         evt.setParams({
-            componentDef: "c:BookingSummaryComponent",
+            componentDef: "c:QuoteSummaryComponent",
             componentAttributes: {
                 recordId: component.get("v.recordId"),
                 OpportunityID: component.get("v.OpportunityID"),

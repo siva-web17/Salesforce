@@ -1,0 +1,50 @@
+<!--
+ - Created by Arkadiusz Celej on 29.01.2018.
+ -->
+
+<aura:component description="DatesQuantityConfigurator" controller="DatesQuantityConfiguratorController">
+    <aura:attribute name="cartId" type="String" default="" access="public"/>
+    <aura:attribute name="backToCartUrl" type="String" default="" access="public"/>
+    <aura:attribute name="lineItemsByItemNumber" type="Map" default="{}" access="private"/>
+    <aura:attribute name="changedLineItemsByLineNumber" type="Map" default="{}" access="private"/>
+    <aura:attribute name="errorMessage" type="String" default="" access="private"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="itemsChangedEvent" event="c:DatesQuantityItemsChangedEvent" action="{!c.onItemsChange}" />
+
+    <lightning:spinner aura:id="spinner" class="slds-hide"/>
+
+    <div class="apttus-header-1">
+        <div class="breadcrumbs"><a href="" onclick="{!c.back}">Cart</a> &gt; {!$Label.c.StartDate_label_for_cart_page}</div>
+    </div>
+    <div class="apttus-header-2 slds-text-align_right">
+        <lightning:button label="Reprice and go back" onclick="{!c.saveCartLineItems}"/>
+    </div>
+    <aura:if isTrue="{!v.errorMessage}">
+        <div class="slds-notify_container slds-is-relative">
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{!v.errorMessage}</h2>
+                </div>
+                <lightning:buttonIcon iconName="utility:close" variant="bare" class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" alternativeText="Close" onclick="{!c.clearError}"/>
+            </div>
+        </div>
+    </aura:if>
+    <table class="slds-table slds-table--bordered slds-no-row-hover apttus-table">
+        <thead>
+        <tr>
+            <th class="slds-text-align--center">#</th>
+            <th class="slds-text-align--center">Product</th>
+            <th class="slds-text-align--center">Product Code</th>
+            <th class="slds-text-align--center">Product Type</th>
+            <th class="slds-text-align--center">Start Date</th>
+            <th class="slds-text-align--center">Quantity</th>
+            <th class="slds-text-align--center">End Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            {!v.body}
+        </tbody>
+    </table>
+
+</aura:component>
