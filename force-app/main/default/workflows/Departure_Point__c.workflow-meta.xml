@@ -13,4 +13,21 @@ TEXT(Product__c)</formula>
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <rules>
+        <fullName>UpdateUniqueIdentifier</fullName>
+        <actions>
+            <name>UpdateDefaultUniqueIdentifier</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates The departure point unique identifier</description>
+        <formula>ISNEW() 
+|| 
+OR( 
+ISCHANGED(Name), 
+ISCHANGED(Market__c), 
+ISCHANGED(Product__c) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
 </Workflow>
