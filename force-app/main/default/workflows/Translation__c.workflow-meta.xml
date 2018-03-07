@@ -10,15 +10,4 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>UpdateUniqueField</fullName>
-        <actions>
-            <name>Update_Unique_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <description>This will update Unique field value based on record Type</description>
-        <formula>RecordType.Name =='Product Translation' || RecordType.Name =='Static Text Translation'</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
 </Workflow>

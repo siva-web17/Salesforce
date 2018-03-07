@@ -10,20 +10,4 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>UpdateDefaultUniqueIdentifier</fullName>
-        <actions>
-            <name>UpdateDefaultUniqueIdentifier</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <description>This rule will update Default Unique Identifier Field on Price List Object concatenation of Market, Program field</description>
-        <formula>ISNEW() || 
-OR( 
-ISCHANGED(Market__c), 
-ISCHANGED(Program__c), 
-ISCHANGED(CurrencyIsoCode), 
-ISCHANGED(APTS_Default__c) )</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
 </Workflow>
