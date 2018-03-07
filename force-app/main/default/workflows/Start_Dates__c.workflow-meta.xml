@@ -10,16 +10,4 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>UpdateStartDateNameField</fullName>
-        <actions>
-            <name>UpdateStartDateNameField</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <description>This rule will update the name field based on start date value
-Ex:If start date is 01-01-2017 then name field value will be 	"JANUARY"</description>
-        <formula>AND(!IsNull( StartDate__c ), !IsBlank(StartDate__c ))</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
 </Workflow>
