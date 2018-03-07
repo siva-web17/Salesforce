@@ -3,10 +3,10 @@
  */
 ({
     toggle: function (cmp) {
-            var spinner = cmp.find("sectionHeader");
-            $A.util.toggleClass(spinner, "slds-is-open");
+            var sectionHeader = cmp.find("sectionHeader");
+            $A.util.toggleClass(sectionHeader, "slds-is-open");
 
-            var spinner = cmp.find("content");
-            $A.util.toggleClass(spinner, "slds-hide");
+            var content = cmp.find("content");
+            $A.util.toggleClass(content, "slds-hide");
         }
 })
