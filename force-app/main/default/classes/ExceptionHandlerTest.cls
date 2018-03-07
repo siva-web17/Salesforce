@@ -2,11 +2,10 @@
  * Created by britenet-patrykzak on 05/03/2018.
  */
 
-@isTest(seeAllData=false)
-public with sharing class ExceptionHandlerTest {
+@isTest
+private class ExceptionHandlerTest {
 
-    @isTest
-    public static void When_errorLog_Expect_createErrorLog(){
+    static testmethod void When_errorLog_Expect_createErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
@@ -27,8 +26,7 @@ public with sharing class ExceptionHandlerTest {
         System.assertEquals(Account.class.getName(),errLogList[0].Name);
     }
 
-    @isTest
-    public static void When_errorLogAsync_Expect_createFutureErrorLog(){
+    static testmethod void When_errorLogAsync_Expect_createFutureErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
@@ -51,8 +49,7 @@ public with sharing class ExceptionHandlerTest {
         System.assertEquals(Account.class.getName(),errLogListAfterFutureExecution[0].Name);
     }
 
-    @isTest
-    public static void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
+    static testmethod void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
 
         String className = 'Lead';
         String NameOfMethod = 'testMethod';
@@ -74,6 +71,8 @@ public with sharing class ExceptionHandlerTest {
 
         Test.stopTest();
 
+        List <ErrorLog__c> errLogList = [SELECT Name,Description__c FROM  ErrorLog__c];
         System.assert(lcr.isSuccess());
+        System.assertEquals(0,errLogList.size());
     }
 }
