@@ -13,7 +13,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Market__c</field>
+                 <field>Market__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -63,7 +63,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Campaign Date and Place</label>
+        <label>Info Meeting Date and Place</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -167,7 +167,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000000VUdK</masterLabel>
+        <masterLabel>00h5E000000GcQb</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>1</sizeY>
         <summaryLayoutItems>
@@ -181,7 +181,6 @@
             <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
-           
             <field>Program__c</field>
             <posX>3</posX>
             <posY>0</posY>

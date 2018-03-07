@@ -133,6 +133,9 @@ function readProcessConf(count) {
 					if (map[j]['$'].key == 'dataAccess.name') {
 						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
 					}
+					if (map[j]['$'].key == 'process.mappingFile') {
+						map[j]['$'].value = customDetails.localProjectPath + customDetails.csvPath + map[j]['$'].value;
+					}
 				}
 			}
 			writeProcessConf(count, json);

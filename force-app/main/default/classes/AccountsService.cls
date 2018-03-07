@@ -43,6 +43,7 @@ public  class AccountsService {
                 }
                 System.debug('FieldSets.Address '+ AddressfieldValueMap);
                 if (AddressfieldValueMap.size() > 0) {
+                    AddressfieldValueMap.putAll(MissingAddressfields(accountRecord));
                     changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Address.getName(), AddressfieldValueMap);
                     changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                 }
@@ -52,11 +53,14 @@ public  class AccountsService {
                 for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Customer.getFields()) {
                     CustomerfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                 }
+
                 System.debug('FieldSets.Customer '+ CustomerfieldValueMap);
                 if (CustomerfieldValueMap.size() > 0) {
+                    CustomerfieldValueMap.putAll( MissingCustomerDetails(accountRecord));
                     changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Customer.getName(), CustomerfieldValueMap);
                     changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                 }
+
                 System.debug('changedAccountRecordMap '+ changedAccountRecordMap);
 
                 Map<String, String> CustomerMarketingPreffieldValueMap = new Map<String, String>();
@@ -129,6 +133,31 @@ public  class AccountsService {
         }
         return returnMessage;
 
+    }
+
+    public static Map<String,String> MissingCustomerDetails( Account newAccount)
+    {
+        Map<String,String> customerMap=new Map<String,String>();
+        customerMap.put(String.valueOf('FirstName'),String.valueOf(newAccount.FirstName));
+        customerMap.put(String.valueOf('LastName'),String.valueOf(newAccount.LastName));
+        customerMap.put(String.valueOf('MiddleName'),String.valueOf(newAccount.MiddleName));
+        customerMap.put(String.valueOf('Salutation'),String.valueOf(newAccount.Salutation));
+        return customerMap;
+        //firstname,lastname,name,salutation,middlename
+    }
+
+    public static Map<String,String> MissingAddressfields(Account newAccount)
+    {
+        Map<String,String> addressMap=new Map<String,String>();
+        addressMap.put(String.valueOf('PersonMailingCity'),String.valueOf(newAccount.PersonMailingCity));
+        addressMap.put(String.valueOf('PersonMailingPostalCode'),String.valueOf(newAccount.PersonMailingPostalCode));
+        addressMap.put(String.valueOf('PersonMailingCountryCode'),String.valueOf(newAccount.PersonMailingCountryCode));
+        addressMap.put(String.valueOf('PersonMailingState'),String.valueOf(newAccount.PersonMailingState));
+        addressMap.put(String.valueOf('ShippingCity'),String.valueOf(newAccount.ShippingCity));
+        addressMap.put(String.valueOf('ShippingStreet'),String.valueOf(newAccount.ShippingStreet));
+        addressMap.put(String.valueOf('ShippingState'),String.valueOf(newAccount.ShippingState));
+        addressMap.put(String.valueOf('PersonOtherPostalCode'),String.valueOf(newAccount.PersonOtherPostalCode));
+        return addressMap;
     }
 
 }

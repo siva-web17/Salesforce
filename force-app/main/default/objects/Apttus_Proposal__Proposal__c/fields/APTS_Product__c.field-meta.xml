@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Product__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR( ISPICKVAL( Program__c , "AY"), 
+ISPICKVAL( Program__c , "MLY"),ISPICKVAL( Program__c , "PRW")), "APP", 
+
+IF( OR( ISPICKVAL( Program__c , "EXC"), ISPICKVAL( Program__c , "ILS"),
+ISPICKVAL( Program__c , "ILSH"),ISPICKVAL( Program__c , "ILSU")), "ILS", 
+
+IF (ISPICKVAL( Program__c , "LT"),"LT",'')))</formula>
+    <label>APTS_Product</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

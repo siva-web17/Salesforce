@@ -52,5 +52,5 @@
     </customValue>
     <description>How did you hear about us?</description>
     <masterLabel>HearAboutUs</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

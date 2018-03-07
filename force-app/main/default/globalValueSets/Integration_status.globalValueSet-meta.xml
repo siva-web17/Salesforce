@@ -17,5 +17,5 @@
     </customValue>
     <description>Used to track the details of record of Integration</description>
     <masterLabel>Integration status</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>

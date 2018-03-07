@@ -62,7 +62,7 @@ public class AccountsSelector {
                 query += f.getFieldPath() + ', ';
             }
         }
-        query += 'Name,Id,Market__c,CreatedById,LastModifiedById from Account Where ';
+        query += 'Name,Id,Market__c,CreatedById,LastModifiedById,firstname,lastname,middlename,PersonMailingCity,PersonMailingPostalCode,PersonMailingCountryCode,PersonMailingState,ShippingCity,ShippingStreet,ShippingState,PersonOtherPostalCode from Account Where ';
         query += 'Id in   : ' + 'accountIdSet' + ' ' ;
         accList= Database.query(query);
         for (Account accRecord:accList) {

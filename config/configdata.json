@@ -6,14 +6,14 @@
    },
    	"customDetails":{
 		"localProjectPath": "C:\\Work\\salesforce\\clean-script-mine\\THEQA",
-		"csvPath": "\\data\\Apttus data\\"
+		"csvPath": "\\data\\custom settings\\"
 	},
    "ScratchOrgs" : [
       {
-         "OrgAlias" : "devTempSO",
-         "UserName" : "sivaraj.v@ef.com.lang.testgitdep",
-         "InstanceURL" : "https://test.salesforce.com",
-         "EncryptedPassword" : "f028f18cf947a62ea17d81b9ca7d51b0a44def73b4c5ced02ff7e3eada79692f34a8861d7e746b9a",
+         "OrgAlias" : "EmmaSO",
+         "UserName" : "test-qxp9ttds4ktu@example.com",
+         "InstanceURL" : "https://java-velocity-6284.cs84.my.salesforce.com",
+         "EncryptedPassword" : "0c4885a3f587be24b7042b369295f294299f3274c82c08fa89850b5127038432ac91b45ccc2938ab",
          "key" : "\\config\\Key.txt",
          "debug_Log" : "\\data\\logs\\"
       }
