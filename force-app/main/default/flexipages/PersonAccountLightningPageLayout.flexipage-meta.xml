@@ -22,6 +22,25 @@
         <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>createQuickActionName</name>
+                <value>NewAccount</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>lookupFieldName</name>
+                <value>Id</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>titleFieldName</name>
+                <value>Passport Details</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>updateQuickActionName</name>
+                <value>Account.UpdateIdentityInfo</value>
+            </componentInstanceProperties>
+            <componentName>console:relatedRecord</componentName>
+        </componentInstances>
         <name>facet-c22f1286-b70b-4c73-9f21-3161150d1ec5</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -46,29 +65,6 @@
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
         <name>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>createQuickActionName</name>
-                <value>NewAccount</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>lookupFieldName</name>
-                <value>Id</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>titleFieldName</name>
-                <value>Identity Details</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>updateQuickActionName</name>
-                <value>Account.UpdateIdentityInfo</value>
-            </componentInstanceProperties>
-            <componentName>console:relatedRecord</componentName>
-        </componentInstances>
-        <name>facet-9d77e3a1-928a-40d6-9b7e-1bb62a1da0fd</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -129,17 +125,6 @@
             <componentInstanceProperties>
                 <name>title</name>
                 <value>Preferences</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-9d77e3a1-928a-40d6-9b7e-1bb62a1da0fd</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Other Details</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

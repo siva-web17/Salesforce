@@ -19,7 +19,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Personal Details</label>
+        <label>Account Details</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -34,19 +34,7 @@
                 <field>Nickname__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsParent__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -58,44 +46,28 @@
                 <behavior>Edit</behavior>
                 <field>PersonBirthdate</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Gender__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Nationality__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Age__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Language__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OtherNationalities__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Contact Details</label>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Account Details</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PersonMobilePhone</field>
+                <field>Gender__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PersonOtherPhone</field>
+                <field>PersonHomePhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -109,14 +81,19 @@
                 <behavior>Edit</behavior>
                 <field>ParentEmail__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Language__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PersonHomePhone</field>
+                <field>PersonMobilePhone</field>
             </layoutItems>
             <layoutItems>
-                <emptySpace>true</emptySpace>
+                <behavior>Edit</behavior>
+                <field>PersonOtherPhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -130,14 +107,18 @@
                 <behavior>Edit</behavior>
                 <field>InvoiceEmail__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsParent__c</field>
+            </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
+        <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
-        <customLabel>false</customLabel>
+        <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
-        <label>Address Information</label>
+        <label>New Section</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -257,9 +238,6 @@
     </relatedLists>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
-        <fields>Program__c</fields>
-        <fields>MeetingType__c</fields>
-        <fields>DateFrom__c</fields>
         <fields>MeetingCity__c</fields>
         <fields>MeetingSize__c</fields>
         <fields>CM.STATUS</fields>
@@ -301,7 +279,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7E000000RkQ4</masterLabel>
+        <masterLabel>00h6E000000Lofj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
