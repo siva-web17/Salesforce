@@ -31,7 +31,7 @@ DAY(TODAY())
         </actions>
         <active>true</active>
         <description>New opportunities created should have closed date after 6 months from creation date when the creation date is not specified</description>
-        <formula>CreatedDate == LastModifiedDate</formula>
+        <formula>CreatedDate == LastModifiedDate&amp;&amp;CreatedBy.FirstName  &lt;> 'Migration'</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
