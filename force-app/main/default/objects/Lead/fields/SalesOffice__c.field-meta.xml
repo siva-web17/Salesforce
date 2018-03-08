@@ -89,6 +89,10 @@
             <valueName>ESS</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>ESB</controllingFieldValue>
+            <valueName>ESV</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>ESK</controllingFieldValue>
             <valueName>ESK</valueName>
         </valueSettings>
