@@ -188,6 +188,8 @@
                                     }
                                 }
                                 component.set('v.wrapperClassList',wrapperClassList);
+                                var closeEvent = component.getEvent("closeModalEvent");
+                                closeEvent.fire();
                            break;
                        case 'INCOMPLETE':
                            break;
