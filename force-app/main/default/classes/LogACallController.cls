@@ -10,11 +10,11 @@ public with sharing class LogACallController {
         try{
             if(recordId.getSobjectType() == Lead.getSObjectType()){
                 Lead lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
-               return JSON.serialize(new LogACallData(lead.Id,lead.CloseDate__c,lead.LikelihoodToBook__c,lead.HearAboutUs__c,lead.Destinations__c,lead.PreferredDuration__c,lead.WhenYear__c,lead.WhenMonth__c, true,0,lead.Program__c));
+                return JSON.serialize(new LogACallData(lead.Id,lead.CloseDate__c,lead.LikelihoodToBook__c,lead.HearAboutUs__c,lead.Destinations__c,lead.PreferredDuration__c,lead.WhenYear__c,lead.WhenMonth__c, true,0,lead.Program__c));
             }
             else if(recordId.getSobjectType() == Opportunity.getSObjectType()) {
                 Opportunity opp = OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
-               String data = JSON.serialize(new LogACallData(opp.Id,opp.CloseDate,opp.LikelihoodToBook__c,opp.HearAboutUs__c,opp.Destinations__c,opp.PreferredDuration__c,opp.WhenYear__c,opp.WhenMonth__c,opp.IsActive__c,opp.NumberOfUnreachedCalls__c, opp.Program__c));
+                String data = JSON.serialize(new LogACallData(opp.Id,opp.CloseDate,opp.LikelihoodToBook__c,opp.HearAboutUs__c,opp.Destinations__c,opp.PreferredDuration__c,opp.WhenYear__c,opp.WhenMonth__c,opp.IsActive__c,opp.NumberOfUnreachedCalls__c, opp.Program__c));
                 System.debug('Data :'+data);
                 return data;
             }
@@ -71,12 +71,12 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-      public static List<String> getDestinations(Id recordId) {
+    public static List<String> getDestinations(Id recordId) {
         System.debug('Point1');
         Set<String> uniqueGroupedLTDestinationName= new Set<String>();
         List<String> LTDestinations = new List<String>();
         List<String> nonLTDestinations = new List<String>();
-        boolean isLt = false; 
+        boolean isLt = false;
         if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
             Opportunity opportunityRecord = OpportunitiesSelector.getOpportunityRecord(recordId);
             isLt = opportunityRecord.program__c == 'LT' ? true : false;
@@ -105,22 +105,25 @@ public with sharing class LogACallController {
         }
 
         return null;
-    } 
-        @AuraEnabled
-    public static List<string> getDurations(Id recordId){
+    }
+    @AuraEnabled
+    public static List<string> getDurations(Id recordId, String program){
         try{
             String sObjectName = recordId.getSObjectType().getDescribe().getName();
-            if(String.valueOf(recordId).substring(0, 3) == '00Q') {
-                Lead objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
-                Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Lead.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
-                return dependentPicklists.get(objectToUpdate.Program__c);
+            String recordProgram = program;
+            if(program == ''){
+                if(String.valueOf(recordId).substring(0, 3) == '00Q') {
+                    Lead objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
+                    recordProgram = objectToUpdate.Program__c;
+                }
+                else if(String.valueOf(recordId).substring(0, 3) == '006'){
+                    Opportunity objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
+                    recordProgram = objectToUpdate.Program__c;
+                }
             }
-            else if(String.valueOf(recordId).substring(0, 3) == '006'){
-                Opportunity objectToUpdate = Database.query('SELECT Program__c FROM ' + sObjectName + ' WHERE Id = :recordId LIMIT 1');
-                Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Opportunity.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
-                return dependentPicklists.get(objectToUpdate.Program__c);
-            }
-            return new List<String>();
+
+            Map<String, List<String>> dependentPicklists = FieldUtilityClass.GetDependentOptions(Opportunity.getSObjectType().getDescribe().getName(), 'Program__c', 'PreferredDuration__c');
+            return dependentPicklists.get(recordProgram);
         }
         catch (Exception e){
             System.debug('Error in getDurations() :'+ e.getMessage());
@@ -140,11 +143,11 @@ public with sharing class LogACallController {
     }
 
     @AuraEnabled
-   public static String getCallResults(String callAction,Id recordId){
+    public static String getCallResults(String callAction,Id recordId){
         try{
             Map<String,List<String>> dependentPicklists = FieldUtilityClass.getFieldDependencies(Task.getSObjectType().getDescribe().getName(),'SalesAction__c','ResultType__c');
 
-             Integer closeIndex = -1;
+            Integer closeIndex = -1;
 
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
@@ -157,15 +160,15 @@ public with sharing class LogACallController {
                     }
                 }
             }
-			return JSON.serialize(callResults);
-        }  
-              catch (Exception e){
+            return JSON.serialize(callResults);
+        }
+        catch (Exception e){
             System.debug('Error in getCallResults() :'+ e.getMessage());
             return null;
         }
     }
 
-     @AuraEnabled
+    @AuraEnabled
     public static List<String> getProgramsForChange(Id recordId){
         Set<String> programs = new Set<String>();
         try{
@@ -190,7 +193,7 @@ public with sharing class LogACallController {
             if(programs.contains(program)){
                 programs.remove(program);
             }
-            
+
             return new List<String>(programs);
         }
         catch (Exception e){
@@ -235,6 +238,7 @@ public with sharing class LogACallController {
         try
         {
             Lead lead = new Lead();
+            String oldProgram ;
             // Update the values selected in the UI on the Lead or Opportunity
             if(recordId.getSobjectType() == Lead.getSObjectType()){
                 lead = LeadsSelector.getLeadsOnId(new Set<Id>{recordId}).get(0);
@@ -248,20 +252,23 @@ public with sharing class LogACallController {
                 }
                 lead.WhenYear__c = whenYear;
                 lead.WhenMonth__c = whenMonth;
+                oldProgram = lead.Program__c;
+                if(program!='' && program != null){
+                    lead.Program__c = program;
+                }
                 //update lead;
             }
             else if(recordId.getSobjectType() == Opportunity.getSObjectType()){
                 Opportunity opp =  OpportunitiesSelector.getOpportunitiesOnId(new Set<Id>{recordId}).get(0);
 
                 // If an Opportunity is closed revive the Opportunity
-                     if(opp.StageName == Label.SalesClosed ){
+                if(opp.StageName == Label.SalesClosed ){
                     opp.TFBypassStageValidation__c = true;
                     opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
                     opp.TimeOutDate__c=null;
-                 
-                   //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
+                    //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
-                  
+
                     if(bookOn == NULL||opp.CloseDate == bookOn.date()){
                         opp.CloseDate = date.today().addmonths(2);
                     }
@@ -272,22 +279,26 @@ public with sharing class LogACallController {
                 }
                 else {
                     if(callResult.toUpperCase() == Label.CloseOpp.toUpperCase()){
-                      opp.CloseDate = system.today();
+                        opp.CloseDate = system.today();
                     }
                     else if(bookOn != NULL){
                         opp.CloseDate = bookOn.date();
                     }
                 }
-                    opp.LikelihoodToBook__c = likelihoodToBook;
-                    opp.HearAboutUs__c = hearAboutUs;
-                    opp.Destinations__c = destination;
-                    opp.PreferredDuration__c = duration;
-                    opp.WhenYear__c = whenYear;
-                    opp.WhenMonth__c = whenMonth;
-                    opp.TFBypassStageValidation__c = false;
-                    update opp;
+                oldProgram = opp.Program__c;
+                opp.LikelihoodToBook__c = likelihoodToBook;
+                opp.HearAboutUs__c = hearAboutUs;
+                opp.Destinations__c = destination;
+                opp.PreferredDuration__c = duration;
+                opp.WhenYear__c = whenYear;
+                opp.WhenMonth__c = whenMonth;
+                opp.TFBypassStageValidation__c = false;
+                if(program!='' && program != null){
+                    opp.Program__c = program;
                 }
-            
+                update opp;
+            }
+
             Boolean isLeadReached = String.valueOf(recordId).substring(0, 3) == '00Q' && LogACallHelper.allReachedItems.contains(callAction.toUpperCase());
             // If a call is reached on the Lead, convert the Lead to Opportunity directly
             if(isLeadReached) {
@@ -296,11 +307,11 @@ public with sharing class LogACallController {
                     lead.FirstContactDateTime__c = Datetime.now();
                 }
             }
-                
+
             if(recordId.getSobjectType() == Lead.getSObjectType()){
-                 update lead;
+                update lead;
             }
-			
+
             if(isLeadReached && callResult.toUpperCase() != Label.CloseOpp.toUpperCase()){
                 // DISABLE DUPLICATE CHECK FOR THE REST OF THE TRANSACTION
                 dupcheck.dc3TriggerProcessGlobal.setTriggerSource('DO_SIMPLE');
@@ -322,7 +333,7 @@ public with sharing class LogACallController {
                     objAccount.ownerid = UserInfo.getUserId();
                     update objAccount;
                 }
-                
+
                 Map<String,String> result = new Map<String,String>();
                 result.put('Id',lcr.opportunityId);
                 result.put('Type','Opportunity');
@@ -339,7 +350,7 @@ public with sharing class LogACallController {
             task.Program__c = program;
             task.FollowUpDate__c = actionDateTime;
             task.CloseMainReason__c = closeReason;
-             task.TaskSubtype = LogACallHelper.getTaskSubType(callAction);
+            task.TaskSubtype = LogACallHelper.getTaskSubType(callAction);
             task.RecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.getSObjectType()).get(Label.CallTaskRecordTypeDeveloperName).Id;
             if(recordId.getSobjectType() == Lead.getSObjectType()&& response.Result == null) {
                 task.WhoId = recordId;
@@ -350,11 +361,11 @@ public with sharing class LogACallController {
             system.debug('response___'+response.Result);
             if(response.Result!=null && response.Result.containsKey('Id')){
                 task.WhatId = response.Result.get('Id');
-                LogACallHelper.handleLogAnAction(response.Result.get('Id'),task,visitDatetime);
+                LogACallHelper.handleLogAnAction(response.Result.get('Id'),task,visitDatetime,oldProgram);
             }
             else{
                 system.debug('Iam here in else');
-                LogACallHelper.handleLogAnAction(recordId,task,visitDatetime);
+                LogACallHelper.handleLogAnAction(recordId,task,visitDatetime,oldProgram);
             }
         }
         catch(Exception ex){
