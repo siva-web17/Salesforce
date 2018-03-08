@@ -25,6 +25,7 @@
     <aura:attribute name="messageTitle" type="String"/>
     <aura:method name="onInviteToCampaign" action="{!c.pushCampaigns}" access="PUBLIC"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="closeModalEvent" type="c:closeModalEvent"/>
     <aura:renderIf isTrue="{!v.showMessage}">
         <ui:message title="{!v.messageTitle}" severity="{!v.messageType}" closable="true">{!v.message}
         </ui:message>
