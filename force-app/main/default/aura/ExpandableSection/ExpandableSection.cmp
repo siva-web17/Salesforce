@@ -4,15 +4,19 @@
 
 <aura:component description="ExpandableSection"  implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId">
     <aura:attribute name="content" type="Aura.Component[]"/>
-    <div class="slds-section slds-is-open" aura:id="sectionHeader">
+    <aura:attribute name="buttonState" type="Boolean" default="false"/>
+    <div class="slds-section" aura:id="sectionHeader">
         <h3 class="slds-section__title" onclick="{!c.onClick}">
-            <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
-                <c:svgIcon ariaHidden="true" class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
-                           xlinkHref="/resource/LDS_Resource/assets/icons/utility-sprite/svg/symbols.svg#switch"/>
+            <button aria-controls="expando-unique-id" aria-expanded="false" class="slds-button slds-section__title-action" onclick="{!c.handleIconState}">
+                <lightning:buttonStateful variant="text"
+                        iconNameWhenOff="utility:chevronright"
+                        iconNameWhenOn="utility:chevrondown"
+                        state="{!v.buttonState}"
+                />
                 <span class="slds-truncate" title="Section Title">Search</span>
             </button>
         </h3>
-        <div aria-hidden="false" class="slds-section__content" aura:id="content" id="expando-unique-id">
+        <div aria-hidden="false" class="slds-section__content slds-hide" aura:id="content" id="expando-unique-id">
                 {!v.content}
         </div>
     </div>
