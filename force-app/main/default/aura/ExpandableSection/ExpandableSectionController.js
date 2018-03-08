@@ -3,6 +3,11 @@
  */
 ({
     onClick:function(component,event,helper){
-            helper.toggle(component);
-        }
+        helper.toggle(component);
+    },
+
+    handleIconState: function(component){
+        var buttonState = component.get('v.buttonState');
+        component.set('v.buttonState',!buttonState);
+    }
 })
