@@ -172,6 +172,19 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>Program__c</fields>
+        <fields>Destination__c</fields>
+        <fields>NumberOfWeeks__c</fields>
+        <fields>CourseType__c</fields>
+        <fields>StartDate__c</fields>
+        <fields>TotalPrice__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>ValidityDate__c</fields>
+        <fields>QuotePDF__c</fields>
+        <relatedList>Quote__c.Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Program__c</fields>
@@ -236,7 +249,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7E000000RlBC</masterLabel>
+        <masterLabel>00h9E000000SLjX</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
