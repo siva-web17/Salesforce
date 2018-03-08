@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SalesAction__c</fullName>
+    <description>Captures the Call action for the sales user.</description>
     <externalId>false</externalId>
     <label>Sales Action</label>
     <required>false</required>
@@ -8,11 +9,11 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
             <value>
-                <fullName>Called Us</fullName>
+                <fullName>Call Reached</fullName>
                 <default>false</default>
-                <label>Called Us</label>
+                <label>Call Reached</label>
             </value>
             <value>
                 <fullName>Call Not Reached</fullName>
@@ -20,9 +21,14 @@
                 <label>Call Not Reached</label>
             </value>
             <value>
-                <fullName>Call Reached</fullName>
+                <fullName>Called Us</fullName>
                 <default>false</default>
-                <label>Call Reached</label>
+                <label>Called Us</label>
+            </value>
+            <value>
+                <fullName>Visited Us</fullName>
+                <default>false</default>
+                <label>Visited Us</label>
             </value>
             <value>
                 <fullName>Emailed Us</fullName>
@@ -43,11 +49,6 @@
                 <fullName>Social Media Sent</fullName>
                 <default>false</default>
                 <label>Social Media Sent</label>
-            </value>
-            <value>
-                <fullName>Visited Us</fullName>
-                <default>false</default>
-                <label>Visited Us</label>
             </value>
         </valueSetDefinition>
     </valueSet>
