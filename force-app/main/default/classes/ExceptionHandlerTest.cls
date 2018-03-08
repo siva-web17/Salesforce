@@ -2,44 +2,42 @@
  * Created by britenet-patrykzak on 05/03/2018.
  */
 
-@isTest(seeAllData=false)
-public with sharing class ExceptionHandlerTest {
+@isTest
+private class ExceptionHandlerTest {
 
-    @isTest
-    public static void When_errorLog_Expect_createErrorLog(){
+    static testmethod void When_errorLog_Expect_createErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
-        String stacktrace = 'Test Trace';
+        String stackTrace = 'Test Trace';
         String className = Account.class.getName();
         String NameOfMethod = 'testMethod';
         Id testId = acc.Id;
 
         Test.startTest();
 
-        ExceptionHandler.errorLog(errorMessage,stacktrace,className,NameOfMethod,testId);
+        ExceptionHandler.errorLog(errorMessage,stackTrace,className,NameOfMethod,testId);
         List <ErrorLog__c> errLogList = [SELECT Name,Description__c FROM  ErrorLog__c];
 
         Test.stopTest();
 
         System.assertEquals(1,errLogList.size());
-        System.assertEquals('Test error Message',errLogList[0].Description__c);
+        System.assertEquals(errorMessage,errLogList[0].Description__c);
         System.assertEquals(Account.class.getName(),errLogList[0].Name);
     }
 
-    @isTest
-    public static void When_errorLogAsync_Expect_createFutureErrorLog(){
+    static testmethod void When_errorLogAsync_Expect_createFutureErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
-        String stacktrace = 'Test Trace';
+        String stackTrace = 'Test Trace';
         String className = Account.class.getName();
         String NameOfMethod = 'testMethod';
         Id testId = acc.Id;
 
         Test.startTest();
 
-        ExceptionHandler.errorLogAsync(errorMessage,stacktrace,className,NameOfMethod,testId);
+        ExceptionHandler.errorLogAsync(errorMessage,stackTrace,className,NameOfMethod,testId);
         List <ErrorLog__c> errLogListBeforeFutureExecution = [SELECT Name,Description__c FROM  ErrorLog__c];
 
         Test.stopTest();
@@ -47,12 +45,11 @@ public with sharing class ExceptionHandlerTest {
         List <ErrorLog__c> errLogListAfterFutureExecution = [SELECT Name,Description__c FROM  ErrorLog__c];
         System.assertEquals(0,errLogListBeforeFutureExecution.size());
         System.assertEquals(1,errLogListAfterFutureExecution.size());
-        System.assertEquals('Test error Message',errLogListAfterFutureExecution[0].Description__c);
+        System.assertEquals(errorMessage,errLogListAfterFutureExecution[0].Description__c);
         System.assertEquals(Account.class.getName(),errLogListAfterFutureExecution[0].Name);
     }
 
-    @isTest
-    public static void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
+    static testmethod void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
 
         String className = 'Lead';
         String NameOfMethod = 'testMethod';
@@ -74,6 +71,8 @@ public with sharing class ExceptionHandlerTest {
 
         Test.stopTest();
 
+        List <ErrorLog__c> errLogList = [SELECT Name,Description__c FROM  ErrorLog__c];
         System.assert(lcr.isSuccess());
+        System.assertEquals(0,errLogList.size());
     }
 }
