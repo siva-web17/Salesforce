@@ -84,7 +84,7 @@
         </aura:set>
     </c:ExpandableSection>
     <div class="slds-panel slds-is-editing">
-        <div class="slds-panel__section">
+        <div class="slds-panel__section slds-scrollable--x slds-size--1-of-1">
             <table class="slds-table slds-table_bordered slds-table_resizable-cols campaignTable slds-table_striped" role="grid">
                 <thead>
                 <tr class="slds-line-height_reset">
