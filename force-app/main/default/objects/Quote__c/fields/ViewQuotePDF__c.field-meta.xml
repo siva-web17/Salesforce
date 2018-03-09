@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Reprint__c</fullName>
+    <fullName>ViewQuotePDF__c</fullName>
+    <description>Formula field used to display the PDF Url in a more user friendly way</description>
     <externalId>false</externalId>
-    <formula>If (NOT(ISBLANK(LatestGeneratedProposal__c)), HYPERLINK("https://" + LatestGeneratedProposal__c,"Reprint"),'')</formula>
+    <formula>IF(NOT(ISBLANK(QuotePDF__c)),HYPERLINK( QuotePDF__c , IMAGE("/img/icon/forecasts16.png", "PDF")),'')</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Reprint</label>
+    <label>View Quote PDF</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>

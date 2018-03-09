@@ -22,6 +22,10 @@
         <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
+        <name>facet-c22f1286-b70b-4c73-9f21-3161150d1ec5</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
                 <name>createQuickActionName</name>
@@ -41,7 +45,7 @@
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
-        <name>facet-c22f1286-b70b-4c73-9f21-3161150d1ec5</name>
+        <name>facet-9f70ff28-6b91-43be-80af-aec039532035</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -83,6 +87,21 @@
             </componentInstanceProperties>
             <componentName>force:relatedListSingleContainer</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>flowArguments</name>
+                <value>[{"label":"AccountId","dataType":"String","supportsRecordId":true,"value":"{!Record.Id}"}]</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>flowLayout</name>
+                <value>twoColumn</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>flowName</name>
+                <value>AddFamilyMemberfromAccountScreen</value>
+            </componentInstanceProperties>
+            <componentName>flowruntime:interview</componentName>
+        </componentInstances>
         <name>facet-fdb412b8-6c3c-4a55-b136-4e5c0c2b1524</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -114,6 +133,17 @@
             <componentInstanceProperties>
                 <name>title</name>
                 <value>Standard.Tab.detail</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-9f70ff28-6b91-43be-80af-aec039532035</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Other Details</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

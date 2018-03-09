@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LatestGeneratedProposal__c</fullName>
+    <fullName>ValidityDate__c</fullName>
+    <description>Defines the last date the quote is considered valid</description>
     <externalId>false</externalId>
-    <label>Latest Generated Proposal</label>
-    <length>100</length>
+    <label>Validity Date (up to)</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Date</type>
 </CustomField>
