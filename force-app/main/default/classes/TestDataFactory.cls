@@ -428,14 +428,13 @@ public class TestDataFactory {
 
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
-
                     tOpp.put(strFieldName, Date.valueOf(strVal) );
                 else
                     tOpp.put(strFieldName, strVal);
             }
         }
         if (doInsert)
-            insert tOpp;
+            insert tOpp; 
         return tOpp;
     }
     /*********************************************************************************************************************************/
@@ -490,8 +489,10 @@ public class TestDataFactory {
 
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
-
-                    tCampaign.put(strFieldName, DateTime.valueOf(strVal)); else
+                    tCampaign.put(strFieldName, DateTime.valueOf(strVal));
+                else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.INTEGER)
+                    tCampaign.put(strFieldName, Decimal.valueOf(strVal) );
+                else
                         tCampaign.put(strFieldName, strVal);
             }
         }
@@ -590,6 +591,8 @@ public class TestDataFactory {
                 String strVal = mFieldNameToVal.get(strFieldName);
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
                     tTask.put(strFieldName, Date.valueOf(strVal) );
+                else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+                    tTask.put(strFieldName, DateTime.valueOf(strVal) );
                 else
                     tTask.put(strFieldName, strVal);
             }
@@ -941,6 +944,98 @@ public class TestDataFactory {
     }
 
     public class RecordBuilderException extends Exception{}
+
+      /********************************************************************************************************************************
+     *
+     * ver 1.0 2018.03.08 Thejasvi <thejasvi.a@ef.com>
+     *
+     *                    Create a SalesOfficeProgram with specified parameters
+     *
+     * @param strFirstName SalesOfficeProgram Name
+     * @param strRecordTypeId The recordtypeId of the to be created SalesOfficeProgram
+     * @param doInsert true if the method should also insert the object,
+     *                 if set to false no DML operations will be executed
+     *
+     */
+    public static SalesOfficeProgram__c createSalesOfficeProgram(String strName, String strRecordTypeId, Map<String, String> mFieldNameToVal,boolean doInsert) {
+        SalesOfficeProgram__c tSalesOfficeProgram = new SalesOfficeProgram__c();
+        tSalesOfficeProgram.Name = strName;
+
+        Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.SalesOfficeProgram__c.fields.getMap();
+        if (mFieldNameToVal != null) {
+            for (String strFieldName : mFieldNameToVal.keySet()) {
+                String strVal = mFieldNameToVal.get(strFieldName);
+
+                if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
+
+                    tSalesOfficeProgram.put(strFieldName, Date.valueOf(strVal) );
+                else
+                        tSalesOfficeProgram.put(strFieldName, strVal);
+            }
+        }
+
+        if (doInsert)
+            insert tSalesOfficeProgram;
+        return tSalesOfficeProgram;
+    }
+
+       /********************************************************************************************************************************
+     *
+     * ver 1.0 2018.03.08 Thejasvi <thejasvi.a@ef.com>
+     *
+     *                    Create a Source with specified parameters
+     *
+     * @param strFirstName Source Name
+     * @param strRecordTypeId The recordtypeId of the to be created Source
+     * @param doInsert true if the method should also insert the object,
+     *                 if set to false no DML operations will be executed
+     *
+     */
+    public static Source__c createSource(String strName, String strRecordTypeId, Map<String, String> mFieldNameToVal,boolean doInsert) {
+        Source__c tSource = new Source__c();
+        tSource.Name = strName;
+
+        Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.Source__c.fields.getMap();
+        if (mFieldNameToVal != null) {
+            for (String strFieldName : mFieldNameToVal.keySet()) {
+                String strVal = mFieldNameToVal.get(strFieldName);
+
+                if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
+
+                    tSource.put(strFieldName, Date.valueOf(strVal) );
+                else
+                    tSource.put(strFieldName, strVal);
+            }
+        }
+
+        if (doInsert)
+            insert tSource;
+        return tSource; 
+    }
+
+    /********************************************************************************************************************************
+    *
+    * ver 1.0 2018.03.08 Thejasvi <thejasvi.a@ef.com>
+    *
+    *                    Creates a public group with 'default' values for required fields
+    *
+    * @param doInsert true if the method should also insert the object,
+    *                 if set to false no DML operations will be executed
+    *
+    */
+    public static Group createPublicGroup(boolean doInsert) {
+
+        Group tGroup = new Group();
+        tGroup.Name = 'DEB_DEB_AY';
+        tGroup.DeveloperName = 'DEB_DEB_AY';
+
+        if (doInsert)
+            insert tGroup;
+
+        system.debug('Group:'+tGroup);
+        return tGroup;
+    }
+    /****************************************************************************************************/
 
     /***** END of Set of builder classes used in Unit tests ***********/
 }
