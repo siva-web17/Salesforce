@@ -2,11 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Opportunity__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Field used to have list of campaigns for which Opportunity Account is invited</description>
+    <description>Field used to have list of campaigns for which Opportunity Account is invited.</description>
     <externalId>false</externalId>
     <label>Opportunity</label>
     <referenceTo>Opportunity</referenceTo>
-    <relationshipLabel>Campaign History</relationshipLabel>
+    <relationshipLabel>Info Meeting History</relationshipLabel>
     <relationshipName>Campaign_Members</relationshipName>
     <required>false</required>
     <type>Lookup</type>

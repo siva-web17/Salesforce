@@ -10,7 +10,12 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Day</fullName>
+                <default>false</default>
+                <label>Day</label>
+            </value>
             <value>
                 <fullName>Each</fullName>
                 <default>true</default>
@@ -22,24 +27,19 @@
                 <label>Hour</label>
             </value>
             <value>
-                <fullName>Day</fullName>
-                <default>false</default>
-                <label>Day</label>
-            </value>
-            <value>
                 <fullName>Month</fullName>
                 <default>false</default>
                 <label>Month</label>
             </value>
             <value>
-                <fullName>Year</fullName>
-                <default>false</default>
-                <label>Year</label>
-            </value>
-            <value>
                 <fullName>Week</fullName>
                 <default>false</default>
                 <label>Week</label>
+            </value>
+            <value>
+                <fullName>Year</fullName>
+                <default>false</default>
+                <label>Year</label>
             </value>
         </valueSetDefinition>
     </valueSet>

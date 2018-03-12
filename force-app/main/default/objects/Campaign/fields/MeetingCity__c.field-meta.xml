@@ -10,7 +10,7 @@
         <controllingField>Market__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>A domicile</fullName>
                 <default>false</default>

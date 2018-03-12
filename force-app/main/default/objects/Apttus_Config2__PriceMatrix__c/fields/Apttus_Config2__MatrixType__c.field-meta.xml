@@ -10,16 +10,16 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Dimension</fullName>
-                <default>false</default>
-                <label>Dimension</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Condition</fullName>
                 <default>false</default>
                 <label>Condition</label>
+            </value>
+            <value>
+                <fullName>Dimension</fullName>
+                <default>false</default>
+                <label>Dimension</label>
             </value>
             <value>
                 <fullName>Usage</fullName>

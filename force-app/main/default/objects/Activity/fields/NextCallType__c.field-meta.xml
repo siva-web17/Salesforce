@@ -9,16 +9,17 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>FUA</fullName>
                 <default>false</default>
                 <label>Appointment</label>
             </value>
             <value>
-                <fullName>FUP</fullName>
+                <fullName>Call</fullName>
                 <default>false</default>
-                <label>Follow-up</label>
+                <isActive>false</isActive>
+                <label>Call</label>
             </value>
             <value>
                 <fullName>TCC</fullName>
@@ -26,15 +27,9 @@
                 <label>Contact Customer</label>
             </value>
             <value>
-                <fullName>UCC</fullName>
+                <fullName>FUP</fullName>
                 <default>false</default>
-                <label>Unreached Customer</label>
-            </value>
-            <value>
-                <fullName>Call</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>Call</label>
+                <label>Follow-up</label>
             </value>
             <value>
                 <fullName>MCR</fullName>
@@ -71,6 +66,11 @@
                 <default>false</default>
                 <isActive>false</isActive>
                 <label>SPQ</label>
+            </value>
+            <value>
+                <fullName>UCC</fullName>
+                <default>false</default>
+                <label>Unreached Customer</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -1306,7 +1306,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Personal ID</shortDescription>
-        <value>Personal ID</value>
+        <value>National ID</value>
     </labels>
     <labels>
         <fullName>Price</fullName>
@@ -1767,6 +1767,21 @@
         <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
         <value>Draft</value>
     </labels>
+    <labels>
+
+        <fullName>ProductCodeOSHCAY</fullName>
+ 
+       <categories>Apttus</categories>
+ 
+      <language>en_US</language>
+  
+      <protected>false</protected>
+    
+    <shortDescription>Product Code OSHCAY</shortDescription>
+
+        <value>OSHCAY</value>
+    </labels>
+>
 	<labels>
         <fullName>bookingSummarySuccess</fullName>
         <categories>BookingSummary</categories>

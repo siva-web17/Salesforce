@@ -37,15 +37,15 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>titleFieldName</name>
-                <value>Mailing Preferences</value>
+                <value>Passport Details</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>updateQuickActionName</name>
-                <value>Account.UpdateMailingPreferences</value>
+                <value>Account.UpdateIdentityInfo</value>
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
-        <name>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</name>
+        <name>facet-9f70ff28-6b91-43be-80af-aec039532035</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -60,15 +60,15 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>titleFieldName</name>
-                <value>Identity Details</value>
+                <value>Mailing Preferences</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>updateQuickActionName</name>
-                <value>Account.UpdateIdentityInfo</value>
+                <value>Account.UpdateMailingPreferences</value>
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
-        <name>facet-9d77e3a1-928a-40d6-9b7e-1bb62a1da0fd</name>
+        <name>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -86,6 +86,21 @@
                 <value>GRID</value>
             </componentInstanceProperties>
             <componentName>force:relatedListSingleContainer</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>flowArguments</name>
+                <value>[{"label":"AccountId","dataType":"String","supportsRecordId":true,"value":"{!Record.Id}"}]</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>flowLayout</name>
+                <value>twoColumn</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>flowName</name>
+                <value>AddFamilyMemberfromAccountScreen</value>
+            </componentInstanceProperties>
+            <componentName>flowruntime:interview</componentName>
         </componentInstances>
         <name>facet-fdb412b8-6c3c-4a55-b136-4e5c0c2b1524</name>
         <type>Facet</type>
@@ -124,22 +139,22 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</value>
+                <value>facet-9f70ff28-6b91-43be-80af-aec039532035</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
-                <value>Preferences</value>
+                <value>Other Details</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>facet-9d77e3a1-928a-40d6-9b7e-1bb62a1da0fd</value>
+                <value>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
-                <value>Other Details</value>
+                <value>Unsubscribe</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

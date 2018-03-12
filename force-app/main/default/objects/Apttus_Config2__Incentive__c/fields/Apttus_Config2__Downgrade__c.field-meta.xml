@@ -10,21 +10,21 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
                 <fullName>During Program</fullName>
                 <default>false</default>
                 <label>During Program</label>
             </value>
             <value>
-                <fullName>Next Program</fullName>
-                <default>false</default>
-                <label>Next Program</label>
-            </value>
-            <value>
                 <fullName>Never</fullName>
                 <default>false</default>
                 <label>Never</label>
+            </value>
+            <value>
+                <fullName>Next Program</fullName>
+                <default>false</default>
+                <label>Next Program</label>
             </value>
         </valueSetDefinition>
     </valueSet>

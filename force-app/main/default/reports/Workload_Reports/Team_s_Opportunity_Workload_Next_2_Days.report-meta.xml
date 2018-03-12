@@ -60,12 +60,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.IsActive__c</field>
-    </columns>
     <currency>CHF</currency>
     <description>Opportunities assigned to my team with next Followup date in the next 2 days (or in the past)</description>
     <filter>
@@ -78,11 +72,6 @@
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.FollowupDateTime__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
