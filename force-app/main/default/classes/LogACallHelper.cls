@@ -186,9 +186,9 @@ public with sharing class LogACallHelper {
                 //upsert new List<Task>{newTask, openCallTask};
                 update openCallTask;
             }
-            
+
             if(openCallTask != null){
-            	newTask.NextCallType__c = openCallTask.NextCallType__c;
+                newTask.NextCallType__c = openCallTask.NextCallType__c;
             }
             newTask.Status = 'Completed';
             newTask.Program__c = oldProgram;
@@ -215,7 +215,9 @@ public with sharing class LogACallHelper {
             if(lead.Tasks.size() > 0) {
                 Task callTask = null;
                 for(Task objTask:lead.Tasks){
-                    objTask.ownerid = UserInfo.getUserId();
+                    if(!objTask.IsClosed) {
+                        objTask.ownerid = UserInfo.getUserId();
+                    }
                     if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
                         callTask = objTask;
                     }
@@ -224,7 +226,7 @@ public with sharing class LogACallHelper {
                 update lead.Tasks;
                 //Task callTask = lead.Tasks[0];
                 if(callTask!=null && callTask.IsClosed) {
-                	System.debug('Open the existing System Call Task');
+                    System.debug('Open the existing System Call Task');
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
                     callTask.FollowUpDate__c = followupDateTime;
@@ -293,14 +295,5 @@ public with sharing class LogACallHelper {
             }
         }
         return OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
-    }
-
-    private static String getSObjectName(Id recordId) {
-        if (String.valueOf(recordId).substring(0, 3) == '00Q') {
-            return Lead.getSObjectType().getDescribe().getName();
-        } else if (String.valueOf(recordId).substring(0, 3) == '006') {
-            return Opportunity.getSObjectType().getDescribe().getName();
-        }
-        return null;
     }
 }

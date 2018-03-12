@@ -77,7 +77,7 @@ public class LeadsSelector {
                         PreferredDuration__c,
                         street,
                         TritonId__c,
-                       
+
                         WhenYear__c
                    FROM Lead
                   WHERE Id in :leadId
@@ -203,8 +203,7 @@ public class LeadsSelector {
                 SELECT
                         Id, Name, Status, Product__c, Program__c,OwnerId,
                         (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
-                        FROM Tasks
-                        WHERE IsClosed = False)
+                        FROM Tasks)
                 FROM Lead
                 WHERE Id IN :leadIds
         ];
