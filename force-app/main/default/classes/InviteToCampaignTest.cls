@@ -4,77 +4,71 @@
  */
 
 @isTest(SeeAllData=false)
-private class InviteToCampaignTest {
+private class InviteToCampaignTest { 
     private static Map<String,List<String>> campaignPicklistValues = new Map<String,List<String>>();
     public static String programFilter1 = 'ILSH';
     public static String programFilter2 = 'AY';
     public static String salesOffice1 = 'DEB';
-    public static String salesOffice2 = 'DEX';
-    public static String meetingType1 = 'Info Meeting - Online';
-    public static String meetingType2 = 'Info Meeting - Offline';
+    public static String salesOffice2 = 'DEF';
+    public static String meetingType1 = 'ONM';
+    public static String meetingType2 = 'INF';
     public static String meetingCity1 = 'Berlin';
-    public static String meetingCity2 = 'Aschaffenburg';
+    public static String meetingCity2 = 'Frankfurt';
     public static String market = 'DEB';
-    public static final Integer initialLoadRecords = 12;
+    public static final Integer initialLoadRecords = 8;
     public static final Integer programFilter1Size = 7;
-    public static final Integer programFilter2Size = 12;
-    public static final Integer programFilter3Size = 19;
-    public static final Integer salesOffice1Size = 19;
-    public static final Integer salesOffice2Size = 1;
-    public static final Integer salesOffice3Size = 20;
-    public static final Integer meetingType1Size = 6;
-    public static final Integer meetingType2Size = 13;
-    public static final Integer meetingType3Size = 19;
-    public static final Integer meetingCity1Size = 4;
-    public static final Integer meetingCity2Size = 8;
-    public static final Integer meetingCity3Size = 12;
-    public static final Integer dateToSize = 19;
-    public static final Integer dateFromSize = 1;
-    public static final Integer recordsWithoutFilterSize = 20;
+    public static final Integer programFilter2Size = 8;
+    public static final Integer programFilter3Size = 15;
+    public static final Integer salesOffice1Size = 9;
+    public static final Integer salesOffice2Size = 7;
+    public static final Integer salesOffice3Size = 16;
+    public static final Integer meetingType1Size = 7;
+    public static final Integer meetingType2Size = 9;
+    public static final Integer meetingType3Size = 16;
+    public static final Integer meetingCity1Size = 6;
+    public static final Integer meetingCity2Size = 10;
+    public static final Integer meetingCity3Size = 16;
+    public static final Integer dateToSize = 16;
+    public static final Integer dateFromSize = 15;
+    public static final Integer recordsWithoutFilterSize = 16;
     public static final Integer campaignSelectedSize = 2;
-    public static final String testOpportunityName = 'TestOpportunity__';
+    public static final String testOpportunityName = 'TestOpportunityRecord';
 
-    @testSetup static void setup() {
-
+    @testSetup static void setup(){
         User tAdminUser = TestDataFactory.createAdminUser(True);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id}, true, false);
         system.runAs(tAdminUser) {
             Map<String, String> markets = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Market__c');
             List<String> products = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Product__c').values();
             List<String> salesOffices = FieldUtilityClass.getFieldDependencies('Campaign', 'Market__c', 'SalesOffice__c').get(markets.values()[0]);
-            List<String> Programs = FieldUtilityClass.getFieldDependencies('Campaign', 'Product__c', 'Program__c').get(products[0]);
+            List<String> Programs = FieldUtilityClass.getFieldDependencies('Campaign', 'Market__c', 'Program__c').get(markets.values()[0]);
             Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Account.SobjectType).get('PersonAccount').Id;
 
             Map<String, String> personAccountFieldValues = new Map<String, String>{
-                    'Market__c' => markets.get(market)
+                    'Market__c' => market
             };
             Account newAccount = TestDataFactory.createPersonAccount('TestAccountFirstName', 'TestAccountFirstName', recordTypeId, personAccountFieldValues, True);
 
             string dateValue = string.valueof(System.today());
             Map<String, String> opportunityFieldValues = new Map<String, String>{
-                    'Market__c' => markets.get(market),
+                    'Market__c' => Market,
                     'Product__c' => products[0],
-                    'SalesOffice__c' => salesOffice1,
+                    'SalesOffice__c' =>salesOffice1,
                     'Program__c' => programs[0],
                     'StageName' => 'Open',
                     'Closedate' => dateValue
             };
             Opportunity newOpportunityPersonAccount = TestDataFactory.createOpportunityForAccount(newAccount.id, testOpportunityName, opportunityFieldValues, True);
-
             Test.loadData(Campaign.sObjectType, 'File_CampaignRecords');
-
-            Set<String> meetingCities = new Set<String>((List<String>)System.JSON.deserialize(InviteToCampaign.getMeetingCity(newOpportunityPersonAccount.id), List<String>.class));
-            System.assert(meetingCities.size()> 0 && meetingCities.contains(meetingCity1) && meetingCities.contains(meetingCity2),'Meeting cities picklist is not defined');
-            Set<String> program = new Set<String>((List<String>)System.JSON.deserialize(InviteToCampaign.getProgram(newOpportunityPersonAccount.id), List<String>.class));
-            System.assert((program.size()> 0),'Program picklist is not defined');
-            Set<String> salesoffice = new Set<String>(( List<String>)System.JSON.deserialize(InviteToCampaign.getsalesoffice(newOpportunityPersonAccount.id), List<String>.class));
-            System.assert(salesoffice.size()> 0,'Sales Office picklist is not defined');
-            Set<String> meetingType = new Set<String>((List<String>)System.JSON.deserialize(InviteToCampaign.getMeetingTypes(), List<String>.class));
-            System.assert(meetingType.size()> 0,'Meeting Type picklist is not defined');
+            InviteToCampaign.getMeetingTypes();
+            InviteToCampaign.getMeetingCity(newOpportunityPersonAccount.id);
+            InviteToCampaign.getProgram(newOpportunityPersonAccount.id);
+            InviteToCampaign.getSalesOffice(newOpportunityPersonAccount.id);
             InviteToCampaign.getcampaigns();
             String  opportunityMarket = string.valueof(InviteToCampaign.getMarket(newOpportunityPersonAccount.id));
             string opportunityMarketValue = opportunityMarket.split('"')[1];
             system.assert(opportunityMarketValue == newOpportunityPersonAccount.Market__c,'getMarket() function does not return the right market');
+
         }
     }
 
@@ -85,7 +79,6 @@ private class InviteToCampaignTest {
         Test.startTest();
         system.runAs(tAdminUser) {
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
-
             List<InviteToCampaign.CampaignWrapper> camp =  InviteToCampaign.getInitialCampaignData(newOpportunity.Id,null);
             //Assert that checks if 12 records are loaded based on selected Market and Program
             System.assertEquals(initialLoadRecords, camp.size(),'The Campaigns are not loaded correctly during the initial load.');
@@ -99,6 +92,7 @@ private class InviteToCampaignTest {
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
+
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
             String program1 = JSON.serialize(new String[]{programFilter1}); // Single program
             String program2= JSON.serialize(new String[]{programFilter2});
@@ -135,7 +129,7 @@ private class InviteToCampaignTest {
 
             camp = InviteToCampaign.getCampaignsWithFilter(newOpportunity.Id,myJSONsalesoffice3,'','','',null,null);
             System.assertEquals(camp.size(),salesOffice3Size,'Campaigns are not filtered properly when SalesOffice Filter is '+ myJSONsalesoffice3);
-            
+
         }
         Test.stopTest();
     }
@@ -159,10 +153,11 @@ private class InviteToCampaignTest {
 
             camp = InviteToCampaign.getCampaignsWithFilter(newOpportunity.Id,'','',myJSONmeetingType3,'',null,null);
             System.assertEquals(camp.size(),meetingType3Size,'Campaigns are not filtered properly when MeetingType Filter is '+ myJSONmeetingType3);
-            
+
         }
         Test.stopTest();
     }
+
 
     @isTest
     static void when_MeetingCityFiltered_DisplayRecordsThatBelongToMetingCity(){
@@ -183,7 +178,7 @@ private class InviteToCampaignTest {
 
             camp = InviteToCampaign.getCampaignsWithFilter(newOpportunity.Id,'','','',myJSONmeetingCity3,null,null);
             System.assertEquals(camp.size(),meetingCity3Size,'Campaigns are not filtered properly when MeetingCity Filter is '+ myJSONmeetingCity3);
-            
+
         }
         Test.stopTest();
     }
@@ -195,11 +190,11 @@ private class InviteToCampaignTest {
         Test.startTest();
         system.runAs(tAdminUser) {
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
-            Datetime dateto= DateTime.now().addHours(5);
+            Datetime dateto= DateTime.now().addyears(4);
 
             List<InviteToCampaign.CampaignWrapper> camp2= InviteToCampaign.getCampaignsWithFilter(newOpportunity.Id, '', '', '', '',null, dateto);
             System.assertEquals(camp2.size(),dateToSize,'Campaigns are not filtered properly when DateTo Filter is '+ dateto);
-            
+
         }
         Test.stopTest();
     }
@@ -221,13 +216,13 @@ private class InviteToCampaignTest {
     static void when_withoutAnyFilter_DisplayAllRecordsBasedonOpportunityMarketProgram(){
         User tAdminUser = TestDataFactory.createAdminUser(True);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
-        Test.startTest();
+        Test.startTest(); 
         system.runAs(tAdminUser) {
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
 
             List<InviteToCampaign.CampaignWrapper> camp= InviteToCampaign.getCampaignsWithFilter(newOpportunity.Id, '', '', '', '', null, null);
             System.assertEquals(camp.size(),recordsWithoutFilterSize,'Campaigns are not shown properly when there is no filter');
-            
+
         }
         Test.stopTest();
     }

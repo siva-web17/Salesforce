@@ -20,7 +20,7 @@ public class InvokeScribeTest {
             
             //create opportunity
             string opportunityMarketCode = SObjectType.Opportunity.Fields.Market__c.PicklistValues[0].getValue();
-            string opportunityProgramCode = SObjectType.Opportunity.Fields.Program__c.PicklistValues[3].getValue();
+            string opportunityProgramCode = SObjectType.Opportunity.Fields.Program__c.PicklistValues[0].getValue();
             string opportunityProductCode = SObjectType.Opportunity.Fields.Product__c.PicklistValues[0].getValue();
             string opportunityCurrencyCode = SObjectType.Opportunity.Fields.CurrencyIsoCode.PicklistValues[0].getValue();
             Opportunity testOpportunity = APTS_TestDataUtility.createOpportunities(testAccount.Id, testUser, opportunityMarketCode, opportunityProgramCode, opportunityProductCode, opportunityCurrencyCode);
@@ -43,7 +43,10 @@ public class InvokeScribeTest {
         List<Apttus_Proposal__Proposal__c>	testProposal	=	[SELECT Id, Name FROM Apttus_Proposal__Proposal__c];
         system.assertEquals(1, testProposal.size());
         Test.setMock(HttpCalloutMock.class, new MockGenerator_Test());
+        InvokeScribe.InvokeScribeAfterFinishBooking_Async(testProposal[0].Id);
         InvokeScribe.InvokeScribeAfterFinishBooking(testProposal[0].Id);
+        InvokeScribe.InvokeScribeAfterFinishBooking_Async(null);
+        InvokeScribe.InvokeScribeAfterFinishBooking(null);
         Test.stopTest();
         
     }
@@ -52,7 +55,10 @@ public class InvokeScribeTest {
     static void InvokeScribeFailure(){
         Test.startTest();
         List<Apttus_Proposal__Proposal__c>	testProposal	=	[SELECT Id, Name FROM Apttus_Proposal__Proposal__c];
+        InvokeScribe.InvokeScribeAfterFinishBooking_Async(testProposal[0].Id);
         InvokeScribe.InvokeScribeAfterFinishBooking(testProposal[0].Id);
+        InvokeScribe.InvokeScribeAfterFinishBooking_Async(null);
+        InvokeScribe.InvokeScribeAfterFinishBooking(null);
         system.assertEquals(1, testProposal.size());
         Test.stopTest();
     }
