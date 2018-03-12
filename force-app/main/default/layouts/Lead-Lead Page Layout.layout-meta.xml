@@ -139,7 +139,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Mailing Preferences</label>
+        <label>Unsubscribe</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -282,9 +282,6 @@
     </relatedContent>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
-        <fields>Program__c</fields>
-        <fields>MeetingType__c</fields>
-        <fields>DateFrom__c</fields>
         <fields>MeetingCity__c</fields>
         <fields>MeetingSize__c</fields>
         <fields>CM.STATUS</fields>
@@ -319,7 +316,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000000VXG4</masterLabel>
+        <masterLabel>00h6E000000LyPH</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
