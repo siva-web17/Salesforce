@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>SubStatus__c</fullName>
-    <description>Used to display the Sub Status of the booking</description>
+    <fullName>PoseidonQuotationId__c</fullName>
+    <description>The Poseidon Quotation Id</description>
     <externalId>false</externalId>
-    <label>SubStatus</label>
-    <length>50</length>
+    <label>Poseidon Quotation Id</label>
+    <precision>18</precision>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <scale>0</scale>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>
