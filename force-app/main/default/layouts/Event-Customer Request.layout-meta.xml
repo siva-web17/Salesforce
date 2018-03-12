@@ -59,6 +59,10 @@
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>StartDateTime</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -102,8 +106,8 @@
                 <field>FalseBrochureProgramCodes__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>StartDateTime</field>
+                <behavior>Edit</behavior>
+                <field>IsEBrochure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>

@@ -54,8 +54,8 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 kendoPopup.popupWithButtons(POPUP_HEADER, 'Please select at least one record to Assign', []);
                 return;
             }
-
             function process(newOwner) {
+                console.log('assign');
                 var recordsToUpdate = [];
                 if (newOwner) {
                     for (var i = 0; i < context.selectedRows.length; i++) {
@@ -80,6 +80,7 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                         var recordIds = [];
                         $.each(results, function (i, row) {
                             if (row.errors) {
+                                console.log(row.errors);
                                 onfailure(row.errors);
                                 return;
                             }
@@ -97,8 +98,15 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
             function getUsers() {
                 var values = [];
                 var markets = [];
+                var selectedIds = [];
                 for(var i = 0 ; i < context.selectedRows.length; i++){
-                    markets.push(context.selectedRows[i].Market__c);
+                    selectedIds.push(context.selectedRows[i].id);
+                }
+                var selectedRecords = sfdc.query("SELECT Id, Market__c FROM " + CurrentObject.object.Name + " WHERE Id IN('" + selectedIds.join("','") + "')");
+                for(var i = 0 ; i < selectedRecords.length; i++){
+                    if(selectedRecords[i].Market__c) {
+                        markets.push(selectedRecords[i].Market__c);
+                    }
                 }
                 var users = sfdc.query("SELECT Id, Name,EnabledForMarkets__c FROM User WHERE EnabledForMarkets__c INCLUDES ('" + markets.sort().join(';') + "\') ORDER BY Name");
 
