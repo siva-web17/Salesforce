@@ -15,4 +15,16 @@ public  class AccountContactRelationsSelector {
         return accountContactRelationMap;
     }
 
+    public static List<AccountContactRelation> getRelationsByAccountsAndContacts(Set<Id> accountIds, Set<Id> contactIds){
+        return [SELECT Id, AccountId, ContactId
+                FROM AccountContactRelation
+                WHERE AccountId IN :accountIds AND ContactId IN :contactIds];
+    }
+
+    public static List<AccountContactRelation> getRelationsByIdsIncludingDeleted(Set<Id> relationIds){
+        return [SELECT Id, AccountId, ContactId, Account.PersonContactId, Contact.AccountId
+                FROM AccountContactRelation
+                WHERE Id IN :relationIds ALL ROWS];
+    }
+
 }
