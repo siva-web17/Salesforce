@@ -5,6 +5,7 @@
     <fields>ActivityDateTime__c</fields>
     <fields>Partner__c</fields>
     <fields>IsEBrochure__c</fields>
+    <fields>DestinationCode__c</fields>
     <fields>Etag__c</fields>
     <fields>CampaignName__c</fields>
     <fields>Course__c</fields>
