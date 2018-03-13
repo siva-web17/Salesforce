@@ -72,6 +72,10 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
+            <inputField>CampaignName__c</inputField>
+            <outputField>CampaignName__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>CreationMethod__c</inputField>
             <outputField>CreationMethod__c</outputField>
         </mappingFields>
@@ -88,24 +92,12 @@
             <outputField>HearAboutUs__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>InterestedToTravelInGroup__c</inputField>
-            <outputField>InterestedToTravelInGroup__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>LatestPartner__c</inputField>
-            <outputField>LatestPartner__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>LikelihoodToBook__c</inputField>
             <outputField>LikelihoodToBook__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>Market__c</inputField>
             <outputField>Market__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>Partner__c</inputField>
-            <outputField>Partner__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>PosInterestId__c</inputField>
@@ -134,6 +126,14 @@
         <mappingFields>
             <inputField>SalesOffice__c</inputField>
             <outputField>SalesOffice__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>Partner__c</inputField>
+            <outputField>Partner__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>InterestedToTravelInGroup__c</inputField>
+            <outputField>InterestedToTravelInGroup__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>WhenMonth__c</inputField>
