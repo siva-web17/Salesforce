@@ -9,4 +9,8 @@ public  class AccountContactRelations {
         system.debug('Inside sendDetailsToPoseidonAfterInsert');
         AccountContactRelationHelper.validateAndSendDetailsToPoseidon(newAccountContactMap,DMLType,IsComplicatedBooking);
     }
+
+    public static void onAfterDelete(List<AccountContactRelation> oldAccountContactRelations){
+        AccountContactRelationHelper.findAndDeleteReversRelations(oldAccountContactRelations);
+    }
 }
