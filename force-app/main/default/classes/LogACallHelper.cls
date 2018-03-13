@@ -140,6 +140,7 @@ public with sharing class LogACallHelper {
                     visitEvent.ActivityDateTime = visitDatetime;
                     insert visitEvent;
                 }else if (callResult.toUpperCase() == Label.CloseOpp.toUpperCase()) {
+                    System.debug('Close section invoked');
                     if (String.valueOf(parentId).substring(0, 3) == '006') {
                         opp.CloseMainReason__c = closeReason;
                         update opp;
@@ -186,7 +187,9 @@ public with sharing class LogACallHelper {
                 update openCallTask;
             }
 
-            newTask.NextCallType__c = openCallTask.NextCallType__c;
+            if(openCallTask != null){
+                newTask.NextCallType__c = openCallTask.NextCallType__c;
+            }
             newTask.Status = 'Completed';
             newTask.Program__c = oldProgram;
 
@@ -212,7 +215,9 @@ public with sharing class LogACallHelper {
             if(lead.Tasks.size() > 0) {
                 Task callTask = null;
                 for(Task objTask:lead.Tasks){
-                    objTask.ownerid = UserInfo.getUserId();
+                    if(!objTask.IsClosed) {
+                        objTask.ownerid = UserInfo.getUserId();
+                    }
                     if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
                         callTask = objTask;
                     }
@@ -220,7 +225,8 @@ public with sharing class LogACallHelper {
 
                 update lead.Tasks;
                 //Task callTask = lead.Tasks[0];
-                if(callTask.IsClosed) {
+                if(callTask!=null && callTask.IsClosed) {
+                    System.debug('Open the existing System Call Task');
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
                     callTask.FollowUpDate__c = followupDateTime;
@@ -263,7 +269,7 @@ public with sharing class LogACallHelper {
             if(opp.Tasks.size() > 0) {
 
                 Task callTask = opp.Tasks[0];
-                System.debug('Open the existing System Call Task'+callTask.IsClosed);
+                System.debug('Open the existing System Call Task');
                 if(callTask.IsClosed) {
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
@@ -289,14 +295,5 @@ public with sharing class LogACallHelper {
             }
         }
         return OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
-    }
-
-    private static String getSObjectName(Id recordId) {
-        if (String.valueOf(recordId).substring(0, 3) == '00Q') {
-            return Lead.getSObjectType().getDescribe().getName();
-        } else if (String.valueOf(recordId).substring(0, 3) == '006') {
-            return Opportunity.getSObjectType().getDescribe().getName();
-        }
-        return null;
     }
 }
