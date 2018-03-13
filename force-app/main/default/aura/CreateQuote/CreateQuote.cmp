@@ -1,0 +1,13 @@
+<!--
+ - Created by arjun.mohan on 3/8/2018.
+ -->
+
+
+    <aura:component controller="CreatePriceQuoteController" description="CreateQuote" implements="force:lightningQuickAction,force:hasRecordId" >
+        <aura:attribute name="recordId" type="string"/>
+        <aura:handler name="init" value="{!this}" action="{!c.CallPoseidonPQ}"/>
+        <aura:attribute name="ErrorMessage" type="string"/>
+        <div class="slds-modal__content slds-p-around_medium" aura:id="error">
+            <aura:unescapedHtml value="{!v.ErrorMessage}" />
+        </div>
+    </aura:component>
