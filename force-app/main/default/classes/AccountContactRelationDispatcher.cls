@@ -5,13 +5,10 @@
 public  class AccountContactRelationDispatcher {
     public static void Run()
     {
-        // Before trigger logic
-        if (Trigger.isAfter )
-        {
+        if (Trigger.isAfter ){
            Boolean IsComplicatedBooking=false;
             system.debug('Inside AccountContactRelationDispatcher');
-            if (Trigger.IsInsert)
-            {
+            if (Trigger.IsInsert){
                 system.debug('Inside AccountContactRelationDispatcher IsInsert');
                 AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeInsert,IsComplicatedBooking);
             }
@@ -21,10 +18,10 @@ public  class AccountContactRelationDispatcher {
                 AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.newMap,Label.DMLTypeUpdate,IsComplicatedBooking);
             }
 
-            if (Trigger.IsDelete)
-            {
+            if (Trigger.IsDelete){
                 system.debug('Inside AccountContactRelationDispatcher IsDelete');
                 AccountContactRelations.sendDetailsToPoseidon((Map<Id, AccountContactRelation>)Trigger.oldMap,Label.DMLTypeDelete,IsComplicatedBooking);
+                AccountContactRelations.onAfterDelete(trigger.old);
             }
 
         }

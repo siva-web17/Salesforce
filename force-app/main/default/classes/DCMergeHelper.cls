@@ -163,9 +163,9 @@ Version    Method   : 7/25/2017
         {
             Lead retainedLead = (Lead) masterRecord;
             retainedLead =
-                [select id,program__c,product__c, createddate from lead where id=:retainedLead.id];
+                [select id,program__c,product__c, createddate,status from lead where id=:retainedLead.id];
             lead latestobjlead =
-                [select id,program__C,product__c,status, createddate from lead where id in:mergedIds
+                [select id,program__C,product__c,status,RequestType__c, createddate from lead where id in:mergedIds
                     order by createddate desc limit 1];
 
             if(retainedLead.createddate > latestobjlead.createddate)
