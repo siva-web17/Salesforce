@@ -1,30 +1,21 @@
 ({
 	doInit: function(component, event, helper) {
-		var quoteid = component.get('v.QuoteId');
-		var Oppid = component.get('v.OpportunityID');
-		var action = component.get('c.dataBind');
+        debugger;
+		var action = component.get("c.dataBind");
 		action.setParams({
-			QuoteId: component.get('v.QuoteId'),
+			"recordId": component.get("v.RecordId")
 		});
 		action.setCallback(this, function(response) {
 			console.log(response);
-			//store state of response
 			var state = response.getState();
-
 			if (state == 'SUCCESS') {
-				//set response value in wrapperList attribute on component.
 				var json_text = JSON.stringify(response.getReturnValue());
 				component.set('v.wrapperList', response.getReturnValue());
 				var u = component.get('v.wrapperList');
-				//---------------------------------------------------------------
 				component.set('v.pickGender', u.personAcc.Gender__c);
 				var arrayGenderMapKeys = [];
-				//Store the response of apex controller (return map)
 				var result = u.GenderPickList;
-
 				var p = component.get('v.pickGender');
-				//Set the store response[map] to component attribute, which name is map and type is map.
-				//component.set('v.companyMap', result);
 				var isSelected = false;
 				for (var key in result) {
 					if (p == key || p == result[key]) {
@@ -34,7 +25,6 @@
 					isSelected = false;
 				}
 				component.set('v.GenderList', arrayGenderMapKeys);
-				//---------------------------------------------------------------
 				component.set('v.selectedSalesOffice', u.opp.SalesOffice__c);
                 var arraySalesMapKeys = [];
                 var result = u.SalesOfficePickList;
@@ -48,7 +38,6 @@
                     isSelected = false;
                 }
                 component.set('v.SalesOfficeList', arraySalesMapKeys);
-				//---------------------------------------------------------------
 				component.set('v.selectedCountry', u.personAcc.PersonMailingCountry);
 				var arrayMailingCountryMapKeys = [];
 				var result = u.MailingCountryPickList;
@@ -62,9 +51,8 @@
 					isSelected = false;
 				}
 				component.set('v.MaillingCountryList', arrayMailingCountryMapKeys);
-				//---------------------------------------------------------------
 				component.set('v.selectedBirthCountry', u.personAcc.BirthCountry__c);
-				debugger;
+
 				var arrayBirthCountryMapKeys = [];
 				var result = u.BirthCountryPickList;
 				var p = component.get('v.selectedBirthCountry');
@@ -77,7 +65,6 @@
 					isSelected = false;
 				}
 				component.set('v.BirthCountryList', arrayBirthCountryMapKeys);
-				//---------------------------------------------------------------
 				component.set('v.selectedNationality', u.personAcc.Nationality__c);
 				var arrayNationMapKeys = [];
 				var result = u.NationalityPickList;
@@ -91,7 +78,6 @@
 					isSelected = false;
 				}
 				component.set('v.NationalityList', arrayNationMapKeys);
-				//---------------------------------------------------------------
                 var otherNation = u.personAcc.OtherNationalities__c;
                 component.set('v.selectedOtherNationalityNameMulti', (otherNation != null) ? otherNation.split(';') : '');
                 component.set('v.OtherNationalityList', u.OtherNationalityPickList);
@@ -109,52 +95,40 @@
 					isSelected = false;
 				}
 				component.set('v.PassportList', arrayPassportMapKeys);
-				//---------------------------------------------------------------
-				component.set('v.selectedBookingChannel', u.Quote.BookingChannel__c);
-				var arrayBookingChannelMapKeys = [];
-				var result = u.BookingChannelPickList;
-				var p = component.get('v.selectedBookingChannel');
-				var isSelected = false;
-				for (var key in result) {
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayBookingChannelMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				component.set('v.BookingChannelList', arrayBookingChannelMapKeys);
-				//---------------------------------------------------------------
-				component.set('v.selectedBookingType', u.Quote.BookingType__c);
-				var arrayBookingTypeMapKeys = [];
-				var result = u.BookingTypePickList;
-				var p = component.get('v.selectedBookingType');
-				var isSelected = false;
-				for (var key in result) {
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayBookingTypeMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				component.set('v.BookingTypeList', arrayBookingTypeMapKeys);
-				//---------------------------------------------------------------
-				component.set('v.selectedCurrency', u.Quote.CurrencyIsoCode);
-				var arrayCurrencyMapKeys = [];
-				var result = u.CurrencyPickList;
-				var p = component.get('v.selectedCurrency');
-				var isSelected = false;
-				for (var key in result) {
-					if (p == key || p == result[key]) {
-						isSelected = true;
-					}
-					arrayCurrencyMapKeys.push({ value: result[key], key: key, Selected: isSelected });
-					isSelected = false;
-				}
-				component.set('v.CurrencyList', arrayCurrencyMapKeys);
+
 			}
+			else {
+            					var toastEvent = $A.get('e.force:showToast');
+
+            					toastEvent.setParams({
+            						title: 'Failure!',
+            						type: 'Failure',
+            						message: 'Error Loading Screen',
+            					});
+            					toastEvent.fire();
+            					window.setTimeout(
+                                						$A.getCallback(function() {
+                                							var navEvt = $A.get('e.force:navigateToSObject');
+                                							navEvt.setParams({
+                                								recordId: component.get("v.RecordId"),
+                                							});
+                                							navEvt.fire();
+                                						}),
+                                						5000
+                                					);
+            				}
 		});
 		$A.enqueueAction(action);
 	},
+
+	navigateToSObject:function(component, event, helper)
+	{
+	    var navEvt = $A.get('e.force:navigateToSObject');
+        							navEvt.setParams({
+        								recordId: component.get("v.RecordId"),
+        							});
+        							navEvt.fire();
+ },
 
 	pathWayforward: function(component, event, helper) {
 		var whichOne = event.getSource().getLocalId();
@@ -216,7 +190,7 @@
 				$A.util.removeClass(nextPanel, 'slds-hide');
 				//Disable Button
 				// $A.util.removeClass(finishBooking, "slds-button_brand");
-			} else if (whichOne == 'next3') {
+			} else if (whichOne == 'next4') {
 				var currentHeader = cmp.find('header-3');
 				var nextHeader = cmp.find('header-4');
 				var CurrentPanel = cmp.find('path-content-3');
@@ -331,7 +305,7 @@
 		//$A.enqueueAction(cmp.get('c.submit'));
 	},
 	moveNext3: function(cmp, event, helper) {
-
+debugger;
 		var selectedOtherNationalityNameMulti = cmp.get('v.selectedOtherNationalityNameMulti');
 		var selectedValues = '';
 		for(var i=0; i<selectedOtherNationalityNameMulti.length; i++){
@@ -397,7 +371,7 @@
 				$A.util.removeClass(nextPanel, 'slds-hide');
 				//Disable Button
 				$A.util.removeClass(finishBooking, 'slds-button_brand');
-			} else if (whichOne == 'next3') {
+			} else if (whichOne == 'next4') {
 				var currentHeader = cmp.find('header-3');
 				var nextHeader = cmp.find('header-4');
 				var CurrentPanel = cmp.find('path-content-3');
@@ -417,6 +391,9 @@
 				$A.util.removeClass(nextPanel, 'slds-hide');
 				//Enable Button
 				$A.util.addClass(finishBooking, 'slds-button_brand');
+				helper.insertRecord(cmp, event);
+                cmp.set('v.isFinishBooking', true);
+                cmp.set('v.DisableFinishBooking', true);
 			}
 		} else {
 			var toastEvent = $A.get('e.force:showToast');
