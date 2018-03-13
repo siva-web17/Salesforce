@@ -92,10 +92,6 @@
             <outputField>InterestedToTravelInGroup__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>LatestPartner__c</inputField>
-            <outputField>LatestPartner__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>LikelihoodToBook__c</inputField>
             <outputField>LikelihoodToBook__c</outputField>
         </mappingFields>
