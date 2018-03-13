@@ -90,6 +90,8 @@ public class CreatePriceQuoteController {
                         Map<String, String> leadFieldvalues = LeadfieldsForPriceQuote(oppLeadMap.get(Id.valueOf(OppId)));
                         createPQFieldvalues.putAll(accountFieldsMap);
                     }
+                    //System.debug('Testing org details '+ExternalRouter.getOrganizationDetails());
+                    createPQFieldvalues.put('Environment',(ExternalRouter.getOrganizationDetails().IsSandbox)?'QA':'LIVE');
                     String JSONValue = JSON.serialize(createPQFieldvalues);
 
                     this.PQParamJson=JSONValue;
