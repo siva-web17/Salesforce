@@ -11,6 +11,6 @@ public  class AccountContactRelations {
     }
 
     public static void onAfterDelete(List<AccountContactRelation> oldAccountContactRelations){
-        AccountContactRelationHelper.findAndDeleteReversRelations(oldAccountContactRelations);
+        AccountContactRelationHelper.findAndDeleteReverseRelations(oldAccountContactRelations);
     }
 }

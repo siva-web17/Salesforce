@@ -2,7 +2,7 @@
  * Created by arjun.mohan on 2/9/2018.
  */
 
-public with sharing class AccountContactRelationHelper {
+public class AccountContactRelationHelper {
 
     public static List<Map<String, String>> validateAndSendDetailsToPoseidon(Map<Id, AccountContactRelation> AccountContactMap, String DMLType,Boolean IsComplicatedBooking) {
         Id MasterRecordId;
@@ -74,7 +74,7 @@ public with sharing class AccountContactRelationHelper {
         return updateAccountInfo;
     }
 
-    public static void findAndDeleteReversRelations(List<AccountContactRelation> relations){
+    public static void findAndDeleteReverseRelations(List<AccountContactRelation> relations){
         Set<Id> relationIds = (new Map<Id, AccountContactRelation>(relations)).keySet();
 
         List<AccountContactRelation> detailedRelations = AccountContactRelationsSelector.getRelationsByIdsIncludingDeleted(relationIds);
