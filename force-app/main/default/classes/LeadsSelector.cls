@@ -119,6 +119,16 @@ public class LeadsSelector {
         return leadMap;
     }
 
+    public Static Map<Id,Lead> getLeadByConvertedOpportunityId(Set<Id> OppSet)
+    {
+        Map<Id,Lead> ConvertedLeadWithOppIdMap=new Map<Id,Lead>();
+        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c from Lead where ConvertedOpportunityId in :OppSet];
+        for (Lead leadRecord:leadList) {
+            ConvertedLeadWithOppIdMap.put(leadRecord.ConvertedOpportunityId,leadRecord);
+        }
+        return ConvertedLeadWithOppIdMap;
+    }
+
 
     public static Map<Id, Lead> getNotConvertedLeadMapById(List<Id> leadIdList) {
         Map<Id, Lead> leadMap = new Map<Id, Lead>([
