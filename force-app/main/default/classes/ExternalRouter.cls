@@ -59,6 +59,18 @@ public  class ExternalRouter {
         InvokeService(url,jsonS);
     }
 
+    @future (callout=true)
+    public static void callNewSyncToPoseidonService(String accountPersonalDetails)
+    {
+        /*JSONGenerator gen = JSON.createGenerator(true);
+        gen.writeStartObject();
+        gen.writeStringField(accountPersonalDetails);
+        gen.writeEndObject();*/
+        String jsonS = accountPersonalDetails;
+        String url=getServiceURL('SyncToPoseidon');
+        InvokeService(url,jsonS);
+    }
+
     //SyncNewAccountDetails
 
     public static Organization getOrganizationDetails()
