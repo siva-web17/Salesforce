@@ -4,14 +4,17 @@
 
 public with sharing class AccountContactRelationHelper {
 
-    public static void validateAndSendDetailsToPoseidon(Map<Id, AccountContactRelation> AccountContactMap, String DMLType,Boolean IsComplicatedBooking) {
+    public static List<Map<String, String>> validateAndSendDetailsToPoseidon(Map<Id, AccountContactRelation> AccountContactMap, String DMLType,Boolean IsComplicatedBooking) {
         Id MasterRecordId;
         List<Map<String, String>> updateAccountInfo = new List<Map<String, String>>();
         String market='';
         Set<Id> accountIdSet=new Set<Id>();
         List<Id> userIdList=new List<Id>();
-        system.debug('Inside validateAndSendDetailsToPoseidon');
+        //system.debug('Inside validateAndSendDetailsToPoseidon');
         for (AccountContactRelation accountContactRecord : AccountContactMap.values()) {
+            if(accountContactRecord.AccountContactID__c == null){
+                continue;
+            }
             accountIdSet.add(Id.valueOf(accountContactRecord.AccountContactID__c));
             userIdList.add(accountContactRecord.CreatedById);
             userIdList.add(accountContactRecord.LastModifiedById);
@@ -22,8 +25,11 @@ public with sharing class AccountContactRelationHelper {
         for (AccountContactRelation accountContactRecord : AccountContactMap.values()) {
             Map<String, String> AccountContactrelationfieldValueMap = new Map<String, String>();
             if (accountContactRecord.TotalBooking__c > 0 || IsComplicatedBooking) {
+                if(accountContactRecord.AccountContactID__c == null){
+                    continue;
+                }
                 market=accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).Market__c:'';
-                system.debug('Inside accountContactRecord.TotalBooking__c > 0)');
+                //system.debug('Inside accountContactRecord.TotalBooking__c > 0)');
                 for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
                     if (accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))) {
                         AccountContactrelationfieldValueMap.put(f.getFieldPath(), String.valueOf(accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).get(f.getFieldPath())));
@@ -55,12 +61,17 @@ public with sharing class AccountContactRelationHelper {
             }
         }
         if (updateAccountInfo.size() > 0) {
-            system.debug('Inside updateAccountInfo.size() > 0) ' +updateAccountInfo);
+            //system.debug('Inside updateAccountInfo.size() > 0) ' +updateAccountInfo);
             SyncAccountRelationWrapper objSyncAccountRelationWrapper=new SyncAccountRelationWrapper(updateAccountInfo,market);
             String JSONValue= JSON.serialize(objSyncAccountRelationWrapper);
-            system.debug('Before Hitting service  ' +JSONValue);
-            ExternalRouter.callUpdateAccountFamilyDetailsService(JSONValue);
+            //system.debug('Before Hitting service  ' +JSONValue);
+            /*ExceptionHandler.errorLogAsync('Test Family Sync', JSONValue,
+                    'AccountContactHelper', 'validateAndSendDetailsToPose*//*idon', MasterRecordId);*/
+            if (!IsComplicatedBooking) {
+                ExternalRouter.callUpdateAccountFamilyDetailsService(JSONValue);
+            }
         }
+        return updateAccountInfo;
 
     }
 
