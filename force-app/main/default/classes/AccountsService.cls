@@ -9,7 +9,7 @@ public  class AccountsService {
         List<Id> accountIdList = new List<Id>();
         String market = '';
         String returnMessage='';
-
+        List<Map<String, String>> UpdateFamilyInfo =new List<Map<String, String>> ();
         Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getActiveOpportunitiesforAccount(newAccountMap.keySet());
         system.debug('Method hitting');
         Boolean hasActiveOpportunity=true;
@@ -114,15 +114,22 @@ public  class AccountsService {
                 userDetailsMap.put('LastModifiedDate',String.valueOf(newAccountMap.values()[0].LastModifiedDate));
                 market = newAccountMap.values()[0].market__c;
 
-                AccountsHelper.SyncAccountDetailsWrapper objwrapper = new AccountsHelper.SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
-                String JSONValue= JSON.serialize(objwrapper);
-                System.debug('Girish Account JSON '+JSONValue);
-                ExternalRouter.callNewAccountFamilyDetailsService(JSONValue);
+
+
+
+
+                //ExternalRouter.callNewAccountFamilyDetailsService(JSONValue);
                 Map<Id, AccountContactRelation> accountContactRelationMap = AccountContactRelationsSelector.getAccountContactRelationForAccountId(accountIdList);
                 if (accountContactRelationMap.size() > 0) {
                     Boolean IsComplicatedBooking=true;
-                    AccountContactRelationHelper.validateAndSendDetailsToPoseidon(accountContactRelationMap,Label.DMLTypeInsert,IsComplicatedBooking);
+                    UpdateFamilyInfo = AccountContactRelationHelper.validateAndSendDetailsToPoseidon(accountContactRelationMap,Label.DMLTypeInsert,IsComplicatedBooking);
                 }
+                SyncToPoseidonAccountDetailsWrapper objwrapper = new SyncToPoseidonAccountDetailsWrapper(updatedAccountList, userDetailsMap, market,UpdateFamilyInfo);
+                String JSONValue= JSON.serialize(objwrapper);
+                System.debug('Girish Account JSON '+JSONValue);
+                ExceptionHandler.errorLogAsync('New Sync to poseidon', JSONValue,
+                        'AccountService', 'ExternalService', newAccountMap.values()[0].CreatedById);
+                ExternalRouter.callNewSyncToPoseidonService(JSONValue);
             }
 
         } catch (Exception ex) {
@@ -158,6 +165,20 @@ public  class AccountsService {
         addressMap.put(String.valueOf('ShippingState'),String.valueOf(newAccount.ShippingState));
         addressMap.put(String.valueOf('PersonOtherPostalCode'),String.valueOf(newAccount.PersonOtherPostalCode));
         return addressMap;
+    }
+
+    public class SyncToPoseidonAccountDetailsWrapper {
+        public String market { get; set; }
+        public List<Map<String, Map<String, Map<String, String>>>> updatedAccountList { get; set; }
+        public Map<String, String> ModifiedDetailsfieldValueMap { get; set; }
+        public List<Map<String, String>> UpdateFamilyInfo { get; set; }
+
+        public SyncToPoseidonAccountDetailsWrapper(List<Map<String, Map<String, Map<String, String>>>> updatedAccountList, Map<String, String> ModifiedDetailsfieldValueMap, String market,List<Map<String, String>> updateFamilyInfo) {
+            this.updatedAccountList = updatedAccountList;
+            this.ModifiedDetailsfieldValueMap = ModifiedDetailsfieldValueMap;
+            this.market = market;
+            this.UpdateFamilyInfo=updateFamilyInfo;
+        }
     }
 
 }
