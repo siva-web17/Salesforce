@@ -185,23 +185,24 @@ private class LeadTriggerTest {
         LeadsHelper.updateHadAddressFilledOnCreation(leadList);
     }
 
-   static testMethod void whenLeadCreatedPopulatePublicGroup(){
-
-       TestDataFactory.createPublicGroup(TRUE);
-
-       Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
-       List<Lead> leadlist = new List<Lead>();
-       Map<String, String> leadFieldValues = new Map<String, String>{
-               'program__c' => 'AY',
-               'Market__c' => 'DEB',
-               'SalesOffice__c'=>'DEB',
-               'Email'=>'record@ef.com'
-       };
-       Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
-       leadlist.add(newLead);
-       LeadsHelper.createShareRecordsOnInsert(leadlist);
+    private static testMethod void whenLeadCreatedPopulatePublicGroup() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+        system.runAs(tAdminUser) {
+            TestDataFactory.createPublicGroup(TRUE, 'DEB_DEB_AYP', 'DEB_DEB_AYP');
+            Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            List<Lead> leadlist = new List<Lead>();
+            Map<String, String> leadFieldValues = new Map<String, String>{
+                    'program__c' => 'AYP',
+                    'Market__c' => 'DEB',
+                    'SalesOffice__c' => 'DEB',
+                    'Email' => 'record@ef.com'
+            };
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '', leadFieldValues, true);
+            leadlist.add(newLead);
+            LeadsHelper.createShareRecordsOnInsert(leadlist);
+        }
     }
-
     static testMethod void leadSelector(){
         Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
         Map<String, String> leadFieldValues = new Map<String, String>{

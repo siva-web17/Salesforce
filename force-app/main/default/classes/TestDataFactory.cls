@@ -1053,11 +1053,11 @@ public class TestDataFactory {
     *                 if set to false no DML operations will be executed
     *
     */
-    public static Group createPublicGroup(boolean doInsert) {
+    public static Group createPublicGroup(Boolean doInsert,String strGroupName,String strDeveloperName) {
 
         Group tGroup = new Group();
-        tGroup.Name = 'DEB_DEB_AY';
-        tGroup.DeveloperName = 'DEB_DEB_AY';
+        tGroup.Name = strGroupName;
+        tGroup.DeveloperName =strDeveloperName;
 
         if (doInsert)
             insert tGroup;
