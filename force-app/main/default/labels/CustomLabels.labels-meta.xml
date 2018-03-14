@@ -1837,4 +1837,13 @@
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
 		 </labels>
+            <labels>
+        <fullName>SendToPoseidon</fullName>
+        <categories>PQ</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SendToPoseidon</shortDescription>
+        <value>Send to Poseidon</value>
+    </labels>
+ 
 </CustomLabels>
