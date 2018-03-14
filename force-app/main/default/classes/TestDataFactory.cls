@@ -783,6 +783,8 @@ public class TestDataFactory {
         override
         private void setDefaultFieldValues(){
             this.withRecordType('PersonAccount');
+            this.setField('FirstName', 'Test'+RecordBuilderCounter);
+            this.setField('LastName', 'Test'+RecordBuilderCounter);
         }
     }
 
@@ -817,6 +819,7 @@ public class TestDataFactory {
                 this.setField('SalesOffice__c', this.picklistHelper.salesOffice);
                 this.setField('Program__c', this.picklistHelper.program);
                 this.setField('Product__c', this.picklistHelper.product);
+                this.setField('Language__c', this.picklistHelper.language);
             }
 
         }
