@@ -77,7 +77,7 @@ public class LeadsSelector {
                         PreferredDuration__c,
                         street,
                         TritonId__c,
-                       
+
                         WhenYear__c
                    FROM Lead
                   WHERE Id in :leadId
@@ -117,6 +117,16 @@ public class LeadsSelector {
                 ORDER BY ActivityDateTime__c DESC
         ]);
         return leadMap;
+    }
+
+    public Static Map<Id,Lead> getLeadByConvertedOpportunityId(Set<Id> OppSet)
+    {
+        Map<Id,Lead> ConvertedLeadWithOppIdMap=new Map<Id,Lead>();
+        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c from Lead where ConvertedOpportunityId in :OppSet];
+        for (Lead leadRecord:leadList) {
+            ConvertedLeadWithOppIdMap.put(leadRecord.ConvertedOpportunityId,leadRecord);
+        }
+        return ConvertedLeadWithOppIdMap;
     }
 
 
@@ -203,8 +213,7 @@ public class LeadsSelector {
                 SELECT
                         Id, Name, Status, Product__c, Program__c,OwnerId,
                         (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
-                        FROM Tasks
-                        WHERE IsClosed = False)
+                        FROM Tasks)
                 FROM Lead
                 WHERE Id IN :leadIds
         ];
