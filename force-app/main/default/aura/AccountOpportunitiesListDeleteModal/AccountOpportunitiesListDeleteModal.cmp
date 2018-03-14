@@ -1,0 +1,35 @@
+<aura:component controller="AccountOpportunitiesListController">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="ObjectType" type="String"/>
+    <aura:registerEvent name="recordIsDeleted" type="c:RecordIsDeletedEvent"/>
+
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+             class="slds-modal slds-modal_small slds-fade-in-open">
+        <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-modal__close closeIcon slds-button--icon-bare slds-button--icon-inverse" title="Close">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              variant="bare-inverse"
+                                              onclick="{!c.removeComponent}"
+                                              size="large"
+                                              alternativeText="Close Window" />
+                        <span class="slds-assistive-text">{!$Label.c.Close}</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            {!$Label.c.Delete}&nbsp;{!v.ObjectType}
+                    </h2>
+                </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p class="slds-align_absolute-center">
+                        {!$Label.c.DeleteRecordConfirmation}
+                </p>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning:button variant="neutral" label="{!$Label.c.Cancel}" onclick="{!c.removeComponent}" />
+                <lightning:button variant="brand" label="{!$Label.c.Delete}" onclick="{!c.handleDelete}" />
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</aura:component>
