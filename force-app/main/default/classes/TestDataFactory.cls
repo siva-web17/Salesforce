@@ -67,19 +67,20 @@ public class TestDataFactory {
     
     public static void bypassValidationsTriggersForUsers(Set<String> userIds, boolean bypassValidations, boolean bypassTriggers)
     {
-        List<BypassTriggersValidation__c> bpTrValids = new List<BypassTriggersValidation__c>();
-        for (String uId:userIds)
-        {
-            bypassTriggersValidation__c bpv=new BypassTriggersValidation__c();
-            bpv.DisableTrigger__c = bypassTriggers;
-            bpv.DisableValidation__c =bypassValidations; 
-            bpv.SetupOwnerId=uId;
-            bpTrValids.add(bpv);
-            
-        }
-        if (bpTrValids.size()>0)
-        {
-            insert bpTrValids;
+        //We wrap this in runAs to avoid MIXED DML exceptions
+        System.runAs(new User(Id = UserInfo.getUserId())) {
+            List<BypassTriggersValidation__c> bpTrValids = new List<BypassTriggersValidation__c>();
+            for (String uId : userIds) {
+                bypassTriggersValidation__c bpv = new BypassTriggersValidation__c();
+                bpv.DisableTrigger__c = bypassTriggers;
+                bpv.DisableValidation__c = bypassValidations;
+                bpv.SetupOwnerId = uId;
+                bpTrValids.add(bpv);
+
+            }
+            if (bpTrValids.size() > 0) {
+                insert bpTrValids;
+            }
         }
     }
     /****************************************************************************************************/

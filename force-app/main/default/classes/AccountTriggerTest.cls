@@ -10,8 +10,8 @@ private class AccountTriggerTest {
     @isTest
     static void whenDateOfBirthOrLanguageChangeResetLetterAndLabelOnOpportunity() {
         User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
         System.runAs(adminUser) {
-            TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
             //given
             TestDataFactory.TemplateSettingBuilder templateSettingBuilder = new TestDataFactory.TemplateSettingBuilder();
             TemplateSetting__c ts = (TemplateSetting__c) templateSettingBuilder.getRecord();
@@ -54,8 +54,8 @@ private class AccountTriggerTest {
     @isTest
     static void whenAccountHasInactiveOpportunityThenSkipSaveToPoseidonCall(){
         User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
         System.runAs(adminUser) {
-            TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
             TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
             ob.withPersonAccount();
             ob.setField('IsActive__c', false);
@@ -80,8 +80,8 @@ private class AccountTriggerTest {
     @isTest
     static void whenAccountHasActiveOpportunityThenCallSaveToPoseidon(){
         User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
         System.runAs(adminUser) {
-            TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
             Test.setMock(HttpCalloutMock.class, new ExternalRouterMock());
             TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
             ob.withPersonAccount().save();
