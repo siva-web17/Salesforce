@@ -24,9 +24,9 @@ private class LogACallControllerTest {
     public static final String testOpportunityName = 'TestOpportunityRecord';
     public static List<LogACallTestInput> logACallTestInputs ;
     @testsetup static void setup(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
-        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id}, true, false);
-        system.runAs(tAdminUser) {
+        User currentUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+        system.runAs(currentUser) {
+            User tAdminUser = TestDataFactory.createAdminUser(True);
             Lead lead = createLeadRecord();
             Opportunity opp1 = createOpportunityRecord(openStage);
             Opportunity opp2 = createOpportunityRecord(salesClosedStage);
@@ -98,7 +98,7 @@ private class LogACallControllerTest {
     }
 
     static testMethod void testSaveDataForOpportunity(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -130,7 +130,7 @@ private class LogACallControllerTest {
         Test.stopTest();
     }
     static testMethod void testSaveDataForClosedOpportunity(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User  WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -160,7 +160,7 @@ private class LogACallControllerTest {
     }
 
     static testMethod void testSaveDataForLead(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User  WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
