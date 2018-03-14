@@ -7,8 +7,9 @@ private class AccountContactRelationTriggerTest {
 
     @isTest
     static void When_DeleteOneAccountContactRelation_Expect_FindAndDeleteReverseRelation() {
-
-        System.runAs(TestDataFactory.createAdminUser(true)) {
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
             Test.setMock(HttpCalloutMock.class, new ExternalRouterMock());
 
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
@@ -48,8 +49,9 @@ private class AccountContactRelationTriggerTest {
 
     @isTest
     static void When_UpdateAccountContactRelation_Expect_ExpectedBehavior() {
-
-        System.runAs(TestDataFactory.createAdminUser(true)) {
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
             String role = 'Other';
 
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
@@ -77,8 +79,9 @@ private class AccountContactRelationTriggerTest {
 
     @isTest
     static void When_DeleteOneAccountContactRelationAndAccountContactIdIsNull_Expect_FindAndDeleteReverseRelation() {
-
-        System.runAs(TestDataFactory.createAdminUser(true)) {
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
             Test.setMock(HttpCalloutMock.class, new ExternalRouterMock());
 
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
