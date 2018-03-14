@@ -300,6 +300,6 @@ private class LogACallControllerTest {
     }
 
     static testMethod void testLogACallData(){
-        LogACallData logACallData = new LogACallData(null,Date.today(),'','','','','','',True,0.0,'');
+        LogACallData logACallData = new LogACallData(null,Date.today(),'','','','','','',True,0.0,'','','','',false);
     }
 }
