@@ -357,7 +357,7 @@
         <value>TCC</value>
     </labels>
     <labels>
-        <fullName>CountryOfBirth</fullName>
+    <fullName>CountryOfBirth</fullName>
         <categories>Apttus,Dev</categories>
         <language>en_US</language>
         <protected>false</protected>

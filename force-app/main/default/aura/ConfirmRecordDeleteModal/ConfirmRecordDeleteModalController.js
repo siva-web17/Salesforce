@@ -1,11 +1,13 @@
 ({
+   init: function(component, event, helper) {
+      helper.getRecordType(component);
+   },
+
    removeComponent: function(component, event, helper) {
-      console.log('AccountOpportunitiesListDeleteModalController removeComponent')
       component.destroy();
    },
 
    handleDelete: function(component, event, helper) {
-      console.log('AccountOpportunitiesListDeleteModalController handleDelete')
       helper.deleteRecord(component);
    },
 })

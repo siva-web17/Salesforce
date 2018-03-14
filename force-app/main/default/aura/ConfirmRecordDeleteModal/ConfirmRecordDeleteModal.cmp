@@ -1,8 +1,9 @@
-<aura:component controller="AccountOpportunitiesListController">
+<aura:component controller="ConfirmRecordDeleteModalController">
 
     <aura:attribute name="recordId" type="String"/>
-    <aura:attribute name="ObjectType" type="String"/>
+    <aura:attribute name="objectType" type="String"/>
     <aura:registerEvent name="recordIsDeleted" type="c:RecordIsDeletedEvent"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
 
     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
              class="slds-modal slds-modal_small slds-fade-in-open">
@@ -17,7 +18,7 @@
                         <span class="slds-assistive-text">{!$Label.c.Close}</span>
                     </button>
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
-                            {!$Label.c.Delete}&nbsp;{!v.ObjectType}
+                            {!$Label.c.Delete}&nbsp;{!v.objectType}
                     </h2>
                 </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">

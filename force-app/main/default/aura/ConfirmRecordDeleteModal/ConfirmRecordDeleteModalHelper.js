@@ -1,20 +1,37 @@
 ({
-   deleteRecord: function(component) {
-      console.log('AccountOpportunitiesListDeleteModalHelper handleDelete');
+   getRecordType: function(component) {
 
-      var action = component.get('c.deleteOpportunity');
+        var action = component.get('c.getSObjectType');
+        action.setParams({
+            "recordId": component.get('v.recordId')
+        })
+
+        action.setCallback(this, $A.getCallback(function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                component.set('v.objectType', response.getReturnValue());
+            }else if (state === "ERROR") {
+                this.showServerSideError(response.getError()[0].message);
+            }
+        }));
+        $A.enqueueAction(action);
+   },
+
+   deleteRecord: function(component) {
+
+      var action = component.get('c.deleteRecord');
       action.setParams({
-         "opportunityId": component.get('v.recordId')
+         "recordId": component.get('v.recordId')
       })
 
       action.setCallback(this, $A.getCallback(function(response) {
          var state = response.getState();
          if (state === "SUCCESS") {
             component.destroy();
+
             this.showSuccessToast("Opportunity was deleted successfully")
             var appEvent = $A.get("e.c:RecordIsDeletedEvent");
             appEvent.fire();
-            console.log('Event is fired');
          } else if (state === "ERROR") {
             this.showServerSideError(response.getError()[0].message);
          }
@@ -32,7 +49,6 @@
    },
 
    showToastMessage: function(toastType, message, title, mode) {
-      console.log('JP_SubscriptionListItemHelper showToastMessage');
       var toastEvent = $A.get("e.force:showToast");
       if (toastType == 'error' || toastType == 'warning'
                   || toastType == 'success' || toastType == 'other'
@@ -44,9 +60,6 @@
             "type": toastType
          })
          toastEvent.fire();
-      } else {
-         console.log('ERROR in showToastMessage: bad toastType: ' + toastType
-                     + 'available values are: error/warning/success/other');
       }
    },
 })
