@@ -429,12 +429,15 @@ public class TestDataFactory {
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
                     tOpp.put(strFieldName, Date.valueOf(strVal) );
+               /*else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+
+                    tOpp.put(strFieldName, DateTime.valueOf(strVal) );*/
                 else
                     tOpp.put(strFieldName, strVal);
             }
         }
         if (doInsert)
-            insert tOpp; 
+            insert tOpp;
         return tOpp;
     }
     /*********************************************************************************************************************************/
@@ -633,10 +636,10 @@ public class TestDataFactory {
 
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
-
                     tAccount.put(strFieldName, Date.valueOf(strVal) );
                 else
                     tAccount.put(strFieldName, strVal);
+                system.debug('tAccount>>>>'+tAccount);
             }
         }
 
@@ -1011,6 +1014,33 @@ public class TestDataFactory {
         if (doInsert)
             insert tSource;
         return tSource; 
+    }
+
+    public static Opportunity createOpportunityForAccountPerson(String strAccountId,String strOpportunityName, Map<String, String> mFieldNameToVal, boolean doInsert, boolean sendBrochure ) {
+        Opportunity tOpp = new Opportunity();
+        tOpp.name = strOpportunityName;
+        tOpp.AccountId= strAccountId;
+        tOpp.SendBrochure__c = sendBrochure;
+
+        Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.Opportunity.fields.getMap();
+
+        if (mFieldNameToVal != null) {
+            for (String strFieldName : mFieldNameToVal.keySet()) {
+                String strVal = mFieldNameToVal.get(strFieldName);
+
+                //Might require to  do the same for other data types !
+                if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
+                    tOpp.put(strFieldName, Date.valueOf(strVal) );
+               /*else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+
+                    tOpp.put(strFieldName, DateTime.valueOf(strVal) );*/
+                else
+                        tOpp.put(strFieldName, strVal);
+            }
+        }
+        if (doInsert)
+            insert tOpp;
+        return tOpp;
     }
 
     /********************************************************************************************************************************
