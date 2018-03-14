@@ -12,7 +12,8 @@ Modification Log   :
 public  class SObjectUnitOfWork {
 
     //********DataBase methods for DML Operation************//
-    public void insertSObjects(list<SObject> listofSObjectInsert) {
+    //It is not used anywhere
+    /*public void insertSObjects(list<SObject> listofSObjectInsert) {
         if(listofSObjectInsert.size() > 0){
             insert listofSObjectInsert;
         }
@@ -20,13 +21,13 @@ public  class SObjectUnitOfWork {
 
     public void updateSObjects(list<SObject> listofSObjectUpdate) {
         if(listofSObjectUpdate.size() > 0){
-            insert listofSObjectUpdate;
+            update listofSObjectUpdate;
         }
     }
 
     public void deleteSObjects(list<SObject> listofSObjectDelete) {
         if(listofSObjectDelete.size() > 0){
-            insert listofSObjectDelete;
+            delete listofSObjectDelete;
         }
     }
 
@@ -55,7 +56,7 @@ public  class SObjectUnitOfWork {
             delResult=Database.delete(listofSObjectDBdelete,allOrNone);
         }
         return delResult;
-    }
+    }*/
 
     public static void createErrorLog(ErrorLog__c err) {
         insert err;
@@ -65,23 +66,23 @@ public  class SObjectUnitOfWork {
         Database.insert(errList,false);
     }
     
-    public static Boolean executeUpdateProductAttributeValues(List<Apttus_Config2__ProductAttributeValue__c> updateAttributeValues) {
+    /*public static Boolean executeUpdateProductAttributeValues(List<Apttus_Config2__ProductAttributeValue__c> updateAttributeValues) {
         Boolean success = false;
         if (updateAttributeValues != null && updateAttributeValues.size() > 0) {
             update updateAttributeValues;
             success=true;
         }
         return success;
-    }
+    }*/
 
-    public static Boolean executeUpdateLineItemValues(List<Apttus_Config2__LineItem__c> updateLineItemValues) {
+   /* public static Boolean executeUpdateLineItemValues(List<Apttus_Config2__LineItem__c> updateLineItemValues) {
         Boolean success = false;
         if (updateLineItemValues != null && updateLineItemValues.size() > 0) {
             update updateLineItemValues;
             success=true;
         }
         return success;
-    }
+    }*/
     
     public static void saveTasks(List<Task> tasksList) {
         try  {
