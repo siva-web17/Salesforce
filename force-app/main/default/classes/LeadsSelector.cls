@@ -122,7 +122,7 @@ public class LeadsSelector {
     public Static Map<Id,Lead> getLeadByConvertedOpportunityId(Set<Id> OppSet)
     {
         Map<Id,Lead> ConvertedLeadWithOppIdMap=new Map<Id,Lead>();
-        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c from Lead where ConvertedOpportunityId in :OppSet];
+        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c,ConvertedOpportunityId from Lead where ConvertedOpportunityId in :OppSet];
         for (Lead leadRecord:leadList) {
             ConvertedLeadWithOppIdMap.put(leadRecord.ConvertedOpportunityId,leadRecord);
         }

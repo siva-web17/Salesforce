@@ -58,7 +58,7 @@ public class CreatePriceQuoteController {
             } else if (!String.isEmpty(this.RecordId) && Id.valueOf(this.RecordId).getSobjectType() == Task.getSObjectType()) {
                 recordIdSet.add(Id.valueOf(this.RecordId));
                 List<Task> objTaskList = TasksSelector.getSPQTasksByTaskId(recordIdSet, system.label.SPQTask);
-                if ( objTaskList.size() > 0) {
+                if (objTaskList!=null && objTaskList.size() > 0) {
                     OppId = objTaskList[0].WhatId;
                 } else {
                     this.returnvalue = 'Price Quotes can Be created for Non Completed Tasks and Active Opportunities only!!';
@@ -90,7 +90,7 @@ public class CreatePriceQuoteController {
                         Map<String, String> leadFieldvalues = LeadfieldsForPriceQuote(oppLeadMap.get(Id.valueOf(OppId)));
                         createPQFieldvalues.putAll(accountFieldsMap);
                     }
-                    //System.debug('Testing org details '+ExternalRouter.getOrganizationDetails());
+                    System.debug('Testing org details '+ExternalRouter.getOrganizationDetails());
                     createPQFieldvalues.put('Environment',(ExternalRouter.getOrganizationDetails().IsSandbox)?'QA':'LIVE');
                     String JSONValue = JSON.serialize(createPQFieldvalues);
 
