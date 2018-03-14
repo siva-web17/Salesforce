@@ -189,6 +189,36 @@ private class LogACallControllerTest {
         Test.stopTest();
     }
 
+    static testMethod void testSaveDataForLeadNotReached(){
+        User tAdminUser = [SELECT Id,Name FROM User  WHERE alias = 'admnTU' LIMIT 1];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        Test.startTest();
+        system.runAs(tAdminUser) {
+            Lead lead = [Select Id FROM Lead LIMIT 1];
+            setupPicklistValues(lead.Id);
+            for(LogACallTestInput input : logACallTestInputs){
+                LogACallController.saveData(
+                        Label.CallNotReached,
+                        input.SubAction,
+                        input.Comments,
+                        input.CallResult,
+                        input.ActionDateTime,
+                        input.CloseReason,
+                        lead.Id,
+                        input.Program,
+                        input.VisitDatetime,
+                        input.LikelihoodToBook,
+                        input.HearAboutUs,
+                        input.Destination,
+                        input.Duration,
+                        input.WhenYear,
+                        input.WhenMonth,
+                        input.BookOn);
+            }
+        }
+        Test.stopTest();
+    }
+
     static testMethod  void testForInvalidIdForLikelihoodToBook(){
         try {
             LogACallController.getLikelihoodToBookOptions(NULL);
@@ -242,6 +272,16 @@ private class LogACallControllerTest {
     static testMethod  void testForInvalidIdForGetCloseReasons(){
         try {
             LogACallController.getCloseReasons(NULL);
+        }
+        catch(Exception e)
+        {
+            Boolean expectedExceptionThrown =  e.getMessage().contains('System.NullPointerException: null input to JSON parser') ? true : false;
+        }
+    }
+
+    static testMethod void testForInvalidIdForGetInitialData(){
+        try {
+            LogACallController.getInitialData(NULL);
         }
         catch(Exception e)
         {
