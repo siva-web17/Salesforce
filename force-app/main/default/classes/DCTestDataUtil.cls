@@ -300,9 +300,10 @@ public class DCTestDataUtil {
         //newLead2.Parent_Email__c = 'ParentEmail@email.com';
         //newLead2.Invoice_Email__c = 'InvoiceEmail@email.com';
         newLead2.Region__c = 'Region' ;
-        newlead2.Program__c='MLY';
+        
         newlead2.product__c='APP';
         newLead2.market__c = 'DEB';
+        newlead2.Program__c='MLY';
         newLead2.SalesOffice__c = 'DEB';
         //newLead2.isdupe__c = false;
         newLead2.InsertTime__c=nowdatetime;
@@ -388,6 +389,7 @@ public class DCTestDataUtil {
         anotherlead.Email = studentemail1;
         anotherlead.Email2__c = studentemail2;
         anotherlead.Region__c = region ;
+        anotherlead.Market__c='DEB';
         anotherlead.Program__c='MLY';
         anotherlead.product__c='APP';
         anotherlead.DOB__c = DOB;

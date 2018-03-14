@@ -3,501 +3,9 @@
  */
 
 @isTest(SeeAllData=false)
-private class DCLeadImportTest {
-    
- /*  static testMethod void testNoLeadDuplicate() {
-        Test.startTest();
 
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
 
-
-            lead newlead = DCTestDataUtil.insertAnotherSetOfLeadRecord();
-            insert newlead;
-            List<lead> LDList = DCTestDataUtil.insertNewLeadRecords(); //Existing Lead data
-            insert LDList;
-            account newAcc = DCTestDataUtil.creatAcc();
-            insert newacc;
-            list<account> accLst = DCTestDataUtil.createAccountRecords(3);
-            insert acclst;            
-            Map<String, Object> objectData = new Map<String, Object>();
-
-            List<Object> duplicateIncomingLeads = new List<Object>();
-
-            dupcheck.dc3SearchResult dataSet = new dupcheck.dc3SearchResult();
-            dataSet.objectData = (Sobject) LDList[0];
-
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead;
-
-            duplicateIncomingLeads.add(dataSet1);
-            duplicateIncomingLeads.add(dataSet);
-
-            objectData.put('00Q', duplicateIncomingLeads);
-
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[1].id, objectData);
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-
-        }
-        Test.stopTest();
-    }
-   
-   //Check for no duplicate leads 
-   static testMethod void testNoLeadDupe() {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-          
-            List<lead> LDList = DCTestDataUtil.leadData();
-            insert LDList;
-            update LDList;
-           
-        Map<String, Object> objectData = new Map<String, Object>();            
-
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[0].id, objectData);                             
-
-        }
-        Test.stopTest();
-    }
-    
-    //Check for duplicate lead
-     static testMethod void testLeadDuplicatewithExisting() {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');            
-            List<lead> LDList = DCTestDataUtil.leaddataa(); //Existing Lead data
-            insert LDList;
-                        
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            
-            dupcheck.dc3SearchResult dataSet = new dupcheck.dc3SearchResult();
-            dataSet.objectData = (Sobject) LDList[0];
-            duplicateIncomingLeads.add(dataSet);
-            objectData.put('00Q', duplicateIncomingLeads);
-
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[1].id, objectData);
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-
-        }
-        Test.stopTest();
-    }
-    
-    static testMethod void testAccountDupe() {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-
-            account newAccount = DCTestDataUtil.insertAnotherSetOfaccountRecord();
-            insert newAccount;
-            List<lead> LDList = DCTestDataUtil.insertNewLeadRecords(); //Existing Lead data
-            insert LDList;
-            account newAcc = DCTestDataUtil.creatAcc();
-            insert newAcc;
-            list<account> accLst = DCTestDataUtil.createAccountRecords(3);
-            insert accLst;
-            list<account> updAcc = DCTestDataUtil.updateAccountRecords(accLst);
-            update updAcc;
-            Map<String, Object> objectData = new Map<String, Object>();
-
-            List<Object> duplicateIncomingLeads = new List<Object>();
-
-            dupcheck.dc3SearchResult dataSet = new dupcheck.dc3SearchResult();
-            dataSet.objectData = (Sobject) LDList[0];
-
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newAccount;
-
-            duplicateIncomingLeads.add(dataSet1);
-            //   duplicateIncomingLeads.add(dataSet);
-
-            objectData.put('001P', duplicateIncomingLeads);
-            //Senario3:"Incoming Lead" Dupe with-->single Account.
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[1].id, objectData);
-          //  DCBusinessHandler.ConvertLead(LDList[1],newAccount);
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-
-        }
-        Test.stopTest();
-    }
-
-    static testMethod void TestLeadIncomingAccExsis()
-    {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            //custom setting 
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-
-            list<account> accs = DCTestDataUtil.insertmultipleAccountRecord();
-            insert accs;
-            List<lead> LDList = DCTestDataUtil.insertNewLeadRecords(); //Existing Lead data
-            insert LDList;
-            account newAcc = DCTestDataUtil.creatAcc();
-            insert newAcc ;
-            list<account> accLst = DCTestDataUtil.createAccountRecords(3);
-            insert accLst;
-            list<account> updAcc = DCTestDataUtil.updateAccountRecords(accLst);
-            update updAcc ;
-            Map<String, Object> objectData = new Map<String, Object>();
-
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            List<Object> duplicateExistingAccounts = new List<Object>();
-
-            dupcheck.dc3SearchResult dataSet = new dupcheck.dc3SearchResult();
-            dataSet.objectData = (Sobject) accs[0];
-
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) LDList[0];
-
-            duplicateExistingAccounts.add(dataSet);
-            duplicateIncomingLeads.add(dataSet1);
-
-            objectData.put('001P', duplicateExistingAccounts);
-            objectData.put('00Q', duplicateIncomingLeads);
-
-            //Senario4:"Incoming Lead" Dupe with-->Single Incoming Lead-->single Account.
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[1].id, objectData);
-          //  DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-
-        }
-        Test.stopTest();
-    }
-
-    static testMethod void testNoAccountDupe() {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-
-            lead newlead = DCTestDataUtil.insertAnotherSetOfLeadRecord();
-            insert newlead;
-            List<lead> LDList = DCTestDataUtil.insertNewLeadRecords(); //Existing Lead data
-            insert LDList;
-            account newAcc = DCTestDataUtil.creatAcc();
-            insert newacc;
-            list<account> accLst = DCTestDataUtil.createAccountRecords(3);
-            insert acclst;
-            list<account> updAcc = DCTestDataUtil.updateAccountRecords(accLst);
-            update updacc;
-            Map<String, Object> objectData = new Map<String, Object>();
-
-            List<Object> duplicateIncomingLeads = new List<Object>();
-
-            dupcheck.dc3SearchResult dataSet = new dupcheck.dc3SearchResult();
-            dataSet.objectData = (Sobject) LDList[0];
-
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead;
-
-            duplicateIncomingLeads.add(dataSet1);
-            duplicateIncomingLeads.add(dataSet);
-
-            objectData.put('00Q', duplicateIncomingLeads);
-            //Incoming duplicate Leads.
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[1].id, objectData);
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-
-        }
-        Test.stopTest();
-    }*/
-    
-
-    static testMethod void testrule14() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('firstname','lastname','city','street','postalcode','123456','1234567890','1234567890','tritonid','student@gmail.com','studente@gmail.com','region',System.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-     static testMethod void testrule1() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 =DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    static testMethod void testrule1ForHomephone() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 =DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','123456','123456','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    static testMethod void testrule1ForMobilephone() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 =DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','1234567890','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    static testMethod void testrule1ForOtherphone() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 =DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','street',' postalcode','1234567890','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-
- /*   static testMethod void testrule29() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('xyz','lastname','city','abc',' postalcode','123456','1234567890','1234567890','12345','u@gmail.com','pppp@gmail.com','region',System.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('xyz','lastname','city','street','postalcode','123456','1234567890','1234567890','tritonid','student@gmail.com','studente@gmail.com','region',System.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-        }
-    }
-
-    static testMethod void testLeadRank() {
-        Test.startTest();
-
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-            List<LeadRankingSetting__c> leadRank = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
-            List<LegalSettings__c> legal = Test.loadData(LegalSettings__c.sObjectType, 'File_LegalSettings');
-
-            List<lead> LDList = DCTestDataUtil.leadDataforRanking();
-            insert LDList;
-            LDlist[0].ranking__c=5;
-            update LDList;
-            
-           
-        Map<String, Object> objectData = new Map<String, Object>();            
-
-            DCSearchPlugin.processResults('ON_UPLOAD;', LDList[0].id, objectData);                             
-
-        }
-        Test.stopTest();
-    }
-    
-    //Test for Rule10
-    static testMethod void testrule10() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('XYZ','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('XYZ','ryrhgfgh','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    
-    static testMethod void testrule11() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('XYZ','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('ghhjbjk','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    
-    static testMethod void testrule2() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('testfirstname','testlastname','testcity','teststreet','560048','1235678945','1248596357','9876541230','testtritonid','student1@email.com','student2@email.com','testregion', system.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
-    
-     static testMethod void testrule3() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','tret@jnj.com','dfdsfd@yahoo.com','testregion',system.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }
+private class DCLeadImportTest {   
     
      static testMethod void testrule12() {
         Test.startTest();
@@ -549,7 +57,7 @@ private class DCLeadImportTest {
             // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
              }
-    }*/
+    }
     
      static testMethod void testrule17() {
         Test.startTest();
@@ -576,7 +84,7 @@ private class DCLeadImportTest {
              }
     }
      static testMethod void testNoDupe() {
-        Test.startTest();
+        
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
@@ -584,8 +92,11 @@ private class DCLeadImportTest {
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
             insert newlead;
+            system.debug('myLeadidis>>>'+newlead.id);
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',True, system.today(), system.today().adddays(-400));
             insert  newaccount1;
+      
+             system.debug('myaccountidis>>>'+newaccount1.id);
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
             dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
@@ -593,15 +104,17 @@ private class DCLeadImportTest {
             duplicateIncomingLeads.add(dataSet1);
             duplicateIncomingLeads.clear();
             objectData.put('001P', duplicateIncomingLeads);
+           test.startTest();
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
             // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
+            test.stopTest();
              }
-    }
+    }  
     
-  /*  static testMethod void testrule19() {
+        
+    static testMethod void testrule19() {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
@@ -612,6 +125,11 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
             dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
@@ -622,6 +140,342 @@ private class DCLeadImportTest {
 
             //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
             // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+     static testMethod void testforphonescenarioone() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9723445332','9723445332','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+     static testMethod void testforphonescenariotwo() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','97655656565','9833455433','9723445332','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforphonescenariothree() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','7744666333','9833455433','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+        static testMethod void testforphonescenarioFour() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+        static testMethod void testforphonescenarioFive() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','77448765544','7744666333','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforphonescenariosix() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9954777444','9845566433','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforphonescenarioseven() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','98885677644','9954777444','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforphonescenarioeight() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','98885677644','66666664655','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
+            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
+            Test.stopTest();
+             }
+    }
+        static testMethod void testforEmailscenarioone() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
+            Test.stopTest();
+             }
+    }
+        static testMethod void testforEmailscenarioTwo() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','testemail1@email.com','student1@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforEmailscenarioThree() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','Secondstudent2@email.com','testemail@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
+            Test.stopTest();
+             }
+    }
+    static testMethod void testforEmailscenarioFour() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','testemail@email.com','Secondstudent2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
             Test.stopTest();
              }
     }
@@ -635,6 +489,45 @@ private class DCLeadImportTest {
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
             insert newlead;
+
+            DateTime newDateTime = system.now().addyears(3).addHours(3);
+            DateTime newDateTime2 = system.now().addyears(3).addHours(10);
+             ContentNote cn = new ContentNote();
+              cn.Title = 'sample name';               
+              cn.Content = Blob.valueOf('Sample string');
+              insert cn;
+               ContentDocumentLink link2 = new ContentDocumentLink();
+                link2.ContentDocumentId = cn.id;
+                link2.LinkedEntityId = newLead.id;
+                link2.ShareType = 'V';
+                link2.Visibility = 'AllUsers';
+                insert link2;
+           
+            event objEvent = new Event();
+            objEvent.whoid = newLead.id;
+            objEvent.DurationInMinutes = 5;
+            objEvent.subject = 'call';
+            objEvent.ActivityDateTime=system.now();
+            insert objEvent;
+
+            Map<String,String> campaignValues = new Map<String,String>{
+
+                    'Market__c'=>'DEB',
+                    'Program__c'=>'AY',
+                    'Salesoffice__c'=>'DEB',
+                    'Status'=>'Active',
+                    'MeetingType__c'=>'ONM',
+                    'MeetingCity__c'=>'Berlin',
+                    'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(5)),
+                    'DateTo__c'=>String.valueOf(DateTime.now().addminutes(20))
+            };
+
+           Campaign campaignRecord= TestDataFactory.createCampaign('test Campaign',campaignValues,TRUE);
+           campaignmember objcampaignmember = new campaignmember();
+           objcampaignmember.campaignid = campaignRecord.id;
+           objcampaignmember.leadid = newlead.id;
+           insert objcampaignmember;
+          
             lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('testfirstname','testlastname','testcity','ghjgj','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead1.InsertTime__c=datetime.now()-1;
             insert  newlead1;
@@ -1028,11 +921,80 @@ private class DCLeadImportTest {
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
-
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
             insert newlead;
             lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('testfirstname','testlastname','tyutuyy','teststreet','560048','0123569874','0214589632','9874563254','testtritonid','student1@email.com','student2@email.com','tyutu',system.today().adddays(-2));
+            newlead1.InsertTime__c=datetime.now()-1;
+            insert  newlead1;
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newlead1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('00Q', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+            Test.stopTest();
+             }
+    }
+     static testMethod void testForEmailMatch() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            lead newlead1 = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead1.InsertTime__c=datetime.now()-1;
+            insert  newlead1;
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newlead1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('00Q', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+            Test.stopTest();
+             }
+    }
+     static testMethod void testForAccountAddress() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp;          
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            Test.stopTest();
+             }
+    }
+    static testMethod void testrule29() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            lead newlead1 = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','streettest','560048','9723445332','7744666333','9954777444','testtritonid','EmailTest@email.com','Email2test@email.com','testregion',system.today());
             newlead1.InsertTime__c=datetime.now()-1;
             insert  newlead1;
             Map<String, Object> objectData = new Map<String, Object>();
@@ -1047,6 +1009,129 @@ private class DCLeadImportTest {
             // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
              }
-    }*/
+    }
+         static testMethod void testrule29foraccount() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','streettest','560048','9723445332','7744666333','9954777444','testtritonid','testemmail1@email.com','testemail2@email.com','testregion',false,system.today(),system.today());
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp; 
+            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.stagename ='Follow Up';
+            update objOpp;       
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            Test.stopTest();
+             }
+    }
+    
+         static testMethod void testForAccountstreet() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp; 
+            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.stagename ='Follow Up';
+            update objOpp;       
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            Test.stopTest();
+             }
+    }
+    static testMethod void testForAccountPostalCode() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','664553','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp; 
+            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.stagename ='Follow Up';
+            update objOpp;       
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            Test.stopTest();
+             }
+    }
+        static testMethod void testForAccountforSalesClosed() {
+        Test.startTest();
+        system.runAs(TestDataUtil.createUserRecord()) {
+            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+
+            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
+            newlead.InsertTime__c=system.now();
+            insert newlead;
+            Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','664553','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
+            insert  newaccount1;
+            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
+            objOpp.isactive__c=true;
+            objopp.stagename = 'Follow Up';
+            objOpp.closedate = system.today();
+            insert objOpp; 
+            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.stagename = label.salesclosed;
+            update objopp;          
+             
+            Map<String, Object> objectData = new Map<String, Object>();
+            List<Object> duplicateIncomingLeads = new List<Object>();
+            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
+            dataSet1.objectData = (Sobject) newaccount1;
+            duplicateIncomingLeads.add(dataSet1);
+            objectData.put('001P', duplicateIncomingLeads);
+            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
+
+            Test.stopTest();
+             }
+    }
+     
     
 }
