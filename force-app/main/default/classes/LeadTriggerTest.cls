@@ -105,7 +105,7 @@ private class LeadTriggerTest {
 
         Test.startTest();
         update leads;
-        Test.stopTest(); 
+        Test.stopTest();
 
         Set<Id> leadIds = (new Map<Id, Lead>(leads)).keySet();
         Lead[] updatedLeads = LeadsSelector.getLeadsWithOpenTasks(leadIds, Label.SystemCallTaskRecordTypeDeveloperName);
@@ -200,6 +200,22 @@ private class LeadTriggerTest {
        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
        leadlist.add(newLead);
        LeadsHelper.createShareRecordsOnInsert(leadlist);
+    }
+
+    static testMethod void leadSelector(){
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+
+        LeadsSelector.leadRecordMap(new List<Id>{newLead.Id});
+        LeadsSelector.getNotConvertedLeadMapById(new List<Id>{newLead.Id});
+        LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
+
     }
 
 }
