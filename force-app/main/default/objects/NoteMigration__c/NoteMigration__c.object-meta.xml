@@ -38,39 +38,29 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override updated by Lightning App Builder during activation.</comment>
-        <content>Booking</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
-    <allowInChatterGroups>true</allowInChatterGroups>
-    <compactLayoutAssignment>BookingCompact</compactLayoutAssignment>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Used to accept bookings data from Poseidon</description>
-    <enableActivities>true</enableActivities>
+    <description>Object will help in content note migration from Poseidon database to Salesforce</description>
+    <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Booking</label>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>NoteMigration</label>
     <nameField>
-        <label>Booking Number</label>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <displayFormat>NM-{000000}</displayFormat>
+        <label>NoteMigration Name</label>
+        <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Bookings</pluralLabel>
-    <searchLayouts>
-        <searchResultsAdditionalFields>AccountId__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Program__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>OpportunityId__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
-    <visibility>Public</visibility>
+    <pluralLabel>NoteMigrations</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
 </CustomObject>
