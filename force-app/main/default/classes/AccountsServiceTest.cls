@@ -1,8 +1,8 @@
 @IsTest(SeeAllData=false)
 public class AccountsServiceTest {
     public static String market = 'DEB';
-	
-    @testSetup	
+    
+    @testSetup  
     static void testDataSetup(){
         Test.startTest();
         //get system admin profile
@@ -17,19 +17,22 @@ public class AccountsServiceTest {
             };
             Account newAccount = TestDataFactory.createPersonAccount('TestAccountFirstName', 'TestAccountFirstName', 
                                                                      recordTypeId, personAccountFieldValues, True);
-            map<String, String> oppData	=	new Map<String, String>();
+            map<String, String> oppData =   new Map<String, String>();
             oppData.put('Market__c', market);
             oppData.put('StageName', 'Booking');
             oppData.put('CloseDate',String.valueOf(System.today().addDays(365)));
-            Opportunity opp		=	TestDataFactory.createOpportunityForAccount(newAccount.Id, 
+            Opportunity opp     =   TestDataFactory.createOpportunityForAccount(newAccount.Id, 
                                                                                 'TestOpportunityforAccount', oppData, true);
         }
     }
     
     @isTest
     static void syncAccountDetailsToPoseidonSuccess(){
+    User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
         Test.startTest();
-        List<Account>		accList	=	[SELECT Name, LastModifiedById, CreatedById, Market__c, Region__c, 
+        List<Account>       accList =   [SELECT Name, LastModifiedById, CreatedById, Market__c, Region__c, 
                                          PersonHomePhone, PersonMobilePhone, PersonOtherPhone, PersonEmail, 
                                          BillingStreet, ShippingAddress, PersonOtherAddress, PersonMailingAddress,
                                          Email2__c, ShippingStreet, PersonOtherPostalCode, Id, PersonMailingStreet,
@@ -41,7 +44,7 @@ public class AccountsServiceTest {
                                          MiddleNameEn__c, BirthCity__pc, passportType__c, FirstName, LastName, MiddleName,
                                          DoNotSMS__c, CreatedDate,LastModifiedDate 
                                          FROM ACCOUNT];
-        Map<Id, Account>	accMap	=	new Map<Id,Account>();
+        Map<Id, Account>    accMap  =   new Map<Id,Account>();
         system.assertEquals(1, accList.size());
         for(Account a : acclist){
             accMap.put(a.Id, a);
@@ -49,10 +52,9 @@ public class AccountsServiceTest {
         Test.setMock(HttpCalloutMock.class, new MockGenerator_Test());
         AccountsService.syncAccountDetailsToPoseidon(accMap);
         Test.stopTest();
+       }
     }
-    
-    
-    
+  
     public class MockGenerator_Test implements HttpCalloutMock{
         public HttpResponse respond(HTTPrequest req){
             HttpResponse res = new HttpResponse();

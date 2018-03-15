@@ -7,24 +7,26 @@ private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper 
     
     @testSetup
     static void testDataSetup(){
-        Profile SystemAdminProfile = TestDataFactory.getProfile('System Administrator', true);
         User tAdminUser = TestDataFactory.createAdminUser(True);
-         Group	group1	=	new Group(name = 'NOO',type	=	'Regular');
-        	insert group1;
-        Group group2 = new Group(name = 'CNB', Type='Regular');
-        	insert group2;
-        
-        
-        APXTConga4__Conga_Template__c Conga = new APXTConga4__Conga_Template__c();
-        Conga.Market__c = 'NOO';
-        Conga.Program__c = 'ILS';
-        Conga.Language__c = 'NO';
-       
-        insert Conga;
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+            Group group1 = new Group(name = 'NOO',type  =  'Regular');
+            insert group1;
+            Group group2 = new Group(name = 'CNB', Type='Regular');
+            insert group2;
+            APXTConga4__Conga_Template__c Conga = new APXTConga4__Conga_Template__c();
+            Conga.Market__c = 'NOO';
+            Conga.Program__c = 'ILS';
+            Conga.Language__c = 'NO';
+            insert Conga;
+        }
     
-	}
+  }
     
     static testMethod void WhenCreateShareOnInsert(){
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
       Test.startTest();
         Map<Id, String> templateMap = new Map<Id, String>();
         Map<String, Id> publicGroupMap = publicGroupsSelector.getRegularPublicGroupsByName(templateMap.values());        
@@ -44,7 +46,7 @@ private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper 
                                                                      APXTConga4__Master_Field_to_Set_3__c,Market__c,
                                                                      APXTConga4__Master_Field_to_Set_2__c,Program__c,
                                                                      APXTConga4__Master_Field_to_Set_1__c,
-                                                                     Language__c,CurrencyIsoCode, RecordSharingKey__c,OwnerId	
+                                                                     Language__c,CurrencyIsoCode, RecordSharingKey__c,OwnerId  
                                                               FROM APXTConga4__Conga_Template__c];
         templateList2[0].Market__c = 'CNB';
         templateList2[0].Language__c = 'ZH';
@@ -62,8 +64,8 @@ private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper 
         CongaTemplateHelper.createShareOnUpdateTypes(templateList2, templateList1);
         system.assertEquals(1, templateList1.size());
       Test.stopTest();  
-        
+        }   
+            
     }
-   
 
 }
