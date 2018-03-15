@@ -185,7 +185,7 @@ private class LeadTriggerTest {
         LeadsHelper.updateHadAddressFilledOnCreation(leadList);
     }
 
-    private static testMethod void whenLeadCreatedPopulatePublicGroup() {
+    private static @istest void whenLeadCreatedPopulatePublicGroup() {
         User tAdminUser = TestDataFactory.createAdminUser(True);
         tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
         system.runAs(tAdminUser) {
