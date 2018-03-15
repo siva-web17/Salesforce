@@ -89,21 +89,6 @@ public class CreateBookingController {
         //return JSON.serialize(genderMap);
     }
 
-    public static Map<String, String> GetBookingType() {
-        return FieldUtilityClass.getPickListValues(Apttus_Proposal__Proposal__c.getSObjectType(), 'BookingType__c');
-        //return JSON.serialize(BookingMap);
-    }
-
-    public static Map<String, String> GetBookingChannel() {
-        return FieldUtilityClass.getPickListValues(Apttus_Proposal__Proposal__c.getSObjectType(), 'BookingChannel__c');
-        //return JSON.serialize(BookingChannelMap);
-    }
-
-    public static Map<String, String> GetCurrency() {
-        return FieldUtilityClass.getPickListValues(Apttus_Proposal__Proposal__c.getSObjectType(), 'CurrencyIsoCode');
-        //return JSON.serialize(CurrencyMap);
-    }
-
     public static Map<String, String> GetNationality() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'Nationality__c');
         //return JSON.serialize(NationalityMap);
@@ -149,13 +134,7 @@ public class CreateBookingController {
         @AuraEnabled
         public Map<String,String> PassportPickList{get;set;}
         @AuraEnabled
-        public Map<String,String> BookingChannelPickList{get;set;}
-        @AuraEnabled
-        public Map<String,String> BookingTypePickList{get;set;}
-        @AuraEnabled
         public Map<String,String> SalesOfficePickList{get;set;}
-        @AuraEnabled
-        public Map<String,String> CurrencyPickList{get;set;}
         @AuraEnabled
         public Map<String,String> BirthCountryPickList{get;set;}
 
