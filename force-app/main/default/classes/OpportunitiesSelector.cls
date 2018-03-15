@@ -26,7 +26,7 @@ public class OpportunitiesSelector {
     }
 
     /*
-    * @param Set<String> oppIds 
+    * @param Set<String> oppIds
     * @return Returns list of opportunities based on the oppIds
     * */
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
@@ -35,7 +35,7 @@ public class OpportunitiesSelector {
         {
             opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
-                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
+                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c
                                FROM Opportunity
                               WHERE Id IN :oppIds];
         }
@@ -43,12 +43,12 @@ public class OpportunitiesSelector {
     }
 
     /*
-    * @param Set<String> oppNames 
+    * @param Set<String> oppNames
     * @return Returns list of opportunities based on the Name
     * */
     public static List<Opportunity> getOpportunitiesOnName(Set<String> oppNames) {
         return [
-                SELECT id, 
+                SELECT id,
                        Name
                   FROM Opportunity
                  WHERE Name = :oppNames
@@ -229,6 +229,32 @@ public class OpportunitiesSelector {
             accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
         }
         return accountIdWithOpportunityMap;
+    }
+
+
+    /**
+   * @author Arjun Mohan
+   * ver 1.0 16-Feb-2018
+   * @description Returns list of Active Opp records For Passed AcocuntId's
+   *
+   * @param accountIdSet Ids to select
+   *
+   * @return List<Opportunity>
+   */
+    public static  Map<Id,Opportunity> getActiveOpportunitiesforPQ(Set<Id> oppIdSet) {
+        List<Opportunity> oppList=new List<Opportunity>();
+        Map<Id,Opportunity> OpportunityMap=new Map<Id,Opportunity>();
+        String query = 'SELECT ';
+        for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.CreatePriceQuote.getFields()) {
+            query += f.getFieldPath() + ', ';
+        }
+        query += 'Name,AccountId from Opportunity ';
+        query += 'where isActive__c  = TRUE and Id in  : ' + 'oppIdSet' + ' ' ;
+        oppList= Database.query(query);
+        for (Opportunity oppRecord:oppList) {
+            OpportunityMap.put(oppRecord.Id,oppRecord);
+        }
+        return OpportunityMap;
     }
 
 
