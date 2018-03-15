@@ -6,6 +6,7 @@
     <label>Label</label>
     <lookupFilter>
         <active>true</active>
+        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
         <errorMessage>Selected Label does not belong to same market as Opportunity</errorMessage>
         <filterItems>
             <field>APXTConga4__Conga_Template__c.APXTConga4__Template_Type__c</field>
@@ -19,7 +20,7 @@
         </filterItems>
         <filterItems>
             <field>$Profile.Name</field>
-            <operation>notContain</operation>
+            <operation>contains</operation>
             <value>Integration</value>
         </filterItems>
         <isOptional>false</isOptional>
