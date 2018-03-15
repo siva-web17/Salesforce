@@ -33,7 +33,7 @@ public with sharing class LogACallData {
     public String OtherPhone{get;set;}
     @AuraEnabled
     public Boolean DoNotCall{get;set;}
-    public LogACallData(Id id,Date closeDate,String likelihoodToBook,String hearAboutUs,String destinations,String duration,String whenYear,String whenMonth, Boolean isActive, Decimal numberOfUnreachedCalls,String program, String phone, String mobilePhone, String otherPhone,Boolean doNotCall){
+    public LogACallData(Id id,Date closeDate,String likelihoodToBook,String hearAboutUs,String destinations,String duration,String whenYear,String whenMonth, Boolean isActive, Decimal numberOfUnreachedCalls,String program,String mobilePhone,String phone,String otherPhone,Boolean doNotCall){
         this.Id = id;
         this.CloseDate = closeDate;
         this.LikelihoodToBook = likelihoodToBook;
@@ -45,8 +45,8 @@ public with sharing class LogACallData {
         this.IsActive = isActive;
         this.NumberOfUnreachedCalls = numberOfUnreachedCalls;
         this.Program = program;
-        this.Phone = phone;
         this.MobilePhone = mobilePhone;
+        this.Phone = phone;
         this.OtherPhone = otherPhone;
         this.DoNotCall = doNotCall;
     }
