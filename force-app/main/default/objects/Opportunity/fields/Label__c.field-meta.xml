@@ -17,6 +17,11 @@
             <operation>equals</operation>
             <valueField>APXTConga4__Conga_Template__c.Market__c</valueField>
         </filterItems>
+        <filterItems>
+            <field>$Profile.Name</field>
+            <operation>notContain</operation>
+            <value>Integration</value>
+        </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>APXTConga4__Conga_Template__c</referenceTo>
