@@ -302,7 +302,7 @@
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
+                                <lightning:input onblur="{!c.pastDateValidation}"  aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
                                     disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
                             </div>
                         </aura:if>
