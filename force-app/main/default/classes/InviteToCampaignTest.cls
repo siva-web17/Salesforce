@@ -4,7 +4,7 @@
  */
 
 @isTest(SeeAllData=false)
-private class InviteToCampaignTest { 
+private class InviteToCampaignTest {
     private static Map<String,List<String>> campaignPicklistValues = new Map<String,List<String>>();
     public static String programFilter1 = 'ILSH';
     public static String programFilter2 = 'AY';
@@ -29,15 +29,15 @@ private class InviteToCampaignTest {
     public static final Integer meetingCity2Size = 10;
     public static final Integer meetingCity3Size = 16;
     public static final Integer dateToSize = 16;
-    public static final Integer dateFromSize = 15;
+    public static final Integer dateFromSize = 16;
     public static final Integer recordsWithoutFilterSize = 16;
     public static final Integer campaignSelectedSize = 2;
     public static final String testOpportunityName = 'TestOpportunityRecord';
 
     @testSetup static void setup(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
-        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id}, true, false);
-        system.runAs(tAdminUser) {
+        User currentUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+        system.runAs(currentUser) {
+            User tAdminUser = TestDataFactory.createAdminUser(True);
             Map<String, String> markets = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Market__c');
             List<String> products = FieldUtilityClass.getPickListValues(Campaign.getSObjectType(), 'Product__c').values();
             List<String> salesOffices = FieldUtilityClass.getFieldDependencies('Campaign', 'Market__c', 'SalesOffice__c').get(markets.values()[0]);
@@ -74,7 +74,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_InitialLoad_LoadCampaignsWithMatchingMarketProgramAsOpportunity() {
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -88,7 +88,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_ProgramFiltered_DisplayRecordsThatBelongToProgram(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -112,7 +112,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_SalesOfficeFiltered_DisplayRecordsThatBelongToSalesOffice(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -136,7 +136,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_MeetingTypeFiltered_DisplayRecordsThatBelongToMeetingType() {
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -161,7 +161,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_MeetingCityFiltered_DisplayRecordsThatBelongToMetingCity(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -185,7 +185,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_DateToFiltered_DisplayRecordsThatBelongToEnteredDate(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
@@ -201,8 +201,10 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_DateFromFiltered_DisplayRecordsThatBelongToEnteredDate(){
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
-        system.runAs(TestDataFactory.createAdminUser(True)) {
+        system.runAs(tAdminUser) {
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
             Datetime datefrom= DateTime.now().addHours(1);
 
@@ -214,9 +216,9 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_withoutAnyFilter_DisplayAllRecordsBasedonOpportunityMarketProgram(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
-        Test.startTest(); 
+        Test.startTest();
         system.runAs(tAdminUser) {
             Opportunity newOpportunity = OpportunitiesSelector.getOpportunitiesOnName(new Set<String>{testOpportunityName}).get(0);
 
@@ -229,7 +231,7 @@ private class InviteToCampaignTest {
 
     @isTest
     static void when_OpportunitiesInvitedToCampaign_CampaignMembersShouldGetCreated(){
-        User tAdminUser = TestDataFactory.createAdminUser(True);
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {

@@ -1,0 +1,47 @@
+<!--
+ - Created by arjun.mohan on 3/12/2018.
+ -->
+
+<apex:page id="CreatePQ_Task" standardController="Task" extensions="CreatePriceQuoteController" showHeader="false"
+           standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <script>
+       window.onload = function () {
+       while(true)
+       {
+        if({!PQParamJson}!=='')
+           {
+               break;
+           }
+       }
+        Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
+        var xhr = new XMLHttpRequest();
+        var url = 'http://localhost:1234/PriceQuote/Create';
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        var data = JSON.stringify({!PQParamJson});
+        xhr.send(data);
+        return false;
+      }
+      /* function callPoseidon()
+    {
+        <!--alert('From server');-->
+          <!--Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});-->
+         <!--var xhr = new XMLHttpRequest();-->
+            <!--var url = 'http://localhost:1234/PriceQuote/Create';-->
+            <!--xhr.open("POST", url, true);-->
+            <!--xhr.setRequestHeader("Content-type", "application/json");-->
+            <!--var data = JSON.stringify('{!PQParamJson}');-->
+             <!--alert('{!PQParamJson}');-->
+            <!--xhr.send(data);-->
+            <!--return false;-->
+    }*/
+
+
+
+    </script>
+    <div id="overlay" class="overlayBackground" style="width: 100%; height: 100%; display: none;"></div>
+    <apex:outputText value="{!callfunc}" escape="false"></apex:outputText>
+    <H3>Opening Poseidon Please wait...</H3>
+
+</apex:page>

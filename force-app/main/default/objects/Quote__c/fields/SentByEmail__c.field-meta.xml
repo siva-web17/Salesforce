@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SentByEmail__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>indicates whether the quote has been sent via Email</description>
+    <externalId>false</externalId>
+    <label>Sent by Email</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

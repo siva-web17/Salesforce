@@ -1,0 +1,51 @@
+<!--
+ - Created by arjun.mohan on 3/12/2018.
+ -->
+
+<apex:page id="CreatePQ" standardController="Opportunity" extensions="CreatePriceQuoteController" showHeader="false"
+           standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <script>
+       window.onload = function () {
+        var timeout=0;
+        setInterval(function(){ timeout=10 }, 10000);
+       while(true)
+       {
+        if({!PQParamJson}!=='' || timeout <= 10)
+           {
+               break;
+           }
+       }
+       var errorMessage='{!returnvalue}';
+       var jsonstring='{!PQParamJson}';
+       //alert(errorMessage.length+ ' OutSide');
+       if(errorMessage.length==0 && jsonstring.length > 0)
+       {
+        //alert(errorMessage +'Inside Value is');
+        Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
+        var xhr = new XMLHttpRequest();
+        var url = 'http://localhost:1234/PriceQuote/Create';
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        var data = JSON.stringify({!PQParamJson});
+        xhr.send(data);
+        return false;
+       }
+      }
+      /* function callPoseidon()
+    {
+        <!--alert('From server');-->
+          <!--Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});-->
+         <!--var xhr = new XMLHttpRequest();-->
+            <!--var url = 'http://localhost:1234/PriceQuote/Create';-->
+            <!--xhr.open("POST", url, true);-->
+            <!--xhr.setRequestHeader("Content-type", "application/json");-->
+            <!--var data = JSON.stringify('{!PQParamJson}');-->
+             <!--alert('{!PQParamJson}');-->
+            <!--xhr.send(data);-->
+            <!--return false;-->
+    }*/
+
+    </script>
+    <H3>{!displayMessage}</H3>
+</apex:page>
