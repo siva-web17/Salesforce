@@ -152,7 +152,7 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if ((opp.NumberOfUnreachedCalls__c < 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) {
+                if (((opp.NumberOfUnreachedCalls__c < 3) && (callAction.toUpperCase() == Label.CallNotReached.toUpperCase())) || ((opp.NumberOfUnreachedCalls__c < 3) && (callAction.toUpperCase() == Label.SentEmail.toUpperCase())) || ((opp.NumberOfUnreachedCalls__c < 3) && (callAction.toUpperCase() == Label.SocialMediaSent.toUpperCase()))) {
                     for(Integer i=0; i< callResults.size() ; i++){
                         if(callResults[i].toUpperCase() == Label.CloseOpp.toUpperCase()){
                             callResults.remove(i);
