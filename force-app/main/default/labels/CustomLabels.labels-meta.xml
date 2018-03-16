@@ -1596,6 +1596,13 @@
         <value>Reached Rate</value>
     </labels>
     <labels>
+        <fullName>RecordDeletedSuccessfully</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RecordDeletedSuccessfully</shortDescription>
+        <value>Record was deleted successfully</value>
+    </labels>
+    <labels>
         <fullName>Reservation</fullName>
         <categories>this is used in duplicate check class</categories>
         <language>en_US</language>

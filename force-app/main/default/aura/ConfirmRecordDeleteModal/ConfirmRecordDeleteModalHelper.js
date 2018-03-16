@@ -28,8 +28,8 @@
          var state = response.getState();
          if (state === "SUCCESS") {
             component.destroy();
-
-            this.showSuccessToast("Opportunity was deleted successfully")
+            var staticLabel = $A.get("$Label.c.RecordDeletedSuccessfully");
+            this.showSuccessToast(staticLabel);
             var appEvent = $A.get("e.c:RecordIsDeletedEvent");
             appEvent.fire();
          } else if (state === "ERROR") {
