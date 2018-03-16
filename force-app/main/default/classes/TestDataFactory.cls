@@ -67,19 +67,20 @@ public class TestDataFactory {
     
     public static void bypassValidationsTriggersForUsers(Set<String> userIds, boolean bypassValidations, boolean bypassTriggers)
     {
-        List<BypassTriggersValidation__c> bpTrValids = new List<BypassTriggersValidation__c>();
-        for (String uId:userIds)
-        {
-            bypassTriggersValidation__c bpv=new BypassTriggersValidation__c();
-            bpv.DisableTrigger__c = bypassTriggers;
-            bpv.DisableValidation__c =bypassValidations; 
-            bpv.SetupOwnerId=uId;
-            bpTrValids.add(bpv);
-            
-        }
-        if (bpTrValids.size()>0)
-        {
-            insert bpTrValids;
+        //We wrap this in runAs to avoid MIXED DML exceptions
+        System.runAs(new User(Id = UserInfo.getUserId())) {
+            List<BypassTriggersValidation__c> bpTrValids = new List<BypassTriggersValidation__c>();
+            for (String uId : userIds) {
+                bypassTriggersValidation__c bpv = new BypassTriggersValidation__c();
+                bpv.DisableTrigger__c = bypassTriggers;
+                bpv.DisableValidation__c = bypassValidations;
+                bpv.SetupOwnerId = uId;
+                bpTrValids.add(bpv);
+
+            }
+            if (bpTrValids.size() > 0) {
+                insert bpTrValids;
+            }
         }
     }
     /****************************************************************************************************/
@@ -429,12 +430,15 @@ public class TestDataFactory {
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
                     tOpp.put(strFieldName, Date.valueOf(strVal) );
+               /*else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+
+                    tOpp.put(strFieldName, DateTime.valueOf(strVal) );*/
                 else
                     tOpp.put(strFieldName, strVal);
             }
         }
         if (doInsert)
-            insert tOpp; 
+            insert tOpp;
         return tOpp;
     }
     /*********************************************************************************************************************************/
@@ -633,10 +637,10 @@ public class TestDataFactory {
 
                 //Might require to  do the same for other data types !
                 if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
-
                     tAccount.put(strFieldName, Date.valueOf(strVal) );
                 else
                     tAccount.put(strFieldName, strVal);
+                system.debug('tAccount>>>>'+tAccount);
             }
         }
 
@@ -1016,6 +1020,33 @@ public class TestDataFactory {
         return tSource; 
     }
 
+    public static Opportunity createOpportunityForAccountPerson(String strAccountId,String strOpportunityName, Map<String, String> mFieldNameToVal, boolean doInsert, boolean sendBrochure ) {
+        Opportunity tOpp = new Opportunity();
+        tOpp.name = strOpportunityName;
+        tOpp.AccountId= strAccountId;
+        tOpp.SendBrochure__c = sendBrochure;
+
+        Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.Opportunity.fields.getMap();
+
+        if (mFieldNameToVal != null) {
+            for (String strFieldName : mFieldNameToVal.keySet()) {
+                String strVal = mFieldNameToVal.get(strFieldName);
+
+                //Might require to  do the same for other data types !
+                if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
+                    tOpp.put(strFieldName, Date.valueOf(strVal) );
+               /*else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+
+                    tOpp.put(strFieldName, DateTime.valueOf(strVal) );*/
+                else
+                        tOpp.put(strFieldName, strVal);
+            }
+        }
+        if (doInsert)
+            insert tOpp;
+        return tOpp;
+    }
+
     /********************************************************************************************************************************
     *
     * ver 1.0 2018.03.08 Thejasvi <thejasvi.a@ef.com>
@@ -1026,11 +1057,11 @@ public class TestDataFactory {
     *                 if set to false no DML operations will be executed
     *
     */
-    public static Group createPublicGroup(boolean doInsert) {
+    public static Group createPublicGroup(Boolean doInsert,String strGroupName,String strDeveloperName) {
 
         Group tGroup = new Group();
-        tGroup.Name = 'DEB_DEB_AY';
-        tGroup.DeveloperName = 'DEB_DEB_AY';
+        tGroup.Name = strGroupName;
+        tGroup.DeveloperName =strDeveloperName;
 
         if (doInsert)
             insert tGroup;

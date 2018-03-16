@@ -65,7 +65,12 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Bookings</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>AccountId__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Program__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OpportunityId__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

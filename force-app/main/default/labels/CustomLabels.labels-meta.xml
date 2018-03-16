@@ -801,11 +801,11 @@
     </labels>
     <labels>
         <fullName>LAC_Convert_C</fullName>
-        <categories>Convert and Close</categories>
+        <categories>LAC</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LAC_Convert_C</shortDescription>
-        <value>Convert and Close</value>
+         <value>Convert and Back</value>
     </labels>
     <labels>
         <fullName>LAC_DATA_SUCCESS</fullName>
@@ -909,7 +909,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>SAC</shortDescription>
-        <value>Save and close</value>
+         <value>Save and Back</value>
     </labels>
     <labels>
         <fullName>LAC_SACO</fullName>
@@ -1863,7 +1863,7 @@
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
     </labels>
-     
+
    <labels>
         <fullName>QuoteProposalStatusesToDelete</fullName>
         <language>en_US</language>
@@ -1874,13 +1874,13 @@
     <labels>
 
         <fullName>ProductCodeOSHCAY</fullName>
- 
+
        <categories>Apttus</categories>
- 
+
       <language>en_US</language>
-  
+
       <protected>false</protected>
-    
+
     <shortDescription>Product Code OSHCAY</shortDescription>
 
         <value>OSHCAY</value>

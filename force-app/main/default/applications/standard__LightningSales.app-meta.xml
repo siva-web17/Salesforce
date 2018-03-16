@@ -32,20 +32,20 @@
     <formFactors>Large</formFactors>
     <label>Sales</label>
     <navType>Standard</navType>
-    <tab>standard-home</tab>
-    <tab>AG_Action_Screen</tab>
-    <tab>AG_Assign</tab>
-    <tab>AG_Send_Materials</tab>
-    <tab>standard-Account</tab>
-    <tab>standard-Campaign</tab>
-    <tab>ImportfromExcel</tab>
-    <tab>Booking__c</tab>
-    <tab>dcBatch</tab>
-    <tab>standard-Dashboard</tab>
-    <tab>Source__c</tab>
-    <tab>APXTConga4__Conga_Template__c</tab>
-    <tab>TemplateSetting__c</tab>
-    <tab>Translation__c</tab>
-    <tab>standard-Event</tab>
+    <tabs>standard-home</tabs>
+    <tabs>AG_Action_Screen</tabs>
+    <tabs>AG_Assign</tabs>
+    <tabs>AG_Send_Materials</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>ImportfromExcel</tabs>
+    <tabs>Booking__c</tabs>
+    <tabs>dcBatch</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
+    <tabs>TemplateSetting__c</tabs>
+    <tabs>standard-Event</tabs>
+    <tabs>Source__c</tabs>
+    <tabs>standard-Lead</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
