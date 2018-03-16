@@ -2,25 +2,24 @@
 	accountData: function(cmp, event, helper) {},
 
 	insertRecord: function(cmp, event) {
-		var action = cmp.get('c.createRecord');
+	    debugger;
+		var action = cmp.get('c.updateAccountDetails');
 		var fwrapperLst = cmp.get('v.wrapperList');
 		//alert(JSON.stringify(fwrapperLst));
 		action.setParams({
-			wrapperData: JSON.stringify(fwrapperLst),
-			isFinishBooking: cmp.get('v.isFinishBooking'),
-			QuoteId: cmp.get('v.QuoteId'),
+			wrapperData: JSON.stringify(fwrapperLst)
 		});
 		action.setCallback(this, function(response) {
 			var state = response.getState();
 			if (state === 'SUCCESS') {
 				// alert("From server: " + response.getReturnValue());
-				if (response.getReturnValue() === true) {
+				if (response.getReturnValue() === '') {
 					var toastEvent = $A.get('e.force:showToast');
-                    var bookingSummarySuccess = $A.get('$Label.c.bookingSummarySuccess');
+                    //var bookingSummarySuccess = $A.get('$Label.c.bookingSummarySuccess');
 					toastEvent.setParams({
 						title: 'Success!',
 						type: 'success',
-						message: bookingSummarySuccess,
+						message: 'Please Create a Booking in Poseidon',
 					});
 					toastEvent.fire();
 					//Add navigation to detail view here
@@ -40,8 +39,8 @@
                     var SaveFailed = $A.get('$Label.c.SaveFailed');
 					toastEvent.setParams({
 						title: 'Failure!',
-						type: 'Failure',
-						message: SaveFailed,
+						type: "error",
+						message: SaveFailed +'-'+response.getReturnValue() ,
 					});
 					toastEvent.fire();
 				}

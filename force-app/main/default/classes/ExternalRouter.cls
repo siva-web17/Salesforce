@@ -7,10 +7,6 @@ public  class ExternalRouter {
     @future (callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails)
     {
-        /*JSONGenerator gen = JSON.createGenerator(true);
-        gen.writeStartObject();
-        gen.writeStringField(accountDetails);
-        gen.writeEndObject();*/
         String jsonS = accountDetails;
         String url=getServiceURL('SyncUpdatedAccountDetails');
         InvokeService(url,jsonS);
@@ -19,12 +15,15 @@ public  class ExternalRouter {
 
     public static string InvokeService(String url,String body)
     {
+        String retValue='';
         Http h = new Http();
         HttpRequest req = new HttpRequest();
         req.setEndpoint(url);
         req.setMethod('POST');
+        //http://poseidonqa.eflangtech.com/PoseidonCustomerSync/api/Customer/SaveAccount
         req.setHeader( 'Content-Type', 'application/json' );
         req.setHeader( 'Accept', 'application/json' );
+        req.setTimeout(2 * 60 * 1000);
         system.debug( 'Accept ' + req );
         req.setBody(body);
         system.debug( 'body'+ body );
@@ -32,16 +31,22 @@ public  class ExternalRouter {
         HttpResponse res = h.send(req);
         system.debug(' url '+url);
         system.debug(' response is '+res);
-        return '';
+        if (res.getStatusCode()==200) {
+            retValue='';
+        }
+        else
+        {
+            Id UserId=Id.Valueof(UserInfo.getUserId());
+            ExceptionHandler.errorLogAsync(String.ValueOf(res),url+'   --- \n'+ body,
+                    'ExternalRouter', 'InvokeService', UserId);
+            retValue=res.getStatus();
+        }
+        return retValue;
     }
     //Test
     @future (callout=true)
     public static void callUpdateAccountFamilyDetailsService(String accountPersonalDetails)
     {
-        /*JSONGenerator gen = JSON.createGenerator(true);
-        gen.writeStartObject();
-        gen.writeStringField('SfFamilyInfo', accountPersonalDetails);
-        gen.writeEndObject();*/
         String jsonS = accountPersonalDetails;
         String url=getServiceURL('SyncUpdatedAccountFamilyDetails');
         InvokeService(url,jsonS);
@@ -50,12 +55,18 @@ public  class ExternalRouter {
     @future (callout=true)
     public static void callNewAccountFamilyDetailsService(String accountPersonalDetails)
     {
-        /*JSONGenerator gen = JSON.createGenerator(true);
-        gen.writeStartObject();
-        gen.writeStringField(accountPersonalDetails);
-        gen.writeEndObject();*/
+
         String jsonS = accountPersonalDetails;
         String url=getServiceURL('SyncNewAccountDetails');
+        InvokeService(url,jsonS);
+    }
+
+    @future (callout=true)
+    public static void callNewSyncToPoseidonService(String accountPersonalDetails)
+    {
+
+        String jsonS = accountPersonalDetails;
+        String url=getServiceURL('SyncToPoseidon');
         InvokeService(url,jsonS);
     }
 
@@ -68,7 +79,7 @@ public  class ExternalRouter {
 
     public Static String getSandBoxNamefromUsername()
     {
-       return UserInfo.getUserName().substringAfterLast('.');
+        return UserInfo.getUserName().substringAfterLast('.');
     }
 
     public Static ExternalServiceSettings__mdt getServiceSetting(String serviceName,String environment,Boolean IsSandBox)
@@ -87,7 +98,7 @@ public  class ExternalRouter {
     public static String getServiceURL(String serviceName)
     {
         Organization orgRecord=  getOrganizationDetails();
-         ExternalServiceSettings__mdt serviceRecord=  getServiceSetting(serviceName,getSandBoxNamefromUsername().toUpperCase(),orgRecord.IsSandbox);
+        ExternalServiceSettings__mdt serviceRecord=  getServiceSetting(serviceName,getSandBoxNamefromUsername().toUpperCase(),orgRecord.IsSandbox);
         return serviceRecord.EndPoint__c;
     }
 

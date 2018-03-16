@@ -153,6 +153,7 @@ public class OpportunitiesHelper {
 
         for(Opportunity opp: newOpportunities.values()){
             Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
+            system.debug('the setDaulfLetterAndLabel'+oldOpportunity);
             if(opp.TemplateKey__c != oldOpportunity.TemplateKey__c){
                 opportunitiesToUpdate.add(opp.Id);
             }
@@ -186,7 +187,8 @@ public class OpportunitiesHelper {
 
         return opportunities;
     }
-
+    
+	@TestVisible
     private static TemplateSetting__c findMatchingTemplateSetting(String templateKey, Date birthday, Map<String, TemplateSetting__c[]> templateSettings) {
         if (templateSettings.containsKey(templateKey)) {
             for (TemplateSetting__c templateSetting : templateSettings.get(templateKey)) {
@@ -200,7 +202,8 @@ public class OpportunitiesHelper {
         }
         return null;
     }
-
+	
+    @TestVisible
     private static Decimal calculateMonths(Decimal years, Decimal months){
         Decimal totalMonths = 0;
         if(years != NULL){
@@ -244,11 +247,13 @@ public class OpportunitiesHelper {
             changeProgramOnSystemCallTasks(opportunitiesWithChangedProgram, new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesWithOpenTasks(opportunityIds, Label.SystemCallTaskRecordTypeDeveloperName)));
         }
     }
-
+	@TestVisible
     private static void changeProgramOnSystemCallTasks(List<Opportunity> opportunities, Map<Id, Opportunity> opportunitiesWithTasks) {
         Task[] tasksToUpdate = new Task[]{};
         for(Opportunity opportunity : opportunities){
             for(Task callTask : opportunitiesWithTasks.get(opportunity.Id).Tasks){
+                system.debug('callTask.Program__c ' +callTask.Program__c);
+                    system.debug('opportunity.Program__c ' +opportunity.Program__c);
                 if( callTask.Program__c != opportunity.Program__c){
                     callTask.Program__c = opportunity.Program__c;
                     String refreshedSubject = TasksHelper.refreshTaskSubject(callTask.Subject, callTask.Program__c);
@@ -279,6 +284,7 @@ public class OpportunitiesHelper {
         }
     }
 
+    @TestVisible
     private static void reassignOpenActivitiesForOpportunities(List<Opportunity> opportunities, Map<Id, Opportunity> opportunitiesWithOpenActivities) {
         SObject[] updatedActivities = new SObject[]{};
         Task[] tasksToUpdate = new Task[]{};
@@ -387,7 +393,7 @@ public class OpportunitiesHelper {
         }
 
         sourceMap=SourcesSelector.getSourceMapRecordforOpportunity(opportunityMap);
-
+	
         for(Id recordId:opportunityMap.keyset()){
             for (Opportunity opportunityRec : opportunityMap.get(recordId)){
                 if(sourceMap.containskey(opportunityRec.source__c)&& sourceMap.get(opportunityRec.Source__c)!=null){

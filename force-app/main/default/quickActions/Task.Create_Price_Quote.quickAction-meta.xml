@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Standard VF Page</description>
+    <height>250</height>
+    <label>Create Price Quote</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <page>CreatePQ_Task</page>
+    <type>VisualforcePage</type>
+    <width>-100</width>
+</QuickAction>

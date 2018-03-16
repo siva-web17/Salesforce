@@ -105,7 +105,7 @@ private class LeadTriggerTest {
 
         Test.startTest();
         update leads;
-        Test.stopTest(); 
+        Test.stopTest();
 
         Set<Id> leadIds = (new Map<Id, Lead>(leads)).keySet();
         Lead[] updatedLeads = LeadsSelector.getLeadsWithOpenTasks(leadIds, Label.SystemCallTaskRecordTypeDeveloperName);
@@ -185,21 +185,93 @@ private class LeadTriggerTest {
         LeadsHelper.updateHadAddressFilledOnCreation(leadList);
     }
 
-   static testMethod void whenLeadCreatedPopulatePublicGroup(){
-
-       TestDataFactory.createPublicGroup(TRUE);
-
-       Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
-       List<Lead> leadlist = new List<Lead>();
-       Map<String, String> leadFieldValues = new Map<String, String>{
-               'program__c' => 'AY',
-               'Market__c' => 'DEB',
-               'SalesOffice__c'=>'DEB',
-               'Email'=>'record@ef.com'
-       };
-       Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
-       leadlist.add(newLead);
-       LeadsHelper.createShareRecordsOnInsert(leadlist);
+    private static testMethod void whenLeadCreatedPopulatePublicGroup() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+        system.runAs(tAdminUser) {
+            TestDataFactory.createPublicGroup(TRUE, 'DEB_DEB_AYP', 'DEB_DEB_AYP');
+            Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            List<Lead> leadlist = new List<Lead>();
+            Map<String, String> leadFieldValues = new Map<String, String>{
+                    'program__c' => 'AYP',
+                    'Market__c' => 'DEB',
+                    'SalesOffice__c' => 'DEB',
+                    'Email' => 'record@ef.com'
+            };
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '', leadFieldValues, true);
+            leadlist.add(newLead);
+            LeadsHelper.createShareRecordsOnInsert(leadlist);
+        }
     }
+    static testMethod void leadSelector(){
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+
+        LeadsSelector.leadRecordMap(new List<Id>{newLead.Id});
+        LeadsSelector.getNotConvertedLeadMapById(new List<Id>{newLead.Id});
+        LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
+
+    }
+    
+     private static testMethod void whenLeadCreatedPopulateRanking() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+            List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
+            List<LegalSettings__c> legalSetting = Test.loadData(LegalSettings__c.sObjectType, 'File_LegalSettings');
+
+        system.runAs(tAdminUser) {
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            Lead leadRec=new Lead();
+                leadRec.FirstName = 'tyyu89';
+                leadRec.LastName = 'lastname89';
+                leadRec.program__c = 'AY';
+                leadRec.Market__c = 'DEB';
+                leadRec.SalesOffice__c='DEB';
+                leadRec.Email='record@ef.com';
+                leadRec.ReadyForRanking__c=TRUE;
+                leadRec.IsDupeProcessed__c=TRUE;              
+                leadRec.Ranking__c=5;
+                leadRec.RequestType__c='BR';
+                insert leadRec;
+                
+              RankingHandler.getLeadSettings(new List<Lead>{leadRec});  
+     
+       
+        }
+        }
+        
+        private static testMethod void whenLeadCreateCheckRanking() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+            List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
+            List<LegalSettings__c> legalSetting = Test.loadData(LegalSettings__c.sObjectType, 'File_LegalSettings');
+
+        system.runAs(tAdminUser) {
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            Lead leadRec=new Lead();
+                leadRec.FirstName = 'tyyu89';
+                leadRec.LastName = 'lastname89';
+                leadRec.program__c = 'AY';
+                leadRec.Market__c = 'DEB';
+                leadRec.SalesOffice__c='DEB';
+                leadRec.Email='record@ef.com';
+                leadRec.ReadyForRanking__c=TRUE;
+                leadRec.IsDupeProcessed__c=TRUE;              
+                leadRec.creationType__c='Account';
+                leadRec.CreationMethod__c='Excel Import';
+                leadRec.RequestType__c='BR';
+                insert leadRec;
+                
+              RankingHandler.getLeadSettings(new List<Lead>{leadRec});  
+     
+       
+        }
+        }
 
 }
