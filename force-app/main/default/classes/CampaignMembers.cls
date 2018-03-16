@@ -14,24 +14,4 @@ public class CampaignMembers {
     public static void onBeforeInsert(List<SObject> newItems) {
         CampaignMembersHelper.synchronizeOpportunityOnCamapignMember(newItems);
     }
-
-//    public static void onBeforeUpdate(List<SObject> newItems) {
-//    }
-//
-//    public static void onBeforeDelete(Map<Id, SObject> oldItems) {
-//    }
-//
-//    public static void onAfterInsert(Map<Id, SObject> newItems) {
-//    }
-//
-//    public static void onAfterUpdate(List<SObject> newItems) {
-//
-//    }
-//
-//    public static void onAfterDelete(Map<Id, SObject> oldItems) {
-//    }
-//
-//    public static void onAfterUndelete(Map<Id, SObject> oldItems) {
-//    }
-
 }

@@ -16,28 +16,6 @@ public class CampaignMembersDispatcher {
         if (Trigger.IsBefore) {
             if (Trigger.IsInsert)
                 CampaignMembers.onBeforeInsert(trigger.new);
-//
-//            if (Trigger.IsUpdate) {
-//                CampaignMembers.onBeforeUpdate(trigger.new);
-//            }
-//
-//            if (Trigger.IsDelete)
-//                CampaignMembers.onBeforeDelete(trigger.oldMap);
         }
-
-// //After trigger logic
-//        if (Trigger.IsAfter) {
-//            if (Trigger.IsInsert)
-//                CampaignMembers.onAfterInsert(Trigger.newMap);
-//
-//            if (Trigger.IsUpdate)
-//                CampaignMembers.onAfterUpdate(trigger.new);
-//
-//            if (trigger.IsDelete)
-//                CampaignMembers.onAfterDelete(trigger.oldMap);
-//
-//            if (trigger.isUndelete)
-//                CampaignMembers.onAfterUndelete(trigger.oldMap);
-//        }
     }
 }
