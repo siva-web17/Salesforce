@@ -9,7 +9,7 @@ Modification Log   :
  * ----------------------------------------------------------------------------
  * Suresh S                  06/22/2017              Original Version
 *******************************************************************************/
-public class RankingHandler {
+public class RankingHandler { 
    ///Pass LeadList to check each lead against Ranking setting and legal setting
     public static Map<ID, Boolean> getLeadSettings(List<Lead> leadList) {
         Map<ID, Boolean> qualificationMap = new Map<Id, Boolean>();
