@@ -10,19 +10,7 @@ Modification Log   :
  * Suresh S                  06/22/2017              Original Version
 *******************************************************************************/
 public class RankingHandler {
-   /* public static Map<Id, Integer> calculateRank(List<Lead> leadRecords) {
-        Map<id, Integer> rankingMap = new Map<id, Integer>();
-        Integer rank = 0;
-        for (Lead incomingLead:leadRecords) {
-            rank = incomingLead.FirstName.startsWithIgnoreCase(System.Label.AlphabetV)?
-                    Integer.valueOf(10):Integer.valueOf(5);
-            rankingMap.put(incomingLead.id, rank);
-        }
-        return rankingMap;
-
-    }*/
-
-    ///Pass LeadList to check each lead against Ranking setting and legal setting
+   ///Pass LeadList to check each lead against Ranking setting and legal setting
     public static Map<ID, Boolean> getLeadSettings(List<Lead> leadList) {
         Map<ID, Boolean> qualificationMap = new Map<Id, Boolean>();
         try {
