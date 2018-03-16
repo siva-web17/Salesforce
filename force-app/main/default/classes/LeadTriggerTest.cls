@@ -185,7 +185,7 @@ private class LeadTriggerTest {
         LeadsHelper.updateHadAddressFilledOnCreation(leadList);
     }
 
-    private static @istest void whenLeadCreatedPopulatePublicGroup() {
+    private static testMethod void whenLeadCreatedPopulatePublicGroup() {
         User tAdminUser = TestDataFactory.createAdminUser(True);
         tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
         system.runAs(tAdminUser) {
@@ -218,5 +218,60 @@ private class LeadTriggerTest {
         LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
 
     }
+    
+     private static testMethod void whenLeadCreatedPopulateRanking() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+            List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
+            List<LegalSettings__c> legalSetting = Test.loadData(LegalSettings__c.sObjectType, 'File_LegalSettings');
+
+        system.runAs(tAdminUser) {
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            Lead leadRec=new Lead();
+                leadRec.FirstName = 'tyyu89';
+                leadRec.LastName = 'lastname89';
+                leadRec.program__c = 'AY';
+                leadRec.Market__c = 'DEB';
+                leadRec.SalesOffice__c='DEB';
+                leadRec.Email='record@ef.com';
+                leadRec.ReadyForRanking__c=TRUE;
+                leadRec.IsDupeProcessed__c=TRUE;              
+                leadRec.Ranking__c=5;
+                leadRec.RequestType__c='BR';
+                insert leadRec;
+                
+              RankingHandler.getLeadSettings(new List<Lead>{leadRec});  
+     
+       
+        }
+        }
+        
+        private static testMethod void whenLeadCreateCheckRanking() {
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+            List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
+            List<LegalSettings__c> legalSetting = Test.loadData(LegalSettings__c.sObjectType, 'File_LegalSettings');
+
+        system.runAs(tAdminUser) {
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            Lead leadRec=new Lead();
+                leadRec.FirstName = 'tyyu89';
+                leadRec.LastName = 'lastname89';
+                leadRec.program__c = 'AY';
+                leadRec.Market__c = 'DEB';
+                leadRec.SalesOffice__c='DEB';
+                leadRec.Email='record@ef.com';
+                leadRec.ReadyForRanking__c=TRUE;
+                leadRec.IsDupeProcessed__c=TRUE;              
+                leadRec.creationType__c='Account';
+                leadRec.CreationMethod__c='Excel Import';
+                leadRec.RequestType__c='BR';
+                insert leadRec;
+                
+              RankingHandler.getLeadSettings(new List<Lead>{leadRec});  
+     
+       
+        }
+        }
 
 }
