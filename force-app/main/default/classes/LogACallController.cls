@@ -152,9 +152,11 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if (((opp.NumberOfUnreachedCalls__c < 3) && ((callAction).equalsIgnoreCase(Label.CallNotReached))) || ((opp.NumberOfUnreachedCalls__c < 3) && ((callAction).equalsIgnoreCase(Label.SentEmail))) || ((opp.NumberOfUnreachedCalls__c < 3) && ((callAction).equalsIgnoreCase(Label.SocialMediaSent)))) {
+                if (opp.NumberOfUnreachedCalls__c < 3 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
+                                                          callAction.equalsIgnoreCase(Label.SentEmail) ||
+                                                          callAction.equalsIgnoreCase(Label.SocialMediaSent))) {
                     for(Integer i=0; i< callResults.size() ; i++){
-                        if(callResults[i].toUpperCase() == Label.CloseOpp.toUpperCase()){
+                        if(callResults[i].equalsIgnoreCase(Label.CloseOpp)){
                             callResults.remove(i);
                         }
                     }
@@ -278,7 +280,7 @@ public with sharing class LogACallController {
                     update opp;
                 }
                 else {
-                    if(callResult.toUpperCase() == Label.CloseOpp.toUpperCase()){
+                    if(callResult.equalsIgnoreCase(Label.CloseOpp)){
                         opp.CloseDate = system.today();
                     }
                     else if(bookOn != NULL){
