@@ -10,7 +10,7 @@ Modification Log   :
  * Suresh S                  06/22/2017              Original Version
 *******************************************************************************/
 public class RankingHandler {
-    public static Map<Id, Integer> calculateRank(List<Lead> leadRecords) {
+   /* public static Map<Id, Integer> calculateRank(List<Lead> leadRecords) {
         Map<id, Integer> rankingMap = new Map<id, Integer>();
         Integer rank = 0;
         for (Lead incomingLead:leadRecords) {
@@ -20,7 +20,7 @@ public class RankingHandler {
         }
         return rankingMap;
 
-    }
+    }*/
 
     ///Pass LeadList to check each lead against Ranking setting and legal setting
     public static Map<ID, Boolean> getLeadSettings(List<Lead> leadList) {
