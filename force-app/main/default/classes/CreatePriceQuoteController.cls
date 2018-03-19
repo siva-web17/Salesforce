@@ -21,12 +21,12 @@ public class CreatePriceQuoteController {
         else if(controller.getRecord().getSObjectType()==Task.getSObjectType())
         {
             taskObj=(Task)controller.getRecord();
-            RecordId=String.ValueOf(this.oppObj.Id);
+            RecordId=String.ValueOf(this.taskObj.Id);
         }
         else
         {
             //make as null
-           //Send message to user for invalid record
+            //Send message to user for invalid record
             RecordId=null;
         }
         this.returnvalue= openPoseidonToCreateQuote();
@@ -35,11 +35,11 @@ public class CreatePriceQuoteController {
         }
     }
 
-   /* public PageReference  CompleteActionPQ()
-    {
-        openPoseidonToCreateQuote(OppId);
-        return null;
-    }*/
+    /* public PageReference  CompleteActionPQ()
+     {
+         openPoseidonToCreateQuote(OppId);
+         return null;
+     }*/
 
     public  String openPoseidonToCreateQuote()
     {
@@ -69,7 +69,9 @@ public class CreatePriceQuoteController {
                 this.returnvalue = 'Invalid Record to create Price Quote!!';
             }
 
-            if (opportunityMap.containsKey(Id.valueOf(OppId))) {
+
+            if (opportunityMap!=null && opportunityMap.containsKey(Id.valueOf(OppId)) && String.isEmpty(this.returnvalue)) {
+
                 for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.CreatePriceQuote.getFields()) {
                     if (!String.isEmpty(String.ValueOf(opportunityMap.get(Id.valueOf(OppId)).get(f.getFieldPath())))) {
                         createPQFieldvalues.put(f.getFieldPath(),
@@ -80,6 +82,7 @@ public class CreatePriceQuoteController {
                     }
 
                 }
+
                 if (String.isEmpty(this.returnvalue)) {
                     accountSet.add(opportunityMap.get(Id.valueOf(OppId)).accountId);
                     map<Id, Account> accountMap = AccountsSelector.getAccountDetailsbasedonAccountId(accountSet);
@@ -90,7 +93,7 @@ public class CreatePriceQuoteController {
                         Map<String, String> leadFieldvalues = LeadfieldsForPriceQuote(oppLeadMap.get(Id.valueOf(OppId)));
                         createPQFieldvalues.putAll(accountFieldsMap);
                     }
-                    System.debug('Testing org details '+ExternalRouter.getOrganizationDetails());
+
                     createPQFieldvalues.put('Environment',(ExternalRouter.getOrganizationDetails().IsSandbox)?'QA':'LIVE');
                     String JSONValue = JSON.serialize(createPQFieldvalues);
 
@@ -98,10 +101,20 @@ public class CreatePriceQuoteController {
                     System.debug('Before Opening Pos JOSN is ' + this.PQParamJson);
                     return '';
                 }
+                else
+                {
+                    return System.Label.MandatoryFields+' \n'+returnvalue.substringBeforeLast(',');
+                }
             }
-            return System.Label.MandatoryFields+' \n'+returnvalue.substringBeforeLast(',');
+            else
+            {
+                System.debug('In Last Else Loop '+this.returnvalue);
+                return this.returnvalue;
+            }
+
         }
         catch(Exception ex){
+            Id recID=Id.valueOf(this.RecordId);
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
                     'CreatePriceQuoteController', 'openPoseidonToCreateQuote', '');
             throw new AuraHandledException(ex.getMessage());
