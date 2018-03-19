@@ -276,114 +276,132 @@
             var bookOnDateValue = component.get("v.bookOnDate");
             var LAC_Select = $A.get("$Label.c.LAC_Select");
             var validateBookOnDate = bookOnDateValue == "" || bookOnDateValue == null ? !0 : moment(bookOnDateValue).isValid() ? !0 : !1;
-            if (validateBookOnDate) {
-                saveDataAction.setParams({
-                    callAction: component.get("v.selectedActionType") === LAC_Select ? "" : component.get("v.selectedActionType"),
-                    subAction: component.get("v.selectedSubActionType") === LAC_Select ? "" : component.get("v.selectedSubActionType"),
-                    callResult: component.get("v.selectedCallResult") === LAC_Select ? "" : component.get("v.selectedCallResult"),
-                    actionDateTime: component.get("v.selectedActionDate") === LAC_Select ? "" : new Date(component.get("v.selectedActionDate")).toISOString(),
-                    closeReason: component.get("v.selectedCloseReason") === LAC_Select ? "" : component.get("v.selectedCloseReason"),
-                    recordId: component.get("v.recordId"),
-                    comments: comments,
-                    program: component.get("v.changedProgram") === LAC_Select ? "" : component.get("v.changedProgram"),
-                    visitDatetime: component.get("v.selectedVisitDate") === LAC_Select ? "" : new Date(component.get("v.selectedVisitDate")).toISOString(),
-                    likelihoodToBook: component.get("v.selectedLikelihoodToBook"),
-                    hearAboutUs: component.get("v.hearAboutEFValue"),
-                    destination: component.get("v.destinationsSelected"),
-                    duration: component.get("v.durationsSelected"),
-                    whenYear: component.get("v.yearSelected"),
-                    whenMonth: component.get("v.monthSelected"),
-                    bookOn: bookOnDateValue == "" || bookOnDateValue == null ? null : new Date(bookOnDateValue).toISOString()
-                });
-                saveDataAction.setCallback(this, function(res) {
-                    var responseValue = JSON.parse(res.getReturnValue()).ResponseCode;
-                    var innerBody = {
-                        value: JSON.parse(res.getReturnValue()).ErrorMessage
-                    };
-                    switch (responseValue) {
-                        case "SUCCESS":
-                            var response = JSON.parse(res.getReturnValue());
-                            if (typeof response.Result !== "undefined" && response.Result !== null) {
-                                if (validatedBtn == "saveAndClose") {
-                                    var LAC_ActionScreenURL = $A.get("$Label.c.LAC_ActionScreenURL");
-                                    var urlEvent = $A.get("e.force:navigateToURL");
-                                    urlEvent.setParams({ url: LAC_ActionScreenURL });
-                                    urlEvent.fire();
-                                } else {
-                                    var toastEvent = $A.get("e.force:showToast");
-                                    var LAC_DATA_SUCCESS = $A.get("$Label.c.LAC_DATA_SUCCESS");
-                                    toastEvent.setParams({
-                                        title: "Success!",
-                                        type: "success",
-                                        message: LAC_DATA_SUCCESS
-                                    });
-                                    toastEvent.fire();
-                                    component.set("v.readOnlyToggle", !1);
-                                    component.set("v.isCustomerReached", !0);
-                                    document.location.reload(!0);
-                                }
-                                var navEvt = $A.get("e.force:navigateToSObject");
-                                navEvt.setParams({
-                                    recordId: response.Result.Id,
-                                    slideDevName: "related"
-                                });
-                                navEvt.fire();
-                                $A.util.removeClass(loaderComp, "customLoaderTrue");
-                            } else {
-                                if (validatedBtn == "saveAndClose") {
-                                    var urlEvent = $A.get("e.force:navigateToURL");
-                                    var LAC_ActionScreenURL = $A.get("$Label.c.LAC_ActionScreenURL");
-                                    urlEvent.setParams({ url: LAC_ActionScreenURL });
-                                    urlEvent.fire();
-                                } else {
-                                    var toastEvent = $A.get("e.force:showToast");
-                                    var LAC_DATA_SUCCESS = $A.get("$Label.c.LAC_DATA_SUCCESS");
-                                    toastEvent.setParams({
-                                        title: "Success!",
-                                        type: "success",
-                                        message: LAC_DATA_SUCCESS
-                                    });
-                                    toastEvent.fire();
-                                    component.set("v.readOnlyToggle", !1);
-                                    component.set("v.isCustomerReached", !0);
-                                    document.location.reload(!0);
-                                }
-                            }
-                            break;
-                        case "INCOMPLETE":
-                            $A.util.removeClass(loaderComp, "customLoaderTrue");
-                            break;
-                        case "ERROR":
-                            $A.util.removeClass(loaderComp, "customLoaderTrue");
-                            break;
-                        case "FAILURE":
-                            var modalBody;
-                            $A.createComponent("ui:outputText", innerBody, function(content, status) {
-                                if (status === "SUCCESS") {
-                                    modalBody = content;
-                                    component.find("overlayLib").showCustomModal({
-                                        header: "ERROR",
-                                        body: modalBody,
-                                        showCloseButton: !0,
-                                        cssClass: "mymodal"
-                                    });
-                                }
-                            });
-                            $A.util.removeClass(loaderComp, "customLoaderTrue");
-                            break;
-                    }
-                });
-                $A.enqueueAction(saveDataAction);
-            } else {
+            if (!moment(component.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(component.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
                 var toastEvent = $A.get("e.force:showToast");
-                var LAC_FILL_VALID_INFO = $A.get("$Label.c.LAC_FILL_VALID_INFO");
+                var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ERROR_PAST_MSG");
                 toastEvent.setParams({
                     title: "Error!",
                     type: "error",
-                    message: LAC_FILL_VALID_INFO
+                    message: LAC_ERROR_PAST_MSG
                 });
                 toastEvent.fire();
+                component.set(
+                    "v.selectedActionDate",
+                    moment(new Date(), "DD-MM-YYYY")
+                    .add(1, "days")
+                    .format("YYYY-MM-DD") + "T00:00"
+                );
                 $A.util.removeClass(loaderComp, "customLoaderTrue");
+            } else {
+                if (validateBookOnDate) {
+                    saveDataAction.setParams({
+                        callAction: component.get("v.selectedActionType") === LAC_Select ? "" : component.get("v.selectedActionType"),
+                        subAction: component.get("v.selectedSubActionType") === LAC_Select ? "" : component.get("v.selectedSubActionType"),
+                        callResult: component.get("v.selectedCallResult") === LAC_Select ? "" : component.get("v.selectedCallResult"),
+                        actionDateTime: component.get("v.selectedActionDate") === LAC_Select ? "" : new Date(component.get("v.selectedActionDate")).toISOString(),
+                        closeReason: component.get("v.selectedCloseReason") === LAC_Select ? "" : component.get("v.selectedCloseReason"),
+                        recordId: component.get("v.recordId"),
+                        comments: comments,
+                        program: component.get("v.changedProgram") === LAC_Select ? "" : component.get("v.changedProgram"),
+                        visitDatetime: component.get("v.selectedVisitDate") === LAC_Select ? "" : new Date(component.get("v.selectedVisitDate")).toISOString(),
+                        likelihoodToBook: component.get("v.selectedLikelihoodToBook"),
+                        hearAboutUs: component.get("v.hearAboutEFValue"),
+                        destination: component.get("v.destinationsSelected"),
+                        duration: component.get("v.durationsSelected"),
+                        whenYear: component.get("v.yearSelected"),
+                        whenMonth: component.get("v.monthSelected"),
+                        bookOn: bookOnDateValue == "" || bookOnDateValue == null ? null : new Date(bookOnDateValue).toISOString()
+                    });
+                    saveDataAction.setCallback(this, function(res) {
+                        var responseValue = JSON.parse(res.getReturnValue()).ResponseCode;
+                        var innerBody = {
+                            value: JSON.parse(res.getReturnValue()).ErrorMessage
+                        };
+                        switch (responseValue) {
+                            case "SUCCESS":
+                                var response = JSON.parse(res.getReturnValue());
+                                if (typeof response.Result !== "undefined" && response.Result !== null) {
+                                    if (validatedBtn == "saveAndClose") {
+                                        var LAC_ActionScreenURL = $A.get("$Label.c.LAC_ActionScreenURL");
+                                        var urlEvent = $A.get("e.force:navigateToURL");
+                                        urlEvent.setParams({ url: LAC_ActionScreenURL });
+                                        urlEvent.fire();
+                                    } else {
+                                        var toastEvent = $A.get("e.force:showToast");
+                                        var LAC_DATA_SUCCESS = $A.get("$Label.c.LAC_DATA_SUCCESS");
+                                        toastEvent.setParams({
+                                            title: "Success!",
+                                            type: "success",
+                                            message: LAC_DATA_SUCCESS
+                                        });
+                                        toastEvent.fire();
+                                        component.set("v.readOnlyToggle", !1);
+                                        component.set("v.isCustomerReached", !0);
+                                        document.location.reload(!0);
+                                    }
+                                    var navEvt = $A.get("e.force:navigateToSObject");
+                                    navEvt.setParams({
+                                        recordId: response.Result.Id,
+                                        slideDevName: "related"
+                                    });
+                                    navEvt.fire();
+                                    $A.util.removeClass(loaderComp, "customLoaderTrue");
+                                } else {
+                                    if (validatedBtn == "saveAndClose") {
+                                        var urlEvent = $A.get("e.force:navigateToURL");
+                                        var LAC_ActionScreenURL = $A.get("$Label.c.LAC_ActionScreenURL");
+                                        urlEvent.setParams({ url: LAC_ActionScreenURL });
+                                        urlEvent.fire();
+                                    } else {
+                                        var toastEvent = $A.get("e.force:showToast");
+                                        var LAC_DATA_SUCCESS = $A.get("$Label.c.LAC_DATA_SUCCESS");
+                                        toastEvent.setParams({
+                                            title: "Success!",
+                                            type: "success",
+                                            message: LAC_DATA_SUCCESS
+                                        });
+                                        toastEvent.fire();
+                                        component.set("v.readOnlyToggle", !1);
+                                        component.set("v.isCustomerReached", !0);
+                                        document.location.reload(!0);
+                                    }
+                                }
+                                break;
+                            case "INCOMPLETE":
+                                $A.util.removeClass(loaderComp, "customLoaderTrue");
+                                break;
+                            case "ERROR":
+                                $A.util.removeClass(loaderComp, "customLoaderTrue");
+                                break;
+                            case "FAILURE":
+                                var modalBody;
+                                $A.createComponent("ui:outputText", innerBody, function(content, status) {
+                                    if (status === "SUCCESS") {
+                                        modalBody = content;
+                                        component.find("overlayLib").showCustomModal({
+                                            header: "ERROR",
+                                            body: modalBody,
+                                            showCloseButton: !0,
+                                            cssClass: "mymodal"
+                                        });
+                                    }
+                                });
+                                $A.util.removeClass(loaderComp, "customLoaderTrue");
+                                break;
+                        }
+                    });
+                    $A.enqueueAction(saveDataAction);
+                } else {
+                    var toastEvent = $A.get("e.force:showToast");
+                    var LAC_FILL_VALID_INFO = $A.get("$Label.c.LAC_FILL_VALID_INFO");
+                    toastEvent.setParams({
+                        title: "Error!",
+                        type: "error",
+                        message: LAC_FILL_VALID_INFO
+                    });
+                    toastEvent.fire();
+                    $A.util.removeClass(loaderComp, "customLoaderTrue");
+                }
             }
         }
     },
