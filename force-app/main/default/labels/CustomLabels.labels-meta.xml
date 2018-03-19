@@ -1060,7 +1060,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageFollowup</shortDescription>
-        <value>FollowUp</value>
+        <value>Follow Up</value>
     </labels>
     <labels>
         <fullName>LeadStageTBC</fullName>
@@ -1068,7 +1068,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageTBC</shortDescription>
-        <value>TBC</value>
+        <value>To Contact</value>
     </labels>
     <labels>
         <fullName>LeadStageWon</fullName>
