@@ -115,4 +115,107 @@ private class LeadTriggerTest {
             System.assertEquals(u.Id, l.Tasks[0].OwnerId,'Tasks should be reassigned to new Lead Owner');
         }
     }
+
+    static testMethod void whenLeadCreatedPopulateSalesOfficeProgram(){
+        Map<String,String> salesOfficeValues = new Map<String,String>{
+                'Market__c'=>'DEB',
+                'program__c' => 'AY',
+                'SaleOfficeCode__c'=>'DEB'
+        };
+        SalesOfficeProgram__c salesOffieRecord = TestDataFactory.createSalesOfficeProgram('Name', '' ,salesOfficeValues,true);
+
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        List<Lead> leadlist = new List<Lead>();
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+        leadlist.add(newLead);
+        LeadsHelper.populateSalesOfficeProgram(leadlist);
+    }
+
+    static testMethod void whenLeadCreatedPopulateSource(){
+        Map<String,String> sourceValues = new Map<String,String>{
+                'Name'=>'testSource',
+                'Market__c'=>'DEB',
+                'Code__c'=>'E007'
+        };
+
+        Source__c sourceRecord = TestDataFactory.createSource('SourceName', '', sourceValues ,TRUE);
+
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        List<Lead> leadlist = new List<Lead>();
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com',
+                'SourceCodeAuto__c'=>'E007'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+        leadlist.add(newLead);
+        LeadsHelper.populateSourceBasedonSourceCodeAuto(leadlist);
+    }
+
+    static testMethod void whenLeadCreatedPopulateSourceCodeAndPartner(){
+        Map<String,String> sourceValues = new Map<String,String>{
+                'Name'=>'testSource',
+                'Market__c'=>'DEB',
+                'Code__c'=>'E007'
+        };
+
+        Source__c sourceRecord = TestDataFactory.createSource('SourceName', '', sourceValues ,TRUE);
+
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        List<Lead> leadlist = new List<Lead>();
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com',
+                'Source__c'=>sourceRecord.Id,
+                'Street'=>'2Main'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+        leadlist.add(newLead); 
+        LeadsHelper.populateSourceCodeAutoAndPartnerFromSource(leadlist);
+        LeadsHelper.updateHadAddressFilledOnCreation(leadList);
+    }
+
+   static testMethod void whenLeadCreatedPopulatePublicGroup(){
+
+       TestDataFactory.createPublicGroup(TRUE);
+
+       Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+       List<Lead> leadlist = new List<Lead>();
+       Map<String, String> leadFieldValues = new Map<String, String>{
+               'program__c' => 'AY',
+               'Market__c' => 'DEB',
+               'SalesOffice__c'=>'DEB',
+               'Email'=>'record@ef.com'
+       };
+       Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+       leadlist.add(newLead);
+       LeadsHelper.createShareRecordsOnInsert(leadlist);
+    }
+
+    static testMethod void leadSelector(){
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+
+        LeadsSelector.leadRecordMap(new List<Id>{newLead.Id});
+        LeadsSelector.getNotConvertedLeadMapById(new List<Id>{newLead.Id});
+        LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
+
+    }
+
 }

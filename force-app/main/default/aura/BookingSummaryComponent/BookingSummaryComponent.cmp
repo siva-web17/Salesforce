@@ -1,8 +1,9 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="BindSobject">
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CreateBookingController">
     <ltng:require scripts="{!$Resource.MomentMinRecur + '/moment.min.js'}" afterScriptsLoaded="{!c.doInit}"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:attribute name="wrapperList" type="BindSobject.SobjectBindWrapper" />
-    <aura:attribute name="QuoteId" type="Id" />
+    <aura:attribute name="wrapperList" type="CreateBookingController.IntermediateScreenWrapper" />
+    <aura:handler name="change" value="{!v.RecordId}" action="{!c.doInit}"/>
+    <aura:attribute name="RecordId" type="String" />
     <aura:attribute name="zTitle" type="String" />
     <aura:attribute name="zNickName" type="String" />
     <aura:attribute name="pickGender" type="String" />
@@ -87,20 +88,7 @@
 												</span>
                                             </a>
                                         </li>
-                                        <li class="slds-path__item slds-is-incomplete" aura:id="header-4" role="presentation">
-                                            <a aria-controls="path-content-4" aria-expanded="true" aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-4" role="tab" tabindex="0">
-												<span class="slds-path__stage">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" />
-													<span class="slds-assistive-text">Current Stage:</span>
-												</span>
-                                                <span class="slds-path__title">
-													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
-														<lightning:icon size="x-small" iconName="utility:questions_and_answers" class="icon_color_white" />
-														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; {!$Label.c.BookingSummaryBooking_Details}
-												</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                     <div class="slds-path__scroll-controls">
                                         <button class="slds-button slds-button_icon slds-button_icon-border-filled" tabindex="-1" title="Scroll left">
@@ -252,6 +240,11 @@
                         </aura:if>
                         <div class="slds-clearfix">
                             <div class="slds-float_right slds-p-right_x-small slds-m-top_large">
+                                <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.navigateToSObject}">
+									<span class="slds-text-not-selected">
+										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> {!$Label.c.BookingSummaryback_button}
+									</span>
+                                </ui:button>
                                 <ui:button aura:id="next1" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext}">
 									<span class="slds-text-not-selected">
 										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue
@@ -357,114 +350,15 @@
 										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> {!$Label.c.BookingSummaryback_button}
 									</span>
                                 </ui:button>
-                                <ui:button aura:id="next3" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext3}">
+                                <ui:button aura:id="next4" disabled="{!v.DisableFinishBooking}" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext3}">
 									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue
+										<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> {!$Label.c.SendToPoseidon}
 									</span>
                                 </ui:button>
                             </div>
                         </div>
                     </div>
-                    <div aria-labelledby="path-4" class="slds-path__content slds-hide" aura:id="path-content-4" role="tabpanel">
-                        <div class="slds-path__coach slds-grid">
-                            <div class="slds-path__keys slds-size_1-of-1">
-                                <div class="slds-grid slds-grid_align-spread slds-path__coach-title">
-                                    <h2>{!$Label.c.BookingSummaryPERSONALIZE_YOUR_BOOKING_INFORMATION_DETAILS}</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slds-path__coach slds-grid">
-                            <div class="slds-path__keys slds-form slds-form_stacked slds-p-top_none">
-                                <div class="slds-form slds-form_compound">
-                                    <fieldset class="slds-form-element">
-                                        <div class="slds-form-element__group">
-                                            <div class="slds-grid  slds-p-bottom_small">
-                                                <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:select label="{!$Label.c.Booking_Channel}" value="{!v.selectedBookingChannel}" aura:id="path_4_Fields" required="true" name="zBookingChannel">
-                                                        <option value="">{!$Label.c.PleaseSelect}</option>
-                                                        <aura:iteration items="{!v.BookingChannelList}" var="itemBooking">
-                                                            <option text="{!itemBooking.value}" value="{!itemBooking.key}" selected="{!itemBooking.Selected}"/>
-                                                        </aura:iteration>
-                                                    </lightning:select>
-                                                </div>
-                                                <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:select label="{!$Label.c.Booking_Type}" value="{!v.selectedBookingType}" required="true" aura:id="path_4_Fields">
-                                                        <option value="">{!$Label.c.PleaseSelect}</option>
-                                                        <aura:iteration items="{!v.BookingTypeList}" var="itemBookingType">
-                                                            <option text="{!itemBookingType.value}" value="{!itemBookingType.key}" selected="{!itemBookingType.Selected}"/>
-                                                        </aura:iteration>
-                                                    </lightning:select>
-                                                </div>
-                                            </div>
-                                            <div class="slds-grid slds-p-bottom_small">
-                                                <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <!--<lightning:input label="{!$Label.c.Sales_Office}" value="{!v.wrapperList.opp.SalesOffice__c}" aura:id="path_4_Fields" disabled="true" required="true" />-->
-                                                    <lightning:select label="{!$Label.c.Sales_Office}" value="{!v.selectedSalesOffice}" aura:id="path_4_Fields" disabled="true" required="true">
-                                                    <option value="">{!$Label.c.PleaseSelect}</option>
-                                                    <aura:iteration items="{!v.SalesOfficeList}" var="itemSales">
-                                                    <option text="{!itemSales.value}" value="{!itemSales.key}" selected="{!itemSales.Selected}"/>
-                                                    </aura:iteration>
-                                                    </lightning:select>
-                                                </div>
-                                                <div class="slds-form-element slds-size_1-of-2 " style="margin-top:0px">
-                                                    <div class="overllappingElement">
-                                                        <lightning:input label="{!$Label.c.Sales_Made_by}" aura:id="path_4_Fields" name="zSalesMade"></lightning:input>
 
-                                                        <c:OwnerChange recordId="{!v.QuoteId}" OwnerRecordId="{!v.QuoteId}" ParentObjectApi="Apttus_Proposal__Proposal__c" />
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
-                                <div class="slds-form slds-form_compound">
-                                    <fieldset class="slds-form-element">
-                                        <div class="slds-form-element__group">
-                                            <div class="slds-form-element__row">
-                                                <div class="slds-form-element slds-size_1-of-1">
-                                                    <div class="slds-grid slds-p-bottom_small">
-                                                        <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                            <lightning:input label="{!$Label.c.Brochure}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochure" value="{!v.wrapperList.PriceList.Year__c}" />
-                                                        </div>
-                                                        <div class="slds-form-element slds-size_1-of-2 " style="margin-top:0">
-                                                            <lightning:input label="{!$Label.c.Brochure_Season}" aura:id="path_4_Fields" disabled="true" pattern="^[a-zA-Z0-9]{2,10}$" name="zBrochureSeason" value="{!v.wrapperList.PriceList.Version__c}" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="slds-grid  slds-p-bottom_small">
-                                                        <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                            <lightning:select label="{!$Label.c.Currency}" value="{!v.selectedCurrency}" aura:id="path_4_Fields" disabled="true" required="true">
-                                                                <option value="">{!$Label.c.PleaseSelect}</option>
-                                                                <aura:iteration items="{!v.CurrencyList}" var="itemCurrency">
-                                                                    <option text="{!itemCurrency.value}" value="{!itemCurrency.key}" selected="{!itemCurrency.Selected}"/>
-                                                                </aura:iteration>
-                                                            </lightning:select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slds-clearfix slds-p-top_medium">
-                            <div class="slds-float_right slds-p-right_x-small">
-                                <ui:button aura:id="prev4" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> {!$Label.c.BookingSummaryback_button}
-									</span>
-                                </ui:button>
-                                <ui:button aura:id="next4" disabled="{!v.DisableFinishBooking}" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext4}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> {!$Label.c.bookingSummaryFinish_Booking}
-									</span>
-                                </ui:button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
