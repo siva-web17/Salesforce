@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>If customer has opted in for protect information, if this is true then we should not share contact details of this customer</description>
     <externalId>false</externalId>
+    <inlineHelpText>This field should be checked if we want to protect the identity of the person. Personal contact details should not be given to anyone if this field is checked.</inlineHelpText>
     <label>Is Protected Identity</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
