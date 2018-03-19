@@ -344,4 +344,26 @@ public class OpportunitiesSelector {
         }
         return opportunityMap;
     }
+
+    /**
+    * @author Adam Osiecki
+    * ver 1.0 12-Mar-2018
+    * @description Returns List of Opportunities for selected Account
+    *
+    * @param accountId account Id to select
+    *
+    * @return List<Id,Opportunity>
+    */
+
+    public static List<Opportunity> getOpportunitiesByAccountId(Set<Id> accountIds){
+
+        List<Opportunity> opportunities = new List<Opportunity>(
+        [
+            SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
+                    CloseDate
+            FROM Opportunity
+            WHERE AccountId IN :accountIds]
+        );
+        return opportunities;
+    }
 }

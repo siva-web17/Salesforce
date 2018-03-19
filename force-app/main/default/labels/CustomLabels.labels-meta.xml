@@ -65,6 +65,13 @@
         <value>001P</value>
     </labels>
     <labels>
+        <fullName>Action</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Action</shortDescription>
+        <value>Action</value>
+    </labels>
+    <labels>
         <fullName>Age</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -307,11 +314,25 @@
         <value>Sample Name</value>
     </labels>
     <labels>
+        <fullName>Cancel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
         <fullName>ChangeProgram</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Change Program Call result on Log an Action component</shortDescription>
         <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>CloseDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CloseDate</shortDescription>
+        <value>Close Date</value>
     </labels>
     <labels>
         <fullName>CloseOpp</fullName>
@@ -342,6 +363,13 @@
         <protected>false</protected>
         <shortDescription>This field is created to select the country of birth.</shortDescription>
         <value>Country Of Birth</value>
+    </labels>
+    <labels>
+        <fullName>CreatedDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreatedDate</shortDescription>
+        <value>Created Date</value>
     </labels>
     <labels>
         <fullName>Currency</fullName>
@@ -414,10 +442,23 @@
     </labels>
     <labels>
       <fullName>DeleteQuoteProposalErrorMessage</fullName>
+        <fullName>Delete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
         <value>You can not delete an issued price quote</value>
+    </labels>
+    <labels>
+        <fullName>DeleteRecordConfirmation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DeleteRecordConfirmation</shortDescription>
+        <value>Are you sure you want to delete this Record?</value>
     </labels>
     <labels>
         <fullName>Destination</fullName>
@@ -450,6 +491,13 @@
         <protected>false</protected>
         <shortDescription>EF.COM</shortDescription>
         <value>Ef.com</value>
+    </labels>
+    <labels>
+        <fullName>Edit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
     </labels>
     <labels>
         <fullName>EditAccessLevel</fullName>
@@ -632,6 +680,13 @@
         <protected>false</protected>
         <shortDescription>InfoMeeting</shortDescription>
         <value>IM</value>
+    </labels>
+    <labels>
+        <fullName>IsActive</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IsActive</shortDescription>
+        <value>Is Active?</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -1005,7 +1060,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageFollowup</shortDescription>
-        <value>FollowUp</value>
+        <value>Follow Up</value>
     </labels>
     <labels>
         <fullName>LeadStageTBC</fullName>
@@ -1013,7 +1068,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageTBC</shortDescription>
-        <value>TBC</value>
+        <value>To Contact</value>
     </labels>
     <labels>
         <fullName>LeadStageWon</fullName>
@@ -1136,6 +1191,13 @@
         <value>Nick Name</value>
     </labels>
     <labels>
+        <fullName>No</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
         <fullName>NoActiveOpportunity</fullName>
         <categories>QTB</categories>
         <language>en_US</language>
@@ -1159,12 +1221,26 @@
         <value>InActive</value>
     </labels>
     <labels>
-       <fullName>OpportunityBookingStage</fullName>
+        <fullName>Opportunities</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunities</shortDescription>
+        <value>Opportunities</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityBookingStage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>OpportunityBookingStage</shortDescription>
         <value>Booking</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityName</shortDescription>
+        <value>Opportunity Name</value>
     </labels>
     <labels>
         <fullName>OpportunityStageFollowUp</fullName>
@@ -1460,6 +1536,13 @@
         <value>System Administrator</value>
     </labels>
     <labels>
+        <fullName>Program</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Program</shortDescription>
+        <value>Program</value>
+    </labels>
+    <labels>
         <fullName>ProgramLT</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1492,6 +1575,13 @@
         <value>Quantity</value>
     </labels>
     <labels>
+        <fullName>Rank</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank</shortDescription>
+        <value>Rank</value>
+    </labels>
+    <labels>
         <fullName>ReachedAction</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -1504,6 +1594,13 @@
         <protected>false</protected>
         <shortDescription>Reached Rate</shortDescription>
         <value>Reached Rate</value>
+    </labels>
+    <labels>
+        <fullName>RecordDeletedSuccessfully</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RecordDeletedSuccessfully</shortDescription>
+        <value>Record was deleted successfully</value>
     </labels>
     <labels>
         <fullName>Reservation</fullName>
@@ -1604,6 +1701,13 @@
         <protected>false</protected>
         <shortDescription>Social Media Sent Sales action on Log a Call Component</shortDescription>
         <value>Social Media Sent</value>
+    </labels>
+    <labels>
+        <fullName>Stage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stage</shortDescription>
+        <value>Stage</value>
     </labels>
     <labels>
         <fullName>StartDate_label_for_cart_page</fullName>
