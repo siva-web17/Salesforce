@@ -300,7 +300,7 @@
                         actionDateTime: component.get("v.selectedActionDate") === LAC_Select ? "" : new Date(component.get("v.selectedActionDate")).toISOString(),
                         closeReason: component.get("v.selectedCloseReason") === LAC_Select ? "" : component.get("v.selectedCloseReason"),
                         recordId: component.get("v.recordId"),
-                        comments: component.get("v.commentsValue") === ('' || null) ? "" : component.get("v.commentsValue"),
+                        comments: component.get("v.commentsValue"),
                         program: component.get("v.changedProgram") === LAC_Select ? "" : component.get("v.changedProgram"),
                         visitDatetime: component.get("v.selectedVisitDate") === LAC_Select ? "" : new Date(component.get("v.selectedVisitDate")).toISOString(),
                         likelihoodToBook: component.get("v.selectedLikelihoodToBook"),
