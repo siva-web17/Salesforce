@@ -380,6 +380,13 @@
         <value>Currency</value>
     </labels>
     <labels>
+        <fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
+        <value>CustomerRequest</value>
+    </labels>
+    <labels>
         <fullName>CustomerRequestType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -682,6 +689,14 @@
         <value>IM</value>
     </labels>
     <labels>
+        <fullName>IntegrationstatusSentToPoseidon</fullName>
+        <categories>Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IntegrationstatusSentToPoseidon</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
         <fullName>IsActive</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -737,7 +752,7 @@
         <value>Close Reason</value>
     </labels>
     <labels>
-     <fullName>LAC_Call_Not_Reached</fullName>
+        <fullName>LAC_Call_Not_Reached</fullName>
         <categories>LAC</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -792,7 +807,7 @@
         <value>Comments</value>
     </labels>
     <labels>
-     <fullName>LAC_Convert</fullName>
+        <fullName>LAC_Convert</fullName>
         <categories>Convert</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -801,11 +816,11 @@
     </labels>
     <labels>
         <fullName>LAC_Convert_C</fullName>
-        <categories>LAC</categories>
+        <categories>Convert and Close</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LAC_Convert_C</shortDescription>
-         <value>Convert and Back</value>
+        <value>Convert and Close</value>
     </labels>
     <labels>
         <fullName>LAC_DATA_SUCCESS</fullName>
@@ -832,7 +847,7 @@
         <value>Duration</value>
     </labels>
     <labels>
-    <fullName>LAC_ERROR_PAST_MSG</fullName>
+        <fullName>LAC_ERROR_PAST_MSG</fullName>
         <categories>Past date cannot be selected</categories>
         <language>en_US</language>
         <protected>false</protected>
@@ -909,7 +924,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>SAC</shortDescription>
-         <value>Save and Back</value>
+        <value>Save and close</value>
     </labels>
     <labels>
         <fullName>LAC_SACO</fullName>
@@ -932,7 +947,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>select</shortDescription>
-         <value>Select</value>
+        <value>Select</value>
     </labels>
     <labels>
         <fullName>LAC_Sent_Email</fullName>
@@ -1021,6 +1036,14 @@
         <protected>false</protected>
         <shortDescription>loading</shortDescription>
         <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>LTCourseProgram</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LTCourseProgram</shortDescription>
+        <value>Select LT Course</value>
     </labels>
     <labels>
         <fullName>Last_Name</fullName>
@@ -1206,6 +1229,14 @@
         <value>Please create an opportunity before sending Customer info to Poseidon</value>
     </labels>
     <labels>
+        <fullName>OfficeVisit</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OfficeVisit</shortDescription>
+        <value>Office Visit</value>
+    </labels>
+    <labels>
         <fullName>OppStageClosedLost</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -1382,7 +1413,14 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Personal ID</shortDescription>
-        <value>National ID</value>
+        <value>Personal ID</value>
+    </labels>
+    <labels>
+        <fullName>PleaseSelect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used for Default value in picklist values</shortDescription>
+        <value>Please Select</value>
     </labels>
     <labels>
         <fullName>Price</fullName>
@@ -1430,6 +1468,14 @@
         <protected>false</protected>
         <shortDescription>Product Code OSHC</shortDescription>
         <value>OSHC</value>
+    </labels>
+    <labels>
+        <fullName>ProductCodeOSHCAY</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Code OSHCAY</shortDescription>
+        <value>OSHCAY</value>
     </labels>
     <labels>
         <fullName>ProductCountryUK</fullName>
@@ -1575,6 +1621,20 @@
         <value>Quantity</value>
     </labels>
     <labels>
+        <fullName>QuoteProposalStatusesToDelete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
+        <value>Draft</value>
+    </labels>
+    <labels>
+        <fullName>Quote_Summary</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Summary</shortDescription>
+        <value>Quote Summary</value>
+    </labels>
+    <labels>
         <fullName>Rank</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -1611,12 +1671,35 @@
         <value>RES</value>
     </labels>
     <labels>
+        <fullName>Review_message_before_proceeding_to_next_step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review message before proceeding to next step</shortDescription>
+        <value>* Please review your quote before proceedings to next step</value>
+    </labels>
+    <labels>
         <fullName>SBRTask</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>SBRTask</shortDescription>
         <value>SBRTask</value>
+    </labels>
+    <labels>
+        <fullName>SPQTask</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SPQTask</shortDescription>
+        <value>SPQ Task</value>
+    </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
     </labels>
     <labels>
         <fullName>SalesClosed</fullName>
@@ -1640,6 +1723,13 @@
         <protected>false</protected>
         <shortDescription>Sales Office</shortDescription>
         <value>Sales Office</value>
+    </labels>
+    <labels>
+        <fullName>SaveFailed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>When the record is failed to save in Lightning component.</shortDescription>
+        <value>Unable to save</value>
     </labels>
     <labels>
         <fullName>Search</fullName>
@@ -1678,22 +1768,6 @@
         <protected>false</protected>
         <shortDescription>Social Media Reached Sales action on Log a Call Component</shortDescription>
         <value>Social Media Reached</value>
-    </labels>
-	<labels>
-        <fullName>bookingsummaryPersonalDetails</fullName>
-        <categories>Apttus</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Personal Details</shortDescription>
-        <value>Personal Details</value>
-    </labels>
-	<labels>
-        <fullName>bookingSummaryFinish_Booking</fullName>
-        <categories>Apttus</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Finish Booking</shortDescription>
-        <value>Finish Booking</value>
     </labels>
     <labels>
         <fullName>SocialMediaSent</fullName>
@@ -1797,6 +1871,76 @@
         <value>SystemCallTask</value>
     </labels>
     <labels>
+        <fullName>SystemOwnerUserId_0</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner0</shortDescription>
+        <value>0055E000002fWyEQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner1</shortDescription>
+        <value>0055E000002fWyJQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner2</shortDescription>
+        <value>0055E000002fWyYQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner3</shortDescription>
+        <value>0055E000002fWyEQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner4</shortDescription>
+        <value>0055E000002fWyJQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_5</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner5</shortDescription>
+        <value>0055E000002fWyYQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_6</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner6</shortDescription>
+        <value>0055E000002fWyEQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_7</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner7</shortDescription>
+        <value>0055E000002fWyJQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_8</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner8</shortDescription>
+        <value>0055E000002fWyYQAU</value>
+    </labels>
+    <labels>
+        <fullName>SystemOwnerUserId_9</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stores Id of user SystemOwner9</shortDescription>
+        <value>0055E000002fWyEQAU</value>
+    </labels>
+    <labels>
         <fullName>SystemTaskDefaultSubject</fullName>
         <categories>Custom Development</categories>
         <language>en_US</language>
@@ -1810,6 +1954,14 @@
         <protected>false</protected>
         <shortDescription>TBC</shortDescription>
         <value>TBC</value>
+    </labels>
+    <labels>
+        <fullName>TemplateBuilderCongaQueryId</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
+        <value>a5J6E0000000CikUAE</value>
     </labels>
     <labels>
         <fullName>TestDependentPicklistValues</fullName>
@@ -1863,30 +2015,22 @@
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
     </labels>
-
-   <labels>
-        <fullName>QuoteProposalStatusesToDelete</fullName>
+    <labels>
+        <fullName>Yes</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
-        <value>Draft</value>
+        <shortDescription>Yes</shortDescription>
+        <value>Yes</value>
     </labels>
     <labels>
-
-        <fullName>ProductCodeOSHCAY</fullName>
-
-       <categories>Apttus</categories>
-
-      <language>en_US</language>
-
-      <protected>false</protected>
-
-    <shortDescription>Product Code OSHCAY</shortDescription>
-
-        <value>OSHCAY</value>
+        <fullName>bookingSummaryFinish_Booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Finish Booking</shortDescription>
+        <value>Finish Booking</value>
     </labels>
->
-	<labels>
+    <labels>
         <fullName>bookingSummarySuccess</fullName>
         <categories>BookingSummary</categories>
         <language>en_US</language>
@@ -1895,59 +2039,11 @@
         <value>You're done! Poseidon will create a booking and you will be notified as soon as it's done</value>
     </labels>
     <labels>
-        <fullName>CreationMethodEnteredByUser</fullName>
-        <categories>DEV</categories>
+        <fullName>bookingsummaryPersonalDetails</fullName>
+        <categories>Apttus</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>CreationMethodEnteredByUser</shortDescription>
-        <value>Enteredbyuser</value>
+        <shortDescription>Personal Details</shortDescription>
+        <value>Personal Details</value>
     </labels>
-    <labels>
-        <fullName>OfficeVisit</fullName>
-        <categories>DEV</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>OfficeVisit</shortDescription>
-        <value>Office Visit</value>
-    </labels>
-    <labels>
-        <fullName>SPQTask</fullName>
-        <categories>DEV</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>SPQTask</shortDescription>
-        <value>SPQ Task</value>
-    </labels>
-    <labels>
-        <fullName>TemplateBuilderCongaQueryId</fullName>
-        <categories>DEV</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
-        <value>a5J6E0000000CikUAE</value>
-    </labels>
-    <labels>
-        <fullName>STP_Booking</fullName>
-        <categories>QTB</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Status value for sent to Poseidon</shortDescription>
-        <value>STP</value>
-    </labels>
-     <labels>
-        <fullName>MandatoryFields</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>MandatoryFields</shortDescription>
-        <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
-		 </labels>
-            <labels>
-        <fullName>SendToPoseidon</fullName>
-        <categories>PQ</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>SendToPoseidon</shortDescription>
-        <value>Send to Poseidon</value>
-    </labels>
- 
 </CustomLabels>

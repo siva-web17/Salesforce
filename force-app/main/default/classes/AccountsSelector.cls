@@ -23,15 +23,22 @@ public class AccountsSelector {
                 limit 1
         ];
     }
-    
 
-   public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds){
-       return [SELECT Id, PersonContactId,
-                (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
+    public static List<Account> getAccountsWithOpportunitiesByIds(Set<Id> accountIds){
+        return [SELECT Id, PersonContactId,
+                    (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
                 FROM Account
-                WHERE PersonContactId IN :contactIds
-       ];
-   }
+                WHERE Id = :accountIds];
+    }
+
+    public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds){
+        return [SELECT Id, PersonContactId,
+        (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
+        FROM Account
+        WHERE PersonContactId IN :contactIds
+        ];
+    }
+
     public static map<Id,Account> getAccountDetailsbasedonAccountId(Set<Id> accountIdSet)
     {
         List<Account> accList=new List<Account>();
