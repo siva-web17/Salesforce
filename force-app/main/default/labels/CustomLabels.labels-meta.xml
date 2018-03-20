@@ -1941,7 +1941,7 @@
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
 		 </labels>
-            <labels>
+    <labels>
         <fullName>SendToPoseidon</fullName>
         <categories>PQ</categories>
         <language>en_US</language>
@@ -1949,5 +1949,20 @@
         <shortDescription>SendToPoseidon</shortDescription>
         <value>Send to Poseidon</value>
     </labels>
- 
+    <labels>
+        <fullName>EmailPriceQuote</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email:PriceQuote</shortDescription>
+        <value>Email: Price Quote</value>
+    </labels>
+    <labels>
+        <fullName>TaskStatusCompleted</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TaskStatusCompleted</shortDescription>
+        <value>Completed</value>
+    </labels>
 </CustomLabels>
