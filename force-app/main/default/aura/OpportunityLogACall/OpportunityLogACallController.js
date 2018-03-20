@@ -256,7 +256,6 @@
         var validatedBtn = event.currentTarget.dataset.save;
         var loaderComp = component.find("loaderComp");
         $A.util.addClass(loaderComp, "customLoaderTrue");
-        var comments = component.find("comments").get("v.value");
         var required = component.find("required").reduce(function(validSoFar, inputCmp) {
             inputCmp.showHelpMessageIfInvalid();
             return validSoFar && !inputCmp.get("v.validity").valueMissing && !inputCmp.get("v.validity").patternMismatch && !inputCmp.get("v.validity").typeMismatch;
@@ -301,7 +300,7 @@
                         actionDateTime: component.get("v.selectedActionDate") === LAC_Select ? "" : new Date(component.get("v.selectedActionDate")).toISOString(),
                         closeReason: component.get("v.selectedCloseReason") === LAC_Select ? "" : component.get("v.selectedCloseReason"),
                         recordId: component.get("v.recordId"),
-                        comments: comments,
+                        comments: component.get("v.commentsValue") === ('' || null) ? "" : component.get("v.commentsValue"),
                         program: component.get("v.changedProgram") === LAC_Select ? "" : component.get("v.changedProgram"),
                         visitDatetime: component.get("v.selectedVisitDate") === LAC_Select ? "" : new Date(component.get("v.selectedVisitDate")).toISOString(),
                         likelihoodToBook: component.get("v.selectedLikelihoodToBook"),
