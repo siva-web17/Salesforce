@@ -73,6 +73,8 @@
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
             <controllingFieldValue>Social Media Reached</controllingFieldValue>
+            <controllingFieldValue>Sent Email</controllingFieldValue>
+            <controllingFieldValue>Social Media Sent</controllingFieldValue>
             <valueName>Close</valueName>
         </valueSettings>
         <valueSettings>

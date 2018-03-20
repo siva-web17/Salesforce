@@ -10,18 +10,18 @@ Modification Log   :
  * Suresh S                  06/09/2017              Original Version
  *************************************************************************************/
 public class PublicGroupsSelector {
-    
+     
     //For getting details of public groups.
     public static Map<String, Id> getRegularPublicGroupsByName(List<String> groupNameList){
         List<Group> publicGroupList = new List<Group>();
-        publicGroupList = [Select Id, Name
+        publicGroupList = [Select Id, Name, DeveloperName
                            from Group
                            where type = 'Regular'
-                           and name in :groupNameList];
+                           and DeveloperName in :groupNameList];
 
         Map<String,ID> publicGroupMap= new Map<String,ID>();
         for(Group grp:publicGroupList){
-            publicGroupMap.put(grp.name,grp.ID);
+            publicGroupMap.put(grp.DeveloperName,grp.ID);
         }
         return publicGroupMap;
     }

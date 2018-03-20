@@ -12,9 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Generated</fullName>
+                <fullName>Printed</fullName>
                 <default>false</default>
-                <label>Generated</label>
+                <label>Printed</label>
+            </value>
+            <value>
+                <fullName>Emailed</fullName>
+                <default>false</default>
+                <label>Emailed</label>
             </value>
         </valueSetDefinition>
     </valueSet>

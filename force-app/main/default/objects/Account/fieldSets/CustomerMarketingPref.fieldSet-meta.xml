@@ -38,6 +38,11 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>IsProtectedIdentity__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>DoNotSMS__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
