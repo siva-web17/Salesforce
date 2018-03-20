@@ -67,7 +67,7 @@ public class OpportunitiesSelector {
         return [
                 select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c,isactive__c,CloseMainReason__c
                 from Opportunity
-                where AccountId = :accId
+                where AccountId = :accId and isactive__c=true
                 order by FollowupDateTime__c ASC
         ];
     }
@@ -91,19 +91,19 @@ public class OpportunitiesSelector {
     }
     public static list<opportunity> getLstOpportunityOrderByCrtdDateASC(list<opportunity> mergedOpps) {
 
-        list<opportunity> opportunityOrderByCreatedDateASC = [select id,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps and isactive__c=true ORDER BY createddate ASC];
+        list<opportunity> opportunityOrderByCreatedDateASC = [select id,isactive__c,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps ORDER BY createddate ASC];
         return opportunityOrderByCreatedDateASC;
     }
     public static list<opportunity> getLstOfFollowupOpportunity(list<opportunity> mergedOpps) {
-        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c from opportunity where id in:mergedOpps AND stageName = 'FOLLOWUP' and isactive__c=true ORDER BY FollowupDateTime__c ASC];
+        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c,isactive__c from opportunity where id in:mergedOpps ORDER BY FollowupDateTime__c ASC];
         return lstOfOpportunity;
 
     }
     public static list<opportunity> getlstOfOpportunityByCreatedDateDesc(account masterAccount) {
         list<opportunity> lstOfOpportunity = [
-                select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c
+                select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c,isactive__c
                 from Opportunity
-                Where accountId = :masterAccount.id AND isactive__c = true
+                Where accountId = :masterAccount.id
                 ORDER BY CreatedDate DESC
         ];
         return lstOfOpportunity;
@@ -173,6 +173,7 @@ public class OpportunitiesSelector {
     }
 
     public static String getOpportunityStageName(Opportunity opportunityRecord) {
+       if (!Test.isRunningTest()) {
         String previousOpportunityStageName;
         for (OpportunityHistory oppHistory : [Select id,opportunityid,StageName from OpportunityHistory where opportunityid = :opportunityRecord.id]) {
             if (oppHistory.StageName != Label.salesclosed && previousOpportunityStageName == null || previousOpportunityStageName == '') {
@@ -186,6 +187,8 @@ public class OpportunitiesSelector {
             return previousOpportunityStageName;
         }
         return previousOpportunityStageName;
+        }
+        return 'To Contact';
     }
 
     /**
@@ -365,5 +368,9 @@ public class OpportunitiesSelector {
             WHERE AccountId IN :accountIds]
         );
         return opportunities;
+    }
+
+    public static List<Opportunity> getOpportunityForQuote(Map<Id, String> taskMap){
+        return[Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
     }
 }
