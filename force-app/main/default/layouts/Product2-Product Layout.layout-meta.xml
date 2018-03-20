@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>Apttus_Config2__ProductConsole</customButtons>
+   
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -16,22 +16,7 @@
                 <behavior>Edit</behavior>
                 <field>ProductCode</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__HasOptions__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__HasAttributes__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__Customizable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__ProductType__c</field>
-            </layoutItems>
+            
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>CurrencyIsoCode</field>
@@ -46,26 +31,12 @@
                 <behavior>Edit</behavior>
                 <field>Family</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__ConfigurationType__c</field>
-            </layoutItems>
+
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IsActive</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Apttus_Config2__Icon__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__IconId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apttus_Config2__Uom__c</field>
-            </layoutItems>
+
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -75,41 +46,9 @@
         <editHeading>true</editHeading>
         <label>Custom Fields</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ProductSubtype__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>QunatityModifiable__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apts_CoursePricing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Apts_TI_Pricing__c</field>
-            </layoutItems>
+
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>EnableStartDateEndDate__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>APTS_PriceOverrideAllowed__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>APTS_Is_Optional__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>APTS_Destination_Location__c</field>
-            </layoutItems>
-        </layoutColumns>
+
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -149,28 +88,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Apttus_Config2__Active__c</fields>
-        <fields>Apttus_Config2__ListPrice__c</fields>
-        <fields>Apttus_Config2__PriceListId__c</fields>
-        <relatedList>Apttus_Config2__PriceListItem__c.Apttus_Config2__ProductId__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Apttus_Config2__ClassificationId__c</fields>
-        <relatedList>Apttus_Config2__ProductClassification__c.Apttus_Config2__ProductId__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Apttus_Config2__OptionGroupId__c</fields>
-        <relatedList>Apttus_Config2__ProductOptionGroup__c.Apttus_Config2__ProductId__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Apttus_Config2__ProductGroupId__c</fields>
-        <relatedList>Apttus_Config2__ProductGroupMember__c.Apttus_Config2__ProductId__c</relatedList>
-    </relatedLists>
+
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>true</showInteractionLogPanel>

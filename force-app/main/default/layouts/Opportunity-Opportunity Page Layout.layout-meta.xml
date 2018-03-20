@@ -152,11 +152,7 @@
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Apttus_Proposal__CreateQuoteProposalFromOpportunity</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
+
     </platformActionList>
     <relatedContent>
         <relatedContentItems>
@@ -193,17 +189,7 @@
         <fields>Status__c</fields>
         <relatedList>Booking__c.OpportunityId__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Program__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>Apttus_Proposal__Valid_Until_Date__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>Apttus_Proposal__Approval_Stage__c</fields>
-        <fields>Reprint__c</fields>
-        <fields>CustomConfigureProducts__c</fields>
-        <relatedList>Apttus_Proposal__Proposal__c.Apttus_Proposal__Opportunity__c</relatedList>
-    </relatedLists>
+    
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
         <fields>Program__c</fields>

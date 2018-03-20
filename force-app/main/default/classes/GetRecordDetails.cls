@@ -6,9 +6,7 @@ public with sharing class GetRecordDetails {
         /*Opportunity ObjOpportunityDetails=[SELECT OwnerId, Id, Owner.name FROM Opportunity where id=:Id];
         return JSON.serialize(ObjOpportunityDetails);*/
         return userinfo.getName();
-//        Apttus_Proposal__Proposal__c ObjQuoteDetails=[SELECT Id,SalesMadeby__c, SalesMadeby__r.Name,LastModifiedBy.Name FROM Apttus_Proposal__Proposal__c where id=:Id];
-//        system.debug('Quote is :'+ObjQuoteDetails);
-//        return JSON.serialize(ObjQuoteDetails);
+
     }
 
     @AuraEnabled
@@ -28,27 +26,6 @@ public with sharing class GetRecordDetails {
                 update leadRecord;
             }
             
-            else if(ObjectName=='Apttus_Proposal__Proposal__c')
-            {
-                 sQuery =  'select id, Name,SalesMadeby__c,SalesMadeby__r.Name  from '+ObjectName+'  where id =:RecordId';
-                Apttus_Proposal__Proposal__c quoteRecord = Database.query(sQuery);
-                system.debug('before update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
-                quoteRecord.SalesMadeby__c=UserId;
-                system.debug('After update SalesMadeby__c is :'+quoteRecord.SalesMadeby__c);
-                quoteRecord.OwnerId=UserId;
-                system.debug('After update OwnerId is :'+quoteRecord.OwnerId);
-                update quoteRecord;
-
-            }
-            
-            /*else if(ObjectName=='Opportunity')
-            {
-                opportunity oppRecord = Database.query(sQuery);
-                system.debug('before update ownerId is :'+oppRecord.OwnerId);
-                oppRecord.OwnerId=UserId;
-                update oppRecord;
-            }*/
-
             return updatestatus='' ;
 
         }

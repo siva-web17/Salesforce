@@ -86,10 +86,7 @@
                 <behavior>Readonly</behavior>
                 <field>MainSalesResponsible__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>QuoteId__c</field>
-            </layoutItems>
+
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

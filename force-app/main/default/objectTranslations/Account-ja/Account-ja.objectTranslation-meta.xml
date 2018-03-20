@@ -8,10 +8,6 @@
         <layout>Person Account Layout</layout>
         <layoutType>PersonAccount</layoutType>
         <sections>
-            <label><!-- Contact Details --></label>
-            <section>Contact Details</section>
-        </sections>
-        <sections>
             <label><!-- New Section --></label>
             <section>New Section</section>
         </sections>

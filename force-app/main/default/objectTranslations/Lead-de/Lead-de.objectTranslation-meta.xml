@@ -60,10 +60,6 @@
             <section>Lead Details</section>
         </sections>
         <sections>
-            <label><!-- Mailing Preferences --></label>
-            <section>Mailing Preferences</section>
-        </sections>
-        <sections>
             <label><!-- Personal Details --></label>
             <section>Personal Details</section>
         </sections>
