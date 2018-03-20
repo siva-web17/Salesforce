@@ -46,6 +46,7 @@
     <aura:attribute name="displayOtherPhone" type="String" />
     <aura:attribute name="selectedDisplayNumber" type="List" />
     <aura:attribute name="doNotCall" type="Boolean" />
+    <aura:attribute name="commentsValue" type="String" default='' />
     <lightning:overlayLibrary aura:id="overlayLib" />
     <div class="slds">
         <div class="slds-panel slds-border_bottom slds-border_top slds-border_left slds-border_right" style="position: relative;">
@@ -256,7 +257,7 @@
                             </div>
                         </aura:if>
                         <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                            <lightning:textarea aura:id="comments" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit commentsArea" maxlength="9985" label="{!$Label.c.LAC_Comments}" placeholder="{!$Label.c.LAC_Cmd_TXT}" />
+                            <lightning:textarea aura:id="required" value="{!v.commentsValue}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit commentsArea" maxlength="9985" label="{!$Label.c.LAC_Comments}" placeholder="{!$Label.c.LAC_Cmd_TXT}" />
                         </div>
                         <div class="slds-p-horizontal_x_small slds-size_1-of-2">
                             <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != $Label.c.LAC_Select?false:true) )}"
@@ -302,7 +303,7 @@
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <lightning:input onblur="{!c.pastDateValidation}"  aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
+                                <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
                                     disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
                             </div>
                         </aura:if>

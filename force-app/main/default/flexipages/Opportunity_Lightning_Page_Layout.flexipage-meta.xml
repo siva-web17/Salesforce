@@ -31,6 +31,24 @@
             </visibilityRule>
         </componentInstances>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>This Person Account is marked as Protected&amp;nbsp;Identity.&amp;nbsp;&lt;font color="#FF0000">&lt;b>Do not share contact details.&lt;/b>&lt;/font></value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.IsProtectedIdentity__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>true</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
             <componentName>force:relatedListQuickLinksContainer</componentName>
         </componentInstances>
         <name>header</name>
