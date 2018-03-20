@@ -134,13 +134,7 @@ public class CreateBookingController {
         @AuraEnabled
         public Map<String,String> PassportPickList{get;set;}
         @AuraEnabled
-        public Map<String,String> BookingChannelPickList{get;set;}
-        @AuraEnabled
-        public Map<String,String> BookingTypePickList{get;set;}
-        @AuraEnabled
         public Map<String,String> SalesOfficePickList{get;set;}
-        @AuraEnabled
-        public Map<String,String> CurrencyPickList{get;set;}
         @AuraEnabled
         public Map<String,String> BirthCountryPickList{get;set;}
 

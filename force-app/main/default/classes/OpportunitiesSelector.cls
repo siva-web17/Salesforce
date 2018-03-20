@@ -26,7 +26,7 @@ public class OpportunitiesSelector {
     }
 
     /*
-    * @param Set<String> oppIds 
+    * @param Set<String> oppIds
     * @return Returns list of opportunities based on the oppIds
     * */
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
@@ -35,7 +35,7 @@ public class OpportunitiesSelector {
         {
             opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
-                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c 
+                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c,Mobile__c,Account.DoNotCall__c
                                FROM Opportunity
                               WHERE Id IN :oppIds];
         }
@@ -43,12 +43,12 @@ public class OpportunitiesSelector {
     }
 
     /*
-    * @param Set<String> oppNames 
+    * @param Set<String> oppNames
     * @return Returns list of opportunities based on the Name
     * */
     public static List<Opportunity> getOpportunitiesOnName(Set<String> oppNames) {
         return [
-                SELECT id, 
+                SELECT id,
                        Name
                   FROM Opportunity
                  WHERE Name = :oppNames
@@ -343,5 +343,27 @@ public class OpportunitiesSelector {
             opportunityMap = new Map<Id, Opportunity>([select Id, SalesOffice__c from Opportunity where Id in :opportunityIds]);
         }
         return opportunityMap;
+    }
+
+    /**
+    * @author Adam Osiecki
+    * ver 1.0 12-Mar-2018
+    * @description Returns List of Opportunities for selected Account
+    *
+    * @param accountId account Id to select
+    *
+    * @return List<Id,Opportunity>
+    */
+
+    public static List<Opportunity> getOpportunitiesByAccountId(Set<Id> accountIds){
+
+        List<Opportunity> opportunities = new List<Opportunity>(
+        [
+            SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
+                    CloseDate
+            FROM Opportunity
+            WHERE AccountId IN :accountIds]
+        );
+        return opportunities;
     }
 }

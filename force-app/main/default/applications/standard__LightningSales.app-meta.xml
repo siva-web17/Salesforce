@@ -42,9 +42,10 @@
     <tabs>Booking__c</tabs>
     <tabs>dcBatch</tabs>
     <tabs>standard-Dashboard</tabs>
-  
     <tabs>APXTConga4__Conga_Template__c</tabs>
     <tabs>TemplateSetting__c</tabs>
     <tabs>standard-Event</tabs>
+    <tabs>Source__c</tabs>
+    <tabs>standard-Lead</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

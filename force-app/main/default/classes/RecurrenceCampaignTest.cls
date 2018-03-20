@@ -8,8 +8,21 @@ private class RecurrenceCampaignTest {
     static testmethod void getRecurrenceForCampaignTest() {
         Test.startTest();
         system.runAs(TestDataFactory.createAdminUser(true)) {
-            Campaign parentCampaign = TestDataFactory.createNewCampaign();
-            insert parentCampaign;
+
+            Map<String,String> campaignValues = new Map<String,String>{
+
+                    'Market__c'=>'DEB',
+                    'Program__c'=>'AY',
+                    'Salesoffice__c'=>'DEB',
+                    'Status'=>'Active',
+                    'MeetingType__c'=>'ONM',
+                    'MeetingCity__c'=>'Berlin',
+                    'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(5)),
+                    'DateTo__c'=>String.valueOf(DateTime.now().addminutes(20))
+            };
+
+            Campaign campaignRecord= TestDataFactory.createCampaign('test Campaign',campaignValues,TRUE);
+
             datetime date1 = date.Today();
             List<String> allDates=new List<String>();
             for(integer i=1;i<5;i++){
@@ -18,7 +31,7 @@ private class RecurrenceCampaignTest {
                 allDates.add(myDate);
             }
             integer numberOfRecurrenceExpected = allDates.size();
-            integer numberOfRecCreated = RecurrenceCampaignController.getRecurrenceDetails(allDates, parentCampaign.id);
+            integer numberOfRecCreated = RecurrenceCampaignController.getRecurrenceDetails(allDates, campaignRecord.id);
             System.assertEquals(numberOfRecurrenceExpected, numberOfRecCreated);
         }
         Test.stopTest();
@@ -27,8 +40,20 @@ private class RecurrenceCampaignTest {
     static testmethod void getRecurrenceForCampaignWithDupeTest() {
         Test.startTest();
         system.runAs(TestDataFactory.createAdminUser(true)) {
-            campaign parentCampaign = TestDataFactory.createNewCampaign();
-            insert parentCampaign;
+            Map<String,String> campaignValues = new Map<String,String>{
+
+                    'Market__c'=>'DEB',
+                    'Program__c'=>'AY',
+                    'Salesoffice__c'=>'DEB',
+                    'Status'=>'Active',
+                    'MeetingType__c'=>'ONM',
+                    'MeetingCity__c'=>'Berlin',
+                    'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(5)),
+                    'DateTo__c'=>String.valueOf(DateTime.now().addminutes(20))
+            };
+
+            Campaign campaignRecord= TestDataFactory.createCampaign('test Campaign',campaignValues,TRUE);
+
             datetime date1 = date.Today();
             List<String> allDates = new List<String>();
             for(integer i = 0; i < 5; i++) {
@@ -37,7 +62,7 @@ private class RecurrenceCampaignTest {
                 allDates.add(myDate);
             }
             integer numberOfRecurrenceExpected = allDates.size();
-            integer numberOfRecCreated = RecurrenceCampaignController.getRecurrenceDetails(allDates, parentCampaign.id);
+            integer numberOfRecCreated = RecurrenceCampaignController.getRecurrenceDetails(allDates, campaignRecord.id);
             System.assertEquals(numberOfRecurrenceExpected - 1, numberOfRecCreated );
         }
         Test.stopTest();

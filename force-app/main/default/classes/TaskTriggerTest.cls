@@ -390,4 +390,184 @@ private class TaskTriggerTest {
         }
     }
 
+    static testMethod void testConvertActivitiesToTask(){
+        List<Event> eventRecords = Test.loadData(Event.sObjectType, 'FileEventRecords');
+        system.debug('eventRecords>>>'+eventRecords);
+        List<Event> eventlist = new List<Event>();
+        List<Account> accountList = new List<Account>();
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Account.SobjectType).get('PersonAccount').Id;
+
+        Map<String, String> personAccountFieldValues = new Map<String, String>{
+            'Market__c' => 'DEB'
+        };
+        Account accountRecord = TestDataFactory.createPersonAccount('TestAccountFirstName', 'TestAccountFirstName', recordTypeId, personAccountFieldValues, TRUE);
+
+        string dateValue = string.valueof(System.today().addDays(3));
+        Map<String, String> opportunityFieldValues = new Map<String, String>{
+                'Market__c' => 'DEB',
+                'SalesOffice__c' =>'DEB',
+                'Program__c' => 'AY',
+                'StageName' => System.Label.LeadStageWon,
+                'Closedate' => dateValue,
+                'TimeOutDate__c'=> dateValue
+
+        };
+        Opportunity newOpportunityPersonAccount = TestDataFactory.createOpportunityForAccount(accountRecord.id, 'testOpportunityName', opportunityFieldValues, True);
+        system.debug('newOpportunityPersonAccount>>>'+newOpportunityPersonAccount);
+
+        for(Event evtRecord: eventRecords){
+            evtRecord.whatId=newOpportunityPersonAccount.id;
+            eventlist.add(evtRecord);
+        }
+        update eventlist;
+
+
+    }
+
+    static testMethod void testConvertActivitiesToTaskOppStageBooking(){
+        Map<String,TaskSetting__mdt> TaskSettingMap=MetaDataSelector.getTaskSettingMetada();
+        List<Event> eventRecords = Test.loadData(Event.sObjectType, 'FileEventRecords');
+        system.debug('eventRecords>>>'+eventRecords);
+        List<Event> eventlist = new List<Event>();
+        List<Account> accountList = new List<Account>();
+
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Account.SobjectType).get('PersonAccount').Id;
+        Boolean input =TRUE;
+        Map<String, String> personAccountFieldValues = new Map<String, String>{
+                'Market__c' => 'DEB',
+                'PersonMailingStreet'=>'Ulsoor',
+                'PersonMailingCity'=>'Bang',
+                'PersonMailingCountry'=>'Germany',
+                'PersonHomePhone'=>'7965415341',
+                'PersonEmail'=>'test@rg.com'
+        };
+        Account accountRecord = TestDataFactory.createPersonAccount('testname', 'TestAccountName', recordTypeId, personAccountFieldValues, TRUE);
+        accountRecord=[select id,hasaddress__c, personmailingstreet,personmailingpostalcode,HadAddressonCreation__c from account where id =: accountRecord.id];
+
+        string dateValue = string.valueof(System.today().addDays(3));
+        Map<String, String> opportunityFieldValues = new Map<String, String>{
+                'Market__c' => 'DEB',
+                'SalesOffice__c' =>'DEB',
+                'Program__c' => 'AY',
+                'StageName' => system.label.OpportunityBookingStage,
+                'Closedate' => dateValue,
+                'TimeOutDate__c'=> dateValue
+        };
+        Opportunity newOpportunityPersonAccount = TestDataFactory.createOpportunityForAccountPerson(accountRecord.id, 'testOpportunityName', opportunityFieldValues, True, True);
+        Opportunity opprec =[select id,SendBrochure__c, Account.hasaddress__c from opportunity where id =: newOpportunityPersonAccount.id];
+
+        for(Event evtRecord: eventRecords){
+            evtRecord.whatId=opprec.id;
+            eventlist.add(evtRecord);
+        }
+        update eventlist;
+        system.debug('eventlist>>>'+eventlist);
+
+        Set<Id> eventIds =  new set<Id>();
+        for(Event eventRec: eventList){
+            eventIds.add(eventRec.Id);
+        }
+
+        List<Task> taskList = [select id, Program__c,TaskSubtype,Type,IsExpressCall__c, whatId from task where EventId__c in :eventIds];
+
+        Event imEvent = new Event();
+        imEvent.WhatID = opprec.Id;
+        imEvent.DurationInMinutes = 30;
+        imEvent.ActivityDateTime = DateTime.now();
+        imEvent.program__c='ILSP';
+        imEvent.Type = 'BR';
+        insert imEvent;
+    }
+
+    static testMethod void testConvertActivitiesToTaskSBR(){
+        Map<String,TaskSetting__mdt> TaskSettingMap=MetaDataSelector.getTaskSettingMetada();
+        List<Event> eventRecords = Test.loadData(Event.sObjectType, 'FileEventRecords');
+        system.debug('eventRecords>>>'+eventRecords);
+        List<Event> eventlist = new List<Event>();
+
+        List<Account> accountList = new List<Account>();
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Account.SobjectType).get('PersonAccount').Id;
+        Boolean input =TRUE;
+        Map<String, String> personAccountFieldValues = new Map<String, String>{
+                'Market__c' => 'DEB',
+                'PersonMailingStreet'=>'Ulsoor',
+                'PersonMailingCity'=>'Bang',
+                'PersonMailingCountry'=>'Germany',
+                'PersonHomePhone'=>'7965415341',
+                'PersonEmail'=>'test@rg.com'
+        };
+        Account accountRecord = TestDataFactory.createPersonAccount('testname', 'TestAccountName', recordTypeId, personAccountFieldValues, TRUE);
+        accountRecord=[select id,hasaddress__c, personmailingstreet,personmailingpostalcode,HadAddressonCreation__c from account where id =: accountRecord.id];
+
+
+        string dateValue = string.valueof(System.today().addDays(3));
+        Map<String, String> opportunityFieldValues = new Map<String, String>{
+                'Market__c' => 'DEB',
+                'SalesOffice__c' =>'DEB',
+                'Program__c' => 'AY',
+                'StageName' => system.label.LeadStageFollowup,
+                'Closedate' => dateValue,
+                'TimeOutDate__c'=> dateValue
+        };
+        Opportunity newOpportunityPersonAccount = TestDataFactory.createOpportunityForAccountPerson(accountRecord.id, 'testOpportunityName', opportunityFieldValues, True, True);
+        Opportunity opprec =[select id,SendBrochure__c, Account.hasaddress__c from opportunity where id =: newOpportunityPersonAccount.id];
+
+        for(Event evtRecord: eventRecords){
+            evtRecord.whatId=opprec.id;
+            eventlist.add(evtRecord);
+        }
+        update eventlist;
+
+        Set<Id> eventIds =  new set<Id>();
+        for(Event eventRec: eventList){
+            eventIds.add(eventRec.Id);
+        }
+
+
+        Event imEvent = new Event();
+        imEvent.WhatID = opprec.Id;
+        imEvent.DurationInMinutes = 30;
+        imEvent.ActivityDateTime = DateTime.now();
+        imEvent.program__c='ILSP';
+        imEvent.Type = 'BR';
+        insert imEvent;
+
+    }
+
+    static testMethod void testActivitiesToTaskonLead(){
+        Map<String,TaskSetting__mdt> TaskSettingMap=MetaDataSelector.getTaskSettingMetada();
+        List<Event> eventRecords = Test.loadData(Event.sObjectType, 'FileEventRecords');
+        system.debug('eventRecords>>>'+eventRecords);
+
+        List<Event> eventlist = new List<Event>();
+
+
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+        List<Lead> leadlist = new List<Lead>();
+        Map<String, String> leadFieldValues = new Map<String, String>{
+                'program__c' => 'AY',
+                'Market__c' => 'DEB',
+                'SalesOffice__c'=>'DEB',
+                'Email'=>'record@ef.com'
+        };
+        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
+        newLead=[select id, program__c from Lead];
+        leadlist.add(newLead);
+
+
+        for(Event evtRecord: eventRecords){
+            evtRecord.whoId=newLead.id;
+            eventlist.add(evtRecord);
+        }
+        update eventlist;
+
+        Event imEvent = new Event();
+        imEvent.WhoID = newLead.Id;
+        imEvent.DurationInMinutes = 30;
+        imEvent.ActivityDateTime = DateTime.now();
+        imEvent.program__c='ILSP';
+        imEvent.Type = 'BR';
+        insert imEvent;
+
+    }
 }
