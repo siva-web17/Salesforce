@@ -379,6 +379,13 @@
         <shortDescription>Currency</shortDescription>
         <value>Currency</value>
     </labels>
+	    <labels>
+        <fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
+        <value>CustomerRequest</value>
+    </labels>
     <labels>
         <fullName>CustomerRequestType</fullName>
         <language>en_US</language>
@@ -1060,7 +1067,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageFollowup</shortDescription>
-        <value>FollowUp</value>
+        <value>Follow Up</value>
     </labels>
     <labels>
         <fullName>LeadStageTBC</fullName>
@@ -1068,7 +1075,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LeadStageTBC</shortDescription>
-        <value>TBC</value>
+        <value>To Contact</value>
     </labels>
     <labels>
         <fullName>LeadStageWon</fullName>
@@ -1941,7 +1948,7 @@
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
 		 </labels>
-            <labels>
+    <labels>
         <fullName>SendToPoseidon</fullName>
         <categories>PQ</categories>
         <language>en_US</language>
@@ -1949,5 +1956,20 @@
         <shortDescription>SendToPoseidon</shortDescription>
         <value>Send to Poseidon</value>
     </labels>
- 
+    <labels>
+        <fullName>EmailPriceQuote</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email:PriceQuote</shortDescription>
+        <value>Email: Price Quote</value>
+    </labels>
+    <labels>
+        <fullName>TaskStatusCompleted</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TaskStatusCompleted</shortDescription>
+        <value>Completed</value>
+    </labels>
 </CustomLabels>

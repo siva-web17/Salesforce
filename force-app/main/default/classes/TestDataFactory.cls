@@ -833,6 +833,29 @@ public class TestDataFactory {
         }
     }
 
+    public class EventBuilder extends RecordBuilder{
+        public EventBuilder(){
+            super(Event.SObjectType);
+        }
+
+        override
+        public void setDefaultFieldValues(){
+            this.setField('Subject', 'Test Task - '+RecordBuilderCounter);
+            this.setField('StartDateTime', System.now().addHours(1));
+            this.setField('DurationInMinutes', 60);
+        }
+
+        public EventBuilder setWho(Id whoId){
+            this.setField('WhoId', whoId);
+            return this;
+        }
+
+        public EventBuilder setWhat(Id whatId){
+            this.setField('WhatId', whatId);
+            return this;
+        }
+    }
+
     public class TaskBuilder extends RecordBuilder{
 
         final String reachedSalesAction = 'Call reached';
