@@ -82,7 +82,6 @@ public class CreatePriceQuoteController {
                      //  this.returnvalue = this.returnvalue + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ',';
                     } else if (f.getFieldPath() != 'Email2__c' && f.getFieldPath() != 'Gender__c') {
                         this.returnvalue = (!String.isEmpty(this.returnvalue))?this.returnvalue:' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
-                        System.debug('Siva is here '+this.returnvalue);
                     }
 
                 }
