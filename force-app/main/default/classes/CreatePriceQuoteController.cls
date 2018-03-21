@@ -21,12 +21,12 @@ public class CreatePriceQuoteController {
         else if(controller.getRecord().getSObjectType()==Task.getSObjectType())
         {
             taskObj=(Task)controller.getRecord();
-            RecordId=String.ValueOf(this.oppObj.Id);
+            RecordId=String.ValueOf(this.taskObj.Id);
         }
         else
         {
             //make as null
-           //Send message to user for invalid record
+            //Send message to user for invalid record
             RecordId=null;
         }
         this.returnvalue= openPoseidonToCreateQuote();
@@ -35,11 +35,11 @@ public class CreatePriceQuoteController {
         }
     }
 
-   /* public PageReference  CompleteActionPQ()
-    {
-        openPoseidonToCreateQuote(OppId);
-        return null;
-    }*/
+    /* public PageReference  CompleteActionPQ()
+     {
+         openPoseidonToCreateQuote(OppId);
+         return null;
+     }*/
 
     public  String openPoseidonToCreateQuote()
     {
@@ -59,7 +59,10 @@ public class CreatePriceQuoteController {
                 recordIdSet.add(Id.valueOf(this.RecordId));
                 List<Task> objTaskList = TasksSelector.getSPQTasksByTaskId(recordIdSet, system.label.SPQTask);
                 if (objTaskList!=null && objTaskList.size() > 0) {
+                    recordIdSet.clear();
                     OppId = objTaskList[0].WhatId;
+                    recordIdSet.add(OppId);
+                    opportunityMap=OpportunitiesSelector.getActiveOpportunitiesforPQ(recordIdSet);
                 } else {
                     this.returnvalue = 'Price Quotes can Be created for Non Completed Tasks and Active Opportunities only!!';
                 }
@@ -69,28 +72,34 @@ public class CreatePriceQuoteController {
                 this.returnvalue = 'Invalid Record to create Price Quote!!';
             }
 
-            if (opportunityMap.containsKey(Id.valueOf(OppId))) {
+			System.debug('opportunityMap ' + opportunityMap);
+            if (opportunityMap!=null && opportunityMap.containsKey(Id.valueOf(OppId)) && String.isEmpty(this.returnvalue)) {
+
                 for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.CreatePriceQuote.getFields()) {
                     if (!String.isEmpty(String.ValueOf(opportunityMap.get(Id.valueOf(OppId)).get(f.getFieldPath())))) {
                         createPQFieldvalues.put(f.getFieldPath(),
                                 String.ValueOf(opportunityMap.get(Id.valueOf(OppId)).get(f.getFieldPath())));
-                        //this.returnvalue = this.returnvalue + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' \n';
-                    } else if (f.getFieldPath() != 'Email2__c') {
-                        this.returnvalue = (!String.isEmpty(this.returnvalue))?this.returnvalue:' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' \n';
+                     //  this.returnvalue = this.returnvalue + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ',';
+                    } else if (f.getFieldPath() != 'Email2__c' && f.getFieldPath() != 'Gender__c') {
+                        this.returnvalue = (!String.isEmpty(this.returnvalue))?this.returnvalue:' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
+                        System.debug('Siva is here '+this.returnvalue);
                     }
 
                 }
+System.debug('this.returnvalue ' + this.returnvalue);
                 if (String.isEmpty(this.returnvalue)) {
                     accountSet.add(opportunityMap.get(Id.valueOf(OppId)).accountId);
                     map<Id, Account> accountMap = AccountsSelector.getAccountDetailsbasedonAccountId(accountSet);
                     Map<String, String> accountFieldsMap = AccountfieldsForPriceQuote(accountMap.get(opportunityMap.get(Id.valueOf(OppId)).accountId));
                     createPQFieldvalues.putAll(accountFieldsMap);
                     Map<Id, Lead> oppLeadMap = LeadsSelector.getLeadByConvertedOpportunityId(recordIdSet);
+                    System.debug('this.oppLeadMap ' + oppLeadMap);
                     if (oppLeadMap.containsKey(Id.valueOf(OppId))) {
                         Map<String, String> leadFieldvalues = LeadfieldsForPriceQuote(oppLeadMap.get(Id.valueOf(OppId)));
-                        createPQFieldvalues.putAll(accountFieldsMap);
+
+                        createPQFieldvalues.putAll(leadFieldvalues);
                     }
-                    System.debug('Testing org details '+ExternalRouter.getOrganizationDetails());
+
                     createPQFieldvalues.put('Environment',(ExternalRouter.getOrganizationDetails().IsSandbox)?'QA':'LIVE');
                     String JSONValue = JSON.serialize(createPQFieldvalues);
 
@@ -98,10 +107,21 @@ public class CreatePriceQuoteController {
                     System.debug('Before Opening Pos JOSN is ' + this.PQParamJson);
                     return '';
                 }
+                else
+                {
+                  //  PQParamJson = '';
+                    return returnvalue.substringBeforeLast(',');
+                }
             }
-            return System.Label.MandatoryFields+' \n'+returnvalue.substringBeforeLast(',');
+            else
+            {
+                System.debug('In Last Else Loop '+this.returnvalue);
+                return this.returnvalue;
+            }
+
         }
         catch(Exception ex){
+            Id recID=Id.valueOf(this.RecordId);
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
                     'CreatePriceQuoteController', 'openPoseidonToCreateQuote', '');
             throw new AuraHandledException(ex.getMessage());

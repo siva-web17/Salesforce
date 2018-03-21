@@ -25,10 +25,10 @@ public class LeadsSelector {
 
     public static List<Lead> getLeadsOnId(Set<Id> leadID) {
         List<Lead> leadList = [
-                 SELECT Id, 
+                 SELECT Id,
                         ActivityDateTime__c,
                         SourceCodeGroup__c,
-                        
+
                         SourceCodeAuto__c,
                         PoseidonID__c,
                         RecalculateRanking__c ,
@@ -45,39 +45,39 @@ public class LeadsSelector {
                         IsExpressCall__c,
                         State,StateCode,
                         WhenMonth__c,
-                        City, 
+                        City,
                         status,
                         CloseDate__c,
                         CreationMethod__c,
                         CreationType__c,
                         Destinations__c,
-                        DOB__c, 
-                        DoubleOptIn__c, 
+                        DOB__c,
+                        DoubleOptIn__c,
                         Duration__c,
-                        Email, 
-                        Email2__c, 
+                        Email,
+                        Email2__c,
                         FirstContactDateTime__c,
                         FirstName,
                         HearAboutUs__c,
-                        InsertTime__c,      
+                        InsertTime__c,
                         IsConverted,
                         IsDupe__c,
                         IsDupeProcessed__c,
-                        LastName, 
+                        LastName,
                         LikelihoodToBook__c,
                         Market__c,
-                        MobilePhone, 
-                        OtherPhone__c, 
+                        MobilePhone,
+                        OtherPhone__c,
                         ownerId,
-                        Phone, 
-                        PostalCode, 
+                        Phone,
+                        PostalCode,
                         product__c,
-                        Program__c,                         
-                        ReadyForRanking__c,                    
+                        Program__c,
+                        ReadyForRanking__c,
                         PreferredDuration__c,
                         street,
                         TritonId__c,
-
+                        DoNotCall,
                         WhenYear__c
                    FROM Lead
                   WHERE Id in :leadId
@@ -122,7 +122,7 @@ public class LeadsSelector {
     public Static Map<Id,Lead> getLeadByConvertedOpportunityId(Set<Id> OppSet)
     {
         Map<Id,Lead> ConvertedLeadWithOppIdMap=new Map<Id,Lead>();
-        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c from Lead where ConvertedOpportunityId in :OppSet];
+        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c,ConvertedOpportunityId from Lead where ConvertedOpportunityId in :OppSet];
         for (Lead leadRecord:leadList) {
             ConvertedLeadWithOppIdMap.put(leadRecord.ConvertedOpportunityId,leadRecord);
         }
