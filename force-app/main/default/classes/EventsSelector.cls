@@ -55,4 +55,10 @@ public class EventsSelector {
         }
         return '';
     }
+
+    public static List<Event> getEvents(Set<Id> whoIds, Set<Id> whatIds, Set<Id> recordTypeIds){
+        return [SELECT Id, WhatId, WhoId
+                FROM Event
+                WHERE WhoId IN :whoIds AND WhatId IN :whatIds AND RecordTypeId IN :recordTypeIds];
+    }
 }
