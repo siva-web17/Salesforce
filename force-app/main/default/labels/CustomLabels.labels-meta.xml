@@ -379,6 +379,13 @@
         <shortDescription>Currency</shortDescription>
         <value>Currency</value>
     </labels>
+	    <labels>
+        <fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
+        <value>CustomerRequest</value>
+    </labels>
     <labels>
         <fullName>CustomerRequestType</fullName>
         <language>en_US</language>
