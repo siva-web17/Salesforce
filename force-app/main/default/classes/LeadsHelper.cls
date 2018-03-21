@@ -138,11 +138,9 @@ public class LeadsHelper {
                 leadID.add(incomingRecords.ID);
             }
         }
-        Map<Id, Integer> ranking = RankingHandler.calculateRank(leadRecords);
         List<Lead> leadList = LeadsSelector.getLeadsOnId(leadID);
         for (Lead incomingRecords : leadList) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c && incomingRecords.IsDupe__c == false && incomingRecords.ReadyForRanking__c) {
-                String rankingvalue = string.valueof(ranking.get(incomingRecords.id));                
                 incomingRecords.ReadyForRanking__c = false;
                 rankingLeads.add(incomingRecords);
                 rankingLeadsId.add(incomingRecords.id);
@@ -300,7 +298,8 @@ public class LeadsHelper {
         }
         system.debug('*********** contact task list' + leadIdTasksMap);
     }
-    public static opportunity createOpportunity(Lead leadrecords) {
+    //Its not being used anywhere
+   /* public static opportunity createOpportunity(Lead leadrecords) {
         Opportunity newOpportunityRecords = new Opportunity();
         newOpportunityRecords.Name = leadrecords.FirstName + ' ' + leadrecords.LastName ;
         newOpportunityRecords.AccountId = leadrecords.ConvertedAccountId;
@@ -311,28 +310,25 @@ public class LeadsHelper {
         newOpportunityRecords.StageName = Label.TBC;
         newOpportunityRecords.CloseDate = date.today();
         return newOpportunityRecords;
-    }
+    }*/
 
     //This function checks the latest Active opportunity of an person Account if it is expired(may be lost or frozen)
-    private static Boolean IsOpportunityExpired(Opportunity opp) {
+  /*  private static Boolean IsOpportunityExpired(Opportunity opp) {
         boolean expired = false;
         if (opp.StageName == Label.OppStageInactive) {
             expired = true;
         }
         return expired;
-    }
+    }*/
 
 
     public static void updateHadAddressFilledOnCreation(list<lead> leadNewList) {
         for (Integer i = 0; i < leadNewList.size(); i++) {
             if (!(leadNewList[i].street == '' || leadNewList[i].street == null)) {
                 leadNewList[i].HadAddressonCreation__c = true;
-
             }
         }
     }
-
-
 
     public static void handleProgramChange(List<Lead> newLeads, Map<Id, Lead> oldLeads) {
         Set<Id> leadIds = new Set<Id>();
