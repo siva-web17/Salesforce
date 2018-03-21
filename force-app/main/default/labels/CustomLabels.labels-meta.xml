@@ -1965,4 +1965,12 @@
         <shortDescription>TaskStatusCompleted</shortDescription>
         <value>Completed</value>
     </labels>
+     <labels>
+        <fullName>LAC_ACTION_DATETIME</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ACTION_DATETIME</shortDescription>
+        <value>Action date/time past date cannot be selected</value>
+    </labels>
 </CustomLabels>
