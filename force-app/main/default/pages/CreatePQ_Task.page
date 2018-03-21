@@ -5,11 +5,7 @@
 <apex:page id="CreatePQ_Task" standardController="Task" extensions="CreatePriceQuoteController" showHeader="false"
            standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
-<<<<<<< HEAD
     <apex:slds />
-=======
-    <apex:stylesheet value="{!URLFOR($Resource.salesforceLightningDesign, '/styles/salesforce-lightning-design-system.css')}"/>
->>>>>>> 24f36334bebe76fedb1f0269b355ee5b19242313
     <script>
        window.onload = function () {
         var timeout=0;
@@ -36,11 +32,7 @@
         xhr.send(data);
         return false;
        }
-<<<<<<< HEAD
     }
-=======
-
->>>>>>> 24f36334bebe76fedb1f0269b355ee5b19242313
 
       /* function callPoseidon()
     {
@@ -56,10 +48,7 @@
             <!--return false;-->
     }*/
     </script>
-<<<<<<< HEAD
     <div class="slds-scope">
-=======
->>>>>>> 24f36334bebe76fedb1f0269b355ee5b19242313
     <apex:outputPanel id="Error" rendered="{!returnvalue != ''}">
     <div class="slds-grid slds-wrap">
         <div class="slds-col">
@@ -79,10 +68,7 @@
      </div>
 
     </apex:outputPanel>
-<<<<<<< HEAD
     </div>
-=======
->>>>>>> 24f36334bebe76fedb1f0269b355ee5b19242313
 <script>
        function addErrorDataList() {
         var str = '';
