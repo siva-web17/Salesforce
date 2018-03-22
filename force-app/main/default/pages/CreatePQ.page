@@ -5,6 +5,7 @@
 <apex:page id="CreatePQ" standardController="Opportunity" extensions="CreatePriceQuoteController" showHeader="false"
            standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <apex:slds />
     <script>
        window.onload = function () {
         var timeout=0;
@@ -32,6 +33,7 @@
         return false;
        }
       }
+
       /* function callPoseidon()
     {
         <!--alert('From server');-->
@@ -45,7 +47,41 @@
             <!--xhr.send(data);-->
             <!--return false;-->
     }*/
-
     </script>
-    <H3>{!displayMessage}</H3>
+    <div class="slds-scope">
+    <apex:outputPanel id="Error" rendered="{!returnvalue != ''}">
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col">
+        <!-- <h1>ERROR : {!returnvalue != ''} - {!PQParamJson != ''} - {!displayMessage}</h1> -->
+         <h1 class="slds-modal__header slds-theme_error slds-theme_alert-texture slds-m-top_xxx-small"><b>{!$Label.MandatoryFields}</b></h1>
+         <!-- <h2 class="slds-p-around_small slds-required">{!returnvalue}</h2> -->
+          <div id="content" class="slds-p-bottom_xxx-small"></div>
+      </div>
+     </div>
+
+    </apex:outputPanel>
+    <apex:outputPanel id="Success" rendered="{!PQParamJson != ''}">
+     <div class="slds-grid slds-wrap">
+        <div class="slds-col">
+            <h2 class="slds-modal__header slds-theme_success slds-theme_alert-texture slds-m-top_xxx-small"><b>{!displayMessage}</b></h2>
+        </div>
+     </div>
+    </apex:outputPanel>
+    </div>
+<script>
+       function addErrorDataList() {
+        var str = '';
+        var errorMessageValue='{!returnvalue}';
+        var errorMessage = errorMessageValue.split(',');
+        if(errorMessage.length > 0){
+            for(var i = 0; i < errorMessage.length; i++){
+                    str += "<h2 class='slds-p-around_xx-small slds-button_neutral slds-text-align_left'><abbr class='slds-required' title='required'>*</abbr>"+errorMessage[i]+"</h2>";
+                }
+                document.getElementById('content').innerHTML = str;
+            }
+        }
+    addErrorDataList();
+</script>
+
+
 </apex:page>

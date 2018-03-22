@@ -97,4 +97,35 @@ private class AccountTriggerTest {
             Test.stopTest();
         }
     }
+
+
+    @isTest
+    static void whenAccountsMergedThenReassignCustomerRequestEventsToOpportunity(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        System.runAs(adminUser) {
+            //given
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            opportunityBuilder.withPersonAccount().save();
+            Account personAccount = opportunityBuilder.getAccount();
+            TestDataFactory.LeadBuilder lb = new TestDataFactory.LeadBuilder();
+            Lead testLead = (Lead)lb.save().getRecord();
+            TestDataFactory.EventBuilder eb = new TestDataFactory.EventBuilder();
+            eb.setWho(testLead.Id).save();
+
+            //when
+            Test.startTest();
+            Database.LeadConvert lc = new Database.LeadConvert();
+            lc.setLeadId(testLead.Id);
+            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+            lc.setDoNotCreateOpportunity(true);
+            Database.LeadConvertResult lcr = Database.convertLead(lc);
+            merge personAccount lcr.getAccountId();
+            Test.stopTest();
+
+            //then
+            Event event = [SELECT WhatId FROM Event WHERE Id = :eb.getRecord().Id];
+            System.assertEquals(opportunityBuilder.getRecord().Id, event.WhatId);
+        }
+    }
 }

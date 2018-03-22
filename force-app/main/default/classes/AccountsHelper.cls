@@ -47,6 +47,43 @@ public class AccountsHelper {
         }
     }
 
+    public static void retrieveAccountsDeletedByMerge(Map<Id, Account> accountsByIds){
+        Set<Id> mergedWinnerIds = new Set<Id>();
+        for(Account acc : accountsByIds.values()){
+            if(acc.MasterRecordId != NULL){
+                mergedWinnerIds.add(acc.MasterRecordId);
+            }
+        }
+        if(mergedWinnerIds.size() > 0){
+            reassignEventsAfterMerge(mergedWinnerIds);
+        }
+    }
+
+    public static void reassignEventsAfterMerge(Set<Id> accountIds){
+        Map<Id, Account> accountsByIds = new Map<Id, Account>(AccountsSelector.getAccountsWithOpportunitiesByIds(accountIds));
+        Map<Id, Account> accountsByPersonContactIds = new Map<Id, Account>();
+        Set<Id> personContactIds = new Set<Id>();
+        for(Account acc : accountsByIds.values()){
+            personContactIds.add(acc.PersonContactId);
+            accountsByPersonContactIds.put(acc.PersonContactId, acc);
+        }
+
+        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
+        List<Event> customerRequestEvents = EventsSelector.getEvents(personContactIds, new Set<Id>{NULL}, new Set<Id>{customerRequestId});
+
+        List<Event> eventsToUpdate = new List<Event>();
+        for(Event eventRequest : customerRequestEvents){
+            if(accountsByPersonContactIds.containsKey(eventRequest.WhoId) && accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities.size() > 0) {
+                eventRequest.WhatId = accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities[0].Id;
+                eventsToUpdate.add(eventRequest);
+            }
+        }
+
+        if(eventsToUpdate.size() > 0){
+            update eventsToUpdate;
+        }
+    }
+
     public static void saveAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
         List<Map<String, Map<String, Map<String, String>>>> updatedAccountList = new List<Map<String, Map<String, Map<String, String>>>>();
         try {

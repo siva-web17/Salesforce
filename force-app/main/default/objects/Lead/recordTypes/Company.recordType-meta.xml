@@ -1467,7 +1467,6 @@
             <default>false</default>
         </values>
     </picklistValues>
-
     <picklistValues>
         <picklist>Gender__c</picklist>
         <values>
@@ -1476,6 +1475,10 @@
         </values>
         <values>
             <fullName>Male</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
     </picklistValues>
