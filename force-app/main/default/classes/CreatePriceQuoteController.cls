@@ -14,7 +14,7 @@ public class CreatePriceQuoteController {
  
     public CreatePriceQuoteController(ApexPages.StandardController controller) {
 
-        this.displayMessage = system.label.CreateBookinDisplayMessage;
+        this.displayMessage = System.label.CreateBookinDisplayMessage;
         if (controller.getRecord().getSObjectType() == Opportunity.getSObjectType()) {
             this.oppObj = (Opportunity) controller.getRecord();
             RecordId = String.ValueOf(this.oppObj.Id);
@@ -67,8 +67,8 @@ public class CreatePriceQuoteController {
                         createPQFieldvalues.put(f.getFieldPath(),
                                 String.ValueOf(opportunityMap.get(Id.valueOf(OppId)).get(f.getFieldPath())));
                     } else if (f.getFieldPath() != 'Email2__c' && f.getFieldPath() != 'Gender__c') {
-                        this.returnvalue = (!String.isEmpty(this.returnvalue)) ? this.returnvalue : ' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
-                        System.debug('Siva is here ' + this.returnvalue);
+
+                        this.returnvalue = (!String.isEmpty(this.returnvalue))?this.returnvalue:' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
                     }
                 }
                 System.debug('this.returnvalue ' + this.returnvalue);

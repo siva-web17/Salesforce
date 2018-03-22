@@ -1,6 +1,5 @@
 ({
 	doInit: function(component, event, helper) {
-        debugger;
 		var action = component.get("c.dataBind");
 		action.setParams({
 			"recordId": component.get("v.RecordId")
@@ -305,7 +304,6 @@
 		//$A.enqueueAction(cmp.get('c.submit'));
 	},
 	moveNext3: function(cmp, event, helper) {
-debugger;
 		var selectedOtherNationalityNameMulti = cmp.get('v.selectedOtherNationalityNameMulti');
 		var selectedValues = '';
 		for(var i=0; i<selectedOtherNationalityNameMulti.length; i++){
@@ -330,7 +328,6 @@ debugger;
 
 		if (path_3_Fields) {
 			var whichOne = event.getSource().getLocalId();
-			//console.log(whichOne);
 			if (whichOne == 'next1') {
 				var currentHeader = cmp.find('header-1');
 				var nextHeader = cmp.find('header-3');
@@ -404,10 +401,8 @@ debugger;
 			});
 			toastEvent.fire();
 		}
-		//$A.enqueueAction(cmp.get('c.submit'));
 	},
 	moveNext4: function(cmp, event, helper){
-	debugger;
 		var setChannel = cmp.get('v.selectedBookingChannel');
 		cmp.set('v.wrapperList.Quote.BookingChannel__c', setChannel);
 

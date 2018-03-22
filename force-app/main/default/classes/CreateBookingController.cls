@@ -4,7 +4,7 @@
 
 public class CreateBookingController {
 
-    @AuraEnabled
+    @AuraEnabled 
     public static IntermediateScreenWrapper dataBind(String recordId) {
         System.debug('Opportunity is ' +recordId);
         try {
@@ -27,7 +27,7 @@ public class CreateBookingController {
                                 PersonOtherPostalCode,PersonOtherStreet,PersonEmail,PersonHomePhone,PersonMobilePhone,PersonOtherPhone,
                                 FirstNameEn__c,LastNameEn__c,Age__c,ParentEmail__c,PersonalID__c,PassportNumber__c,PassportType__c,OtherNationalities__c,
                                 PassportIssueDate__c,PassportExpiryDate__c,Nationality__c,NickName__c,Gender__c,BirthCountry__c,
-                                Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,
+                                Email2__c,PersonMailingStreet,PersonMailingPostalCode,PersonMailingCity,PersonMailingCountry,InvoiceEmail__c,
                                 PersonMailingState
                         from Account
                         where ID = :bindData.opp.AccountId
@@ -64,7 +64,7 @@ public class CreateBookingController {
         IntermediateScreenWrapper BindWrapper = (IntermediateScreenWrapper) JSON.deserialize(wrapperData, IntermediateScreenWrapper.class);
         try {
             update BindWrapper.personAcc;
-            retValue=SyncToPoseidonController.SyncComplicatedBookingToPoseidon(String.ValueOf(BindWrapper.personAcc.Id));
+            retValue=SyncToPoseidonController.SyncComplicatedBookingToPoseidon(String.ValueOf(BindWrapper.personAcc.Id));         
         } catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'CreateBookingController', 'updateAccountDetails', currentrecord);

@@ -1853,4 +1853,43 @@
         <shortDescription>Personal Details</shortDescription>
         <value>Personal Details</value>
     </labels>
+     <labels>
+        <fullName>LAC_ACTION_DATETIME</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ACTION_DATETIME</shortDescription>
+        <value>Action date/time past date cannot be selected</value>
+    </labels>
+    <labels>
+    	<fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
+        <value>CustomerRequest</value>
+    </labels>
+    <labels>
+    <fullName>ShowBookingDisplayMessage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ShowBookingDisplayMessage</shortDescription>
+        <value>Opening Booking Please wait!!</value>
+    </labels>
+    <labels>
+        <fullName>CreateBookinDisplayMessage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreateBookinDisplayMessage</shortDescription>
+        <value>Opening Poseidon Please wait!!</value>
+    </labels>
+	<labels>
+        <fullName>InvoiceEmail</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InvoiceEmail</shortDescription>
+        <value>Invoice Email</value>
+    </labels>
 </CustomLabels>
