@@ -4,12 +4,17 @@
 
 public  class ExternalRouter {
 
+    public static String MethodExecuting;
     @future (callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails)
     {
-        String jsonS = accountDetails;
-        String url=getServiceURL('SyncUpdatedAccountDetails');
-        InvokeService(url,jsonS);
+        if (MethodExecuting!='callUpdateAccountDetailsService') {
+            system.debug( 'Service call ' );
+            String jsonS = accountDetails;
+            String url=getServiceURL('SyncUpdatedAccountDetails');
+            InvokeService(url,jsonS);
+        }
+
     }
 
 
@@ -33,11 +38,12 @@ public  class ExternalRouter {
         system.debug(' response is '+res);
         if (res.getStatusCode()==200) {
             retValue='';
+            MethodExecuting='';
         }
         else
         {
             Id UserId=Id.Valueof(UserInfo.getUserId());
-            ExceptionHandler.errorLogAsync(String.ValueOf(res),url+'   --- \n'+ body,
+            ExceptionHandler.errorLog(String.ValueOf(res),url+'   --- \n'+ body,
                     'ExternalRouter', 'InvokeService', UserId);
             retValue=res.getStatus();
         }
@@ -63,7 +69,7 @@ public  class ExternalRouter {
 
     @future (callout=true)
     public static void callNewSyncToPoseidonService(String accountPersonalDetails)
-    {
+    { 
 
         String jsonS = accountPersonalDetails;
         String url=getServiceURL('SyncToPoseidon');

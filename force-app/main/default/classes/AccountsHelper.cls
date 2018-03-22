@@ -10,6 +10,26 @@ Modification Log   :
  * Suresh S                  07/16/2017              Original Version
 *******************************************************************************/
 public class AccountsHelper {
+ 
+    /**Method will update standard unsubscribe field with same value as in custom field. 
+       This method should be removed when salesforce allows to add person account fields to account layout quick actions
+    **/
+    public static void updateUnSubscribeFields(List<Account> lstAccounts){
+        /**
+        1. Loop on account records
+        2. For person accounts, update Unsubscribe fields        
+        **/        
+        try{
+            for(Account accountRecord : lstAccounts){
+                if(accountRecord.IsPersonAccount){
+                    accountRecord.PersonHasOptedOutOfEmail = accountRecord.EmailOptOut__c;
+                }
+            }
+        }
+        catch(Exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'AccountsHelper', 'updateSubscribeFields', null);
+        }
+    }
 
     /**
      * @author Arkadiusz Celej
@@ -47,47 +67,13 @@ public class AccountsHelper {
         }
     }
 
-    public static void retrieveAccountsDeletedByMerge(Map<Id, Account> accountsByIds){
-        Set<Id> mergedWinnerIds = new Set<Id>();
-        for(Account acc : accountsByIds.values()){
-            if(acc.MasterRecordId != NULL){
-                mergedWinnerIds.add(acc.MasterRecordId);
-            }
-        }
-        if(mergedWinnerIds.size() > 0){
-            reassignEventsAfterMerge(mergedWinnerIds);
-        }
-    }
-
-    public static void reassignEventsAfterMerge(Set<Id> accountIds){
-        Map<Id, Account> accountsByIds = new Map<Id, Account>(AccountsSelector.getAccountsWithOpportunitiesByIds(accountIds));
-        Map<Id, Account> accountsByPersonContactIds = new Map<Id, Account>();
-        Set<Id> personContactIds = new Set<Id>();
-        for(Account acc : accountsByIds.values()){
-            personContactIds.add(acc.PersonContactId);
-            accountsByPersonContactIds.put(acc.PersonContactId, acc);
-        }
-
-        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
-        List<Event> customerRequestEvents = EventsSelector.getEvents(personContactIds, new Set<Id>{NULL}, new Set<Id>{customerRequestId});
-
-        List<Event> eventsToUpdate = new List<Event>();
-        for(Event eventRequest : customerRequestEvents){
-            if(accountsByPersonContactIds.containsKey(eventRequest.WhoId) && accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities.size() > 0) {
-                eventRequest.WhatId = accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities[0].Id;
-                eventsToUpdate.add(eventRequest);
-            }
-        }
-
-        if(eventsToUpdate.size() > 0){
-            update eventsToUpdate;
-        }
-    }
-
     public static void saveAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
         List<Map<String, Map<String, Map<String, String>>>> updatedAccountList = new List<Map<String, Map<String, Map<String, String>>>>();
-        try {
-
+        try{
+            //return if current user is configured for not pushing data to Poseidon     
+            if(BypassTriggersValidation__c.getInstance().DoNotPushToPoseidon__c == True){
+                return;
+            }
 
             Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getActiveOpportunitiesforAccount(newAccountMap.keySet());
             system.debug('Method hitting');
@@ -107,7 +93,7 @@ public class AccountsHelper {
                 Map<String, Map<String, Map<String, String>>> changedAccountRecordMap = new Map<String, Map<String, Map<String, String>>>();
                 Map<String, Map<String, String>> changedAccountWithTableNameMap = new Map<String, Map<String, String>>();
 
-                if (accountRecord.TotalBooking__c > 0) {
+                if (accountRecord.TotalBooking__c > 0 || accountRecord.IsSyncedToPoseidon__c) {
                     if (!hasActiveOpportunity) {
                         accountRecord.addError(Label.NoActiveOpportunity);
                         return;
@@ -203,13 +189,16 @@ public class AccountsHelper {
                 String market = newAccountMap.values()[0].market__c;
                 SyncAccountDetailsWrapper objwrapper = new SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
                 String JSONValue= JSON.serialize(objwrapper);
-                ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+                system.debug(' Calling from Account trigger: '+Trigger.isExecuting +' --System.isBatch() :'+System.isBatch()+' !!!System.isFuture(): '+System.isFuture()+'##System.isQueueable(): '+System.isQueueable()+'^^^System.isScheduled() :'+System.isScheduled());
+                if (Trigger.isExecuting && !System.isBatch()) {
+                    ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+                }
 
                 //call service method only if the list is not empty
             }
         } catch (Exception ex) {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-                    'AccountsHelper', 'saveAccountInformation', '');
+                    'AccountsHelper', 'saveAccountInformation', null);
         }
     }
 
@@ -227,9 +216,7 @@ public class AccountsHelper {
         return changedValues;
         //pavLoopRecord.put(f.getFieldPath(), selectedLTCourse.get(f.getFieldPath()));
     }
-
-
-
+    
     public class SyncAccountDetailsWrapper {
         public String market { get; set; }
         public List<Map<String, Map<String, Map<String, String>>>> updatedAccountList { get; set; }
@@ -241,5 +228,4 @@ public class AccountsHelper {
             this.market = market;
         }
     }
-
 }
