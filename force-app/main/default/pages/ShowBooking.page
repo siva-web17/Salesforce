@@ -1,0 +1,37 @@
+<apex:page id="ShowBooking" standardController="Booking__c" extensions="ShowBookingController" showHeader="false"
+           standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+  <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+  <script>
+       window.onload = function () {
+           var timeout=0;
+           var jsonstring='{!BookingNumber}';
+           var BookingURL = '{!ServiceURL}';
+           setInterval(function(){ timeout=10 }, 10000);
+ 		while(true)
+        {
+            if(jsonstring.length > 0 || timeout <= 10)
+            {
+               break;
+            }
+        }
+       if( jsonstring.length > 0 && BookingURL.length > 0)
+       {
+            Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
+            var xhr = new XMLHttpRequest();
+            var url = BookingURL+jsonstring;
+            xhr.open("GET", url, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send();
+            return false;
+       }
+      }
+  </script>
+    <apex:slds />
+    <div class="slds-scope">
+  <div class="slds-grid slds-wrap">
+        <div class="slds-col">
+            <h2 class="slds-modal__header slds-theme_success slds-theme_alert-texture slds-m-top_xxx-small"><b>{!displayMessage}</b></h2>
+        </div>
+     </div>
+    </div>
+</apex:page>
