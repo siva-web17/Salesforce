@@ -7,9 +7,10 @@ public  class ExternalRouter {
     @future (callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails)
     {
-        String jsonS = accountDetails;
-        String url=getServiceURL('SyncUpdatedAccountDetails');
-        InvokeService(url,jsonS);
+            String jsonS = accountDetails;
+            String url=getServiceURL('SyncUpdatedAccountDetails');
+            InvokeService(url,jsonS);
+
     }
 
 
@@ -37,7 +38,7 @@ public  class ExternalRouter {
         else
         {
             Id UserId=Id.Valueof(UserInfo.getUserId());
-            ExceptionHandler.errorLogAsync(String.ValueOf(res),url+'   --- \n'+ body,
+            ExceptionHandler.errorLog(String.ValueOf(res),url+'   --- \n'+ body,
                     'ExternalRouter', 'InvokeService', UserId);
             retValue=res.getStatus();
         }
@@ -63,7 +64,7 @@ public  class ExternalRouter {
 
     @future (callout=true)
     public static void callNewSyncToPoseidonService(String accountPersonalDetails)
-    {
+    { 
 
         String jsonS = accountPersonalDetails;
         String url=getServiceURL('SyncToPoseidon');

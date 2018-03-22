@@ -1783,12 +1783,7 @@
         <isActive>false</isActive>
         <label>WWC</label>
     </customValue>
-    <customValue>
-        <fullName>Valencia</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Valencia</label>
-    </customValue>
+>
     <customValue>
         <fullName>IALDM</fullName>
         <default>false</default>

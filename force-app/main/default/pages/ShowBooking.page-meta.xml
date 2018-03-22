@@ -3,5 +3,6 @@
     <apiVersion>42.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>CreatePQ_Task</label>
+    <description>This will show booking in Poseidon.</description>
+    <label>Show Booking</label>
 </ApexPage>

@@ -11,7 +11,6 @@ Modification Log   :
 *******************************************************************************/
 public class AccountsSelector {
 
-
     public static Account getAccountOnId(Id accountId) {
         return [
                 select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
@@ -24,26 +23,29 @@ public class AccountsSelector {
         ];
     }
 
-    public static List<Account> getAccountsWithOpportunitiesByIds(Set<Id> accountIds){
-        return [SELECT Id, PersonContactId,
-                    (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
+    public static List<Account> getAccountsWithOpportunitiesByIds(Set<Id> accountIds) {
+        return [
+                SELECT Id, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
                 FROM Account
-                WHERE Id = :accountIds];
-    }
-
-    public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds){
-        return [SELECT Id, PersonContactId,
-        (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
-        FROM Account
-        WHERE PersonContactId IN :contactIds
+                WHERE Id = :accountIds
         ];
     }
 
-    public static map<Id,Account> getAccountDetailsbasedonAccountId(Set<Id> accountIdSet)
-    {
-        List<Account> accList=new List<Account>();
-        Map<Id,Account> accountMap=new Map<Id,Account>();
-        Set<String> fieldsToSelect=new Set<String>();
+    public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds) {
+        return [
+                SELECT Id, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
+                FROM Account
+                WHERE PersonContactId IN :contactIds
+        ];
+    }
+
+    public static map<Id, Account> getAccountDetailsbasedonAccountId(Set<Id> accountIdSet) {
+        List<String> accountMissingFields = new List<String>{
+                'Name', 'Id', 'Market__c', 'CreatedById', 'LastModifiedById', 'firstname', 'lastname', 'ParentEmail__c', 'middlename', 'PersonMailingCity', 'PersonMailingPostalCode', 'PersonMailingCountryCode', 'PersonMailingState', 'ShippingCity', 'ShippingState', 'ShippingStreet', 'PersonOtherPostalCode'
+        };
+        List<Account> accList = new List<Account>();
+        Map<Id, Account> accountMap = new Map<Id, Account>();
+        Set<String> fieldsToSelect = new Set<String>();
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
             fieldsToSelect.add(f.getFieldPath());
@@ -54,7 +56,6 @@ public class AccountsSelector {
                 fieldsToSelect.add(f.getFieldPath());
                 query += f.getFieldPath() + ', ';
             }
-
         }
 
         for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Customer.getFields()) {
@@ -69,11 +70,20 @@ public class AccountsSelector {
                 query += f.getFieldPath() + ', ';
             }
         }
-        query += 'Name,Id,Market__c,CreatedById,LastModifiedById,firstname,lastname,ParentEmail__c,middlename,PersonMailingCity,PersonMailingPostalCode,PersonMailingCountryCode,PersonMailingState,ShippingCity,ShippingState,ShippingStreet,PersonOtherPostalCode from Account Where ';
-        query += 'Id in   : ' + 'accountIdSet' + ' ' ;
-        accList= Database.query(query);
-        for (Account accRecord:accList) {
-            accountMap.put(accRecord.Id,accRecord);
+        for (String accountField : accountMissingFields) {
+            if (!fieldsToSelect.contains(accountField)) {
+                fieldsToSelect.add(accountField);
+                query += accountField + ', ';
+            }
+        }
+        if (query.endsWith(', ')) {
+            query = query.substringBeforeLast(',');
+        }
+        query += ' from Account Where Id in   : ' + 'accountIdSet' + ' ' ;
+        System.debug('Dynamic Query :' + query);
+        accList = Database.query(query);
+        for (Account accRecord : accList) {
+            accountMap.put(accRecord.Id, accRecord);
         }
         return accountMap;
     }
