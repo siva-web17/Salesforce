@@ -68,6 +68,11 @@ public class OpportunitiesHelper {
         }
         allPublicGroupList.addAll(addPublicGroupNameList);
         allPublicGroupList.addAll(removePublicGroupNameList);
+
+        if(allPublicGroupList.isEmpty()){
+            return;
+        }
+
         Map<String, ID> publicGroupMap = publicGroupsSelector.getRegularPublicGroupsByName(allPublicGroupList);
         //access level
         List<opportunityShare> opportunityShareList = new List<opportunityShare>();
