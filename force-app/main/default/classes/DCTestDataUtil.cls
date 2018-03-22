@@ -18,9 +18,7 @@ public class DCTestDataUtil {
         //newLead.Parent_Phone__c = '9988776666';
         newLead.DOB__c = system.today();
         newLead.Email= 'PersonEmail@email.com';
-        newLead.Email2__c = 'StudentEmail2@email.com';
-        //newLead.Parent_Email__c = 'ParentEmail@email.com';
-        //newLead.Invoice_Email__c = 'InvoiceEmail@email.com';
+        newLead.Email2__c = 'StudentEmail2@email.com';        
         newLead.Region__c = 'Region' ;
         newlead.Program__c='MLY';
         newlead.product__c='APP';
@@ -364,10 +362,11 @@ public class DCTestDataUtil {
         newLead.Email = studentemail1;
         newLead.Email2__c = studentemail2;
         newLead.Region__c = region ;
+        newLead.market__c = 'DEB';
         newlead.Program__c='MLY';
         newlead.product__c='APP';
         newLead.DOB__c = DOB;
-        newLead.market__c = 'DEB';
+        
         
         newLead.InsertTime__c =nowdatetime;
 
@@ -409,12 +408,15 @@ public class DCTestDataUtil {
         anotheraccount.personmailingstreet= personalmailingstreet;
         anotheraccount.personmailingpostalcode = personalmailingpostalcode;
         anotheraccount.personhomephone = personalmailingphone;
-        anotheraccount.personmobilephone = 'phone';
+        anotheraccount.personmobilephone = personalmailingmobilephone;
         anotheraccount.personotherphone = personalmailingotherphone;
         //anotheraccount.TritonId__c = tritonid;
         anotheraccount.PersonEmail= studentemail1;
         anotheraccount.Email2__c = studentemail2;
         anotheraccount.Region__c = Region ;
+        anotherAccount.market__c = 'DEB';
+      //  anotheraccount.market__c = 'DEB';
+       
         //anotheraccount.HasBooking__c = hasbooking;
         anotheraccount.PersonBirthdate= DOB;
         //anotheraccount.BookingDate__c = bookingdate;

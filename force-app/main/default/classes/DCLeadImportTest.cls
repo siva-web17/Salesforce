@@ -11,7 +11,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -37,7 +37,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -63,7 +63,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -87,7 +87,7 @@ private class DCLeadImportTest {
         
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -118,7 +118,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -129,6 +129,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -147,7 +149,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -158,6 +160,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -176,7 +180,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -187,6 +191,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -205,7 +211,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -216,6 +222,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -234,7 +242,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -245,6 +253,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -263,7 +273,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -274,6 +284,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -292,7 +304,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -303,6 +315,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -321,7 +335,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -332,6 +346,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -350,7 +366,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -361,6 +377,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -379,7 +397,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -390,6 +408,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -405,7 +425,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -416,6 +436,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -431,7 +453,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -442,6 +464,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -457,7 +481,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','Secondstudent2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -468,6 +492,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -480,11 +506,11 @@ private class DCLeadImportTest {
              }
     }
     
-    static testMethod void testrule4() {
+ /*   static testMethod void testrule4() {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -543,13 +569,13 @@ private class DCLeadImportTest {
             // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
              }
-    }
+    }*/
     
     static testMethod void testrule6() {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -575,7 +601,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -601,7 +627,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -627,7 +653,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -653,7 +679,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','123','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -687,7 +713,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -713,7 +739,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -739,7 +765,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -765,7 +791,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -791,7 +817,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -817,7 +843,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -842,7 +868,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -868,7 +894,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -894,7 +920,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -920,7 +946,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
             insert newlead;
@@ -941,7 +967,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
             insert newlead;
@@ -962,7 +988,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -973,6 +999,8 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -989,7 +1017,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -1014,7 +1042,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -1025,8 +1053,10 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+             objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp; 
-            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
             update objOpp;       
             Map<String, Object> objectData = new Map<String, Object>();
@@ -1045,7 +1075,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -1056,8 +1086,10 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp; 
-            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
             update objOpp;       
             Map<String, Object> objectData = new Map<String, Object>();
@@ -1075,7 +1107,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -1086,8 +1118,10 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp; 
-            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
             update objOpp;       
             Map<String, Object> objectData = new Map<String, Object>();
@@ -1105,7 +1139,7 @@ private class DCLeadImportTest {
         Test.startTest();
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_NewLeadRules1');
+            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
             newlead.InsertTime__c=system.now();
@@ -1116,8 +1150,10 @@ private class DCLeadImportTest {
             objOpp.isactive__c=true;
             objopp.stagename = 'Follow Up';
             objOpp.closedate = system.today();
+            objOpp.market__c='DEB';
+            objOpp.Program__c = 'MLY';
             insert objOpp; 
-            objOpp.TFBypassStageValidation__c = true;  
+            objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename = label.salesclosed;
             update objopp;          
              
