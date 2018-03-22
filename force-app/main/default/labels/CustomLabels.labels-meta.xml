@@ -379,13 +379,6 @@
         <shortDescription>Currency</shortDescription>
         <value>Currency</value>
     </labels>
-	    <labels>
-        <fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
-        <value>CustomerRequest</value>
-    </labels>
     <labels>
         <fullName>CustomerRequestType</fullName>
         <language>en_US</language>
@@ -448,13 +441,14 @@
         <value>USB-English</value>
     </labels>
     <labels>
-      <fullName>DeleteQuoteProposalErrorMessage</fullName>
         <fullName>Delete</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Delete</shortDescription>
         <value>Delete</value>
     </labels>
+  	<labels>
+        <fullName>DeleteQuoteProposalErrorMessage</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
@@ -522,7 +516,7 @@
         <shortDescription>Email</shortDescription>
         <value>Email</value>
     </labels>
-	<labels>
+    <labels>
     <fullName>FTEFX_Article_Code</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1686,7 +1680,7 @@
         <shortDescription>Social Media Reached Sales action on Log a Call Component</shortDescription>
         <value>Social Media Reached</value>
     </labels>
-	<labels>
+        <labels>
         <fullName>bookingsummaryPersonalDetails</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1694,7 +1688,7 @@
         <shortDescription>Personal Details</shortDescription>
         <value>Personal Details</value>
     </labels>
-	<labels>
+        <labels>
         <fullName>bookingSummaryFinish_Booking</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
@@ -1870,7 +1864,6 @@
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
     </labels>
-
    <labels>
         <fullName>QuoteProposalStatusesToDelete</fullName>
         <language>en_US</language>
@@ -1879,21 +1872,14 @@
         <value>Draft</value>
     </labels>
     <labels>
-
-        <fullName>ProductCodeOSHCAY</fullName>
-
-       <categories>Apttus</categories>
-
+      <fullName>ProductCodeOSHCAY</fullName>
+      <categories>Apttus</categories>
       <language>en_US</language>
-
       <protected>false</protected>
-
-    <shortDescription>Product Code OSHCAY</shortDescription>
-
-        <value>OSHCAY</value>
+      <shortDescription>Product Code OSHCAY</shortDescription>
+      <value>OSHCAY</value>
     </labels>
->
-	<labels>
+	  <labels>
         <fullName>bookingSummarySuccess</fullName>
         <categories>BookingSummary</categories>
         <language>en_US</language>
@@ -1972,6 +1958,14 @@
         <shortDescription>TaskStatusCompleted</shortDescription>
         <value>Completed</value>
     </labels>
+     <labels>
+        <fullName>LAC_ACTION_DATETIME</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ACTION_DATETIME</shortDescription>
+        <value>Action date/time past date cannot be selected</value>
+    </labels>
     <labels>
     	<fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
         <language>en_US</language>
@@ -1995,7 +1989,7 @@
         <shortDescription>CreateBookinDisplayMessage</shortDescription>
         <value>Opening Poseidon Please wait!!</value>
     </labels>
-	<labels>
+  	<labels>
         <fullName>InvoiceEmail</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
