@@ -53,7 +53,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <!-- <externalSharingModel>ControlledByParent</externalSharingModel> -->
     <label>Quote</label>
     <nameField>
         <displayFormat>Q-{0000000}</displayFormat>

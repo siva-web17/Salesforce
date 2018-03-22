@@ -277,20 +277,15 @@
             var validateBookOnDate = bookOnDateValue == "" || bookOnDateValue == null ? !0 : moment(bookOnDateValue).isValid() ? !0 : !1;
             if (!moment(component.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(component.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
                 var toastEvent = $A.get("e.force:showToast");
-                var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ERROR_PAST_MSG");
+                var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ACTION_DATETIME");
                 toastEvent.setParams({
                     title: "Error!",
                     type: "error",
                     message: LAC_ERROR_PAST_MSG
                 });
                 toastEvent.fire();
-                component.set(
-                    "v.selectedActionDate",
-                    moment(new Date(), "DD-MM-YYYY")
-                    .add(1, "days")
-                    .format("YYYY-MM-DD") + "T00:00"
-                );
                 $A.util.removeClass(loaderComp, "customLoaderTrue");
+                return false;
             } else {
                 if (validateBookOnDate) {
                     saveDataAction.setParams({
@@ -470,19 +465,14 @@
         if (cmp.get("v.selectedActionDate") != null) {
             if (!moment(cmp.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(cmp.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
                 var toastEvent = $A.get("e.force:showToast");
-                var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ERROR_PAST_MSG");
+                var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ACTION_DATETIME");
                 toastEvent.setParams({
                     title: "Error!",
                     type: "error",
                     message: LAC_ERROR_PAST_MSG
                 });
                 toastEvent.fire();
-                cmp.set(
-                    "v.selectedActionDate",
-                    moment(new Date(), "DD-MM-YYYY")
-                    .add(1, "days")
-                    .format("YYYY-MM-DD") + "T00:00"
-                );
+                return false;
             }
         }
     },

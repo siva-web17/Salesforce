@@ -31,20 +31,14 @@
                 <behavior>Edit</behavior>
                 <field>CurrencyIsoCode</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>APTSExtID__c</field>
-            </layoutItems>
+
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>APTS_Default_Unique_Identifier__c</field>
-            </layoutItems>
+           
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -77,17 +71,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Apttus_Proposal__Opportunity__c</fields>
-        <fields>Apttus_Proposal__Account__c</fields>
-        <fields>Apttus_Proposal__Net_Amount__c</fields>
-        <fields>Apttus_Proposal__Valid_Until_Date__c</fields>
-        <fields>Apttus_Proposal__Primary__c</fields>
-        <fields>Apttus_Proposal__Approval_Stage__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Apttus_Proposal__Proposal__c.APTS_Departure_Point__c</relatedList>
-    </relatedLists>
+
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
