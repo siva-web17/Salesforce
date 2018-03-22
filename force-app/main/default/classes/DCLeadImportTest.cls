@@ -125,12 +125,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+            
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -156,12 +153,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9723445332','9723445332','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+            
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -187,12 +181,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','97655656565','9833455433','9723445332','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+            
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -218,12 +209,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','7744666333','9833455433','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+            
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -249,12 +237,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -280,12 +265,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','77448765544','7744666333','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -311,12 +293,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','9954777444','9845566433','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -342,12 +321,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','98885677644','9954777444','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -373,12 +349,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','98885677644','66666664655','9954777444','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -404,12 +377,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','student1@email.com','student2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -432,12 +402,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','testemail1@email.com','student1@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -460,12 +427,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','Secondstudent2@email.com','testemail@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -488,12 +452,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','fghfh','teststreet','001245','876556778','7744666333','77644433554','testtritonid','testemail@email.com','Secondstudent2@email.com','rtrfg',false, system.today(), system.today().adddays(-400));
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -995,12 +956,8 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+                     
             insert objOpp;          
             Map<String, Object> objectData = new Map<String, Object>();
             List<Object> duplicateIncomingLeads = new List<Object>();
@@ -1049,12 +1006,9 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','streettest','560048','9723445332','7744666333','9954777444','testtritonid','testemmail1@email.com','testemail2@email.com','testregion',false,system.today(),system.today());
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-             objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
+           
             insert objOpp; 
             objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
@@ -1082,12 +1036,8 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+                      
             insert objOpp; 
             objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
@@ -1114,12 +1064,8 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','664553','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
+          
             insert objOpp; 
             objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename ='Follow Up';
@@ -1146,12 +1092,7 @@ private class DCLeadImportTest {
             insert newlead;
             Account newaccount1 = DCTestDataUtil.DynamicinsertAnotherSetOfaccountRecord('testfirstname','testlastname','testcity','teststreet','664553','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',false,system.today(),system.today());
             insert  newaccount1;
-            opportunity objOpp = testdatafactory.createOpportunityForAccount(newaccount1.id,'sample name',null,false);
-            objOpp.isactive__c=true;
-            objopp.stagename = 'Follow Up';
-            objOpp.closedate = system.today();
-            objOpp.market__c='DEB';
-            objOpp.Program__c = 'MLY';
+            opportunity objOpp = createOpportunityForAccount(newaccount1.id,'sample name',null,false,'DEB','MLY',system.today(),'Follow Up');
             insert objOpp; 
             objOpp.LastAutomationUpdateDateTime__c = system.now();  
             objOpp.stagename = label.salesclosed;
@@ -1168,6 +1109,36 @@ private class DCLeadImportTest {
             Test.stopTest();
              }
     }
+   public static Opportunity createOpportunityForAccount(String strAccountId,String strOpportunityName, Map<String, String> mFieldNameToVal, boolean doInsert,string market,string program,date closeDate,string stageName) {
+        Opportunity tOpp = new Opportunity();
+        tOpp.name = strOpportunityName;
+        tOpp.AccountId= strAccountId;
+        topp.IsActive__c = true;
+        tOpp.Market__c= market;
+        tOpp.Program__c= program;
+        tOpp.closeDate = closeDate ;
+        tOpp.StageName = stageName;
+        Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.Opportunity.fields.getMap();
+
+        if (mFieldNameToVal != null) {
+            for (String strFieldName : mFieldNameToVal.keySet()) {
+                String strVal = mFieldNameToVal.get(strFieldName);
+
+                //Might require to  do the same for other data types !
+                if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.Date)
+                    tOpp.put(strFieldName, Date.valueOf(strVal) );
+               /*else if (mSobjFields.get(strFieldName).getDescribe().getType() == Schema.DisplayType.DateTime)
+
+                    tOpp.put(strFieldName, DateTime.valueOf(strVal) );*/
+                else
+                    tOpp.put(strFieldName, strVal);
+            }
+        }
+        if (doInsert)
+            insert tOpp;
+        return tOpp;
+    }
+
      
     
 }
