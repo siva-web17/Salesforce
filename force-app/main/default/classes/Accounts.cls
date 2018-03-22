@@ -15,6 +15,7 @@ public class Accounts {
     }
 
     public static void onBeforeUpdate(List<Account> oldAccountList, List<Account> newAccountList) {
+        AccountsHelper.updateUnSubscribeFields(Trigger.new);
 
     }
 
