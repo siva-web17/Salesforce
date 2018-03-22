@@ -4,16 +4,12 @@
 
 public  class ExternalRouter {
 
-    public static String MethodExecuting;
     @future (callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails)
     {
-        if (MethodExecuting!='callUpdateAccountDetailsService') {
-            system.debug( 'Service call ' );
             String jsonS = accountDetails;
             String url=getServiceURL('SyncUpdatedAccountDetails');
             InvokeService(url,jsonS);
-        }
 
     }
 
@@ -38,7 +34,6 @@ public  class ExternalRouter {
         system.debug(' response is '+res);
         if (res.getStatusCode()==200) {
             retValue='';
-            MethodExecuting='';
         }
         else
         {

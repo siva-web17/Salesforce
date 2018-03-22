@@ -5,6 +5,7 @@
 <apex:page id="CreatePQ_Task" standardController="Task" extensions="CreatePriceQuoteController" showHeader="false"
            standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <apex:slds />
     <script>
        window.onload = function () {
         var timeout=0;
@@ -33,7 +34,6 @@
     }
 
     </script>
-    <apex:slds />
     <div class="slds-scope">
     <apex:outputPanel id="Error" rendered="{!returnvalue != ''}">
         <div class="slds-grid slds-wrap">
