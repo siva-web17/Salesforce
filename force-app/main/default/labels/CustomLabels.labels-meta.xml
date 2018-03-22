@@ -1974,11 +1974,11 @@
     </labels>
     <labels>
     	<fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
-       	<language>en_US</language>
+        <language>en_US</language>
         <protected>false</protected>
         <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
         <value>CustomerRequest</value>
-     </labels>
+    </labels>
     <labels>
     <fullName>ShowBookingDisplayMessage</fullName>
         <categories>DEV</categories>
