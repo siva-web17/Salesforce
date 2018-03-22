@@ -53,7 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
+    <!-- <externalSharingModel>ReadWrite</externalSharingModel> -->
     <label>Sales Office / Program</label>
     <nameField>
         <label>Sales Office / Program</label>
