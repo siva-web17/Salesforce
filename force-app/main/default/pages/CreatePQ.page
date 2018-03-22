@@ -1,15 +1,14 @@
 <!--
- - Created by arjun.mohan on 3/12/2018.
+ -Created by arjun.mohan on 3/12/2018.
  -->
 
 <apex:page id="CreatePQ" standardController="Opportunity" extensions="CreatePriceQuoteController" showHeader="false"
            standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
-    <apex:stylesheet value="{!URLFOR($Resource.salesforceLightningDesign, '/styles/salesforce-lightning-design-system.css')}"/>
     <script>
        window.onload = function () {
         var timeout=0;
-        setInterval(function(){ timeout=10 }, 10000);
+        setInterval(function(){ timeout=10 }, 100000);
        while(true)
        {
         if({!PQParamJson}!=='' || timeout <= 10)
@@ -19,13 +18,14 @@
        }
        var errorMessage='{!returnvalue}';
        var jsonstring='{!PQParamJson}';
+       var ServiceURL = '{!PriceQuoteURL}';
        //alert(errorMessage.length+ ' OutSide');
-       if(errorMessage.length==0 && jsonstring.length > 0)
+       if(errorMessage.length==0 && jsonstring.length > 0 && ServiceURL.length > 0)
        {
         //alert(errorMessage +'Inside Value is');
         Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
         var xhr = new XMLHttpRequest();
-        var url = 'http://localhost:1234/PriceQuote/Create';
+        var url = ServiceURL;
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-type", "application/json");
         var data = JSON.stringify({!PQParamJson});
@@ -34,40 +34,31 @@
        }
       }
 
-      /* function callPoseidon()
-    {
-        <!--alert('From server');-->
-          <!--Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});-->
-         <!--var xhr = new XMLHttpRequest();-->
-            <!--var url = 'http://localhost:1234/PriceQuote/Create';-->
-            <!--xhr.open("POST", url, true);-->
-            <!--xhr.setRequestHeader("Content-type", "application/json");-->
-            <!--var data = JSON.stringify('{!PQParamJson}');-->
-             <!--alert('{!PQParamJson}');-->
-            <!--xhr.send(data);-->
-            <!--return false;-->
-    }*/
     </script>
+    <apex:slds />
+    <div class="slds-scope">
     <apex:outputPanel id="Error" rendered="{!returnvalue != ''}">
-    <div class="slds-grid slds-wrap">
-        <div class="slds-col">
-        <!-- <h1>ERROR : {!returnvalue != ''} - {!PQParamJson != ''} - {!displayMessage}</h1> -->
-         <h1 class="slds-modal__header slds-theme_error slds-theme_alert-texture slds-m-top_xxx-small"><b>{!$Label.MandatoryFields}</b></h1>
-         <!-- <h2 class="slds-p-around_small slds-required">{!returnvalue}</h2> -->
-          <div id="content" class="slds-p-bottom_xxx-small"></div>
-      </div>
-     </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col">
+                <!-- <h1>ERROR : {!returnvalue != ''} - {!PQParamJson != ''} - {!displayMessage}</h1> -->
+                <h1 class="slds-modal__header slds-theme_error slds-theme_alert-texture slds-m-top_xxx-small">
+                    <b>{!$Label.MandatoryFields}</b></h1>
+                <!-- <h2 class="slds-p-around_small slds-required">{!returnvalue}</h2> -->
+                <div id="content" class="slds-p-bottom_xxx-small"></div>
+            </div>
+        </div>
 
     </apex:outputPanel>
     <apex:outputPanel id="Success" rendered="{!PQParamJson != ''}">
-     <div class="slds-grid slds-wrap">
-        <div class="slds-col">
-            <h2 class="slds-modal__header slds-theme_success slds-theme_alert-texture slds-m-top_xxx-small"><b>{!displayMessage}</b></h2>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col">
+                <h2 class="slds-modal__header slds-theme_success slds-theme_alert-texture slds-m-top_xxx-small">
+                    <b>{!displayMessage}</b></h2>
+            </div>
         </div>
-     </div>
 
     </apex:outputPanel>
-<script>
+    <script>
        function addErrorDataList() {
         var str = '';
         var errorMessageValue='{!returnvalue}';
@@ -80,7 +71,6 @@
             }
         }
     addErrorDataList();
-</script>
-
-
+    </script>
+    </div>
 </apex:page>
