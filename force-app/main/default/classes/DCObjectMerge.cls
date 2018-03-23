@@ -58,7 +58,7 @@ public class DCObjectMerge {
         if(opportunityRecord.StageName == Label.SalesClosed) {
             // Always for revival
             // checking the field to true for bypassing the stagename change validation rule
-            opportunityRecord.TFBypassStageValidation__c = true;
+            opportunityRecord.LastAutomationUpdateDateTime__c = system.now();
             opportunityRecord.StageName =OpportunitiesSelector.getOpportunityStageName(opportunityRecord);
             system.debug('>>>Previous Opp StageName'+opportunityRecord.StageName);
             opportunityRecord.CloseDate = System.today().addMonths(2);
@@ -95,12 +95,7 @@ public class DCObjectMerge {
             }
         }
          opportunityRecord.RecalculateRanking__c=true;
-        SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
-        // checking the field to false to avoid the stagechange from any other place and using a DML to update it to false
-        system.debug('updated stage name is>>'+opportunityRecord.stagename);
-       
-        opportunityRecord.TFBypassStageValidation__c = false;
-        SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
+        SObjectUnitOfWork.modifyOpportunity(opportunityRecord);       
     //    update systemCallTask;
 
     }

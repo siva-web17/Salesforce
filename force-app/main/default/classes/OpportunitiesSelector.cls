@@ -33,7 +33,7 @@ public class OpportunitiesSelector {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,CloseMainReason__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
                                      FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c,Mobile__c,Account.DoNotCall__c
                                FROM Opportunity
@@ -65,9 +65,9 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunitiesOnAccountId(Id accId) {
         return [
-                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c,isactive__c,CloseMainReason__c
+                select id,Name, FollowupDatetime__c,AccountId,LastAutomationUpdateDateTime__c,TFBypassStageValidation__c,StageName,Program__c,IsActive__c,CloseMainReason__c
                 from Opportunity
-                where AccountId = :accId and isactive__c=true
+                where AccountId = :accId and IsActive__c=true
                 order by FollowupDateTime__c ASC
         ];
     }
@@ -91,19 +91,19 @@ public class OpportunitiesSelector {
     }
     public static list<opportunity> getLstOpportunityOrderByCrtdDateASC(list<opportunity> mergedOpps) {
 
-        list<opportunity> opportunityOrderByCreatedDateASC = [select id,isactive__c,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps ORDER BY createddate ASC];
+        list<opportunity> opportunityOrderByCreatedDateASC = [select id,IsActive__c,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps and IsActive__c=true ORDER BY createddate ASC];
         return opportunityOrderByCreatedDateASC;
     }
     public static list<opportunity> getLstOfFollowupOpportunity(list<opportunity> mergedOpps) {
-        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c,isactive__c from opportunity where id in:mergedOpps ORDER BY FollowupDateTime__c ASC];
+        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c,IsActive__c from opportunity where id in:mergedOpps and IsActive__c=true ORDER BY FollowupDateTime__c ASC];
         return lstOfOpportunity;
 
     }
     public static list<opportunity> getlstOfOpportunityByCreatedDateDesc(account masterAccount) {
         list<opportunity> lstOfOpportunity = [
-                select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c,isactive__c
+                select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c,IsActive__c
                 from Opportunity
-                Where accountId = :masterAccount.id
+                Where accountId = :masterAccount.id AND IsActive__c = true
                 ORDER BY CreatedDate DESC
         ];
         return lstOfOpportunity;
@@ -161,7 +161,7 @@ public class OpportunitiesSelector {
                 from Opportunity
                 Where AccountId = :duplicateAccount.id
                 /**and IsPrimary__c = TRUE**/
-                and isActive__c = TRUE
+                and IsActive__c = TRUE
         ];
     }
 
@@ -226,7 +226,7 @@ public class OpportunitiesSelector {
             query += f.getFieldPath() + ', ';
         }
         query += 'Name,AccountId from Opportunity ';
-        query += 'where isActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
+        query += 'where IsActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
         oppList= Database.query(query);
         for (Opportunity oppRecord:oppList) {
             accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
@@ -252,7 +252,7 @@ public class OpportunitiesSelector {
             query += f.getFieldPath() + ', ';
         }
         query += 'Name,AccountId from Opportunity ';
-        query += 'where isActive__c  = TRUE and Id in  : ' + 'oppIdSet' + ' ' ;
+        query += 'where IsActive__c  = TRUE and Id in  : ' + 'oppIdSet' + ' ' ;
         oppList= Database.query(query);
         for (Opportunity oppRecord:oppList) {
             OpportunityMap.put(oppRecord.Id,oppRecord);
