@@ -183,9 +183,7 @@ public class OpportunitiesSelector {
                     previousOpportunityStageName = oppHistory.StageName;
                 }
             }
-            system.debug('I am here' + opportunityRecord.FirstContactDateTime__c + 'previousstage' + previousOpportunityStageName);
             if (previousOpportunityStageName == label.OpportunityStageToContact && opportunityRecord.FirstContactDateTime__c != null) {
-                system.debug('I am here');
                 previousOpportunityStageName = label.OpportunityStageFollowUp;
                 return previousOpportunityStageName;
             }
