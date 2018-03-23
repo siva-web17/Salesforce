@@ -38,19 +38,21 @@ public with sharing class QuotesHelper {
 
     private static void createTaskforEmailSent(List<Quote__c> quoteList){
         List<Task> taskList = new List<Task>();
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.getSObjectType()).get(Label.CallTaskRecordTypeDeveloperName).Id;
         Id oppRecordId;
         try {
             for (Quote__c quoteRecord: quoteList) {
-                if (quoteRecord.Opportunity__c != null && quoteRecord.SentByEmail__c) {
+                if (quoteRecord.SentByEmail__c && quoterecord.Opportunity__c!=null) {
                     oppRecordId = quoteRecord.Opportunity__c;
                     Task taskRecord = new Task();
                     taskRecord.TaskSubtype = System.Label.Email;
-                    taskRecord.Description =(quoteRecord.QuotePDF__c!=null)?quoteRecord.QuotePDF__c:'';
+                    taskRecord.Description = quoteRecord.QuotePDF__c;
                     taskRecord.Status = System.Label.TaskStatusCompleted;
                     taskRecord.WhatId = quoteRecord.Opportunity__c;
-                    taskRecord.Program__c = (quoteRecord.Program__c!=null)?quoteRecord.Program__c:'';
+                    taskRecord.Program__c = quoteRecord.Program__c;
                     taskRecord.Subject = System.Label.EmailPriceQuote;
                     taskRecord.OwnerId = quoteRecord.QuoteCreatedBy__c;
+                    taskRecord.RecordTypeId = recordTypeId;
                     taskList.add(taskRecord);
                 }
             }
