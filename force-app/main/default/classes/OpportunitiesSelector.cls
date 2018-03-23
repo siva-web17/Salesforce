@@ -33,7 +33,7 @@ public class OpportunitiesSelector {
         List<Opportunity> opportunities= new List<Opportunity>();
         if (oppIds.size()>0)
         {
-            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
+            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,CloseMainReason__c,
                                     CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
                                      FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c,Mobile__c,Account.DoNotCall__c
                                FROM Opportunity
@@ -65,7 +65,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunitiesOnAccountId(Id accId) {
         return [
-                select id,Name, FollowupDatetime__c,AccountId,StageName,Program__c,isactive__c,CloseMainReason__c
+                select id,Name, FollowupDatetime__c,AccountId,LastAutomationUpdateDateTime__c,TFBypassStageValidation__c,StageName,Program__c,isactive__c,CloseMainReason__c
                 from Opportunity
                 where AccountId = :accId and isactive__c=true
                 order by FollowupDateTime__c ASC
@@ -91,11 +91,11 @@ public class OpportunitiesSelector {
     }
     public static list<opportunity> getLstOpportunityOrderByCrtdDateASC(list<opportunity> mergedOpps) {
 
-        list<opportunity> opportunityOrderByCreatedDateASC = [select id,isactive__c,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps ORDER BY createddate ASC];
+        list<opportunity> opportunityOrderByCreatedDateASC = [select id,isactive__c,FollowupDateTime__c,stageName from opportunity where id in:mergedOpps and isactive__c=true ORDER BY createddate ASC];
         return opportunityOrderByCreatedDateASC;
     }
     public static list<opportunity> getLstOfFollowupOpportunity(list<opportunity> mergedOpps) {
-        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c,isactive__c from opportunity where id in:mergedOpps ORDER BY FollowupDateTime__c ASC];
+        list<opportunity> lstOfOpportunity = [select id,FollowupDateTime__c,stageName, SendBrochure__c,isactive__c from opportunity where id in:mergedOpps and isactive__c=true ORDER BY FollowupDateTime__c ASC];
         return lstOfOpportunity;
 
     }
@@ -103,7 +103,7 @@ public class OpportunitiesSelector {
         list<opportunity> lstOfOpportunity = [
                 select id, Name, FollowupDateTime__c,AccountId,StageName,Program__c,isactive__c
                 from Opportunity
-                Where accountId = :masterAccount.id
+                Where accountId = :masterAccount.id AND isactive__c = true
                 ORDER BY CreatedDate DESC
         ];
         return lstOfOpportunity;
