@@ -331,7 +331,9 @@
                                         toastEvent.fire();
                                         component.set("v.readOnlyToggle", !1);
                                         component.set("v.isCustomerReached", !0);
-                                        document.location.reload(!0);
+                                        //document.location.reload(!0);
+                                        $A.get('e.force:refreshView').fire();
+                                        $A.util.removeClass(loaderComp, "customLoaderTrue");
                                     }
                                     var navEvt = $A.get("e.force:navigateToSObject");
                                     navEvt.setParams({
@@ -357,7 +359,9 @@
                                         toastEvent.fire();
                                         component.set("v.readOnlyToggle", !1);
                                         component.set("v.isCustomerReached", !0);
-                                        document.location.reload(!0);
+                                        //document.location.reload(!0);
+                                        $A.get('e.force:refreshView').fire();
+                                        $A.util.removeClass(loaderComp, "customLoaderTrue");
                                     }
                                 }
                                 break;
