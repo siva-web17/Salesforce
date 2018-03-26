@@ -322,17 +322,11 @@ public with sharing class LogACallController {
                 leadConversion.setOpportunityName(lead.FirstName + ' ' + lead.LastName);
                 Database.LeadConvertResult lcr = Database.convertLead(leadConversion);
                 opportunity objOpp = new opportunity();
-                Account objAccount = new Account();
                 if(lcr.opportunityId != null){
                     objOpp.id = lcr.opportunityId;
                     objOpp.FirstContactDateTime__c = Datetime.now();
                     objOpp.ownerid = UserInfo.getUserId();
                     update objOpp;
-                }
-                if(lcr.accountid!=null){
-                    objAccount.id = lcr.accountid;
-                    objAccount.ownerid = UserInfo.getUserId();
-                    update objAccount;
                 }
 
                 Map<String,String> result = new Map<String,String>();
