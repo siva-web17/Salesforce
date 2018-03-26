@@ -219,15 +219,20 @@ public class OpportunitiesSelector {
     *
     * @return List<Opportunity>
     */
-    public static Map<Id, Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
+    public static Map<Id, Opportunity> getOpportunitiesforAccount(Set<Id> accountIdSet, Boolean checkActiveOpportunity) {
         List<Opportunity> oppList = new List<Opportunity>();
         Map<Id, Opportunity> accountIdWithOpportunityMap = new Map<Id, Opportunity>();
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
             query += f.getFieldPath() + ', ';
         }
-        query += 'Name,AccountId from Opportunity ';
-        query += 'where IsActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
+      
+        query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
+        if (checkActiveOpportunity) {
+            query += ' AND IsActive__c  = TRUE';
+        }
+        query += ' ORDER by LastModifiedDate desc';
+
         oppList = Database.query(query);
         for (Opportunity oppRecord : oppList) {
             accountIdWithOpportunityMap.put(oppRecord.AccountId, oppRecord);
