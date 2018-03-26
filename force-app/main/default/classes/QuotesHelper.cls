@@ -3,40 +3,18 @@
  */
 
 public with sharing class QuotesHelper {
-    private class QuoteToOpportunityAndTaskMap{
-        public Set<Id> OppIdSet {get;set;}
-        public Map<Id, String> TaskMap{get;set;}
-        public QuoteToOpportunityAndTaskMap(Set<Id> oppIdSet,Map<Id, String> taskMap){
-            this.OppIdSet = oppIdSet;
-            this.TaskMap = taskMap;
-        }
-    }
 
-    public static void closeSPQTasksOnOpportunity(List<Quote__c> quoteList) {
-        QuoteToOpportunityAndTaskMap quoteToOppAndTaskMap = getOpportunitiesAndTasksForQuote(quoteList);
-        createTaskforEmailSent(quoteToOppAndTaskMap.TaskMap);
-        List<Task> taskList= TasksSelector.getSPQTasks(quoteToOppAndTaskMap.OppIdSet, system.label.SPQTask);
-        closeSPQTasks(taskList);
-    }
-
-    private static QuoteToOpportunityAndTaskMap getOpportunitiesAndTasksForQuote(List<Quote__c> quoteList){
+    public static void closeSPQTasksAndCreateNewTaskOnOpportunity(List<Quote__c> quoteList) {
         Set<Id> oppIdSet = new Set<Id>();
-        Map<Id, String> taskMap = new Map<Id, String>();
-        List<Task> taskList = new List<Task>();
-        List<Task> pqTaskList = new List<Task>();
-        Id currentRecordId;
-
-        for(Quote__c quoteRecord: quoteList){
-            if(quoteRecord.Opportunity__c!=null){
-                oppIdSet.add(quoteRecord.Opportunity__c);
+            for(Quote__c quoteRecord: quoteList){
+                if(quoteRecord.Opportunity__c!= null){
+                    oppIdSet.add(quoteRecord.Opportunity__c);
+                }
             }
-
-            if(quoteRecord.SentByEmail__c && quoteRecord.QuotePDF__c!=null){
-                taskMap.put(quoteRecord.Opportunity__c, quoteRecord.QuotePDF__c);
-            }
+        List<Task> taskList= TasksSelector.getSPQTasks(oppIdSet, system.label.SPQTask);
+        closeSPQTasks(taskList);
+        createTaskforEmailSent(quoteList);
         }
-        return new QuoteToOpportunityAndTaskMap(oppIdSet,taskMap);
-    }
 
     private static void closeSPQTasks(List<Task> taskList){
         List<Task> tasksToUpdate = new List<Task>();
@@ -58,21 +36,25 @@ public with sharing class QuotesHelper {
         }
     }
 
-    private static void createTaskforEmailSent(Map<Id, String> taskMap){
+    private static void createTaskforEmailSent(List<Quote__c> quoteList){
         List<Task> taskList = new List<Task>();
-        List<Opportunity> oppList=OpportunitiesSelector.getOpportunityForQuote(taskMap);
+        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.getSObjectType()).get(Label.CallTaskRecordTypeDeveloperName).Id;
         Id oppRecordId;
         try {
-            for (Opportunity oppRecord: oppList) {
-                oppRecordId = oppRecord.Id; 
-                Task taskRecord = new Task();
-                taskRecord.TaskSubtype = System.Label.Email;
-                taskRecord.Description = taskMap.get(oppRecord.Id);
-                taskRecord.Status = System.Label.TaskStatusCompleted;
-                taskRecord.Whatid = oppRecord.Id;
-                taskRecord.Program__c = oppRecord.Program__c;
-                taskRecord.Subject = System.Label.EmailPriceQuote;
-                taskList.add(taskRecord);
+            for (Quote__c quoteRecord: quoteList) {
+                if (quoteRecord.SentByEmail__c && quoterecord.Opportunity__c!=null) {
+                    oppRecordId = quoteRecord.Opportunity__c;
+                    Task taskRecord = new Task();
+                    taskRecord.TaskSubtype = System.Label.Email;
+                    taskRecord.Description = quoteRecord.QuotePDF__c;
+                    taskRecord.Status = System.Label.TaskStatusCompleted;
+                    taskRecord.WhatId = quoteRecord.Opportunity__c;
+                    taskRecord.Program__c = quoteRecord.Program__c;
+                    taskRecord.Subject = System.Label.EmailPriceQuote;
+                    taskRecord.OwnerId = quoteRecord.QuoteCreatedBy__c;
+                    taskRecord.RecordTypeId = recordTypeId;
+                    taskList.add(taskRecord);
+                }
             }
             if (taskList.size() > 0) {
                 insert taskList;
