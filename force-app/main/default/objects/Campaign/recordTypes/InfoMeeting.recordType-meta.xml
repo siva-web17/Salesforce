@@ -33,21 +33,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Market__c</picklist>
-        <values>
-            <fullName>AEA</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>DEB</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>FRP</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>MeetingType__c</picklist>
         <values>
             <fullName>INF</fullName>
