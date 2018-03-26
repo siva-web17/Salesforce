@@ -96,7 +96,6 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
             }
 
             function mapRecordsByIds(records){
-                debugger;
                 var opportunitiesById = {};
                 for(var i = 0 ; i < records.length; i++){
                     opportunitiesById[records[i].id] = records[i];
@@ -130,7 +129,6 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
 
                 var opportunitiesByIds = mapRecordsByIds(context.selectedRows);
-                console.log(opportunitiesByIds);
                 //Loop through each result and pull the data.
                 var records = [];
 
