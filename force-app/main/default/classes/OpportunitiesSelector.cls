@@ -229,7 +229,7 @@ public class OpportunitiesSelector {
       
         query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
         if (checkActiveOpportunity) {
-            query += ' AND isActive__c  = TRUE';
+            query += ' AND IsActive__c  = TRUE';
         }
         query += ' ORDER by LastModifiedDate desc';
 
