@@ -126,8 +126,8 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 }
 
                 //Query for the data that needs to be passed into new records.
-                var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
-
+                var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND IsDeleted = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
+                
                 var opportunitiesByIds = mapRecordsByIds(context.selectedRows);
                 //Loop through each result and pull the data.
                 var records = [];
