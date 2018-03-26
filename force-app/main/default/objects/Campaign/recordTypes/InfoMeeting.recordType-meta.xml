@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+<RecordType 
+    xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InfoMeeting</fullName>
     <active>true</active>
     <description>Info meeting of type Online or offline</description>
@@ -31,8 +32,22 @@
             <default>false</default>
         </values>
     </picklistValues>
-   
-	<picklistValues>
+    <picklistValues>
+        <picklist>Market__c</picklist>
+        <values>
+            <fullName>AEA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEB</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>FRP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>MeetingType__c</picklist>
         <values>
             <fullName>INF</fullName>
@@ -218,5 +233,4 @@
             <default>false</default>
         </values>
     </picklistValues>
-
 </RecordType>
