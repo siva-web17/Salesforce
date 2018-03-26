@@ -218,6 +218,7 @@ public class AccountsHelper {
             }
         } catch (Exception ex) {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
+
                     'AccountsHelper', 'saveAccountInformation', currentRecordID);
         }
     }

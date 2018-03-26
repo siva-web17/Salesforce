@@ -2,7 +2,6 @@
 	accountData: function(cmp, event, helper) {},
 
 	insertRecord: function(cmp, event) {
-	    debugger;
 		var action = cmp.get('c.updateAccountDetails');
 		var fwrapperLst = cmp.get('v.wrapperList');
 		//alert(JSON.stringify(fwrapperLst));

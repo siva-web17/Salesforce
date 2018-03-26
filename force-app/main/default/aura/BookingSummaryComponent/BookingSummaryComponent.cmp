@@ -1,56 +1,53 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CreateBookingController">
     <ltng:require scripts="{!$Resource.MomentMinRecur + '/moment.min.js'}" afterScriptsLoaded="{!c.doInit}"/>
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:attribute name="wrapperList" type="CreateBookingController.IntermediateScreenWrapper" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="wrapperList" type="CreateBookingController.IntermediateScreenWrapper"/>
     <aura:handler name="change" value="{!v.RecordId}" action="{!c.doInit}"/>
-    <aura:attribute name="RecordId" type="String" />
-    <aura:attribute name="zTitle" type="String" />
-    <aura:attribute name="zNickName" type="String" />
-    <aura:attribute name="pickGender" type="String" />
-    <aura:attribute name="selectedCurrency" type="String" />
-    <aura:attribute name="selectedSalesOffice" type="String" />
-    <aura:attribute name="selectedCountry" type="String" />
-    <aura:attribute name="selectedBirthCountry" type="String" />
-    <aura:attribute name="selectedNationality" type="String" />
-    <aura:attribute name="selectedOtherNationality" type="String" />
-    <aura:attribute name="selectedPassportType" type="String" />
-    <aura:attribute name="selectedBookingChannel" type="String" />
-    <aura:attribute name="selectedBookingType" type="String" />
-    <aura:attribute name="selected" type="String[]" />
-    <aura:attribute name="zFirstName" type="String" />
-    <aura:attribute name="zMiddleName" type="String" />
-    <aura:attribute name="zlastName" type="String" />
-    <aura:attribute name="Language" type="String" />
-    <aura:attribute name="salesmadeby" type="String" />
-    <aura:attribute name="ownerURL" type="String" />
+    <aura:attribute name="RecordId" type="String"/>
+    <aura:attribute name="zTitle" type="String"/>
+    <aura:attribute name="zNickName" type="String"/>
+    <aura:attribute name="pickGender" type="String"/>
+    <aura:attribute name="selectedCurrency" type="String"/>
+    <aura:attribute name="selectedSalesOffice" type="String"/>
+    <aura:attribute name="selectedCountry" type="String"/>
+    <aura:attribute name="selectedBirthCountry" type="String"/>
+    <aura:attribute name="selectedNationality" type="String"/>
+    <aura:attribute name="selectedOtherNationality" type="String"/>
+    <aura:attribute name="selectedPassportType" type="String"/>
+    <aura:attribute name="selectedBookingChannel" type="String"/>
+    <aura:attribute name="selectedBookingType" type="String"/>
+    <aura:attribute name="selected" type="String[]"/>
+    <aura:attribute name="zFirstName" type="String"/>
+    <aura:attribute name="zMiddleName" type="String"/>
+    <aura:attribute name="zlastName" type="String"/>
+    <aura:attribute name="Language" type="String"/>
+    <aura:attribute name="salesmadeby" type="String"/>
+    <aura:attribute name="ownerURL" type="String"/>
     <aura:attribute name="GenderList" type="List"/>
-    <aura:attribute name="CurrencyList" type="List" />
-    <aura:attribute name="BookingTypeList" type="List" />
-    <aura:attribute name="SalesOfficeList" type="List" />
-    <aura:attribute name="MaillingCountryList" type="List" />
-    <aura:attribute name="BirthCountryList" type="List" />
-    <aura:attribute name="PassportList" type="List" />
-    <aura:attribute name="NationalityList" type="List" />
-    <aura:attribute name="OtherNationalityList" type="Map" />
-    <aura:attribute name="BookingChannelList" type="SelectOption[]" />
-    <aura:attribute name="isFinishBooking" type="Boolean" default="false" />
-    <aura:attribute name="DisableFinishBooking" type="Boolean" default="false" />
+    <aura:attribute name="CurrencyList" type="List"/>
+    <aura:attribute name="BookingTypeList" type="List"/>
+    <aura:attribute name="SalesOfficeList" type="List"/>
+    <aura:attribute name="MaillingCountryList" type="List"/>
+    <aura:attribute name="BirthCountryList" type="List"/>
+    <aura:attribute name="PassportList" type="List"/>
+    <aura:attribute name="NationalityList" type="List"/>
+    <aura:attribute name="OtherNationalityList" type="Map"/>
+    <aura:attribute name="BookingChannelList" type="SelectOption[]"/>
+    <aura:attribute name="isFinishBooking" type="Boolean" default="false"/>
+    <aura:attribute name="DisableFinishBooking" type="Boolean" default="false"/>
     <aura:attribute name="selectedOtherNationalityMulti" type="String[]"/>
     <aura:attribute name="selectedOtherNationalityNameMulti" type="String[]"/>
-
-
-
     <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
         <div class="slds-grid">
             <div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
                 <h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;
-                    <lightning:icon iconName="utility:phone_portrait" class="customGreen" />
+                    <lightning:icon iconName="utility:phone_portrait" class="customGreen"/>
                     <span class="slds-icon_container slds-icon-standard-pricebook" title="Description of icon when needed">
-						<span class="slds-assistive-text">Description of icon</span>
-					</span>
-                    <strong>&nbsp; {!$Label.c.Booking_Summary_create_booking}&nbsp;{!v.wrapperList.personAcc.FirstName}&nbsp;{!v.wrapperList.personAcc.LastName} </strong>
+                        <span class="slds-assistive-text">Description of icon</span>
+                    </span>
+                    <strong>&nbsp; {!$Label.c.Booking_Summary_create_booking}&nbsp;{!v.wrapperList.personAcc.FirstName}
+                        &nbsp;{!v.wrapperList.personAcc.LastName} </strong>
                 </h2>
-
                 <p>&nbsp;</p>
                 <div class="demo-only"></div>
                 <div class="slds-path slds-is-expanded">
@@ -62,41 +59,40 @@
                                     <ul class="slds-path__nav" role="tablist">
                                         <li class="slds-path__item slds-is-current slds-is-active" aura:id="header-1" role="presentation">
                                             <a aria-controls="path-content-1" aria-expanded="true" aria-selected="false" class="slds-path__link" href="javascript:void(0);" id="path-1" role="tab" tabindex="-1">
-												<span class="slds-path__stage">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" />
-													<span class="slds-assistive-text">Stage Complete</span>
-												</span>
+                                                <span class="slds-path__stage">
+                                                    <lightning:icon size="x-small" iconName="utility:check" class="icon_color_white"/>
+                                                    <span class="slds-assistive-text">Stage Complete</span>
+                                                </span>
                                                 <span class="slds-path__title ">
-													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
-														<lightning:icon size="x-small" iconName="utility:announcement" class="icon_color_white" />
-														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; {!$Label.c.bookingsummaryPersonalDetails}
-												</span>
+                                                    <span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
+                                                        <lightning:icon size="x-small" iconName="utility:announcement" class="icon_color_white"/>
+                                                        <span class="slds-assistive-text">Description of icon</span>
+                                                    </span> &nbsp; {!$Label.c.bookingsummaryPersonalDetails}
+                                                </span>
                                             </a>
                                         </li>
                                         <li class="slds-path__item slds-is-incomplete" aura:id="header-3" role="presentation">
                                             <a aria-controls="path-content-3" aria-expanded="true" aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-3" role="tab" tabindex="0">
-												<span class="slds-path__stage">
-													<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" />
-													<span class="slds-assistive-text">Current Stage:</span>
-												</span>
+                                                <span class="slds-path__stage">
+                                                    <lightning:icon size="x-small" iconName="utility:check" class="icon_color_white"/>
+                                                    <span class="slds-assistive-text">Current Stage:</span>
+                                                </span>
                                                 <span class="slds-path__title">
-													<span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
-														<lightning:icon size="x-small" iconName="utility:replace" class="icon_color_white" />
-														<span class="slds-assistive-text">Description of icon</span>
-													</span> &nbsp; {!$Label.c.BookinSummaryContact_Details}
-												</span>
+                                                    <span class="slds-icon_container slds-icon-utility-announcement " title="Description of icon when needed">
+                                                        <lightning:icon size="x-small" iconName="utility:replace" class="icon_color_white"/>
+                                                        <span class="slds-assistive-text">Description of icon</span>
+                                                    </span> &nbsp; {!$Label.c.BookinSummaryContact_Details}
+                                                </span>
                                             </a>
                                         </li>
-
                                     </ul>
                                     <div class="slds-path__scroll-controls">
                                         <button class="slds-button slds-button_icon slds-button_icon-border-filled" tabindex="-1" title="Scroll left">
-                                            <lightning:icon size="x-small" iconName="utility:left" class="icon_color_white" />
+                                            <lightning:icon size="x-small" iconName="utility:left" class="icon_color_white"/>
                                             <span class="slds-assistive-text">Scroll left</span>
                                         </button>
                                         <button class="slds-button slds-button_icon slds-button_icon-border-filled" tabindex="-1" title="Scroll right">
-                                            <lightning:icon size="x-small" iconName="utility:right" class="icon_color_white" />
+                                            <lightning:icon size="x-small" iconName="utility:right" class="icon_color_white"/>
                                             <span class="slds-assistive-text">Scroll right</span>
                                         </button>
                                     </div>
@@ -119,18 +115,18 @@
                                         <div class="slds-form-element__group">
                                             <div class="slds-grid">
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.First_Name}" aura:id="path_1_Fields" required="true" name="zFirstName" value="{!v.wrapperList.personAcc.FirstName}" />
+                                                    <lightning:input label="{!$Label.c.First_Name}" aura:id="path_1_Fields" required="true" name="zFirstName" value="{!v.wrapperList.personAcc.FirstName}"/>
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.Last_Name}" aura:id="path_1_Fields" required="true" name="zlastName" value="{!v.wrapperList.personAcc.LastName}" />
+                                                    <lightning:input label="{!$Label.c.Last_Name}" aura:id="path_1_Fields" required="true" name="zlastName" value="{!v.wrapperList.personAcc.LastName}"/>
                                                 </div>
                                             </div>
                                             <div class="slds-grid slds-p-top_small">
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.Middle_Name}" aura:id="path_1_Fields" name="zMiddleName" value="{!v.wrapperList.personAcc.MiddleName}" />
+                                                    <lightning:input label="{!$Label.c.Middle_Name}" aura:id="path_1_Fields" name="zMiddleName" value="{!v.wrapperList.personAcc.MiddleName}"/>
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}" />
+                                                    <lightning:input label="{!$Label.c.Nick_Name}" aura:id="path_1_Fields" name="zNickName" value="{!v.wrapperList.personAcc.Nickname__c}"/>
                                                 </div>
                                             </div>
                                             <div class="slds-grid slds-p-top_small">
@@ -138,7 +134,7 @@
                                                     <lightning:input aura:id="path_1_Fields" required="true" label="{!$Label.c.Birthdate}" onchange="{!c.validateDate}" type="date" name="zDOB" value="{!v.wrapperList.personAcc.PersonBirthdate}" messageWhenBadInput="Provided date is not valid for the field."/>
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input aura:id="path_1_Fields" label="{!$Label.c.Age}" value="{!v.wrapperList.age}" disabled="true" />
+                                                    <lightning:input aura:id="path_1_Fields" label="{!$Label.c.Age}" value="{!v.wrapperList.age}" disabled="true"/>
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-3" style="margin-top:0">
                                                     <lightning:select name="path_1_Fields" label="{!$Label.c.Gender}" value="{!v.pickGender}" required="true" aura:id="path_1_Fields">
@@ -159,15 +155,15 @@
                                         <div class="slds-form-element__group">
                                             <div class="slds-form-element__row">
                                                 <div class="slds-form-element slds-size_1-of-1">
-                                                    <lightning:textarea label="{!$Label.c.PersonMailingStreet}" aura:id="path_1_Fields" name="zAddress" required="true" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address" />
+                                                    <lightning:textarea label="{!$Label.c.PersonMailingStreet}" aura:id="path_1_Fields" name="zAddress" required="true" value="{!v.wrapperList.personAcc.PersonMailingStreet}" placeholder="Please fill the address"/>
                                                 </div>
                                             </div>
                                             <div class="slds-grid">
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}" />
+                                                    <lightning:input label="{!$Label.c.PersonMailingPostalCode}" aura:id="path_1_Fields" name="zPostalCode" value="{!v.wrapperList.personAcc.PersonMailingPostalCode}"/>
                                                 </div>
                                                 <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                    <lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}" />
+                                                    <lightning:input label="{!$Label.c.PersonMailingCity}" aura:id="path_1_Fields" name="zCity" value="{!v.wrapperList.personAcc.PersonMailingCity}"/>
                                                 </div>
                                             </div>
                                             <div class="slds-grid slds-p-top_small">
@@ -176,12 +172,12 @@
                                                         <lightning:input label="{!$Label.c.PersonMailingState}" disabled="true" aura:id="path_1_Fields" name="zState" value="{!v.wrapperList.personAcc.PersonMailingState}"></lightning:input>
                                                     </div>
                                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small slds-m-left_none" style="margin-top:0">
-                                                            <lightning:select label="{!$Label.c.PersonMailingCountry}" value="{!v.selectedCountry}" aura:id="path_1_Fields">
-                                                                <option value="">{!$Label.c.PleaseSelect}</option>
-                                                                <aura:iteration items="{!v.MaillingCountryList}" var="itemCountry">
-                                                                    <option text="{!itemCountry.value}" value="{!itemCountry.value}" selected="{!itemCountry.Selected}"/>
-                                                                </aura:iteration>
-                                                            </lightning:select>
+                                                        <lightning:select label="{!$Label.c.PersonMailingCountry}" value="{!v.selectedCountry}" aura:id="path_1_Fields">
+                                                            <option value="">{!$Label.c.PleaseSelect}</option>
+                                                            <aura:iteration items="{!v.MaillingCountryList}" var="itemCountry">
+                                                                <option text="{!itemCountry.value}" value="{!itemCountry.value}" selected="{!itemCountry.Selected}"/>
+                                                            </aura:iteration>
+                                                        </lightning:select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,10 +201,10 @@
                                             <div class="slds-form-element__group">
                                                 <div class="slds-grid">
                                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                        <lightning:input label="{!$Label.c.First_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_FirstName" value="{!v.wrapperList.personAcc.FirstNameEn__c}" />
+                                                        <lightning:input label="{!$Label.c.First_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_FirstName" value="{!v.wrapperList.personAcc.FirstNameEn__c}"/>
                                                     </div>
                                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                                        <lightning:input label="{!$Label.c.Last_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_LastName" value="{!v.wrapperList.personAcc.LastNameEn__c}" />
+                                                        <lightning:input label="{!$Label.c.Last_Name_English}" aura:id="path_2_Fields" pattern="^[a-zA-Z]+$" name="zEn_LastName" value="{!v.wrapperList.personAcc.LastNameEn__c}"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -216,10 +212,10 @@
                                     </div>
                                     <div class="slds-grid slds-grid slds-p-top_small">
                                         <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                            <lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}" />
+                                            <lightning:input label="{!$Label.c.PersonOtherPostalCode}" aura:id="path_2_Fields" name="zEn_PostalCode" value="{!v.wrapperList.personAcc.PersonOtherPostalCode}"/>
                                         </div>
                                         <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                            <lightning:input label="{!$Label.c.PersonOtherCity}" aura:id="path_2_Fields" name="zEn_City" value="{!v.wrapperList.personAcc.PersonOtherCity}" />
+                                            <lightning:input label="{!$Label.c.PersonOtherCity}" aura:id="path_2_Fields" name="zEn_City" value="{!v.wrapperList.personAcc.PersonOtherCity}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +225,7 @@
                                             <div class="slds-form-element__group">
                                                 <div class="slds-form-element__row">
                                                     <div class="slds-form-element slds-size_1-of-1">
-                                                        <lightning:textarea label="{!$Label.c.PersonOtherStreet}" name="zEn_Address" value="{!v.wrapperList.personAcc.PersonOtherStreet}" placeholder="Enter your address" />
+                                                        <lightning:textarea label="{!$Label.c.PersonOtherStreet}" name="zEn_Address" value="{!v.wrapperList.personAcc.PersonOtherStreet}" placeholder="Enter your address"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,14 +237,14 @@
                         <div class="slds-clearfix">
                             <div class="slds-float_right slds-p-right_x-small slds-m-top_large">
                                 <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.navigateToSObject}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> {!$Label.c.BookingSummaryback_button}
-									</span>
+                                    <span class="slds-text-not-selected">
+                                        <lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white"/> {!$Label.c.BookingSummaryback_button}
+                                    </span>
                                 </ui:button>
                                 <ui:button aura:id="next1" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white" /> Continue
-									</span>
+                                    <span class="slds-text-not-selected">
+                                        <lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white"/> Continue
+                                    </span>
                                 </ui:button>
                             </div>
                         </div>
@@ -281,34 +277,40 @@
                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0"></div>
                                 </div>
                                 <div class="slds-grid slds-p-bottom_small">
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Email}" type="email" aura:id="path_3_Fields" required="true" messageWhenPatternMismatch="please enter valid email ID" name="zEmail1" value="{!v.wrapperList.personAcc.PersonEmail}" />
+                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.Email}" type="email" aura:id="path_3_Fields" required="true" messageWhenPatternMismatch="please enter valid email ID" name="zEmail1" value="{!v.wrapperList.personAcc.PersonEmail}"/>
                                     </div>
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Email2}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zEmail2" value="{!v.wrapperList.personAcc.Email2__c}" />
-                                    </div>
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Parent_Email_ID}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zParentEmail" value="{!v.wrapperList.personAcc.ParentEmail__c}" />
+                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.InvoiceEmail}" aura:id="path_3_Fields" type="email" name="Email" required="true" messageWhenPatternMismatch="please enter valid email ID" value="{!v.wrapperList.personAcc.InvoiceEmail__c}"/>
                                     </div>
                                 </div>
-                                <div class="slds-grid">
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.HomePhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonHomePhone}" messageWhenBadInput="Landlinee phone number is greater than 10 digits" />
+                                <div class="slds-grid slds-p-bottom_small">
+                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.Email2}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zEmail2" value="{!v.wrapperList.personAcc.Email2__c}"/>
                                     </div>
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.MobilePhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonMobilePhone}" />
-                                    </div>
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.OtherPhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonOtherPhone}" />
+                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.Parent_Email_ID}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zParentEmail" value="{!v.wrapperList.personAcc.ParentEmail__c}"/>
                                     </div>
                                 </div>
-
-
+                                <div class="slds-grid slds-p-bottom_small">
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.HomePhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonHomePhone}" messageWhenBadInput="Landlinee phone number is greater than 10 digits"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.MobilePhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonMobilePhone}"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.OtherPhone}" aura:id="path_3_Fields" pattern="^[0-9]*$" name="number" value="{!v.wrapperList.personAcc.PersonOtherPhone}"/>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-p-bottom_small">
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0"></div>
+                                </div>
                             </div>
                             <div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
                                 <div class="slds-grid  slds-p-bottom_small">
                                     <div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Personal_ID}" type="text" name="zID" value="{!v.wrapperList.personAcc.PersonalID__c}" />
+                                        <lightning:input label="{!$Label.c.Personal_ID}" type="text" name="zID" value="{!v.wrapperList.personAcc.PersonalID__c}"/>
                                     </div>
                                     <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
                                         <lightning:select name="path_3_Fields" label="{!$Label.c.CountryOfBirth}" value="{!v.selectedBirthCountry}" aura:id="path_3_Fields" required="true">
@@ -319,7 +321,6 @@
                                         </lightning:select>
                                     </div>
                                 </div>
-
                                 <div class="slds-grid  slds-p-bottom_small">
                                     <div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
                                         <lightning:select label="{!$Label.c.Passport_Type}" value="{!v.selectedPassportType}" aura:id="path_3_Fields" name="zPassportType">
@@ -330,15 +331,15 @@
                                         </lightning:select>
                                     </div>
                                     <div class="slds-form-element slds-size_1-of-2" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Passport_Number}" type="text" name="zPassportNumber" value="{!v.wrapperList.personAcc.PassportNumber__c}" />
+                                        <lightning:input label="{!$Label.c.Passport_Number}" type="text" name="zPassportNumber" value="{!v.wrapperList.personAcc.PassportNumber__c}"/>
                                     </div>
                                 </div>
                                 <div class="slds-grid">
                                     <div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Passport_Issue_Date}" type="date" name="zPassportIssueDate" value="{!v.wrapperList.personAcc.PassportIssueDate__c}" />
+                                        <lightning:input label="{!$Label.c.Passport_Issue_Date}" type="date" name="zPassportIssueDate" value="{!v.wrapperList.personAcc.PassportIssueDate__c}"/>
                                     </div>
                                     <div class="slds-form-element slds-size_1-of-2  slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.Passport_Expiry_Date}" type="date" name="Passport Expiry Date" value="{!v.wrapperList.personAcc.PassportExpiryDate__c}" />
+                                        <lightning:input label="{!$Label.c.Passport_Expiry_Date}" type="date" name="Passport Expiry Date" value="{!v.wrapperList.personAcc.PassportExpiryDate__c}"/>
                                     </div>
                                 </div>
                             </div>
@@ -346,19 +347,18 @@
                         <div class="slds-clearfix slds-p-top_medium">
                             <div class="slds-float_right slds-p-right_x-small">
                                 <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white" /> {!$Label.c.BookingSummaryback_button}
-									</span>
+                                    <span class="slds-text-not-selected">
+                                        <lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white"/> {!$Label.c.BookingSummaryback_button}
+                                    </span>
                                 </ui:button>
                                 <ui:button aura:id="next4" disabled="{!v.DisableFinishBooking}" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext3}">
-									<span class="slds-text-not-selected">
-										<lightning:icon size="x-small" iconName="utility:check" class="icon_color_white" /> {!$Label.c.SendToPoseidon}
-									</span>
+                                    <span class="slds-text-not-selected">
+                                        <lightning:icon size="x-small" iconName="utility:check" class="icon_color_white"/> {!$Label.c.SendToPoseidon}
+                                    </span>
                                 </ui:button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
