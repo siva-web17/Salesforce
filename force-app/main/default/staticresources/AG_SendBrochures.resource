@@ -24,7 +24,6 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 return true;
             }
         }
-        ;
         return false;
     };
 
@@ -96,6 +95,15 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 }
             }
 
+            function mapRecordsByIds(records){
+                debugger;
+                var opportunitiesById = {};
+                for(var i = 0 ; i < records.length; i++){
+                    opportunitiesById[records[i].id] = records[i];
+                }
+                return opportunitiesById;
+            }
+
             function printTemplates() {
                 var opportunityIds = [];
                 for (var i = 0; i < context.selectedRows.length; i++) {
@@ -119,8 +127,10 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 }
 
                 //Query for the data that needs to be passed into new records.
-                var sbrTasks = sfdc.query("SELECT Id FROM Task WHERE IsClosed = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
+                var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
 
+                var opportunitiesByIds = mapRecordsByIds(context.selectedRows);
+                console.log(opportunitiesByIds);
                 //Loop through each result and pull the data.
                 var records = [];
 
@@ -128,8 +138,8 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                     var record = new sforce.SObject('Task');
                     record.Id = sbrTasks[i].Id;
                     record.TaskResult__c = TASK_RESULT_SENT_BROCHURE;
-                    record.SentLetter__c = context.selectedRows[i].Letter__c;
-                    record.SentLabel__c = context.selectedRows[i].Label__c;
+                    record.SentLetter__c = opportunitiesByIds[sbrTasks[i].WhatId].Letter__c;
+                    record.SentLabel__c = opportunitiesByIds[sbrTasks[i].WhatId].Label__c;
                     record.Status = 'Completed';
                     records.push(record);
                 }
