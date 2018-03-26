@@ -77,7 +77,22 @@
 					isSelected = false;
 				}
 				component.set('v.NationalityList', arrayNationMapKeys);
+                //------------------------------------------------------------
                 var otherNation = u.personAcc.OtherNationalities__c;
+                var SelectedNation = otherNation.split(';');
+                var AllNationalitiesList = u.OtherNationalityPickList;
+                var SelectedLabelsOther = [];
+                for(var i=0; i<SelectedNation.length; i++ ){
+                   if (AllNationalitiesList.hasOwnProperty(SelectedNation[i])) {
+                     	SelectedLabelsOther.push(AllNationalitiesList[SelectedNation[i]]);
+                    }
+                }
+                if(SelectedNation.length > 0){
+                   component.set('v.OtherNationalityTextInfo', SelectedLabelsOther.toString());
+                }else{
+                    var PleaseSelectOtherPicklist = $A.get("$Label.c.PleaseSelect");
+                    component.set('v.OtherNationalityTextInfo',PleaseSelectOtherPicklist);
+                }
                 component.set('v.selectedOtherNationalityNameMulti', (otherNation != null) ? otherNation.split(';') : '');
                 component.set('v.OtherNationalityList', u.OtherNationalityPickList);
 				//---------------------------------------------------------------
@@ -98,11 +113,12 @@
 			}
 			else {
             					var toastEvent = $A.get('e.force:showToast');
+                                var ErrorMessage = $A.get('$Label.c.IfInactiveOpportunityAndClickCreateBooking');
 
             					toastEvent.setParams({
             						title: 'Failure!',
             						type: 'Failure',
-            						message: 'Error Loading Screen',
+            						message: ErrorMessage,
             					});
             					toastEvent.fire();
             					window.setTimeout(

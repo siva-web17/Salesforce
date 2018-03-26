@@ -37,10 +37,12 @@
     <aura:attribute name="DisableFinishBooking" type="Boolean" default="false"/>
     <aura:attribute name="selectedOtherNationalityMulti" type="String[]"/>
     <aura:attribute name="selectedOtherNationalityNameMulti" type="String[]"/>
+    <aura:attribute name="OtherNationalityTextInfo" type="String"/>
     <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
         <div class="slds-grid">
             <div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
                 <h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;
+
                     <lightning:icon iconName="utility:phone_portrait" class="customGreen"/>
                     <span class="slds-icon_container slds-icon-standard-pricebook" title="Description of icon when needed">
                         <span class="slds-assistive-text">Description of icon</span>
@@ -68,6 +70,7 @@
                                                         <lightning:icon size="x-small" iconName="utility:announcement" class="icon_color_white"/>
                                                         <span class="slds-assistive-text">Description of icon</span>
                                                     </span> &nbsp; {!$Label.c.bookingsummaryPersonalDetails}
+
                                                 </span>
                                             </a>
                                         </li>
@@ -82,6 +85,7 @@
                                                         <lightning:icon size="x-small" iconName="utility:replace" class="icon_color_white"/>
                                                         <span class="slds-assistive-text">Description of icon</span>
                                                     </span> &nbsp; {!$Label.c.BookinSummaryContact_Details}
+
                                                 </span>
                                             </a>
                                         </li>
@@ -239,11 +243,13 @@
                                 <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.navigateToSObject}">
                                     <span class="slds-text-not-selected">
                                         <lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white"/> {!$Label.c.BookingSummaryback_button}
+
                                     </span>
                                 </ui:button>
                                 <ui:button aura:id="next1" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext}">
                                     <span class="slds-text-not-selected">
                                         <lightning:icon size="x-small" iconName="utility:chevronright" class="icon_color_white"/> Continue
+
                                     </span>
                                 </ui:button>
                             </div>
@@ -270,25 +276,20 @@
                                     </div>
                                     <div class="slds-form-element slds-size_1-of-2 otherNationality" style="margin-top:0">
                                         <div class="slds-text-body_regular">Other nationalities</div>
-                                        <c:MultiSelect infoText="{!$Label.c.PleaseSelect}" options="{!v.OtherNationalityList}" selectedItems="{!v.selectedOtherNationalityNameMulti}"/>
+                                        <c:MultiSelect infoText="{!v.OtherNationalityTextInfo}" options="{!v.OtherNationalityList}" selectedItems="{!v.selectedOtherNationalityNameMulti}"/>
                                     </div>
                                 </div>
                                 <div class="slds-grid slds-p-bottom_small">
                                     <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0"></div>
                                 </div>
                                 <div class="slds-grid slds-p-bottom_small">
-                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
                                         <lightning:input label="{!$Label.c.Email}" type="email" aura:id="path_3_Fields" required="true" messageWhenPatternMismatch="please enter valid email ID" name="zEmail1" value="{!v.wrapperList.personAcc.PersonEmail}"/>
                                     </div>
-                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
-                                        <lightning:input label="{!$Label.c.InvoiceEmail}" aura:id="path_3_Fields" type="email" name="Email" required="true" messageWhenPatternMismatch="please enter valid email ID" value="{!v.wrapperList.personAcc.InvoiceEmail__c}"/>
-                                    </div>
-                                </div>
-                                <div class="slds-grid slds-p-bottom_small">
-                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
                                         <lightning:input label="{!$Label.c.Email2}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zEmail2" value="{!v.wrapperList.personAcc.Email2__c}"/>
                                     </div>
-                                    <div class="slds-form-element slds-size_1-of-2 slds-p-right_x-small" style="margin-top:0">
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
                                         <lightning:input label="{!$Label.c.Parent_Email_ID}" type="email" aura:id="path_3_Fields" messageWhenPatternMismatch="please enter valid email ID" name="zParentEmail" value="{!v.wrapperList.personAcc.ParentEmail__c}"/>
                                     </div>
                                 </div>
@@ -304,7 +305,9 @@
                                     </div>
                                 </div>
                                 <div class="slds-grid slds-p-bottom_small">
-                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0"></div>
+                                    <div class="slds-form-element slds-size_1-of-3 slds-p-right_x-small" style="margin-top:0">
+                                        <lightning:input label="{!$Label.c.InvoiceEmail}" aura:id="path_3_Fields" type="email" name="Email" required="true" messageWhenPatternMismatch="please enter valid email ID" value="{!v.wrapperList.personAcc.InvoiceEmail__c}"/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="slds-path__keys slds-form slds-form_stacked  slds-p-top_none">
@@ -349,11 +352,13 @@
                                 <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
                                     <span class="slds-text-not-selected">
                                         <lightning:icon size="x-small" iconName="utility:chevronleft" class="icon_color_white"/> {!$Label.c.BookingSummaryback_button}
+
                                     </span>
                                 </ui:button>
                                 <ui:button aura:id="next4" disabled="{!v.DisableFinishBooking}" buttonTitle="Click to proceed next step" class="slds-button_brand" press="{!c.moveNext3}">
                                     <span class="slds-text-not-selected">
                                         <lightning:icon size="x-small" iconName="utility:check" class="icon_color_white"/> {!$Label.c.SendToPoseidon}
+
                                     </span>
                                 </ui:button>
                             </div>
