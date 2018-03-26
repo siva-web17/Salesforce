@@ -20,18 +20,18 @@ public class AccountsService {
             userIdList.add(accountRecord.LastModifiedById);
         }
         Map<Id, User> UserMap = UsersHelper.getUserDetailsForUserIds(userIdList);
-        if (accountOpportunityMap.size() < newAccountMap.size()) {
-            hasActiveOpportunity = false;
-            System.debug('hasActiveOpportunitarjun ' + hasActiveOpportunity);
-        }
+//        if (accountOpportunityMap.size() < newAccountMap.size()) {
+//            hasActiveOpportunity = false;
+//            System.debug('hasActiveOpportunitarjun ' + hasActiveOpportunity);
+//        }
         try {
             for (Account accountRecord : newAccountMap.values()) {
                 System.debug('Inside ForLoop ' + newAccountMap.values());
                 system.debug(accountRecord.Market__c);
-                if (!hasActiveOpportunity) {
-                    returnMessage = Label.NoActiveOpportunity;
-                    return returnMessage;
-                }
+//                if (!hasActiveOpportunity) {
+//                    returnMessage = Label.NoActiveOpportunity;
+//                    return returnMessage;
+//                }
                 market = accountRecord.Market__c;
                 Map<String, Map<String, Map<String, String>>> changedAccountRecordMap = new Map<String, Map<String, Map<String, String>>>();
                 Map<String, Map<String, String>> changedAccountWithTableNameMap = new Map<String, Map<String, String>>();
@@ -122,9 +122,11 @@ public class AccountsService {
                 SyncToPoseidonAccountDetailsWrapper objwrapper = new SyncToPoseidonAccountDetailsWrapper(updatedAccountList, userDetailsMap, market, UpdateFamilyInfo);
                 String JSONValue = JSON.serialize(objwrapper);
                 System.debug('Girish Account JSON ' + JSONValue);
-                ExceptionHandler.errorLogAsync('New Sync to poseidon', JSONValue,
-                        'AccountService', 'ExternalService', newAccountMap.values()[0].CreatedById);
-                ExternalRouter.callNewSyncToPoseidonService(JSONValue);
+                //ExceptionHandler.errorLogAsync('New Sync to poseidon', JSONValue,
+                        //'AccountService', 'ExternalService', newAccountMap.values()[0].CreatedById);
+                if (!System.isBatch()) {
+                    ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+                }
             }
 
         } catch (Exception ex) {

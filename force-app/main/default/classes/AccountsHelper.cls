@@ -116,7 +116,11 @@ public class AccountsHelper {
                 return;
             }
             //We dont need to check for active opportunity in this case as we are sending the details irrespective of opportunity state
-            Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getOpportunitiesforAccount(newAccountMap.keySet(),false);
+            Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getOpportunitiesforAccount(newAccountMap.keySet(), false);
+//            Boolean hasActiveOpportunity = true;
+//            if (accountOpportunityMap.size() < newAccountMap.size()) {
+//                hasActiveOpportunity = false;
+//            }
             List<Id> userIdList = new List<Id>();
             for (Account accountRecord : newAccountMap.values()) {
                 userIdList.add(accountRecord.CreatedById);
@@ -130,6 +134,10 @@ public class AccountsHelper {
                 //SF-1988
                 //Send details to Poseidon only when account has booking or Account is synched with Poseidon
                 if (accountRecord.TotalBooking__c > 0 || (accountRecord.AccountExternalId__c != null && accountRecord.IsSyncedToPoseidon__c)) {
+                    /* if (!hasActiveOpportunity) {
+                        accountRecord.addError(Label.NoActiveOpportunity);
+                        return;
+                    }*/
                     Map<String, String> AddressfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Address.getFields()) {
                         if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
@@ -218,7 +226,6 @@ public class AccountsHelper {
             }
         } catch (Exception ex) {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-
                     'AccountsHelper', 'saveAccountInformation', currentRecordID);
         }
     }
