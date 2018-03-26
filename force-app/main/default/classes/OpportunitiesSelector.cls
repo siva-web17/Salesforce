@@ -30,14 +30,15 @@ public class OpportunitiesSelector {
     * @return Returns list of opportunities based on the oppIds
     * */
     public static List<Opportunity> getOpportunitiesOnId(Set<Id> oppIds) {
-        List<Opportunity> opportunities= new List<Opportunity>();
-        if (oppIds.size()>0)
-        {
-            opportunities = [SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,CloseMainReason__c,
-                                    CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
-                                     FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c,Mobile__c,Account.DoNotCall__c
-                               FROM Opportunity
-                              WHERE Id IN :oppIds];
+        List<Opportunity> opportunities = new List<Opportunity>();
+        if (oppIds.size() > 0) {
+            opportunities = [
+                    SELECT Id, Name, TimeOutDate__c,FollowupDatetime__c, AccountId, StageName,Program__c,Market__c,
+                            CloseDate,LikelihoodToBook__c,HearAboutUs__c,Destinations__c,PreferredDuration__c,WhenYear__c,WhenMonth__c,
+                            FirstContactDateTime__c,IsActive__c,TFBypassStageValidation__c,NumberOfUnreachedCalls__c,OtherPhone__c,HomePhone__c,Mobile__c,Account.DoNotCall__c
+                    FROM Opportunity
+                    WHERE Id IN :oppIds
+            ];
         }
         return opportunities;
     }
@@ -49,9 +50,9 @@ public class OpportunitiesSelector {
     public static List<Opportunity> getOpportunitiesOnName(Set<String> oppNames) {
         return [
                 SELECT id,
-                       Name
-                  FROM Opportunity
-                 WHERE Name = :oppNames
+                        Name
+                FROM Opportunity
+                WHERE Name = :oppNames
         ];
     }
 
@@ -67,7 +68,7 @@ public class OpportunitiesSelector {
         return [
                 select id,Name, FollowupDatetime__c,AccountId,LastAutomationUpdateDateTime__c,TFBypassStageValidation__c,StageName,Program__c,IsActive__c,CloseMainReason__c
                 from Opportunity
-                where AccountId = :accId and IsActive__c=true
+                where AccountId = :accId and IsActive__c = true
                 order by FollowupDateTime__c ASC
         ];
     }
@@ -111,7 +112,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-               select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
+                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
 //                        SELECT Id, WhoId, WhatId, Subject, Status,
 //                                FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,
 //                                CloseDate__c, IsExpressCall__c,RecordType.DeveloperName
@@ -166,27 +167,27 @@ public class OpportunitiesSelector {
     }
 
     public static Opportunity getOpportunityRecord(Id recordId) {
-        return [Select Id, AccountId, Account.PersonContactId, CampaignId, Program__c, Market__c
+        return [
+                Select Id, AccountId, Account.PersonContactId, CampaignId, Program__c, Market__c
                 from Opportunity
                 where Id = :recordId
-                LIMIT 1];
+                LIMIT 1
+        ];
     }
 
     public static String getOpportunityStageName(Opportunity opportunityRecord) {
-       if (!Test.isRunningTest()) {
-        String previousOpportunityStageName;
-        for (OpportunityHistory oppHistory : [Select id,opportunityid,StageName from OpportunityHistory where opportunityid = :opportunityRecord.id]) {
-            if (oppHistory.StageName != Label.salesclosed && previousOpportunityStageName == null || previousOpportunityStageName == '') {
-                previousOpportunityStageName = oppHistory.StageName;
+        if (!Test.isRunningTest()) {
+            String previousOpportunityStageName;
+            for (OpportunityHistory oppHistory : [Select id,opportunityid,StageName from OpportunityHistory where opportunityid = :opportunityRecord.id]) {
+                if (oppHistory.StageName != Label.salesclosed && previousOpportunityStageName == null || previousOpportunityStageName == '') {
+                    previousOpportunityStageName = oppHistory.StageName;
+                }
             }
-        }
-        system.debug('I am here'+opportunityRecord.FirstContactDateTime__c +'previousstage'+previousOpportunityStageName);
-        if(previousOpportunityStageName==label.OpportunityStageToContact && opportunityRecord.FirstContactDateTime__c!=null){
-           system.debug('I am here');
-            previousOpportunityStageName = label.OpportunityStageFollowUp;
+            if (previousOpportunityStageName == label.OpportunityStageToContact && opportunityRecord.FirstContactDateTime__c != null) {
+                previousOpportunityStageName = label.OpportunityStageFollowUp;
+                return previousOpportunityStageName;
+            }
             return previousOpportunityStageName;
-        }
-        return previousOpportunityStageName;
         }
         return 'To Contact';
     }
@@ -218,18 +219,18 @@ public class OpportunitiesSelector {
     *
     * @return List<Opportunity>
     */
-    public static  Map<Id,Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
-        List<Opportunity> oppList=new List<Opportunity>();
-        Map<Id,Opportunity> accountIdWithOpportunityMap=new Map<Id,Opportunity>();
+    public static Map<Id, Opportunity> getActiveOpportunitiesforAccount(Set<Id> accountIdSet) {
+        List<Opportunity> oppList = new List<Opportunity>();
+        Map<Id, Opportunity> accountIdWithOpportunityMap = new Map<Id, Opportunity>();
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
             query += f.getFieldPath() + ', ';
         }
         query += 'Name,AccountId from Opportunity ';
         query += 'where IsActive__c  = TRUE and AccountId in  : ' + 'accountIdSet' + ' ' ;
-        oppList= Database.query(query);
-        for (Opportunity oppRecord:oppList) {
-            accountIdWithOpportunityMap.put(oppRecord.AccountId,oppRecord);
+        oppList = Database.query(query);
+        for (Opportunity oppRecord : oppList) {
+            accountIdWithOpportunityMap.put(oppRecord.AccountId, oppRecord);
         }
         return accountIdWithOpportunityMap;
     }
@@ -244,18 +245,18 @@ public class OpportunitiesSelector {
    *
    * @return List<Opportunity>
    */
-    public static  Map<Id,Opportunity> getActiveOpportunitiesforPQ(Set<Id> oppIdSet) {
-        List<Opportunity> oppList=new List<Opportunity>();
-        Map<Id,Opportunity> OpportunityMap=new Map<Id,Opportunity>();
+    public static Map<Id, Opportunity> getActiveOpportunitiesforPQ(Set<Id> oppIdSet) {
+        List<Opportunity> oppList = new List<Opportunity>();
+        Map<Id, Opportunity> OpportunityMap = new Map<Id, Opportunity>();
         String query = 'SELECT ';
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.CreatePriceQuote.getFields()) {
             query += f.getFieldPath() + ', ';
         }
         query += 'Name,AccountId from Opportunity ';
         query += 'where IsActive__c  = TRUE and Id in  : ' + 'oppIdSet' + ' ' ;
-        oppList= Database.query(query);
-        for (Opportunity oppRecord:oppList) {
-            OpportunityMap.put(oppRecord.Id,oppRecord);
+        oppList = Database.query(query);
+        for (Opportunity oppRecord : oppList) {
+            OpportunityMap.put(oppRecord.Id, oppRecord);
         }
         return OpportunityMap;
     }
@@ -323,10 +324,12 @@ public class OpportunitiesSelector {
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         return [
                 SELECT
-                        Id, Name, StageName, Product__c, Program__c, FirstContactDateTime__c,OwnerId,
-                        (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c, Program__c, Type, IsClosed__c, IsClosed,IsParentClosing__c,isexpresscall__c,RecordTypeId
+                        Id, Name, StageName, Product__c, Program__c, FirstContactDateTime__c,OwnerId, (
+                        SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c, Program__c, Type, IsClosed__c, IsClosed,IsParentClosing__c,isexpresscall__c,RecordTypeId
                         FROM Tasks
-                        WHERE Type = :TasksHelper.CALL AND RecordTypeId = :systemCallTaskRecordTypeId LIMIT 1)
+                        WHERE Type = :TasksHelper.CALL AND RecordTypeId = :systemCallTaskRecordTypeId
+                        LIMIT 1
+                )
                 FROM Opportunity
                 WHERE Id IN :opportunitiesIds
         ];
@@ -334,15 +337,16 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunitiesWithSBRTaskByAccountIds(List<Id> accountIds) {
         Id sbrRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SBR_TASK_DEVELOPER_NAME).Id;
-        return [SELECT Id, Age__c, AccountId, Account.PersonBirthdate, Account.Language__c, Market__c, Program__c, Letter__c, Label__c, TemplateKey__c,
-                (SELECT WhatId FROM Tasks WHERE RecordTypeId = :sbrRecordTypeId AND IsClosed <> TRUE)
-            FROM Opportunity
-            WHERE AccountId IN : accountIds];
+        return [
+                SELECT Id, Age__c, AccountId, Account.PersonBirthdate, Account.Language__c, Market__c, Program__c, Letter__c, Label__c, TemplateKey__c, (SELECT WhatId FROM Tasks WHERE RecordTypeId = :sbrRecordTypeId AND IsClosed <> TRUE)
+                FROM Opportunity
+                WHERE AccountId IN :accountIds
+        ];
     }
 
-    public static Map<Id,Opportunity> getOpportunityRecords(List<Id> opportunityIds){
-        Map<Id,Opportunity> opportunityMap = new Map<Id,Opportunity>();
-        if(opportunityIds!=null) {
+    public static Map<Id, Opportunity> getOpportunityRecords(List<Id> opportunityIds) {
+        Map<Id, Opportunity> opportunityMap = new Map<Id, Opportunity>();
+        if (opportunityIds != null) {
             opportunityMap = new Map<Id, Opportunity>([select Id, SalesOffice__c from Opportunity where Id in :opportunityIds]);
         }
         return opportunityMap;
@@ -358,19 +362,20 @@ public class OpportunitiesSelector {
     * @return List<Id,Opportunity>
     */
 
-    public static List<Opportunity> getOpportunitiesByAccountId(Set<Id> accountIds){
+    public static List<Opportunity> getOpportunitiesByAccountId(Set<Id> accountIds) {
 
         List<Opportunity> opportunities = new List<Opportunity>(
         [
-            SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
-                    CloseDate
-            FROM Opportunity
-            WHERE AccountId IN :accountIds]
+                SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
+                        CloseDate
+                FROM Opportunity
+                WHERE AccountId IN :accountIds
+        ]
         );
         return opportunities;
     }
 
-    public static List<Opportunity> getOpportunityForQuote(Map<Id, String> taskMap){
-        return[Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
+    public static List<Opportunity> getOpportunityForQuote(Map<Id, String> taskMap) {
+        return [Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
     }
 }

@@ -11,7 +11,7 @@ Modification Log   :
 *******************************************************************************/
 public class AccountsSelector {
 
-    public static Account getAccountOnId(Id accountId) {
+    public static Account getAccountOnId(Id accountId) { 
         return [
                 select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
                         PersonMailingStreet, RecalculateRanking__c, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
