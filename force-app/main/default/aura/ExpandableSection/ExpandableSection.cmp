@@ -1,0 +1,23 @@
+<!--
+ - Created by aneesh.bhat on 28-Jul-17.
+ -->
+
+<aura:component description="ExpandableSection"  implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId">
+    <aura:attribute name="content" type="Aura.Component[]"/>
+    <aura:attribute name="buttonState" type="Boolean" default="false"/>
+    <div class="slds-section" aura:id="sectionHeader">
+        <h3 class="slds-section__title" onclick="{!c.onClick}">
+            <button aria-controls="expando-unique-id" aria-expanded="false" class="slds-button slds-section__title-action" onclick="{!c.handleIconState}">
+                <lightning:buttonStateful variant="text"
+                        iconNameWhenOff="utility:chevronright"
+                        iconNameWhenOn="utility:chevrondown"
+                        state="{!v.buttonState}"
+                />
+                <span class="slds-truncate" title="Section Title">Search</span>
+            </button>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content slds-hide" aura:id="content" id="expando-unique-id">
+                {!v.content}
+        </div>
+    </div>
+</aura:component>

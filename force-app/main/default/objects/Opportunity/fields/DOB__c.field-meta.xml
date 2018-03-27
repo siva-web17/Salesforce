@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DOB__c</fullName>
+    <description>This field is used to be able to display DOB from the Account.
+Note: To be deleted as soon as the Person Account Component on the Opportunity Layout is functional.</description>
+    <externalId>false</externalId>
+    <formula>Account.PersonContact.Birthdate</formula>
+    <label>Birthdate</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

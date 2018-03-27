@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BlockStatusChangeToConvertedWhenNotConv</fullName>
+    <active>true</active>
+    <description>Prevent updating the lead status to converted when the lead is not actually converted</description>
+    <errorConditionFormula>AND(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),!IsConverted,ISPICKVAL(Status , 'Converted'))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Lead Status can't be changed to Converted status.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsByConversion__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is to track if the record is migrated/converted from Poseidon.</description>
+    <externalId>false</externalId>
+    <label>Is By Conversion</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

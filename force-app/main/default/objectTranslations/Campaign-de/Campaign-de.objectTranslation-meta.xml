@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Campaign Layout</layout>
+        <sections>
+            <label><!-- Campaign Date and Place --></label>
+            <section>Campaign Date and Place</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Info Meeting --></label>
+        <name>InfoMeeting</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Market, Sales Office, Product and Program cannot be edited once the meeting is created. --></errorMessage>
+        <name>BlockUpdatingOfSpecificFields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Info Meetings should be created for the same day. Please modify the date and try again. --></errorMessage>
+        <name>DateFromAndDateToMustBeSameDay</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Info Meetings cannot be created for the past. Please select a different date. --></errorMessage>
+        <name>DateFromMustBeInFuture</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date To should always be greater than Date From. --></errorMessage>
+        <name>DateToGreaterThanDateFrom</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the EF.COM Market. --></errorMessage>
+        <name>EfFComMandatoryWhenSendToEFComIsChecked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Is UP&apos; is applicable only for Program &apos;AY&apos; and &apos;AYP&apos;. --></errorMessage>
+        <name>IsUPOnlyAllowedForSpecificPrograms</name>
+    </validationRules>
+    <webLinks>
+        <label>Alle Kampagnemitgliede</label>
+        <name>ViewAllCampaignMembers</name>
+    </webLinks>
+    <webLinks>
+        <label>Kampagneneinfluss</label>
+        <name>ViewCampaignInfluenceReport</name>
+    </webLinks>
+</CustomObjectTranslation>

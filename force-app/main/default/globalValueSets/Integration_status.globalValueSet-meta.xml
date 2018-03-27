@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Sent To Poseidon</fullName>
+        <default>false</default>
+        <label>Sent To Poseidon</label>
+    </customValue>
+    <customValue>
+        <fullName>Booking Created</fullName>
+        <default>false</default>
+        <label>Booking Created</label>
+    </customValue>
+    <customValue>
+        <fullName>Error</fullName>
+        <default>false</default>
+        <label>Error</label>
+    </customValue>
+    <description>Used to track the details of record of Integration</description>
+    <masterLabel>Integration status</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

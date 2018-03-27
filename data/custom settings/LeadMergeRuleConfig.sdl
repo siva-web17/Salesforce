@@ -1,0 +1,18 @@
+#Mapping values
+#Tue Jan 30 16:17:28 IST 2018
+OTHERPHONE__C=OtherPhone__c
+DECISION__C=Decision__c
+STREET__C=Street__c
+DOB__C=Dob__c
+HASBOOKING__C=HasBooking__c
+REGION__C=Region__c
+TRITONID__C=Tritonid__c
+MOBILEPHONE__C=MobilePhone__c
+FIRSTNAME__C=FirstName__c
+PHONE__C=Phone__c
+EMAIL2__C=Email2__c
+LASTNAME__C=LastName__c
+EMAIL__C=Email__c
+CITY__C=City__c
+POSTALCODE__C=PostalCode__c
+NAME=Name

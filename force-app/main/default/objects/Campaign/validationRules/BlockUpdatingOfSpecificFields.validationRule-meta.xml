@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BlockUpdatingOfSpecificFields</fullName>
+    <active>true</active>
+    <description>Market, Sales Office, Product and Program cannot be updated.</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),ISCHANGED(Market__c  ) ||  ISCHANGED(SalesOffice__c  ) || ISCHANGED(Product__c )|| ISCHANGED( Program__c ))</errorConditionFormula>
+    <errorMessage>Market, Sales Office, Product and Program cannot be edited once the meeting is created.</errorMessage>
+</ValidationRule>

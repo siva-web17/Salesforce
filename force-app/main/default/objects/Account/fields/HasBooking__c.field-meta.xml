@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HasBooking__c</fullName>
+    <description>This field is used to indicate if this Account has a booking linked to it in status 'BKN'</description>
+    <externalId>false</externalId>
+    <formula>BookingsinstatusBKN__c  &lt;> 0</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Has Booking</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

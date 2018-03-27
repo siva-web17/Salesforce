@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateFromMustBeInFuture</fullName>
+    <active>true</active>
+    <description>Prevent the creation of info meetings which occur in the past</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),(DateFrom__c &lt;  NOW()  &amp;&amp; ISNEW()) || ((ISCHANGED(DateFrom__c)) &amp;&amp; (DateFrom__c &lt;  NOW())))</errorConditionFormula>
+    <errorMessage>Info Meetings cannot be created for the past. Please select a different date.</errorMessage>
+</ValidationRule>

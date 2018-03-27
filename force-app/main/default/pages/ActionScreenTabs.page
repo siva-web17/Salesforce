@@ -1,0 +1,96 @@
+<apex:page sidebar="false" showHeader="false" docType="html-4.01-strict">
+    <apex:includeLightning />
+
+    <style>
+        .noselect {
+          -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+             -khtml-user-select: none; /* Konqueror */
+               -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                          not supported by any browser */
+        }
+    </style>
+
+    <div id="tabstrip" class="noselect" style="display:none;">
+        <ul>
+            <li id="opportunitiesTab" class="k-state-active" onclick="TabController.setLastSelectedTab('opportunitiesTab')">Opportunities</li>
+            <li id="leadsTab" onclick="TabController.setLastSelectedTab('leadsTab')">Leads</li>
+        </ul>
+    <!-- Opportunities -->
+        <div style="overflow:hidden;">
+            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false"  ViewID="a5J7E000000CcQsUAK"
+            EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true"
+            EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+            <CRMC_PP:DrillUp />
+        </div>
+
+    <!-- Leads -->
+        <div style="overflow:hidden;">
+            <CRMC_PP:Grid ObjectName="Lead" DelayLoad="false"  ViewID="a5J7E000000CcQuUAK"
+            EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true"
+            EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+            <CRMC_PP:DrillUp />
+        </div>
+
+    </div>
+    <script>
+    $(document).ready(function() {
+        $("#tabstrip").kendoTabStrip({
+          activate: function(e){
+            setTimeout(function(){
+                $(window).resize();
+            });
+          }
+        });
+        $("#tabstrip").css("display", "block");
+        $("#tabstrip").find('ul').first().append('<li class="k-item k-state-default k-last"><div id="myProductivity"></div></li>');
+        $Lightning.use("c:MyProductivityOutApp",    // name of the Lightning app
+                function() {                  // Callback once framework and app loaded
+                    $Lightning.createComponent(
+                            "c:MyProductivity", // top-level component of your app
+                            { },                  // attributes to set on the component when created
+                            "myProductivity",   // the DOM location to insert the component
+                            function(cmp) {
+                                // callback when component is created and active on the page
+                            }
+                    );
+                }
+        );
+
+        TabController.init();
+    });
+
+    var TabController = {
+
+        localStorageName : 'lastSelectedTab',
+
+        getLastSelectedTab : function() {
+            return localStorage.getItem(this.localStorageName);
+        },
+
+        setLastSelectedTab : function(tabName) {
+            localStorage.setItem(this.localStorageName, tabName);
+        },
+
+        selectTab : function (tabName) {
+            if(tabName) {
+                $('#tabstrip ul li').each(function (index, tab) {
+                    $(tab).removeClass('k-state-active');
+                    if ($(tab).attr('id') === tabName) {
+                        $(tab).trigger("click");
+                    }
+                });
+            }
+        },
+
+        init : function () {
+            var lastSelected = this.getLastSelectedTab();
+            this.selectTab(lastSelected);
+        }
+    }
+
+    </script>
+
+</apex:page>

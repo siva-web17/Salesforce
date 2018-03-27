@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Customer Request --></label>
+    <name>CustomerRequest__c</name>
+    <picklistValues>
+        <masterLabel>Brochure Request</masterLabel>
+        <translation><!-- Brochure Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Info Request</masterLabel>
+        <translation><!-- Info Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price Quotation</masterLabel>
+        <translation><!-- Price Quotation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reservation</masterLabel>
+        <translation><!-- Reservation --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

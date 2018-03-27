@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActivityDateTime__c</fullName>
+    <description>ActivityDateTime</description>
+    <externalId>false</externalId>
+    <inlineHelpText>ActivityDateTime</inlineHelpText>
+    <label>Activity Date Time</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

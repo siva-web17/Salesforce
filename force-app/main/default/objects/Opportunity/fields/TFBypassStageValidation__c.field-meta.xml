@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TFBypassStageValidation__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>TECHNICAL FIELD: This field is used to allow the system to bypass the Stage Validation in order to update the Stage of the Opportunity automatically.</description>
+    <externalId>false</externalId>
+    <label>TF Bypass Stage Validation</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

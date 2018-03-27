@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccountMandatoryFirstName</fullName>
+    <active>true</active>
+    <description>This validation rule is used to prompt the user to fill in a First Name when creating thePerson Account.</description>
+    <errorConditionFormula>NOT($Setup.BypassTriggersValidation__c.DisableValidation__c) 
+&amp;&amp;
+IsPersonAccount 
+&amp;&amp;
+ISBLANK( FirstName )</errorConditionFormula>
+    <errorMessage>Please fill in the First Name before saving the Person Account.</errorMessage>
+</ValidationRule>

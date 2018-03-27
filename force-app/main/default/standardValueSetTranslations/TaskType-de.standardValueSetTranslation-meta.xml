@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Call</masterLabel>
+        <translation>Anruf</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MCR</masterLabel>
+        <translation><!-- MCR --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PTS</masterLabel>
+        <translation><!-- PTS --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SBR</masterLabel>
+        <translation><!-- SBR --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SPQ</masterLabel>
+        <translation><!-- SPQ --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

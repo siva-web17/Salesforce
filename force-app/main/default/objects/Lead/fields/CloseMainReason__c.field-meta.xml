@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CloseMainReason__c</fullName>
+    <description>Indicated the close Reason on the Lead</description>
+    <externalId>false</externalId>
+    <label>Close Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Chose to do something else</fullName>
+                <default>false</default>
+                <label>Chose to do something else</label>
+            </value>
+            <value>
+                <fullName>Finds EF offer too expensive</fullName>
+                <default>false</default>
+                <label>Finds EF offer too expensive</label>
+            </value>
+            <value>
+                <fullName>Had no intention</fullName>
+                <default>false</default>
+                <label>Had no intention</label>
+            </value>
+            <value>
+                <fullName>Has no means</fullName>
+                <default>false</default>
+                <label>Has no means</label>
+            </value>
+            <value>
+                <fullName>Lost to competitor</fullName>
+                <default>false</default>
+                <label>Lost to competitor</label>
+            </value>
+            <value>
+                <fullName>Not able to contact customer</fullName>
+                <default>false</default>
+                <label>Not able to contact customer</label>
+            </value>
+            <value>
+                <fullName>Wrongly Imported</fullName>
+                <default>false</default>
+                <label>Wrongly Imported</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

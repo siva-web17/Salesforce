@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program__c</fullName>
+    <description>Field is used to map program from lead to a customer request.</description>
+    <externalId>false</externalId>
+    <label>Program</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Programs</valueSetName>
+    </valueSet>
+</CustomField>

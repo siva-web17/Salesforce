@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Number of days where System Call Task is overdue, 0 is returned if no overdue yet --></help>
+    <label><!-- Call Task Overdue --></label>
+    <name>SCT_Overdue__c</name>
+</CustomFieldTranslation>

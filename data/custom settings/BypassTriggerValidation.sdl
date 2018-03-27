@@ -1,0 +1,6 @@
+#Mapping values
+#Tue Jan 30 16:34:05 IST 2018
+TRIGGEROBJECT__C=TriggerObject__c
+DISABLETRIGGER__C=DisableTrigger__c
+NAME=Name
+DISABLEVALIDATION__C=DisableValidation__c

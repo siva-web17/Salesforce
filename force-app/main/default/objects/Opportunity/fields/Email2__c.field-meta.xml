@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email2__c</fullName>
+    <description>This field is used in order to display the PA Email2 on the Opp PL.
+Note: To be deleted as soon as the PA component on OPP PL is functional.</description>
+    <externalId>false</externalId>
+    <formula>Account.Email2__c</formula>
+    <label>Email2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

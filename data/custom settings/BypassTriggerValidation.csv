@@ -1,0 +1,4 @@
+"NAME","DISABLETRIGGER__C","DISABLEVALIDATION__C","TRIGGEROBJECT__C"
+"Bypass Triggers Validation (User)","false","false","Account"
+"Bypass Triggers Validation (User)","false","true",""
+"Bypass Triggers Validation (User)","false","false",""
