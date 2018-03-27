@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>This field is used to indicate upon manually creating an Opportunity whether a Brochure still needs to be send or not, since its possible that the customer walked in and received the brochure already.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Check this box if you wish to send the brochure. If this field is checked and the customer has address, then this opportunity will show under Send Materials. In case you have given the brochure to the customer in the office or at a fair - do not tick this</inlineHelpText>
     <label>Send Brochure</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
