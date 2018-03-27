@@ -20,13 +20,16 @@ public class DCObjectMerge {
         sourceLead = addressMerge(sourceLead,duplicateLead);
          sourceLead.status = sourceLead.status=='closed'?'open':sourceLead.status;
         //7. program merge
-        system.debug('********* source type'+DCBusinessFlow.sourceCustomerRequstType);
-        system.debug('********* latest type'+DCBusinessFlow.latestCustomerRequsetType);
+        
         //if(sourceLead.Program__c == 'MULTI' || programMerge(DCBusinessFlow.sourceCustomerRequstType,DCBusinessFlow.latestCustomerRequsetType)) {
         if((sourceLead.Program__c == Label.MULTI) || (duplicateLead.RequestType__c != 'CAM')) {
             sourceLead.Product__c = duplicateLead.Product__c;
             sourceLead.Program__c = duplicateLead.Program__c;
         }
+        sourceLead.HasOptedOutOfEmail = false;
+        sourceLead.Email2OptOut__c = false;
+        sourceLead.DoNotMail__c = false;
+
         return sourceLead;
     }
 
@@ -45,8 +48,10 @@ public class DCObjectMerge {
         //6. address merge
         duplicateAccount = addressLeadtoAccountMerge(duplicateAccount,sourceLead);
          duplicateAccount.recalculateranking__c = true;
-        system.debug('^^^^^^^^^^^^ final acocunt'+duplicateAccount);
-        system.debug('duplicateAccount>>>>>'+duplicateAccount);
+         duplicateAccount.EmailOptOut__c = false;
+         duplicateAccount.Email2OptOut__c = false;
+         duplicateAccount.DoNotMail__c = false;
+       
 
         return duplicateAccount;
     }
