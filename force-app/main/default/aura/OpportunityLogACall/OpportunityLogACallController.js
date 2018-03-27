@@ -330,8 +330,6 @@
                       message: LAC_DATA_SUCCESS
                     });
                     toastEvent.fire();
-                    component.set("v.readOnlyToggle", !1);
-                    component.set("v.isCustomerReached", !0);
                     //document.location.reload(!0);
                     $A.get("e.force:refreshView").fire();
                     $A.util.removeClass(loaderComp, "customLoaderTrue");
@@ -358,9 +356,11 @@
                       message: LAC_DATA_SUCCESS
                     });
                     toastEvent.fire();
-                    component.set("v.readOnlyToggle", !1);
-                    component.set("v.isCustomerReached", !0);
                     //document.location.reload(!0);
+                    if (component.get("v.find_lead_or_opp") == "006") {
+                      component.set("v.readOnlyToggle", !1);
+                      component.set("v.isCustomerReached", !0);
+                    }
                     $A.get("e.force:refreshView").fire();
                     $A.util.removeClass(loaderComp, "customLoaderTrue");
                   }
