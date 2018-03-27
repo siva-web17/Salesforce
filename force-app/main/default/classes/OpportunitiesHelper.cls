@@ -402,7 +402,7 @@ public class OpportunitiesHelper {
                 {
                     if (opportunityRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
                         if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
-                            opportunityRec.Source__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
+                            opportunityRec.Partner__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
                         }
                     }
                 }
