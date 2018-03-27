@@ -31,7 +31,6 @@
     });
     $A.enqueueAction(salesAction);
     helper.getFirstContactStatus(component);
-    component.set("v.find_lead_or_opp", component.get("v.recordId").slice(0, 3));
     var likelihoodToBookAction = component.get("c.getLikelihoodToBookOptions");
     likelihoodToBookAction.setParams({ recordId: component.get("v.recordId") });
     likelihoodToBookAction.setCallback(this, function(res) {
@@ -357,7 +356,7 @@
                     });
                     toastEvent.fire();
                     //document.location.reload(!0);
-                    if (component.get("v.find_lead_or_opp") == "006") {
+                    if (component.get('v.sObjectName') == 'Opportunity') {
                       component.set("v.readOnlyToggle", !1);
                       component.set("v.isCustomerReached", !0);
                     }

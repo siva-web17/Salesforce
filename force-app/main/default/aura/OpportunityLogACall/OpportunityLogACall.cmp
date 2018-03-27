@@ -1,5 +1,5 @@
 <!--- Refactoring by Shiva 22-1-2018 -->
-<aura:component description="OpportunityLogACall" controller="LogACallController" implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId">
+<aura:component description="OpportunityLogACall" controller="LogACallController" implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId,force:hasSObjectName">
     <ltng:require scripts="{!$Resource.MomentMinRecur + '/moment.min.js'}" afterScriptsLoaded="{!c.doInit}" />
     <aura:attribute name="salesAction" type="List" />
     <aura:attribute name="likelihoodToBook" type="List" />
@@ -35,7 +35,6 @@
     <aura:attribute name="isCustomerReached" type="Boolean" />
     <aura:attribute name="readOnlyToggle" type="Boolean" default="false" />
     <aura:attribute name="customDataLoader" type="Boolean" default="false" />
-    <aura:attribute name="find_lead_or_opp" type="String" />
     <aura:attribute name="isActiveUser" type="Boolean" default="true" />
     <aura:attribute name="months" type="String[]" default="January,February,March,April,May,June,July,August,September,October,November,December" />
     <aura:attribute name="saveText" type="String" />
@@ -47,6 +46,7 @@
     <aura:attribute name="selectedDisplayNumber" type="List" />
     <aura:attribute name="doNotCall" type="Boolean" />
     <aura:attribute name="commentsValue" type="String" default='' />
+    <aura:attribute name="sObjectName" type="String" />
     <lightning:overlayLibrary aura:id="overlayLib" />
     <div class="slds">
         <div class="slds-panel slds-border_bottom slds-border_top slds-border_left slds-border_right" style="position: relative;">
@@ -319,11 +319,11 @@
             <div class="slds-panel__section slds-grid">
                 <div class="slds-size_1-of-2 slds-p-right_x-small">
                     <button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="save" onclick="{!c.onSaveClicked}">
-						{!( v.selectedActionType == $Label.c.LAC_Call_Reached ||v.selectedActionType == $Label.c.LAC_Called_Us ||v.selectedActionType == $Label.c.LAC_Visited_Us ||v.selectedActionType == $Label.c.LAC_Emailed_Us ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached )? ( v.find_lead_or_opp == '00Q' ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert ) : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION } </button>
+						{!( v.selectedActionType == $Label.c.LAC_Call_Reached ||v.selectedActionType == $Label.c.LAC_Called_Us ||v.selectedActionType == $Label.c.LAC_Visited_Us ||v.selectedActionType == $Label.c.LAC_Emailed_Us ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached )? ( v.sObjectName == 'Lead' ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert ) : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION } </button>
                 </div>
                 <div class="slds-size_1-of-2 slds-p-left_x-small">
                     <button disabled="{! v.isActiveUser == false ? true : false }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="saveAndClose" onclick="{!c.onSaveClicked}">
-						{! (v.find_lead_or_opp == '00Q') ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached || v.selectedActionType == $Label.c.LAC_Called_Us || v.selectedActionType == $Label.c.LAC_Visited_Us || v.selectedActionType == $Label.c.LAC_Emailed_Us || v.selectedActionType == $Label.c.LAC_Social_Media_Reached ) ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAC : $Label.c.LAC_Convert_C ) : $Label.c.LAC_SAC ) : $Label.c.LAC_SAC}</button>
+						{! (v.sObjectName == 'Lead') ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached || v.selectedActionType == $Label.c.LAC_Called_Us || v.selectedActionType == $Label.c.LAC_Visited_Us || v.selectedActionType == $Label.c.LAC_Emailed_Us || v.selectedActionType == $Label.c.LAC_Social_Media_Reached ) ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAC : $Label.c.LAC_Convert_C ) : $Label.c.LAC_SAC ) : $Label.c.LAC_SAC}</button>
                 </div>
             </div>
         </div>
