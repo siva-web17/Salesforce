@@ -356,7 +356,9 @@
                     });
                     toastEvent.fire();
                     //document.location.reload(!0);
-                    if (component.get('v.sObjectName') == 'Opportunity') {
+                    var callAction = component.get('v.selectedActionType');
+                    var IsNotReached = callAction == $A.get("$Label.c.CallNotReached") || callAction == $A.get("$Label.c.SentEmail") || callAction == $A.get("$Label.c.SocialMediaSent";
+                    if (component.get('v.sObjectName') == 'Opportunity' && !IsNotReached )  {
                       component.set("v.readOnlyToggle", !1);
                       component.set("v.isCustomerReached", !0);
                     }
