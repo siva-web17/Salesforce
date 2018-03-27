@@ -7,7 +7,7 @@
     <label>Market</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>True</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
