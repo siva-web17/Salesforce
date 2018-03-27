@@ -14,7 +14,7 @@ public with sharing class Quotes {
     }
 
     public static void onAfterInsert(List<Quote__c>newItems) {
-        QuotesHelper.closeSPQTasksOnOpportunity(newItems);
+        QuotesHelper.closeSPQTasksAndCreateNewTaskOnOpportunity(newItems);
     }
 
     public static void onAfterUpdate(List<Quote__c> oldQuoteList,List<Quote__c> newQuoteList) {

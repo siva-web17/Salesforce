@@ -1,5 +1,5 @@
-**PersonalJourney.settings 
-**SocialCustomerServiceSettings.settings       
+**PersonalJourney.settings
+**SocialCustomerServiceSettings.settings
 **EntityMilestone-Object Milestone Layout.layout
 **ChatterAnswersAgentView.page
 **ChatterAnswersAgentView.page-meta.xml
@@ -14,7 +14,7 @@
 **ChatterAnswersLogin.page
 **ChatterAnswersLogin.page-meta.xml
 **ChatterAnswersRegistration.page
-**ChatterAnswersRegistration.page-meta.xml  
+**ChatterAnswersRegistration.page-meta.xml
 **profileSessionSettings
 **profilePasswordPolicies
 **portals
@@ -73,3 +73,4 @@
 **Forecasting.settings
 
 **Address.settings
+**Standard_Email_Application_Pane.flexipage-meta.xml

@@ -2,7 +2,7 @@
  * Created by arjun.mohan on 3/8/2018. new change
  */
 
-public class CreatePriceQuoteController { 
+public class CreatePriceQuoteController {
 
     public Opportunity oppObj { get; set; }
     public Task taskObj { get; set; }
@@ -11,7 +11,7 @@ public class CreatePriceQuoteController {
     public String returnvalue { get; set; }
     public String displayMessage { get; set; }
     public String PriceQuoteURL { get; set; }
- 
+
     public CreatePriceQuoteController(ApexPages.StandardController controller) {
 
         this.displayMessage = System.label.CreateBookinDisplayMessage;
@@ -67,8 +67,8 @@ public class CreatePriceQuoteController {
                         createPQFieldvalues.put(f.getFieldPath(),
                                 String.ValueOf(opportunityMap.get(Id.valueOf(OppId)).get(f.getFieldPath())));
                     } else if (f.getFieldPath() != 'Email2__c' && f.getFieldPath() != 'Gender__c') {
-
-                        this.returnvalue = (!String.isEmpty(this.returnvalue))?this.returnvalue:' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
+                       
+                        this.returnvalue = (!String.isEmpty(this.returnvalue)) ? this.returnvalue : ' ' + Schema.getGlobalDescribe().get('Opportunity').getDescribe().fields.getMap().get(f.getFieldPath()).getDescribe().getLabel() + ' ,';
                     }
                 }
                 System.debug('this.returnvalue ' + this.returnvalue);
@@ -98,7 +98,7 @@ public class CreatePriceQuoteController {
         } catch (Exception ex) {
             Id recID = Id.valueOf(this.RecordId);
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-                    'CreatePriceQuoteController', 'openPoseidonToCreateQuote', '');
+                    'CreatePriceQuoteController', 'openPoseidonToCreateQuote', null);
             throw new AuraHandledException(ex.getMessage());
         }
     }
