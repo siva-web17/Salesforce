@@ -46,7 +46,6 @@
     <aura:attribute name="selectedDisplayNumber" type="List" />
     <aura:attribute name="doNotCall" type="Boolean" />
     <aura:attribute name="commentsValue" type="String" default='' />
-    <aura:attribute name="sObjectName" type="String" />
     <lightning:overlayLibrary aura:id="overlayLib" />
     <div class="slds">
         <div class="slds-panel slds-border_bottom slds-border_top slds-border_left slds-border_right" style="position: relative;">
