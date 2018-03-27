@@ -31,7 +31,6 @@
     });
     $A.enqueueAction(salesAction);
     helper.getFirstContactStatus(component);
-    component.set("v.find_lead_or_opp", component.get("v.recordId").slice(0, 3));
     var likelihoodToBookAction = component.get("c.getLikelihoodToBookOptions");
     likelihoodToBookAction.setParams({ recordId: component.get("v.recordId") });
     likelihoodToBookAction.setCallback(this, function(res) {
@@ -330,8 +329,6 @@
                       message: LAC_DATA_SUCCESS
                     });
                     toastEvent.fire();
-                    component.set("v.readOnlyToggle", !1);
-                    component.set("v.isCustomerReached", !0);
                     //document.location.reload(!0);
                     $A.get("e.force:refreshView").fire();
                     $A.util.removeClass(loaderComp, "customLoaderTrue");
@@ -358,9 +355,13 @@
                       message: LAC_DATA_SUCCESS
                     });
                     toastEvent.fire();
-                    component.set("v.readOnlyToggle", !1);
-                    component.set("v.isCustomerReached", !0);
                     //document.location.reload(!0);
+                    var callAction = component.get('v.selectedActionType');
+                    var IsNotReached = callAction == $A.get("$Label.c.CallNotReached") || callAction == $A.get("$Label.c.SentEmail") || callAction == $A.get("$Label.c.SocialMediaSent";
+                    if (component.get('v.sObjectName') == 'Opportunity' && !IsNotReached )  {
+                      component.set("v.readOnlyToggle", !1);
+                      component.set("v.isCustomerReached", !0);
+                    }
                     $A.get("e.force:refreshView").fire();
                     $A.util.removeClass(loaderComp, "customLoaderTrue");
                   }
