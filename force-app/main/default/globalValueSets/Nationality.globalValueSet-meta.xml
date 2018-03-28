@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>AE</fullName>
+        <fullName>AF</fullName>
         <default>false</default>
-        <label>United Arab Emirates</label>
+        <label>Afghan</label>
+    </customValue>
+    <customValue>
+        <fullName>AL</fullName>
+        <default>false</default>
+        <label>Albanian</label>
+    </customValue>
+    <customValue>
+        <fullName>DZ</fullName>
+        <default>false</default>
+        <label>Algerian</label>
+    </customValue>
+    <customValue>
+        <fullName>US</fullName>
+        <default>false</default>
+        <label>American</label>
+    </customValue>
+    <customValue>
+        <fullName>AS</fullName>
+        <default>false</default>
+        <label>American Samoan</label>
+    </customValue>
+    <customValue>
+        <fullName>AD</fullName>
+        <default>false</default>
+        <label>Andorran</label>
+    </customValue>
+    <customValue>
+        <fullName>AO</fullName>
+        <default>false</default>
+        <label>Angolan</label>
+    </customValue>
+    <customValue>
+        <fullName>AI</fullName>
+        <default>false</default>
+        <label>Anguillan</label>
+    </customValue>
+    <customValue>
+        <fullName>AQ</fullName>
+        <default>false</default>
+        <label>Antarctic</label>
+    </customValue>
+    <customValue>
+        <fullName>AG</fullName>
+        <default>false</default>
+        <label>Antiguan; Barbudian</label>
     </customValue>
     <customValue>
         <fullName>AR</fullName>
@@ -11,9 +56,14 @@
         <label>Argentinian</label>
     </customValue>
     <customValue>
-        <fullName>AT</fullName>
+        <fullName>AM</fullName>
         <default>false</default>
-        <label>Austrian</label>
+        <label>Armenian</label>
+    </customValue>
+    <customValue>
+        <fullName>AW</fullName>
+        <default>false</default>
+        <label>Aruban</label>
     </customValue>
     <customValue>
         <fullName>AU</fullName>
@@ -21,9 +71,39 @@
         <label>Australian</label>
     </customValue>
     <customValue>
+        <fullName>AT</fullName>
+        <default>false</default>
+        <label>Austrian</label>
+    </customValue>
+    <customValue>
         <fullName>AZ</fullName>
         <default>false</default>
         <label>Azerbaijani</label>
+    </customValue>
+    <customValue>
+        <fullName>BS</fullName>
+        <default>false</default>
+        <label>Bahamian</label>
+    </customValue>
+    <customValue>
+        <fullName>BH</fullName>
+        <default>false</default>
+        <label>Bahraini</label>
+    </customValue>
+    <customValue>
+        <fullName>BD</fullName>
+        <default>false</default>
+        <label>Bangladesh</label>
+    </customValue>
+    <customValue>
+        <fullName>BB</fullName>
+        <default>false</default>
+        <label>Barbadian</label>
+    </customValue>
+    <customValue>
+        <fullName>BY</fullName>
+        <default>false</default>
+        <label>Belarusian</label>
     </customValue>
     <customValue>
         <fullName>BE</fullName>
@@ -31,9 +111,94 @@
         <label>Belgian</label>
     </customValue>
     <customValue>
+        <fullName>BZ</fullName>
+        <default>false</default>
+        <label>Belizean</label>
+    </customValue>
+    <customValue>
+        <fullName>BJ</fullName>
+        <default>false</default>
+        <label>Beninese</label>
+    </customValue>
+    <customValue>
+        <fullName>BM</fullName>
+        <default>false</default>
+        <label>Bermudian</label>
+    </customValue>
+    <customValue>
+        <fullName>BT</fullName>
+        <default>false</default>
+        <label>Bhutanese</label>
+    </customValue>
+    <customValue>
+        <fullName>BO</fullName>
+        <default>false</default>
+        <label>Bolivian</label>
+    </customValue>
+    <customValue>
+        <fullName>BA</fullName>
+        <default>false</default>
+        <label>Bosnian; Herzegovinian</label>
+    </customValue>
+    <customValue>
+        <fullName>BW</fullName>
+        <default>false</default>
+        <label>Botswanan</label>
+    </customValue>
+    <customValue>
+        <fullName>BV</fullName>
+        <default>false</default>
+        <label>Bouvian</label>
+    </customValue>
+    <customValue>
         <fullName>BR</fullName>
         <default>false</default>
         <label>Brazilian</label>
+    </customValue>
+    <customValue>
+        <fullName>GB</fullName>
+        <default>false</default>
+        <label>British</label>
+    </customValue>
+    <customValue>
+        <fullName>VG</fullName>
+        <default>false</default>
+        <label>British Virgin Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>BN</fullName>
+        <default>false</default>
+        <label>Bruneian</label>
+    </customValue>
+    <customValue>
+        <fullName>BG</fullName>
+        <default>false</default>
+        <label>Bulgarian</label>
+    </customValue>
+    <customValue>
+        <fullName>BF</fullName>
+        <default>false</default>
+        <label>Burkinabe</label>
+    </customValue>
+    <customValue>
+        <fullName>MM</fullName>
+        <default>false</default>
+        <label>Burmese</label>
+    </customValue>
+    <customValue>
+        <fullName>BI</fullName>
+        <default>false</default>
+        <label>Burundian</label>
+    </customValue>
+    <customValue>
+        <fullName>KH</fullName>
+        <default>false</default>
+        <label>Cambodian</label>
+    </customValue>
+    <customValue>
+        <fullName>CM</fullName>
+        <default>false</default>
+        <label>Cameroonian</label>
     </customValue>
     <customValue>
         <fullName>CA</fullName>
@@ -41,9 +206,24 @@
         <label>Canadian</label>
     </customValue>
     <customValue>
-        <fullName>CH</fullName>
+        <fullName>CV</fullName>
         <default>false</default>
-        <label>Swiss</label>
+        <label>Cape Verdean</label>
+    </customValue>
+    <customValue>
+        <fullName>KY</fullName>
+        <default>false</default>
+        <label>Caymanian</label>
+    </customValue>
+    <customValue>
+        <fullName>CF</fullName>
+        <default>false</default>
+        <label>Central African</label>
+    </customValue>
+    <customValue>
+        <fullName>TD</fullName>
+        <default>false</default>
+        <label>Chadian</label>
     </customValue>
     <customValue>
         <fullName>CL</fullName>
@@ -56,9 +236,34 @@
         <label>Chinese</label>
     </customValue>
     <customValue>
+        <fullName>CX</fullName>
+        <default>false</default>
+        <label>Christmas Island</label>
+    </customValue>
+    <customValue>
+        <fullName>CC</fullName>
+        <default>false</default>
+        <label>Cocos (Keeling) Islands</label>
+    </customValue>
+    <customValue>
         <fullName>CO</fullName>
         <default>false</default>
         <label>Colombian</label>
+    </customValue>
+    <customValue>
+        <fullName>KM</fullName>
+        <default>false</default>
+        <label>Comorian</label>
+    </customValue>
+    <customValue>
+        <fullName>ZR</fullName>
+        <default>false</default>
+        <label>Congo</label>
+    </customValue>
+    <customValue>
+        <fullName>CD</fullName>
+        <default>false</default>
+        <label>Congolese</label>
     </customValue>
     <customValue>
         <fullName>CR</fullName>
@@ -66,14 +271,24 @@
         <label>Costa Rican</label>
     </customValue>
     <customValue>
+        <fullName>HR</fullName>
+        <default>false</default>
+        <label>Croatian</label>
+    </customValue>
+    <customValue>
+        <fullName>CU</fullName>
+        <default>false</default>
+        <label>Cuban</label>
+    </customValue>
+    <customValue>
+        <fullName>CY</fullName>
+        <default>false</default>
+        <label>Cypriot</label>
+    </customValue>
+    <customValue>
         <fullName>CZ</fullName>
         <default>false</default>
         <label>Czech</label>
-    </customValue>
-    <customValue>
-        <fullName>DE</fullName>
-        <default>false</default>
-        <label>German</label>
     </customValue>
     <customValue>
         <fullName>DK</fullName>
@@ -81,9 +296,29 @@
         <label>Danish</label>
     </customValue>
     <customValue>
-        <fullName>DZ</fullName>
+        <fullName>DJ</fullName>
         <default>false</default>
-        <label>Algerian</label>
+        <label>Djibouti</label>
+    </customValue>
+    <customValue>
+        <fullName>DM</fullName>
+        <default>false</default>
+        <label>Dominica</label>
+    </customValue>
+    <customValue>
+        <fullName>DO</fullName>
+        <default>false</default>
+        <label>Dominican</label>
+    </customValue>
+    <customValue>
+        <fullName>NL</fullName>
+        <default>false</default>
+        <label>Dutch</label>
+    </customValue>
+    <customValue>
+        <fullName>TP</fullName>
+        <default>false</default>
+        <label>East Timorese</label>
     </customValue>
     <customValue>
         <fullName>EC</fullName>
@@ -91,9 +326,44 @@
         <label>Ecuadorian</label>
     </customValue>
     <customValue>
-        <fullName>ES</fullName>
+        <fullName>EG</fullName>
         <default>false</default>
-        <label>Spanish</label>
+        <label>Egyptian</label>
+    </customValue>
+    <customValue>
+        <fullName>GQ</fullName>
+        <default>false</default>
+        <label>Equatorial Guinea</label>
+    </customValue>
+    <customValue>
+        <fullName>ER</fullName>
+        <default>false</default>
+        <label>Eritrean</label>
+    </customValue>
+    <customValue>
+        <fullName>EE</fullName>
+        <default>false</default>
+        <label>Estonian</label>
+    </customValue>
+    <customValue>
+        <fullName>ET</fullName>
+        <default>false</default>
+        <label>Ethiopian</label>
+    </customValue>
+    <customValue>
+        <fullName>FO</fullName>
+        <default>false</default>
+        <label>Faeroese</label>
+    </customValue>
+    <customValue>
+        <fullName>FK</fullName>
+        <default>false</default>
+        <label>Falkland Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>FJ</fullName>
+        <default>false</default>
+        <label>Fiji</label>
     </customValue>
     <customValue>
         <fullName>FI</fullName>
@@ -106,9 +376,99 @@
         <label>French</label>
     </customValue>
     <customValue>
+        <fullName>GA</fullName>
+        <default>false</default>
+        <label>Gabonese</label>
+    </customValue>
+    <customValue>
+        <fullName>GM</fullName>
+        <default>false</default>
+        <label>Gambian</label>
+    </customValue>
+    <customValue>
+        <fullName>GE</fullName>
+        <default>false</default>
+        <label>Georgian</label>
+    </customValue>
+    <customValue>
+        <fullName>DE</fullName>
+        <default>false</default>
+        <label>German</label>
+    </customValue>
+    <customValue>
+        <fullName>GH</fullName>
+        <default>false</default>
+        <label>Ghanaian</label>
+    </customValue>
+    <customValue>
+        <fullName>GI</fullName>
+        <default>false</default>
+        <label>Gibraltarian</label>
+    </customValue>
+    <customValue>
         <fullName>GR</fullName>
         <default>false</default>
         <label>Greek</label>
+    </customValue>
+    <customValue>
+        <fullName>GL</fullName>
+        <default>false</default>
+        <label>Greenlandic</label>
+    </customValue>
+    <customValue>
+        <fullName>GD</fullName>
+        <default>false</default>
+        <label>Grenadian</label>
+    </customValue>
+    <customValue>
+        <fullName>GP</fullName>
+        <default>false</default>
+        <label>Guadeloupean</label>
+    </customValue>
+    <customValue>
+        <fullName>GU</fullName>
+        <default>false</default>
+        <label>Guamanian</label>
+    </customValue>
+    <customValue>
+        <fullName>GT</fullName>
+        <default>false</default>
+        <label>Guatemalan</label>
+    </customValue>
+    <customValue>
+        <fullName>GF</fullName>
+        <default>false</default>
+        <label>Guianese</label>
+    </customValue>
+    <customValue>
+        <fullName>GW</fullName>
+        <default>false</default>
+        <label>Guinea-Bissau</label>
+    </customValue>
+    <customValue>
+        <fullName>GN</fullName>
+        <default>false</default>
+        <label>Guinean</label>
+    </customValue>
+    <customValue>
+        <fullName>GY</fullName>
+        <default>false</default>
+        <label>Guyanese</label>
+    </customValue>
+    <customValue>
+        <fullName>HT</fullName>
+        <default>false</default>
+        <label>Haitian</label>
+    </customValue>
+    <customValue>
+        <fullName>HM</fullName>
+        <default>false</default>
+        <label>Heard Island and McDonald Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>HN</fullName>
+        <default>false</default>
+        <label>Honduran</label>
     </customValue>
     <customValue>
         <fullName>HK</fullName>
@@ -121,9 +481,9 @@
         <label>Hungarian</label>
     </customValue>
     <customValue>
-        <fullName>ID</fullName>
+        <fullName>IS</fullName>
         <default>false</default>
-        <label>Indonesian</label>
+        <label>Icelandic</label>
     </customValue>
     <customValue>
         <fullName>IN</fullName>
@@ -131,9 +491,29 @@
         <label>Indian</label>
     </customValue>
     <customValue>
+        <fullName>ID</fullName>
+        <default>false</default>
+        <label>Indonesian</label>
+    </customValue>
+    <customValue>
         <fullName>IR</fullName>
         <default>false</default>
         <label>Iranian</label>
+    </customValue>
+    <customValue>
+        <fullName>IQ</fullName>
+        <default>false</default>
+        <label>Iraqi</label>
+    </customValue>
+    <customValue>
+        <fullName>IE</fullName>
+        <default>false</default>
+        <label>Irish</label>
+    </customValue>
+    <customValue>
+        <fullName>IL</fullName>
+        <default>false</default>
+        <label>Israeli</label>
     </customValue>
     <customValue>
         <fullName>IT</fullName>
@@ -141,14 +521,24 @@
         <label>Italian</label>
     </customValue>
     <customValue>
+        <fullName>CI</fullName>
+        <default>false</default>
+        <label>Ivorian</label>
+    </customValue>
+    <customValue>
+        <fullName>JM</fullName>
+        <default>false</default>
+        <label>Jamaican</label>
+    </customValue>
+    <customValue>
         <fullName>JP</fullName>
         <default>false</default>
         <label>Japanese</label>
     </customValue>
     <customValue>
-        <fullName>KR</fullName>
+        <fullName>JO</fullName>
         <default>false</default>
-        <label>South Korean</label>
+        <label>Jordanian</label>
     </customValue>
     <customValue>
         <fullName>KZ</fullName>
@@ -156,9 +546,54 @@
         <label>Kazakh</label>
     </customValue>
     <customValue>
-        <fullName>LU</fullName>
+        <fullName>KE</fullName>
         <default>false</default>
-        <label>Luxembourgish</label>
+        <label>Kenyan</label>
+    </customValue>
+    <customValue>
+        <fullName>KI</fullName>
+        <default>false</default>
+        <label>Kiribatian</label>
+    </customValue>
+    <customValue>
+        <fullName>XK</fullName>
+        <default>false</default>
+        <label>Kosovo</label>
+    </customValue>
+    <customValue>
+        <fullName>KW</fullName>
+        <default>false</default>
+        <label>Kuwaiti</label>
+    </customValue>
+    <customValue>
+        <fullName>KG</fullName>
+        <default>false</default>
+        <label>Kyrgyz</label>
+    </customValue>
+    <customValue>
+        <fullName>LA</fullName>
+        <default>false</default>
+        <label>Laotian</label>
+    </customValue>
+    <customValue>
+        <fullName>LV</fullName>
+        <default>false</default>
+        <label>Latvian</label>
+    </customValue>
+    <customValue>
+        <fullName>LB</fullName>
+        <default>false</default>
+        <label>Lebanese</label>
+    </customValue>
+    <customValue>
+        <fullName>LS</fullName>
+        <default>false</default>
+        <label>Lesotho</label>
+    </customValue>
+    <customValue>
+        <fullName>LR</fullName>
+        <default>false</default>
+        <label>Liberian</label>
     </customValue>
     <customValue>
         <fullName>LY</fullName>
@@ -166,19 +601,154 @@
         <label>Libyan</label>
     </customValue>
     <customValue>
+        <fullName>LI</fullName>
+        <default>false</default>
+        <label>Liechtenstein</label>
+    </customValue>
+    <customValue>
+        <fullName>LT</fullName>
+        <default>false</default>
+        <label>Lithuanian</label>
+    </customValue>
+    <customValue>
+        <fullName>LU</fullName>
+        <default>false</default>
+        <label>Luxembourgish</label>
+    </customValue>
+    <customValue>
+        <fullName>MO</fullName>
+        <default>false</default>
+        <label>Macanese</label>
+    </customValue>
+    <customValue>
+        <fullName>MK</fullName>
+        <default>false</default>
+        <label>Macedonian</label>
+    </customValue>
+    <customValue>
+        <fullName>YT</fullName>
+        <default>false</default>
+        <label>Mahoran</label>
+    </customValue>
+    <customValue>
+        <fullName>MG</fullName>
+        <default>false</default>
+        <label>Malagasy</label>
+    </customValue>
+    <customValue>
+        <fullName>MW</fullName>
+        <default>false</default>
+        <label>Malawian</label>
+    </customValue>
+    <customValue>
+        <fullName>MY</fullName>
+        <default>false</default>
+        <label>Malaysian</label>
+    </customValue>
+    <customValue>
+        <fullName>MV</fullName>
+        <default>false</default>
+        <label>Maldivian</label>
+    </customValue>
+    <customValue>
+        <fullName>ML</fullName>
+        <default>false</default>
+        <label>Malian</label>
+    </customValue>
+    <customValue>
+        <fullName>MT</fullName>
+        <default>false</default>
+        <label>Maltese</label>
+    </customValue>
+    <customValue>
+        <fullName>MH</fullName>
+        <default>false</default>
+        <label>Marshallese</label>
+    </customValue>
+    <customValue>
+        <fullName>MQ</fullName>
+        <default>false</default>
+        <label>Martinican</label>
+    </customValue>
+    <customValue>
+        <fullName>MR</fullName>
+        <default>false</default>
+        <label>Mauritanian</label>
+    </customValue>
+    <customValue>
+        <fullName>MU</fullName>
+        <default>false</default>
+        <label>Mauritian</label>
+    </customValue>
+    <customValue>
         <fullName>MX</fullName>
         <default>false</default>
         <label>Mexican</label>
     </customValue>
     <customValue>
-        <fullName>NL</fullName>
+        <fullName>FM</fullName>
         <default>false</default>
-        <label>Dutch</label>
+        <label>Micronesian</label>
     </customValue>
     <customValue>
-        <fullName>NO</fullName>
+        <fullName>MD</fullName>
         <default>false</default>
-        <label>Norwegian</label>
+        <label>Moldovan</label>
+    </customValue>
+    <customValue>
+        <fullName>MC</fullName>
+        <default>false</default>
+        <label>Monegasque</label>
+    </customValue>
+    <customValue>
+        <fullName>MN</fullName>
+        <default>false</default>
+        <label>Mongolian</label>
+    </customValue>
+    <customValue>
+        <fullName>ME</fullName>
+        <default>false</default>
+        <label>Montenegrin</label>
+    </customValue>
+    <customValue>
+        <fullName>MS</fullName>
+        <default>false</default>
+        <label>Montserratian</label>
+    </customValue>
+    <customValue>
+        <fullName>MA</fullName>
+        <default>false</default>
+        <label>Moroccan</label>
+    </customValue>
+    <customValue>
+        <fullName>MZ</fullName>
+        <default>false</default>
+        <label>Mozambican</label>
+    </customValue>
+    <customValue>
+        <fullName>NA</fullName>
+        <default>false</default>
+        <label>Namibian</label>
+    </customValue>
+    <customValue>
+        <fullName>NR</fullName>
+        <default>false</default>
+        <label>Nauruan</label>
+    </customValue>
+    <customValue>
+        <fullName>NP</fullName>
+        <default>false</default>
+        <label>Nepalese</label>
+    </customValue>
+    <customValue>
+        <fullName>AN</fullName>
+        <default>false</default>
+        <label>Netherlands Antilles</label>
+    </customValue>
+    <customValue>
+        <fullName>NC</fullName>
+        <default>false</default>
+        <label>New Caledonian</label>
     </customValue>
     <customValue>
         <fullName>NZ</fullName>
@@ -186,9 +756,89 @@
         <label>New Zealand</label>
     </customValue>
     <customValue>
+        <fullName>NI</fullName>
+        <default>false</default>
+        <label>Nicaraguan</label>
+    </customValue>
+    <customValue>
+        <fullName>NG</fullName>
+        <default>false</default>
+        <label>Nigerian</label>
+    </customValue>
+    <customValue>
+        <fullName>NE</fullName>
+        <default>false</default>
+        <label>Nigerien</label>
+    </customValue>
+    <customValue>
+        <fullName>NU</fullName>
+        <default>false</default>
+        <label>Niuean</label>
+    </customValue>
+    <customValue>
+        <fullName>NF</fullName>
+        <default>false</default>
+        <label>Norfolk Island</label>
+    </customValue>
+    <customValue>
+        <fullName>KP</fullName>
+        <default>false</default>
+        <label>North Korean</label>
+    </customValue>
+    <customValue>
+        <fullName>MP</fullName>
+        <default>false</default>
+        <label>Northern Mariana Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>NO</fullName>
+        <default>false</default>
+        <label>Norwegian</label>
+    </customValue>
+    <customValue>
+        <fullName>SC</fullName>
+        <default>false</default>
+        <label>of Seychelles</label>
+    </customValue>
+    <customValue>
+        <fullName>CK</fullName>
+        <default>false</default>
+        <label>of the Cook Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>OM</fullName>
+        <default>false</default>
+        <label>Omani</label>
+    </customValue>
+    <customValue>
+        <fullName>PK</fullName>
+        <default>false</default>
+        <label>Pakistani</label>
+    </customValue>
+    <customValue>
+        <fullName>PW</fullName>
+        <default>false</default>
+        <label>Palauan</label>
+    </customValue>
+    <customValue>
+        <fullName>PS</fullName>
+        <default>false</default>
+        <label>Palestinian</label>
+    </customValue>
+    <customValue>
         <fullName>PA</fullName>
         <default>false</default>
         <label>Panamanian</label>
+    </customValue>
+    <customValue>
+        <fullName>PG</fullName>
+        <default>false</default>
+        <label>Papua New Guinea</label>
+    </customValue>
+    <customValue>
+        <fullName>PY</fullName>
+        <default>false</default>
+        <label>Paraguayan</label>
     </customValue>
     <customValue>
         <fullName>PE</fullName>
@@ -196,9 +846,24 @@
         <label>Peruvian</label>
     </customValue>
     <customValue>
+        <fullName>PH</fullName>
+        <default>false</default>
+        <label>Philippine</label>
+    </customValue>
+    <customValue>
+        <fullName>PN</fullName>
+        <default>false</default>
+        <label>Pitcairner</label>
+    </customValue>
+    <customValue>
         <fullName>PL</fullName>
         <default>false</default>
         <label>Polish</label>
+    </customValue>
+    <customValue>
+        <fullName>PF</fullName>
+        <default>false</default>
+        <label>Polynesian</label>
     </customValue>
     <customValue>
         <fullName>PT</fullName>
@@ -206,9 +871,79 @@
         <label>Portuguese</label>
     </customValue>
     <customValue>
+        <fullName>PR</fullName>
+        <default>false</default>
+        <label>Puerto Rican</label>
+    </customValue>
+    <customValue>
+        <fullName>QA</fullName>
+        <default>false</default>
+        <label>Qatari</label>
+    </customValue>
+    <customValue>
+        <fullName>RE</fullName>
+        <default>false</default>
+        <label>Reunionese</label>
+    </customValue>
+    <customValue>
+        <fullName>RO</fullName>
+        <default>false</default>
+        <label>Romanian</label>
+    </customValue>
+    <customValue>
         <fullName>RU</fullName>
         <default>false</default>
         <label>Russian</label>
+    </customValue>
+    <customValue>
+        <fullName>RW</fullName>
+        <default>false</default>
+        <label>Rwandan</label>
+    </customValue>
+    <customValue>
+        <fullName>EH</fullName>
+        <default>false</default>
+        <label>Sahrawi</label>
+    </customValue>
+    <customValue>
+        <fullName>SH</fullName>
+        <default>false</default>
+        <label>Saint Helenian</label>
+    </customValue>
+    <customValue>
+        <fullName>KN</fullName>
+        <default>false</default>
+        <label>Saint Kitts and Nevis</label>
+    </customValue>
+    <customValue>
+        <fullName>LC</fullName>
+        <default>false</default>
+        <label>Saint Lucian</label>
+    </customValue>
+    <customValue>
+        <fullName>PM</fullName>
+        <default>false</default>
+        <label>Saint Pierre and Miquelon</label>
+    </customValue>
+    <customValue>
+        <fullName>SV</fullName>
+        <default>false</default>
+        <label>Salvadorian; Salvadoran</label>
+    </customValue>
+    <customValue>
+        <fullName>WS</fullName>
+        <default>false</default>
+        <label>Samoan</label>
+    </customValue>
+    <customValue>
+        <fullName>SM</fullName>
+        <default>false</default>
+        <label>San Marino</label>
+    </customValue>
+    <customValue>
+        <fullName>ST</fullName>
+        <default>false</default>
+        <label>São Toméan</label>
     </customValue>
     <customValue>
         <fullName>SA</fullName>
@@ -216,14 +951,144 @@
         <label>Saudi Arabian</label>
     </customValue>
     <customValue>
+        <fullName>SN</fullName>
+        <default>false</default>
+        <label>Senegalese</label>
+    </customValue>
+    <customValue>
+        <fullName>RS</fullName>
+        <default>false</default>
+        <label>Serbian</label>
+    </customValue>
+    <customValue>
+        <fullName>SL</fullName>
+        <default>false</default>
+        <label>Sierra Leonean</label>
+    </customValue>
+    <customValue>
+        <fullName>SG</fullName>
+        <default>false</default>
+        <label>Singaporean</label>
+    </customValue>
+    <customValue>
+        <fullName>SK</fullName>
+        <default>false</default>
+        <label>Slovakian</label>
+    </customValue>
+    <customValue>
+        <fullName>SI</fullName>
+        <default>false</default>
+        <label>Slovenian</label>
+    </customValue>
+    <customValue>
+        <fullName>SB</fullName>
+        <default>false</default>
+        <label>Solomon Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>SO</fullName>
+        <default>false</default>
+        <label>Somali</label>
+    </customValue>
+    <customValue>
+        <fullName>ZA</fullName>
+        <default>false</default>
+        <label>South African</label>
+    </customValue>
+    <customValue>
+        <fullName>GS</fullName>
+        <default>false</default>
+        <label>South Geogian</label>
+    </customValue>
+    <customValue>
+        <fullName>KR</fullName>
+        <default>false</default>
+        <label>South Korean</label>
+    </customValue>
+    <customValue>
+        <fullName>ES</fullName>
+        <default>false</default>
+        <label>Spanish</label>
+    </customValue>
+    <customValue>
+        <fullName>LK</fullName>
+        <default>false</default>
+        <label>Sri Lankan</label>
+    </customValue>
+    <customValue>
+        <fullName>SD</fullName>
+        <default>false</default>
+        <label>Sudanese</label>
+    </customValue>
+    <customValue>
+        <fullName>SR</fullName>
+        <default>false</default>
+        <label>Surinamese</label>
+    </customValue>
+    <customValue>
+        <fullName>SJ</fullName>
+        <default>false</default>
+        <label>Svalbard; Jan Mayen</label>
+    </customValue>
+    <customValue>
+        <fullName>SZ</fullName>
+        <default>false</default>
+        <label>Swazi</label>
+    </customValue>
+    <customValue>
         <fullName>SE</fullName>
         <default>false</default>
         <label>Swedish</label>
     </customValue>
     <customValue>
+        <fullName>CH</fullName>
+        <default>false</default>
+        <label>Swiss</label>
+    </customValue>
+    <customValue>
+        <fullName>SY</fullName>
+        <default>false</default>
+        <label>Syrian</label>
+    </customValue>
+    <customValue>
+        <fullName>TW</fullName>
+        <default>false</default>
+        <label>Taiwanese</label>
+    </customValue>
+    <customValue>
+        <fullName>TJ</fullName>
+        <default>false</default>
+        <label>Tajik</label>
+    </customValue>
+    <customValue>
+        <fullName>TZ</fullName>
+        <default>false</default>
+        <label>Tanzanian</label>
+    </customValue>
+    <customValue>
         <fullName>TH</fullName>
         <default>false</default>
         <label>Thai</label>
+    </customValue>
+    <customValue>
+        <fullName>TG</fullName>
+        <default>false</default>
+        <label>Togolese</label>
+    </customValue>
+    <customValue>
+        <fullName>TK</fullName>
+        <default>false</default>
+        <label>Tokelauan</label>
+    </customValue>
+    <customValue>
+        <fullName>TO</fullName>
+        <default>false</default>
+        <label>Tongan</label>
+    </customValue>
+    <customValue>
+        <fullName>TT</fullName>
+        <default>false</default>
+        <label>Trinidad and Tobago</label>
     </customValue>
     <customValue>
         <fullName>TN</fullName>
@@ -236,24 +1101,59 @@
         <label>Turkish</label>
     </customValue>
     <customValue>
-        <fullName>TW</fullName>
+        <fullName>TM</fullName>
         <default>false</default>
-        <label>Taiwanese</label>
+        <label>Turkmen</label>
     </customValue>
     <customValue>
-        <fullName>UK</fullName>
+        <fullName>TC</fullName>
         <default>false</default>
-        <label>British</label>
+        <label>Turks and Caicos Islands</label>
     </customValue>
     <customValue>
-        <fullName>US</fullName>
+        <fullName>TV</fullName>
         <default>false</default>
-        <label>American</label>
+        <label>Tuvaluan</label>
+    </customValue>
+    <customValue>
+        <fullName>UG</fullName>
+        <default>false</default>
+        <label>Ugandan</label>
+    </customValue>
+    <customValue>
+        <fullName>UA</fullName>
+        <default>false</default>
+        <label>Ukrainian</label>
+    </customValue>
+    <customValue>
+        <fullName>AE</fullName>
+        <default>false</default>
+        <label>United Arab Emirates</label>
     </customValue>
     <customValue>
         <fullName>UY</fullName>
         <default>false</default>
         <label>Uruguayan</label>
+    </customValue>
+    <customValue>
+        <fullName>VI</fullName>
+        <default>false</default>
+        <label>US Virgin Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>UZ</fullName>
+        <default>false</default>
+        <label>Uzbek</label>
+    </customValue>
+    <customValue>
+        <fullName>VU</fullName>
+        <default>false</default>
+        <label>Vanuatuan</label>
+    </customValue>
+    <customValue>
+        <fullName>VA</fullName>
+        <default>false</default>
+        <label>Vatican</label>
     </customValue>
     <customValue>
         <fullName>VE</fullName>
@@ -266,10 +1166,35 @@
         <label>Vietnamese</label>
     </customValue>
     <customValue>
-        <fullName>WW</fullName>
+        <fullName>VC</fullName>
         <default>false</default>
-        <label>World Wide Agent</label>
+        <label>Vincentian</label>
     </customValue>
+    <customValue>
+        <fullName>WF</fullName>
+        <default>false</default>
+        <label>Wallis and Futuna Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>YE</fullName>
+        <default>false</default>
+        <label>Yemeni</label>
+    </customValue>
+    <customValue>
+        <fullName>YU</fullName>
+        <default>false</default>
+        <label>Yugoslav</label>
+    </customValue>
+    <customValue>
+        <fullName>ZM</fullName>
+        <default>false</default>
+        <label>Zambian</label>
+    </customValue>
+    <customValue>
+        <fullName>ZW</fullName>
+        <default>false</default>
+        <label>Zimbabwean</label>
+    </customValue>   
     <description>The picklist will store Nationality of various regions.</description>
     <masterLabel>Nationality</masterLabel>
     <sorted>true</sorted>
