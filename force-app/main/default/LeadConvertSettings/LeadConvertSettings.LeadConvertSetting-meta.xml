@@ -64,6 +64,10 @@
             <outputField>Nickname__c</outputField>
         </mappingFields>
         <mappingFields>
+            <inputField>ParentEmail__c</inputField>
+            <outputField>ParentEmail__c</outputField>
+        </mappingFields>
+		<mappingFields>
             <inputField>Region__c</inputField>
             <outputField>Region__c</outputField>
         </mappingFields>
