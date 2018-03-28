@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>this field will store if customer opts out of receiving emails on email2 address</description>
     <externalId>false</externalId>
+    <inlineHelpText>Customer does not want to receive emails from EF</inlineHelpText>
     <label>Email2 Opt Out</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

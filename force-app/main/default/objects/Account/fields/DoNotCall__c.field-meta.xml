@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>This field is used to identify when the customer should not be called.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Check this field if we explicitly do not want to call this customer again or if the customer has requested not to be contacted by phone.</inlineHelpText>
     <label>Do Not Call</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
