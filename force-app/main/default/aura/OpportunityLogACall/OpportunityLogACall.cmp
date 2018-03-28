@@ -246,13 +246,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="slds-p-horizontal_x_small slds-size_1-of-2  warning-input">
+                            <div class="slds-p-horizontal_x_small slds-size_1-of-2 slds-form-element">
                                 <lightning:input type="date" onchange="{!c.preValidateWillBookOn}" onblur="{!c.preValidateWillBookOn}" aura:id="requiredBookOnDate" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit pastdatesdisable" label="{!$Label.c.LAC_WBO}"
                                     min="Date.now()" value="{!v.bookOnDate}" name="bookOnDate" />
                                 <div class="date-blocker"></div>
                                 <div class="slds-hide">
                                     <lightning:input aura:id="requiredBookOnDate" name="temporaryDataWillBookOn" value="{!v.temporaryDataWillBookOn}" />
                                 </div>
+                                <lightning:helptext class="helpText" content="{!$Label.c.LAC_Booking_HelpText}" />
                             </div>
                         </aura:if>
                         <div class="slds-p-horizontal_x_small slds-size_1-of-1">

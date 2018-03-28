@@ -2021,4 +2021,12 @@
         <shortDescription>Personal Details</shortDescription>
         <value>Personal Details</value>
     </labels>
+     <labels>
+        <fullName>LAC_Booking_HelpText</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Booking_HelpText</shortDescription>
+        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
+    </labels>
 </CustomLabels>
