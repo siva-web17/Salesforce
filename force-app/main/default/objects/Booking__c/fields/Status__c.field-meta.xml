@@ -19,7 +19,7 @@
             <value>
                 <fullName>CAX</fullName>
                 <default>false</default>
-                <label>Cancelled Booking</label>
+                <label>CAX</label>
             </value>
             <value>
                 <fullName>ERR</fullName>
