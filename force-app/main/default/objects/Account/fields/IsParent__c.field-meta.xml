@@ -3,6 +3,7 @@
     <fullName>IsParent__c</fullName>
     <defaultValue>false</defaultValue>
     <externalId>false</externalId>
+    <inlineHelpText>Either this account is a parent or a request on ef.com was submitted by a parent</inlineHelpText>
     <label>Is Parent</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

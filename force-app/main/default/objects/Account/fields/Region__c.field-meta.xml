@@ -3,7 +3,6 @@
     <fullName>Region__c</fullName>
     <description>Region</description>
     <externalId>false</externalId>
-    <inlineHelpText>Region</inlineHelpText>
     <label>Region</label>
     <length>50</length>
     <required>false</required>

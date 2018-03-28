@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>IMPORTANT! This field is used as a temporarily workaround to be able to display the Email Opt Out field on the Opportunity/Account Page Layout. The value of this field is copied to the standard Email Opt Out field so that this field can be removed, without losing any data as soon as Salesforce solved the issue of using Person Account fields in Quick Actions.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Customer does not want to receive emails from EF</inlineHelpText>
     <label>Email Opt Out</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
