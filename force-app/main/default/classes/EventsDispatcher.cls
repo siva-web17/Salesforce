@@ -12,7 +12,7 @@ public class EventsDispatcher {
                 }
 
                 if (Trigger.IsUpdate) {
-                    Events.onBeforeUpdate(trigger.old, trigger.new);
+                    Events.onBeforeUpdate(trigger.new, trigger.oldMap);
                 }
                 if (Trigger.IsDelete) {
                     Events.onBeforeDelete(trigger.oldMap);

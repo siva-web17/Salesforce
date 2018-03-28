@@ -23,13 +23,6 @@ public class AccountsSelector {
         ];
     }
 
-    public static List<Account> getAccountsWithOpportunitiesByIds(Set<Id> accountIds) {
-        return [
-                SELECT Id, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
-                FROM Account
-                WHERE Id = :accountIds
-        ];
-    }
 
     public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds) {
         return [
