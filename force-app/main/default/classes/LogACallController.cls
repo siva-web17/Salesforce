@@ -91,10 +91,12 @@ public with sharing class LogACallController {
             if( destinationRec.IsLT__c){
                 if(uniqueGroupedLTDestinationName.add(destinationRec.GroupedLTDestinationName__c.touppercase())) {
                     LTDestinations.add(destinationRec.GroupedLTDestinationName__c);
+                    LTDestinations.sort();
                 }
             }
             else if(!destinationRec.IsLt__c) {
                 nonLTDestinations.add(destinationRec.Name);
+                nonLTDestinations.sort();
             }
         }
         if(isLt){
