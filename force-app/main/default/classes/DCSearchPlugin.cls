@@ -14,8 +14,8 @@ global class DCSearchPlugin implements dupcheck.dc3Plugin.InterfaceSearch
     global static void processResults(String methodName, Id sourceId, Map <string,Object> searchResults)
     {
                                         
-        if (!(methodName=='ON_SEARCH;' || 
-             methodName=='ON_INSERT;' || methodName=='ON_CONVERT;')) {
+        if (!(methodName=='ON_SEARCH;' || methodName=='ON_LAYOUT;' ||
+             methodName=='ON_INSERT;' || methodName=='ON_CONVERT;'|| methodName=='ON_UPDATE;')) {
             system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
             //DCBusinessHandler.ProcessDCSearchPlugin(methodName,sourceId,searchResults);
             DCBusinessFlow.dcSearchResults(methodName,sourceId,searchResults);
