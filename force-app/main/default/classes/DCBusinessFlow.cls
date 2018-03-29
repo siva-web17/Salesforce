@@ -11,7 +11,7 @@ public class DCBusinessFlow {
     PUBLIC STATIC Boolean noDupe = FALSE;
     public static String latestCustomerRequsetType = 'BR';  
     public static String sourceCustomerRequstType = '';
-
+    public static string numberOfDuplicate ;
     public static void dcSearchResults(String methodName, Id sourceId, Map <String, Object> searchResults) {
         try {
             system.debug('search result ' + searchResults);
@@ -21,10 +21,9 @@ public class DCBusinessFlow {
             if(!sourceLeadList.isEmpty()){
                 sourceLead = new Lead();
                 sourceLead=sourceLeadList[0];
-
             }
             //load custom setting
-             DCMergeRuleEngine.loadMergeConfigRuleData();
+            DCMergeRuleEngine.loadMergeConfigRuleData();
             Map<Id, Lead> duplicateMap = new Map<Id, Lead>();
             if (sourceLead != null && !sourceLead.IsDupeProcessed__c) {
                 sourceLead.IsDupeProcessed__c = true;
@@ -37,14 +36,12 @@ public class DCBusinessFlow {
                     system.debug('before if>>>>'+searchResults.get(objectType));
                     list<object> emptyObj=new list<object>();
                     emptyObj.clear();
-                    System.debug('ooo>>>>>'+emptyObj);
-                   if(searchResults.get(objectType) != emptyObj){
-                   system.debug('after if>>>>'+searchResults.get(objectType));                    
+                     if(searchResults.get(objectType) != emptyObj){
                     allDuplicateRecords.add((List<Object>) searchResults.get(objectType));            
                    }
                                                    
                }
-               system.debug('Mymap size>>>>>'+allDuplicateRecords.size());
+
                for (string objectType : searchResults.keySet()) {
                     List<Object> duplicateObjects = (List<Object>) searchResults.get(objectType);
                     system.debug('Lead list size'+duplicateObjects.size());
@@ -53,6 +50,7 @@ public class DCBusinessFlow {
                         //Lead - Leads are duplicates
                         if (objectType == System.Label.LeadPrefix) {
                             isLeadDupe = true;
+                            numberOfDuplicate = '1';
                             dupcheck.dc3SearchResult result = (dupcheck.dc3SearchResult) duplicateObjects[0];
                             duplicateLead = (Lead) result.objectData;
                             if (duplicateMap.containsKey(duplicateLead.id)) {
@@ -62,39 +60,32 @@ public class DCBusinessFlow {
                         //Account - accounts are duplicates
                         else if (objectType == System.Label.AccountPrefix) {
                             isAccountDupe = true;
+                            numberOfDuplicate = '1';
                             dupcheck.dc3SearchResult result = (dupcheck.dc3SearchResult) duplicateObjects[0];
                             Account duplicateAccount = (Account) result.objectData;
                             duplicateAccountId = duplicateAccount.Id;
                         }
                     } else if (duplicateObjects.size() > 1 || allDuplicateRecords.size()>1) {
                         sourceLead.IsDupe__c = true ;
+                        numberOfDuplicate='Multiple';
                         noDupe = false;
                     }
                     else if(duplicateObjects.size()==0){
                         noDupe = true;
+                        numberOfDuplicate = '0';
                     }
                 }
                 duplicateAccount = duplicateAccountId != null?
                         AccountsSelector.getAccountOnId(duplicateAccountId):null;
-                system.debug('********* account'+duplicateAccount);
-                system.debug('******** lead '+duplicateLead);
-                system.debug('Excel import is here'+sourceLead.CreationMethod__c +sourceLead.CreationType__c);
-                system.debug('if its a excel import'+!(sourceLead.CreationMethod__c== 'excel import' && sourceLead.CreationType__c=='Lead'));
+                system.debug('Number of duplicates'+numberOfDuplicate);
                 if (isAccountDupe || isLeadDupe) {
-                    system.debug('-------isAccountDupe----------'+isAccountDupe);
-                    system.debug('-------isLeadDupe----------'+isLeadDupe);
-                    system.debug('************** lead for notify ranking'+sourceLead);
                     decision();
-
                 }
                 
                 else if(noDupe && !(sourceLead.CreationMethod__c== 'excel import' && sourceLead.CreationType__c=='Lead')){
-                    system.debug('*****nodupe*****');
                     DCBusinessFlowHelper.notifyForRanking(sourceLead);
                 }
                 else {
-                    system.debug('****************** '+sourceLead.id);
-                   //DCBusinessFlowHelper.notifyForRanking(sourceLead);
                     SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
                 }
             }
@@ -116,74 +107,47 @@ public class DCBusinessFlow {
         latestCustomerRequsetType = EventsSelector.retrieveLatestEventTypeOnLead(duplicateLead);
         //automerge
         if(isLeadDupe) {
-            system.debug('--------isLeadDupe---------****');
-    
-              
-                system.debug('existing duplicate lead ****');
+                system.debug('Duplicate with Lead');
                 finalDecision = DCMergeRuleEngine.findAutoMergeRule(duplicateLead,sourceLead, null);
-                system.debug('******* final decision'+finalDecision);
+                system.debug('final decision'+finalDecision);
                 //merge fields
-                if((
-                        finalDecision!=null &&  finalDecision=='Merge')) {
+                if((finalDecision!=null &&  finalDecision=='Merge')) {
                         system.debug('I found the decision');
-                    //hitting notifyranking. This requirement has not been confirmed.
                     finalLead = DCObjectMerge.leadToLeadFieldMerge(duplicateLead,sourceLead);
                     finalLead.status = finalLead.status=='closed'?'open':finalLead.status;
                     finalLead.isdupe__c = false;
                     finalLead.readyforranking__c=false;
                     finalLead.RecalculateRanking__c = true;
-                    update finalLead;                 
-                     //DCBusinessFlowHelper.notifyForRanking(finalLead);
-                     transferEvent(duplicateLead,sourceLead,finalDecision);
-                     transferNotes(duplicateLead,sourceLead,finalDecision);
-                      transferCampaignMember(duplicateLead,sourceLead,finalDecision);
-                     SObjectUnitOfWork.deleteLead(sourceLead);
+                    update finalLead;
+                    transferEvent(duplicateLead,sourceLead,finalDecision);
+                    transferNotes(duplicateLead,sourceLead,finalDecision);
+                    transferCampaignMember(duplicateLead,sourceLead,finalDecision);
+                    SObjectUnitOfWork.deleteLead(sourceLead);
                      
                 }
-                else {
-                    system.debug('********** exit merge');
-                    
+                else{
                     SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
-                    //transfer the events
-
-                    //delete the dupicate lead
-                    //deleteDuplicate(sourceLead);
-                   
-                    //DCBusinessFlowHelper.notifyForRanking(finalLead);
                 }
-
-          
-
         }
         else {
+            system.debug('Duplicate with account');
             //account merge
             //1.step - merge the account with lead
             finalDecision = DCMergeRuleEngine.findAutoMergeRule(sourceLead,null,duplicateAccount);
             system.debug('--------finalDecision-------'+finalDecision);
-            system.debug('--------duplicateAccount-------'+duplicateAccount);
             if((finalDecision!=null &&  finalDecision=='Merge')) {
-                //hitting notifyranking. This requirement has not been confirmed.
                 sourceLead.isAccountMerge__c = true;
                 sourceLead.RecalculateRanking__c = true;
-              
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
-                //system.debug('--------duplicateAccount2-------'+sourceLead);
-                //update sourceLead;
                 convertsourcelead();
                 //3. update the fields
-                system.debug('^^^^^^^^^^^^^^ modify account'+duplicateAccount);
                // duplicateAccount.RecalculateRanking__c = true;
                 update duplicateAccount;
                
             }
             else{
-                //2. step - merge account fields
-                system.debug('^^^^^^^^^^ source Lead'+sourceLead);
-                system.debug('^^^^^^^^^^ duplicate account before update'+duplicateAccount);
                 SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
-                system.debug('My updated account is>>>>>'+duplicateAccount);
-
 
             }
             //4.step transfer opportunity
@@ -203,18 +167,13 @@ public class DCBusinessFlow {
         if(opportuntyList != null && !opportuntyList.isEmpty()) {            
                 lc.setOpportunityId(opportuntyList[0].id);
                 Opportunity opportunityRecord = opportuntyList[0];
-                system.debug('*********** '+opportunityRecord);
-                system.debug('*********** '+[SELECT Id,Type From Event Where WhatId = :opportuntyList[0].id]);
                 List<Event> eventType = [SELECT Id,Type From Event Where WhatId = :opportuntyList[0].id
                 ORDER BY CreatedDate DESC Limit 1];
                 if(eventType != null && !eventType.isEmpty()) {
                     latestCustomerRequsetType = eventType[0].Type;
                 }
-
                 DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
-          
-            //inactive if opportunity is
- 
+
         }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
         list<opportunity> inactiveOpportunity = new list<opportunity>();
@@ -232,14 +191,10 @@ public class DCBusinessFlow {
         List<Event> eventList = new List<Event>();        
         for(Event eventRecord : [Select id,WhoId,Type From Event Where WhoId=:duplicateLead.id
         ORDER BY CreatedDate DESC]) {
-            system.debug('inside event loop **********');
-            //sourceCustomerRequstType = eventRecord.Type;
             eventRecord.whoId = sourceLead.id;
             eventRecord.MergeReason__c = decisionName;
             eventList.add(eventRecord);
         }
-        system.debug('updatable event list is'+eventList);       
-        //update the whoid with source lead id(source might be existing or incoming lead)
         SObjectUnitOfWork.executeUpdateEvents(eventList);
         
     }
