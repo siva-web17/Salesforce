@@ -25,6 +25,7 @@ public class ShowBookingControllerTest {
             Booking__c Book = new Booking__c();
             Book.Name = 'Test';
             Book.AccountId__c = (newAccount.id);
+            Book.OpportunityId__c = (opp.id);
             listBook.add(Book);
             insert listBook;
 	        ShowBookingController Booking = new ShowBookingController(new ApexPages.StandardController(Book));

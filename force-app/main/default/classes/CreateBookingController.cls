@@ -49,9 +49,9 @@ public class CreateBookingController {
                 throw new AuraHandledException('InValid Record for create Booking');
             }
         } catch (Exception ex) {
-                currentRecordId = Id.valueOf(recordId);
+            currentRecordId = Id.valueOf(recordId);
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                    'CreatePriceQuoteController', 'openPoseidonToCreateQuote', currentRecordId);
+                    'CreatePriceQuoteController', 'dataBind', currentRecordId);
             throw new AuraHandledException(ex.getMessage());
         }
 
@@ -64,7 +64,7 @@ public class CreateBookingController {
         IntermediateScreenWrapper BindWrapper = (IntermediateScreenWrapper) JSON.deserialize(wrapperData, IntermediateScreenWrapper.class);
         try {
             if(BindWrapper.personAcc != null){
-            update BindWrapper.personAcc;
+                update BindWrapper.personAcc;
             }
             retValue = SyncToPoseidonController.SyncComplicatedBookingToPoseidon(String.ValueOf(BindWrapper.personAcc.Id), true);
         } catch (Exception ex) {
