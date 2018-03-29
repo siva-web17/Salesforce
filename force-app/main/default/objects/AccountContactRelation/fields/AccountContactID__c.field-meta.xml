@@ -3,8 +3,9 @@
     <fullName>AccountContactID__c</fullName>
     <description>This field is used to store the Account ID of the Contact in the relation. This is used for integration with Poseidon.</description>
     <externalId>false</externalId>
-    <label>Account Contact ID</label>
-    <length>25</length>
+    <formula>Contact.AccountId</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Account Contact Id</label>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>
