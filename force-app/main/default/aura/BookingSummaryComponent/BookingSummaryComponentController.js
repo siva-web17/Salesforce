@@ -185,7 +185,7 @@
                 $A.util.removeClass(nextPanel, "slds-hide");
                 //Disable Button
                 $A.util.removeClass(finishBooking, "slds-button_brand");
-                helper.accountData(cmp, event, helper);
+                //helper.accountData(cmp, event, helper);
             } else if (whichOne == "next2") {
                 var currentHeader = cmp.find("header-1");
                 var nextHeader = cmp.find("header-3");
