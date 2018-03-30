@@ -2,12 +2,12 @@
 public class AccountsServiceTest {
     public static String market = 'DEB';
 
-    @testSetup 
+    @testSetup
     static void testDataSetup() {
         Test.startTest();
         //get system admin profile
         Profile SystemAdminProfile = TestDataFactory.getProfile('System Administrator', true);
-        //insert User 
+        //insert User
         User tAdminUser = TestDataFactory.createAdminUser(True);
         system.runAs(tAdminUser) {
 
@@ -41,7 +41,7 @@ public class AccountsServiceTest {
             }
             Map<Id, Account> accMap = AccountsSelector.getAccountDetailsbasedonAccountId(accountsIds);
             Test.setMock(HttpCalloutMock.class, new MockGenerator_Test());
-            AccountsService.syncAccountDetailsToPoseidon(accMap);
+            AccountsService.syncAccountDetailsToPoseidon(accMap,false);
             Test.stopTest();
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+<RecordType 
+    xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>InfoMeeting</fullName>
     <active>true</active>
     <description>Info meeting of type Online or offline</description>
@@ -11,7 +12,91 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>AT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>DE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FI</fullName>
             <default>false</default>
         </values>
         <values>
@@ -19,7 +104,119 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>FS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TW</fullName>
             <default>false</default>
         </values>
         <values>
@@ -27,12 +224,47 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WL</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>WM</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>WR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZH</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
-   
-	<picklistValues>
+    <picklistValues>
         <picklist>MeetingType__c</picklist>
         <values>
             <fullName>INF</fullName>
@@ -218,5 +450,4 @@
             <default>false</default>
         </values>
     </picklistValues>
-
 </RecordType>

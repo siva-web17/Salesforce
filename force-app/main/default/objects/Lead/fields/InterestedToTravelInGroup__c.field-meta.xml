@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>Flag to store if customer wants to travel in group or individually</description>
     <externalId>false</externalId>
+    <inlineHelpText>This shows if Customer is interested in traveling in a group</inlineHelpText>
     <label>Travel In Group</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
