@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Region__c</fullName>
-    <description>Region</description>
+    <fullName>EnquiryYear__c</fullName>
+    <description>Year of enquiry, mapped to sales year in Poseidon.</description>
     <externalId>false</externalId>
-    <label>Region</label>
-    <length>50</length>
+    <label>EnquiryYear</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>0</scale>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>
