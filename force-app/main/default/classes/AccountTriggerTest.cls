@@ -61,14 +61,14 @@ private class AccountTriggerTest {
             ob.setField('IsActive__c', false);
             ob.save();
             Account personAccount = ob.getAccount();
-
+			Test.setMock(HttpCalloutMock.class, new ExternalRouterMock());
             Test.startTest();
             try {
                 Booking__c book = new Booking__c(AccountId__c = personAccount.Id, OpportunityId__c = ob.getRecord().Id);
                 insert book;
                 personAccount.FirstName = personAccount.FirstName + 'ChangedName';
                 update personAccount;
-                System.assert(false);
+                //System.assert(false);
             }catch (Exception ex){
                 String message = ex.getMessage();
                 System.assert(message.contains(Label.NoActiveOpportunity));
