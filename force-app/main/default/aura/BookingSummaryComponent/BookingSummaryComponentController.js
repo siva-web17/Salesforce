@@ -11,6 +11,9 @@
                 var json_text = JSON.stringify(response.getReturnValue());
                 component.set("v.wrapperList", response.getReturnValue());
                 var u = component.get("v.wrapperList");
+                if (!u.personAcc.PersonMailingStreet > 0) {
+                    component.set("v.wrapperList.personAcc.PersonMailingStreet", '');
+                }
                 component.set("v.pickGender", u.personAcc.Gender__c);
                 var arrayGenderMapKeys = [];
                 var result = u.GenderPickList;
