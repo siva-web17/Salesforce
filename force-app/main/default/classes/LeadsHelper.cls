@@ -131,16 +131,18 @@ public class LeadsHelper {
         List<Lead> leadRecords = new List<Lead>();
         Set<Id> leadID = new Set<id>();
         Set<Id> rankingLeadsId = new Set<id>();
-
+        //Taking out and condition in IF loop SF-2066 incomingRecords.ReadyForRanking__c
         for (Lead incomingRecords : leads) {
-            if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c && incomingRecords.IsDupe__c == false && incomingRecords.ReadyForRanking__c) {
+            if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
+                    && incomingRecords.IsDupe__c == false) {
                 leadRecords.add(incomingRecords);
                 leadID.add(incomingRecords.ID);
             }
         }
         List<Lead> leadList = LeadsSelector.getLeadsOnId(leadID);
         for (Lead incomingRecords : leadList) {
-            if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c && incomingRecords.IsDupe__c == false && incomingRecords.ReadyForRanking__c) {
+            if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
+                    && incomingRecords.IsDupe__c == false) {
                 incomingRecords.ReadyForRanking__c = false;
                 rankingLeads.add(incomingRecords);
                 rankingLeadsId.add(incomingRecords.id);
@@ -299,27 +301,27 @@ public class LeadsHelper {
         system.debug('*********** contact task list' + leadIdTasksMap);
     }
     //Its not being used anywhere
-   /* public static opportunity createOpportunity(Lead leadrecords) {
-        Opportunity newOpportunityRecords = new Opportunity();
-        newOpportunityRecords.Name = leadrecords.FirstName + ' ' + leadrecords.LastName ;
-        newOpportunityRecords.AccountId = leadrecords.ConvertedAccountId;
-        newOpportunityRecords.Program__c = leadrecords.Program__c;
-        newOpportunityRecords.Market__c = leadrecords.Market__c;
-        newOpportunityRecords.Product__c = leadrecords.Product__c;
-        newOpportunityRecords.SalesOffice__c = leadrecords.SalesOffice__c;
-        newOpportunityRecords.StageName = Label.TBC;
-        newOpportunityRecords.CloseDate = date.today();
-        return newOpportunityRecords;
-    }*/
+    /* public static opportunity createOpportunity(Lead leadrecords) {
+         Opportunity newOpportunityRecords = new Opportunity();
+         newOpportunityRecords.Name = leadrecords.FirstName + ' ' + leadrecords.LastName ;
+         newOpportunityRecords.AccountId = leadrecords.ConvertedAccountId;
+         newOpportunityRecords.Program__c = leadrecords.Program__c;
+         newOpportunityRecords.Market__c = leadrecords.Market__c;
+         newOpportunityRecords.Product__c = leadrecords.Product__c;
+         newOpportunityRecords.SalesOffice__c = leadrecords.SalesOffice__c;
+         newOpportunityRecords.StageName = Label.TBC;
+         newOpportunityRecords.CloseDate = date.today();
+         return newOpportunityRecords;
+     }*/
 
     //This function checks the latest Active opportunity of an person Account if it is expired(may be lost or frozen)
-  /*  private static Boolean IsOpportunityExpired(Opportunity opp) {
-        boolean expired = false;
-        if (opp.StageName == Label.OppStageInactive) {
-            expired = true;
-        }
-        return expired;
-    }*/
+    /*  private static Boolean IsOpportunityExpired(Opportunity opp) {
+          boolean expired = false;
+          if (opp.StageName == Label.OppStageInactive) {
+              expired = true;
+          }
+          return expired;
+      }*/
 
 
     public static void updateHadAddressFilledOnCreation(list<lead> leadNewList) {
@@ -339,26 +341,27 @@ public class LeadsHelper {
                 leadsWithChangedProgram.add(lead);
             }
         }
-        if(leadsWithChangedProgram.size() > 0) {
+        if (leadsWithChangedProgram.size() > 0) {
             changeProgramOnSystemCallTasks(leadsWithChangedProgram, new Map<Id, Lead>(LeadsSelector.getLeadsWithOpenTasks(leadIds, Label.SystemCallTaskRecordTypeDeveloperName)));
         }
     }
 
     private static void changeProgramOnSystemCallTasks(List<Lead> leads, Map<Id, Lead> leadsWithTasks) {
-        Task[] tasksToUpdate = new Task[]{};
-        for(Lead lead : leads){
-            for(Task callTask : leadsWithTasks.get(lead.Id).Tasks){
-                if( callTask.Program__c != lead.Program__c){
+        Task[] tasksToUpdate = new Task[]{
+        };
+        for (Lead lead : leads) {
+            for (Task callTask : leadsWithTasks.get(lead.Id).Tasks) {
+                if (callTask.Program__c != lead.Program__c) {
                     callTask.Program__c = lead.Program__c;
                     String refreshedSubject = TasksHelper.refreshTaskSubject(callTask.Subject, callTask.Program__c);
-                    if(refreshedSubject != ''){
+                    if (refreshedSubject != '') {
                         callTask.Subject = refreshedSubject;
                     }
                     tasksToUpdate.add(callTask);
                 }
             }
         }
-        if(tasksToUpdate.size() > 0){
+        if (tasksToUpdate.size() > 0) {
             update tasksToUpdate;
         }
     }
@@ -373,14 +376,15 @@ public class LeadsHelper {
             }
         }
 
-        if(leadsWithChangedOwner.size() > 0) {
+        if (leadsWithChangedOwner.size() > 0) {
             insertSystemCallTasksForLeads(leadsWithChangedOwner, new Map<Id, Lead>(LeadsSelector.getLeadsWithOpenTasks(leadIds, Label.SystemCallTaskRecordTypeDeveloperName)));
             reassignOpenActivitiesForLeads(leadsWithChangedOwner, new Map<Id, Lead>(LeadsSelector.getLeadsWithOpenActivities(leadIds)));
         }
     }
 
     private static void insertSystemCallTasksForLeads(List<Lead> leads, Map<Id, Lead> leadsWithTasks) {
-        Task[] newSystemCallTasks = new Task[]{};
+        Task[] newSystemCallTasks = new Task[]{
+        };
 
         for (Lead lead : leads) {
             if (leadsWithTasks.get(lead.Id).Tasks.size() == 0) {
@@ -394,9 +398,12 @@ public class LeadsHelper {
     }
 
     private static void reassignOpenActivitiesForLeads(List<Lead> leads, Map<Id, Lead> leadsWithOpenActivities) {
-        SObject[] updatedActivities = new SObject[]{};
-        Task[] tasksToUpdate = new Task[]{};
-        Event[] eventsToUpdate = new Event[]{};
+        SObject[] updatedActivities = new SObject[]{
+        };
+        Task[] tasksToUpdate = new Task[]{
+        };
+        Event[] eventsToUpdate = new Event[]{
+        };
         for (Lead lead : leads) {
             if (leadsWithOpenActivities.containsKey(lead.Id)) {
                 for (OpenActivity oa : leadsWithOpenActivities.get(lead.Id).OpenActivities) {
@@ -433,83 +440,83 @@ public class LeadsHelper {
         return systemTask;
     }
 
-    public static void populateSalesOfficeProgram (List<Lead> leadList) {
-        Set<string> recordSharingValues= new Set<String>();
-        Map<string,id> salesOfficeMap = new Map<string,id>();
-        
-        for(Lead leadRecord :leadList){
-            if(leadRecord.RecordSharingKey__c!=null && leadRecord.RecordSharingKey__c!='' ){
-                recordSharingValues.add(leadRecord.RecordSharingKey__c );
+    public static void populateSalesOfficeProgram(List<Lead> leadList) {
+        Set<string> recordSharingValues = new Set<String>();
+        Map<string, id> salesOfficeMap = new Map<string, id>();
+
+        for (Lead leadRecord : leadList) {
+            if (leadRecord.RecordSharingKey__c != null && leadRecord.RecordSharingKey__c != '') {
+                recordSharingValues.add(leadRecord.RecordSharingKey__c);
             }
         }
 
         List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
-        for(SalesOfficeProgram__c salesOfficeRecord :salesofficeRecords ){
-            if(salesOfficeRecord.Name!= null){
+        for (SalesOfficeProgram__c salesOfficeRecord : salesofficeRecords) {
+            if (salesOfficeRecord.Name != null) {
                 salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
             }
         }
 
-        for(Lead leadRec:leadList){
+        for (Lead leadRec : leadList) {
             {
-                if(salesOfficeMap.containsKey(leadRec.RecordSharingKey__c)){
+                if (salesOfficeMap.containsKey(leadRec.RecordSharingKey__c)) {
                     leadRec.SalesOfficeProgram__c = salesOfficeMap.get(leadRec.RecordSharingKey__c);
                 }
             }
         }
     }
 
-    public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList){
+    public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList) {
         Set<String> sourceAutoCodeValues = new Set<String>();
-        Map<string,string> sourceMap = new Map<string,string>();
+        Map<string, string> sourceMap = new Map<string, string>();
 
-        for(Lead leadRecord:leadList){
-            if(leadRecord.SourceCodeAuto__c!=null && leadRecord.SourceCodeAuto__c!='' ){
+        for (Lead leadRecord : leadList) {
+            if (leadRecord.SourceCodeAuto__c != null && leadRecord.SourceCodeAuto__c != '') {
                 sourceAutoCodeValues.add(leadRecord.SourceCodeAuto__c);
             }
         }
 
-        List<Source__c> sourceRecords =SourcesSelector.getSourceRecords(sourceAutoCodeValues);
-        for(Source__c sourceRec:sourceRecords){
-            if(sourceRec.Code__c!=null){
-                sourceMap.put(sourceRec.Code__c,sourceRec.Name );
+        List<Source__c> sourceRecords = SourcesSelector.getSourceRecords(sourceAutoCodeValues);
+        for (Source__c sourceRec : sourceRecords) {
+            if (sourceRec.Code__c != null) {
+                sourceMap.put(sourceRec.Code__c, sourceRec.Name);
             }
         }
 
-        for(Lead leadRec:leadList){
+        for (Lead leadRec : leadList) {
             {
-                if(leadRec.CreationMethod__c!=system.label.CreationMethodEnteredByUser) {
+                if (leadRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
                     if (sourceMap.containsKey(leadRec.SourceCodeAuto__c)) {
                         system.debug('inside if>>>');
                         leadRec.Partner__c = sourceMap.get(leadRec.SourceCodeAuto__c);
-                        system.debug(' leadRec.Partner__c>>>'+ leadRec.Partner__c);
+                        system.debug(' leadRec.Partner__c>>>' + leadRec.Partner__c);
                     }
                 }
             }
         }
     }
 
-    public static void populateSourceCodeAutoAndPartnerFromSource(List<Lead> leadList){ 
+    public static void populateSourceCodeAutoAndPartnerFromSource(List<Lead> leadList) {
         Set<Id> sourceIds = new Set<Id>();
-        Map<Id,List<Lead>> leadMap = new Map<Id, List<Lead>>();
-        Map<Id,Source__c> sourceMap = new  Map<Id, Source__c>();
+        Map<Id, List<Lead>> leadMap = new Map<Id, List<Lead>>();
+        Map<Id, Source__c> sourceMap = new Map<Id, Source__c>();
         List<lead> leadListRec = new List<Lead>();
 
-        for(Lead leadRecord: leadList){
-            if(leadRecord.Source__c != null){
-                if(!leadMap.containsKey(leadRecord.Source__c)){
+        for (Lead leadRecord : leadList) {
+            if (leadRecord.Source__c != null) {
+                if (!leadMap.containsKey(leadRecord.Source__c)) {
                     leadMap.put(leadRecord.Source__c, new List<Lead>());
                 }
                 leadMap.get(leadRecord.Source__c).add(leadRecord);
             }
         }
-        sourceMap=SourcesSelector.getSourceMapRecordforLead(leadMap);
+        sourceMap = SourcesSelector.getSourceMapRecordforLead(leadMap);
 
-        for(Id recordId:leadMap.keyset()){
-            for (Lead leadRec : leadMap.get(recordId)){
-                if(sourceMap.containskey(leadRec.source__c)&& sourceMap.get(leadRec.Source__c)!=null){
-                    leadRec.Partner__c=(sourceMap.get(leadRec.Source__c).Name);
-                    leadRec.SourceCodeAuto__c=(sourceMap.get(leadRec.Source__c).Code__c);
+        for (Id recordId : leadMap.keyset()) {
+            for (Lead leadRec : leadMap.get(recordId)) {
+                if (sourceMap.containskey(leadRec.source__c) && sourceMap.get(leadRec.Source__c) != null) {
+                    leadRec.Partner__c = (sourceMap.get(leadRec.Source__c).Name);
+                    leadRec.SourceCodeAuto__c = (sourceMap.get(leadRec.Source__c).Code__c);
                 }
             }
         }
