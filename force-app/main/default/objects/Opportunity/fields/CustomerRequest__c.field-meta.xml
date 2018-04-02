@@ -3,10 +3,11 @@
     <fullName>CustomerRequest__c</fullName>
     <description>This field is used to capture why the Opportunity is created when manually entering an Opportunity in the system. It is then mapped with the request type so that the correct Event is generated.</description>
     <externalId>false</externalId>
+    <inlineHelpText>Select an option, which best describes why we are entering this opportunity, e.g. if the customer walked in and we gave them a brochure then it can be Brochure Request or if customer called us and wants some general information then it can be Info Request</inlineHelpText>
     <label>Customer Request</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>True</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

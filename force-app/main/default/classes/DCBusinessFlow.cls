@@ -68,6 +68,7 @@ public class DCBusinessFlow {
                         }
                     } else if (duplicateObjects.size() > 1 || allDuplicateRecords.size()>1) {
                         sourceLead.IsDupe__c = true ;
+                        noDupe = false;
                     }
                     else if(duplicateObjects.size()==0){
                         noDupe = true;
@@ -142,7 +143,7 @@ public class DCBusinessFlow {
                 else {
                     system.debug('********** exit merge');
                     
-                    DCBusinessFlowHelper.notifyForRanking(sourceLead);
+                    SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
                     //transfer the events
 
                     //delete the dupicate lead
@@ -180,7 +181,7 @@ public class DCBusinessFlow {
                 //2. step - merge account fields
                 system.debug('^^^^^^^^^^ source Lead'+sourceLead);
                 system.debug('^^^^^^^^^^ duplicate account before update'+duplicateAccount);
-                DCBusinessFlowHelper.notifyForRanking(sourceLead);
+                SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
                 system.debug('My updated account is>>>>>'+duplicateAccount);
 
 
@@ -216,7 +217,7 @@ public class DCBusinessFlow {
  
         }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
-         list<opportunity> inactiveOpportunity = new list<opportunity>();
+        list<opportunity> inactiveOpportunity = new list<opportunity>();
           inactiveOpportunity = [select id,Ranking__c from opportunity where accountid=:lcr.getAccountId() and isactive__c=false order by createddate desc limit 1];
          if(inactiveOpportunity!=null && !inactiveOpportunity.isempty()){
             opportunity newlyCreatedActiveOpportunity = new opportunity();

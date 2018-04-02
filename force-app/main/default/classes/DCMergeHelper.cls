@@ -63,39 +63,39 @@ Version    Method   : 7/25/2017
         Set<String> stageNameSet = new Set<String>();
 
         List<Opportunity> wonOpportuntyList = opportunitiesselector.getlstOfOpportunityByCreatedDateDesc(masterAccount);
-
+       
         //collect opportunity stages
-        for(Opportunity opp : mergedOpps) {
+        for(Opportunity opp : wonOpportuntyList) {
             stageNameSet.add(opp.stageName);
 
-        }
+        }       
         //Won opportunity
         //please do not add any if block inside this. It has been followed as per the order
         if(stageNameSet.contains(System.Label.OpportunityBookingStage)) {
-            for (Opportunity opp : wonOpportuntyList) {
-                if (opp.StageName == Label.OpportunityBookingStage && isFound) {
+            for (Opportunity opp : wonOpportuntyList) {              
+                if (opp.StageName == Label.OpportunityBookingStage && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
             }
+           
         }
         
         //Followup  opportunity
         else if(stageNameSet.contains(System.Label.LeadStageFollowup)) {
             list<opportunity> opportunityFollowUpList = new list<opportunity>();
-            opportunityFollowUpList = opportunitiesselector.getLstOfFollowupOpportunity(mergedOpps);
-
-            for (Opportunity opp : mergedOpps) {
-
+            opportunityFollowUpList = opportunitiesselector.getLstOfFollowupOpportunity(mergedOpps);            
+            for (Opportunity opp : opportunityFollowUpList) {
+                
                 if(opportunityFollowUpList.size()>1){
-                    if (opp.stageName == System.Label.LeadStageFollowup && opp.FollowupDateTime__c >= system.today() && isFound) {
+                    if (opp.stageName == System.Label.LeadStageFollowup && opp.FollowupDateTime__c >= system.today() && isFound && opp.IsActive__c) {
                         isFound = false;
                         continue;
-                }
+                    }
                 }
                 else{
-                    if (opp.stageName == System.Label.LeadStageFollowup && isFound) {
+                    if (opp.stageName == System.Label.LeadStageFollowup && isFound && opp.IsActive__c) {
 
                         isFound = false;
                         continue;
@@ -103,6 +103,7 @@ Version    Method   : 7/25/2017
 
                 }
                 freezOpportunityList.add(opp);
+                
             }
         }
         //TBC
@@ -110,27 +111,31 @@ Version    Method   : 7/25/2017
         else if(stageNameSet.contains(System.Label.LeadStageTBC)) {
             mergedOpps = opportunitiesselector.getLstOpportunityOrderByCrtdDateASC(mergedOpps);
             for (Opportunity opp : mergedOpps) {
-                if (opp.stageName == System.Label.LeadStageTBC && isFound) {
+                
+                if (opp.stageName == System.Label.LeadStageTBC && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
+               
             }
         }
         else if(stageNameSet.contains(System.Label.salesclosed)) {
             mergedOpps = opportunitiesselector.getLstOpportunityOrderByCrtdDateASC(mergedOpps);
             for (Opportunity opp : mergedOpps) {
-                if (opp.stageName == System.Label.salesclosed && isFound) {
+               
+                if (opp.stageName == System.Label.salesclosed && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
+               
             }
         }
         else {
             //other stagename
             for (Opportunity opp : mergedOpps) {
-                if (opp.FollowupDateTime__c >= system.today() && isFound) {
+               if (opp.FollowupDateTime__c >= system.today() && isFound) {
                     isFound = false;
                     continue;
                 }
@@ -224,7 +229,9 @@ Version    Method   : 7/25/2017
                        j=j+1;
                     }
                 }
+              
                 i= retainedAccount.HasBooking__c?1:0;
+              
                 if(i+j>=2){
                     throw new CustomException('Customers with Bookings are not allowed to merge. Please contact Poseidon support to help you with this case');
                 }

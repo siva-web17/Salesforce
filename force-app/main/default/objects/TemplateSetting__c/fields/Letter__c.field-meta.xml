@@ -29,7 +29,7 @@
     <referenceTo>APXTConga4__Conga_Template__c</referenceTo>
     <relationshipName>Template_Settings</relationshipName>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>True</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

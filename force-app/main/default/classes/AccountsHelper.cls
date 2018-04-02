@@ -109,17 +109,18 @@ public class AccountsHelper {
 
     public static void saveAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
         List<Map<String, Map<String, Map<String, String>>>> updatedAccountList = new List<Map<String, Map<String, Map<String, String>>>>();
+        ID currentRecordID;
         try {
             //return if current user is configured for not pushing data to Poseidon     
             if (BypassTriggersValidation__c.getInstance().DoNotPushToPoseidon__c == True) {
                 return;
             }
-
-            Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getActiveOpportunitiesforAccount(newAccountMap.keySet());
-            Boolean hasActiveOpportunity = true;
-            if (accountOpportunityMap.size() < newAccountMap.size()) {
-                hasActiveOpportunity = false;
-            }
+            //We dont need to check for active opportunity in this case as we are sending the details irrespective of opportunity state
+            Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getOpportunitiesforAccount(newAccountMap.keySet(), false);
+//            Boolean hasActiveOpportunity = true;
+//            if (accountOpportunityMap.size() < newAccountMap.size()) {
+//                hasActiveOpportunity = false;
+//            }
             List<Id> userIdList = new List<Id>();
             for (Account accountRecord : newAccountMap.values()) {
                 userIdList.add(accountRecord.CreatedById);
@@ -127,15 +128,16 @@ public class AccountsHelper {
             }
             Map<Id, User> UserMap = UsersHelper.getUserDetailsForUserIds(userIdList);
             for (Account accountRecord : newAccountMap.values()) {
-
+                currentRecordID = accountRecord.Id;
                 Map<String, Map<String, Map<String, String>>> changedAccountRecordMap = new Map<String, Map<String, Map<String, String>>>();
                 Map<String, Map<String, String>> changedAccountWithTableNameMap = new Map<String, Map<String, String>>();
-
-                if (accountRecord.TotalBooking__c > 0 || accountRecord.IsSyncedToPoseidon__c) {
-                    if (!hasActiveOpportunity) {
+                //SF-1988
+                //Send details to Poseidon only when account has booking or Account is synched with Poseidon
+                if (accountRecord.TotalBooking__c > 0 || (accountRecord.AccountExternalId__c != null && accountRecord.IsSyncedToPoseidon__c)) {
+                    /* if (!hasActiveOpportunity) {
                         accountRecord.addError(Label.NoActiveOpportunity);
                         return;
-                    }
+                    }*/
                     Map<String, String> AddressfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Address.getFields()) {
                         if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
@@ -224,7 +226,7 @@ public class AccountsHelper {
             }
         } catch (Exception ex) {
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-                    'AccountsHelper', 'saveAccountInformation', null);
+                    'AccountsHelper', 'saveAccountInformation', currentRecordID);
         }
     }
 

@@ -17,15 +17,15 @@
         </connector>
     </assignments>
     <assignments>
-        <name>myWaitAssignment_myWait_myRule_9</name>
-        <label>myWaitAssignment_myWait_myRule_9</label>
+        <name>myWaitAssignment_myWait_myRule_7</name>
+        <label>myWaitAssignment_myWait_myRule_7</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>cancelWaits</assignToReference>
             <operator>Add</operator>
             <value>
-                <stringValue>myWait_myRule_9</stringValue>
+                <stringValue>myWait_myRule_7</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -33,19 +33,19 @@
         </connector>
     </assignments>
     <assignments>
-        <name>myWaitEvent_myWait_myRule_9_event_0_postWaitExecutionAssignment</name>
-        <label>myWaitEvent_myWait_myRule_9_event_0_postWaitExecutionAssignment</label>
+        <name>myWaitEvent_myWait_myRule_7_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_7_event_0_postWaitExecutionAssignment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>myWaitEvent_myWait_myRule_9_event_0_postActionExecutionVariable</assignToReference>
+            <assignToReference>myWaitEvent_myWait_myRule_7_event_0_postActionExecutionVariable</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>myWait_myRule_9</targetReference>
+            <targetReference>myWait_myRule_7</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -86,7 +86,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myPreWaitDecision_myWait_myRule_9</targetReference>
+            <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -107,7 +107,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPreWaitDecision_myWait_myRule_9</targetReference>
+                <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
             </connector>
             <label>isChangedRule_3_myRule_1_LastName</label>
         </rules>
@@ -202,34 +202,6 @@
         <processMetadataValues>
             <name>index</name>
             <value>
-                <numberValue>3.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision10</name>
-        <label>myDecision10</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_11</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_11</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_11_A1</targetReference>
-            </connector>
-            <label>MaxActiveBookingEndDate UnSet</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
                 <numberValue>1.0</numberValue>
             </value>
         </processMetadataValues>
@@ -245,62 +217,7 @@
             <name>myRule_7</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Reference</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.EmailOptOut__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.PersonHasOptedOutOfEmail</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.IsPersonAccount</leftValueReference>
+                <leftValueReference>formula_myRule_7</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -309,7 +226,7 @@
             <connector>
                 <targetReference>myRule_7_pmetdec</targetReference>
             </connector>
-            <label>Email Opt Out difference</label>
+            <label>MaxActiveBookingEndDate Set</label>
         </rules>
     </decisions>
     <decisions>
@@ -323,9 +240,6 @@
         <label>myDecision8</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision10</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_9</name>
@@ -338,22 +252,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_9_pmetdec</targetReference>
+                <targetReference>myRule_9_A1</targetReference>
             </connector>
-            <label>MaxActiveBookingEndDate Set</label>
+            <label>MaxActiveBookingEndDate UnSet</label>
         </rules>
     </decisions>
     <decisions>
-        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_9_event_0</name>
-        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_9_event_0</label>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_7_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_7_event_0</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myWaitEvent_myWait_myRule_9_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_7_event_0_postWaitExecutionAssignment</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myPostWaitRule_myWaitEvent_myWait_myRule_9_event_0</name>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_7_event_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_current.MaxActiveBookingEndDate__c</leftValueReference>
@@ -363,25 +277,25 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myWaitEvent_myWait_myRule_9_event_0_SA1</targetReference>
+                <targetReference>myWaitEvent_myWait_myRule_7_event_0_SA1</targetReference>
             </connector>
-            <label>myPostWaitRule_myWaitEvent_myWait_myRule_9_event_0</label>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_7_event_0</label>
         </rules>
     </decisions>
     <decisions>
-        <name>myPreWaitDecision_myWait_myRule_9</name>
-        <label>myPreWaitDecision_myWait_myRule_9</label>
+        <name>myPreWaitDecision_myWait_myRule_7</name>
+        <label>myPreWaitDecision_myWait_myRule_7</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myWaitAssignment_myWait_myRule_9</targetReference>
+            <targetReference>myWaitAssignment_myWait_myRule_7</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myPreWaitRule_myWait_myRule_9</name>
+            <name>myPreWaitRule_myWait_myRule_7</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_9</leftValueReference>
+                <leftValueReference>formula_myRule_7</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -390,7 +304,7 @@
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>myPreWaitRule_myWait_myRule_9</label>
+            <label>myPreWaitRule_myWait_myRule_7</label>
         </rules>
     </decisions>
     <decisions>
@@ -421,102 +335,7 @@
             <name>myRule_7_pmetrule</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Reference</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_old.EmailOptOut__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_old.PersonHasOptedOutOfEmail</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_old.IsPersonAccount</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myDecision8</targetReference>
-            </connector>
-            <label>Previously Met - Prev</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_9_pmetdec</name>
-        <label>Previously Met Decision</label>
-        <locationX>900</locationX>
-        <locationY>100</locationY>
-        <defaultConnector>
-            <targetReference>myRule_9_A1</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
-        <rules>
-            <name>myRule_9_pmetnullrule</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_9_A1</targetReference>
-            </connector>
-            <label>Previously Met - Null</label>
-        </rules>
-        <rules>
-            <name>myRule_9_pmetrule</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_9_pmetrule</leftValueReference>
+                <leftValueReference>formula_myRule_7_pmetrule</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -533,7 +352,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_8205870830</name>
+        <name>formula_4_myRule_1_A1_8080374825</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -544,22 +363,9 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_6244905614</name>
+        <name>formula_5_myRule_1_A1_1308324190</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>ISCHANGED([Account].MaxActiveBookingEndDate__c ) &amp;&amp;
-ISNULL([Account].MaxActiveBookingEndDate__c)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_11</name>
-        <dataType>Boolean</dataType>
-        <expression>ISCHANGED({!myVariable_current.MaxActiveBookingEndDate__c} ) &amp;&amp;
-ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -569,7 +375,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
 NOT(ISNULL([Account].MaxActiveBookingEndDate__c) )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_9</name>
+        <name>formula_myRule_7</name>
         <dataType>Boolean</dataType>
         <expression>ISCHANGED({!myVariable_current.MaxActiveBookingEndDate__c})  &amp;&amp;
 NOT(ISNULL({!myVariable_current.MaxActiveBookingEndDate__c}) )</expression>
@@ -582,12 +388,25 @@ NOT(ISNULL({!myVariable_current.MaxActiveBookingEndDate__c}) )</expression>
 NOT(ISNULL([Account].MaxActiveBookingEndDate__c) )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_9_pmetrule</name>
+        <name>formula_myRule_7_pmetrule</name>
         <dataType>Boolean</dataType>
         <expression>ISCHANGED({!myVariable_old.MaxActiveBookingEndDate__c})  &amp;&amp;
 NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
     </formulas>
-    <interviewLabel>EF_Account_PB_Create_Update-4_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>ISCHANGED([Account].MaxActiveBookingEndDate__c ) &amp;&amp;
+ISNULL([Account].MaxActiveBookingEndDate__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>ISCHANGED({!myVariable_current.MaxActiveBookingEndDate__c} ) &amp;&amp;
+ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
+    </formulas>
+    <interviewLabel>EF_Account_PB_Create_Update-6_InterviewLabel</interviewLabel>
     <label>EF_Account_PB_Create_Update</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -614,255 +433,6 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>criteria</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Account]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_11_A1</name>
-        <label>Unset Ready for Happy Call</label>
-        <locationX>1100</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myRule_11_A2</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Ready for Happy Call</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>ReadyForHappyCall__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Ready for Happy Call</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>ReadyForHappyCall__c</field>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>criteria</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Account].Opportunities</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_11_A2</name>
-        <label>Set Active Opportunities To Inactive</label>
-        <locationX>1100</locationX>
-        <locationY>300</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>is Active</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>IsActive__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>is Active</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>IsActive__c</field>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
             <name>evaluationType</name>
@@ -997,7 +567,7 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
             <field>Name</field>
             <operator>NotEqualTo</operator>
             <value>
-                <elementReference>formula_4_myRule_1_A1_8205870830</elementReference>
+                <elementReference>formula_4_myRule_1_A1_8080374825</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -1033,87 +603,10 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
             </processMetadataValues>
             <field>Name</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_6244905614</elementReference>
+                <elementReference>formula_5_myRule_1_A1_1308324190</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Account]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_7_A1</name>
-        <label>Update Standard Email Opt Out field</label>
-        <locationX>700</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision8</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Email Opt Out</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>PersonHasOptedOutOfEmail</field>
-            <value>
-                <elementReference>myVariable_current.EmailOptOut__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
     </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
@@ -1134,12 +627,12 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
                 <stringValue>[Account]</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_9_A1</name>
+        <name>myRule_7_A1</name>
         <label>Set Ready For Happy Call on Account</label>
-        <locationX>900</locationX>
+        <locationX>700</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myWait_myRule_9</targetReference>
+            <targetReference>myWait_myRule_7</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -1251,6 +744,132 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
         <processMetadataValues>
             <name>isChildRelationship</name>
             <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Account]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Unset Ready for Happy Call</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_9_A2</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Ready for Happy Call</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>ReadyForHappyCall__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Ready for Happy Call</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>ReadyForHappyCall__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
                 <booleanValue>true</booleanValue>
             </value>
         </processMetadataValues>
@@ -1260,12 +879,135 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
                 <stringValue>[Account].Opportunities</stringValue>
             </value>
         </processMetadataValues>
-        <name>myWaitEvent_myWait_myRule_9_event_0_SA1</name>
-        <label>Set Opportunities to Inactive</label>
+        <name>myRule_9_A2</name>
+        <label>Set Active Opportunities To Inactive</label>
         <locationX>900</locationX>
+        <locationY>300</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>is Active</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>IsActive__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>is Active</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>IsActive__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Account].Opportunities</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_7_event_0_SA1</name>
+        <label>Set Opportunities to Inactive</label>
+        <locationX>700</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myWaitEvent_myWait_myRule_9_event_0_postWaitExecutionAssignment</targetReference>
+            <targetReference>myWaitEvent_myWait_myRule_7_event_0_postWaitExecutionAssignment</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -1402,7 +1144,7 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
         </value>
     </variables>
     <variables>
-        <name>myWaitEvent_myWait_myRule_9_event_0_postActionExecutionVariable</name>
+        <name>myWaitEvent_myWait_myRule_7_event_0_postActionExecutionVariable</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -1412,8 +1154,8 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
         </value>
     </variables>
     <waits>
-        <name>myWait_myRule_9</name>
-        <label>myWait_myRule_9</label>
+        <name>myWait_myRule_7</name>
+        <label>myWait_myRule_7</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
@@ -1424,17 +1166,17 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
                     <stringValue>referenced</stringValue>
                 </value>
             </processMetadataValues>
-            <name>myWaitEvent_myWait_myRule_9_event_0</name>
+            <name>myWaitEvent_myWait_myRule_7_event_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>myWaitEvent_myWait_myRule_9_event_0_postActionExecutionVariable</leftValueReference>
+                <leftValueReference>myWaitEvent_myWait_myRule_7_event_0_postActionExecutionVariable</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_9_event_0</targetReference>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_7_event_0</targetReference>
             </connector>
             <eventType>DateRefAlarmEvent</eventType>
             <inputParameters>
@@ -1467,7 +1209,7 @@ NOT(ISNULL({!myVariable_old.MaxActiveBookingEndDate__c}) )</expression>
                     <stringValue>MaxActiveBookingEndDate__c</stringValue>
                 </value>
             </inputParameters>
-            <label>myWaitEvent_myWait_myRule_9_event_0</label>
+            <label>myWaitEvent_myWait_myRule_7_event_0</label>
         </waitEvents>
     </waits>
 </Flow>

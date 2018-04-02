@@ -4,7 +4,8 @@
     <defaultValue>false</defaultValue>
     <description>If this name was acquired  by buying a name database</description>
     <externalId>false</externalId>
-    <label>BoughtName</label>
+    <inlineHelpText>If we got this Lead by buying a name database</inlineHelpText>
+    <label>Bought Name</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>

@@ -6,6 +6,6 @@
     <label>Birthdate</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>true</trackHistory>
+    <trackHistory>True</trackHistory>
     <type>Date</type>
 </CustomField>

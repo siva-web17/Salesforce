@@ -1,7 +1,8 @@
 ({
-	accountData: function(cmp, event, helper) {},
+	//accountData: function(cmp, event, helper) {},
 
 	insertRecord: function(cmp, event) {
+        debugger;
 		var action = cmp.get('c.updateAccountDetails');
 		var fwrapperLst = cmp.get('v.wrapperList');
 		//alert(JSON.stringify(fwrapperLst));
@@ -14,17 +15,17 @@
 				// alert("From server: " + response.getReturnValue());
 				if (response.getReturnValue() === '') {
 					var toastEvent = $A.get('e.force:showToast');
-                    //var bookingSummarySuccess = $A.get('$Label.c.bookingSummarySuccess');
+                    var bookingSummarySuccess = $A.get('$Label.c.bookingSummarySuccess');
 					toastEvent.setParams({
 						title: 'Success!',
 						type: 'success',
-						message: 'Please Create a Booking in Poseidon',
+						message: bookingSummarySuccess,
 					});
 					toastEvent.fire();
 					//Add navigation to detail view here
 					//
 					window.setTimeout(
-						$A.getCallback(function() { 
+						$A.getCallback(function() {
 							var navEvt = $A.get('e.force:navigateToSObject');
 							navEvt.setParams({
 								recordId: cmp.get('v.wrapperList.opp.Id'),

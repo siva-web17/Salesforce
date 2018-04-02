@@ -33,14 +33,15 @@ public class QuoteTriggerTest {
                 'RecordTypeId' => recordTypeSPQId
         };
         task newTask = TestDataFactory.createTaskForSobject(newOpportunityPersonAccount.Id, taskValues, TRUE);
-
+        User currentUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         Quote__c quoteRec = new quote__c();
         quoteRec.Opportunity__c = newOpportunityPersonAccount.id;
         quoteRec.program__c = 'AY';
         quoterec.SentByEmail__c=TRUE;
         quoterec.QuotePDF__c='description';
+        quoterec.QuoteCreatedBy__c=currentUser.Id;
         insert quoteRec;
-        QuotesHelper.closeSPQTasksOnOpportunity(new List<Quote__c>{quoteRec});
+        QuotesHelper.closeSPQTasksAndCreateNewTaskOnOpportunity(new List<Quote__c>{quoteRec});
     }
 
 }
