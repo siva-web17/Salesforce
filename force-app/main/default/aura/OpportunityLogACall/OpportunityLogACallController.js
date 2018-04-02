@@ -119,26 +119,7 @@
             }
         });
         $A.enqueueAction(subActionsAction);
-        var callResultAction = component.get("c.getCallResults");
-        var LAC_Select = $A.get("$Label.c.LAC_Select");
-        callResultAction.setParams({
-            callAction: component.get("v.selectedActionType"),
-            recordId: component.get("v.recordId")
-        });
-        callResultAction.setCallback(this, function(res) {
-            switch (res.getState()) {
-                case "SUCCESS":
-                    var callResults = JSON.parse(res.getReturnValue());
-                    component.set("v.callResults", callResults);
-                    component.set("v.selectedCallResult", LAC_Select);
-                    break;
-                case "INCOMPLETE":
-                    break;
-                case "ERROR":
-                    break;
-            }
-        });
-        $A.enqueueAction(callResultAction);
+        component.set("v.selectedActionType", null);
         var bookOnDateAction = component.get("c.getInitialData");
         bookOnDateAction.setParams({ recordId: component.get("v.recordId") });
         bookOnDateAction.setCallback(this, function(res) {
