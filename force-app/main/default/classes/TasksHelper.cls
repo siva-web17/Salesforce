@@ -446,9 +446,9 @@ public class TasksHelper {
             return canSendBR;
         }
         Map<String, MarketProgramLevelSetting__c> marketProgramSetting = MarketProgramLevelSetting__c.getAll();
+        temp=oppRecord.Market__c + '_' + currentRequestProgram;
         If (taskList != null && taskList.size() > 0) {
             for (Task taskRecord : taskList) {
-                //temp=taskRecord.market__c + '_' + taskRecord.program__c;
                 if (marketProgramSetting.containsKey(temp)) {
 
                     if (taskRecord.IsClosed__c && (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == null
@@ -467,7 +467,6 @@ public class TasksHelper {
                         break;
                     }
 
-
                 }
 
                 else if (taskRecord.Program__c == currentRequestProgram && !taskRecord.IsClosed__c) {
@@ -477,13 +476,11 @@ public class TasksHelper {
 
             }
         } else {
-            //temp=eventRecord.market__c + '_' + eventRecord.program__c;
             if (marketProgramSetting.containsKey(temp)) {
                 if (marketProgramSetting.get(temp).DoNotSendBrochure__c) {
                     canSendBR = false;
                 }
             }
-
         }
         return canSendBR;
     }
