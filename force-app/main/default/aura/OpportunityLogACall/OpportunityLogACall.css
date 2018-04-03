@@ -138,8 +138,8 @@
 }
 
 .THIS .helpText {
-    float: right;
+    float: left;
     top: -2px;
     position: absolute;
-    right: .75rem;
+    left: 90px;
 }

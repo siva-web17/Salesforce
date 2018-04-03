@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>NorwayLeads</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Rule for sharing Norway Leads.</description>
+        <label>NorwayLeads</label>
+        <sharedTo>
+            <group>NOO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Market__c</field>
+            <operation>equals</operation>
+            <value>Norway</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>
