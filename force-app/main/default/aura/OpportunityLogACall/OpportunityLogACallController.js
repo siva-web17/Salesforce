@@ -121,7 +121,7 @@
         $A.enqueueAction(subActionsAction);
         var LAC_Select = $A.get("$Label.c.LAC_Select");
         component.set("v.selectedCallResult", LAC_Select);
-        component.set("v.selectedActionType", null);
+        component.set("v.selectedActionType", LAC_Select);
         var bookOnDateAction = component.get("c.getInitialData");
         bookOnDateAction.setParams({ recordId: component.get("v.recordId") });
         bookOnDateAction.setCallback(this, function(res) {
