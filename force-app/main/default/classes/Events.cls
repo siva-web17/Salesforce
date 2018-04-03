@@ -15,6 +15,8 @@ public class Events {
     }
 
     public static void onAfterInsert(List<Event>newItems) {
+        eventshelper.createAttachmentForQuestionAnswers(newItems);
+        eventshelper.AddLeadOrContactAsCampaignMember(newItems);
         List<Id> Ids = new List<Id>();
         Ids = TasksHelper.filterEventsRelatedToOppotunity(newItems);
         List<Opportunity> opportunityRecord = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(Ids);

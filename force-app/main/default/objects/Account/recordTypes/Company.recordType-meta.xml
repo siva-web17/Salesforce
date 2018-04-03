@@ -2,7 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Company</fullName>
     <active>true</active>
-    <description>use this for Companies</description>
+    <description>Use this for Companies</description>
     <label>Company</label>
     <picklistValues>
         <picklist>AccountSource</picklist>
@@ -203,7 +203,7 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Language__c</picklist>
+    <picklist>Language__c</picklist>
         <values>
             <fullName>AR</fullName>
             <default>false</default>
@@ -543,11 +543,51 @@
     <picklistValues>
         <picklist>Nationality__c</picklist>
         <values>
+            <fullName>AD</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AE</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>AF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AS</fullName>
             <default>false</default>
         </values>
         <values>
@@ -559,7 +599,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>AW</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BD</fullName>
             <default>false</default>
         </values>
         <values>
@@ -567,7 +623,63 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>BF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BO</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BZ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -575,11 +687,35 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>CC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CF</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CH</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>CI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CK</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CM</fullName>
             <default>false</default>
         </values>
         <values>
@@ -595,6 +731,22 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>CU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CY</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CZ</fullName>
             <default>false</default>
         </values>
@@ -603,7 +755,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>DJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>DK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -615,7 +779,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>EE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ER</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>ES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ET</fullName>
             <default>false</default>
         </values>
         <values>
@@ -623,7 +807,71 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>FJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FO</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>FR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GQ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -631,7 +879,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>GS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GY</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HT</fullName>
             <default>false</default>
         </values>
         <values>
@@ -643,7 +927,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>IE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IL</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>IN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IQ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -651,7 +947,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>IS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -659,7 +967,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>KE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KP</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>KR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KY</fullName>
             <default>false</default>
         </values>
         <values>
@@ -667,7 +1011,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>LA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LT</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>LU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LV</fullName>
             <default>false</default>
         </values>
         <values>
@@ -675,7 +1055,115 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>MA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ME</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MW</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>MX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NI</fullName>
             <default>false</default>
         </values>
         <values>
@@ -687,7 +1175,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>NP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NU</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>NZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OM</fullName>
             <default>false</default>
         </values>
         <values>
@@ -699,7 +1203,39 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>PF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PK</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>PL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PS</fullName>
             <default>false</default>
         </values>
         <values>
@@ -707,7 +1243,35 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>PW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RW</fullName>
             <default>false</default>
         </values>
         <values>
@@ -715,7 +1279,87 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>SB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SD</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>SE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TG</fullName>
             <default>false</default>
         </values>
         <values>
@@ -723,7 +1367,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>TJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TM</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>TN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TP</fullName>
             <default>false</default>
         </values>
         <values>
@@ -731,11 +1395,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>TT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>TW</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>UK</fullName>
+            <fullName>TZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG</fullName>
             <default>false</default>
         </values>
         <values>
@@ -747,7 +1427,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>UZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VC</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>VE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VI</fullName>
             <default>false</default>
         </values>
         <values>
@@ -755,18 +1455,98 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>WW</fullName>
+            <fullName>VU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZW</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
         <picklist>OtherNationalities__c</picklist>
         <values>
+            <fullName>AD</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AE</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>AF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AS</fullName>
             <default>false</default>
         </values>
         <values>
@@ -778,7 +1558,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>AW</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>AZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BD</fullName>
             <default>false</default>
         </values>
         <values>
@@ -786,7 +1582,63 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>BF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BO</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BZ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -794,11 +1646,35 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>CC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CF</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CH</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>CI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CK</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CM</fullName>
             <default>false</default>
         </values>
         <values>
@@ -814,6 +1690,22 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>CU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CY</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CZ</fullName>
             <default>false</default>
         </values>
@@ -822,7 +1714,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>DJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>DK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -834,7 +1738,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>EE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ER</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>ES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ET</fullName>
             <default>false</default>
         </values>
         <values>
@@ -842,7 +1766,71 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>FJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FO</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>FR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GQ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -850,7 +1838,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>GS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GY</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HT</fullName>
             <default>false</default>
         </values>
         <values>
@@ -862,7 +1886,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>IE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IL</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>IN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IQ</fullName>
             <default>false</default>
         </values>
         <values>
@@ -870,7 +1906,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>IS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -878,7 +1926,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>KE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KP</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>KR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KY</fullName>
             <default>false</default>
         </values>
         <values>
@@ -886,7 +1970,43 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>LA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LT</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>LU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LV</fullName>
             <default>false</default>
         </values>
         <values>
@@ -894,7 +2014,115 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>MA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ME</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MW</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>MX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NI</fullName>
             <default>false</default>
         </values>
         <values>
@@ -906,7 +2134,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>NP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NU</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>NZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OM</fullName>
             <default>false</default>
         </values>
         <values>
@@ -918,7 +2162,39 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>PF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PK</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>PL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PS</fullName>
             <default>false</default>
         </values>
         <values>
@@ -926,7 +2202,35 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>PW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RW</fullName>
             <default>false</default>
         </values>
         <values>
@@ -934,7 +2238,87 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>SB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SD</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>SE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TG</fullName>
             <default>false</default>
         </values>
         <values>
@@ -942,7 +2326,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>TJ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TM</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>TN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TP</fullName>
             <default>false</default>
         </values>
         <values>
@@ -950,11 +2354,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>TT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>TW</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>UK</fullName>
+            <fullName>TZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG</fullName>
             <default>false</default>
         </values>
         <values>
@@ -966,7 +2386,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>UZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VC</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>VE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VI</fullName>
             <default>false</default>
         </values>
         <values>
@@ -974,7 +2414,66 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>WW</fullName>
+            <fullName>VU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZW</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ownership</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidiary</fullName>
             <default>false</default>
         </values>
     </picklistValues>

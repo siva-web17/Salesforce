@@ -136,3 +136,10 @@
     margin: 4px 8px;
     font-size: 15px;
 }
+
+.THIS .helpText {
+    float: left;
+    top: -2px;
+    position: absolute;
+    left: 90px;
+}

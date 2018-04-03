@@ -55,64 +55,67 @@ public class OpportunitiesHelper {
         List<String> allPublicGroupList = new List<String>();
         List<Id> opportunityIdList = new List<Id>();
 
-        for (Integer index = 0; index < opportunityNewList.size(); index++) {
-            opportunityIdList.add(opportunityNewList[index].id);
-            if (opportunityNewList[index].RecordSharingKey__c != opportunityOldList[index].RecordSharingKey__c) {
-                addPublicGroupNameList.add(opportunityNewList[index].RecordSharingKey__c);
-                removePublicGroupNameList.add(opportunityOldList[index].RecordSharingKey__c);
-            }
-            if (opportunityNewList[index].OwnerId != opportunityOldList[index].OwnerId) {
-                addPublicGroupNameList.add(opportunityNewList[index].RecordSharingKey__c);
-            }
-        }
-        allPublicGroupList.addAll(addPublicGroupNameList);
-        allPublicGroupList.addAll(removePublicGroupNameList);
-        if (allPublicGroupList.isEmpty()) {
-            return;
-        }
-        Map<String, ID> publicGroupMap = publicGroupsSelector.getRegularPublicGroupsByName(allPublicGroupList);
-        //access level
-        List<opportunityShare> opportunityShareList = new List<opportunityShare>();
-        List<opportunityShare> deleteAccess = new List<opportunityShare>();
-        //share table query
-        List<opportunityShare> opportunityShareIdList = [select id,userOrGroupId,opportunityId from opportunityShare Where opportunityId in :opportunityIdList];
-        Map<String, opportunityShare> opportunityShareIdKeyMap = new Map<String, opportunityShare>();
-        Map<Id, Id> groupIdMap = new Map<Id, Id>();
-        String opportunityGroupIdCombinationMap = '';
-        for (opportunityShare share : opportunityShareIdList) {
-            opportunityGroupIdCombinationMap = String.valueOf(String.valueOf(share.userOrGroupId) + String.valueOf(share.opportunityid));
-            opportunityShareIdKeyMap.put(opportunityGroupIdCombinationMap, share);
-        }
-
-        for (Integer index = 0; index < opportunityNewList.size(); index++) {
-            if (opportunityNewList[index].RecordSharingKey__c != opportunityOldList[index].RecordSharingKey__c) {
-                if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
-                    //add acccess level
-                    opportunityShareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
+        try {
+            for (Integer index = 0; index < opportunityNewList.size(); index++) {
+                opportunityIdList.add(opportunityNewList[index].id);
+                if (opportunityNewList[index].RecordSharingKey__c != opportunityOldList[index].RecordSharingKey__c) {
+                    addPublicGroupNameList.add(opportunityNewList[index].RecordSharingKey__c);
+                    removePublicGroupNameList.add(opportunityOldList[index].RecordSharingKey__c);
                 }
-                if (publicGroupMap.containsKey(opportunityOldList[index].RecordSharingKey__c)) {
-                    String groupstr = String.valueOf(publicGroupMap.get(opportunityOldList[index].RecordSharingKey__c));
-                    groupstr += opportunityNewList[index].id;
-                    if (opportunityShareIdKeyMap.containsKey(groupstr)) {
-                        deleteAccess.add(opportunityShareIdKeyMap.get(groupstr));
+                if (opportunityNewList[index].OwnerId != opportunityOldList[index].OwnerId) {
+                    addPublicGroupNameList.add(opportunityNewList[index].RecordSharingKey__c);
+                }
+            }
+            allPublicGroupList.addAll(addPublicGroupNameList);
+            allPublicGroupList.addAll(removePublicGroupNameList);
+            if (allPublicGroupList.isEmpty()) {
+                return;
+            }
+            Map<String, ID> publicGroupMap = publicGroupsSelector.getRegularPublicGroupsByName(allPublicGroupList);
+            //access level
+            List<opportunityShare> opportunityShareList = new List<opportunityShare>();
+            List<opportunityShare> deleteAccess = new List<opportunityShare>();
+            //share table query
+            List<opportunityShare> opportunityShareIdList = [select id,userOrGroupId,opportunityId from opportunityShare Where opportunityId in :opportunityIdList];
+            Map<String, opportunityShare> opportunityShareIdKeyMap = new Map<String, opportunityShare>();
+            Map<Id, Id> groupIdMap = new Map<Id, Id>();
+            String opportunityGroupIdCombinationMap = '';
+            for (opportunityShare share : opportunityShareIdList) {
+                opportunityGroupIdCombinationMap = String.valueOf(String.valueOf(share.userOrGroupId) + String.valueOf(share.opportunityid));
+                opportunityShareIdKeyMap.put(opportunityGroupIdCombinationMap, share);
+            }
+
+            for (Integer index = 0; index < opportunityNewList.size(); index++) {
+                if (opportunityNewList[index].RecordSharingKey__c != opportunityOldList[index].RecordSharingKey__c) {
+                    if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
+                        //add acccess level
+                        opportunityShareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
+                    }
+                    if (publicGroupMap.containsKey(opportunityOldList[index].RecordSharingKey__c)) {
+                        String groupstr = String.valueOf(publicGroupMap.get(opportunityOldList[index].RecordSharingKey__c));
+                        groupstr += opportunityNewList[index].id;
+                        if (opportunityShareIdKeyMap.containsKey(groupstr)) {
+                            deleteAccess.add(opportunityShareIdKeyMap.get(groupstr));
+                        }
                     }
                 }
-            }
-            if (opportunityNewList[index].OwnerId != opportunityOldList[index].OwnerId) {
-                if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
-                    opportunityshareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
+                if (opportunityNewList[index].OwnerId != opportunityOldList[index].OwnerId) {
+                    if (publicGroupMap.containsKey(opportunityNewList[index].RecordSharingKey__c)) {
+                        opportunityshareList.add(createShareRecord(opportunityNewList[index].id, publicGroupMap.get(opportunityNewList[index].RecordSharingKey__c), 'Edit'));
+                    }
+                }if (opportunityNewList[index].isActive__c != opportunityOldList[index].isActive__c) {
+                    isActiveChanged = true;
                 }
-            }if (opportunityNewList[index].isActive__c != opportunityOldList[index].isActive__c) {
-                isActiveChanged = true;
             }
+            if (deleteAccess != null && deleteAccess.size() > 0) {
+                delete deleteAccess;
+            }
+            if (opportunityshareList != null && opportunityshareList.size() > 0) {
+                insert opportunityShareList;
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'createShareOnUpdateTypes', null);
         }
-        if (deleteAccess != null && deleteAccess.size() > 0) {
-            delete deleteAccess;
-        }
-        if (opportunityshareList != null && opportunityshareList.size() > 0) {
-            insert opportunityShareList;
-        }
-
     }
     //*********opportunity Share code End here****************//
 
@@ -152,24 +155,27 @@ public class OpportunitiesHelper {
     * */
     public static void setDefaultLetterAndLabel(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunitiesToUpdate = new Set<Id>();
-
-        for (Opportunity opp : newOpportunities.values()) {
-            Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
-            system.debug('the setDaulfLetterAndLabel' + oldOpportunity);
-            if (opp.TemplateKey__c != oldOpportunity.TemplateKey__c) {
-                opportunitiesToUpdate.add(opp.Id);
-            }
-        }
-        if (opportunitiesToUpdate.size() > 0) {
-            List<Opportunity> opportunitiesWithSBRTasks = new List<Opportunity>();
-            Map<Id, Date> accountBirthdatesByOppIds = new Map<Id, Date>();
-            for (Opportunity opp : OpportunitiesSelector.getOpportunitiesWithOpenTasks(opportunitiesToUpdate, System.Label.SBRTask)) {
-                if (opp.Tasks.size() > 0) {
-                    opportunitiesWithSBRTasks.add(newOpportunities.get(opp.Id));
-                    accountBirthdatesByOppIds.put(opp.Id, opp.Account.PersonBirthdate);
+        try {
+            for (Opportunity opp : newOpportunities.values()) {
+                Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
+                system.debug('the setDaulfLetterAndLabel' + oldOpportunity);
+                if (opp.TemplateKey__c != oldOpportunity.TemplateKey__c) {
+                    opportunitiesToUpdate.add(opp.Id);
                 }
             }
-            setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
+            if (opportunitiesToUpdate.size() > 0) {
+                List<Opportunity> opportunitiesWithSBRTasks = new List<Opportunity>();
+                Map<Id, Date> accountBirthdatesByOppIds = new Map<Id, Date>();
+                for (Opportunity opp : OpportunitiesSelector.getOpportunitiesWithOpenTasks(opportunitiesToUpdate, System.Label.SBRTask)) {
+                    if (opp.Tasks.size() > 0) {
+                        opportunitiesWithSBRTasks.add(newOpportunities.get(opp.Id));
+                        accountBirthdatesByOppIds.put(opp.Id, opp.Account.PersonBirthdate);
+                    }
+                }
+                setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterAndLabel', null);
         }
     }
 
@@ -239,14 +245,18 @@ public class OpportunitiesHelper {
     public static void handleProgramChange(List<Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunityIds = new Set<Id>();
         List<Opportunity> opportunitiesWithChangedProgram = new List<Opportunity>();
-        for (Opportunity opportunity : newOpportunities) {
-            if (opportunity.Program__c != oldOpportunities.get(opportunity.Id).Program__c) {
-                opportunityIds.add(opportunity.Id);
-                opportunitiesWithChangedProgram.add(opportunity);
+        try {
+            for (Opportunity opportunity : newOpportunities) {
+                if (opportunity.Program__c != oldOpportunities.get(opportunity.Id).Program__c) {
+                    opportunityIds.add(opportunity.Id);
+                    opportunitiesWithChangedProgram.add(opportunity);
+                }
             }
-        }
-        if (opportunitiesWithChangedProgram.size() > 0) {
-            changeProgramOnSystemCallTasks(opportunitiesWithChangedProgram, new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesWithOpenTasks(opportunityIds, Label.SystemCallTaskRecordTypeDeveloperName)));
+            if (opportunitiesWithChangedProgram.size() > 0) {
+                changeProgramOnSystemCallTasks(opportunitiesWithChangedProgram, new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesWithOpenTasks(opportunityIds, Label.SystemCallTaskRecordTypeDeveloperName)));
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'handleProgramChange', null);
         }
     }
     @TestVisible
@@ -275,43 +285,53 @@ public class OpportunitiesHelper {
     public static void handleOwnerChange(List<Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunityIds = new Set<Id>();
         List<Opportunity> opportunitiesWithChangedOwner = new List<Opportunity>();
-        for (Opportunity opportunity : newOpportunities) {
-            if (opportunity.OwnerId != oldOpportunities.get(opportunity.Id).OwnerId) {
-                opportunityIds.add(opportunity.Id);
-                opportunitiesWithChangedOwner.add(opportunity);
+        try {
+            for (Opportunity opportunity : newOpportunities) {
+                if (opportunity.OwnerId != oldOpportunities.get(opportunity.Id).OwnerId) {
+                    opportunityIds.add(opportunity.Id);
+                    opportunitiesWithChangedOwner.add(opportunity);
+                }
             }
-        }
 
-        if (opportunitiesWithChangedOwner.size() > 0) {
-            reassignOpenActivitiesForOpportunities(opportunitiesWithChangedOwner, new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesWithOpenActivities(opportunityIds)));
+            if (opportunitiesWithChangedOwner.size() > 0) {
+                reassignOpenActivitiesForOpportunities(opportunitiesWithChangedOwner, new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesWithOpenActivities(opportunityIds)));
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'handleOwnerChange', null);
         }
     }
 
     @TestVisible
     private static void reassignOpenActivitiesForOpportunities(List<Opportunity> opportunities, Map<Id, Opportunity> opportunitiesWithOpenActivities) {
-        SObject[] updatedActivities = new SObject[]{
-        };
-        Task[] tasksToUpdate = new Task[]{
-        };
-        Event[] eventsToUpdate = new Event[]{
-        };
-        for (Opportunity lead : opportunities) {
-            if (opportunitiesWithOpenActivities.containsKey(lead.Id)) {
-                for (OpenActivity oa : opportunitiesWithOpenActivities.get(lead.Id).OpenActivities) {
-                    if (oa.OwnerId != lead.OwnerId) {
-                        if (oa.IsTask) {
-                            tasksToUpdate.add(new Task(Id = oa.Id, OwnerId = lead.OwnerId));
-                        } else {
-                            eventsToUpdate.add(new Event(Id = oa.Id, OwnerId = lead.OwnerId));
+        Id currentRecordId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
+        try {
+            SObject[] updatedActivities = new SObject[]{
+            };
+            Task[] tasksToUpdate = new Task[]{
+            };
+            Event[] eventsToUpdate = new Event[]{
+            };
+            for (Opportunity lead : opportunities) {
+                if (opportunitiesWithOpenActivities.containsKey(lead.Id)) {
+                    for (OpenActivity oa : opportunitiesWithOpenActivities.get(lead.Id).OpenActivities) {
+                        if (oa.OwnerId != lead.OwnerId) {
+                            if (oa.IsTask) {
+                                tasksToUpdate.add(new Task(Id = oa.Id, OwnerId = lead.OwnerId));
+                            } else {
+                                eventsToUpdate.add(new Event(Id = oa.Id, OwnerId = lead.OwnerId));
+                            }
                         }
                     }
                 }
             }
-        }
-        updatedActivities.addAll((List<SObject>) tasksToUpdate);
-        updatedActivities.addAll((List<SObject>) eventsToUpdate);
-        if (updatedActivities.size() > 0) {
-            update updatedActivities;
+            updatedActivities.addAll((List<SObject>) tasksToUpdate);
+            updatedActivities.addAll((List<SObject>) eventsToUpdate);
+            if (updatedActivities.size() > 0) {
+                update updatedActivities;
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'OpportunitiesHelper', 'reassignOpenActivitiesForOpportunities', currentRecordId);
         }
     }
 
@@ -334,25 +354,29 @@ public class OpportunitiesHelper {
     public static void populateSalesOfficeProgram(List<Opportunity> opportunityList) {
         Set<string> recordSharingValues = new Set<String>();
         Map<string, id> salesOfficeMap = new Map<string, id>();
-        for (Opportunity oppRecord : opportunityList) {
-            if (oppRecord.RecordSharingKey__c != '') {
-                recordSharingValues.add(oppRecord.RecordSharingKey__c);
-            }
-        }
-
-        List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
-        for (SalesOfficeProgram__c salesOfficeRecord : salesofficeRecords) {
-            if (salesOfficeRecord.Name != null) {
-                salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
-            }
-        }
-
-        for (Opportunity oppRec : opportunityList) {
-            {
-                if (salesOfficeMap.containsKey(oppRec.RecordSharingKey__c)) {
-                    oppRec.SalesOfficeProgram__c = salesOfficeMap.get(oppRec.RecordSharingKey__c);
+        try {
+            for (Opportunity oppRecord : opportunityList) {
+                if (oppRecord.RecordSharingKey__c != '') {
+                    recordSharingValues.add(oppRecord.RecordSharingKey__c);
                 }
             }
+
+            List<SalesOfficeProgram__c> salesofficeRecords = SalesOfficeProgramSelector.getSalesOfficeRecords(recordSharingValues);
+            for (SalesOfficeProgram__c salesOfficeRecord : salesofficeRecords) {
+                if (salesOfficeRecord.Name != null) {
+                    salesOfficeMap.put(salesOfficeRecord.Name, salesOfficeRecord.id);
+                }
+            }
+
+            for (Opportunity oppRec : opportunityList) {
+                {
+                    if (salesOfficeMap.containsKey(oppRec.RecordSharingKey__c)) {
+                        oppRec.SalesOfficeProgram__c = salesOfficeMap.get(oppRec.RecordSharingKey__c);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSalesOfficeProgram', null);
         }
     }
 
@@ -360,53 +384,62 @@ public class OpportunitiesHelper {
         Set<String> sourceAutoCodeValues = new Set<String>();
         Map<String, String> sourceMap = new Map<string, String>();
 
-        for (Opportunity oppRecord : oppList) {
-            if (oppRecord.SourceCodeAuto__c != null && oppRecord.SourceCodeAuto__c != '') {
-                sourceAutoCodeValues.add(oppRecord.SourceCodeAuto__c);
+        try {
+            for (Opportunity oppRecord : oppList) {
+                if (oppRecord.SourceCodeAuto__c != null && oppRecord.SourceCodeAuto__c != '') {
+                    sourceAutoCodeValues.add(oppRecord.SourceCodeAuto__c);
+                }
             }
-        }
 
-        List<Source__c> sourceRecords = SourcesSelector.getSourceRecords(sourceAutoCodeValues);
-        for (Source__c sourceRec : sourceRecords) {
-            if (sourceRec.Code__c != null) {
-                sourceMap.put(sourceRec.Code__c, sourceRec.Name);
+            List<Source__c> sourceRecords = SourcesSelector.getSourceRecords(sourceAutoCodeValues);
+            for (Source__c sourceRec : sourceRecords) {
+                if (sourceRec.Code__c != null) {
+                    sourceMap.put(sourceRec.Code__c, sourceRec.Name);
+                }
             }
-        }
 
-        for (Opportunity opportunityRec : oppList) {
-            {
-                if (opportunityRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
-                    if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
-                        opportunityRec.Source__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
+            for (Opportunity opportunityRec : oppList) {
+                {
+                    if (opportunityRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
+                        if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
+                            opportunityRec.Partner__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
+                        }
                     }
                 }
             }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSourceBasedonSorceCodeAuto', null);
         }
     }
 
     public static void populateSourceCodeAutoAndPartnerFromSource(List<Opportunity> opportunityList) {
+
         Set<Id> sourceIds = new Set<Id>();
         Map<Id, List<Opportunity>> opportunityMap = new Map<Id, List<Opportunity>>();
         Map<Id, Source__c> sourceMap = new Map<Id, Source__c>();
 
-        for (Opportunity opportunityRecord : opportunityList) {
-            if (opportunityRecord.Source__c != null) {
-                if (!opportunityMap.containsKey(opportunityRecord.Source__c)) {
-                    opportunityMap.put(opportunityRecord.Source__c, new List<Opportunity>());
-                }
-                opportunityMap.get(opportunityRecord.Source__c).add(opportunityRecord);
-            }
-        }
-
-        sourceMap = SourcesSelector.getSourceMapRecordforOpportunity(opportunityMap);
-
-        for (Id recordId : opportunityMap.keyset()) {
-            for (Opportunity opportunityRec : opportunityMap.get(recordId)) {
-                if (sourceMap.containskey(opportunityRec.source__c) && sourceMap.get(opportunityRec.Source__c) != null) {
-                    opportunityRec.Partner__c = (sourceMap.get(opportunityRec.Source__c).Name);
-                    opportunityRec.SourceCodeAuto__c = (sourceMap.get(opportunityRec.Source__c).Code__c);
+        try {
+            for (Opportunity opportunityRecord : opportunityList) {
+                if (opportunityRecord.Source__c != null) {
+                    if (!opportunityMap.containsKey(opportunityRecord.Source__c)) {
+                        opportunityMap.put(opportunityRecord.Source__c, new List<Opportunity>());
+                    }
+                    opportunityMap.get(opportunityRecord.Source__c).add(opportunityRecord);
                 }
             }
+
+            sourceMap = SourcesSelector.getSourceMapRecordforOpportunity(opportunityMap);
+
+            for (Id recordId : opportunityMap.keyset()) {
+                for (Opportunity opportunityRec : opportunityMap.get(recordId)) {
+                    if (sourceMap.containskey(opportunityRec.source__c) && sourceMap.get(opportunityRec.Source__c) != null) {
+                        opportunityRec.Partner__c = (sourceMap.get(opportunityRec.Source__c).Name);
+                        opportunityRec.SourceCodeAuto__c = (sourceMap.get(opportunityRec.Source__c).Code__c);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSourceCodeAutoAndPartnerFromSource', null);
         }
     }
 }

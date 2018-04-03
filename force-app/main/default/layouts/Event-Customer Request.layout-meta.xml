@@ -33,42 +33,22 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Partner__c</field>
+                <field>IsEBrochure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Course__c</field>
+                <field>CampaignName__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DestinationCode__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Duration__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Accommodation__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>StartWhen__c</field>
+                <field>FalseBrochureProgramCodes__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>StartDateTime</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>WhatId</field>
@@ -83,6 +63,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Partner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Etag__c</field>
             </layoutItems>
             <layoutItems>
@@ -93,25 +77,52 @@
                 <behavior>Edit</behavior>
                 <field>IsJunior__c</field>
             </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Price Quote/Reservation Details</label>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>CampaignName__c</field>
+                <field>Course__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Comments__c</field>
+                <field>DestinationCode__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>FalseBrochureProgramCodes__c</field>
+                <field>Accommodation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>IsEBrochure__c</field>
+                <field>Duration__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>EndDateTime</field>
+                <behavior>Edit</behavior>
+                <field>StartWhen__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DepartureCity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>IsPaidOnline__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ReservedCoursePrice__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ReservedArticles__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -126,11 +137,23 @@
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>StartDateTime</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>EndDateTime</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -191,7 +214,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000LyPD</masterLabel>
+        <masterLabel>00h5E000000PNwB</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
