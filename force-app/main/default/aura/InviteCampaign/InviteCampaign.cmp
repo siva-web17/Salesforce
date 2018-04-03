@@ -282,7 +282,7 @@
                             <ui:inputCheckbox value="{!wrapper.isChecked}"/>
                         </td>
                         <td role="gridcell">
-                            <div  title="Name" class="slds-truncate">{!wrapper.objWrapperCampaign.Name}</div>                           
+                            <div  title="Name" class="slds-truncate">{!wrapper.objWrapperCampaign.Name}</div>
                         </td>
                         <td role="gridcell">
                             <div class="slds-truncate">{!wrapper.objWrapperCampaign.Program__c}</div>
@@ -333,12 +333,16 @@
             <button class="slds-button slds-button_brand" onclick="{!c.onInviteToCampaign}">Invite</button>
         </footer>
     </div>
-    
+
      <style>
         .slds-modal__container{
                max-width: 80rem !important;
                width:100% !important;
                padding:0px !important;
+        }
+        .slds-modal__content {
+              height: auto !important;
+              max-height: inherit !important;
         }
     </style>
 </aura:component>
