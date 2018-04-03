@@ -134,5 +134,30 @@ public class EventsHelper {
       }
       Database.SaveResult[] srList = Database.insert(CamMemberList, false);
 
-      }
+    }
+
+    public static void afterLeadToAccountMergeSetWhatIdToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
+        //set What id only for Customer Request events
+        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
+        Set<Id> newContactIds = new Set<Id>();
+        List<Event> validEvents = new List<Event>();
+        for(Event newEvent : newEvents){
+            Event oldEvent = oldEvents.get(newEvent.Id);
+            if(newEvent.RecordTypeId == customerRequestId && newEvent.WhoId.getSobjectType() == Contact.SObjectType && oldEvent.WhoId.getSobjectType() == Lead.SObjectType && newEvent.WhatId == NULL){
+                newContactIds.add(newEvent.WhoId);
+                validEvents.add(newEvent);
+            }
+        }
+        if(validEvents.size() > 0) {
+            Map<Id, Account> accountsByContactIds = new Map<Id, Account>();
+            for(Account acc : AccountsSelector.getAccountsWithOpportunitiesByContactIds(newContactIds)){
+                accountsByContactIds.put(acc.PersonContactId, acc);
+            }
+            for(Event validEvent : validEvents){
+                if(accountsByContactIds.containsKey(validEvent.WhoId) && accountsByContactIds.get(validEvent.WhoId).Opportunities.size() > 0){
+                    validEvent.WhatId = accountsByContactIds.get(validEvent.WhoId).Opportunities[0].Id;
+                }
+            }
+        }
+    }
 }

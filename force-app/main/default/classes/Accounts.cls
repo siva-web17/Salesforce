@@ -35,7 +35,6 @@ public class Accounts {
     }
 
     public static void onAfterDelete(Map<Id, SObject> oldItems) {
-        AccountsHelper.retrieveAccountsDeletedByMerge((Map<Id, Account>)oldItems);
     }
 
     public static void onAfterUndelete(Map<Id, SObject> oldItems) {
