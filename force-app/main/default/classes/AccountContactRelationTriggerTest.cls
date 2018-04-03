@@ -28,8 +28,8 @@ private class AccountContactRelationTriggerTest {
             Booking__c book = new Booking__c(AccountId__c = accPerson.Id, OpportunityId__c = testOpportunity.Id);
             insert book;
 
-            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, AccountContactID__c = accPerson2.Id, roles = 'Mother');
-            AccountContactRelation accContRelationChildToParent = new AccountContactRelation(AccountId = accPerson2.Id, ContactId = accPerson.PersonContactId, AccountContactID__c = accPerson.Id, roles = 'Child');
+            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, roles = 'Mother');
+            AccountContactRelation accContRelationChildToParent = new AccountContactRelation(AccountId = accPerson2.Id, ContactId = accPerson.PersonContactId, roles = 'Child');
 
             insert accContRelationParentToChild;
             insert accContRelationChildToParent;
@@ -61,7 +61,7 @@ private class AccountContactRelationTriggerTest {
             accPerson2 = [SELECT PersonContactId FROM Account Where Id = :accPerson2.Id LIMIT 1];
             accPerson = [SELECT PersonContactId FROM Account Where Id = :accPerson.Id LIMIT 1];
 
-            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, AccountContactID__c = accPerson2.Id, roles = 'Mother');
+            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, roles = 'Mother');
 
             insert accContRelationParentToChild;
 
@@ -100,8 +100,8 @@ private class AccountContactRelationTriggerTest {
             Booking__c book = new Booking__c(AccountId__c = accPerson.Id, OpportunityId__c = testOpportunity.Id);
             insert book;
 
-            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, AccountContactID__c = null, roles = 'Mother');
-            AccountContactRelation accContRelationChildToParent = new AccountContactRelation(AccountId = accPerson2.Id, ContactId = accPerson.PersonContactId, AccountContactID__c = null, roles = 'Child');
+            AccountContactRelation accContRelationParentToChild = new AccountContactRelation(AccountId = accPerson.Id, ContactId = accPerson2.PersonContactId, roles = 'Mother');
+            AccountContactRelation accContRelationChildToParent = new AccountContactRelation(AccountId = accPerson2.Id, ContactId = accPerson.PersonContactId, roles = 'Child');
 
             insert accContRelationParentToChild;
             insert accContRelationChildToParent;
