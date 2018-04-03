@@ -2304,7 +2304,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>APXTConga4__Conga_Template__c.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3335,6 +3335,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Campaign.PosInfoMeetingID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.PosInfoMeeting_id__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3400,6 +3405,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CampaignMember.IsByConversion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CampaignMember.MeetingType__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3407,6 +3417,11 @@
         <editable>true</editable>
         <field>CampaignMember.Opportunity__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CampaignMember.PosExternalId__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -4601,7 +4616,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.EnquiryYear__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -5261,7 +5276,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.EnquiryYear__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7777,15 +7792,6 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>SocialPersona</object>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>false</allowEdit>
@@ -8139,13 +8145,11 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Campaign.InfoMeeting</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Event.CustomerRequest</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8171,7 +8175,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Lead.Customer</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8188,7 +8191,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Task.CallTask</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
