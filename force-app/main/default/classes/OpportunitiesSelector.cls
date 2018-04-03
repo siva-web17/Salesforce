@@ -112,7 +112,7 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c, (
+                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c,Market__c,(
                         SELECT Id, WhoId, WhatId, Subject, Status,
                                 FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,WebOnlinePaymentTXLogId__c,
                                 CloseDate__c, IsExpressCall__c,RecordType.DeveloperName,IsUp__c, IsJunior__c, Course__c, DestinationCode__c, StartWhen__c,
@@ -123,7 +123,7 @@ public class OpportunitiesSelector {
                                 Type, SalesAction__c, Program__c, EventId__c,
                                 IsExpressCall__c, ProcessedforTaskcreation__c,FalseBrochureProgramCodes__c, RecordType.DeveloperName,IsUp__c, IsJunior__c, Course__c,
                                 DestinationCode__c,StartWhen__c, ReservedPrice__c, IsPaidOnline__c, Duration__c, Accommodation__c,ReservedCoursePrice__c, ReservedArticles__c,
-                                Comments__c,WebOnlinePaymentTXLogId__c,DepartureCity__c,Description 
+                                Comments__c,WebOnlinePaymentTXLogId__c,DepartureCity__c,Description
 
                         FROM Events
                         where ProcessedforTaskcreation__c = false
@@ -216,7 +216,7 @@ public class OpportunitiesSelector {
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
             query += f.getFieldPath() + ', ';
         }
-      
+
         query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
         if (checkActiveOpportunity) {
             query += ' AND IsActive__c  = TRUE';
