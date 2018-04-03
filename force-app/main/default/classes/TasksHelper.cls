@@ -647,7 +647,7 @@ public class TasksHelper {
             Opportunity currentOpportunity = opportunitiesToProcess.get(oppId);
 
             updatePendingToDoList       (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
-            updateBorchuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
+            updateBrochuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSentBrochuresList     (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateNumberOfCompletedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSendBrochureDueDateTime(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -664,12 +664,6 @@ public class TasksHelper {
             tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
         }
 
-        for (Task t : updatedTasksByIds.values()) {
-            if (!tasksByOpportunityIds.containsKey(t.WhatId)) {
-                tasksByOpportunityIds.put(t.WhatId, new Map<Id, Task>());
-            }
-            tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
-        }
         for (Id oppId : tasksByOpportunityIds.keySet()) {
             Opportunity currentOpportunity = opportunitiesToProcessByIds.get(oppId);
             updateNumberOfUnreachedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -722,7 +716,7 @@ public class TasksHelper {
         toUpdate.put('PendingToDo__c', String.join(new List<String>(pendingToDo), SEPARATOR));
     }
 
-    private static void updateBorchuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
+    private static void updateBrochuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> brochuresToSend = new Set<String>();
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && !t.IsClosed) {
@@ -743,6 +737,9 @@ public class TasksHelper {
 
     private static void updateSentBrochuresList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> sentBrochures = new Set<String>();
+        if(opportunity.SentBrochures__c != NULL) {
+            sentBrochures.addAll(opportunity.SentBrochures__c.split(SEPARATOR));
+        }
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && t.IsClosed && t.TaskResult__c == SENT_BROCHURE) {
                 sentBrochures.add(t.Program__c);
