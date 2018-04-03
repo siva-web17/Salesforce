@@ -558,14 +558,7 @@
         <protected>false</protected>
         <shortDescription>End Date</shortDescription>
         <value>End Date</value>
-    </labels>
-    <labels>
-        <fullName>End_Point_URL</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFService/api/ranking</value>
-    </labels>
+    </labels>   
     <labels>
         <fullName>ExcelImport</fullName>
         <categories>DEV</categories>
