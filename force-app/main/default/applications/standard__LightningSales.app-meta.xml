@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomApplication 
-xmlns="http://soap.sforce.com/2006/04/metadata">
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
@@ -40,13 +39,12 @@ xmlns="http://soap.sforce.com/2006/04/metadata">
     <tabs>standard-Account</tabs>
     <tabs>standard-Campaign</tabs>
     <tabs>ImportfromExcel</tabs>
-    <tabs>Booking__c</tabs>
     <tabs>dcBatch</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>APXTConga4__Conga_Template__c</tabs>
     <tabs>TemplateSetting__c</tabs>
     <tabs>standard-Event</tabs>
-     <tabs>Source__c</tabs>
+    <tabs>Source__c</tabs>
     <tabs>standard-Lead</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
