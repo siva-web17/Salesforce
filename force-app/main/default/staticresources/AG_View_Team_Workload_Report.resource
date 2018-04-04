@@ -15,7 +15,7 @@ crmc.require(["sfdc", "KendoPopup"], function (sfdc,kendoPopup) {
             return [];
         },
         "click": function (context) {
-          var workloadReport = sfdc.query("SELECT Id,Name From Report WHERE Name LIKE 'Team%s Opportunity Workload Next 2 Days' LIMIT 1");
+          var workloadReport = sfdc.query("SELECT Id,Name From Report WHERE Name LIKE 'Opportunity Workload Till Tomorrow EOD' LIMIT 1");
           if(workloadReport.length == 0 || workloadReport[0].Id == null){
             kendoPopup.popupWithButtons("Team Workload", "Could not find Report", []);
           } else {
