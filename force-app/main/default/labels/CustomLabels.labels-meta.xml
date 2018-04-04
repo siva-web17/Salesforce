@@ -558,7 +558,7 @@
         <protected>false</protected>
         <shortDescription>End Date</shortDescription>
         <value>End Date</value>
-    </labels>   
+    </labels>
     <labels>
         <fullName>ExcelImport</fullName>
         <categories>DEV</categories>
@@ -723,7 +723,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ADT</shortDescription>
-        <value>Action Date/Time</value>
+        <value>Follow-Up Date</value>
     </labels>
     <labels>
         <fullName>LAC_Action</fullName>
@@ -1001,7 +1001,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>VDT</shortDescription>
-        <value>Visit Date/Time</value>
+        <value>Visit Date</value>
     </labels>
     <labels>
         <fullName>LAC_Visit</fullName>
