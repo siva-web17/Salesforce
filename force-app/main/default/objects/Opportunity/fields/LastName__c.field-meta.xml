@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastName__c</fullName>
+    <description>This field is used to store the Account Last Name so that this can be used as a merge field when sending an email from the Opportunity.</description>
+    <externalId>false</externalId>
+    <formula>Account.PersonContact.LastName</formula>
+    <label>Last Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
