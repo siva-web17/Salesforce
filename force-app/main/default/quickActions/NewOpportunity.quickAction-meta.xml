@@ -4,7 +4,7 @@
     <fieldOverrides>
         <field>CloseDate</field>
         <formula>DATE(
-YEAR(TODAY()) + IF(MONTH(TODAY()) > 2, 1, 0), 
+YEAR(TODAY()) + IF(MONTH(TODAY()) > 10, 1, 0), 
 MOD(MONTH(TODAY()) + 2, 12), 
 DAY(TODAY()) 
 )</formula>
