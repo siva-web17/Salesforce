@@ -7,6 +7,6 @@
     <inlineHelpText>Use this if the person is subject to a serious threat. E.g. they are threatened by someone (abusive partner or someone they testified against). You are not allowed to disclose their personal information to anyone.</inlineHelpText>
     <label>Is Protected Identity</label>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Checkbox</type>
 </CustomField>

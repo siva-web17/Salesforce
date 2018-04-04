@@ -53,14 +53,18 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <!-- <externalSharingModel>ReadWrite</externalSharingModel> -->
     <label>Source</label>
     <nameField>
         <label>Source Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Sources</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Code__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IsGlobal__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AvailableforExcelImport__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AvailableforManualEntry__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

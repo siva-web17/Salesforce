@@ -4,7 +4,7 @@
     <description>this captures the unique integer field value associated with that campaign</description>
     <displayFormat>{0000}</displayFormat>
     <externalId>false</externalId>
-    <label>Campaign ID</label>
+    <label>Info Meeting ID</label>
     <startingNumber>1000</startingNumber>
     <type>AutoNumber</type>
 </CustomField>
