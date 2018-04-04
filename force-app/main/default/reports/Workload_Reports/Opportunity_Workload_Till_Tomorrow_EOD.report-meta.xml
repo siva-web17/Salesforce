@@ -69,6 +69,18 @@
             <operator>lessOrEqual</operator>
             <value>TOMORROW</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_PROFILE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Integration Profile</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.IsActive__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -87,7 +99,7 @@
         <field>BucketField_78149278</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Team's Opportunity Workload Next 2 Days</name>
+    <name>Opportunity Workload Till Tomorrow EOD</name>
     <params>
         <name>open</name>
         <value>all</value>
