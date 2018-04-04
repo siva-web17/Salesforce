@@ -12,10 +12,10 @@ public class DCBusinessFlowHelper {
             List<Lead> sourceLeads = new List<Lead>();
             sourceLeads.Add(sourceLead);
            List<RankingServiceResponse> finalResponse = webServiceCallForRanking(sourceLeads);
-          system.debug('Finalresponse@@@'+finalResponse);
-          if(finalResponse[0].LeadID==sourceLead.id && finalResponse[0].IsRanked){
+         
+          if(finalResponse!=null && finalResponse[0].LeadID==sourceLead.id && finalResponse[0].IsRanked){
                 sourceLead.ranking__c = finalResponse[0].Rank;
-                system.debug('ranking>>>>'+sourceLead.ranking__c);
+                
                 //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});               
 
             }           
@@ -28,11 +28,11 @@ public class DCBusinessFlowHelper {
         }
     }
     public static List<RankingServiceResponse> webServiceCallForRanking(List<Lead> sourceLeads){
-    system.debug('sourceLead>>>>'+sourceLeads);
+   
         //Make sure your Salesforce instance URL is added in remote site settings
         //String sfdcURL = URL.getSalesforceBaseUrl().toExternalForm();
        if (!Test.isRunningTest()) {
-        String restAPIURL = label.End_Point_URL;
+          String restAPIURL = ExternalRouter.getServiceURL('RankingService');
         List<RankingServiceParams> serviceParamsList = new List<RankingServiceParams>();
         RankingServiceParams serviceParams = null;          
         for(Lead sourceLead: sourceLeads){
@@ -57,17 +57,9 @@ public class DCBusinessFlowHelper {
             serviceParams.DeviceType = sourceLead.DeviceType__c;        
             serviceParamsList.Add(serviceParams);
         }
-        HttpRequest httpRequest = new HttpRequest();
-        httpRequest.setMethod('POST');
-        httpRequest.setHeader('Content-Type', 'application/json');
-        system.debug('My Json body'+JSON.serialize(serviceParamsList));
-        httpRequest.setBody(JSON.serialize(serviceParamsList));
-        httpRequest.setEndpoint(restAPIURL + '?SalesForceApplicationId=' + serviceParams.LeadID);
-        String response = '';       
-            Http http = new Http();
-            HttpResponse httpResponse = http.send(httpRequest);
-            if (httpResponse.getStatusCode() == 200 ) {
-                //response = JSON.serializePretty( JSON.deserializeUntyped(httpResponse.getBody()) );
+  
+            HttpResponse httpResponse = ExternalRouter.callRankingService(JSON.serialize(serviceParamsList));
+            if (httpResponse.getStatusCode() == 200 ) {                
                 List<RankingServiceResponse> serviceResponse =
                         (List<RankingServiceResponse>)JSON.deserialize(httpResponse.getBody(),List<RankingServiceResponse>.class);
                 System.debug(' ** response ** : ' + serviceResponse );             

@@ -7,13 +7,16 @@ public class Events {
         EventsHelper.UpdateSubjectOnEvents(newItems);
     }
 
-    public static void onBeforeUpdate(List<Event> oldEventList,List<Event> neweventList) {
+    public static void onBeforeUpdate(List<Event> newItems, Map<Id, SObject> oldItems) {
+        EventsHelper.afterLeadToAccountMergeSetWhatIdToActiveOpportunity(newItems, (Map<Id, Event>)oldItems);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {
     }
 
     public static void onAfterInsert(List<Event>newItems) {
+        eventshelper.createAttachmentForQuestionAnswers(newItems);
+        eventshelper.AddLeadOrContactAsCampaignMember(newItems);
         List<Id> Ids = new List<Id>();
         Ids = TasksHelper.filterEventsRelatedToOppotunity(newItems);
         List<Opportunity> opportunityRecord = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(Ids);

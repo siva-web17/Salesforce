@@ -7,6 +7,7 @@ public class CreateBookingController {
     @AuraEnabled
     public static IntermediateScreenWrapper dataBind(String recordId) {
         System.debug('Opportunity is ' + recordId);
+        Id currentRecordId;
         try {
             if (!String.isEmpty(recordId) && Id.valueOf(recordId).getSobjectType() == Opportunity.getSObjectType()) {
                 List<Account> fetchAccount = new List<Account>();
@@ -18,7 +19,6 @@ public class CreateBookingController {
                         where ID = :Id.valueOf(recordId) AND IsActive__c = TRUE
                         LIMIT 1
                 ];
-                System.debug('Opportunity is ' + fetchopp);
                 bindData.opp = fetchopp[0];
                 bindData.SalesOfficePickList = GetSalesOffice();
                 if (fetchopp.size() > 0) {
@@ -34,7 +34,6 @@ public class CreateBookingController {
                             LIMIT 1
                     ];
                     bindData.personAcc = fetchAccount[0];
-                    System.debug('Account is ' + fetchAccount[0]);
                     bindData.age = fetchAccount[0].Age__c;
                     bindData.GenderPickList = GetGender();
                     bindData.NationalityPickList = GetNationality();
@@ -50,8 +49,9 @@ public class CreateBookingController {
                 throw new AuraHandledException('InValid Record for create Booking');
             }
         } catch (Exception ex) {
-            ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-                    'CreatePriceQuoteController', 'openPoseidonToCreateQuote', null);
+            currentRecordId = Id.valueOf(recordId);
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'CreatePriceQuoteController', 'dataBind', currentRecordId);
             throw new AuraHandledException(ex.getMessage());
         }
 
@@ -60,16 +60,19 @@ public class CreateBookingController {
     @AuraEnabled
     public static String updateAccountDetails(String wrapperData) {
         String retValue = '';
-        System.debug('Sending data ' + wrapperData);
-        Id currentrecord;
+        Id currentRecordId;
         IntermediateScreenWrapper BindWrapper = (IntermediateScreenWrapper) JSON.deserialize(wrapperData, IntermediateScreenWrapper.class);
         try {
-            update BindWrapper.personAcc;
+            if(BindWrapper.personAcc != null){
+                update BindWrapper.personAcc;
+            }
             retValue = SyncToPoseidonController.SyncComplicatedBookingToPoseidon(String.ValueOf(BindWrapper.personAcc.Id), true);
         } catch (Exception ex) {
+            if(BindWrapper.personAcc != null && BindWrapper.personAcc.Id != null) {
+                currentRecordId = BindWrapper.personAcc.Id;
+            }
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                    'CreateBookingController', 'updateAccountDetails', currentrecord);
-            System.debug('Dml exception :' + ex.getMessage());
+                    'CreateBookingController', 'updateAccountDetails', currentRecordId);
         }
         return retValue;
     }
@@ -81,39 +84,31 @@ public class CreateBookingController {
 
     public static Map<String, String> GetGender() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'Gender__c');
-        //return JSON.serialize(genderMap);
     }
 
     public static Map<String, String> GetSalesOffice() {
         return FieldUtilityClass.getPickListValues(Opportunity.getSObjectType(), 'SalesOffice__c');
-        //return JSON.serialize(genderMap);
     }
 
     public static Map<String, String> GetNationality() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'Nationality__c');
-        //return JSON.serialize(NationalityMap);
     }
 
     public static Map<String, String> GetOtherNationality() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'OtherNationalities__c');
-        // return JSON.serialize(OtherNationalityMap);
     }
 
     public static Map<String, String> GetPassportType() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'PassportType__c');
-        // return JSON.serialize(PassportMap);
     }
 
     public static Map<String, String> GetBirthCountry() {
         return FieldUtilityClass.getPickListValues(Account.getSObjectType(), 'BirthCountry__c');
-        // return JSON.serialize(PassportMap);
     }
 
     public static Map<String, String> GetMailingCountry() {
         return FieldUtilityClass.getPickListValues(Contact.getSObjectType(), 'MailingCountryCode');
-        // return JSON.serialize(PassportMap);
     }
-
 
     Public class IntermediateScreenWrapper {
         @AuraEnabled
@@ -138,6 +133,5 @@ public class CreateBookingController {
         public Map<String, String> BirthCountryPickList { get; set; }
 
     }
-
 
 }

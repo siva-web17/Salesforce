@@ -125,7 +125,7 @@ public class AccountsService {
                 //ExceptionHandler.errorLogAsync('New Sync to poseidon', JSONValue,
                         //'AccountService', 'ExternalService', newAccountMap.values()[0].CreatedById);
                 if (!System.isBatch()) {
-                    ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+                    ExternalRouter.callNewSyncToPoseidonService(JSONValue);
                 }
             }
 

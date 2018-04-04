@@ -14,7 +14,7 @@ public class Accounts {
     public static void onBeforeInsert(List<SObject> newItems) {
     }
 
-    public static void onBeforeUpdate(List<Account> oldAccountList, List<Account> newAccountList) {
+    public static void onBeforeUpdate(List<Account> newItems, Map<Id, sObject> oldItems) {
         AccountsHelper.updateUnSubscribeFields(Trigger.new);
 
     }
@@ -35,7 +35,6 @@ public class Accounts {
     }
 
     public static void onAfterDelete(Map<Id, SObject> oldItems) {
-        AccountsHelper.retrieveAccountsDeletedByMerge((Map<Id, Account>)oldItems);
     }
 
     public static void onAfterUndelete(Map<Id, SObject> oldItems) {

@@ -52,14 +52,10 @@ public class TasksHelper {
                     {
                         currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
                         if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
-                            system.debug('insideBooking>>');
                             activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
-                            system.debug('insideBookingactivityMap>>>'+activityMap);
                         }
                         else {
-                            system.debug('insideNotBooking>>');
                             activityMap.put(opportunityRecords.id, opportunityRecords.events);
-                            system.debug('insideNotBookingactivityMap>>>'+activityMap);
                         }
                         parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
                     }
@@ -122,16 +118,13 @@ public class TasksHelper {
 
         List<Event> eventsToBeProcessed = new List<Event>();
         for (Event event : events) {
-            system.debug('insidefor>>>>');
            // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
             if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting &&
                     event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest &&
                     event.Type != system.label.IR ){
-                system.debug('insideifprocessevent>>>>');
                 eventsToBeProcessed.add(event);
             }
         }
-        system.debug('eventsToBeProcessed>>>'+eventsToBeProcessed);
         return eventsToBeProcessed;
     }
 
@@ -266,7 +259,6 @@ public class TasksHelper {
                             if (!String.isBlank(objTaskSettingMap.RuleForActivity__c)) {
                                 newTask.type = typeOfTask;
                                 canCreateTask = canCreateCallTask();
-                                system.debug('canCreateTask>>>>'+canCreateTask);
                                 //Create Task Directly TCC/UCC/FUP/FUA
                             } else
                                     canCreateTask = true;
@@ -420,10 +412,7 @@ public class TasksHelper {
 
     //Partially done only mapping of event to task is done but stiil we need to do task to task mapping
     public static Task craeteTaskObject(Event eventObj, Task objTask, String recordTypeLabel) {
-        system.debug('recordTypeLabel>>>>>'+recordTypeLabel);
-        system.debug('recordTypeid>>>>>'+Schema.SObjectType.Task.getRecordTypeInfosByName().get(recordTypeLabel).getRecordTypeId());
         Id recordTypeId = Schema.SObjectType.Task.getRecordTypeInfosByName().get(recordTypeLabel).getRecordTypeId();
-        system.debug('recordTypeid2>>>>>'+Schema.SObjectType.Task.getRecordTypeInfosByName().get(recordTypeLabel).getRecordTypeId());
         Task newTask = new Task();
         String taskSubject = '';
 
@@ -433,11 +422,10 @@ public class TasksHelper {
             newTask.Type = (objTask.Type == SalesTasks.TCC.Name()) ? SalesTasks.Call.Name() : objTask.Type;
             newTask.Program__c = eventObj.Program__c;
             newTask.FollowUpDate__c = Datetime.now();
-            system.debug('followup>>>>'+ newTask.FollowUpDate__c );
             newTask.ActivityDate = Datetime.now().Date();
-            system.debug('ActivityDate>>>>'+ newTask.ActivityDate );
             newTask.ActivityDateTime__c = Datetime.now();
             newTask.EventId__c = eventObj.Id;
+            newTask.Description = eventObj.Description;
             newTask.recordtypeid = recordTypeId;
             newTask.Subject= taskSettingsMap.get(objTask.Type).TaskSubject__c+' - '+newTask.Program__c ;
             mapTaskFieldsBasedonType(newTask,eventObj, objTask);
@@ -454,14 +442,13 @@ public class TasksHelper {
         String temp = '';
         //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
         canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport && oppRecord.StageName!=system.label.OpportunityBookingStage))|| (oppRecord.Account.HasAddress__c && (oppRecord.StageName!=system.label.OpportunityBookingStage) && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false; 
-        system.debug('canSendBR>>>'+canSendBR);
         if (!canSendBR) {
             return canSendBR;
         }
         Map<String, MarketProgramLevelSetting__c> marketProgramSetting = MarketProgramLevelSetting__c.getAll();
+        temp=oppRecord.Market__c + '_' + currentRequestProgram;
         If (taskList != null && taskList.size() > 0) {
             for (Task taskRecord : taskList) {
-                //temp=taskRecord.market__c + '_' + taskRecord.program__c;
                 if (marketProgramSetting.containsKey(temp)) {
 
                     if (taskRecord.IsClosed__c && (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == null
@@ -470,7 +457,6 @@ public class TasksHelper {
                             <
                             (SFLangUtil.ConvertDateTimeTodate(taskRecord.CloseDate__c).daysBetween(date.today()))))
                             && !marketProgramSetting.get(temp).DoNotSendBrochure__c) {
-                        system.debug('inautoclose>>>');
                         canSendBR = true;
                         break;
                     } else if (taskRecord.program__c == currentRequestProgram && !taskRecord.IsClosed__c) {
@@ -481,7 +467,6 @@ public class TasksHelper {
                         break;
                     }
 
-
                 }
 
                 else if (taskRecord.Program__c == currentRequestProgram && !taskRecord.IsClosed__c) {
@@ -491,20 +476,16 @@ public class TasksHelper {
 
             }
         } else {
-            //temp=eventRecord.market__c + '_' + eventRecord.program__c;
             if (marketProgramSetting.containsKey(temp)) {
                 if (marketProgramSetting.get(temp).DoNotSendBrochure__c) {
                     canSendBR = false;
                 }
             }
-
         }
         return canSendBR;
     }
     //Create call task only if below condition are verified
     public static Boolean canCreateCallTask() {
-        //return (oppRecord != null) ? ((!oppRecord.Account.PersonDoNotCall) )  : false;
-        // system.debug('oppRecord.HasSystemCallTask__c>>>>>>>'+oppRecord.HasSystemCallTask__c);
         return (oppRecord != null) ? (!oppRecord.Account.PersonDoNotCall && !oppRecord.HasSystemCallTask__c ) : false;
     }
 
@@ -528,7 +509,6 @@ public class TasksHelper {
         return hasTaskToCreate;
     }
 
-    //
     public static Boolean closeTasksOnParent(Id parentId) {
         try {
             List<Task> tasksToBeClosed = new List<Task>();
@@ -667,7 +647,7 @@ public class TasksHelper {
             Opportunity currentOpportunity = opportunitiesToProcess.get(oppId);
 
             updatePendingToDoList       (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
-            updateBorchuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
+            updateBrochuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSentBrochuresList     (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateNumberOfCompletedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSendBrochureDueDateTime(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -684,12 +664,6 @@ public class TasksHelper {
             tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
         }
 
-        for (Task t : updatedTasksByIds.values()) {
-            if (!tasksByOpportunityIds.containsKey(t.WhatId)) {
-                tasksByOpportunityIds.put(t.WhatId, new Map<Id, Task>());
-            }
-            tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
-        }
         for (Id oppId : tasksByOpportunityIds.keySet()) {
             Opportunity currentOpportunity = opportunitiesToProcessByIds.get(oppId);
             updateNumberOfUnreachedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -742,7 +716,7 @@ public class TasksHelper {
         toUpdate.put('PendingToDo__c', String.join(new List<String>(pendingToDo), SEPARATOR));
     }
 
-    private static void updateBorchuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
+    private static void updateBrochuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> brochuresToSend = new Set<String>();
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && !t.IsClosed) {
@@ -763,6 +737,9 @@ public class TasksHelper {
 
     private static void updateSentBrochuresList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> sentBrochures = new Set<String>();
+        if(opportunity.SentBrochures__c != NULL) {
+            sentBrochures.addAll(opportunity.SentBrochures__c.split(SEPARATOR));
+        }
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && t.IsClosed && t.TaskResult__c == SENT_BROCHURE) {
                 sentBrochures.add(t.Program__c);
@@ -820,9 +797,7 @@ public class TasksHelper {
         for (event eventRecord : lstEvents) {
             String oppId = String.valueof(eventRecord.WhatId);
             if(oppId != null && oppId != ''){
-                system.debug('inside if opp');
                 if (oppId.startswith( '006')){
-                    system.debug('inside if opp 006');
                     lstEventIds.add(eventRecord.WhatId);
                 }
             }
@@ -854,6 +829,7 @@ public class TasksHelper {
             newTask.Accommodation__c = eventObj.Accommodation__c;
             newTask.ReservedCoursePrice__c = eventObj.ReservedCoursePrice__c;
             newTask.ReservedArticles__c = eventObj.ReservedArticles__c;
+            newTask.DepartureCity__c =  eventObj.DepartureCity__c;
         }
         else if(newTask.Type == SalesTasks.SPQ.Name()) {
             newTask.DestinationCode__c = eventObj.DestinationCode__c;

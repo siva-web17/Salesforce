@@ -17,48 +17,84 @@ private class EventsHelperTest{
             insert event;
         }
     }
-  static @isTest void testUpdateSubjectOnEvents(){
-      	User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+
+    @isTest
+    static void testUpdateSubjectOnEvents(){
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
-          Event event = [SELECT Id,Type,Program__c FROM Event WHERE Type = 'CAM' LIMIT 1];
-          EventsHelper.updateSubjectOnEvents(new List<Event>{event});
+            Event event = [SELECT Id,Type,Program__c FROM Event WHERE Type = 'CAM' LIMIT 1];
+            EventsHelper.updateSubjectOnEvents(new List<Event>{event});
         }
-  }
-  static @isTest void testCreateAttachmentForQuestionAnswers(){
-      	User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+    }
+
+    @isTest
+    static void testCreateAttachmentForQuestionAnswers(){
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
-          Event event = [SELECT Id FROM Event WHERE Type = 'CAM' LIMIT 1];
-          EventsHelper.createAttachmentForQuestionAnswers(new list<Event>{event});
+            Event event = [SELECT Id FROM Event WHERE Type = 'CAM' LIMIT 1];
+            EventsHelper.createAttachmentForQuestionAnswers(new list<Event>{event});
         }
-  }
-  static @isTest void testAddLeadOrContactAsCampaignMember(){
-      	User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+    }
+
+    @isTest
+    static void testAddLeadOrContactAsCampaignMember(){
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         Test.startTest();
         system.runAs(tAdminUser) {
             Lead lead = [SELECT Id FROM Lead LIMIT 1];
             Map<String, String> campaignFields = new Map<String, String>{
-                'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(1)),
-                'DateTo__c'=>String.valueOf(DateTime.now().addminutes(31)),
-                'MeetingType__c'=>'ONM'
+                    'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(1)),
+                    'DateTo__c'=>String.valueOf(DateTime.now().addminutes(31)),
+                    'MeetingType__c'=>'ONM'
             };
-                
-            Campaign campaign = TestDataFactory.createCampaign('Test Campaign',campaignFields,true); 
+
+            Campaign campaign = TestDataFactory.createCampaign('Test Campaign',campaignFields,true);
             Campaign = [Select Id,CampaignID__c FROM Campaign];
             Event imEvent = new Event();
             imEvent.WhoId = lead.Id;
             imEvent.DurationInMinutes = 30;
-            imEvent.ActivityDateTime = DateTime.now(); 
+            imEvent.ActivityDateTime = DateTime.now();
             imEvent.CampaignName__c = 'Sample';
             imEvent.InfoMeetingID__c = decimal.valueOf(campaign.CampaignID__c);
             imEvent.Type = 'IM';
             insert imEvent;
-            
+
             EventsHelper.AddLeadOrContactAsCampaignMember(new list<Event>{imEvent});
         }
-  }
+    }
+
+    @isTest
+    static void whenLeadsMergedThenReassignCustomerRequestEventsToOpportunity(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        System.runAs(adminUser) {
+            //given
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            opportunityBuilder.withPersonAccount().save();
+            Account personAccount = opportunityBuilder.getAccount();
+            TestDataFactory.LeadBuilder lb = new TestDataFactory.LeadBuilder();
+            Lead testLead = (Lead)lb.save().getRecord();
+            TestDataFactory.EventBuilder eb = new TestDataFactory.EventBuilder();
+            eb.setWho(testLead.Id).save();
+
+            //when
+            Test.startTest();
+            Database.LeadConvert lc = new Database.LeadConvert();
+            lc.setLeadId(testLead.Id);
+            lc.setAccountId(personAccount.Id);
+            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+            lc.setDoNotCreateOpportunity(true);
+            Database.LeadConvertResult lcr = Database.convertLead(lc);
+            Test.stopTest();
+
+            //then
+            Event event = [SELECT WhatId FROM Event WHERE Id = :eb.getRecord().Id];
+            System.assertEquals(opportunityBuilder.getRecord().Id, event.WhatId);
+        }
+    }
 }

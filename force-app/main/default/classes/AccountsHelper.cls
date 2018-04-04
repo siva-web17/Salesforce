@@ -40,70 +40,33 @@ public class AccountsHelper {
      * @param oldAccountsByIds map of original accounts
      */
     public static void setDefaultLetterAndLabelOnOpportunities(List<Account> newAccounts, Map<Id, Account> oldAccountsByIds) {
-        List<Id> accountsToResetTemplates = new List<Id>();
-        Map<Id, Account> newAccountsById = new Map<Id, Account>(newAccounts);
-        for (Account newAccount : newAccounts) {
-            Account oldAccount = oldAccountsByIds.get(newAccount.Id);
-            if (newAccount.Language__c != oldAccount.Language__c || newAccount.PersonBirthdate != oldAccount.PersonBirthdate) {
-                accountsToResetTemplates.add(newAccount.Id);
-            }
-        }
-        if (accountsToResetTemplates.size() > 0) {
-            List<Opportunity> opportunitiesWithSBRTasks = new List<Opportunity>();
-            Map<Id, Date> accountBirthdatesByOppIds = new Map<Id, Date>();
-            for (Opportunity o : OpportunitiesSelector.getOpportunitiesWithSBRTaskByAccountIds(accountsToResetTemplates)) {
-                if (o.Tasks.size() > 0) {
-                    opportunitiesWithSBRTasks.add(o);
-                    accountBirthdatesByOppIds.put(o.Id, newAccountsById.get(o.AccountId).PersonBirthdate);
+        try {
+            List<Id> accountsToResetTemplates = new List<Id>();
+            Map<Id, Account> newAccountsById = new Map<Id, Account>(newAccounts);
+            for (Account newAccount : newAccounts) {
+                Account oldAccount = oldAccountsByIds.get(newAccount.Id);
+                if (newAccount.Language__c != oldAccount.Language__c || newAccount.PersonBirthdate != oldAccount.PersonBirthdate) {
+                    accountsToResetTemplates.add(newAccount.Id);
                 }
             }
-            if (opportunitiesWithSBRTasks.size() > 0) {
-                List<Opportunity> changedOpportunities = OpportunitiesHelper.setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
-                if (changedOpportunities.size() > 0) {
-                    update changedOpportunities;
+            if (accountsToResetTemplates.size() > 0) {
+                List<Opportunity> opportunitiesWithSBRTasks = new List<Opportunity>();
+                Map<Id, Date> accountBirthdatesByOppIds = new Map<Id, Date>();
+                for (Opportunity o : OpportunitiesSelector.getOpportunitiesWithSBRTaskByAccountIds(accountsToResetTemplates)) {
+                    if (o.Tasks.size() > 0) {
+                        opportunitiesWithSBRTasks.add(o);
+                        accountBirthdatesByOppIds.put(o.Id, newAccountsById.get(o.AccountId).PersonBirthdate);
+                    }
+                }
+                if (opportunitiesWithSBRTasks.size() > 0) {
+                    List<Opportunity> changedOpportunities = OpportunitiesHelper.setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
+                    if (changedOpportunities.size() > 0) {
+                        update changedOpportunities;
+                    }
                 }
             }
-        }
-    }
-
-    public static void retrieveAccountsDeletedByMerge(Map<Id, Account> accountsByIds) {
-        Set<Id> mergedWinnerIds = new Set<Id>();
-        for (Account acc : accountsByIds.values()) {
-            if (acc.MasterRecordId != NULL) {
-                mergedWinnerIds.add(acc.MasterRecordId);
-            }
-        }
-        if (mergedWinnerIds.size() > 0) {
-            reassignEventsAfterMerge(mergedWinnerIds);
-        }
-    }
-
-    public static void reassignEventsAfterMerge(Set<Id> accountIds) {
-        Map<Id, Account> accountsByIds = new Map<Id, Account>(AccountsSelector.getAccountsWithOpportunitiesByIds(accountIds));
-        Map<Id, Account> accountsByPersonContactIds = new Map<Id, Account>();
-        Set<Id> personContactIds = new Set<Id>();
-        for (Account acc : accountsByIds.values()) {
-            personContactIds.add(acc.PersonContactId);
-            accountsByPersonContactIds.put(acc.PersonContactId, acc);
-        }
-
-        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
-        List<Event> customerRequestEvents = EventsSelector.getEvents(personContactIds, new Set<Id>{
-                NULL
-        }, new Set<Id>{
-                customerRequestId
-        });
-
-        List<Event> eventsToUpdate = new List<Event>();
-        for (Event eventRequest : customerRequestEvents) {
-            if (accountsByPersonContactIds.containsKey(eventRequest.WhoId) && accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities.size() > 0) {
-                eventRequest.WhatId = accountsByPersonContactIds.get(eventRequest.WhoId).Opportunities[0].Id;
-                eventsToUpdate.add(eventRequest);
-            }
-        }
-
-        if (eventsToUpdate.size() > 0) {
-            update eventsToUpdate;
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'AccountsHelper', 'setDefaultLetterAndLabelOnOpportunities', null);
         }
     }
 
@@ -149,8 +112,8 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Address.getName(), AddressfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' hitting Address ' + changedAccountWithTableNameMap);
-                    system.debug(' hitting Address ' + changedAccountRecordMap);
+                    system.debug(' changed Account With Table Name Map ' + changedAccountWithTableNameMap);
+                    system.debug(' changed Account Record Map ' + changedAccountRecordMap);
 
                     Map<String, String> CustomerfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Customer.getFields()) {
@@ -163,8 +126,8 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Customer.getName(), CustomerfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' hitting Customer ' + changedAccountWithTableNameMap);
-                    system.debug(' hitting Customer ' + changedAccountRecordMap);
+                    system.debug(' changed Account With Customer ' + changedAccountWithTableNameMap);
+                    system.debug(' changed Account Record Map Customer ' + changedAccountRecordMap);
 
                     Map<String, String> CustomerMarketingPreffieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.CustomerMarketingPref.getFields()) {
@@ -176,8 +139,8 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.CustomerMarketingPref.getName(), CustomerMarketingPreffieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' hitting CustomerMarketingPref ' + changedAccountWithTableNameMap);
-                    system.debug(' hitting CustomerMarketingPref ' + changedAccountRecordMap);
+                    system.debug(' changed Account With CustomerMarketingPref ' + changedAccountWithTableNameMap);
+                    system.debug(' changed Account Record Map CustomerMarketingPref ' + changedAccountRecordMap);
 
                     Map<String, String> OpportunityfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
@@ -192,8 +155,8 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getName(), OpportunityfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' hitting OppDetailsForAccountSyncing' + changedAccountWithTableNameMap);
-                    system.debug(' hitting OppDetailsForAccountSyncing ' + changedAccountRecordMap);
+                    system.debug(' changed Account With OppDetailsForAccountSyncing' + changedAccountWithTableNameMap);
+                    system.debug(' changed Account Record Map OppDetailsForAccountSyncing ' + changedAccountRecordMap);
 
                     //Added This Condition so that we send details to Poseidon only if we have data in Address,Customer,CustomerMarketingpref Maps
                     if (changedAccountWithTableNameMap.containsKey(SObjectType.Account.FieldSets.Address.getName()) ||
@@ -237,7 +200,7 @@ public class AccountsHelper {
                 changedValues.put(fieldApi, newAccountValues.get(fieldApi));
             }
         }
-        System.debug('changedValues ' + changedValues);
+        System.debug('changed Account Values ' + changedValues);
         return changedValues;
         //pavLoopRecord.put(f.getFieldPath(), selectedLTCourse.get(f.getFieldPath()));
     }
