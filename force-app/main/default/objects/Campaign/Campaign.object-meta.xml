@@ -64,7 +64,9 @@
         <searchResultsAdditionalFields>MeetingCity__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DateFrom__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DateTo__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CAMPAIGN.CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Invited__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Attended__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>MeetingSize__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>FullAccess</sharingModel>
 </CustomObject>
