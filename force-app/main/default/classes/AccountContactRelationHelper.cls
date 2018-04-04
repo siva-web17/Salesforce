@@ -23,13 +23,13 @@ public class AccountContactRelationHelper {
 
         Map<Id,User> UserMap= UsersHelper.getUserDetailsForUserIds(userIdList);
         for (AccountContactRelation accountContactRecord : AccountContactMap.values()) {
+            system.debug('Inside accountContactRecord.IsParentSynchedToPoseidon__c)'+accountContactRecord.IsParentSynchedToPoseidon__c);
             Map<String, String> AccountContactrelationfieldValueMap = new Map<String, String>();
-            if (accountContactRecord.TotalBooking__c > 0 || IsComplicatedBooking) {
+            if (accountContactRecord.IsParentSynchedToPoseidon__c || IsComplicatedBooking) {               
                 if(accountContactRecord.AccountContactID__c == null){
                     continue;
                 }
-                market=accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).Market__c:'';
-                //system.debug('Inside accountContactRecord.TotalBooking__c > 0)');
+                market=accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))?accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).Market__c:'';               
                 for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
                     if (accountmap.containsKey(Id.valueOf(accountContactRecord.AccountContactID__c))) {
                         AccountContactrelationfieldValueMap.put(f.getFieldPath(), String.valueOf(accountmap.get(Id.valueOf(accountContactRecord.AccountContactID__c)).get(f.getFieldPath())));
