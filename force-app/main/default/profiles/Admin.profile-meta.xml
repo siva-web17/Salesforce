@@ -860,6 +860,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ErrorTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -902,6 +906,10 @@
     <classAccesses>
         <apexClass>ExternalRouterMock</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ExternalRouterTest</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>FieldUtilityClass</apexClass>
@@ -2818,9 +2826,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>AccountContactRelation.AccountContactID__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -2835,6 +2843,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AccountContactRelation.IsByConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountContactRelation.IsParentSynchedToPoseidon__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4889,6 +4902,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.ParentPhoneNumber__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.Partner__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5293,6 +5311,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.FirstName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.FollowupDateTime__c</field>
         <readable>true</readable>
@@ -5410,6 +5433,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LastContactDateTime__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LastName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8766,6 +8794,10 @@
     <tabVisibilities>
         <tab>NoteMigration__c</tab>
         <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>SalesOfficeProgram__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Source__c</tab>
