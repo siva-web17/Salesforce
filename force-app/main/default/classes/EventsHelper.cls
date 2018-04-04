@@ -30,28 +30,28 @@ public class EventsHelper {
     }
 
     public static void createAttachmentForQuestionAnswers(list<event>newItems){
-   set<id> leadIdSet = new set<id>();     
-     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){   
-          if(objEvents.whoId != null && objEvents.whoId != '' && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
+   set<id> leadIdSet = new set<id>();
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){
+          if(objEvents.whoId != null && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'){
             leadIdSet.add(objEvents.whoid);
          }
       }
       map<id,lead> leadIdCamQsAns = new map<id,lead>([select id,CampaignQuestionsAnswer__c from lead where id in:leadIdSet]);
-      list<attachment> attachmentForQsAnsList = new list<attachment>();     
-     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){   
-         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' 
-            && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != null 
-            && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != ''){              
+      list<attachment> attachmentForQsAnsList = new list<attachment>();
+     for(event objEvents:[select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c!=null and (type='CAM' or type = 'CBR')]){
+         if(String.valueOf(objEvents.whoid).substring(0, 3) == '00Q'
+            && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != null
+            && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != ''){
                 //adding a content note
                 String camQsAndAnswersAsText = getTheParsedJson(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c);
                 ContentNoteAndEventLink objContentNoteAndEventLink = new ContentNoteAndEventLink();
                 objContentNoteAndEventLink.eventid=objEvents.id;
                 objContentNoteAndEventLink.camQsAndAnswersAsText =blob.valueof(camQsAndAnswersAsText);
                 objContentNoteAndEventLink.leadId =  objEvents.whoid;
-                listOfContentNoteAndEventLink.add(objContentNoteAndEventLink);                
+                listOfContentNoteAndEventLink.add(objContentNoteAndEventLink);
                 ContentNote cn = new ContentNote();
                 cn.Title = objEvents.CampaignName__c;
-                system.debug('CamQsAns>>'+(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c));               
+                system.debug('CamQsAns>>'+(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c));
                 cn.Content = Blob.valueOf(camQsAndAnswersAsText);
                 listOfContentNote.add(cn);
                }
@@ -75,7 +75,7 @@ public class EventsHelper {
                 listOfContentDocumentLink.add(link3);
                 system.debug('Contentdocid'+link2.id);
                 system.debug('Contentdocid'+link2.id);
-                
+
                 }
                 insert listOfContentDocumentLink;
                    }
@@ -86,11 +86,11 @@ public class EventsHelper {
             if(qAndA.ExtraQuestion != NULL){
                 for(QuestionAndAnswer qAndANested : qAndA.ExtraQuestion){
                     if(qAndANested.Question != NULL)
-                        campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndANested.Question +'\n<b>Answer : </b>' + qAndANested.Answer + '\n'; 
+                        campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndANested.Question +'\n<b>Answer : </b>' + qAndANested.Answer + '\n';
                 }
             }
             if(qAndA.Question != NULL)
-                campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndA.Question +'\n<b>Answer : </b>' + qAndA.Answer + '\n';    
+                campaignQAndAString = campaignQAndAString + '<b>Question : </b>'+ qAndA.Question +'\n<b>Answer : </b>' + qAndA.Answer + '\n';
         }
         return prepareContent(campaignQAndAString);
     }
@@ -104,7 +104,7 @@ public class EventsHelper {
     }
     return returnStr;
    }
-    public static void AddLeadOrContactAsCampaignMember(list<event>newItems){ 
+    public static void AddLeadOrContactAsCampaignMember(list<event>newItems){
         list<CampaignMember> CamMemberList= new list<CampaignMember>();
         set<string> campaignUniqueId = new set<string>();
         for (event objEvents : [select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type = 'IM' and InfoMeetingID__c != null]) {
@@ -119,7 +119,7 @@ public class EventsHelper {
 
 
      for(event objEvents:[select id,whoid,InfoMeetingID__c,type from event where id in:newItems and type='IM' and InfoMeetingID__c!=null]){
-         if(objEvents.whoId == null || objEvents.whoId == ''){
+         if(objEvents.whoId == null){
             continue;
         }
         id objId =objEvents.whoid;
