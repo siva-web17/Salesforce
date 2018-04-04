@@ -8,12 +8,14 @@
     <columns>MeetingCity__c</columns>
     <columns>DateFrom__c</columns>
     <columns>DateTo__c</columns>
-    <columns>CAMPAIGN.CREATED_DATE</columns>
+    <columns>Invited__c</columns>
+    <columns>Attended__c</columns>
+    <columns>MeetingSize__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CAMPAIGN.ACTIVE</field>
+        <field>CAMPAIGN.STATUS</field>
         <operation>equals</operation>
-        <value>1</value>
+        <value>Active</value>
     </filters>
     <label>All Active Campaigns</label>
 </ListView>
