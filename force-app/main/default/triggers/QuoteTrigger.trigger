@@ -12,6 +12,6 @@ Modification Log   :
 trigger QuoteTrigger on Quote__c (before insert,before update,before delete,after insert,after update,after delete,after undelete) {
     Boolean isTriggerDisabled=SFLangUtil.bypassTriggerForObject(Schema.SobjectType.Quote__c.Name);
     if(!isTriggerDisabled){
-        QuotesDispatcher.run();
+        QuotesDispatcher.run(); 
     }
 }

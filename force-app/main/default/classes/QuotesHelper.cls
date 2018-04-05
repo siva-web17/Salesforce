@@ -14,7 +14,7 @@ public with sharing class QuotesHelper {
         List<Task> taskList= TasksSelector.getSPQTasks(oppIdSet, system.label.SPQTask);
         closeSPQTasks(taskList);
         createTaskforEmailSent(quoteList);
-        }
+        } 
 
     private static void closeSPQTasks(List<Task> taskList){
         List<Task> tasksToUpdate = new List<Task>();
