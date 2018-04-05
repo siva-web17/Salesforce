@@ -241,7 +241,7 @@
                 <leftValueReference>myVariable_current.Owner.Profile.Name</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_12_myRule_11_8591931477</elementReference>
+                    <elementReference>formula_12_myRule_11_0077348122</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -417,7 +417,7 @@
                 <leftValueReference>myVariable_old.Owner.Profile.Name</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_13_myRule_11_pmetrule_3592600345</elementReference>
+                    <elementReference>formula_13_myRule_11_pmetrule_2172967459</elementReference>
                 </rightValue>
             </conditions>
             <label>Previously Met - Prev</label>
@@ -465,23 +465,23 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>$Label.Integration_User </stringValue>
+                <stringValue>$Label.Integration_Profile_Developer_Name </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_12_myRule_11_8591931477</name>
+        <name>formula_12_myRule_11_0077348122</name>
         <dataType>String</dataType>
-        <expression>$Label.Integration_User</expression>
+        <expression>$Label.Integration_Profile_Developer_Name</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>$Label.Integration_User </stringValue>
+                <stringValue>$Label.Integration_Profile_Developer_Name </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_13_myRule_11_pmetrule_3592600345</name>
+        <name>formula_13_myRule_11_pmetrule_2172967459</name>
         <dataType>String</dataType>
-        <expression>$Label.Integration_User</expression>
+        <expression>$Label.Integration_Profile_Developer_Name</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -490,7 +490,7 @@
                 <stringValue>$Label.Integration_User_Id </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_14_myRule_11_A1_9676740388</name>
+        <name>formula_14_myRule_11_A1_8658310339</name>
         <dataType>String</dataType>
         <expression>$Label.Integration_User_Id</expression>
     </formulas>
@@ -501,7 +501,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_5158940720</name>
+        <name>formula_4_myRule_1_A1_9140685412</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -512,7 +512,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_1861789226</name>
+        <name>formula_5_myRule_1_A1_9624388091</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -651,7 +651,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             </processMetadataValues>
             <field>OwnerId</field>
             <value>
-                <elementReference>formula_14_myRule_11_A1_9676740388</elementReference>
+                <elementReference>formula_14_myRule_11_A1_8658310339</elementReference>
             </value>
         </inputAssignments>
         <object>Account</object>
@@ -790,7 +790,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             <field>Name</field>
             <operator>NotEqualTo</operator>
             <value>
-                <elementReference>formula_4_myRule_1_A1_5158940720</elementReference>
+                <elementReference>formula_4_myRule_1_A1_9140685412</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -826,7 +826,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             </processMetadataValues>
             <field>Name</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_1861789226</elementReference>
+                <elementReference>formula_5_myRule_1_A1_9624388091</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>

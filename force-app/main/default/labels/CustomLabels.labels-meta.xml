@@ -687,11 +687,11 @@
         <value>IM</value>
     </labels>
     <labels>
-        <fullName>Integration_User</fullName>
+        <fullName>Integration_Profile_Developer_Name</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>Integration User</shortDescription>
-        <value>Integration User</value>
+        <shortDescription>Integration Profile Developer Name</shortDescription>
+        <value>Integration Profile</value>
     </labels>
     <labels>
         <fullName>Integration_User_Id</fullName>
