@@ -5,10 +5,8 @@
     <fields>RecordSharingKey__c</fields>
     <fields>Status</fields>
     <fields>Ranking__c</fields>
-    <fields>Phone</fields>
-    <fields>MobilePhone</fields>
-    <fields>OtherPhone__c</fields>
     <fields>Partner__c</fields>
+    <fields>Etag__c</fields>
     <fields>OwnerId</fields>
     <label>Lead Compact Layout</label>
 </CompactLayout>
