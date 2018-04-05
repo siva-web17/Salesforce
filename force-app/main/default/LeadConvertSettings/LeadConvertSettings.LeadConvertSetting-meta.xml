@@ -4,6 +4,10 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
+            <inputField>DoNotMail__c</inputField>
+            <outputField>DoNotMail__c</outputField> 
+        </mappingFields>
+        <mappingFields> 
             <inputField>DoNotSendNewsLetters__c</inputField>
             <outputField>DoNotSendNewsLetters__c</outputField>
         </mappingFields>
