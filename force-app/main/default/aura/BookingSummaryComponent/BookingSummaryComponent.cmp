@@ -346,7 +346,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <div class="slds-clearfix slds-p-top_medium">
                             <div class="slds-float_right slds-p-right_x-small">
                                 <ui:button aura:id="prev3" buttonTitle="Click to proceed previous step" class="" press="{!c.movePrev}">
