@@ -3,6 +3,7 @@
     <fullName>PendingToDo__c</fullName>
     <description>Contains list of Open Task Types, calculated on Task Trigger</description>
     <externalId>false</externalId>
+    <inlineHelpText>Lists of all open task which needs to be completed for a specific Lead</inlineHelpText>
     <label>Pending To Do</label>
     <length>255</length>
     <required>false</required>

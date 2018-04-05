@@ -4,6 +4,6 @@
     <defaultValue>false</defaultValue>
     <description>S-8 created for mapping with the posiden fields for Lead Imports</description>
     <externalId>false</externalId>
-    <label>Is Email Request</label>
+    <label>Email Only</label>
     <type>Checkbox</type>
 </CustomField>

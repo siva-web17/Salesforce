@@ -3,6 +3,7 @@
     <fullName>PendingToDo__c</fullName>
     <description>List of unique pending to do task types assigned to this opportunity</description>
     <externalId>false</externalId>
+    <inlineHelpText>List of all open task which needs to be completed for an Opportunity</inlineHelpText>
     <label>Pending To Do</label>
     <length>255</length>
     <required>false</required>

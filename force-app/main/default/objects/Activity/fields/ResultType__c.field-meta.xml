@@ -2,7 +2,6 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ResultType__c</fullName>
     <externalId>false</externalId>
-    <inlineHelpText>Enter Result Type for call logged in.</inlineHelpText>
     <label>Result Type</label>
     <required>false</required>
     <type>Picklist</type>
@@ -69,12 +68,11 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Reached</controllingFieldValue>
-             <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <controllingFieldValue>Called Us</controllingFieldValue>
             <controllingFieldValue>Visited Us</controllingFieldValue>
             <controllingFieldValue>Emailed Us</controllingFieldValue>
-            <controllingFieldValue>Social Media Reached</controllingFieldValue>
             <controllingFieldValue>Sent Email</controllingFieldValue>
+            <controllingFieldValue>Social Media Reached</controllingFieldValue>
             <controllingFieldValue>Social Media Sent</controllingFieldValue>
             <valueName>Close</valueName>
         </valueSettings>
