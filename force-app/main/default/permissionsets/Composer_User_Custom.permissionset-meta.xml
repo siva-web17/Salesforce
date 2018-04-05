@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>APXTConga4__CongaMerge</application>
-        <visible>true</visible>
-    </applicationVisibilities>
     <classAccesses>
         <apexClass>APXTConga4__ComposerPageController</apexClass>
         <enabled>true</enabled>
@@ -255,6 +251,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>APXTConga4__Conga_Solution_Template__c.APXTConga4__Template_Extension__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>APXTConga4__Conga_Solution_Template__c.APXTConga4__Template_Group__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -375,6 +376,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>APXTConga4__Conga_Template__c.APXTConga4__Template_Extension__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>APXTConga4__Conga_Template__c.APXTConga4__Template_Group__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -401,6 +407,141 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>APXTConga4__Conga_Template__c.RecordSharingKey__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Conductor_Environment__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Consolidated_PDF_Output_File__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Content_Workspace_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Has_Query_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Has_Record_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Has_Report_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Next_Run_Date_Display__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Next_Run_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Query_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Record_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Report_Id__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Schedule_Description_Display__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Schedule_Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Title__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__URL_Field_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Conductor__c.APXT_BPM__Version__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Conga_Conductor__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Dashboard_Link__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Number_of_Failures__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Number_of_Service_Events__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Number_of_Successes__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Output_File_Link__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Ran_as__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>APXT_BPM__Scheduled_Conductor_History__c.APXT_BPM__Total_Number_of_Records__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -620,6 +761,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.NameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Nationality__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -776,6 +922,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AccountContactRelation.IsByConversion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountContactRelation.IsParentSynchedToPoseidon__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1000,6 +1151,76 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Request__c.CRMC_PP__FieldName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Request__c.CRMC_PP__IsCompleted__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Request__c.CRMC_PP__Message__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Request__c.CRMC_PP__OriginalValue__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Request__c.CRMC_PP__RecordId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Requestee__c.CRMC_PP__RequesteeId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__ActionGrid_Requestee__c.CRMC_PP__Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__Category__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__Context__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__Description__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__IsDefault__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__JSON__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__GridView__c.CRMC_PP__Privacy__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CRMC_PP__View_Category__c.CRMC_PP__Active__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.ActualCost</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1205,6 +1426,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Campaign.PosInfoMeetingID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Campaign.PosInfoMeeting_id__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1270,12 +1496,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CampaignMember.IsByConversion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CampaignMember.MeetingType__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CampaignMember.Opportunity__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CampaignMember.PosExternalId__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1505,6 +1741,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.FirstNameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.HasOptedOutOfEmail</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1530,6 +1771,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.LastNameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.LeadSource</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1540,12 +1786,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.MiddleNameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.MobilePhone</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.OtherAddress</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.OtherNationalities__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1721,31 +1977,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>ContractLineItem.TotalPrice</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Departure_Point__c.Active__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Departure_Point__c.Code__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Departure_Point__c.Market__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Departure_Point__c.Product__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Departure_Point__c.Program__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2110,6 +2341,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Event.PosActivityId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Event.ProcessedForTaskCreation__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2235,6 +2471,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>FAQ__kav.Answer__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>FAQ__kav.Question__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Idea.Attachment</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2316,6 +2562,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.Comments__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.CompanyLocal</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2430,6 +2681,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.EnquiryYear__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.Etag__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2446,6 +2702,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.FirstContactDateTime__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.FirstNameLocal</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2595,6 +2856,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.LastNameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.LastTransferDate</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2640,6 +2906,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.MiddleNameLocal</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.MobilePhone</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2666,6 +2937,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.OtherPhone__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.ParentEmail__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.ParentFirstName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.ParentLastName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.ParentPhoneNumber__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3055,6 +3346,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.EnquiryYear__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Etag__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3066,6 +3362,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.FirstContactDateTime__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.FirstName__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3186,6 +3487,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.LastContactDateTime__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LastName__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3656,6 +3962,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Quote__c.IsBasic__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Quote__c.IsByConversion__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4560,6 +4871,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Task.PosActivityId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Task.ProcessedForTaskCreation__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -4798,6 +5114,316 @@
         <field>User.dupcheck__dc3DisableDuplicateCheck__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__Display__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__Error__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__Group__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__HasError__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__doNotCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Duplicate__c.dupcheck__handled__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Log__c.dupcheck__Object__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Log__c.dupcheck__Record__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Log__c.dupcheck__data__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dc3Log__c.dupcheck__dc3Job__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__Data__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__ObjectId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__Prefix__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__RecordId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__User__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcAudit__c.dupcheck__dcAudit__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcDelta__c.dupcheck__Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcDiscard__c.dupcheck__Relation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__Display__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__ErrorCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__MasterRecord__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__avgScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__duplicateCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__empty__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__handled__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__highScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__lowScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__mergeData__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__recordCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcGroup__c.dupcheck__sumScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcIndex__c.dupcheck__RecordType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcIndex__c.dupcheck__index__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcIndex__c.dupcheck__personAccount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcIndex__c.dupcheck__recordTypeId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__Ended__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__ErrorCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__LastDuplicateAdded__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__apex__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__autoProcessConvertOwner__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__autoProcessConvertStatus__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__autoProcessThreshold__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__autoProcessType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__avgScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__duplicateCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__errorMessage__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__filterOn__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__filter__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__groupCounter__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__hitLicenseLimit__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__lowScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__matchObject__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__parent__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__processedRecords__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__recordCount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__scenario__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__schedule__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__status__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__sumScore__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcJob__c.dupcheck__type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcLayout__c.dupcheck__layout__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>dupcheck__dcLayout__c.dupcheck__recordType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Composer User Custom</label>
     <objectPermissions>
@@ -4907,28 +5533,4 @@
         <apexPage>APXTConga4__Conga_Composer_Sf1</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
-    <tabSettings>
-        <tab>APXTConga4__About_Conga_Composer</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>APXTConga4__Composer_QuickMerge__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>APXTConga4__CongaMerge</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>APXTConga4__Conga_Email_Template__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>APXTConga4__Conga_Merge_Query__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>APXTConga4__Conga_Solution__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
 </PermissionSet>
