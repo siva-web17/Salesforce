@@ -45,7 +45,7 @@
                             </th>
                             <th scope="col">
                                 <div class="slds-truncate" title="Is Active?">
-                                        {!$Label.c.IsActive}
+                                        {!$Label.c.Active}
                                 </div>
                             </th>
                             <th scope="col">
