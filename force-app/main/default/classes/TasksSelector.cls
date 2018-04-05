@@ -30,7 +30,7 @@ public class TasksSelector {
                 WHERE RecordTypeId = :callTaskRecordTypeId
                 AND OwnerId = :userId
                 AND CreatedDate = TODAY
-                AND IsClosed = TRUE
+                AND IsClosed = TRUE 
         ];
     }
 
