@@ -5,6 +5,8 @@
     <description>This validation rule is used to not allow users to modify the Customer Request record type.</description>
     <errorConditionFormula>NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)
 &amp;&amp;
-$RecordType.DeveloperName = "CustomerRequest"</errorConditionFormula>
+$RecordType.DeveloperName = "CustomerRequest"
+&amp;&amp;
+NOT( ISNEW() )</errorConditionFormula>
     <errorMessage>Customer Requests cannot be updated.</errorMessage>
 </ValidationRule>
