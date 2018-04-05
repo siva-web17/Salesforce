@@ -5,7 +5,7 @@
 public with sharing class Quotes {
 
     public static void onBeforeInsert(List<Quote__c> newItems) {
-    }
+    } 
 
     public static void onBeforeUpdate(List<Quote__c> oldQuoteList,List<Quote__c> newQuoteList) {
     }

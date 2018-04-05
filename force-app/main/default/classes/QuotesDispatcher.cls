@@ -14,7 +14,7 @@ public with sharing class QuotesDispatcher {
             }
             if (Trigger.IsDelete) {
                 Quotes.onBeforeDelete(trigger.oldMap);
-            }
+            } 
         }
         // After trigger logic
         if (Trigger.IsAfter) {

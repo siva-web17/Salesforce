@@ -23,7 +23,7 @@ public class QuoteTriggerTest {
                 'Program__c' => program,
                 'StageName' => 'Open',
                 'Closedate' => dateValue
-        };
+        }; 
         Opportunity newOpportunityPersonAccount = TestDataFactory.createOpportunityForAccount(newAccount.id, 'testOpportunityName', opportunityFieldValues, True);
 
         Map<String, String> taskValues = new Map<String, String>{
