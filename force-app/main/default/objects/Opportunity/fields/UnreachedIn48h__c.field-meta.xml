@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <formula>AND(ISPICKVAL(SCT_CallType__c, 'UCC'), NOW() - CreatedDate &lt;= 2)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Opportunities with 0 reached call in 48 hours after creation</inlineHelpText>
     <label>Unreached In 48h</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

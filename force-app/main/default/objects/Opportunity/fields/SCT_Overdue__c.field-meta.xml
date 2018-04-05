@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>if(( FollowupDateTime__c  - Now() &lt; 0), 
 NOW() - FollowupDateTime__c, 0)</formula>
-    <inlineHelpText>Number of days where System Call Task is overdue, 0 is returned if no overdue yet</inlineHelpText>
+    <inlineHelpText>Number of days since the set follow up date, e.g. if follow up date was yesterday, this field will show 1.</inlineHelpText>
     <label>Call Task Overdue</label>
     <precision>18</precision>
     <required>false</required>

@@ -5,6 +5,7 @@
     <externalId>false</externalId>
     <formula>if(( LastContactDateTime__c - Now() &lt; 0), NOW() - LastContactDateTime__c , 0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Days since we made the last contact (any action done on opportunity including not reached calls) with the customer</inlineHelpText>
     <label>Last Contact(Days)</label>
     <precision>18</precision>
     <required>false</required>
