@@ -569,11 +569,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__AGInstallHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__AGUninstallHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__ArgumentException</apexClass>
@@ -581,11 +581,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__BatchAddRequestAction</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__BatchChatterRequest</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__BatchUpdateRecords</apexClass>
@@ -637,7 +637,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__LocalizationUtility</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__LocalizationUtilityTest</apexClass>
@@ -645,7 +645,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__NotificationController</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__NotificationControllerTest</apexClass>
@@ -665,7 +665,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__RequestActionMonitor</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__RequestActionMonitorTests</apexClass>
@@ -673,7 +673,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__RequestActionResolver</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__RequestActionService</apexClass>
@@ -681,7 +681,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__RequestActionUserInfo</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CRMC_PP__ResultSOQL</apexClass>
@@ -909,7 +909,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ExternalRouterTest</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>FieldUtilityClass</apexClass>
@@ -1097,7 +1097,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ShowBookingControllerTest</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>SourcesSelector</apexClass>
@@ -1713,7 +1713,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>dupcheck__dc3JobExternal</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>dupcheck__dc3JobExternalTest</apexClass>
@@ -1905,7 +1905,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>dupcheck__dc3TriggerProcessGlobal</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>dupcheck__dc3TriggerTest</apexClass>
@@ -3002,6 +3002,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Booking__c.CancellationDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Booking__c.IsByConversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3033,6 +3038,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.PosCustomerId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.PreApplicationDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3161,6 +3171,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Attended__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.BudgetedCost</field>
         <readable>true</readable>
@@ -3263,6 +3278,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Campaign.HierarchyNumberSent</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Campaign.Invited__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7531,6 +7551,9 @@
         <layout>CaseMilestone-Case Milestone Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CollaborationGroup-Group Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8478,7 +8501,15 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>LanguageReports</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>ShowBooking</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>ShowCustomer</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -8789,6 +8820,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>ImportfromExcel</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>LanguageReport</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
