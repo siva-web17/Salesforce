@@ -1,4 +1,4 @@
-<aura:component description="MarketComponent" controller="InviteToCampaign" implements="flexipage:availableForRecordHome,force:appHostable">
+<aura:component description="MarketComponent" controller="InviteToCampaign" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
     <aura:attribute name="markets" type="List" />
     <aura:attribute name="selectedMarket" type="String" />
     <aura:attribute name="selectedSalesOffice" type="String[]" />
