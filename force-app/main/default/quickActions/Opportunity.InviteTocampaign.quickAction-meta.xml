@@ -2,7 +2,7 @@
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Invite</description>
     <height>540</height>
-    <label>Invite To Campaign</label>
+    <label>Invite To Meeting</label>
     <lightningComponent>InviteCampaign</lightningComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>LightningComponent</type>
