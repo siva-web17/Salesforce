@@ -1,5 +1,6 @@
 <apex:page showHeader="false" applyHtmlTag="false">
-    <iframe id="theIframe" scrolling="no" name="theIframe"  frameBorder="0" src="https://language.ef.com:8826/?ticket={!$Api.Session_ID}&userId={!$User.Id}" width="100%"></iframe>
+
+    <iframe id="theIframe" scrolling="no" name="theIframe"  frameBorder="0" src="{!IF($Label.ReportEnv== 'LIVE',$Label.LanguageReportURLLive+'?ticket='+$Api.Session_ID+'&userId='+$User.Id,$Label.LanguageReportURLQA+'?ticket='+$Api.Session_ID+'&userId='+$User.Id)}" width="100%"></iframe>
    
     <script>
       document.addEventListener('DOMContentLoaded', function() {
