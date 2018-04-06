@@ -15,12 +15,14 @@
         <ul>
             <li class="k-state-active">Unassigned Opportunities</li>
             <li>Assigned Opportunities</li>
-            <li>Unassigned Leads</li>
-            <li>Assigned Leads</li>
+            <apex:outputPanel rendered="{!$Profile.Name != $Label.SalesAssociateProfileName}" layout="none">
+                <li>Unassigned Leads</li>
+                <li>Assigned Leads</li>
+            </apex:outputPanel>
         </ul>
         <!-- Unassigned Opportunities -->
         <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false" ViewID="a5J7E000000CcQnUAK"
+            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false" ViewID="a5B0Y000000PfHXUA0"
                           EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
                           EnableFieldChooser="true"
                           EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
@@ -30,7 +32,7 @@
 
         <!-- Assigned Opportunities -->
         <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true" ViewID="a5J7E000000CcQmUAK"
+            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true" ViewID="a5B0Y000000PfHWUA0"
                           EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
                           EnableFieldChooser="true"
                           EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
@@ -38,26 +40,28 @@
             <CRMC_PP:DrillUp />
         </div>
 
-        <!-- Unassigned Leads -->
-        <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Lead" DelayLoad="true" ViewID="a5J7E000000CcQvUAK"
-                          EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
-                          EnableFieldChooser="true"
-                          EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
-                          EnableReadingPane="true"/>
-            <CRMC_PP:DrillUp />
-        </div>
-
-        <!-- Assigned Leads -->
-        <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Lead" DelayLoad="true" ViewID="a5J7E000000CcQoUAK"
-                          EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
-                          EnableFieldChooser="true"
-                          EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
-                          EnableReadingPane="true"/>
-            <CRMC_PP:DrillUp />
-        </div>
-
+        <apex:outputPanel rendered="{!$Profile.Name != $Label.SalesAssociateProfileName}" layout="none">
+            <!-- Unassigned Leads -->
+            <div style="overflow:hidden;">
+                <CRMC_PP:Grid ObjectName="Lead" DelayLoad="true" ViewID="a5B0Y000000PfHfUAK"
+                              EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
+                              EnableFieldChooser="true"
+                              EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
+                              EnableReadingPane="true"/>
+                <CRMC_PP:DrillUp />
+            </div>
+    
+            <!-- Assigned Leads -->
+            <div style="overflow:hidden;">
+                <CRMC_PP:Grid ObjectName="Lead" DelayLoad="true" ViewID="a5B0Y000000PfHYUA0"
+                              EnableNewButton="true" EnableNewInline="true" EnableEdit="true" EnableActions="true"
+                              EnableFieldChooser="true"
+                              EnableStickyViews="true" EnableToolbar="true" EnableViews="false" EnableFormatting="true"
+                              EnableReadingPane="true"/>
+                <CRMC_PP:DrillUp />
+            </div>
+        </apex:outputPanel>
+        
     </div>
     <script>
         $(document).ready(function () {
