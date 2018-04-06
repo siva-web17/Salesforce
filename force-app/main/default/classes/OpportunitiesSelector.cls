@@ -216,7 +216,7 @@ public class OpportunitiesSelector {
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
             query += f.getFieldPath() + ', ';
         }
-      
+
         query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
         if (checkActiveOpportunity) {
             query += ' AND IsActive__c  = TRUE';
@@ -361,8 +361,7 @@ public class OpportunitiesSelector {
 
         List<Opportunity> opportunities = new List<Opportunity>(
         [
-                SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
-                        CloseDate
+                SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Owner.Name, toLabel(SalesOffice__c)
                 FROM Opportunity
                 WHERE AccountId IN :accountIds
         ]

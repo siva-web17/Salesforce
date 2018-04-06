@@ -1330,6 +1330,13 @@
         <value>To Contact</value>
     </labels>
     <labels>
+        <fullName>Opportunity_owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity owner</shortDescription>
+        <value>Opportunity owner</value>
+    </labels>
+    <labels>
         <fullName>Optional</fullName>
         <categories>Label</categories>
         <language>en_US</language>
