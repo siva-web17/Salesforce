@@ -28,7 +28,7 @@ public class EventsDispatcher {
             }
 
             if (Trigger.IsUpdate) {
-                Events.onAfterUpdate(Trigger.new);
+               Events.onAfterUpdate(Trigger.new,trigger.oldmap);
             }
 
             if (trigger.IsDelete) {

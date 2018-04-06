@@ -216,7 +216,7 @@ public class OpportunitiesSelector {
         for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
             query += f.getFieldPath() + ', ';
         }
-
+      
         query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
         if (checkActiveOpportunity) {
             query += ' AND IsActive__c  = TRUE';
@@ -372,5 +372,23 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunityForQuote(Map<Id, String> taskMap) {
         return [Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
+    }
+     public static map<id,string> getOpportunityStageNameForList(set<id> opportunityRecord) {
+       
+            map<id,string> opportunityIDAndStageMap = new Map<id,string>();
+            String previousOpportunityStageName;
+            system.debug('StageHistory>>>'+[Select id,opportunityid,opportunity.FirstContactDateTime__c,StageName from OpportunityHistory where opportunityid in:opportunityRecord and Opportunity.StageName=:Label.Salesclosed]);
+            for (OpportunityHistory oppHistory : [Select id,opportunityid,opportunity.FirstContactDateTime__c,StageName from OpportunityHistory where opportunityid in:opportunityRecord and Opportunity.StageName=:Label.Salesclosed]) {
+                if (oppHistory.StageName != NULL && oppHistory.StageName != Label.Salesclosed && !opportunityIDAndStageMap.containsKey(oppHistory.opportunityid)) {
+                    opportunityIDAndStageMap.put
+                    (oppHistory.opportunityid, (oppHistory.opportunity.FirstContactDateTime__c != null) ? label.OpportunityStageFollowUp : oppHistory.StageName);
+                }
+            }
+        
+        return opportunityIDAndStageMap;
+    }
+      public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
+     map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,stagename,program__c,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
+     return OpportunityEventsMap;
     }
 }

@@ -159,4 +159,59 @@ public class EventsHelper {
             }
         }
     }
+      public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
+        system.debug('Afterupdate>>>'+newEvents);
+        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
+       
+        list<opportunity> opportunitiesToBeUpdated = new list<opportunity>();
+        Set<Id> validOpportunitiesId = new Set<Id>();
+        for(Event newEvent : newEvents){
+            Event oldEvent = oldEvents.get(newEvent.Id);
+            if(newEvent.RecordTypeId == customerRequestId && newEvent.whatid!=null 
+            && newEvent.whatid.getSobjectType() == opportunity.SObjectType 
+            && ((oldEvent.whatid != null && oldEvent.whatid.getSobjectType()!= opportunity.SObjectType) || oldEvent.whatid == null) ){
+                validOpportunitiesId.add(newEvent.whatid); 
+            }
+        }
+        if(validOpportunitiesId.size() > 0) {
+            Map<Id, opportunity> OpportunityWithEventsByCreatedDate = opportunitiesselector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
+            map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
+          
+           Map<id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage);
+         
+            opportunitiesToBeUpdated.addall(changeProgramForOpportunityOnNewActivity(OpportunityWithEventsByCreatedDate,opportunityToBeRevivedMap));
+            
+            update opportunitiesToBeUpdated;
+            LogACallHelper.getOpportunitiesWithOpenSystemCallTask(OpportunityWithPreviousStage.keyset(),system.now(),'');
+        }
+    }
+    public static Map<id,opportunity> reviveSalesClosedOpportunities(Map<id,string> OpportunitiesWithStageToBeRevivedMap){
+        Map<id,opportunity> opportunityToBeRevivedMap = new Map<id,opportunity>();
+        for(id objOppID :OpportunitiesWithStageToBeRevivedMap.keyset()){
+            opportunity oppToBeRevived = new opportunity();
+             oppToBeRevived.id = objOppID;
+             oppToBeRevived.LastAutomationUpdateDateTime__c = system.now();
+             oppToBeRevived.stagename = OpportunitiesWithStageToBeRevivedMap.get(objOppID);
+             oppToBeRevived.CloseDate = system.today();
+             oppToBeRevived.TimeOutDate__c=null;
+             oppToBeRevived.RecalculateRanking__c=true;
+             opportunityToBeRevivedMap.put(objOppID,oppToBeRevived);
+        }
+        return opportunityToBeRevivedMap;
+    }
+    public Static List<Opportunity> changeProgramForOpportunityOnNewActivity(map<Id,Opportunity> opportunityWithLatestEventsMap,map<Id,Opportunity> opportunityToBeRevivedMap){
+        List<Opportunity> updatetedOppList=new List<Opportunity>();
+        for(Opportunity objOpp:opportunityWithLatestEventsMap.values()){
+            objOpp=(opportunityToBeRevivedMap.containsKey(objOpp.id))?opportunityToBeRevivedMap.get(objOpp.id):objOpp;
+           
+             if((opportunityWithLatestEventsMap.get(objOpp.id).events[0].type==label.Reservation 
+             || objOpp.Program__c==Label.MULTI) ){                         
+                  objOpp.Program__c = opportunityWithLatestEventsMap.get(objOpp.id).events[0].Program__c;
+                  objOpp.RecalculateRanking__c=true;
+             }
+             updatetedOppList.add(objOpp);
+        }
+      
+       return updatetedOppList; 
+    }
 }
