@@ -153,7 +153,7 @@
 
         if(returnedCampaignList.length == 0 ){
             component.set('v.messageTitle','Warning');
-            component.set('v.message','Please select at least one campaign to invite!');
+            component.set('v.message','Please select at least one meeting to invite!');
             component.set('v.showMessage',true);
             component.set('v.messageType','warning');
             setTimeout(function(){
@@ -194,7 +194,7 @@
                            break;
                        case 'ERROR':
                             component.set('v.messageTitle','Error');
-                            component.set('v.message','This opportunity is already a member of the selected campaign(s). Please modify your selection and try again!');
+                            component.set('v.message','This opportunity is already a member of the selected meeting. Please modify your selection and try again!');
                             component.set('v.showMessage',true);
                             component.set('v.messageType','error');
                             setTimeout(function(){
