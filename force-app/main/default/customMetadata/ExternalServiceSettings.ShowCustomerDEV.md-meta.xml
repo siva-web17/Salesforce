@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ShowCustomerDEV</label>
+    <protected>false</protected>
+    <values>
+        <field>EndPoint__c</field>
+        <value xsi:type="xsd:string">http://localhost:5678/Customer/ShowCustomer/</value>
+    </values>
+    <values>
+        <field>Environment__c</field>
+        <value xsi:type="xsd:string">DEV</value>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsDefault__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsSandbox__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>ServiceName__c</field>
+        <value xsi:type="xsd:string">ShowCustomer</value>
+    </values>
+    <values>
+        <field>TargetSystem__c</field>
+        <value xsi:type="xsd:string">Poseidon</value>
+    </values>
+</CustomMetadata>
