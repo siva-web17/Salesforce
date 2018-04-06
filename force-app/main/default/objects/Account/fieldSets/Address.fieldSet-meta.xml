@@ -3,6 +3,11 @@
     <fullName>Address</fullName>
     <description>It is used to send data to Poseidon. Do not delete as it is used in the Poseidon Table.</description>
     <displayedFields>
+        <field>ParentEmail__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>InvoiceEmail__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
