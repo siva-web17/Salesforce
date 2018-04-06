@@ -93,7 +93,7 @@ public class DCBusinessFlow {
             system.debug('---------ecx-------- ***'+ex.getMessage());
             system.debug('-------------err------- ***'+ex.getStackTraceString());
             ExceptionHandler.errorLog(ex.getMessage(),
-                    ex.getStackTraceString(), 'DCBusinessFlow', 'dcSearchResults', '');}
+                    ex.getStackTraceString(), 'DCBusinessFlow', 'dcSearchResults', null);}
 
     }
 

@@ -24,7 +24,7 @@ public class DCBusinessFlowHelper {
             system.debug('Exception after notifying for ranking'+ex);
             ExceptionHandler.errorLog(ex.getMessage(),
 
-                    ex.getStackTraceString(), 'DCBusinessFlowHelper', 'notifyForRanking', '');
+                    ex.getStackTraceString(), 'DCBusinessFlowHelper', 'notifyForRanking', null);
         }
     }
     public static List<RankingServiceResponse> webServiceCallForRanking(List<Lead> sourceLeads){
