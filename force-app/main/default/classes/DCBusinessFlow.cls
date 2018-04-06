@@ -172,7 +172,7 @@ public class DCBusinessFlow {
                 if(eventType != null && !eventType.isEmpty()) {
                     latestCustomerRequsetType = eventType[0].Type;
                 }
-                DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
+              //  DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
 
         }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);
