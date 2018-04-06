@@ -7,7 +7,7 @@
     <fields>SalesAction__c</fields>
     <fields>CallNotReachedType__c</fields>
     <fields>ResultType__c</fields>
-    <fields>TaskResult__c</fields>
     <fields>FollowUpDate__c</fields>
+    <fields>TaskResult__c</fields>
     <label>Compact Layout Non-System Task</label>
 </CompactLayout>
