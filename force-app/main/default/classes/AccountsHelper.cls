@@ -71,12 +71,22 @@ public class AccountsHelper {
     }
 
     public static void saveAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
+        SyncAccountDetailsWrapper accountDetailsWrapper = retrieveDataToSync(newAccountMap, oldAccountMap);
+        if(accountDetailsWrapper != NULL) {
+            String JSONValue = JSON.serialize(accountDetailsWrapper);
+            if (Trigger.isExecuting && !System.isBatch()) {
+                ExternalRouter.callUpdateAccountDetailsService(JSONValue);
+            }
+        }
+    }
+
+    public static SyncAccountDetailsWrapper retrieveDataToSync(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
         List<Map<String, Map<String, Map<String, String>>>> updatedAccountList = new List<Map<String, Map<String, Map<String, String>>>>();
         ID currentRecordID;
         try {
-            //return if current user is configured for not pushing data to Poseidon     
+            //return if current user is configured for not pushing data to Poseidon
             if (BypassTriggersValidation__c.getInstance().DoNotPushToPoseidon__c == True) {
-                return;
+                return null;
             }
             //We dont need to check for active opportunity in this case as we are sending the details irrespective of opportunity state
             Map<Id, Opportunity> accountOpportunityMap = OpportunitiesSelector.getOpportunitiesforAccount(newAccountMap.keySet(), false);
@@ -103,35 +113,39 @@ public class AccountsHelper {
                     }*/
                     Map<String, String> AddressfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Address.getFields()) {
-                        if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
+                        if (oldAccountMap == NULL || accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
                             AddressfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
-                    AddressfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id), AccountsService.MissingAddressfields(accountRecord)));
+                    if(oldAccountMap != NULL) {
+                        AddressfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id), AccountsService.MissingAddressfields(accountRecord)));
+                    }else{
+                        AddressfieldValueMap.putAll(AccountsService.MissingAddressfields(accountRecord));
+                    }
                     if (AddressfieldValueMap.size() > 0) {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Address.getName(), AddressfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' changed Account With Table Name Map ' + changedAccountWithTableNameMap);
-                    system.debug(' changed Account Record Map ' + changedAccountRecordMap);
 
                     Map<String, String> CustomerfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.Customer.getFields()) {
-                        if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
+                        if (oldAccountMap == NULL || accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
                             CustomerfieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
-                    CustomerfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id), AccountsService.MissingCustomerDetails(accountRecord)));
+                    if(oldAccountMap != NULL) {
+                        CustomerfieldValueMap.putAll(FieldChangedvalues(oldAccountMap.get(accountRecord.Id), AccountsService.MissingCustomerDetails(accountRecord)));
+                    }else{
+                        CustomerfieldValueMap.putAll(AccountsService.MissingCustomerDetails(accountRecord));
+                    }
                     if (CustomerfieldValueMap.size() > 0) {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.Customer.getName(), CustomerfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' changed Account With Customer ' + changedAccountWithTableNameMap);
-                    system.debug(' changed Account Record Map Customer ' + changedAccountRecordMap);
 
                     Map<String, String> CustomerMarketingPreffieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.CustomerMarketingPref.getFields()) {
-                        if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
+                        if (oldAccountMap == NULL || accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())) {
                             CustomerMarketingPreffieldValueMap.put(f.getFieldPath(), String.valueOf(accountRecord.get(f.getFieldPath())));
                         }
                     }
@@ -139,8 +153,6 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Account.FieldSets.CustomerMarketingPref.getName(), CustomerMarketingPreffieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' changed Account With CustomerMarketingPref ' + changedAccountWithTableNameMap);
-                    system.debug(' changed Account Record Map CustomerMarketingPref ' + changedAccountRecordMap);
 
                     Map<String, String> OpportunityfieldValueMap = new Map<String, String>();
                     for (Schema.FieldSetMember f : SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getFields()) {
@@ -155,8 +167,6 @@ public class AccountsHelper {
                         changedAccountWithTableNameMap.put(SObjectType.Opportunity.FieldSets.OppDetailsForAccountSyncing.getName(), OpportunityfieldValueMap);
                         changedAccountRecordMap.put(accountRecord.Id, changedAccountWithTableNameMap);
                     }
-                    system.debug(' changed Account With OppDetailsForAccountSyncing' + changedAccountWithTableNameMap);
-                    system.debug(' changed Account Record Map OppDetailsForAccountSyncing ' + changedAccountRecordMap);
 
                     //Added This Condition so that we send details to Poseidon only if we have data in Address,Customer,CustomerMarketingpref Maps
                     if (changedAccountWithTableNameMap.containsKey(SObjectType.Account.FieldSets.Address.getName()) ||
@@ -166,6 +176,7 @@ public class AccountsHelper {
                     }
                 }
             }
+            System.debug('updatedAccountList '+updatedAccountList);
             if (updatedAccountList.size() > 0) {
                 Map<String, String> userDetailsMap = new Map<String, String>();
                 if (UserMap.containsKey(newAccountMap.values()[0].CreatedById) && UserMap.containsKey(newAccountMap.values()[0].LastModifiedById)) {
@@ -179,24 +190,22 @@ public class AccountsHelper {
                 userDetailsMap.put('CreatedDate', String.valueOf(newAccountMap.values()[0].CreatedDate));
                 userDetailsMap.put('LastModifiedDate', String.valueOf(newAccountMap.values()[0].LastModifiedDate));
                 String market = newAccountMap.values()[0].market__c;
-                SyncAccountDetailsWrapper objwrapper = new SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
-                String JSONValue = JSON.serialize(objwrapper);
-                system.debug(' Calling from Account trigger: ' + Trigger.isExecuting + ' --System.isBatch() :' + System.isBatch() + ' !!!System.isFuture(): ' + System.isFuture() + '##System.isQueueable(): ' + System.isQueueable() + '^^^System.isScheduled() :' + System.isScheduled());
-                if (Trigger.isExecuting && !System.isBatch()) {
-                    ExternalRouter.callUpdateAccountDetailsService(JSONValue);
-                }
-                //call service method only if the list is not empty
+
+                return new SyncAccountDetailsWrapper(updatedAccountList, userDetailsMap, market);
             }
+            return null;
         } catch (Exception ex) {
-            ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                     'AccountsHelper', 'saveAccountInformation', currentRecordID);
         }
+
+        return null;
     }
 
     public static Map<String, String> FieldChangedvalues(Account OldAccount, Map<String, String> newAccountValues) {
         Map<String, String> changedValues = new Map<String, String>();
         for (String fieldApi : newAccountValues.keySet()) {
-            if (OldAccount.get(fieldApi) != newAccountValues.get(fieldApi)) {
+            if (OldAccount == NULL || OldAccount.get(fieldApi) != newAccountValues.get(fieldApi)) {
                 changedValues.put(fieldApi, newAccountValues.get(fieldApi));
             }
         }
@@ -214,6 +223,14 @@ public class AccountsHelper {
             this.updatedAccountList = updatedAccountList;
             this.ModifiedDetailsfieldValueMap = ModifiedDetailsfieldValueMap;
             this.market = market;
+        }
+
+        public Set<String> getAccountIds(){
+            Set<String> accountIds = new Set<String>();
+            for(Map<String, Map<String, Map<String, String>>> accountsMap : updatedAccountList){
+                accountIds.addAll(accountsMap.keySet());
+            }
+            return accountIds;
         }
     }
 }

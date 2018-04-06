@@ -659,6 +659,7 @@ public class TestDataFactory {
 
     public class OpportunityBuilder extends RecordBuilder {
         private Account account;
+        private Booking__c booking;
         public OpportunityBuilder() {
             super(Opportunity.SObjectType);
         }
@@ -685,6 +686,11 @@ public class TestDataFactory {
                 this.setField('AccountId', this.account.Id);
             }
             upsert this.record;
+            if(booking != NULL){
+                this.booking.OpportunityId__c = this.record.Id;
+                this.booking.AccountId__c = this.account.Id;
+                upsert this.booking;
+            }
             return this;
         }
 
@@ -692,8 +698,17 @@ public class TestDataFactory {
             return this.withPersonAccount('TestFirstName'+RecordBuilderCounter, 'TestLastName'+RecordBuilderCounter);
         }
 
+        public RecordBuilder withBooking(){
+            this.booking = new Booking__c();
+            return this;
+        }
+
         public Account getAccount(){
             return this.account;
+        }
+
+        public Booking__c getBooking(){
+            return this.booking;
         }
     }
 
