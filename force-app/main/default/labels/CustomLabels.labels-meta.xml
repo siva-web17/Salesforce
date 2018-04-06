@@ -1719,6 +1719,11 @@
         <shortDescription>Review message before proceeding to next step</shortDescription>
         <value>* Please review your quote before proceedings to next step</value>
     </labels>
+	<labels>
+        <fullName>SalesAssociateProfileName</fullName>
+        <shortDescription>Sales Associate Profile Name</shortDescription>
+        <value>Sales Associate</value>
+    </labels>
     <labels>
         <fullName>SBRTask</fullName>
         <categories>Dev</categories>
