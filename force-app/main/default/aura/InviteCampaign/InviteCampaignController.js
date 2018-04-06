@@ -4,7 +4,7 @@
 ({
     doInit:function(component, event, helper){
         var today = new Date();
-        component.set("v.selectedfrom", today.toISOString());      
+        component.set("v.selectedfrom", today.toISOString());
 
         var action = component.get("c.getInitialCampaignData");
         action.setCallback(this, function(response){
@@ -14,8 +14,8 @@
             }
         });
         action.setParams({
-           recordId : component.get('v.recordId'),           
-           datefrom : today.toISOString(),           
+           recordId : component.get('v.recordId'),
+           datefrom : today.toISOString(),
         });
 
 	    $A.enqueueAction(action);
@@ -77,7 +77,7 @@
         salesofficesAction.setParams({
                           recordId : component.get('v.recordId')
                        });
-                       
+
         salesofficesAction.setCallback(this,function(res){
             switch(res.getState()){
                 case 'SUCCESS':
@@ -98,7 +98,7 @@
         var selectedMeetingType=component.get('v.selectedMeetingType');
         var selectedMeetingCity=component.get('v.selectedMeetingCity');
         var selectedTo=component.get('v.selectedTo');
-        var selectedfrom=component.get('v.selectedfrom');        
+        var selectedfrom=component.get('v.selectedfrom');
 
         var action = component.get('c.getCampaignsWithFilter');
         action.setParams({
@@ -188,8 +188,7 @@
                                     }
                                 }
                                 component.set('v.wrapperClassList',wrapperClassList);
-                                var closeEvent = component.getEvent("closeModalEvent");
-                                closeEvent.fire();
+                                $A.get("e.force:closeQuickAction").fire()
                            break;
                        case 'INCOMPLETE':
                            break;

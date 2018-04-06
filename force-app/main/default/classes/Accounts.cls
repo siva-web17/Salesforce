@@ -27,9 +27,10 @@ public class Accounts {
     }
 
     public static void onAfterUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
-        AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>)newItems.values(), (Map<Id, Account>)oldItems);
+        AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>) newItems.values(), (Map<Id, Account>) oldItems);
         if (!OpportunitiesHelper.isActiveChanged) {
-            AccountsHelper.saveAccountInformation((Map<Id,Account>)newItems,(Map<Id,Account>)oldItems);
+            AccountsHelper.saveAccountInformation((Map<Id, Account>) newItems, (Map<Id, Account>) oldItems);
+            AccountsHelper.saveFamilyAccountInformation((Map<Id, Account>) newItems, (Map<Id, Account>) oldItems);
         }
         //AccountsHelper.saveAccountInformation();
     }
