@@ -19,7 +19,6 @@ public class Accounts {
         if(!System.isBatch()) {
             if (!OpportunitiesHelper.isActiveChanged) {
                 AccountsHelper.saveAccountInformation(new Map<Id, Account>(newItems), (Map<Id, Account>) oldItems);
-                AccountsHelper.saveFamilyAccountInformation((Map<Id, Account>) newItems, (Map<Id, Account>) oldItems);
             }
         }else if(!PoseidonAccountSyncBatch.SYNC_IN_PROGRESS){
             PoseidonSyncService.setSyncStatus(newItems, PoseidonSyncService.SyncStatusTodo);
@@ -34,7 +33,10 @@ public class Accounts {
     }
 
     public static void onAfterUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
-        AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>)newItems.values(), (Map<Id, Account>)oldItems);
+        AccountsHelper.setDefaultLetterAndLabelOnOpportunities((List<Account>) newItems.values(), (Map<Id, Account>) oldItems);
+        if (!OpportunitiesHelper.isActiveChanged) {
+            AccountsHelper.saveFamilyAccountInformation((Map<Id, Account>) newItems, (Map<Id, Account>) oldItems);
+        }
     }
 
     public static void onAfterDelete(Map<Id, SObject> oldItems) {
