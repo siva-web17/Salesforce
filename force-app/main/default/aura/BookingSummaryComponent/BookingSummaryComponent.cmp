@@ -38,6 +38,7 @@
     <aura:attribute name="selectedOtherNationalityMulti" type="String[]"/>
     <aura:attribute name="selectedOtherNationalityNameMulti" type="String[]"/>
     <aura:attribute name="OtherNationalityTextInfo" type="String"/>
+    
     <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
         <div class="slds-grid">
             <div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
