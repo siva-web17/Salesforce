@@ -5,7 +5,8 @@
 @isTest
 private class ExceptionHandlerTest {
 
-    static testmethod void When_errorLog_Expect_createErrorLog(){
+    @isTest
+    static void When_errorLog_Expect_createErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
@@ -26,7 +27,8 @@ private class ExceptionHandlerTest {
         System.assertEquals(Account.class.getName(),errLogList[0].Name);
     }
 
-    static testmethod void When_errorLogAsync_Expect_createFutureErrorLog(){
+    @isTest
+    static void When_errorLogAsync_Expect_createFutureErrorLog(){
 
         Account acc = new Account();
         String errorMessage = 'Test error Message';
@@ -49,7 +51,8 @@ private class ExceptionHandlerTest {
         System.assertEquals(Account.class.getName(),errLogListAfterFutureExecution[0].Name);
     }
 
-    static testmethod void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
+    @isTest
+    static void When_bulkLeadErrorAndLeadConvertedIsSuccess_Expect_doNotCreateBulkifiedErrorLog(){
 
         String className = 'Lead';
         String NameOfMethod = 'testMethod';
@@ -74,5 +77,49 @@ private class ExceptionHandlerTest {
         List <ErrorLog__c> errLogList = [SELECT Name,Description__c FROM  ErrorLog__c];
         System.assert(lcr.isSuccess());
         System.assertEquals(0,errLogList.size());
+    }
+
+    @isTest
+    static void When_BulkErrorIsThrown_Expect_BulkErrorLogIsCreated(){
+
+        Opportunity[] opportunities = new Opportunity[]{};
+        Integer numberOfRecords = 5;
+
+        for(Integer i = 0; i<numberOfRecords; i++){
+            Opportunity testOpp = (Opportunity)(new TestDataFactory.OpportunityBuilder()).getRecord();
+            opportunities.add(testOpp);
+        }
+        insert opportunities;
+
+        opportunities[0].StageName='ThereIsNoStageNameLikeThis';
+        opportunities[numberOfRecords-1].StageName='ThereIsAlsoNoStageNameLikeThis';
+
+        Test.startTest();
+
+        Database.SaveResult[] srList = Database.update(opportunities, false);
+        Database.Error[] errors = new Database.Error[]{};
+
+        for(Database.SaveResult saveResult : srList){
+            if(!saveResult.isSuccess()){
+                for(Database.Error err : saveResult.getErrors()){
+                    errors.add(err);
+                }
+            }
+        }
+        ExceptionHandler.bulkError(errors,'ExceptionHandlerTest', 'When_BulkErrorIsThrown_Expect_BulkErrorLogIsCreated');
+        Test.stopTest();
+
+        List<ErrorLog__c> errorLogs = new List<ErrorLog__c>([
+                SELECT Name, MethodName__c, Description__c
+                FROM ErrorLog__c]);
+
+        System.assertEquals(numberOfRecords, [SELECT COUNT() From Opportunity]);
+        System.assertEquals(2, [SELECT COUNT() From ErrorLog__c]);
+        for(ErrorLog__c errorLog : errorLogs){
+            System.assertEquals('ExceptionHandlerTest', errorLog.Name);
+            System.assertEquals('When_BulkErrorIsThrown_Expect_BulkErrorLogIsCreated', errorLog.MethodName__c);
+            System.assertEquals('Please do not update the Stage of the Opportunity. Only automatic Stage Movements are allowed.',
+                    errorLog.Description__c);
+        }
     }
 }
