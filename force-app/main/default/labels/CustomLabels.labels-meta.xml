@@ -1714,6 +1714,7 @@
     </labels>
 	<labels>
         <fullName>SalesAssociateProfileName</fullName>
+        <language>en_US</language>
         <shortDescription>Sales Associate Profile Name</shortDescription>
         <value>Sales Associate</value>
     </labels>
