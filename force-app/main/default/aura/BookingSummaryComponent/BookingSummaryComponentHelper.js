@@ -24,6 +24,12 @@
 					toastEvent.fire();
 					//Add navigation to detail view here
 					//
+  	var urlEvent = $A.get("e.force:navigateToURL");
+    urlEvent.setParams({
+        "url":"/apex/ShowCustomer?id="+cmp.get('v.wrapperList.personAcc.Id')
+    });
+    urlEvent.fire();
+
 					window.setTimeout(
 						$A.getCallback(function() {
 							var navEvt = $A.get('e.force:navigateToSObject');
