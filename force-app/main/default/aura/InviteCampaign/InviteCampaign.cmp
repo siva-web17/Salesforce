@@ -28,7 +28,7 @@
     <aura:registerEvent name="closeModalEvent" type="c:closeModalEvent" />
     <div class="slds-modal__container">
         <header class="slds-modal__header">
-            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Invite to Campaign</h2>
+            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Invite To Meeting</h2>
         </header>
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
             <aura:renderIf isTrue="{!v.showMessage}">

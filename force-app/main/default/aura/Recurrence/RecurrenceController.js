@@ -145,7 +145,7 @@
                console.log('em here');
                return;
            }
-          
+
           var date1 =  new Date(new Date().toDateString());
           var startDate1 = new Date(new Date(startDate).toDateString());
 
@@ -206,7 +206,7 @@
                  toastEvent.setParams({
                      mode: 'pester',
                      type : 'success',
-                     message: 'Campaign Recurrences are created!',
+                     message: 'Info Meeting recurrences are created!',
                      duration:1000
                  });
                  toastEvent.fire();
@@ -222,14 +222,14 @@
     },
 	onRecurrencePatternChanged : function(component, event, helper) {
         component.set('v.isCustomPatternSelected',false);
-        if(event.target){          
+        if(event.target){
             var checkedStatus = event.target.value;
             var targetName = event.target.id;
             component.set('v.isDailyChecked',targetName === 'Daily');
             component.set('v.isWeeklyChecked',targetName === 'Weekly');
             component.set('v.isMonthlyChecked',targetName === 'Monthly');
             component.set('v.isYearlyChecked',targetName === 'Yearly');
-           
+
             if(targetName === 'Daily'){
                 var startDate = new Date();
                 var endDate = new Date();

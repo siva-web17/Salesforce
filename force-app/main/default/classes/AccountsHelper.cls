@@ -70,6 +70,30 @@ public class AccountsHelper {
         }
     }
 
+    public static void saveFamilyAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
+
+        List<Id> accountIdList = new List<Id>();
+        try {
+            for (Account accountRecord : newAccountMap.values()) {
+                for (Schema.FieldSetMember f : SObjectType.Account.FieldSets.UpdatePersonalInfo.getFields()) {
+                    if (accountRecord.get(f.getFieldPath()) != oldAccountMap.get(accountRecord.Id).get(f.getFieldPath())
+                            && !accountIdList.contains(accountRecord.Id)) {
+                        String accId = String.ValueOf((accountRecord.Id));
+                        accountIdList.add(Id.valueOf(accId.substring(0, 15)));
+                    }
+                }
+            }
+            if (accountIdList.size() > 0) {
+                Map<Id, AccountContactRelation> accountContactRelationMap = AccountContactRelationsSelector.getAccountContactRelationForFamilyAccountId(accountIdList);
+                if (accountContactRelationMap.size() > 0) {
+                    AccountContactRelationHelper.validateAndSendDetailsToPoseidon(accountContactRelationMap, 'Update', false);
+                }
+            }
+        } catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'AccountsHelper', 'saveFamilyAccountInformation', null);
+        }
+    }
+
     public static void saveAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
         SyncAccountDetailsWrapper accountDetailsWrapper = retrieveDataToSync(newAccountMap, oldAccountMap);
         if(accountDetailsWrapper != NULL) {
