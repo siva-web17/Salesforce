@@ -113,9 +113,6 @@
         <componentInstances>
             <componentName>OpportunityLogACall</componentName>
         </componentInstances>
-        <componentInstances>
-            <componentName>InviteCampaignButton</componentName>
-        </componentInstances>
         <name>rightsidebar</name>
         <type>Region</type>
     </flexiPageRegions>
