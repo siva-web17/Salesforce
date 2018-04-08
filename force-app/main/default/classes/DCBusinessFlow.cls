@@ -82,7 +82,7 @@ public class DCBusinessFlow {
                     decision();
                 }
                 
-                else if(noDupe && !(sourceLead.CreationMethod__c== 'excel import' && sourceLead.CreationType__c=='Lead')){
+                else if(noDupe){
                     DCBusinessFlowHelper.notifyForRanking(sourceLead);
                 }
                 else {
