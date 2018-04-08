@@ -122,5 +122,10 @@ public class ExternalRouter {
     public class CalloutResult{
         public Boolean isSuccess;
         public String message;
+
+        public CalloutResult(Boolean isSuccess, String message){
+            this.isSuccess = isSuccess;
+            this.message = message;
+        }
     }
 }
