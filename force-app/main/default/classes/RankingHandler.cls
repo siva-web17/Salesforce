@@ -22,12 +22,10 @@ public class RankingHandler {
             String Combination = '';
             LegalSettings__c objLS = new LegalSettings__c();
             for (Lead leadRecord : leadList) {
-                 //skipping ranking and legal setting if the lead are loading as Account or Opportunity
-               
-                if(!String.isBlank(leadRecord.CreationType__c) && leadRecord.CreationType__c != System.Label.StringLead &&
-                        leadRecord.CreationMethod__c == 'Excel Import') {
-                    qualificationMap.put(leadRecord.id,true);
-                   continue;
+                 //skipping ranking and legal setting if the lead are loading as Account or Opportunity(SF-280)
+                if( leadRecord.CreationMethod__c == 'Excel Import' && !String.isBlank(leadRecord.CreationType__c) ) {
+                    qualificationMap.put(leadRecord.id,leadRecord.CreationType__c != System.Label.StringLead);
+                    continue;
                 }
                 //Ranking
                 Combination = leadRecord.Market__c + '_' + leadRecord.Program__c;
