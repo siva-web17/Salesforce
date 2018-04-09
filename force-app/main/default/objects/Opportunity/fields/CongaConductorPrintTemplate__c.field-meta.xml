@@ -7,7 +7,7 @@
 "&amp;TemplateId="+Label__c+","+Letter__c+
 "&amp;FP0=1" +
 "&amp;AC0=1" +
-"&amp;AC1=Brochure Sent" +
+"&amp;AC1=Brochure Sent - " + Letter__r.APXTConga4__Name__c +
 "&amp;DS7=3" +
 "&amp;QMode=Download"</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
