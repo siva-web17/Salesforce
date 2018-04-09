@@ -381,6 +381,7 @@ public class TasksHelper {
             newTask.ActivityDate = Datetime.now().Date();
             newTask.ActivityDateTime__c = Datetime.now();
             newTask.EventId__c = eventObj.Id;
+            newTask.Description = eventObj.Description;
             newTask.recordtypeid = recordTypeId;
             newTask.Subject= taskSettingsMap.get(objTask.Type).TaskSubject__c+' - '+newTask.Program__c ;
             mapTaskFieldsBasedonType(newTask,eventObj, objTask);
@@ -399,6 +400,7 @@ public class TasksHelper {
             return canSendBR;
         }
         Map<String, MarketProgramLevelSetting__c> marketProgramSetting = MarketProgramLevelSetting__c.getAll();
+        temp=oppRecord.Market__c + '_' + currentRequestProgram;
         If (taskList != null && taskList.size() > 0) {
             for (Task taskRecord : taskList) {
                 if (marketProgramSetting.containsKey(temp)) {
@@ -704,6 +706,9 @@ public class TasksHelper {
 
     private static void updateSentBrochuresList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> sentBrochures = new Set<String>();
+        if(opportunity.SentBrochures__c != NULL) {
+            sentBrochures.addAll(opportunity.SentBrochures__c.split(SEPARATOR));
+        }
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && t.IsClosed && t.TaskResult__c == SENT_BROCHURE) {
                 sentBrochures.add(t.Program__c);
@@ -798,6 +803,7 @@ public class TasksHelper {
             newTask.Accommodation__c = eventObj.Accommodation__c;
             newTask.ReservedCoursePrice__c = eventObj.ReservedCoursePrice__c;
             newTask.ReservedArticles__c = eventObj.ReservedArticles__c;
+            newTask.DepartureCity__c =  eventObj.DepartureCity__c;
         }
         else if(newTask.Type == SalesTasks.SPQ.Name()) {
             newTask.DestinationCode__c = eventObj.DestinationCode__c;
