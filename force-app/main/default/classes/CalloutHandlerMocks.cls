@@ -8,7 +8,7 @@ global class CalloutHandlerMocks {
         global HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
-            res.setBody(JSON.serialize(new CalloutHandler.CalloutResult(true, 'Success')));
+            res.setBody(JSON.serialize(new ExternalRouter.CalloutResult(true, 'Success')));
             res.setStatusCode(200);
             return res;
         }
@@ -18,7 +18,7 @@ global class CalloutHandlerMocks {
         global HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
-            res.setBody(JSON.serialize(new CalloutHandler.CalloutResult(false, 'Failure')));
+            res.setBody(JSON.serialize(new ExternalRouter.CalloutResult(false, 'Failure')));
             res.setStatusCode(200);
             return res;
         }
@@ -28,7 +28,7 @@ global class CalloutHandlerMocks {
         global HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
-            res.setBody(JSON.serialize(new CalloutHandler.CalloutResult(false, 'Failure')));
+            res.setBody(JSON.serialize(new ExternalRouter.CalloutResult(false, 'Failure')));
             res.setStatusCode(500);
             return res;
         }
