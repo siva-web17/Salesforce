@@ -156,7 +156,16 @@
     moveNext: function(cmp, event, helper) {
         var setGender = cmp.get("v.pickGender");
         cmp.set("v.wrapperList.personAcc.Gender__c", setGender);
-
+        if(setGender == 'Other'){
+            var toastEvent = $A.get("e.force:showToast");
+            toastEvent.setParams({
+                title: "Error!",
+                type: "error",
+                message: "Please select valid gender."
+            });
+            toastEvent.fire();
+            return false;
+        }
         var setCountry = cmp.get("v.selectedCountry");
         cmp.set("v.wrapperList.personAcc.PersonMailingCountry", setCountry);
 
