@@ -44,17 +44,10 @@
         <div class="slds-truncate">{!v.row.Opportunity.StageName}</div>
     </td>
     <td>
-        <div class="slds-truncate">{!v.row.Opportunity.Ranking__c}</div>
+        <div class="slds-truncate">{!v.row.Opportunity.SalesOffice__c}</div>
     </td>
     <td>
-        <div class="slds-truncate">
-            <ui:outputDate value="{!v.row.Opportunity.CreatedDate}"/>
-        </div>
-    </td>
-    <td>
-        <div class="slds-truncate">
-            <ui:outputDate value="{!v.row.Opportunity.CloseDate}"/>
-        </div>
+        <div class="slds-truncate">{!v.row.Opportunity.Owner.Name}</div>
     </td>
     <td>
         <div class="slds-truncate">

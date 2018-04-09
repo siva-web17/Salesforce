@@ -44,7 +44,7 @@
                                 </div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="Is Active?">
+                                <div class="slds-truncate" title="{!$Label.c.Active}">
                                         {!$Label.c.Active}
                                 </div>
                             </th>
@@ -59,18 +59,13 @@
                                 </div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Rank}">
-                                        {!$Label.c.Rank}
+                                <div class="slds-truncate" title="{!$Label.c.Sales_Office}">
+                                        {!$Label.c.Sales_Office}
                                 </div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.CreatedDate}">
-                                        {!$Label.c.CreatedDate}
-                                </div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.CloseDate}">
-                                        {!$Label.c.CloseDate}
+                                <div class="slds-truncate" title="{!$Label.c.Opportunity_owner}">
+                                        {!$Label.c.Opportunity_owner}
                                 </div>
                             </th>
                             <th scope="col">
