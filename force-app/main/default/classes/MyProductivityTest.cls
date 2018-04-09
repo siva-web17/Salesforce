@@ -13,7 +13,7 @@ Modification Log   :
 private class MyProductivityTest {
     static testMethod void shouldRetrieveDefaultStatistics() {
         //given
-        TestDataUtil.LeadBuilder leadBuilder = new TestDataUtil.LeadBuilder();
+        TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
         Lead[] leads = new Lead[]{};
         for(Integer i = 0; i < 50; i++) {
             leads.add((Lead)leadBuilder.build().getRecord());
@@ -21,7 +21,7 @@ private class MyProductivityTest {
 
         insert leads;
 
-        TestDataUtil.OpportunityBuilder opportunityBuilder = new TestDataUtil.OpportunityBuilder();
+        TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
         opportunityBuilder.save();
 
         //when
@@ -37,14 +37,14 @@ private class MyProductivityTest {
 
     static testMethod void shouldRetrieveStatistics() {
         //given
-        TestDataUtil.LeadBuilder leadBuilder = new TestDataUtil.LeadBuilder();
+        TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
         Lead[] leads = new Lead[]{};
         for(Integer i = 0; i < 50; i++) {
             leads.add((Lead)leadBuilder.build().getRecord());
         }
 
         insert leads;
-        TestDataUtil.TaskBuilder taskBuilder = new TestDataUtil.TaskBuilder();
+        TestDataFactory.TaskBuilder taskBuilder = new TestDataFactory.TaskBuilder();
         Task[] tasks = new Task[]{};
         for(Lead l : leads){
             taskBuilder.withRecordType(TasksHelper.CALL_TASK_DEVELOPER_NAME);
@@ -54,7 +54,7 @@ private class MyProductivityTest {
             taskBuilder.build();
         }
 
-        TestDataUtil.OpportunityBuilder opportunityBuilder = new TestDataUtil.OpportunityBuilder();
+        TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
         opportunityBuilder.save();
         Id opportunityId = opportunityBuilder.getRecord().Id;
 
