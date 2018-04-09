@@ -64,7 +64,7 @@ public class PoseidonAccountSyncBatch implements Database.Batchable<sObject>, Da
     public static void scheduleEvery30mins(){
         String appendix = Test.isRunningTest()? '_test' : '';
         PoseidonAccountSyncBatch.schedule('0 0 * ? * *', SCHEDULED_JOB_NAME+' - 00 minute of hour'+appendix);
-        PoseidonAccountSyncBatch.schedule('0 33 * ? * *', SCHEDULED_JOB_NAME+' - 30 minute of hour'+appendix);
+        PoseidonAccountSyncBatch.schedule('0 30 * ? * *', SCHEDULED_JOB_NAME+' - 30 minute of hour'+appendix);
     }
 
     public static void schedule(String crone, String label){
