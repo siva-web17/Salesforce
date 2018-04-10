@@ -54,7 +54,7 @@ public class PoseidonAccountSyncBatch implements Database.Batchable<sObject>, Da
                 fieldsToSelect.add(f.getFieldPath());
             }
         }
-        fieldsToSelect.addAll('Name,Id,Market__c,CreatedById,LastModifiedById,Firstname,lastname,ParentEmail__c,Middlename,PersonMailingCity,PersonMailingPostalCode,PersonMailingCountryCode,PersonMailingState,ShippingCity,ShippingState,ShippingStreet,PersonOtherPostalCode,TotalBooking__c'.split(','));
+        fieldsToSelect.addAll('Name,Id,Market__c,CreatedById,LastModifiedById,Firstname,lastname,ParentEmail__c,Middlename,PersonMailingCity,PersonMailingPostalCode,PersonMailingCountryCode,PersonMailingState,ShippingCity,ShippingState,ShippingStreet,PersonOtherPostalCode,TotalBooking__c,AccountExternalId__c'.split(','));
 
         String query = 'SELECT '+String.join(new List<String>(fieldsToSelect), ',')+' FROM Account WHERE (TotalBooking__c > 0 OR (AccountExternalId__c <> null AND IsSyncedToPoseidon__c = TRUE)) AND PoseidonSyncStatus__c IN :toSyncStatuses';
 
