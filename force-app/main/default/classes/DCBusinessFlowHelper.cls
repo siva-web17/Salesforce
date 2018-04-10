@@ -14,9 +14,8 @@ public class DCBusinessFlowHelper {
            List<RankingServiceResponse> finalResponse = webServiceCallForRanking(sourceLeads);
          
           if(finalResponse!=null && finalResponse[0].LeadID==sourceLead.id && finalResponse[0].IsRanked){
-                sourceLead.IsDupeProcessed__c=TRUE;
-                sourceLead.ReadyForRanking__c=TRUE;
                 sourceLead.ranking__c = finalResponse[0].Rank;
+                
                 //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});               
 
             }           
@@ -58,12 +57,13 @@ public class DCBusinessFlowHelper {
             serviceParams.DeviceType = sourceLead.DeviceType__c;        
             serviceParamsList.Add(serviceParams);
         }
-  
-            HttpResponse httpResponse = ExternalRouter.callRankingService(JSON.serialize(serviceParamsList));
+            String serviceParamsJSON = JSON.serialize(serviceParamsList);
+            System.debug(' Value of Ranking service Params JSON : ' + serviceParamsJSON );
+            HttpResponse httpResponse = ExternalRouter.callRankingService(serviceParamsJSON);
             if (httpResponse.getStatusCode() == 200 ) {                
                 List<RankingServiceResponse> serviceResponse =
                         (List<RankingServiceResponse>)JSON.deserialize(httpResponse.getBody(),List<RankingServiceResponse>.class);
-                System.debug(' ** response ** : ' + serviceResponse );             
+                System.debug(' ** response ** : ' + serviceResponse );
                 return serviceResponse;
             } else {
                 System.debug(' httpResponse ' + httpResponse.getBody() );
