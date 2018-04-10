@@ -56,12 +56,14 @@ public class DCObjectMerge {
         return duplicateAccount;
     }
 
-    //Lead to Opportuntiy
-  
-
     public static void inActiveOpportunity(Opportunity opportunityRecord) {
         opportunityRecord.isActive__c = false;
-        SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
+        try{
+            SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
+        }catch(exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'DCObjectMerge', 'inActiveOpportunity', opportunityRecord.Id);
+        }
     }
 
     //return the longest string

@@ -8,6 +8,8 @@ Modification Log   :
  * Developer                   Date                   Description
  * ----------------------------------------------------------------------------
  * Suresh S                  07/16/2017              Original Version
+ * Adam Osiecki              05/04/2018              Added try/catch block in
+ *                                                   handleUnaccurateDupeResults
 *******************************************************************************/
 public with sharing class DCJobsHelper {
     public static void handleUnaccurateDupeResults(List<dupcheck__dcJob__c> dcJobList) {
@@ -59,7 +61,12 @@ public with sharing class DCJobsHelper {
 
         if (deleteDuplicates.size() > 0) {
             system.debug('test record');
-            delete deleteDuplicates;
+            try{
+                delete deleteDuplicates;
+            }catch(exception ex){
+                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                        'DCJobsHelper', 'handleUnaccurateDupeResults', '');
+            }
         }
 
 
