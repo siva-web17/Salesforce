@@ -26,6 +26,7 @@
 &amp;DS3=1
 &amp;AC0=1
 &amp;AC2=1
-&amp;DS8=0</url>
+&amp;DS8=0
+&amp;QueryId=[SalesOfficePrograms]{!$Label.TemplateBuilderCongaQueryId}</url>
     <width>900</width>
 </WebLink>

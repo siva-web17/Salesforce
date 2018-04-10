@@ -72,6 +72,13 @@
         <value>Action</value>
     </labels>
     <labels>
+        <fullName>Active</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
         <fullName>Age</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -1323,6 +1330,13 @@
         <value>To Contact</value>
     </labels>
     <labels>
+        <fullName>Opportunity_owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity owner</shortDescription>
+        <value>Opportunity owner</value>
+    </labels>
+    <labels>
         <fullName>Optional</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -1712,6 +1726,12 @@
         <shortDescription>Review message before proceeding to next step</shortDescription>
         <value>* Please review your quote before proceedings to next step</value>
     </labels>
+	<labels>
+        <fullName>SalesAssociateProfileName</fullName>
+        <language>en_US</language>
+        <shortDescription>Sales Associate Profile Name</shortDescription>
+        <value>Sales Associate</value>
+    </labels>
     <labels>
         <fullName>SBRTask</fullName>
         <categories>Dev</categories>
@@ -2035,5 +2055,29 @@
         <protected>false</protected>
         <shortDescription>LAC_Booking_HelpText</shortDescription>
         <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLLive</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLLive</shortDescription>
+        <value>https://language.ef.com:8826/</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLQA</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLQA</shortDescription>
+        <value>https://language.ef.com:8826/</value>
+    </labels>
+    <labels>
+        <fullName>ReportEnv</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReportEnv</shortDescription>
+        <value>QA</value>
     </labels>
 </CustomLabels>

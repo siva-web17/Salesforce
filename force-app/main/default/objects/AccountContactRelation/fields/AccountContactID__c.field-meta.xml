@@ -3,7 +3,7 @@
     <fullName>AccountContactID__c</fullName>
     <description>This field is used to store the Account ID of the Contact in the relation. This is used for integration with Poseidon.</description>
     <externalId>false</externalId>
-    <formula>Contact.AccountId</formula>
+    <formula>CASESAFEID(Contact.AccountId)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Account Contact Id</label>
     <required>false</required>

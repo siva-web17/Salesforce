@@ -3,6 +3,16 @@
  */
 
 public class CreateBookingController {
+public String globalAccountID{get;set;}
+public String ShowCustomerURL{get;set;}
+    
+    
+   public CreateBookingController(ApexPages.StandardController controller)
+    {
+        this.globalAccountID=ApexPages.currentPage().getParameters().get('id');
+        this.ShowCustomerURL = ExternalRouter.getServiceURL('ShowCustomer');
+        system.debug('this.ShowCustomerURL' +this.ShowCustomerURL);
+    }
 
     @AuraEnabled
     public static IntermediateScreenWrapper dataBind(String recordId) {
@@ -20,6 +30,7 @@ public class CreateBookingController {
                         LIMIT 1
                 ];
                 bindData.opp = fetchopp[0];
+                
                 bindData.SalesOfficePickList = GetSalesOffice();
                 if (fetchopp.size() > 0) {
                     fetchAccount = [
@@ -33,6 +44,7 @@ public class CreateBookingController {
                             where ID = :bindData.opp.AccountId
                             LIMIT 1
                     ];
+                   
                     bindData.personAcc = fetchAccount[0];
                     bindData.age = fetchAccount[0].Age__c;
                     bindData.GenderPickList = GetGender();
@@ -42,6 +54,7 @@ public class CreateBookingController {
                     bindData.MailingCountryPickList = GetMailingCountry();
                     bindData.BirthCountryPickList = GetBirthCountry();
                     return bindData;
+                    
                 } else {
                     throw new AuraHandledException('Label.NoActiveOpportunity');
                 }

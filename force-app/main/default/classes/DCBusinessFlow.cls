@@ -82,7 +82,7 @@ public class DCBusinessFlow {
                     decision();
                 }
                 
-                else if(noDupe && !(sourceLead.CreationMethod__c== 'excel import' && sourceLead.CreationType__c=='Lead')){
+                else if(noDupe){
                     DCBusinessFlowHelper.notifyForRanking(sourceLead);
                 }
                 else {
@@ -93,7 +93,7 @@ public class DCBusinessFlow {
             system.debug('---------ecx-------- ***'+ex.getMessage());
             system.debug('-------------err------- ***'+ex.getStackTraceString());
             ExceptionHandler.errorLog(ex.getMessage(),
-                    ex.getStackTraceString(), 'DCBusinessFlow', 'dcSearchResults', '');}
+                    ex.getStackTraceString(), 'DCBusinessFlow', 'dcSearchResults', null);}
 
     }
 
@@ -172,7 +172,7 @@ public class DCBusinessFlow {
                 if(eventType != null && !eventType.isEmpty()) {
                     latestCustomerRequsetType = eventType[0].Type;
                 }
-                DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
+              //  DCObjectMerge.modifyOpportuntiy(sourceLead, opportunityRecord);
 
         }             
         Database.LeadConvertResult lcr = Database.convertLead(lc);

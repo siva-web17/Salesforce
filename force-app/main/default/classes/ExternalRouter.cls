@@ -6,11 +6,27 @@ public class ExternalRouter {
 
     @future(callout=true)
     public static void callUpdateAccountDetailsService(String accountDetails) {
-        String jsonS = accountDetails;
-        String url = getServiceURL('SyncUpdatedAccountDetails');
-        InvokeService(url, jsonS);
-
+        updateAccountDetails(accountDetails);
     }
+
+
+    public static void updateAccountDetails(String accountDetails) {
+        try {
+            String url = getServiceURL('SyncUpdatedAccountDetails');
+            HttpResponse response = InvokeService(url, accountDetails);
+            AccountsHelper.SyncAccountDetailsWrapper accountDetailsWrapper = (AccountsHelper.SyncAccountDetailsWrapper)JSON.deserialize(accountDetails, AccountsHelper.SyncAccountDetailsWrapper.class);
+            CalloutResult result = (CalloutResult)JSON.deserialize(response.getBody(), CalloutResult.class);
+            List<Account> accountsToUpdate = new List<Account>();
+            for(Id accId : accountDetailsWrapper.getAccountIds()){
+                accountsToUpdate.add(new Account(Id = accId));
+            }
+            PoseidonSyncService.setSyncStatus(accountsToUpdate, result.isSuccess ? PoseidonSyncService.SyncStatusSuccess : PoseidonSyncService.SyncStatusFail);
+            update accountsToUpdate;
+        }catch (Exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'ExternalRouter', 'updateAccountDetails', null);
+        }
+    }
+
     public static HttpResponse callRankingService(String accountDetails)
     {        
         String jsonS = accountDetails;
@@ -103,5 +119,13 @@ public class ExternalRouter {
         return serviceRecord.EndPoint__c;
     }
 
-    //public static
+    public class CalloutResult{
+        public Boolean isSuccess;
+        public String message;
+
+        public CalloutResult(Boolean isSuccess, String message){
+            this.isSuccess = isSuccess;
+            this.message = message;
+        }
+    }
 }

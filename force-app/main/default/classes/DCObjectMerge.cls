@@ -56,44 +56,6 @@ public class DCObjectMerge {
         return duplicateAccount;
     }
 
-    //Lead to Opportuntiy
-    public static void modifyOpportuntiy(Lead sourceLead, Opportunity opportunityRecord) {
-        //1. stage update
-        task systemCallTask = new task();
-        try{
-            if(opportunityRecord.StageName == Label.SalesClosed) {
-                // Always for revival
-                // checking the field to true for bypassing the stagename change validation rule
-                opportunityRecord.LastAutomationUpdateDateTime__c = system.now();
-                opportunityRecord.StageName =OpportunitiesSelector.getOpportunityStageName(opportunityRecord);
-                system.debug('>>>Previous Opp StageName'+opportunityRecord.StageName);
-                opportunityRecord.CloseDate = System.today().addMonths(2);
-                opportunityRecord.TimeOutDate__c=null;
-
-                if(sourceLead.RequestType__c != 'CAM'){
-                    opportunityRecord.Product__c = sourceLead.Product__c;
-                    opportunityRecord.Program__c = sourceLead.Program__c;
-                }
-                    LogACallHelper.getOpportunitiesWithOpenSystemCallTask(new Set<Id>{opportunityRecord.id},system.now(),'');
-
-            }else{
-                // this is to update the program for exiting opportunity but no closedlost
-                system.debug('**** product'+sourceLead.Product__c);
-                system.debug('**** program'+sourceLead.Program__c);
-                if(programMerge(DCBusinessFlow.sourceCustomerRequstType,opportunityRecord.Program__c)) {
-                    opportunityRecord.Product__c = sourceLead.Product__c;
-                    opportunityRecord.Program__c = sourceLead.Program__c;
-                }
-            }
-            opportunityRecord.RecalculateRanking__c=true;
-            SObjectUnitOfWork.modifyOpportunity(opportunityRecord);
-
-        }catch(exception ex){
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                    'DCObjectMerge', 'modifyOpportuntiy', opportunityRecord.Id);
-        }
-    }
-
     public static void inActiveOpportunity(Opportunity opportunityRecord) {
         opportunityRecord.isActive__c = false;
         try{

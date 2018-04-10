@@ -361,8 +361,7 @@ public class OpportunitiesSelector {
 
         List<Opportunity> opportunities = new List<Opportunity>(
         [
-                SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Ranking__c, CreatedDate,
-                        CloseDate
+                SELECT Id, Name, IsActive__c, Product__c, Program__c, StageName, Owner.Name, toLabel(SalesOffice__c)
                 FROM Opportunity
                 WHERE AccountId IN :accountIds
         ]
@@ -372,5 +371,23 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getOpportunityForQuote(Map<Id, String> taskMap) {
         return [Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
+    }
+     public static map<id,string> getOpportunityStageNameForList(set<id> opportunityRecord) {
+       
+            map<id,string> opportunityIDAndStageMap = new Map<id,string>();
+            String previousOpportunityStageName;
+            system.debug('StageHistory>>>'+[Select id,opportunityid,opportunity.FirstContactDateTime__c,StageName from OpportunityHistory where opportunityid in:opportunityRecord and Opportunity.StageName=:Label.Salesclosed]);
+            for (OpportunityHistory oppHistory : [Select id,opportunityid,opportunity.FirstContactDateTime__c,StageName from OpportunityHistory where opportunityid in:opportunityRecord and Opportunity.StageName=:Label.Salesclosed]) {
+                if (oppHistory.StageName != NULL && oppHistory.StageName != Label.Salesclosed && !opportunityIDAndStageMap.containsKey(oppHistory.opportunityid)) {
+                    opportunityIDAndStageMap.put
+                    (oppHistory.opportunityid, (oppHistory.opportunity.FirstContactDateTime__c != null) ? label.OpportunityStageFollowUp : oppHistory.StageName);
+                }
+            }
+        
+        return opportunityIDAndStageMap;
+    }
+      public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
+     map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,stagename,program__c,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
+     return OpportunityEventsMap;
     }
 }

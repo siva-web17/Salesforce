@@ -14,8 +14,9 @@ public class DCBusinessFlowHelper {
            List<RankingServiceResponse> finalResponse = webServiceCallForRanking(sourceLeads);
          
           if(finalResponse!=null && finalResponse[0].LeadID==sourceLead.id && finalResponse[0].IsRanked){
+                sourceLead.IsDupeProcessed__c=TRUE;
+                sourceLead.ReadyForRanking__c=TRUE;
                 sourceLead.ranking__c = finalResponse[0].Rank;
-                
                 //SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});               
 
             }           
@@ -24,7 +25,7 @@ public class DCBusinessFlowHelper {
             system.debug('Exception after notifying for ranking'+ex);
             ExceptionHandler.errorLog(ex.getMessage(),
 
-                    ex.getStackTraceString(), 'DCBusinessFlowHelper', 'notifyForRanking', '');
+                    ex.getStackTraceString(), 'DCBusinessFlowHelper', 'notifyForRanking', null);
         }
     }
     public static List<RankingServiceResponse> webServiceCallForRanking(List<Lead> sourceLeads){

@@ -17,6 +17,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>myWaitAssignment_myWait_myRule_11</name>
+        <label>myWaitAssignment_myWait_myRule_11</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_11</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>myWaitAssignment_myWait_myRule_7</name>
         <label>myWaitAssignment_myWait_myRule_7</label>
         <locationX>0</locationX>
@@ -30,6 +46,22 @@
         </assignmentItems>
         <connector>
             <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_11_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_11_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_11_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_11</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -86,7 +118,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
+            <targetReference>myPreWaitDecision_myWait_myRule_11</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -107,7 +139,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
+                <targetReference>myPreWaitDecision_myWait_myRule_11</targetReference>
             </connector>
             <label>isChangedRule_3_myRule_1_LastName</label>
         </rules>
@@ -241,7 +273,7 @@
                 <leftValueReference>myVariable_current.Owner.Profile.Name</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_12_myRule_11_0077348122</elementReference>
+                    <elementReference>formula_12_myRule_11_0972070597</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -313,6 +345,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_11_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_11_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_11_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_11_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_current.CreatedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_11_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_11_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>myPostWaitDecision_myWaitEvent_myWait_myRule_7_event_0</name>
         <label>myPostWaitDecision_myWaitEvent_myWait_myRule_7_event_0</label>
         <locationX>0</locationX>
@@ -335,6 +392,55 @@
                 <targetReference>myWaitEvent_myWait_myRule_7_event_0_SA1</targetReference>
             </connector>
             <label>myPostWaitRule_myWaitEvent_myWait_myRule_7_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_11</name>
+        <label>myPreWaitDecision_myWait_myRule_11</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_11</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Formula</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Owner.Profile.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>formula_12_myRule_11_0972070597</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPreWaitDecision_myWait_myRule_7</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_11</label>
         </rules>
     </decisions>
     <decisions>
@@ -368,7 +474,7 @@
         <locationX>1100</locationX>
         <locationY>100</locationY>
         <defaultConnector>
-            <targetReference>myRule_11_A1</targetReference>
+            <targetReference>myWait_myRule_11</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
         <rules>
@@ -382,7 +488,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_11_A1</targetReference>
+                <targetReference>myWait_myRule_11</targetReference>
             </connector>
             <label>Previously Met - Null</label>
         </rules>
@@ -417,7 +523,7 @@
                 <leftValueReference>myVariable_old.Owner.Profile.Name</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>formula_13_myRule_11_pmetrule_2172967459</elementReference>
+                    <elementReference>formula_13_myRule_11_pmetrule_5987476466</elementReference>
                 </rightValue>
             </conditions>
             <label>Previously Met - Prev</label>
@@ -468,7 +574,7 @@
                 <stringValue>$Label.Integration_Profile_Developer_Name </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_12_myRule_11_0077348122</name>
+        <name>formula_12_myRule_11_0972070597</name>
         <dataType>String</dataType>
         <expression>$Label.Integration_Profile_Developer_Name</expression>
     </formulas>
@@ -479,7 +585,7 @@
                 <stringValue>$Label.Integration_Profile_Developer_Name </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_13_myRule_11_pmetrule_2172967459</name>
+        <name>formula_13_myRule_11_pmetrule_5987476466</name>
         <dataType>String</dataType>
         <expression>$Label.Integration_Profile_Developer_Name</expression>
     </formulas>
@@ -490,7 +596,7 @@
                 <stringValue>$Label.Integration_User_Id </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_14_myRule_11_A1_8658310339</name>
+        <name>formula_14_myWaitEvent_myWait_myRule_11_event_0_SA1_1517117402</name>
         <dataType>String</dataType>
         <expression>$Label.Integration_User_Id</expression>
     </formulas>
@@ -501,7 +607,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_9140685412</name>
+        <name>formula_4_myRule_1_A1_0496693985</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -512,7 +618,7 @@
                 <stringValue>[Account].FirstName &amp; ' ' &amp; [Account].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_5_myRule_1_A1_9624388091</name>
+        <name>formula_5_myRule_1_A1_1308510973</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.FirstName} &amp; ' ' &amp; {!myVariable_current.LastName}</expression>
     </formulas>
@@ -582,80 +688,6 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Account]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_11_A1</name>
-        <label>Set Owner to Integration User</label>
-        <locationX>1100</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Owner ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>OwnerId</field>
-            <value>
-                <elementReference>formula_14_myRule_11_A1_8658310339</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
             <name>evaluationType</name>
@@ -790,7 +822,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             <field>Name</field>
             <operator>NotEqualTo</operator>
             <value>
-                <elementReference>formula_4_myRule_1_A1_9140685412</elementReference>
+                <elementReference>formula_4_myRule_1_A1_0496693985</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -826,7 +858,7 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             </processMetadataValues>
             <field>Name</field>
             <value>
-                <elementReference>formula_5_myRule_1_A1_9624388091</elementReference>
+                <elementReference>formula_5_myRule_1_A1_1308510973</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
@@ -1210,6 +1242,83 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
         <processMetadataValues>
             <name>evaluationType</name>
             <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Account]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_11_event_0_SA1</name>
+        <label>Set Owner to Integration User</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_11_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Owner ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>formula_14_myWaitEvent_myWait_myRule_11_event_0_SA1_1517117402</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
                 <stringValue>criteria</stringValue>
             </value>
         </processMetadataValues>
@@ -1367,6 +1476,16 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
         </value>
     </variables>
     <variables>
+        <name>myWaitEvent_myWait_myRule_11_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
         <name>myWaitEvent_myWait_myRule_7_event_0_postActionExecutionVariable</name>
         <dataType>Boolean</dataType>
         <isCollection>false</isCollection>
@@ -1376,6 +1495,65 @@ ISNULL({!myVariable_current.MaxActiveBookingEndDate__c})</expression>
             <booleanValue>false</booleanValue>
         </value>
     </variables>
+    <waits>
+        <name>myWait_myRule_11</name>
+        <label>myWait_myRule_11</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>referenced</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_11_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_11_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_11_event_0</targetReference>
+            </connector>
+            <eventType>DateRefAlarmEvent</eventType>
+            <inputParameters>
+                <name>TimeTableColumnEnumOrId</name>
+                <value>
+                    <stringValue>Account</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>EntityObjectId</name>
+                <value>
+                    <elementReference>myVariable_current.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeFieldColumnEnumOrId</name>
+                <value>
+                    <stringValue>CreatedDate</stringValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_11_event_0</label>
+        </waitEvents>
+    </waits>
     <waits>
         <name>myWait_myRule_7</name>
         <label>myWait_myRule_7</label>

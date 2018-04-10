@@ -143,8 +143,8 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PrintTemplate</actionName>
-            <actionType>CustomButton</actionType>
+            <actionName>Opportunity.InviteTocampaign</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
@@ -161,6 +161,11 @@
             <actionName>Opportunity.Create_Booking</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PrintTemplate</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>7</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -195,6 +200,7 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Program__c</fields>
+        <fields>PreApplicationDate__c</fields>
         <fields>BookingDate__c</fields>
         <fields>Status__c</fields>
         <relatedList>Booking__c.OpportunityId__c</relatedList>

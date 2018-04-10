@@ -26,7 +26,8 @@ public class Events {
         
     }
 
-    public static void onAfterUpdate(List<Event>newItems) {
+    public static void onAfterUpdate(List<Event>newItems, Map<Id, SObject> oldItems) {
+        eventsHelper.afterEventsTransferFromAccountToActiveOpportunity(newItems, (Map<Id, Event>)oldItems);
         List<Id> Ids = new List<Id>();
         Ids = TasksHelper.filterEventsRelatedToOppotunity(newItems);
         List<Opportunity> opportunityRecord = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(Ids);
