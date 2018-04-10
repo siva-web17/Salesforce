@@ -638,6 +638,27 @@
         <value>Gender</value>
     </labels>
     <labels>
+        <fullName>HCC_Next_Call_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Next Call Type</shortDescription>
+        <value>HCC</value>
+    </labels>
+    <labels>
+        <fullName>HCC_Task_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Task Type</shortDescription>
+        <value>Call</value>
+    </labels>
+    <labels>
+        <fullName>Happy_Call</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Happy Call -</shortDescription>
+        <value>Happy Call -</value>
+    </labels>
+    <labels>
         <fullName>HasBooking</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -1269,6 +1290,13 @@
         <protected>false</protected>
         <shortDescription>NoActiveOpportunity</shortDescription>
         <value>Please create an opportunity before sending Customer info to Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>Not_Started</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Started</shortDescription>
+        <value>Not Started</value>
     </labels>
     <labels>
         <fullName>OfficeVisit</fullName>

@@ -1,0 +1,101 @@
+/**************************************************************************************
+Apex Class Name    : HCCTaskCreatorBatch
+Version            : 1.0
+Created Date       : March 26 2018
+Function           :
+Modification Log   :
+------------------------------------------------------------------------------
+ * Developer                   Date                   Description
+ * ----------------------------------------------------------------------------
+ * Osiecki A                  26/03/2018              Original Version
+*******************************************************************************/
+
+public without sharing class HCCTaskCreatorBatch implements Database.Batchable<SObject>, Schedulable{
+
+    public Id SystemCallTaskRecordTypeId =
+            RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
+
+    public Database.QueryLocator start(Database.BatchableContext context){
+
+        return Database.getQueryLocator(
+                'SELECT Id, MaxActiveBookingEndDate__c, (SELECT MainSalesResponsible__c, MaxEndDate__c, Program__c  FROM Bookings__r)'+
+                        'FROM Account ' +
+                        'WHERE MaxActiveBookingEndDate__c < TODAY' +
+                        ' AND ActiveOpportunities__c = 0' +
+                        ' AND HasHappyCallTask__c = FALSE'
+        );
+    }
+
+    public void execute(Database.BatchableContext context,List<Account> scope){
+
+        List<Task> tasks = new List<Task>();
+        List<Booking__c> bookings = new List<Booking__c>();
+        List<Account> accounts = new List<Account>();
+        Account acc = new Account();
+
+        for(Account account : scope){
+            Task task = new Task();
+            account.HasHappyCallTask__c = TRUE;
+            bookings = account.Bookings__r;
+
+            task.RecordTypeId = SystemCallTaskRecordTypeId;
+            task.WhatId = account.Id;
+            task.NextCallType__c = Label.HCC_Next_Call_Type;
+            task.Type = Label.HCC_Task_Type;
+            task.ActivityDate = Date.today();
+            task.FollowUpDate__c = Date.today();
+            task.Status = Label.Not_Started;
+
+            for(Booking__c booking : bookings){
+                if(booking.MaxEndDate__c == account.MaxActiveBookingEndDate__c){
+                    task.Subject = Label.Happy_Call + ' ' + booking.Program__c;
+                    task.OwnerId = booking.MainSalesResponsible__c;
+                    break;
+                }
+            }
+            tasks.add(task);
+            accounts.add(account);
+        }
+
+        Database.SaveResult[] srList = Database.update(tasks, false);
+        Database.Error[] tasksErrors = new Database.Error[]{};
+        Database.Error[] accountsErrors = new Database.Error[]{};
+
+        for(Database.SaveResult saveResult : srList){
+            if(!saveResult.isSuccess()){
+                for(Database.Error err : saveResult.getErrors()){
+                    tasksErrors.add(err);
+                }
+            }
+        }
+        ExceptionHandler.bulkError(tasksErrors,'HCCTaskCreatorBatch', 'execute');
+
+        srList = Database.update(accounts, false);
+
+        for(Database.SaveResult saveResult : srList){
+            if(!saveResult.isSuccess()){
+                for(Database.Error err : saveResult.getErrors()){
+                    accountsErrors.add(err);
+                }
+            }
+        }
+        ExceptionHandler.bulkError(accountsErrors,'HCCTaskCreatorBatch', 'execute');
+
+        /*
+        try{
+            insert tasks;
+            update accounts;
+        }catch(Exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'HCCTaskCreatorBatch', 'execute', null);
+        }
+        */
+    }
+    public void finish(Database.BatchableContext bc){
+    }
+
+    //Scheduling method
+    public void execute(SchedulableContext sc){
+        HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
+        Database.executeBatch(tcb);
+    }
+}
