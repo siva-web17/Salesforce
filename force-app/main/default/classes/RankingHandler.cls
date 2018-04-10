@@ -62,7 +62,7 @@ public class RankingHandler {
             }
         } catch (exception ex) {
             ExceptionHandler.errorLog( ex.getMessage(), ex.getStackTraceString(), 'RankingHandler',
-                    'getLeadSettings', '');
+                    'getLeadSettings', null);
         }
         return QualificationMap;
     }
