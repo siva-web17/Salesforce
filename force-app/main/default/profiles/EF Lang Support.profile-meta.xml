@@ -858,11 +858,7 @@
     <classAccesses>
         <apexClass>DestinationsSelector</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>ErrorTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses>   
     <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>

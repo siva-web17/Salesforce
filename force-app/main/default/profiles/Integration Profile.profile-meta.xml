@@ -860,10 +860,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ErrorTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>
     </classAccesses>
