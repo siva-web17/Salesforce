@@ -21,7 +21,6 @@ public class DcDiscardsHelper {
             if(leadId.getSObjectType() == Lead.getSObjectType()){
                leadIdList.add(leadId);
             }
-
         }
          List<Lead> leadUpdateList = new List<Lead>();
         leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
@@ -29,12 +28,8 @@ public class DcDiscardsHelper {
             lead.IsDupe__c = false;           
         }
        System.enqueueJob(new QueueClass(leadIdList));
-
-        //Modify the leads with ready for ranking
-
-
-
     }
+	
     @future (callout=true)
     Public Static void WebServiceCallForRankingAfterFalseDupe(set <id> leadIdList){
      List<Lead> leadUpdateList = new List<Lead>();
