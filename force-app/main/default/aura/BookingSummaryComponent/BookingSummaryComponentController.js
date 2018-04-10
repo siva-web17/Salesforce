@@ -138,8 +138,10 @@
                     2000
                 );
             }
+            component.set("v.rendering",false);
         });
         $A.enqueueAction(action);
+
     },
 
     navigateToSObject: function(component, event, helper) {
