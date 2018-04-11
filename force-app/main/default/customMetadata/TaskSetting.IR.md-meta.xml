@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>CreateCallType__c</field>
-        <value xsi:type="xsd:string">TCC</value>
+        <value xsi:type="xsd:string">TCC| (TCC & SBR)|SBR</value>
     </values>
     <values>
         <field>ForClosedCallTypes__c</field>
