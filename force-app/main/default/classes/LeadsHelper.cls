@@ -473,32 +473,26 @@ public class LeadsHelper {
         }
     }
 
-    public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList) {
+     public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList){
         Set<String> sourceAutoCodeValues = new Set<String>();
-        Map<string, string> sourceMap = new Map<string, string>();
+        Map<string,string> sourceMap = new Map<string,string>();
 
-        for (Lead leadRecord : leadList) {
-            if (leadRecord.SourceCodeAuto__c != null && leadRecord.SourceCodeAuto__c != '') {
+        for(Lead leadRecord:leadList){
+            if(leadRecord.SourceCodeAuto__c!=null && leadRecord.SourceCodeAuto__c!='' ){
                 sourceAutoCodeValues.add(leadRecord.SourceCodeAuto__c);
             }
         }
 
-        List<Source__c> sourceRecords = SourcesSelector.getSourceRecords(sourceAutoCodeValues);
-        for (Source__c sourceRec : sourceRecords) {
-            if (sourceRec.Code__c != null) {
-                sourceMap.put(sourceRec.Code__c, sourceRec.Name);
+        List<Source__c> sourceRecords =SourcesSelector.getSourceRecords(sourceAutoCodeValues);
+        for(Source__c sourceRec : sourceRecords) {
+            if(sourceRec.Code__c != null) {
+                sourceMap.put(sourceRec.Code__c,sourceRec.Name );
             }
         }
 
-        for (Lead leadRec : leadList) {
-            {
-                if (leadRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
-                    if (sourceMap.containsKey(leadRec.SourceCodeAuto__c)) {
-                        system.debug('inside if>>>');
-                        leadRec.Partner__c = sourceMap.get(leadRec.SourceCodeAuto__c);
-                        system.debug(' leadRec.Partner__c>>>' + leadRec.Partner__c);
-                    }
-                }
+        for(Lead leadRec : leadList) {
+            if (sourceMap.containsKey(leadRec.SourceCodeAuto__c)) {
+                leadRec.Partner__c = sourceMap.get(leadRec.SourceCodeAuto__c);
             }
         }
     }
