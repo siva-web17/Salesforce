@@ -21,6 +21,11 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>Duplicates</application>
+        <default>false</default>
+        <visible>false</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>Service_Cloud_Console</application>
         <default>false</default>
         <visible>false</visible>
@@ -700,6 +705,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CalloutHandlerMocks</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CampaignMemberTriggerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -858,7 +867,7 @@
     <classAccesses>
         <apexClass>DestinationsSelector</apexClass>
         <enabled>true</enabled>
-    </classAccesses>   
+    </classAccesses>
     <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>
@@ -1018,6 +1027,18 @@
     <classAccesses>
         <apexClass>PickListUtil</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonAccountSyncBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonAccountSyncBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonSyncService</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>PublicGroupsSelector</apexClass>
@@ -2749,6 +2770,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.PoseidonCustomerId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.PoseidonSyncStatus__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4754,6 +4780,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.IsByConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.IsCAMOnly__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
