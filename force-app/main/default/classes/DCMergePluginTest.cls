@@ -24,7 +24,7 @@ public class DCMergePluginTest {
     }
 
     //personal account merge
-    static testmethod void accountMergePlugin() {
+   /* static testmethod void accountMergePlugin() {
         system.runAs(TestDataUtil.createUserRecord()) {
             List<Account> accountList = TestdataUtil.createAccountList(2);
             Account masterAccount = TestdataUtil.creatAcc();
@@ -35,5 +35,5 @@ public class DCMergePluginTest {
             //after merge
             plugin.afterMerge('001P',masterAccount,masterRecordSet);
         }
-    }
+    }*/
 }
