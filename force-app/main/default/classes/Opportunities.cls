@@ -14,22 +14,12 @@ public class Opportunities {
     public static void onBeforeInsert(List<Opportunity> oppItems) {
         OpportunitiesHelper.populateSalesOfficeProgram((List<Opportunity>) oppItems);
         OpportunitiesHelper.populateSourceBasedonSorceCodeAuto((List<Opportunity>) oppItems);
-        OpportunitiesHelper.populateSourceCodeAutoAndPartnerFromSource(oppItems);
+        OpportunitiesHelper.populateSourceCodeAutoAndPartnerFromSource((List<Opportunity>) oppItems);
     }
 
     public static void onBeforeUpdate(Map<Id, Sobject> newItems, Map<Id, Sobject> oldItems) {
-        map<Id, opportunity> newOpportunityMap = (Map<Id, Opportunity>) newItems;
-        map<Id, opportunity> oldOpportunityMap = (Map<Id, Opportunity>) oldItems;
-        List<Opportunity> oppListforSalesOfficeUpdate = new List<Opportunity>();
         OpportunitiesHelper.setDefaultLetterAndLabel((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
-
-        for (Opportunity objOpportunity : newOpportunityMap.values()) {
-            if (oldOpportunityMap.get(objOpportunity.Id).RecordSharingKey__c != newOpportunityMap.get(objOpportunity.Id).RecordSharingKey__c) {
-                oppListforSalesOfficeUpdate.add(objOpportunity);
-            }
-        }
-        OpportunitiesHelper.populateSalesOfficeProgram(oppListforSalesOfficeUpdate);
-
+        OpportunitiesHelper.passOpportunityListToPopulateSalesOfficeProgram((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {

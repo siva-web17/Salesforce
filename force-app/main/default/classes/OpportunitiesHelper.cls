@@ -351,10 +351,25 @@ public class OpportunitiesHelper {
         return systemTask;
     }
 
+    public static void passOpportunityListToPopulateSalesOfficeProgram(Map<Id, Opportunity> newOpportunityMap, Map<Id, Opportunity> oldOpportunityMap) {
+        List<Opportunity> oppListforSalesOfficeUpdate = new List<Opportunity>(); 
+        try {
+            for (Opportunity objOpportunity : newOpportunityMap.values()) {
+                if (oldOpportunityMap.get(objOpportunity.Id).RecordSharingKey__c != newOpportunityMap.get(objOpportunity.Id).RecordSharingKey__c) {
+                    oppListforSalesOfficeUpdate.add(objOpportunity);
+                }
+            }
+            if (oppListforSalesOfficeUpdate.Size() > 0) {
+                populateSalesOfficeProgram(oppListforSalesOfficeUpdate);
+            }
+        }catch (Exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'passOpportunityListToPopulateSalesOfficeProgram', null);
+        }
+    }
+
     public static void populateSalesOfficeProgram(List<Opportunity> opportunityList) {
         Set<string> recordSharingValues = new Set<String>();
         Map<string, id> salesOfficeMap = new Map<string, id>();
-        try {
             for (Opportunity oppRecord : opportunityList) {
                 if (oppRecord.RecordSharingKey__c != '') {
                     recordSharingValues.add(oppRecord.RecordSharingKey__c);
@@ -375,10 +390,8 @@ public class OpportunitiesHelper {
                     }
                 }
             }
-        } catch (Exception ex) {
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSalesOfficeProgram', null);
-        }
     }
+
 
     public static void populateSourceBasedonSorceCodeAuto(List<Opportunity> oppList) {
         Set<String> sourceAutoCodeValues = new Set<String>();
