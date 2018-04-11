@@ -435,8 +435,16 @@ public class TasksHelper {
         return canSendBR;
     }
     //Create call task only if below condition are verified
-    public static Boolean canCreateCallTask() {
-        return (oppRecord != null) ? (!oppRecord.Account.PersonDoNotCall && !oppRecord.HasSystemCallTask__c ) : false;
+      public static Boolean canCreateCallTask() {
+        Boolean hasCallTaskInTempList = false;
+        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        for(Task task : tasksForActivitiesList.values()){
+            if(task.RecordTypeId == systemCallTaskRecordTypeId){
+                hasCallTaskInTempList = true;
+                break;
+            }
+        }
+        return (oppRecord != null) ? (!oppRecord.Account.PersonDoNotCall && !oppRecord.HasSystemCallTask__c && !hasCallTaskInTempList) : false;
     }
 
     //Here we check weather we have already task for perticular request which we wiil be saving
