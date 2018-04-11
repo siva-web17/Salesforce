@@ -16,7 +16,6 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
             RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
 
     public Database.QueryLocator start(Database.BatchableContext context){
-
         return Database.getQueryLocator(
                 'SELECT Id, MaxActiveBookingEndDate__c, (SELECT MainSalesResponsible__c, MaxEndDate__c, Program__c  FROM Bookings__r)'+
                         'FROM Account ' +
@@ -56,39 +55,12 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
             tasks.add(task);
             accounts.add(account);
         }
-
-        Database.SaveResult[] srList = Database.update(tasks, false);
-        Database.Error[] tasksErrors = new Database.Error[]{};
-        Database.Error[] accountsErrors = new Database.Error[]{};
-
-        for(Database.SaveResult saveResult : srList){
-            if(!saveResult.isSuccess()){
-                for(Database.Error err : saveResult.getErrors()){
-                    tasksErrors.add(err);
-                }
-            }
-        }
-        ExceptionHandler.bulkError(tasksErrors,'HCCTaskCreatorBatch', 'execute');
-
-        srList = Database.update(accounts, false);
-
-        for(Database.SaveResult saveResult : srList){
-            if(!saveResult.isSuccess()){
-                for(Database.Error err : saveResult.getErrors()){
-                    accountsErrors.add(err);
-                }
-            }
-        }
-        ExceptionHandler.bulkError(accountsErrors,'HCCTaskCreatorBatch', 'execute');
-
-        /*
         try{
             insert tasks;
             update accounts;
         }catch(Exception ex){
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'HCCTaskCreatorBatch', 'execute', null);
         }
-        */
     }
     public void finish(Database.BatchableContext bc){
     }
