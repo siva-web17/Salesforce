@@ -93,6 +93,7 @@ public class CreatePriceQuoteController {
                 }
             } else {
                 System.debug('In Last Else Loop ' + this.returnvalue);
+                this.returnvalue = 'Price Quotes can Be created for Non Completed Tasks and Active Opportunities only!!';
                 return this.returnvalue;
             }
         } catch (Exception ex) {
