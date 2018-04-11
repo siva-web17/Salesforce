@@ -7,7 +7,7 @@
     <formFactors>Large</formFactors>
     <label>Duplicates</label>
     <navType>Standard</navType>
-    <tab>dcBatch</tab>
+    <tabs>dcBatch</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Duplicates_UtilityBar</utilityBar>
 </CustomApplication>
