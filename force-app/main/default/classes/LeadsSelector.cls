@@ -14,7 +14,7 @@ public class LeadsSelector {
     public static List<Lead> getLeadsWithReservations(List<Lead> leads) {
         return [
                 select id, FirstName, LastName,status,City,PostalCode,phone,MobilePhone,OtherPhone__c,
-                        DOB__c,street,Email,Email2__c,CreationType__c,
+                        DOB__c,street,Email,Email2__c,CreationType__c,IsCAMOnly__c,
                         RequestType__c,Program__c,Market__c,InsertTime__c,ActivityDateTime__c,Region__c,
                         IsDupeProcessed__c,RecalculateRanking__c ,IsDupe__c,ReadyForRanking__c,Ranking__c
                 from Lead
@@ -28,7 +28,7 @@ public class LeadsSelector {
                  SELECT Id,
                         ActivityDateTime__c,
                         SourceCodeGroup__c,
-
+                        IsCAMOnly__c,
                         SourceCodeAuto__c,
                         PoseidonID__c,
                         RecalculateRanking__c ,
@@ -92,7 +92,7 @@ public class LeadsSelector {
         return [
                 select
                         id,FirstName,street,state,LastName,City,PostalCode,phone,MobilePhone,OtherPhone__c,
-                        DOB__c,Email,status,Email2__c,RequestType__c,TritonId__c,CreationType__c,
+                        DOB__c,Email,status,Email2__c,RequestType__c,TritonId__c,CreationType__c,IsCAMOnly__c,
                         Program__c,Market__c,InsertTime__c,ActivityDateTime__c,Region__c,IsDupeProcessed__c,
                         IsDupe__c,ReadyForRanking__c,Ranking__c
                 from Lead
@@ -110,7 +110,7 @@ public class LeadsSelector {
                         MobilePhone,OtherPhone__c,DoubleOptIn__c,DOB__c,Email,Email2__c,Product__c,
                         RequestType__c,Program__c,Market__c,InsertTime__c,ActivityDateTime__c,
                         Region__c,IsDupeProcessed__c,IsDupe__c,ReadyForRanking__c,CreationType__c,DoNotCall,
-                        Ranking__c,status,
+                        Ranking__c,status,IsCAMOnly__c,
                         ConvertedAccountId,ConvertedOpportunityId
                 from Lead
                 where Id in :leadIdList
@@ -122,7 +122,7 @@ public class LeadsSelector {
     public Static Map<Id,Lead> getLeadByConvertedOpportunityId(Set<Id> OppSet)
     {
         Map<Id,Lead> ConvertedLeadWithOppIdMap=new Map<Id,Lead>();
-        List<Lead> leadList=[Select Id,Name,FormSubmissionId__c,ConvertedOpportunityId from Lead where ConvertedOpportunityId in :OppSet];
+        List<Lead> leadList=[Select Id,IsCAMOnly__c,Name,FormSubmissionId__c,ConvertedOpportunityId from Lead where ConvertedOpportunityId in :OppSet];
         for (Lead leadRecord:leadList) {
             ConvertedLeadWithOppIdMap.put(leadRecord.ConvertedOpportunityId,leadRecord);
         }
@@ -132,7 +132,7 @@ public class LeadsSelector {
 
     public static Map<Id, Lead> getNotConvertedLeadMapById(List<Id> leadIdList) {
         Map<Id, Lead> leadMap = new Map<Id, Lead>([
-                select Id,status
+                select Id,status,IsCAMOnly__c
                 from Lead
                 where
                 IsConverted = false and Id in :leadIdList
@@ -142,7 +142,7 @@ public class LeadsSelector {
 
 
     public static List<Lead> getAllEventsAndTasksforLead(List<id> leadids) {
-        return [select id,status, (Select id,FalseBrochureProgramCodes__c,Type from tasks), (Select id from events) from lead where id in :leadids];
+        return [select id,status,IsCAMOnly__c, (Select id,FalseBrochureProgramCodes__c,Type from tasks), (Select id from events) from lead where id in :leadids];
     }
 
 
@@ -160,7 +160,7 @@ public class LeadsSelector {
         Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(recordTypeDeveloperName).Id;
         return [
                 SELECT
-                        Id,status, (SELECT Id, Program__c, Subject, OwnerId FROM Tasks WHERE RecordTypeId = :recordTypeId AND IsClosed = FALSE)
+                        Id,status,IsCAMOnly__c ,(SELECT Id, Program__c, Subject, OwnerId FROM Tasks WHERE RecordTypeId = :recordTypeId AND IsClosed = FALSE)
                 FROM Lead
                 WHERE Id IN :leadIds
         ];
@@ -178,7 +178,7 @@ public class LeadsSelector {
     public static List<Lead> getLeadsWithOpenActivities(Set<Id> leadIds) {
         return [
                 SELECT
-                        Id,status, (SELECT Id, OwnerId, IsTask FROM OpenActivities)
+                        Id,status,IsCAMOnly__c ,(SELECT Id, OwnerId, IsTask FROM OpenActivities)
                 FROM Lead
                 WHERE Id IN :leadIds
         ];
@@ -211,7 +211,7 @@ public class LeadsSelector {
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         return [
                 SELECT
-                        Id, Name, Status, Product__c, Program__c,OwnerId,
+                        Id, Name, Status, Product__c, IsCAMOnly__c,Program__c,OwnerId,
                         (SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c,IsExpressCall__c, IsClosed,Program__c, Type, IsClosed__c, IsParentClosing__c, RecordTypeId
                         FROM Tasks)
                 FROM Lead
@@ -226,7 +226,7 @@ public class LeadsSelector {
     * */
     public static List<Lead> getLeadsByIdsWithTasks(List<id> leadIds) {
         return [
-                SELECT Id, NumberOfCalls__c,status, (SELECT Id,IsExpressCall__c, WhoId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId FROM Tasks)
+                SELECT Id, IsCAMOnly__c,NumberOfCalls__c,status, (SELECT Id,IsExpressCall__c, WhoId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId FROM Tasks)
                 FROM Lead
                 WHERE Id in :leadIds
         ];
@@ -241,7 +241,7 @@ public class LeadsSelector {
     public static Map<Id,Lead>  getleadRecord (List<Id> leadIds) {
         Map<Id, Lead> leadMap = new Map<Id,Lead>();
         if (leadIds!=null) {
-            leadMap = new Map<Id, Lead>([select Id, SalesOffice__c from Lead where Id in :leadIds]);
+            leadMap = new Map<Id, Lead>([select Id, IsCAMOnly__c,SalesOffice__c from Lead where Id in :leadIds]);
         }
         return leadMap;
     }
