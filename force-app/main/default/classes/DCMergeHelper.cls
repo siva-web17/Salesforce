@@ -39,8 +39,7 @@ public without sharing class DCMergeHelper{
             {
                 list<Lead> retainedLeadList = new list<Lead>();
                 Lead retainedLead = (Lead)masterRecord;
-                retainedLead.ReadyForRanking__c = true;
-                retainedLead.IsDupe__c = false;  //Reset the flag to "Fasle" when we do the Automerge.
+               
                 retainedLeadList.add(retainedLead);
                 SObjectUnitOfWork.executeUpdateLeads(retainedLeadList);
             }
@@ -168,7 +167,7 @@ Version    Method   : 7/25/2017
     }
 
     public static void ChangeProgramOrStatusForMasterREcord(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList) {
-        List<Id> mergedIds = new List<Id>();
+         Set<Id> mergedIds = new Set<Id>();
         for (sobject sObj : mergedRecordList) {
             mergedIds.add(sObj.Id);
         }
@@ -178,9 +177,32 @@ Version    Method   : 7/25/2017
             Lead retainedLead = (Lead) masterRecord;
             retainedLead =
                 [select id,program__c,product__c,status,RequestType__c , createddate from lead where id=:retainedLead.id];
-            lead latestobjlead =
+            List<lead> latestobjleadList =
                 [select id,program__C,product__c,status,RequestType__c, createddate from lead where id in:mergedIds
-                    order by createddate desc limit 1];
+                    order by createddate desc];
+            
+            Lead latestobjlead;
+            if(latestobjleadList!=null && latestobjleadList.size()>0)
+            {
+             latestobjlead= latestobjleadList[0];        
+            
+            for(Lead leadRecord:latestobjleadList)
+            {
+            if(leadRecord.RequestType__c != 'CAM' || retainedLead.RequestType__c != 'CAM' 
+                )
+            {
+            retainedLead.IsCAMOnly__c=false;
+            break;
+            }
+               
+            }
+            }
+            system.debug('retainedLead Manual merge '+retainedLead);
+                retainedLead.ReadyForRanking__c = true;
+                retainedLead.isdupeprocessed__c=true;
+                retainedLead.IsDupe__c = false;  //Reset the flag to "Fasle" when we do the Automerge.
+                retainedLead.recalculateranking__c=true;
+            
 
             if(retainedLead.createddate > latestobjlead.createddate)
             {
@@ -196,7 +218,10 @@ Version    Method   : 7/25/2017
                   retainedLead.program__c=latestobjlead.program__c;
             }
             try{
-                update retainedLead;
+                    DcBusinessFlow.transferEvent(retainedLead,mergedIds,'Merge');
+                    DcBusinessFlow.transferNotes(retainedLead,mergedIds,'Merge');
+                    DcBusinessFlow.transferCampaignMember(retainedLead,mergedIds,'Merge');
+                 update retainedLead;
             }catch(exception ex){
                 ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                         'DCMergeHelper', 'ChangeProgramOrStatusForMasterRecord(', masterRecord.Id);
@@ -221,6 +246,7 @@ Version    Method   : 7/25/2017
                     ActiveOpportunity.Program__c = CustomerRequestActivityList.size()>1?CustomerRequestActivityList[1].Program__c:ActiveOpportunity.Program__c;
                 }
             }
+            ActiveOpportunity.recalculateranking__c=true;
             try{
                 update ActiveOpportunity;
             }catch(exception ex){

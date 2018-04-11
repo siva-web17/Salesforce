@@ -17,6 +17,7 @@ public class LeadsHelper {
     public static map<string, string> ruleNameRuleValMap = new map<string, string>();
     public static map<string, string>ruleNameAndTritonIdMap = new map<string, string>();
     public static Map<Id, List<Task>> leadIdTasksMap = new Map<Id, List<Task>>();
+ 
 
     public static void createShareRecordsOnInsert(List<Lead> leadList) {
         try {
@@ -126,15 +127,19 @@ public class LeadsHelper {
     //*********Lead Share code End here****************//
 
     //************* Lead Convert code here *******************//
+    
+
     public static void processRanking(Lead[] leads) {
         List<Lead> rankingLeads = new List<Lead>();
         List<Lead> leadRecords = new List<Lead>();
         Set<Id> leadID = new Set<id>();
         Set<Id> rankingLeadsId = new Set<id>();
+        system.debug('Inside process Ranking' +leads);
         //Taking out and condition in IF loop SF-2066 incomingRecords.ReadyForRanking__c
         for (Lead incomingRecords : leads) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
-                    && incomingRecords.IsDupe__c == false) {
+                    && incomingRecords.IsDupe__c == false  ) {
+                    //&& incomingRecords.ReadyForRanking__c
                 leadRecords.add(incomingRecords);
                 leadID.add(incomingRecords.ID);
             }
@@ -142,7 +147,8 @@ public class LeadsHelper {
         List<Lead> leadList = LeadsSelector.getLeadsOnId(leadID);
         for (Lead incomingRecords : leadList) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
-                    && incomingRecords.IsDupe__c == false) {
+                    && incomingRecords.IsDupe__c == false ) {
+                    // && incomingRecords.ReadyForRanking__c
                 incomingRecords.ReadyForRanking__c = false;
                 rankingLeads.add(incomingRecords);
                 rankingLeadsId.add(incomingRecords.id);
@@ -150,7 +156,7 @@ public class LeadsHelper {
         }
         if (rankingLeads.size() > 0) {
             //try {
-            SObjectUnitOfWork.ExecuteUpdateLeads(rankingLeads);
+            //SObjectUnitOfWork.ExecuteUpdateLeads(rankingLeads);
             system.debug('LeadsHelper-processRanking-Inside Convert');
             //proceed for Convertion
             List<Lead> afterRankingLeads = LeadsSelector.getLeadsOnId(rankingLeadsId);
@@ -167,6 +173,7 @@ public class LeadsHelper {
                     leadConversion.setLeadId(leadRecord.Id);
                     leadConversion.setConvertedStatus(System.Label.LeadStageConverted);
                     leadConversion.setOpportunityName(leadRecord.FirstName + ' ' + leadRecord.LastName);
+                    
                     leadConverts.add(leadConversion);
                 }
             }
