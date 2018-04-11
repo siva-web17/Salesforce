@@ -8,6 +8,8 @@ Modification Log   :
  * Developer                   Date                   Description
  * ----------------------------------------------------------------------------
  * Suresh S                  06/22/2017              Original Version
+ * Adam Osiecki              05/04/2018              Added try/catch block in method:
+ *                                                   WebServiceCallForRankingAfterFalseDupe
 *******************************************************************************/
 public class DcDiscardsHelper {
     public static void notifyRankingAfterInsert(List<dupcheck__dcDiscard__c > dcDiscardList) {
@@ -15,11 +17,10 @@ public class DcDiscardsHelper {
         system.debug('I am in dcdiscardhelper'+dcDiscardList);
         set<Id> leadIdList = new set<Id>();
         for (dupcheck__dcDiscard__c discardedItem : dcDiscardList) {
-             Id leadId = discardedItem.dupcheck__objectA__c; 
+             Id leadId = discardedItem.dupcheck__objectA__c;
             if(leadId.getSObjectType() == Lead.getSObjectType()){
                leadIdList.add(leadId);
             }
-           
         }
          List<Lead> leadUpdateList = new List<Lead>();
         leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
@@ -27,31 +28,29 @@ public class DcDiscardsHelper {
             lead.IsDupe__c = false;           
         }
        System.enqueueJob(new QueueClass(leadIdList));
-        
-        //Modify the leads with ready for ranking
-       
-          
-      
     }
+	
     @future (callout=true)
     Public Static void WebServiceCallForRankingAfterFalseDupe(set <id> leadIdList){
      List<Lead> leadUpdateList = new List<Lead>();
      Map<string,integer> leadIdAndRankMap = new Map<String,integer>();
         leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
-         List<RankingServiceResponse> finalResponse = DCBusinessFlowHelper.webServiceCallForRanking(leadUpdateList);       
-         for(RankingServiceResponse objRankingServiceResponse:finalResponse){
+        List<RankingServiceResponse> finalResponse = DCBusinessFlowHelper.webServiceCallForRanking(leadUpdateList);
+        for(RankingServiceResponse objRankingServiceResponse:finalResponse){
             leadIdAndRankMap.put(objRankingServiceResponse.LeadID,objRankingServiceResponse.Rank);
-         }
-         for(lead objLead:leadUpdateList){
-          if(leadIdAndRankMap.containskey(objLead.id) && leadIdAndRankMap.get(objLead.id)!=null){
-             objLead.ranking__c = leadIdAndRankMap.get(objLead.id); 
-             objLead.IsDupe__c  = false;
-             objLead.readyforranking__c = true;
-                        
-          }
-         }  
-         update leadUpdateList;
+        }
+        for(lead objLead:leadUpdateList){
+            if(leadIdAndRankMap.containskey(objLead.id) && leadIdAndRankMap.get(objLead.id)!=null){
+                objLead.ranking__c = leadIdAndRankMap.get(objLead.id);
+                objLead.IsDupe__c  = false;
+                objLead.readyforranking__c = true;
+            }
+        }
+        try{
+            update leadUpdateList;
+        }catch(exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'DcDiscardsHelper', 'WebServiceCallForRankingAfterFalseDupe', '');
+        }
     }
-
-
 }

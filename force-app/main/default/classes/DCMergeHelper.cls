@@ -9,6 +9,9 @@ Created Date       : 7/25/2017
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------
 * Aditi Sharma                7/25/2017            This class helps in implementing business scenarios on opportunities and task after account merge
+* Adam Osiecki                05/04/2017           Added try/catch block in methods: OnManualMerge, taskMergeReasonUpdateonMergeLead,
+*                                                  ChangeProgramOrStatusForMasterRecord, changeProgramOnOpportunityForPersonAccountMerge
+*
 *******************************************************************************/
 public without sharing class DCMergeHelper{
     public class CustomException extends Exception {}
@@ -16,36 +19,35 @@ public without sharing class DCMergeHelper{
     //This function is invoked when there is a manual merge of objects using DC (Lead to Lead or Account to Account)
     public static void OnManualMerge(String objectPrefix, Sobject masterRecord, Set < id > mergedRecordIds)
     {
+        try{
+            if(objectPrefix == System.Label.AccountPrefix) //001P
+            {
+                List<Opportunity> opps = OpportunitiesSelector.getOpportunitiesOnAccountId(masterRecord.Id);
+                Account masterAccount = AccountsSelector.GetAccountOnId(masterRecord.Id);
 
-        if (objectPrefix == System.Label.AccountPrefix) //001P
-        {
-            List<Opportunity> opps=OpportunitiesSelector.getOpportunitiesOnAccountId(masterRecord.Id);
-            Account masterAccount=AccountsSelector.GetAccountOnId(masterRecord.Id);
-            
-            List<Opportunity> freezableOpps=OpportunityStageUpdateOnMergeAccount(masterAccount,opps);
-            if (freezableOpps != null && freezableOpps.size() > 0) {
-                for (Opportunity freezableOpp : freezableOpps) {
-                    freezableOpp.isactive__c = false;
-                    freezableOpp.StageName=label.OppStageClosedLost;
-                    freezableOpp.CloseMainReason__c = 'Closed by System';
-                    freezableOpp.closedate = system.today();
+                List<Opportunity> freezableOpps = OpportunityStageUpdateOnMergeAccount(masterAccount,opps);
+                if(freezableOpps != null && freezableOpps.size()>0){
+                    for(Opportunity freezableOpp : freezableOpps){
+                        freezableOpp.isactive__c = false;
+                        freezableOpp.StageName = label.OppStageClosedLost;
+                        freezableOpp.CloseMainReason__c = 'Closed by System';
+                        freezableOpp.closedate = system.today();
+                    }
+                    SObjectUnitOfWork.ExecuteUpdateOpportunities(freezableOpps);
                 }
-                SObjectUnitOfWork.ExecuteUpdateOpportunities(freezableOpps);
+            }else if(objectPrefix == System.Label.LeadPrefix) // "00Q"
+            {
+                list<Lead> retainedLeadList = new list<Lead>();
+                Lead retainedLead = (Lead)masterRecord;
+                retainedLead.ReadyForRanking__c = true;
+                retainedLead.IsDupe__c = false;  //Reset the flag to "Fasle" when we do the Automerge.
+                retainedLeadList.add(retainedLead);
+                SObjectUnitOfWork.executeUpdateLeads(retainedLeadList);
             }
-
-          
+        }catch(exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(),ex.getStackTraceString(),
+                    'DCMergeHelper','OnManualMerge',masterRecord.Id);
         }
-        else if (objectPrefix == System.Label.LeadPrefix ) // "00Q"
-        {
-            list<Lead> retainedLeadList = new list<Lead>();
-            Lead retainedLead=(Lead)masterRecord;
-            retainedLead.ReadyForRanking__c=true;
-            retainedLead.IsDupe__c=false;  //Reset the flag to "Fasle" when we do the Automerge.
-            retainedLeadList.add(retainedLead);
-            SObjectUnitOfWork.executeUpdateLeads(retainedLeadList);
-
-        }
-
     }
     //This function decides what to be done with the opportunities when multiple person accounts are merged
   /*
@@ -156,7 +158,12 @@ Version    Method   : 7/25/2017
             for (event mergedTask : mergedEvent ) {
                 mergedTask.MergeReason__c = System.Label.MergeReasonManual;
             }
-             SObjectUnitOfWork.executeUpdateEvents(mergedEvent);
+            try{
+                SObjectUnitOfWork.executeUpdateEvents(mergedEvent);
+            }catch(exception ex){
+                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                        'DCMergeHelper', 'taskMergeReasonUpdateonMergeLead', masterRecord.Id);
+            }
         }
     }
 
@@ -188,7 +195,12 @@ Version    Method   : 7/25/2017
             else if(latestobjlead.RequestType__c == 'RES' || retainedLead.program__c=='MULTI'){
                   retainedLead.program__c=latestobjlead.program__c;
             }
-            update retainedLead;
+            try{
+                update retainedLead;
+            }catch(exception ex){
+                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                        'DCMergeHelper', 'ChangeProgramOrStatusForMasterRecord(', masterRecord.Id);
+            }
         }
 
     }
@@ -209,7 +221,12 @@ Version    Method   : 7/25/2017
                     ActiveOpportunity.Program__c = CustomerRequestActivityList.size()>1?CustomerRequestActivityList[1].Program__c:ActiveOpportunity.Program__c;
                 }
             }
-            update ActiveOpportunity;
+            try{
+                update ActiveOpportunity;
+            }catch(exception ex){
+                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                        'DCMergeHelper', 'changeProgramOnOpportunityForPersonAccountMerge(', masterRecord.Id);
+            }
         }
     }
         public static void validationForHasBookingAccountMerge(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList){

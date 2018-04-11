@@ -666,8 +666,10 @@ public class TestDataFactory {
 
         override
         private void setDefaultFieldValues(){
+            DefaultPicklistValuesHelper picklistValuesHelper = new DefaultPicklistValuesHelper();
             this.setField('Name', 'Test Opportunity '+RecordBuilderCounter).setField('StageName','Prospecting').setField('CloseDate', System.today());
             this.setField('IsActive__c', true);
+            this.setField('Market__c', picklistValuesHelper.market);
         }
 
         public RecordBuilder withPersonAccount(String firstName, String lastName){

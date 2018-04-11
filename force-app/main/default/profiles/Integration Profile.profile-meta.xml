@@ -860,10 +860,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ErrorTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -5178,6 +5174,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>NoteMigration__c.IsByConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>NoteMigration__c.IsProcessed__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5189,6 +5190,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>NoteMigration__c.LeadId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>NoteMigration__c.Market__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

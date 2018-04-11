@@ -38,7 +38,6 @@ public class TasksHelper {
     public static Id eventId;
     public static Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
 
-
     public static void convertActivitiesToTask(List<Opportunity> opportunityRecord) {
         Id parentId;
         Map<Id, List<Task>> currentTaskMap = new Map<Id, List<Task>>();
@@ -60,17 +59,7 @@ public class TasksHelper {
                         parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
                     }
 
-                    //Here we will get mix of LEAD and opportunity records
-                    //Here we are getting all the activities for parent
-                    //activityMap = EventsSelector.getAllActivities(parentIdList);
-                    //taskSettingsMap = getTaskSettings();
-                    //Here we are getting all the tasks for parent
-
-                    //########Commented by suresh..why u need this ???*********
-                    //currentTaskMap = TasksSelector.getAllTasksForparent(parentIdList) ;
-
                     try {
-
                         for (Id parentIds : activityMap.keySet()) {
                             for (Event parentActivity : activityMap.get(parentIds)) {
                                 if(parentActivity == null)
@@ -79,11 +68,8 @@ public class TasksHelper {
                                 }
                                 eventRecord = parentActivity;
                                 eventId = parentActivity.Id;
-                                //Here we are processing record by record for parent object(LEAD/OPPORTUNITY
-                                //parentId = parentActivity.whatId != null ? parentActivity.whatId : parentActivity.WhoId;
 
                                 Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
-                                //leadrecord = parentLeadMap.containsKey(parentId) ? parentLeadMap.get(parentId) : null;
                                 oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
 
                                 //Filter tasks based on task type
@@ -94,7 +80,6 @@ public class TasksHelper {
                                 tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
                                 parentActivity.ProcessedforTaskcreation__c = true;
                                 eventsToUpdateList.add(parentActivity);
-
                             }
                         }
                         if (tasksForActivitiesList.size() > 0) {
@@ -107,18 +92,14 @@ public class TasksHelper {
                                 'Tasks', 'convertActivitiesToTask', eventId);
                     }
                 }
-
             }
-
         }
     }
 
     public static List<Event> getEventToBeProcessed(List<Event> events) {
-        //Opportunity oppRecord = [select id, stagename from opportunity where id in: events.whatid];
 
         List<Event> eventsToBeProcessed = new List<Event>();
         for (Event event : events) {
-           // if(event.Type !='CAM'|| event.Type !='IM'|| event.Type !='BR'|| event.Type !='CBR'||event.Type !='CBR' ){
             if( event.Type != system.label.CAM && event.Type !=system.label.InfoMeeting &&
                     event.Type !=system.label.BrochureRequest && event.Type !=system.label.CampaignBrochureRequest &&
                     event.Type != system.label.IR ){
@@ -144,30 +125,25 @@ public class TasksHelper {
         List<Task> taskClosedList = new List<Task>();
         List<Task> taskOpenList = new List<Task>();
         for (Task parentTask : currentParentTaskList) {
-            System.debug('parentTask.Type :'+parentTask.Type );
             if ((parentTask.Type == SalesTasks.Call.name()
                     || parentTask.Type == SalesTasks.FUA.name()
                     || parentTask.Type == SalesTasks.FUP.name()
                     || parentTask.Type == SalesTasks.UCC.name())) {
-
-                if (parentTask.IsClosed__c)
-                    taskClosedList.add(parentTask); else
-                        taskOpenList.add(parentTask);
-
-
+                if (parentTask.IsClosed__c){
+                    taskClosedList.add(parentTask);
+                }else{
+                    taskOpenList.add(parentTask);
+                }
             } else if (parentTask.Type == SalesTasks.SBR.name() && CurrentProgram == parentTask.Program__c) {
                 brochureRequestTaskList.add(parentTask);
             } else if (parentTask.Type == SalesTasks.SPQ.name()) {
                 priceQuoteTaskList.add(parentTask);
             }
-
-
         }
         if (taskClosedList.size() > 0) {
             currentParentTaskMap.put(SalesTasks.CLOSEDCALL.name(), taskClosedList);
         }
         if (taskOpenList.size() > 0) {
-
             currentParentTaskMap.put(SalesTasks.OPENCALL.name(), taskOpenList);
         }
         if (brochureRequestTaskList.size() > 0) {
@@ -180,18 +156,17 @@ public class TasksHelper {
     }
 
     //This will return an List to upsert based on rules and condition
-    public static Map<String, Task> saveActivityDataToTask(
-            Map<String, List<Task>> currentTasksOfParentMap,
-            Event parentActivity) {
+    public static Map<String, Task> saveActivityDataToTask(Map<String, List<Task>> currentTasksOfParentMap, Event parentActivity) {
         Map<String, Task> upsertTasksRecordList = new Map<String, Task>();
         if (taskSettingsMap.containsKey(parentActivity.Type)) {
-
             TaskSetting__mdt objCurrentType = taskSettingsMap.get(parentActivity.Type);
             Map<String, String[]> saveTypeMap = returnTaskToSave(objCurrentType);
-            upsertTasksRecordList = finalTaskListToSave
-                    (saveTypeMap,
-                            currentTasksOfParentMap,
-                            parentActivity, null);
+            upsertTasksRecordList = finalTaskListToSave(
+                    saveTypeMap,
+                    currentTasksOfParentMap,
+                    parentActivity,
+                    null
+            );
         }
         return upsertTasksRecordList;
     }
@@ -250,7 +225,6 @@ public class TasksHelper {
                                 && currentParentTaskMap.size() > 0
                                 && !currentParentTaskMap.containsKey(SalesTasks.MCR.name())
                                 ) {
-
                             hasCallTask = false;
                             isClosedOpportunity = false;
                         }
@@ -274,8 +248,6 @@ public class TasksHelper {
                         else {
                             canCreateTask = true;
                         }
-
-
                     }
                     newTask.type = typeOfTask;
                     Id id = (leadrecord != null ? requestEventObject.WhoId : requestEventObject.WhatId);
@@ -300,7 +272,6 @@ public class TasksHelper {
                     TaskSetting__mdt objTaskSettingMap = taskSettingsMap.get(type);
                     boolean canUpdateTask = false;
                     if (currentParentTaskMap.containsKey(SalesTasks.OPENCALL.name())) {
-                        //closedTaskList=new List<Task>();
                         //As Per rules update
                         canUpdateTask = true;
                         tasktype = currentParentTaskMap.get(SalesTasks.OPENCALL.name())[0].type;
@@ -319,7 +290,6 @@ public class TasksHelper {
                             // if (requestEventObject != null && (currentParentProgram == requestEventObject.Program__c))
                             if (requestEventObject != null)
                                 objUpdateTask = updateTaskRulesForActivity(closedTaskList, currentActiveTaskToUpdate);
-
 
                             if (requestEventObject != null) {
                                 objUpdateTask = updateIsExpressCallOnSystemCallTask(closedTaskList,currentActiveTaskToUpdate, requestEventObject.IsExpressCall__c);
@@ -346,12 +316,10 @@ public class TasksHelper {
                         for (String Item : groupItems) {
                             if (currentParentTaskMap.containsKey(Item)) {
                                 for (Task currentTask : currentParentTaskMap.get(Item)) {
-
                                     if (!currentTask.IsClosed__c) {
                                         canInsertTask = true;
                                         break;
                                     }
-
                                 }
                                 if (canInsertTask) {
                                     //Create Task FUP
@@ -362,8 +330,6 @@ public class TasksHelper {
                 }
             }
         }
-
-
         return taskList;
     }
 
@@ -378,14 +344,9 @@ public class TasksHelper {
             }
             //we will update this only if the Sales user has not spoken to customer today.
             if (tasktoUpdate != null)
-
                 tasktoUpdate.FollowUpDate__c = Datetime.now();
                 tasktoUpdate.ActivityDate = Datetime.now().Date();
-            // tasktoUpdate.IsExpressCall__c = isExpressCall;
-
         }
-
-
         return tasktoUpdate;
     }
     //update IsExpressCal Flag on Task
@@ -395,13 +356,8 @@ public class TasksHelper {
         listOfCallTask = [select id,type,recordtype.developername from task where id in:listOfCallTask AND Type = :TasksHelper.CALL AND RecordTypeId = :systemCallTaskRecordTypeId];
 
         if (listOfCallTask != null && isExpressCall) {
-
             tasktoUpdate.IsExpressCall__c = isExpressCall ;
-
         }
-
-        //update listOfCallTask[0];
-
         return tasktoUpdate;
     }
 
@@ -432,7 +388,6 @@ public class TasksHelper {
         } else {
             newTask = objTask;
         }
-
         return newTask;
     }
 
@@ -440,8 +395,7 @@ public class TasksHelper {
     public static Boolean canSendBrochure(List<Task> taskList, String currentRequestProgram, Lead leadRecord, opportunity oppRecord) {
         boolean canSendBR = false;
         String temp = '';
-        //canSendBR = oppRecord != null ? (oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c) : false;
-        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport && oppRecord.StageName!=system.label.OpportunityBookingStage))|| (oppRecord.Account.HasAddress__c && (oppRecord.StageName!=system.label.OpportunityBookingStage) && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false; 
+        canSendBR = oppRecord != null ? ((oppRecord.Account.HasAddress__c && oppRecord.SendBrochure__c && (oppRecord.CreationMethod__c!=system.label.EFCOM && oppRecord.CreationMethod__c!=system.label.ExcelImport && oppRecord.StageName!=system.label.OpportunityBookingStage))|| (oppRecord.Account.HasAddress__c && (oppRecord.StageName!=system.label.OpportunityBookingStage) && (!oppRecord.SendBrochure__c) && (oppRecord.CreationMethod__c==system.label.EFCOM || oppRecord.CreationMethod__c==system.label.ExcelImport)))  : false;
         if (!canSendBR) {
             return canSendBR;
         }
@@ -450,7 +404,6 @@ public class TasksHelper {
         If (taskList != null && taskList.size() > 0) {
             for (Task taskRecord : taskList) {
                 if (marketProgramSetting.containsKey(temp)) {
-
                     if (taskRecord.IsClosed__c && (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == null
                             || marketProgramSetting.get(temp).AutoCloseBrochureRequest__c == 0
                             || (marketProgramSetting.get(temp).AutoCloseBrochureRequest__c
@@ -466,14 +419,11 @@ public class TasksHelper {
                         canSendBR = true;
                         break;
                     }
-
                 }
-
                 else if (taskRecord.Program__c == currentRequestProgram && !taskRecord.IsClosed__c) {
                     canSendBR = false;
                     break;
                 }
-
             }
         } else {
             if (marketProgramSetting.containsKey(temp)) {
@@ -509,6 +459,7 @@ public class TasksHelper {
         return hasTaskToCreate;
     }
 
+    //
     public static Boolean closeTasksOnParent(Id parentId) {
         try {
             List<Task> tasksToBeClosed = new List<Task>();
@@ -556,7 +507,6 @@ public class TasksHelper {
                 leadTasks.put(t.Id, t);
             }
         }
-
         if (parentLeadIds.size() > 0) {
             processLeads(parentLeadIds, leadTasks);
         }
@@ -566,59 +516,72 @@ public class TasksHelper {
         Map<Id, Lead> processedLeadsByIds = new Map<Id, Lead>();
         List<Lead> leadsToProcess = LeadsSelector.getLeadsByIdsWithTasks(new List<Id>(idsToProcess));
         Map<Id, Map<Id, Task>> tasksByLeadIds = new Map<Id, Map<Id, Task>>();
-        for (Lead lead : leadsToProcess) {
-            for (Task leadTask : lead.Tasks) {
-                if (!tasksByLeadIds.containsKey(lead.Id)) {
-                    tasksByLeadIds.put(lead.Id, new Map<Id, Task>());
+
+        try{
+            for (Lead lead : leadsToProcess) {
+                for (Task leadTask : lead.Tasks) {
+                    if (!tasksByLeadIds.containsKey(lead.Id)) {
+                        tasksByLeadIds.put(lead.Id, new Map<Id, Task>());
+                    }
+                    tasksByLeadIds.get(lead.Id).put(leadTask.Id, leadTask);
                 }
-                tasksByLeadIds.get(lead.Id).put(leadTask.Id, leadTask);
-            }
-        }
-
-        for (Task t : updatedTasksByIds.values()) {
-            if (!tasksByLeadIds.containsKey(t.WhoId)) {
-                tasksByLeadIds.put(t.WhoId, new Map<Id, Task>());
-            }
-            tasksByLeadIds.get(t.WhoId).put(t.Id, t);
-        }
-
-        for (Id leadId : tasksByLeadIds.keySet()) {
-            Lead currentLead;
-            if (processedLeadsByIds.containsKey(leadId)) {
-                currentLead = processedLeadsByIds.get(leadId);
-            } else {
-                currentLead = new Lead(Id = leadId);
             }
 
-            updatePendingToDoList(currentLead, tasksByLeadIds.get(leadId).values());
-            updateNumberOfCompletedCalls(currentLead, tasksByLeadIds.get(leadId).values());
+            for (Task t : updatedTasksByIds.values()) {
+                if (!tasksByLeadIds.containsKey(t.WhoId)) {
+                    tasksByLeadIds.put(t.WhoId, new Map<Id, Task>());
+                }
+                tasksByLeadIds.get(t.WhoId).put(t.Id, t);
+            }
 
-            processedLeadsByIds.put(leadId, currentLead);
-        }
+            for (Id leadId : tasksByLeadIds.keySet()) {
+                Lead currentLead;
+                if (processedLeadsByIds.containsKey(leadId)) {
+                    currentLead = processedLeadsByIds.get(leadId);
+                } else {
+                    currentLead = new Lead(Id = leadId);
+                }
 
-        if (processedLeadsByIds.values().size() > 0) {
-            update processedLeadsByIds.values();
+                updatePendingToDoList(currentLead, tasksByLeadIds.get(leadId).values());
+                updateNumberOfCompletedCalls(currentLead, tasksByLeadIds.get(leadId).values());
+
+                processedLeadsByIds.put(leadId, currentLead);
+            }
+
+            if (processedLeadsByIds.values().size() > 0) {
+                update processedLeadsByIds.values();
+
+            }
+        }catch(exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(),ex.getStackTraceString(),
+                    'Tasks','convertActivitiesToTask',null);
         }
     }
 
     private static void updateOpportunities(Map<Id, Task> tasksByIds, Map<Id, Task> oldTasksByIds) {
         Set<Id> parentOppIds = new Set<Id>();
         Map<Id, Task> updatedOpportunityTasks = new Map<Id, Task>();
-        for (Task t : tasksByIds.values()) {
-            if (t.WhatId != NULL && t.WhatId.getSobjectType() == Schema.Opportunity.SObjectType) {
-                parentOppIds.add(t.WhatId);
-                updatedOpportunityTasks.put(t.Id, t);
-            }
-        }
 
-        if (parentOppIds.size() > 0) {
-            Map<Id,Opportunity> opportunitiesToProcess = new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentOppIds)));
-            summarizeOpportunityFields(opportunitiesToProcess, updatedOpportunityTasks);
-            //only for new tasks
-            if(oldTasksByIds == NULL) {
-                updateOpportunityFields(opportunitiesToProcess, updatedOpportunityTasks);
+        try{
+            for (Task t : tasksByIds.values()) {
+                if (t.WhatId != NULL && t.WhatId.getSobjectType() == Schema.Opportunity.SObjectType) {
+                    parentOppIds.add(t.WhatId);
+                    updatedOpportunityTasks.put(t.Id, t);
+                }
             }
-            update opportunitiesToProcess.values();
+
+            if (parentOppIds.size() > 0) {
+                Map<Id,Opportunity> opportunitiesToProcess = new Map<Id, Opportunity>(OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentOppIds)));
+                summarizeOpportunityFields(opportunitiesToProcess, updatedOpportunityTasks);
+                //only for new tasks
+                if(oldTasksByIds == NULL) {
+                    updateOpportunityFields(opportunitiesToProcess, updatedOpportunityTasks);
+                }
+                update opportunitiesToProcess.values();
+            }
+        }catch(Exception ex){
+            ExceptionHandler.errorLog(ex.getMessage(),ex.getStackTraceString(),
+                    'Tasks','updateOpportunities',null);
         }
     }
 
@@ -647,7 +610,7 @@ public class TasksHelper {
             Opportunity currentOpportunity = opportunitiesToProcess.get(oppId);
 
             updatePendingToDoList       (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
-            updateBrochuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
+            updateBorchuresToSentList   (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSentBrochuresList     (currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateNumberOfCompletedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
             updateSendBrochureDueDateTime(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -664,6 +627,12 @@ public class TasksHelper {
             tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
         }
 
+        for (Task t : updatedTasksByIds.values()) {
+            if (!tasksByOpportunityIds.containsKey(t.WhatId)) {
+                tasksByOpportunityIds.put(t.WhatId, new Map<Id, Task>());
+            }
+            tasksByOpportunityIds.get(t.WhatId).put(t.Id, t);
+        }
         for (Id oppId : tasksByOpportunityIds.keySet()) {
             Opportunity currentOpportunity = opportunitiesToProcessByIds.get(oppId);
             updateNumberOfUnreachedCalls(currentOpportunity, tasksByOpportunityIds.get(oppId).values());
@@ -716,7 +685,7 @@ public class TasksHelper {
         toUpdate.put('PendingToDo__c', String.join(new List<String>(pendingToDo), SEPARATOR));
     }
 
-    private static void updateBrochuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
+    private static void updateBorchuresToSentList(Opportunity opportunity, Task[] opportunityTasks) {
         Set<String> brochuresToSend = new Set<String>();
         for (Task t : opportunityTasks) {
             if (isTaskRecordType(SBR_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.TaskResult__c != DO_NOT_SEND_BROCHURE && !t.IsClosed) {
@@ -780,13 +749,18 @@ public class TasksHelper {
         if (parentOppIdsWithSBRTask.size() > 0) {
             List<Opportunity> toUpdate = new List<Opportunity>();
             Map<Id, Date> accountBirthdatesByOppIds = new Map<Id, Date>();
-            for(Opportunity opp : OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentOppIdsWithSBRTask))){
-                toUpdate.add(opp);
-                accountBirthdatesByOppIds.put(opp.Id, opp.Account.PersonBirthdate);
-            }
-            List<Opportunity> changedOpportunities = OpportunitiesHelper.setTemplatesForOpportunities(toUpdate, accountBirthdatesByOppIds);
-            if(changedOpportunities.size() > 0){
-                update changedOpportunities;
+            try{
+                for(Opportunity opp : OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentOppIdsWithSBRTask))){
+                    toUpdate.add(opp);
+                    accountBirthdatesByOppIds.put(opp.Id, opp.Account.PersonBirthdate);
+                }
+                List<Opportunity> changedOpportunities = OpportunitiesHelper.setTemplatesForOpportunities(toUpdate, accountBirthdatesByOppIds);
+                if(changedOpportunities.size() > 0){
+                    update changedOpportunities;
+                }
+            }catch(exception ex){
+                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                        'Tasks', 'setDefaultLetterAndLabelOnOpportunities', null);
             }
         }
     }
@@ -852,7 +826,6 @@ public class TasksHelper {
         else if((task.WhoId != NULL && task.WhoId.getSobjectType() == Lead.getSObjectType()) && task.WhatId == NULL ) {
             return Lead.getSObjectType();
         }
-
         return null;
     }
 

@@ -109,38 +109,44 @@ private class OpportunityTriggerTest {
     }
 
     static testMethod void whenOwnerChangesCreateSystemCallTasks() {
-        User u = TestDataFactory.createAdminUser(true);
-        Integer numberOfLeads = 50;
-        List<Opportunity> opplist = [
-                SELECT name, ID,Program__c,SalesOffice__c, RecordSharingKey__c, Market__c, AccountId, Account.PersonBirthdate,
-                        TemplateKey__c, OwnerId, IsActive__c
-                FROM Opportunity
-        ];
-        TestDataFactory.OpportunityBuilder OpportunityBuilder = new TestDataFactory.OpportunityBuilder();
-        OpportunityBuilder.setDefaultPicklistHelper(picklistValuesHelper);
-        Opportunity[] Opp = new Opportunity[]{
-        };
-        Task[] systemTasks = new Task[]{
-        };
-        for (Integer i = 0; i < numberOfLeads; i++) {
-            Opp.add((Opportunity) OpportunityBuilder.build().getRecord());
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+            User u = TestDataFactory.createAdminUser(true);
+            Integer numberOfLeads = 50;
+            List<Opportunity> opplist = [
+                    SELECT name, ID,Program__c,SalesOffice__c, RecordSharingKey__c, Market__c, AccountId, Account.PersonBirthdate,
+                            TemplateKey__c, OwnerId, IsActive__c
+                    FROM Opportunity
+            ];
+            TestDataFactory.OpportunityBuilder OpportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            OpportunityBuilder.setDefaultPicklistHelper(picklistValuesHelper);
+            Opportunity[] Opp = new Opportunity[]{
+            };
+            Task[] systemTasks = new Task[]{
+            };
+            for (Integer i = 0; i < numberOfLeads; i++) {
+                Opp.add((Opportunity) OpportunityBuilder.build().getRecord());
+            }
+            insert Opp;
+            for (Opportunity O : Opp) {
+                O.OwnerId = u.Id;
+            }
+            Test.startTest();
+            update Opp;
+            Test.stopTest();
+            Id recordId;
+            List<id> oppID = new List<id>();
+            Set<String> taskRecordTypes = new Set<String>();
+            Opportunity[] updatedOpportunity = OpportunitiesSelector.getOpportunitiesWithTasksByIdAndTaskRecordType(oppID, taskRecordTypes);
+            System.assert(updatedOpportunity.size() == 0);
+            for (Opportunity O : updatedOpportunity) {
+                System.assertEquals(1, O.Tasks.size(), 'Opportunity should have one and only one system call task');
+                System.assertEquals(u.Id, O.Tasks[0].OwnerId, 'Task should be reassigned to new Lead Owner');
+                OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opplist[0]);
+            }
         }
-        insert Opp;
-        for (Opportunity O : Opp) {
-            O.OwnerId = u.Id;
-        }
-        Test.startTest();
-        update Opp;
-        Test.stopTest();
-        Id recordId;
-        List<id> oppID = new List<id>();
-        Set<String> taskRecordTypes = new Set<String>();
-        Opportunity[] updatedOpportunity = OpportunitiesSelector.getOpportunitiesWithTasksByIdAndTaskRecordType(oppID, taskRecordTypes);
-        System.assert(updatedOpportunity.size() == 0);
-        for (Opportunity O : updatedOpportunity) {
-            System.assertEquals(1, O.Tasks.size(), 'Opportunity should have one and only one system call task');
-            System.assertEquals(u.Id, O.Tasks[0].OwnerId, 'Task should be reassigned to new Lead Owner');
-            OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opplist[0]);
-        }
+
     }
 }

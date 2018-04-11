@@ -200,6 +200,7 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Program__c</fields>
+        <fields>PreApplicationDate__c</fields>
         <fields>BookingDate__c</fields>
         <fields>Status__c</fields>
         <relatedList>Booking__c.OpportunityId__c</relatedList>

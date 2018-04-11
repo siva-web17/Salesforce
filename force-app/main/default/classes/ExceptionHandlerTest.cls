@@ -83,10 +83,25 @@ private class ExceptionHandlerTest {
     static void When_BulkErrorIsThrown_Expect_BulkErrorLogIsCreated(){
 
         Opportunity[] opportunities = new Opportunity[]{};
+        Account[] accounts = new Account[]{};
         Integer numberOfRecords = 5;
 
         for(Integer i = 0; i<numberOfRecords; i++){
+            TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+            TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
+            pab.setField('FirstName', 'TestFirstName').setField('LastName', 'TestLastName');
+            pab.setField('Market__c', picklistValuesHelper.market);
+            pab.setField('PersonBirthdate', System.today().addYears(-50));
+            Account testAccount = (Account)pab.getRecord();
+            accounts.add(testAccount);
+        }
+
+        insert accounts;
+        accounts = [SELECT Id FROM Account];
+
+        for(Integer i = 0; i<numberOfRecords; i++){
             Opportunity testOpp = (Opportunity)(new TestDataFactory.OpportunityBuilder()).getRecord();
+            testOpp.AccountId = accounts[i].Id;
             opportunities.add(testOpp);
         }
         insert opportunities;

@@ -133,7 +133,7 @@ public class AccountsService {
             returnMessage = ex.getMessage();
             System.debug('returnMessage ' + returnMessage);
             ExceptionHandler.errorLogAsync(ex.getMessage(), ex.getStackTraceString(),
-                    'AccountsHelper', 'saveAccountInformation', '');
+                    'AccountsHelper', 'saveAccountInformation', null);
         }
         return returnMessage;
 
