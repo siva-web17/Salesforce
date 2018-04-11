@@ -41,12 +41,12 @@ public class DCBusinessFlow {
                    }
                                                    
                }
-
                for (string objectType : searchResults.keySet()) {
                     List<Object> duplicateObjects = (List<Object>) searchResults.get(objectType);
                     system.debug('Lead list size'+duplicateObjects.size());
                     if (duplicateObjects.size() == 1 && allDuplicateRecords.size()==1) {
-                        sourceLead.IsDupe__c = true ;
+                         sourceLead.IsDupe__c = true ;
+                         noDupe = false;
                         //Lead - Leads are duplicates
                         if (objectType == System.Label.LeadPrefix) {
                             isLeadDupe = true;
@@ -69,6 +69,7 @@ public class DCBusinessFlow {
                         sourceLead.IsDupe__c = true ;
                         numberOfDuplicate='Multiple';
                         noDupe = false;
+                        break;
                     }
                     else if(duplicateObjects.size()==0){
                         noDupe = true;
@@ -118,12 +119,15 @@ public class DCBusinessFlow {
                     finalLead.isdupe__c = false;
                     finalLead.readyforranking__c=false;
                     finalLead.RecalculateRanking__c = true;
-                    update finalLead;
-                    transferEvent(duplicateLead,sourceLead,finalDecision);
-                    transferNotes(duplicateLead,sourceLead,finalDecision);
-                    transferCampaignMember(duplicateLead,sourceLead,finalDecision);
+                    finalLead.IsCAMOnly__c=!(duplicateLead.RequestType__c != 'CAM' || sourceLead.RequestType__c != 'CAM' );
+                    Set<Id> duplicateLeadIdSet=new Set<Id>();
+                    duplicateLeadIdSet.add(sourceLead.Id);
+                    transferEvent(duplicateLead,duplicateLeadIdSet,finalDecision);
+                    transferNotes(duplicateLead,duplicateLeadIdSet,finalDecision);
+                    transferCampaignMember(duplicateLead,duplicateLeadIdSet,finalDecision);
+                      update finalLead;
                     SObjectUnitOfWork.deleteLead(sourceLead);
-                     
+                  
                 }
                 else{
                     SObjectUnitOfWork.executeUpdateLeads(new List<Lead>{sourceLead});
@@ -187,10 +191,10 @@ public class DCBusinessFlow {
     }
 
     //transfer the event from duplicate lead to source lead
-    public static void transferEvent(Lead sourceLead, Lead duplicateLead,String decisionName) {
+    public static void transferEvent(Lead sourceLead, Set<Id> duplicateLeadIdSet,String decisionName) {
         List<Event> eventList = new List<Event>();        
-        for(Event eventRecord : [Select id,WhoId,Type From Event Where WhoId=:duplicateLead.id
-        ORDER BY CreatedDate DESC]) {
+        for(Event eventRecord : [Select id,WhoId,Type From Event Where WhoId in:duplicateLeadIdSet
+                ORDER BY CreatedDate DESC]) {
             eventRecord.whoId = sourceLead.id;
             eventRecord.MergeReason__c = decisionName;
             eventList.add(eventRecord);
@@ -198,9 +202,9 @@ public class DCBusinessFlow {
         SObjectUnitOfWork.executeUpdateEvents(eventList);
         
     }
-  public static void transferNotes(Lead sourceLead, Lead duplicateLead,String decisionName){
+  public static void transferNotes(Lead sourceLead, Set<Id> duplicateLeadIdSet,String decisionName){
       list<contentDocumentLink> contentDocumentLink = new list<contentDocumentLink>();
-      for(contentDocumentLink objContentDocLink : [select id,ContentDocumentId ,LinkedEntityId from contentDocumentLink where LinkedEntityId=:duplicateLead.id]){
+      for(contentDocumentLink objContentDocLink : [select id,ContentDocumentId ,LinkedEntityId from contentDocumentLink where LinkedEntityId in:duplicateLeadIdSet]){
         contentDocumentLink  contentDocumentLinkTransferObject = new contentDocumentLink ();
         contentDocumentLinkTransferObject.ContentDocumentId = objContentDocLink.ContentDocumentId;
         contentDocumentLinkTransferObject .LinkedEntityId = sourceLead.id;
@@ -210,9 +214,9 @@ public class DCBusinessFlow {
       insert contentDocumentLink;
     
     }
-      public static void transferCampaignMember(Lead sourceLead, Lead duplicateLead,String decisionName){
+      public static void transferCampaignMember(Lead sourceLead, Set<Id> duplicateLeadIdSet,String decisionName){
       List<campaignMember> campaignMemberList = new List<CampaignMember>();
-        for(campaignMember objcampaignMember : [select Leadid,id,status,campaignid from campaignmember where leadid=:duplicateLead.id]){
+        for(campaignMember objcampaignMember : [select Leadid,id,status,campaignid from campaignmember where leadid in:duplicateLeadIdSet]){
             campaignMember campaignMemberForTransfer = new campaignMember();
             campaignMemberForTransfer.campaignId = objcampaignMember.campaignid;
             campaignMemberForTransfer.status = objcampaignMember.status;

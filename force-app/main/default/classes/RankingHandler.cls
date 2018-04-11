@@ -41,15 +41,15 @@ public class RankingHandler {
                     objLS = MapLegalSetting.get(leadRecord.Market__c);
                     system.debug('Doubleoptin>>>>>'+objLS);
                     system.debug('Doubleoptin@@@@@'+leadRecord);
-                    if (objLS.CallCampaign__c && objLS.DoubleOptIn__c && leadRecord.RequestType__c == System.Label.CAM) {
-                        isQualified = leadRecord.RequestType__c == System.Label.CAM  && leadRecord.DoubleOptIn__c?true:false;
-                    } else if(objLS.CallCampaign__c && leadRecord.RequestType__c == System.Label.CAM ){
+                    if (objLS.CallCampaign__c && objLS.DoubleOptIn__c && leadRecord.IsCAMOnly__c) {
+                        isQualified = leadRecord.IsCAMOnly__c && leadRecord.DoubleOptIn__c?true:false;
+                    } else if(objLS.CallCampaign__c && leadRecord.IsCAMOnly__c ){
                         isQualified = true;
                     }
-                    else if(objLS.DoubleOptIn__c && leadRecord.RequestType__c!= System.Label.CAM && leadRecord.DoubleOptIn__c){
+                    else if(objLS.DoubleOptIn__c && !leadRecord.IsCAMOnly__c && leadRecord.DoubleOptIn__c){
                         isQualified = true;
                     }
-                    else if(!objLS.DoubleOptIn__c && leadRecord.RequestType__c!= System.Label.CAM) {
+                    else if(!objLS.DoubleOptIn__c && !leadRecord.IsCAMOnly__c) {
                         isQualified=true;
                     }
                     else {
