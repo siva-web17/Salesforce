@@ -399,12 +399,8 @@ public class OpportunitiesHelper {
             }
 
             for (Opportunity opportunityRec : oppList) {
-                {
-                    if (opportunityRec.CreationMethod__c != system.label.CreationMethodEnteredByUser) {
-                        if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
-                            opportunityRec.Partner__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
-                        }
-                    }
+                if (sourceMap.containsKey(opportunityRec.SourceCodeAuto__c)) {
+                    opportunityRec.Partner__c = sourceMap.get(opportunityRec.SourceCodeAuto__c);
                 }
             }
         } catch (Exception ex) {
