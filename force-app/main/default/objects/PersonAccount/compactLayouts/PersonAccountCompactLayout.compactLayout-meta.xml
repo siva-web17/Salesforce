@@ -4,7 +4,7 @@
     <fields>Name</fields>
     <fields>Market__c</fields>
     <fields>PersonBirthdate</fields>
-    <fields>Gender__c</fields>
+    <fields>NumberofOpportunities__c</fields>
     <fields>PersonMobilePhone</fields>
     <fields>PersonHomePhone</fields>
     <fields>PersonOtherPhone</fields>
