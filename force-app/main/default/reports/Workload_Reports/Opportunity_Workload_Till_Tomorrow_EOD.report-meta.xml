@@ -2,10 +2,10 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <buckets>
         <bucketType>number</bucketType>
-        <developerName>BucketField_78149278</developerName>
+        <developerName>BucketField_91165727</developerName>
         <masterLabel>Ranking</masterLabel>
         <nullTreatment>z</nullTreatment>
-        <sourceColumnName>Opportunity.Ranking__c</sourceColumnName>
+        <sourceColumnName>Opportunity$Ranking__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
             <sourceValues>
@@ -36,61 +36,32 @@
     </buckets>
     <currency>CHF</currency>
     <description>Opportunities assigned to my team with next Followup date in the next 2 days (or in the past)</description>
-    <filter>
-        <criteriaItems>
-            <column>Opportunity.FollowupDateTime__c</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessOrEqual</operator>
-            <value>TOMORROW</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_PROFILE</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Integration Profile</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.IsActive__c</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
+        <field>Opportunity$StageName</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
+        <field>Opportunity$Owner</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_78149278</field>
+        <field>BucketField_91165727</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunity Workload Till Tomorrow EOD</name>
     <params>
-        <name>open</name>
-        <value>all</value>
-    </params>
-    <params>
-        <name>probability</name>
-        <value>>0</value>
-    </params>
-    <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>Opportunity</reportType>
+    <reportType>OpportunitiesMinimumInfo__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>
-        <dateColumn>Opportunity.FollowupDateTime__c</dateColumn>
+        <dateColumn>Opportunity$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
