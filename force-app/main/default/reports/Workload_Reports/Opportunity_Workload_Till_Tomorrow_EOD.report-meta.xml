@@ -34,8 +34,44 @@
             <value>5+</value>
         </values>
     </buckets>
+    <columns>
+        <field>Opportunity$Ranking__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$FollowupDateTime__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$IsActive__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner.Profile</field>
+    </columns>
+    <columns>
+        <field>Opportunity$CreatedDate</field>
+    </columns>
     <currency>CHF</currency>
     <description>Opportunities assigned to my team with next Followup date in the next 2 days (or in the past)</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity$IsActive__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Owner.Profile</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Integration Profile</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$FollowupDateTime__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>TOMORROW</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
@@ -58,6 +94,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunitiesMinimumInfo__c</reportType>
+    <roleHierarchyFilter>SVP_Customer_Experience</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>
