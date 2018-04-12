@@ -33,17 +33,18 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
         Account acc = new Account();
 
         for(Account account : scope){
-            Task task = new Task();
+
             account.HasHappyCallTask__c = TRUE;
             bookings = account.Bookings__r;
-
-            task.RecordTypeId = SystemCallTaskRecordTypeId;
-            task.WhatId = account.Id;
-            task.NextCallType__c = Label.HCC_Next_Call_Type;
-            task.Type = Label.HCC_Task_Type;
-            task.ActivityDate = Date.today();
-            task.FollowUpDate__c = Date.today();
-            task.Status = Label.Not_Started;
+            Task task = new Task(
+                    RecordTypeId = SystemCallTaskRecordTypeId,
+                    WhatId = account.Id,
+                    NextCallType__c = Label.HCC_Next_Call_Type,
+                    Type = Label.HCC_Task_Type,
+                    ActivityDate = Date.today(),
+                    FollowUpDate__c = Date.today(),
+                    Status = Label.Not_Started
+            );
 
             for(Booking__c booking : bookings){
                 if(booking.MaxEndDate__c == account.MaxActiveBookingEndDate__c){
