@@ -28,11 +28,11 @@ public class ExternalRouter {
     }
 
     public static HttpResponse callRankingService(String accountDetails)
-    {        
+    {
         String jsonS = accountDetails;
         String url=getServiceURL('RankingService');
         HttpResponse objHttpResponse= InvokeService(url,jsonS);
-        return objHttpResponse;          
+        return objHttpResponse;
     }
 
 
@@ -54,7 +54,7 @@ public class ExternalRouter {
         HttpResponse res = h.send(req);
         system.debug(' url '+url);
         system.debug(' response is '+res);
-       if(res.getStatusCode()!=200)
+        if(res.getStatusCode()!=200)
         {
             Id UserId=Id.Valueof(UserInfo.getUserId());
             ExceptionHandler.errorLog(String.ValueOf(res),url+'   --- \n'+ body,
@@ -63,9 +63,24 @@ public class ExternalRouter {
         }
         return res;
     }
-    //Test
-    @future(callout=true)
+
     public static void callUpdateAccountFamilyDetailsService(String accountPersonalDetails) {
+        if(!System.IsBatch()){
+            callUpdateAccountFamilyDetailsServiceAsync(accountPersonalDetails);
+        }
+        else{
+            callUpdateAccountFamilyDetailsServiceSync(accountPersonalDetails);
+        }
+    }
+
+    @future(callout=true)
+    public static void callUpdateAccountFamilyDetailsServiceAsync(String accountPersonalDetails) {
+        String jsonS = accountPersonalDetails;
+        String url = getServiceURL('SyncUpdatedAccountFamilyDetails');
+        InvokeService(url, jsonS);
+    }
+
+    public static void callUpdateAccountFamilyDetailsServiceSync(String accountPersonalDetails) {
         String jsonS = accountPersonalDetails;
         String url = getServiceURL('SyncUpdatedAccountFamilyDetails');
         InvokeService(url, jsonS);
@@ -97,7 +112,7 @@ public class ExternalRouter {
         return UserInfo.getUserName().substringAfterLast('.');
     }
 
-   public Static ExternalServiceSettings__mdt getServiceSetting(String serviceName,String environment,Boolean IsSandBox)
+    public Static ExternalServiceSettings__mdt getServiceSetting(String serviceName,String environment,Boolean IsSandBox)
     {
         if (!IsSandBox && String.isEmpty(environment)) {
             environment='LIVE';

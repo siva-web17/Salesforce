@@ -376,7 +376,7 @@ public class TasksHelper {
             newTask.WhoId = eventObj.WhoId;
             newTask.WhatId = eventObj.WhatId;
             newTask.Type = (objTask.Type == SalesTasks.TCC.Name()) ? SalesTasks.Call.Name() : objTask.Type;
-            newTask.Program__c = eventObj.Program__c;
+            newTask.Program__c =(objTask.Type == SalesTasks.TCC.Name() && oppRecord != NULL ) ? oppRecord.Program__c : eventObj.Program__c;
             newTask.FollowUpDate__c = Datetime.now();
             newTask.ActivityDate = Datetime.now().Date();
             newTask.ActivityDateTime__c = Datetime.now();

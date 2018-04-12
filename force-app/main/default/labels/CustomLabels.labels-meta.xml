@@ -2062,7 +2062,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LanguageReportURLLive</shortDescription>
-        <value>https://language.ef.com:8826/</value>
+        <value>https://languagereports.ef.com</value>
     </labels>
     <labels>
         <fullName>LanguageReportURLQA</fullName>
