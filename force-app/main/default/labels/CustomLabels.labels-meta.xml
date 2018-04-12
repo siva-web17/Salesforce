@@ -1965,6 +1965,13 @@
         <value>Completed</value>
     </labels>
     <labels>
+        <fullName>Task_Status_Deferred</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Task Status Deferred</shortDescription>
+        <value>Deferred</value>
+    </labels>
+    <labels>
         <fullName>TemplateBuilderCongaQueryId</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
