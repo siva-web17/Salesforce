@@ -18,18 +18,19 @@ global class DCSearchPlugin implements dupcheck.dc3Plugin.InterfaceSearch
             system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
             //DCBusinessHandler.ProcessDCSearchPlugin(methodName,sourceId,searchResults);
             DCBusinessFlow.dcSearchResults(methodName,sourceId,searchResults);
-            system.debug('*****DCSearch Ends****');
+            system.debug('DCSearchPlugin.processResults.IfBlock - sourceId:' + sourceId );
         }
         else if(methodName == 'ON_INSERT;' || methodName=='ON_LAYOUT;'){
           lead sourceLead = new Lead();
           sourceLead.id = sourceId;
           sourceLead.isdupeprocessed__c = true;
           sourceLead.isdupe__c = false;
-          update sourceLead; 
+          update sourceLead;
+          system.debug('DCSearchPlugin.processResults.ElseIfBlock - sourceId:' + sourceId );
         }
         else{
             system.debug('*****DCSearch Else Block****');
-            system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
+            system.debug('DCSearchPlugin.processResults.ElseBlock - sourceId:' + sourceId );
         }
     }
 }
