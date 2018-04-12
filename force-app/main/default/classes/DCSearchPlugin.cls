@@ -12,14 +12,24 @@ Modification Log   :
 global class DCSearchPlugin implements dupcheck.dc3Plugin.InterfaceSearch
 {
     global static void processResults(String methodName, Id sourceId, Map <string,Object> searchResults)
-    {
-                                        
+    {                             
         if (!(methodName=='ON_SEARCH;' || methodName=='ON_LAYOUT;' ||
              methodName=='ON_INSERT;' || methodName=='ON_CONVERT;'|| methodName=='ON_UPDATE;')) {
             system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
             //DCBusinessHandler.ProcessDCSearchPlugin(methodName,sourceId,searchResults);
             DCBusinessFlow.dcSearchResults(methodName,sourceId,searchResults);
             system.debug('*****DCSearch Ends****');
+        }
+        else if(methodName == 'ON_INSERT;' || methodName=='ON_LAYOUT;'){
+          lead sourceLead = new Lead();
+          sourceLead.id = sourceId;
+          sourceLead.isdupeprocessed__c = true;
+          sourceLead.isdupe__c = false;
+          update sourceLead; 
+        }
+        else{
+            system.debug('*****DCSearch Else Block****');
+            system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
         }
     }
 }
