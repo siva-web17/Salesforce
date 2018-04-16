@@ -39,7 +39,7 @@ public without sharing class DCMergeHelper{
             {
                 list<Lead> retainedLeadList = new list<Lead>();
                 Lead retainedLead = (Lead)masterRecord;
-               
+
                 retainedLeadList.add(retainedLead);
                 SObjectUnitOfWork.executeUpdateLeads(retainedLeadList);
             }
@@ -49,14 +49,14 @@ public without sharing class DCMergeHelper{
         }
     }
     //This function decides what to be done with the opportunities when multiple person accounts are merged
-  /*
-Apex method Name    : OpportunityStageUpdateOnMergeAccount
-Version    Method   : 7/25/2017
-------------------------------------------------------------------------------
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------
-* Aditi Sharma                7/25/2017            This Method updates the opportunity Stage according to the business scenarios
-*******************************************************************************/
+    /*
+  Apex method Name    : OpportunityStageUpdateOnMergeAccount
+  Version    Method   : 7/25/2017
+  ------------------------------------------------------------------------------
+  * Developer                   Date                   Description
+  * ----------------------------------------------------------------------------
+  * Aditi Sharma                7/25/2017            This Method updates the opportunity Stage according to the business scenarios
+  *******************************************************************************/
     public static List<Opportunity> OpportunityStageUpdateOnMergeAccount(Account masterAccount,List<Opportunity> mergedOpps)
     {
         List<Opportunity> freezOpportunityList = new List<Opportunity>();
@@ -64,31 +64,31 @@ Version    Method   : 7/25/2017
         Set<String> stageNameSet = new Set<String>();
 
         List<Opportunity> wonOpportuntyList = opportunitiesselector.getlstOfOpportunityByCreatedDateDesc(masterAccount);
-       
+
         //collect opportunity stages
         for(Opportunity opp : wonOpportuntyList) {
             stageNameSet.add(opp.stageName);
 
-        }       
+        }
         //Won opportunity
         //please do not add any if block inside this. It has been followed as per the order
         if(stageNameSet.contains(System.Label.OpportunityBookingStage)) {
-            for (Opportunity opp : wonOpportuntyList) {              
+            for (Opportunity opp : wonOpportuntyList) {
                 if (opp.StageName == Label.OpportunityBookingStage && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
             }
-           
+
         }
-        
+
         //Followup  opportunity
         else if(stageNameSet.contains(System.Label.LeadStageFollowup)) {
             list<opportunity> opportunityFollowUpList = new list<opportunity>();
-            opportunityFollowUpList = opportunitiesselector.getLstOfFollowupOpportunity(mergedOpps);            
+            opportunityFollowUpList = opportunitiesselector.getLstOfFollowupOpportunity(mergedOpps);
             for (Opportunity opp : opportunityFollowUpList) {
-                
+
                 if(opportunityFollowUpList.size()>1){
                     if (opp.stageName == System.Label.LeadStageFollowup && opp.FollowupDateTime__c >= system.today() && isFound && opp.IsActive__c) {
                         isFound = false;
@@ -100,11 +100,11 @@ Version    Method   : 7/25/2017
 
                         isFound = false;
                         continue;
-                      }
+                    }
 
                 }
                 freezOpportunityList.add(opp);
-                
+
             }
         }
         //TBC
@@ -112,31 +112,31 @@ Version    Method   : 7/25/2017
         else if(stageNameSet.contains(System.Label.LeadStageTBC)) {
             mergedOpps = opportunitiesselector.getLstOpportunityOrderByCrtdDateASC(mergedOpps);
             for (Opportunity opp : mergedOpps) {
-                
+
                 if (opp.stageName == System.Label.LeadStageTBC && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
-               
+
             }
         }
         else if(stageNameSet.contains(System.Label.salesclosed)) {
             mergedOpps = opportunitiesselector.getLstOpportunityOrderByCrtdDateASC(mergedOpps);
             for (Opportunity opp : mergedOpps) {
-               
+
                 if (opp.stageName == System.Label.salesclosed && isFound && opp.IsActive__c) {
                     isFound = false;
                     continue;
                 }
                 freezOpportunityList.add(opp);
-               
+
             }
         }
         else {
             //other stagename
             for (Opportunity opp : mergedOpps) {
-               if (opp.FollowupDateTime__c >= system.today() && isFound) {
+                if (opp.FollowupDateTime__c >= system.today() && isFound) {
                     isFound = false;
                     continue;
                 }
@@ -167,7 +167,7 @@ Version    Method   : 7/25/2017
     }
 
     public static void ChangeProgramOrStatusForMasterREcord(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList) {
-         Set<Id> mergedIds = new Set<Id>();
+        Set<Id> mergedIds = new Set<Id>();
         for (sobject sObj : mergedRecordList) {
             mergedIds.add(sObj.Id);
         }
@@ -176,33 +176,33 @@ Version    Method   : 7/25/2017
         {
             Lead retainedLead = (Lead) masterRecord;
             retainedLead =
-                [select id,program__c,product__c,status,RequestType__c , createddate from lead where id=:retainedLead.id];
+            [select id,program__c,product__c,status,RequestType__c , createddate from lead where id=:retainedLead.id];
             List<lead> latestobjleadList =
-                [select id,program__C,product__c,status,RequestType__c, createddate from lead where id in:mergedIds
-                    order by createddate desc];
-            
+            [select id,program__C,product__c,status,RequestType__c, createddate from lead where id in:mergedIds
+            order by createddate desc];
+
             Lead latestobjlead;
             if(latestobjleadList!=null && latestobjleadList.size()>0)
             {
-             latestobjlead= latestobjleadList[0];        
-            
-            for(Lead leadRecord:latestobjleadList)
-            {
-            if(leadRecord.RequestType__c != 'CAM' || retainedLead.RequestType__c != 'CAM' 
-                )
-            {
-            retainedLead.IsCAMOnly__c=false;
-            break;
-            }
-               
-            }
+                latestobjlead= latestobjleadList[0];
+
+                for(Lead leadRecord:latestobjleadList)
+                {
+                    if(leadRecord.RequestType__c != 'CAM' || retainedLead.RequestType__c != 'CAM'
+                            )
+                    {
+                        retainedLead.IsCAMOnly__c=false;
+                        break;
+                    }
+
+                }
             }
             system.debug('retainedLead Manual merge '+retainedLead);
-                retainedLead.ReadyForRanking__c = true;
-                retainedLead.isdupeprocessed__c=true;
-                retainedLead.IsDupe__c = false;  //Reset the flag to "Fasle" when we do the Automerge.
-                retainedLead.recalculateranking__c=true;
-            
+            retainedLead.ReadyForRanking__c = true;
+            retainedLead.isdupeprocessed__c=true;
+            retainedLead.IsDupe__c = false;  //Reset the flag to "Fasle" when we do the Automerge.
+            retainedLead.recalculateranking__c=true;
+
 
             if(retainedLead.createddate > latestobjlead.createddate)
             {
@@ -215,13 +215,13 @@ Version    Method   : 7/25/2017
             }
             // If the latest activity is RES or the retained program is multi change the program to the latest activity
             else if(latestobjlead.RequestType__c == 'RES' || retainedLead.program__c=='MULTI'){
-                  retainedLead.program__c=latestobjlead.program__c;
+                retainedLead.program__c=latestobjlead.program__c;
             }
             try{
-                    DcBusinessFlow.transferEvent(retainedLead,mergedIds,'Merge');
-                    DcBusinessFlow.transferNotes(retainedLead,mergedIds,'Merge');
-                    DcBusinessFlow.transferCampaignMember(retainedLead,mergedIds,'Merge');
-                 update retainedLead;
+                DcBusinessFlow.transferEvent(retainedLead,mergedIds,'Merge');
+                DcBusinessFlow.transferNotes(retainedLead,mergedIds,'Merge');
+                DcBusinessFlow.transferCampaignMember(retainedLead,mergedIds,'Merge');
+                update retainedLead;
             }catch(exception ex){
                 ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
                         'DCMergeHelper', 'ChangeProgramOrStatusForMasterRecord(', masterRecord.Id);
@@ -234,11 +234,11 @@ Version    Method   : 7/25/2017
             Account retainedAccount = (account) masterRecord;
             retainedAccount = [Select PersonContactId From Account Where Id = :retainedAccount.id];
             opportunity ActiveOpportunity = [select id,program__c,stagename,createddate from opportunity where accountid=:retainedAccount.id and isactive__c=true limit 1];
-             List<Event> CustomerRequestActivityList = [select id,program__c,type from event where whoid=:retainedAccount.PersonContactId order by createddate desc limit 2];
+            List<Event> CustomerRequestActivityList = [select id,program__c,type from event where whoid=:retainedAccount.PersonContactId order by createddate desc limit 2];
             If(!(ActiveOpportunity.stageName == label.OpportunityBookingStage) && CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].type == 'RES'){
                 ActiveOpportunity.Program__c = CustomerRequestActivityList[0].program__c;
             }
-             If(ActiveOpportunity.Program__c == 'MULTI')
+            If(ActiveOpportunity.Program__c == 'MULTI')
             {
                 if(CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].Program__c != 'MULTI'){
                     ActiveOpportunity.Program__c = CustomerRequestActivityList[0].Program__c;
@@ -255,32 +255,36 @@ Version    Method   : 7/25/2017
             }
         }
     }
-        public static void validationForHasBookingAccountMerge(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList){
-            List<Id> mergedIds = new List<Id>();
-            integer i=0;
-            integer j=0;
-            for (sobject sObj : mergedRecordList) {
-                mergedIds.add(sObj.Id);
-            }            
-            if(masterRecord.getSObjectType() == account.getSObjectType()){
-                boolean hasBooking = false;
-                Account retainedAccount = (account) masterRecord;
-                retainedAccount = [select id,HasBooking__c from account where id=:retainedAccount.id];
-                lIST<Account>  LatestmergedAccount = [select id,HasBooking__c from account where id in:mergedIds];
-                FOR(account objAccount: LatestmergedAccount){
-                    if(objAccount.HasBooking__c){
-                       j=j+1;
-                    }
-                }
-              
-                i= retainedAccount.HasBooking__c?1:0;
-              
-                if(i+j>=2){
-                    throw new CustomException('Customers with Bookings are not allowed to merge. Please contact Poseidon support to help you with this case');
+    public static void validationForHasBookingAccountMerge(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList){
+        List<Id> mergedIds = new List<Id>();
+        integer i=0;
+        integer j=0;
+        for (sobject sObj : mergedRecordList) {
+            mergedIds.add(sObj.Id);
+        }
+        if(masterRecord.getSObjectType() == account.getSObjectType()){
+            boolean hasBooking = false;
+            Account retainedAccount = (account) masterRecord;
+            retainedAccount = [select id,HasBooking__c from account where id=:retainedAccount.id];
+            lIST<Account>  LatestmergedAccount = [select id,HasBooking__c from account where id in:mergedIds];
+            FOR(account objAccount: LatestmergedAccount){
+                if(objAccount.HasBooking__c){
+                    j=j+1;
                 }
             }
+
+            i= retainedAccount.HasBooking__c?1:0;
+
+            if(i+j>=2){
+                throw new CustomException('Customers with Bookings are not allowed to merge. Please contact Poseidon support to help you with this case');
+            }
+            else if(j>i)
+            {
+                throw new CustomException('Please select personal account having a booking as a master record.');
+            }
         }
-
-
-
     }
+
+
+
+}
