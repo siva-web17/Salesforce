@@ -17,7 +17,7 @@ public class LeadsHelper {
     public static map<string, string> ruleNameRuleValMap = new map<string, string>();
     public static map<string, string>ruleNameAndTritonIdMap = new map<string, string>();
     public static Map<Id, List<Task>> leadIdTasksMap = new Map<Id, List<Task>>();
- 
+
 
     public static void createShareRecordsOnInsert(List<Lead> leadList) {
         try {
@@ -127,7 +127,7 @@ public class LeadsHelper {
     //*********Lead Share code End here****************//
 
     //************* Lead Convert code here *******************//
-    
+
 
     public static void processRanking(Lead[] leads) {
         List<Lead> rankingLeads = new List<Lead>();
@@ -138,8 +138,9 @@ public class LeadsHelper {
         //Taking out and condition in IF loop SF-2066 incomingRecords.ReadyForRanking__c
         for (Lead incomingRecords : leads) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
-                    && incomingRecords.IsDupe__c == false  ) {
-                    //&& incomingRecords.ReadyForRanking__c
+                    && incomingRecords.IsDupe__c == false && incomingRecords.Ranking__c != null &&
+                    incomingRecords.Ranking__c > 0.0 ) {
+                //&& incomingRecords.ReadyForRanking__c
                 leadRecords.add(incomingRecords);
                 leadID.add(incomingRecords.ID);
             }
@@ -147,8 +148,9 @@ public class LeadsHelper {
         List<Lead> leadList = LeadsSelector.getLeadsOnId(leadID);
         for (Lead incomingRecords : leadList) {
             if (incomingRecords.IsConverted == false && incomingRecords.IsDupeProcessed__c
-                    && incomingRecords.IsDupe__c == false ) {
-                    // && incomingRecords.ReadyForRanking__c
+                    && incomingRecords.IsDupe__c == false  && incomingRecords.Ranking__c != null &&
+                    incomingRecords.Ranking__c > 0.0 ) {
+                // && incomingRecords.ReadyForRanking__c
                 incomingRecords.ReadyForRanking__c = false;
                 rankingLeads.add(incomingRecords);
                 rankingLeadsId.add(incomingRecords.id);
@@ -173,7 +175,7 @@ public class LeadsHelper {
                     leadConversion.setLeadId(leadRecord.Id);
                     leadConversion.setConvertedStatus(System.Label.LeadStageConverted);
                     leadConversion.setOpportunityName(leadRecord.FirstName + ' ' + leadRecord.LastName);
-                    
+
                     leadConverts.add(leadConversion);
                 }
             }
@@ -473,7 +475,7 @@ public class LeadsHelper {
         }
     }
 
-     public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList){
+    public static void populateSourceBasedonSourceCodeAuto(List<Lead> leadList){
         Set<String> sourceAutoCodeValues = new Set<String>();
         Map<string,string> sourceMap = new Map<string,string>();
 
