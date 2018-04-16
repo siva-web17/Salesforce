@@ -1,12 +1,12 @@
 //This batch is generic, its code can be changed for executing one off data update jobs 
-global class LanguageGenericBatch implements Database.Batchable<SObject>{
+/*global class LanguageGenericBatch implements Database.Batchable<SObject>{
     
     //properties
-    /*global String strQuery;   
+    global String strQuery;   
            
     //constructor
     global LanguageGenericBatch(){
-     //Lead LeadQuery = [];
+    //Lead LeadQuery = [];
         this.strQuery = 'select id,requesttype__c,IsCAMOnly__c from lead where RequestType__c = \'CAM\' and isconverted=false'; 
     }
   
@@ -35,5 +35,5 @@ global class LanguageGenericBatch implements Database.Batchable<SObject>{
    
     //finish method
     global void finish(Database.BatchableContext context){    
-    }*/
-}
+    }
+}*/
