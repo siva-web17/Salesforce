@@ -267,4 +267,81 @@ private class LeadTriggerTest {
             RankingHandler.getLeadSettings(new List<Lead>{leadRec});         
         //}
     }
+	
+	@IsTest
+    static void when_LeadHasAddressOnCreation_Expect_FlagIsSetToTrue(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfLeads = 10;
+            String testAddress = 'Marszalkowska 15';
+
+            List<Lead> leads = new List<Lead>();
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            for(Integer i = 0; i < numOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.getRecord();
+                lead.Street = testAddress;
+                leads.add(lead);
+                leadBuilder.build();
+            }
+
+            //when
+            Test.startTest();
+            insert leads;
+            Test.stopTest();
+
+            //then
+            List<Lead> insertedLeads = [
+                    SELECT HadAddressonCreation__c, Address, Street
+                    FROM Lead
+            ];
+
+            System.assertEquals(10, insertedLeads.size());
+            for(Integer i = 0; i<numOfLeads; i++){
+                System.assertEquals(testAddress, insertedLeads[i].Street);
+                System.assertEquals(TRUE, insertedLeads[i].HadAddressonCreation__c);
+            }
+        }
+    }
+
+    @IsTest
+    static void when_LeadDontHaveAddressOnCreation_Expect_FlagIsSetToFalse(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfLeads = 10;
+            String testAddress = 'Marszalkowska 15';
+
+            List<Lead> leads = new List<Lead>();
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            for(Integer i = 0; i < numOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.getRecord();
+                leads.add(lead);
+                leadBuilder.build();
+            }
+
+            //when
+            Test.startTest();
+            insert leads;
+            Test.stopTest();
+
+            //then
+            List<Lead> insertedLeads = [
+            SELECT HadAddressonCreation__c, Address, Street
+            FROM Lead
+            ];
+
+            System.assertEquals(10, insertedLeads.size());
+            for(Integer i = 0; i<numOfLeads; i++){
+                System.assertEquals(testAddress, insertedLeads[i].Street);
+                System.assertEquals(FALSE, insertedLeads[i].HadAddressonCreation__c);
+            }
+        }
+    }
 }
