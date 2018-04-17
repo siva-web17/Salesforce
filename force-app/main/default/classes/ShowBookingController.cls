@@ -9,8 +9,12 @@ public class ShowBookingController {
         if (controller.getRecord().getSObjectType()==Booking__c.getSObjectType()) {
             this.BookingObject = (Booking__c)controller.getRecord();
             BookingObject =  [SELECT ID,Name FROM Booking__c WHERE ID = :BookingObject.Id];
-            BookingNumber=this.BookingObject.Name; 
-            this.ServiceURL = ExternalRouter.getServiceURL('OpenBooking');
+            BookingNumber=this.BookingObject.Name;
+            ExternalServiceSettings__mdt serviceSettingRecord = ExternalRouter.getServiceURL('OpenBooking');
+            if(serviceSettingRecord!=null && !String.IsEmpty(serviceSettingRecord.EndPoint__c))
+            {
+                this.ServiceURL = serviceSettingRecord.EndPoint__c;
+            }
         }
         else
         {

@@ -23,6 +23,10 @@
         <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
+        <field>SecurityToken__c</field>
+        <value xsi:type="xsd:string">dGVzdFFBOnRlc3RRQQ==</value>
+    </values>
+    <values>
         <field>ServiceName__c</field>
         <value xsi:type="xsd:string">SyncToPoseidon</value>
     </values>
