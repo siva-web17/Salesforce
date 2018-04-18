@@ -4458,6 +4458,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ExternalServiceSettings__mdt.SecurityToken__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ExternalServiceSettings__mdt.ServiceName__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -8611,6 +8616,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>EditReports</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>EditTask</name>
     </userPermissions>
     <userPermissions>
@@ -8640,6 +8649,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>LightningExperienceUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>NewReportBuilder</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
