@@ -20,25 +20,6 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
-        <fullName>AppendProgramToTaskSubject</fullName>
-        <actions>
-            <name>AppendProgramToTaskSubject</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>Task.Subject</field>
-            <operation>notEqual</operation>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Task.Subject</field>
-            <operation>notContain</operation>
-            <value>-</value>
-        </criteriaItems>
-        <description>To update current subject appended with program code.</description>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
         <fullName>TaskFieldUpdateAfterOppClose</fullName>
         <actions>
             <name>UpdateIsOppClosingFieldOnTask</name>
