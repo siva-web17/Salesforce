@@ -941,6 +941,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LanguageGenericBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Language_GenericBatch</apexClass>
         <enabled>true</enabled>
     </classAccesses>
