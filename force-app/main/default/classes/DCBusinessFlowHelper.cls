@@ -34,7 +34,8 @@ public class DCBusinessFlowHelper {
         //Make sure your Salesforce instance URL is added in remote site settings
         //String sfdcURL = URL.getSalesforceBaseUrl().toExternalForm();
         if (!Test.isRunningTest()) {
-            String restAPIURL = ExternalRouter.getServiceURL('RankingService');
+            ExternalServiceSettings__mdt serviceSettingRecord=ExternalRouter.getServiceURL('RankingService');
+            String restAPIURL = serviceSettingRecord.EndPoint__c;
             List<RankingServiceParams> serviceParamsList = new List<RankingServiceParams>();
             RankingServiceParams serviceParams = null;
             for (Lead sourceLead : sourceLeads) {
