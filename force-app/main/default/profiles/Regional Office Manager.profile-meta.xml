@@ -3401,11 +3401,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
