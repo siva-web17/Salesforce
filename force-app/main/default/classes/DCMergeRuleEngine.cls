@@ -33,8 +33,7 @@ public with sharing class DCMergeRuleEngine {
                         fieldApiList.add(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c);
                         Boolean isSourceLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,sourceLead,null);
                         Boolean isDestinationLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,destLead,null);
-                        System.debug('Lead source has blank' +isSourceLeadFieldsareBlank);
-                        System.debug('Lead Dest has blank' +isDestinationLeadFieldsareBlank);
+                    
                         if(isSourceLeadFieldsareBlank && isDestinationLeadFieldsareBlank)
                         {
                            binaryRuleCode += System.Label.StringZero; 
@@ -318,8 +317,7 @@ public with sharing class DCMergeRuleEngine {
                 break;
             }
         }
-        System.debug('fields are '+fields);
-         System.debug('objLead are '+objLead);
+       
         return hasValue;
     }
     
