@@ -13,28 +13,6 @@ Modification Log   :
 public class OpportunitiesHelper {
     public static boolean isActiveChanged = false;
 
-    /**
-    * @author Adam Osiecki
-    *
-    * @description This method set date of deactivation to null when IsActive__c is set to true or
-    * to null when field IsActive__c is set to false
-    *
-    * @param newOpportunities - map of new values of Opportunities
-    * @param oldOpportunities - map of old values of Opportunities
-    */
-    public static void setDateOfDeactivation(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities){
-
-        for(Opportunity opportunity : newOpportunities.values()){
-            Opportunity oldOpportunity = oldOpportunities.get(opportunity.Id);
-            if(opportunity.IsActive__c != oldOpportunity.IsActive__c){
-                if(opportunity.IsActive__c == TRUE){
-                    opportunity.DateOfDeactivation__c = null;
-                }else{
-                    opportunity.DateOfDeactivation__c = Datetime.now();
-                }
-            }
-        }
-    }
     //For after insert
     public static void createShareOnInsert(List<Opportunity> oppList) {
 
@@ -180,9 +158,15 @@ public class OpportunitiesHelper {
         try {
             for (Opportunity opp : newOpportunities.values()) {
                 Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
-                system.debug('the setDaulfLetterAndLabel' + oldOpportunity);
                 if (opp.TemplateKey__c != oldOpportunity.TemplateKey__c) {
                     opportunitiesToUpdate.add(opp.Id);
+                }
+                if (opp.IsActive__c != oldOpportunity.IsActive__c){
+                    if(opp.IsActive__c == TRUE){
+                        opp.DateOfDeactivation__c = null;
+                    }else{
+                        opp.DateOfDeactivation__c = Datetime.now();
+                    }
                 }
             }
             if (opportunitiesToUpdate.size() > 0) {
