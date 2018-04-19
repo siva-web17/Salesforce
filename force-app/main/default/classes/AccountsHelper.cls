@@ -257,4 +257,19 @@ public class AccountsHelper {
             return accountIds;
         }
     }
+    /**
+    * @author Adam Osiecki
+    *
+    * @description This method set account language to Norwegian when Market is Norway and language is null
+    *
+    * @param newAccounts list of changed accounts
+    */
+
+    public static void updateNorwegianLanguage(List<Account> newAccounts){
+        for(Account account : newAccounts){
+            if(account.Market__c == Label.MarketPicklistValueNorway && account.Language__c == null){
+                account.Language__c = Label.LanguagePicklistValueNorwegian;
+            }
+        }
+    }
 }

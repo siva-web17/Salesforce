@@ -12,6 +12,7 @@ Modification Log   :
 public class Accounts {
 
     public static void onBeforeInsert(List<SObject> newItems) {
+        AccountsHelper.updateNorwegianLanguage(newItems);
     }
 
     public static void onBeforeUpdate(List<Account> newItems, Map<Id, sObject> oldItems) {
@@ -23,6 +24,7 @@ public class Accounts {
         }else if(!PoseidonAccountSyncBatch.SYNC_IN_PROGRESS){
             PoseidonSyncService.setSyncStatus(newItems, PoseidonSyncService.SyncStatusTodo);
         }
+        AccountsHelper.updateNorwegianLanguage(newItems);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {

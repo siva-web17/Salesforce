@@ -10,23 +10,4 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>Update Norwegian Language</fullName>
-        <actions>
-            <name>UpdateNOOLanguage</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>Account.Market__c</field>
-            <operation>equals</operation>
-            <value>NOO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Account.Language__c</field>
-            <operation>equals</operation>
-        </criteriaItems>
-        <description>This workflow rule is used to set the Norwegian language when it is left blank for an Account in Norway.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
 </Workflow>
