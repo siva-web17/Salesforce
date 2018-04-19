@@ -945,10 +945,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Language_GenericBatch</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>LeadTriggerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -3405,11 +3401,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>

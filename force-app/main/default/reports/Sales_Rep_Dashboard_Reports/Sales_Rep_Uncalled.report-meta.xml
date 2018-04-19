@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <field>Opportunity.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Count of opportunities that need to be called; that the sales staff has NOT contacted earlier.</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Activities$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Task.SystemCallTask</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Activities$NextCallType__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>TCC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Activities$Status</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Completed,Deferred</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Activities$FollowUpDate__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>TODAY</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity$Name</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Activities$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Sales Rep - Uncalled</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunities_with_activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Opportunity$DOB__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
