@@ -20,6 +20,7 @@ public class Opportunities {
     public static void onBeforeUpdate(Map<Id, Sobject> newItems, Map<Id, Sobject> oldItems) {
         OpportunitiesHelper.setDefaultLetterAndLabel((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
         OpportunitiesHelper.passOpportunityListToPopulateSalesOfficeProgram((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
+        OpportunitiesHelper.setDateOfDeactivation((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {
