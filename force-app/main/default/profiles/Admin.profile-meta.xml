@@ -941,6 +941,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LanguageGenericBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LeadTriggerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2718,6 +2722,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.NumberofOpportunities__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.OtherNationalities__c</field>
         <readable>true</readable>
@@ -3392,11 +3401,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
@@ -4449,6 +4454,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ExternalServiceSettings__mdt.SecurityToken__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ExternalServiceSettings__mdt.ServiceName__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -4475,11 +4485,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Idea.Status</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.IsCAMOnly__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5705,6 +5710,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.TEST_Conga_Conductor__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8871,6 +8881,10 @@
     <tabVisibilities>
         <tab>NoteMigration__c</tab>
         <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Quote__c</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>SalesOfficeProgram__c</tab>

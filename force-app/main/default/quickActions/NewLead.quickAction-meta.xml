@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Global Action to enter a new lead in the system.</description>
+    <description>Global Action to enter a new Lead in the system.</description>
     <fieldOverrides>
         <field>CreationMethod__c</field>
         <literalValue>Enteredbyuser</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>RequestType__c</field>
+        <literalValue>CAM</literalValue>
     </fieldOverrides>
     <fieldOverrides>
         <field>Status</field>
