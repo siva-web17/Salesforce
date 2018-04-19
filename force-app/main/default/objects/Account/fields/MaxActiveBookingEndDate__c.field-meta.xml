@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>MaxActiveBookingEndDate__c</fullName>
-    <description>The maximum end date of all Active Bookings related to this Account</description>
+    <description>The maximum end date of all Active Bookings related to this Account.</description>
     <externalId>false</externalId>
     <label>Max Active Booking End Date</label>
     <summarizedField>Booking__c.MaxEndDate__c</summarizedField>
