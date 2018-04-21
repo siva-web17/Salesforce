@@ -233,26 +233,29 @@ public without sharing class DCMergeHelper{
         if(masterRecord.getSObjectType() == account.getSObjectType()){
             Account retainedAccount = (account) masterRecord;
             retainedAccount = [Select PersonContactId From Account Where Id = :retainedAccount.id];
-            opportunity ActiveOpportunity = [select id,program__c,stagename,createddate from opportunity where accountid=:retainedAccount.id and isactive__c=true limit 1];
+            list<opportunity> ActiveOpportunityList = [select id,program__c,stagename,createddate from opportunity where accountid=:retainedAccount.id and isactive__c=true limit 1];
             List<Event> CustomerRequestActivityList = [select id,program__c,type from event where whoid=:retainedAccount.PersonContactId order by createddate desc limit 2];
-            If(!(ActiveOpportunity.stageName == label.OpportunityBookingStage) && CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].type == 'RES'){
-                ActiveOpportunity.Program__c = CustomerRequestActivityList[0].program__c;
-            }
-            If(ActiveOpportunity.Program__c == 'MULTI')
-            {
-                if(CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].Program__c != 'MULTI'){
-                    ActiveOpportunity.Program__c = CustomerRequestActivityList[0].Program__c;
-                }else{
-                    ActiveOpportunity.Program__c = CustomerRequestActivityList.size()>1?CustomerRequestActivityList[1].Program__c:ActiveOpportunity.Program__c;
+            if(retainedAccount!=null && ActiveOpportunityList!=null && ActiveOpportunityList.size()>0 && !ActiveOpportunityList.isempty()){
+                opportunity ActiveOpportunity = ActiveOpportunityList[0];
+                If(!(ActiveOpportunity.stageName == label.OpportunityBookingStage) && CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].type == 'RES'){
+                    ActiveOpportunity.Program__c = CustomerRequestActivityList[0].program__c;
                 }
-            }
-            ActiveOpportunity.recalculateranking__c=true;
-            try{
-                update ActiveOpportunity;
-            }catch(exception ex){
-                ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                        'DCMergeHelper', 'changeProgramOnOpportunityForPersonAccountMerge(', masterRecord.Id);
-            }
+                If(ActiveOpportunity.Program__c == 'MULTI')
+                {
+                    if(CustomerRequestActivityList.size()>0 && CustomerRequestActivityList[0].Program__c != 'MULTI'){
+                        ActiveOpportunity.Program__c = CustomerRequestActivityList[0].Program__c;
+                    }else{
+                        ActiveOpportunity.Program__c = CustomerRequestActivityList.size()>1?CustomerRequestActivityList[1].Program__c:ActiveOpportunity.Program__c;
+                    }
+                }
+                ActiveOpportunity.recalculateranking__c=true;
+                try{
+                    update ActiveOpportunity;
+                }catch(exception ex){
+                    ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                            'DCMergeHelper', 'changeProgramOnOpportunityForPersonAccountMerge(', masterRecord.Id);
+                }
+              }
         }
     }
     public static void validationForHasBookingAccountMerge(String objectPrefix, Sobject masterRecord ,list<sobject> mergedRecordList){

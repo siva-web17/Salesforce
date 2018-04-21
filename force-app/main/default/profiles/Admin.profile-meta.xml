@@ -941,7 +941,7 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Language_GenericBatch</apexClass>
+        <apexClass>LanguageGenericBatch</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3401,11 +3401,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
