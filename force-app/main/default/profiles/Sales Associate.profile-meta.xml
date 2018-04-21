@@ -8348,6 +8348,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-report</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>AG_Assign</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
