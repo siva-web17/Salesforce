@@ -3,7 +3,8 @@
     <fullName>IsUnassigned__c</fullName>
     <description>Returns true if record is assigned to Integration User</description>
     <externalId>false</externalId>
-    <formula>CONTAINS($Label.OwnersOfUnassignedRecords, Owner.FirstName +' '+ Owner.LastName)</formula>
+    <formula>OR(Owner.FirstName +' '+ Owner.LastName  == 'Integration User', 
+   Owner.FirstName +' '+ Owner.LastName  == 'Migration User')</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Is Unassigned</label>
     <trackHistory>false</trackHistory>
