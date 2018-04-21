@@ -8351,6 +8351,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>standard-report</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>AG_Send_Materials</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
