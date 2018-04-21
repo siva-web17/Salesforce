@@ -21,8 +21,9 @@ House of the new Sales System based on Salesforce!
 8. Setup->Notes Settings-> Enable Notes
 9. Change existing profiles & do a pull
 10. Discard changes(profile related) shown in VSC.
-11. Enable Currency(Setup->Company Information->Enable Currency management)
-12. Go to the SFDX project folder in command prompt
-13. Execute the following command “sfdx force:source:push –u [Org Alias] -f”
+11. Replace MeetingCity__c from path force-app/main/default/objects/Campaign/fields with the following file.
+12. Replace Info meeting record type from path force-app/default/main/objects/Campaign/recordTypes with the following file.
+13. Go to the SFDX project folder in command prompt
+14. Execute the following command “sfdx force:source:push –u [Org Alias] -f”
 
 
