@@ -128,7 +128,7 @@ public class ExternalRouter {
 
     public Static ExternalServiceSettings__mdt getServiceSetting(String serviceName,String environment,Boolean IsSandBox)
     {
-        if (!IsSandBox && String.isEmpty(environment)) {
+        if (!IsSandBox) {
             environment='LIVE';
         }
         ExternalServiceSettings__mdt serviceSettingRecord=null;
