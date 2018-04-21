@@ -72,6 +72,13 @@
         <value>Action</value>
     </labels>
     <labels>
+        <fullName>Active</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
         <fullName>Age</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -560,13 +567,6 @@
         <value>End Date</value>
     </labels>
     <labels>
-        <fullName>End_Point_URL</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>End Point URL</shortDescription>
-        <value>http://poseidonqa.eflangtech.com/RankingSFService/api/ranking</value>
-    </labels>
-    <labels>
         <fullName>ExcelImport</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -694,6 +694,20 @@
         <value>IM</value>
     </labels>
     <labels>
+        <fullName>Integration_Profile_Developer_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration Profile Developer Name</shortDescription>
+        <value>Integration Profile</value>
+    </labels>
+    <labels>
+        <fullName>Integration_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration User Id</shortDescription>
+        <value>0056E000002ikfvQAA</value>
+    </labels>
+    <labels>
         <fullName>IntegrationstatusSentToPoseidon</fullName>
         <categories>Integration</categories>
         <language>en_US</language>
@@ -722,7 +736,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LAC_ACTION_DATETIME</shortDescription>
-        <value>Action date/time past date cannot be selected</value>
+        <value>Follow-Up past date cannot be selected</value>
     </labels>
     <labels>
         <fullName>LAC_ADT</fullName>
@@ -730,7 +744,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ADT</shortDescription>
-        <value>Action Date/Time</value>
+        <value>Follow-Up Date</value>
     </labels>
     <labels>
         <fullName>LAC_Action</fullName>
@@ -747,14 +761,6 @@
         <protected>false</protected>
         <shortDescription>LAC_ActionScreenURL</shortDescription>
         <value>/one/one.app#/n/AG_Action_Screen</value>
-    </labels>
-    <labels>
-        <fullName>LAC_Booking_HelpText</fullName>
-        <categories>LAC</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LAC_Booking_HelpText</shortDescription>
-        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
     </labels>
     <labels>
         <fullName>LAC_CNR</fullName>
@@ -1016,7 +1022,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>VDT</shortDescription>
-        <value>Visit Date/Time</value>
+        <value>Visit Date</value>
     </labels>
     <labels>
         <fullName>LAC_Visit</fullName>
@@ -1324,6 +1330,13 @@
         <value>To Contact</value>
     </labels>
     <labels>
+        <fullName>Opportunity_owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity owner</shortDescription>
+        <value>Opportunity owner</value>
+    </labels>
+    <labels>
         <fullName>Optional</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -1340,13 +1353,13 @@
         <value>Other Phone</value>
     </labels>
     <labels>
-        <fullName>OwnersOfUnassignedRecords</fullName>
-        <categories>dev</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Owners of Unassigned Records</shortDescription>
-        <value>'Integration User','Migration User'</value>
-    </labels>
+         <fullName>OwnersOfUnassignedRecords</fullName>
+         <categories>dev</categories>
+         <language>en_US</language>
+         <protected>false</protected>
+         <shortDescription>Owners of Unassigned Records</shortDescription>
+         <value>'Integration User','Migration User'</value>
+     </labels>    
     <labels>
         <fullName>Parent_Email_ID</fullName>
         <categories>Label</categories>
@@ -1721,6 +1734,12 @@
         <shortDescription>Review message before proceeding to next step</shortDescription>
         <value>* Please review your quote before proceedings to next step</value>
     </labels>
+	<labels>
+        <fullName>SalesAssociateProfileName</fullName>
+        <language>en_US</language>
+        <shortDescription>Sales Associate Profile Name</shortDescription>
+        <value>Sales Associate</value>
+    </labels>
     <labels>
         <fullName>SBRTask</fullName>
         <categories>Dev</categories>
@@ -2036,5 +2055,37 @@
         <protected>false</protected>
         <shortDescription>Personal Details</shortDescription>
         <value>Personal Details</value>
+    </labels>
+     <labels>
+        <fullName>LAC_Booking_HelpText</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Booking_HelpText</shortDescription>
+        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLLive</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLLive</shortDescription>
+        <value>https://languagereports.ef.com</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLQA</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLQA</shortDescription>
+        <value>https://language.ef.com:8826/</value>
+    </labels>
+    <labels>
+        <fullName>ReportEnv</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReportEnv</shortDescription>
+        <value>QA</value>
     </labels>
 </CustomLabels>
