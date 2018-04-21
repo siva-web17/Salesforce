@@ -1353,14 +1353,6 @@
         <value>Other Phone</value>
     </labels>
     <labels>
-         <fullName>OwnersOfUnassignedRecords</fullName>
-         <categories>dev</categories>
-         <language>en_US</language>
-         <protected>false</protected>
-         <shortDescription>Owners of Unassigned Records</shortDescription>
-         <value>'Integration User','Migration User'</value>
-     </labels>    
-    <labels>
         <fullName>Parent_Email_ID</fullName>
         <categories>Label</categories>
         <language>en_US</language>
