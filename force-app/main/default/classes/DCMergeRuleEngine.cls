@@ -19,99 +19,100 @@ public with sharing class DCMergeRuleEngine {
             Map<String, LeadAccountMapping__c> leadAccountMapping = LeadAccountMapping__c.getAll();
             for (string field:fieldAPIAndLabelMap.keyset()) {
                 //Lead
-                system.debug('Field is #####'+field);
+                 system.debug('Field is #####'+field);
                 if (destLead != null) {
                     if (field == System.Label.HasBooking) {
                         binaryRuleCode += System.Label.StringZero;
-                    }
+                    } 
                     else if (field == System.Label.HomePhone|| field == System.Label.MobilePhone || field == System.Label.OtherPhone) {
 
-
+                        
                         List<String> fieldApiList=new List<String>();
                         fieldApiList.add(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c);
-                        Boolean isSourceLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,sourceLead,null);
-                        Boolean isDestinationLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,destLead,null);
+                        Boolean isSourceLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,sourceLead,null);
+                        Boolean isDestinationLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,destLead,null);
+                    
                         if(isSourceLeadFieldsareBlank && isDestinationLeadFieldsareBlank)
                         {
-                            binaryRuleCode += System.Label.StringZero;
+                           binaryRuleCode += System.Label.StringZero; 
                         }
                         else if(isSourceLeadFieldsareBlank || isDestinationLeadFieldsareBlank)
                         {
                             binaryRuleCode += System.Label.StringOne;
                         }
-
+                        
                         else if (
+                            
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
+                            ||
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
+                            ||
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
+                                            destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
+                            ||
+                              checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
+                            ||       
+                              checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
+                            ||    
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
+                            || 
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
+                            || 
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
+                            ||
+                                 
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
+                            
+                       
 
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                        destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c))
-                                        ||
-
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c))
-
-
-
-                                ){
+                                        ){
 
                             binaryRuleCode += System.Label.StringOne;
-                        }
+                        } 
                         else {
                             binaryRuleCode += System.Label.StringZero;
                         }
-                    }
+                    } 
                     else if(field == System.Label.EmailOneField || field == System.Label.EmailSecondField){
                         List<String> fieldApiList=new List<String>();
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c);
-                        Boolean isSourceLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,sourceLead,null);
-                        Boolean isDestinationLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,destLead,null);
+                        Boolean isSourceLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,sourceLead,null);
+                        Boolean isDestinationLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,destLead,null);
                         if(isSourceLeadFieldsareBlank && isDestinationLeadFieldsareBlank)
                         {
-                            binaryRuleCode += System.Label.StringZero;
+                           binaryRuleCode += System.Label.StringZero; 
                         }
                         else if(isSourceLeadFieldsareBlank || isDestinationLeadFieldsareBlank)
                         {
                             binaryRuleCode += System.Label.StringOne;
                         }
-
-                        else if(
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
-                                        destLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c))
-                                        ||
-
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
-                                                destLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c))
-                                ) {
+                        
+                       else if(
+                           
+                           checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c))
+                            ||
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c))
+                             ||
+                           
+                           checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c))
+                             ||
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
+                                             destLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c))
+                             ) {
                             binaryRuleCode+=System.Label.StringOne;
 
                         }
@@ -140,72 +141,72 @@ public with sharing class DCMergeRuleEngine {
                         fieldApiList.add(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c);
-                        Boolean isSourceLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,sourceLead,null);
-                        fieldApiList.clear();
+                        Boolean isSourceLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,sourceLead,null);
+                          fieldApiList.clear();      
                         fieldApiList.add(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c);
-                        Boolean isDestinationAccountFieldsareBlank= checkFieldsHasValues(fieldApiList,null,destAccount);
+                        Boolean isDestinationAccountFieldsareBlank= !checkFieldsHasValues(fieldApiList,null,destAccount);
 
                         if(isSourceLeadFieldsareBlank && isDestinationAccountFieldsareBlank)
                         {
-                            binaryRuleCode += System.Label.StringZero;
+                           binaryRuleCode += System.Label.StringZero; 
                         }
                         else if(isSourceLeadFieldsareBlank || isDestinationAccountFieldsareBlank)
                         {
                             binaryRuleCode += System.Label.StringOne;
                         }
-
+                                
                         else if (checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
+                                             destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
                                 ||
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
-
-
+                                
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
+                            
+                            
                                 ||
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
-
-
+                            
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.HomePhone).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
+                            
+                            
                                 ||
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
-
-
-                                ||
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
-
-
+                   
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
+                            
+                            
                                 ||
 
                                 checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
-
-
+                                             destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
+                            
+                            
                                 ||
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
-
-
+                            
+                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.MobilePhone).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
+                            
+                            
                                 ||
-
+                            
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.OtherPhone).AccountAPIName__c))
+                            
+                            
+                                ||
+                               
                                 checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
-
-
+                                             destAccount.get(leadAccountMapping.get(System.Label.MobilePhone).AccountAPIName__c))
+                            
+                            
                                 ||
                                 checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.OtherPhone).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
+                                             destAccount.get(leadAccountMapping.get(System.Label.HomePhone).AccountAPIName__c))
+                            
 
-
-
+                        
                                 ) {
                             binaryRuleCode+=System.Label.StringOne;
                         } else {
@@ -214,39 +215,39 @@ public with sharing class DCMergeRuleEngine {
                     }
                     else if(field == System.Label.EmailOneField || field == System.Label.EmailSecondField) {
 
-                        List<String> fieldApiList=new List<String>();
+                         List<String> fieldApiList=new List<String>();
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c);
-                        Boolean isSourceLeadFieldsareBlank= checkFieldsHasValues(fieldApiList,sourceLead,null);
+                        Boolean isSourceLeadFieldsareBlank= !checkFieldsHasValues(fieldApiList,sourceLead,null);
                         fieldApiList.clear();
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailOneField).AccountAPIName__c);
                         fieldApiList.add(leadAccountMapping.get(System.Label.EmailSecondField).AccountAPIName__c);
-                        Boolean isDestinationAccountFieldsareBlank= checkFieldsHasValues(fieldApiList,null,destAccount);
+                        Boolean isDestinationAccountFieldsareBlank= !checkFieldsHasValues(fieldApiList,null,destAccount);
                         if(isSourceLeadFieldsareBlank && isDestinationAccountFieldsareBlank)
                         {
-                            binaryRuleCode += System.Label.StringZero;
+                           binaryRuleCode += System.Label.StringZero; 
                         }
                         else if(isSourceLeadFieldsareBlank || isDestinationAccountFieldsareBlank)
                         {
                             binaryRuleCode += System.Label.StringOne;
                         }
-
-                        else if(
-
-                                checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
-                                        destAccount.get(leadAccountMapping.get(System.Label.EmailOneField).AccountAPIName__c))
-                                        ||
-
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
-                                                destAccount.get(leadAccountMapping.get(System.Label.EmailOneField).AccountAPIName__c))
-                                        ||
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
-                                                destAccount.get(leadAccountMapping.get(System.Label.EmailSecondField).AccountAPIName__c))
-                                        ||
-
-                                        checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
-                                                destAccount.get(leadAccountMapping.get(System.Label.EmailSecondField).AccountAPIName__c))
-
+                        
+                       else if(
+                           
+                           checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.EmailOneField).AccountAPIName__c))
+                            ||
+                           
+                           checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.EmailOneField).AccountAPIName__c))
+                            ||
+                            checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailOneField).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.EmailSecondField).AccountAPIName__c))
+                            ||
+                            
+                           checkValueMatches(sourceLead.get(leadAccountMapping.get(System.Label.EmailSecondField).LeadAPIName__c),
+                                             destAccount.get(leadAccountMapping.get(System.Label.EmailSecondField).AccountAPIName__c))
+                           
                                 ) {
                             binaryRuleCode += System.Label.StringOne;
                         }
@@ -255,7 +256,7 @@ public with sharing class DCMergeRuleEngine {
                         }
                     }
                     else {
-                        system.debug('fieldval?????'+sourceLead.get(leadAccountMapping.get(field).LeadAPIName__c) +'accfieldval>>>>>'+destAccount.get(leadAccountMapping.get(field).AccountAPIName__c));
+                    system.debug('fieldval?????'+sourceLead.get(leadAccountMapping.get(field).LeadAPIName__c) +'accfieldval>>>>>'+destAccount.get(leadAccountMapping.get(field).AccountAPIName__c));
                         if (sourceLead.get(leadAccountMapping.get(field).LeadAPIName__c) ==
                                 destAccount.get(leadAccountMapping.get(field).AccountAPIName__c) || (sourceLead.get(leadAccountMapping.get(field).LeadAPIName__c)==null || destAccount.get(leadAccountMapping.get(field).AccountAPIName__c)==null)) {
                             binaryRuleCode+=System.Label.StringOne;
@@ -288,8 +289,8 @@ public with sharing class DCMergeRuleEngine {
 
                 system.debug('custom setting map contains binary key --- '+mergeRuleMap.get(resultantBinaryCode).name);
                 system.debug('My decision is>>>>>'+mergeRuleMap.get(resultantBinaryCode).Decision__c);
-                /* sourceLead.DuplicateRecordSets__c = mergeRuleMap.get(resultantBinaryCode).Decision__c + ' '+
-                         mergeRuleMap.get(resultantBinaryCode).Name;*/
+               /* sourceLead.DuplicateRecordSets__c = mergeRuleMap.get(resultantBinaryCode).Decision__c + ' '+
+                        mergeRuleMap.get(resultantBinaryCode).Name;*/
                 return decision;
             }
             return '';
@@ -310,19 +311,22 @@ public with sharing class DCMergeRuleEngine {
                 hasValue=true;
                 break;
             }
-            if(objAccount!=null && objAccount.get(field) != null)
+             if(objAccount!=null && objAccount.get(field) != null)
             {
                 hasValue=true;
                 break;
             }
         }
+       
         return hasValue;
     }
-
-    public static Boolean checkValueMatches(Object string1, Object string2){
-        return string1 != null && string1 != '' && string1 == string2;
+    
+    public static Boolean checkValueMatches(Object incomingObject, Object existingObject){
+        String incomingString = String.valueOf(incomingObject);
+        String existingString = String.valueOf(existingObject);
+        return incomingString != null && incomingString != '' && incomingString == existingString;
     }
-
+    
     public static void loadMergeConfigRuleData() {
         try {
             string [] customSettingRuleValues = new string[]{};
