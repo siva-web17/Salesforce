@@ -1,0 +1,70 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+	<article class="slds-card slds-card_boundary forceBaseCard">
+		<div class="slds-card__header slds-grid">
+			<header class="slds-media slds-media--center slds-has-flexi-truncate">
+				<div class="slds-media__body">
+					<h2 class="header-title-container">
+						<span class="slds-text-heading--small slds-truncate" title="{!$Label.c.Home_Pg_SP_Heading}">{!$Label.c.Home_Pg_SP_Heading}</span>
+					</h2>
+				</div>
+			</header>
+			<div class="slds-no-flex">
+			</div>
+		</div>
+		<div class="slds-card__body slds-card__body--inner">
+			<ul class="recentsRecordCardList">
+				<li class="recentsRecordCardRow">
+					<div class="template withIcon homeRecentsItemStencil">
+						<div class="iconContainer">
+							<div class="small forceEntityIcon" style="background-color: #f88960">
+								<span class="uiImage">
+									<a href="{!$Label.c.Home_Pg_SP_RaiseCaseURL}" target="_blank" rel="noreferrer"><img src="{!$Label.c.Home_Pg_SP_RaiseCaseImg}" class="icon " alt="{!$Label.c.Home_Pg_SP_RaiseCase}" title="{!$Label.c.Home_Pg_SP_RaiseCase}"></img></a>
+									</span>
+								</div>
+							</div>
+							<div class="primaryField truncate z-align-padding">
+								<div class="outputLookupContainer forceOutputLookupWithPreview">
+									<a class="textUnderline outputLookupLink slds-truncate forceOutputLookup" href="{!$Label.c.Home_Pg_SP_RaiseCaseURL}" target="_blank" rel="noreferrer" title="{!$Label.c.Home_Pg_SP_RaiseCase}">{!$Label.c.Home_Pg_SP_RaiseCase}</a>
+								</div>
+								<!--render facet: 702:0-->
+							</div>
+						</div>
+					</li>
+					<li class="recentsRecordCardRow">
+					<div class="template withIcon homeRecentsItemStencil">
+						<div class="iconContainer">
+							<div class="small forceEntityIcon" style="background-color: #f2cf5b">
+								<span class="uiImage">
+									<a href="{!$Label.c.Home_Pg_SP_ManualsURL}" target="_blank" rel="noreferrer"><img src="{!$Label.c.Home_Pg_SP_ManualsImg}" class="icon " alt="{!$Label.c.Home_Pg_SP_Manuals}" title="{!$Label.c.Home_Pg_SP_Manuals}"></img></a>
+									</span>
+								</div>
+							</div>
+							<div class="primaryField truncate z-align-padding">
+								<div class="outputLookupContainer forceOutputLookupWithPreview">
+									<a class="textUnderline outputLookupLink slds-truncate forceOutputLookup" href="{!$Label.c.Home_Pg_SP_ManualsURL}" target="_blank" rel="noreferrer" title="">{!$Label.c.Home_Pg_SP_Manuals}</a>
+								</div>
+								<!--render facet: 702:0-->
+							</div>
+						</div>
+					</li>
+					<li class="recentsRecordCardRow">
+					<div class="template withIcon homeRecentsItemStencil">
+						<div class="iconContainer">
+							<div class="small forceEntityIcon" style="background-color: #6ec06e">
+								<span class="uiImage">
+									<a href="{!$Label.c.Home_Pg_SP_MyRequestURL}" target="_blank" rel="noreferrer"><img src="{!$Label.c.Home_Pg_SP_MyRequestImg}" class="icon " alt="{!$Label.c.Home_Pg_SP_MyRequest}" title="{!$Label.c.Home_Pg_SP_MyRequest}"></img></a>
+									</span>
+								</div>
+							</div>
+							<div class="primaryField truncate z-align-padding">
+								<div class="outputLookupContainer forceOutputLookupWithPreview">
+									<a class="textUnderline outputLookupLink slds-truncate forceOutputLookup" href="{!$Label.c.Home_Pg_SP_MyRequestURL}" target="_blank" rel="noreferrer" title="{!$Label.c.Home_Pg_SP_MyRequest}">{!$Label.c.Home_Pg_SP_MyRequest}</a>
+								</div>
+								<!--render facet: 702:0-->
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+	</aura:component>
