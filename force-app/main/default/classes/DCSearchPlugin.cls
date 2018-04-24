@@ -24,8 +24,13 @@ global class DCSearchPlugin implements dupcheck.dc3Plugin.InterfaceSearch
             lead sourceLead = new Lead();
             sourceLead.id = sourceId;
             sourceLead.isdupeprocessed__c = true;
-            sourceLead.isdupe__c = false;
-            update sourceLead;
+            // sourceLead.isdupe__c = false;
+            
+            List<Lead> sourceLeadList = new List<Lead>();
+            sourceLeadList = LeadsSelector.getLeadsOnId(new Set<id>{sourceLead.id});
+            if(sourceLeadList != null && sourceLeadList.size() > 0 && !sourceLeadList[0].isdupeprocessed__c){
+                update sourceLead;
+            }
             system.debug('DCSearchPlugin.processResults.ElseIfBlock - sourceId:' + sourceId );
         }
         else{

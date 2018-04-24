@@ -8328,6 +8328,10 @@
         <recordType>Task.SystemCallTask</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
+     <tabVisibilities>
+        <tab>standard-report</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>AG_Action_Screen</tab>
         <visibility>DefaultOn</visibility>
