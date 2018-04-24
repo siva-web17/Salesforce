@@ -7625,17 +7625,17 @@
     <!--<layoutAssignments>
         <layout>ErrorLog__c-Error Log Layout</layout>
     </layoutAssignments>-->
-    <!--<layoutAssignments>
+    <layoutAssignments>
         <layout>Event-Customer Request</layout>
         <recordType>Event.CustomerRequest</recordType>
-    </layoutAssignments>-->
-    <!--<layoutAssignments>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Event-Customer Visit</layout>
         <recordType>Event.CustomerVisit</recordType>
-    </layoutAssignments>-->
-    <!--<layoutAssignments>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Event-Event Layout</layout>
-    </layoutAssignments>-->
+    </layoutAssignments>
     <layoutAssignments>
         <layout>ExternalServiceSettings__mdt-ExternalServiceSetting Layout</layout>
     </layoutAssignments>
