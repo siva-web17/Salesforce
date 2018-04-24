@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Bay</masterLabel>
+        <translation><!-- Bay --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Bayan</masterLabel>
+        <translation><!-- Bayan --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Frau</masterLabel>
+        <translation><!-- Frau --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Herr</masterLabel>
+        <translation><!-- Herr --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Madame</masterLabel>
+        <translation><!-- Madame --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mademoisel</masterLabel>
+        <translation><!-- Mademoisel --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Monsieur</masterLabel>
+        <translation><!-- Monsieur --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mr.</masterLabel>
+        <translation>Herr</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ms.</masterLabel>
+        <translation>Frau</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sr.</masterLabel>
+        <translation><!-- Sr. --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Srta.</masterLabel>
+        <translation><!-- Srta. --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

@@ -1,0 +1,70 @@
+<aura:component description="AccountOpportunitiesListRecordListRow">
+
+    <aura:attribute name="row" type="Object"/>
+
+
+    <th scope="row" data-label="Opportunity Name" class="forceBaseListView">
+        <div class="slds-truncate">
+            <aura:if isTrue="{!v.row.HasReadAccess}">
+                <a style="border-bottom: 1px dotted; text-decoration : none"
+                   onclick="{!c.handleGoToRecord}">{!v.row.Opportunity.Name}</a>
+                <aura:set attribute="else">
+                        {!v.row.Opportunity.Name}
+                </aura:set>
+            </aura:if>
+        </div>
+    </th>
+    <td>
+        <div class="slds-truncate">
+            <aura:if isTrue="{!v.row.Opportunity.IsActive__c}">
+                <div class="slds-form-element__control">
+                    <span class="slds-checkbox">
+                        <input type="checkbox" disabled="true" checked="true"/>
+                        <label class="slds-checkbox__label">
+                            <span class="slds-checkbox_faux"></span>
+                        </label>
+                    </span>
+                </div>
+                <aura:set attribute="else">
+                    <span class="slds-checkbox">
+                        <input type="checkbox" disabled="true"/>
+                        <label class="slds-checkbox__label">
+                            <span class="slds-checkbox_faux"></span>
+                        </label>
+                    </span>
+                </aura:set>
+            </aura:if>
+        </div>
+    </td>
+
+    <td>
+        <div class="slds-truncate">{!v.row.Opportunity.Program__c}</div>
+    </td>
+    <td>
+        <div class="slds-truncate">{!v.row.Opportunity.StageName}</div>
+    </td>
+    <td>
+        <div class="slds-truncate">{!v.row.Opportunity.SalesOffice__c}</div>
+    </td>
+    <td>
+        <div class="slds-truncate">{!v.row.Opportunity.Owner.Name}</div>
+    </td>
+    <td>
+        <div class="slds-truncate">
+            <div class="slds-truncate">
+                <aura:if isTrue="{!v.row.HasEditAccess}">
+                    <a onclick="{!c.handleEditRecord}">{!$Label.c.Edit}</a>
+                </aura:if>
+                <aura:if isTrue="{!and(v.row.HasEditAccess, v.row.HasDeleteAccess)}">
+                    &nbsp;/&nbsp;
+                </aura:if>
+                <aura:if isTrue="{!v.row.HasDeleteAccess}">
+                    <a onclick="{!c.handleDeleteRecord}">{!$Label.c.Delete}</a>
+                </aura:if>
+            </div>
+        </div>
+    </td>
+    <div aura:id="newtag">
+            {!v.body}
+    </div>
+</aura:component>

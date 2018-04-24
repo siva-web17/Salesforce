@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidRankingValues</fullName>
+    <active>true</active>
+    <description>Prevent entering invalid ranking value</description>
+    <errorConditionFormula>And(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ),
+OR( Ranking__c >10 , Ranking__c &lt;1)
+)</errorConditionFormula>
+    <errorMessage>Ranking Can only have number between 1 and 10</errorMessage>
+</ValidationRule>

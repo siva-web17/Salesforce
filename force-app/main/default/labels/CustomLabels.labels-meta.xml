@@ -1,0 +1,2083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>APTS_Australia_Overseas_Health_Cover_Product</fullName>
+        <categories>Error, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Australia Overseas Health Cover Product</shortDescription>
+        <value>Please add "Australia Overseas Health Cover"</value>
+    </labels>
+    <labels>
+        <fullName>APTS_Fixed_Fare_flights_cannot_be_booked</fullName>
+        <categories>Error, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Fixed Fare flights cannot be booked</shortDescription>
+        <value>Fixed Fare Flight cannot be booked 21 Days (Europe)/42 Days (Non-Europe) before Departure.</value>
+    </labels>
+    <labels>
+        <fullName>APTS_Grand_Total_Discount_Error</fullName>
+        <categories>Error, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Grand Total Discount Error</shortDescription>
+        <value>Total Discount cannot be more than</value>
+    </labels>
+    <labels>
+        <fullName>APTS_Grand_Total_Discount_Limit</fullName>
+        <categories>System, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Grand Total Discount Limit</shortDescription>
+        <value>50</value>
+    </labels>
+    <labels>
+        <fullName>APTS_Junior_Course_Accomodation_Error</fullName>
+        <categories>Error, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Junior Course Accomodation Error</shortDescription>
+        <value>More than 4 weeks for one accommodation type is not possible for Junior Courses.</value>
+    </labels>
+    <labels>
+        <fullName>APTS_ONE_COURSE_PER_BUNDLE</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS_ONE_COURSE_PER_BUNDLE</shortDescription>
+        <value>Please choose one course per Destination.</value>
+    </labels>
+    <labels>
+        <fullName>APTS_Price_Override_Error_Message</fullName>
+        <categories>Error, Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APTS Price Override Error Message</shortDescription>
+        <value>Price for some of the included products cannot be changed.</value>
+    </labels>
+    <labels>
+        <fullName>AccountPrefix</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPrefix</shortDescription>
+        <value>001P</value>
+    </labels>
+    <labels>
+        <fullName>Action</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Action</shortDescription>
+        <value>Action</value>
+    </labels>
+    <labels>
+        <fullName>Active</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>Age</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Age</shortDescription>
+        <value>Age</value>
+    </labels>
+    <labels>
+        <fullName>AlphabetV</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AlphabetV</shortDescription>
+        <value>V</value>
+    </labels>
+    <labels>
+        <fullName>Article_Code</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Article Code</shortDescription>
+        <value>Article Code</value>
+    </labels>
+    <labels>
+        <fullName>Article_Name</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Article name</shortDescription>
+        <value>Article Name</value>
+    </labels>
+    <labels>
+        <fullName>AuraErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used as error message</shortDescription>
+        <value>Something went wrong:</value>
+    </labels>
+    <labels>
+        <fullName>Birthdate</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Birthdate</shortDescription>
+        <value>Birthdate</value>
+    </labels>
+    <labels>
+        <fullName>BookinSummaryContact_Details</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Details</shortDescription>
+        <value>Contact Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryBooking_Details</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Booking Details</shortDescription>
+        <value>Booking Details</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_BOOKING_INFORMATION_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR BOOKING INFORMATION DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_DETAIL</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR DETAIL</shortDescription>
+        <value>PERSONALIZE YOUR DETAIL</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryPERSONALIZE_YOUR_PRELIMINARY_DETAILS</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PERSONALIZE YOUR PRELIMINARY DETAILS</shortDescription>
+        <value>PERSONALIZE YOUR PRELIMINARY DETAILS</value>
+    </labels>
+    <labels>
+        <fullName>BookingSummaryback_button</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>back button</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>Booking_Channel</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Booking Channel</shortDescription>
+        <value>Booking Channel</value>
+    </labels>
+    <labels>
+        <fullName>Booking_Summary_create_booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used as main header to display account name for whom booking is created for.</shortDescription>
+        <value>Create Booking for</value>
+    </labels>
+    <labels>
+        <fullName>Booking_Type</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Booking Type</shortDescription>
+        <value>Booking Type</value>
+    </labels>
+    <labels>
+        <fullName>Brochure</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Brochure</shortDescription>
+        <value>Brochure</value>
+    </labels>
+    <labels>
+        <fullName>BrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BrochureRequest</shortDescription>
+        <value>BR</value>
+    </labels>
+    <labels>
+        <fullName>Brochure_Season</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Brochure Season</shortDescription>
+        <value>Brochure Season</value>
+    </labels>
+    <labels>
+        <fullName>CAM</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CAM</shortDescription>
+        <value>CAM</value>
+    </labels>
+    <labels>
+        <fullName>Call</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call</shortDescription>
+        <value>CALL</value>
+    </labels>
+    <labels>
+        <fullName>CallAppointment</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Appointment Call Result on Log an Action component</shortDescription>
+        <value>Appointment</value>
+    </labels>
+    <labels>
+        <fullName>CallBack</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Back Call Result on Log an Action component</shortDescription>
+        <value>Call back</value>
+    </labels>
+    <labels>
+        <fullName>CallNotReached</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call not Reached Sales action on Log a Call Component</shortDescription>
+        <value>Call Not Reached</value>
+    </labels>
+    <labels>
+        <fullName>CallReached</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call reached Sales action on Log a Call Component</shortDescription>
+        <value>Call Reached</value>
+    </labels>
+    <labels>
+        <fullName>CallTaskRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Developer name of Task Call Task record type</shortDescription>
+        <value>CallTask</value>
+    </labels>
+    <labels>
+        <fullName>CalledUs</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Called Us Sales action in Log an Action component</shortDescription>
+        <value>Called Us</value>
+    </labels>
+    <labels>
+        <fullName>CampaignBrochureRequest</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CampaignBrochureRequest</shortDescription>
+        <value>CBR</value>
+    </labels>
+    <labels>
+        <fullName>Campaign_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Campaign Name</shortDescription>
+        <value>Sample Name</value>
+    </labels>
+    <labels>
+        <fullName>Cancel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ChangeProgram</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change Program Call result on Log an Action component</shortDescription>
+        <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>CloseDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CloseDate</shortDescription>
+        <value>Close Date</value>
+    </labels>
+    <labels>
+        <fullName>CloseOpp</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Close Call Result on Log an Action component</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
+        <fullName>ClosedWon</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ClosedWon</shortDescription>
+        <value>Closed Won</value>
+    </labels>
+    <labels>
+        <fullName>ContactCustomer</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContactCustomer</shortDescription>
+        <value>TCC</value>
+    </labels>
+    <labels>
+        <fullName>CountryOfBirth</fullName>
+        <categories>Apttus,Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is created to select the country of birth.</shortDescription>
+        <value>Country Of Birth</value>
+    </labels>
+    <labels>
+        <fullName>CreateBookinDisplayMessage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreateBookinDisplayMessage</shortDescription>
+        <value>Opening Poseidon Please wait!!</value>
+    </labels>
+    <labels>
+        <fullName>CreatedDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreatedDate</shortDescription>
+        <value>Created Date</value>
+    </labels>
+    <labels>
+        <fullName>CreationMethodEnteredByUser</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreationMethodEnteredByUser</shortDescription>
+        <value>Enteredbyuser</value>
+    </labels>
+    <labels>
+        <fullName>Currency</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Currency</shortDescription>
+        <value>Currency</value>
+    </labels>
+    <labels>
+        <fullName>CustomerRequestEventRecordTypeDeveloperName</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CustomerRequestEventRecordTypeDeveloperName</shortDescription>
+        <value>CustomerRequest</value>
+    </labels>
+    <labels>
+        <fullName>CustomerRequestType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer Request Type</shortDescription>
+        <value>0120Y0000002mXn</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeDelete</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeDelete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeInsert</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeInsert</shortDescription>
+        <value>Insert</value>
+    </labels>
+    <labels>
+        <fullName>DMLTypeUpdate</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DMLTypeUpdate</shortDescription>
+        <value>Update</value>
+    </labels>
+    <labels>
+        <fullName>Days</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Days</shortDescription>
+        <value>day(s)</value>
+    </labels>
+    <labels>
+        <fullName>Decision</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Decision</shortDescription>
+        <value>decision</value>
+    </labels>
+    <labels>
+        <fullName>DefaultOpportunityName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default Opportunity Name</shortDescription>
+        <value>Default Opportunity Name</value>
+    </labels>
+    <labels>
+        <fullName>DefaultTranslation</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DefaultTranslation</shortDescription>
+        <value>USB-English</value>
+    </labels>
+    <labels>
+        <fullName>Delete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>DeleteQuoteProposalErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error message shown on Quote/Proposal delete</shortDescription>
+        <value>You can not delete an issued price quote</value>
+    </labels>
+    <labels>
+        <fullName>DeleteRecordConfirmation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DeleteRecordConfirmation</shortDescription>
+        <value>Are you sure you want to delete this Record?</value>
+    </labels>
+    <labels>
+        <fullName>Destination</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Destination</shortDescription>
+        <value>Destination</value>
+    </labels>
+    <labels>
+        <fullName>Discount</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Discount</shortDescription>
+        <value>Discount</value>
+    </labels>
+    <labels>
+        <fullName>Discount_Reason</fullName>
+        <categories>Apttus, Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Discount Reason</shortDescription>
+        <value>Discount Reason</value>
+    </labels>
+    <labels>
+        <fullName>EFCOM</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EF.COM</shortDescription>
+        <value>Ef.com</value>
+    </labels>
+    <labels>
+        <fullName>Edit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>EditAccessLevel</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit Access Level</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Email</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>Email2</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email2</shortDescription>
+        <value>Email2</value>
+    </labels>
+    <labels>
+        <fullName>EmailOneField</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EmailOneField</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>EmailPriceQuote</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email:PriceQuote</shortDescription>
+        <value>Email: Price Quote</value>
+    </labels>
+    <labels>
+        <fullName>EmailSecondField</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EmailSecondField</shortDescription>
+        <value>Email2</value>
+    </labels>
+    <labels>
+        <fullName>EmailedUs</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Emailed Us Sales action on Log a Call Component</shortDescription>
+        <value>Emailed Us</value>
+    </labels>
+    <labels>
+        <fullName>End_Date</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>End Date</shortDescription>
+        <value>End Date</value>
+    </labels>
+    <labels>
+        <fullName>ExcelImport</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExcelImport</shortDescription>
+        <value>Excel Import</value>
+    </labels>
+    <labels>
+        <fullName>ExcelImportAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExcelImportAssistiveText</shortDescription>
+        <value>Please send the filled excel file to following email  "SalesAdminBangalore@ef.com". Please note that file size should not be greater than 1 MB.</value>
+    </labels>
+    <labels>
+        <fullName>ExcelImportPublicGroupName</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Excel Import Public Group Name</shortDescription>
+        <value>ExcelImportGroup</value>
+    </labels>
+    <labels>
+        <fullName>ExcelImportStandardTemplatesLibraryFolder</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Excel Import Standard Templates Library Folder</shortDescription>
+        <value>Excel Import Templates</value>
+    </labels>
+    <labels>
+        <fullName>FTEFX_Article_Code</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This is used for selecting FTEFX under proposal Line Item Article Code</shortDescription>
+        <value>FTEFX</value>
+    </labels>
+    <labels>
+        <fullName>First_Name</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>First Name</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>First_Name_English</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>First Name English</shortDescription>
+        <value>First Name English</value>
+    </labels>
+    <labels>
+        <fullName>FixedFareFlightCode</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fixed Fare Flight Code</shortDescription>
+        <value>FTEFX</value>
+    </labels>
+    <labels>
+        <fullName>Gender</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gender</shortDescription>
+        <value>Gender</value>
+    </labels>
+    <labels>
+        <fullName>HasBooking</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HasBooking</shortDescription>
+        <value>Has Booking</value>
+    </labels>
+    <labels>
+        <fullName>HemisphereNorthern</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hemisphere Northern</shortDescription>
+        <value>Northern Hemisphere</value>
+    </labels>
+    <labels>
+        <fullName>HemisphereSouthern</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hemisphere Southern</shortDescription>
+        <value>Southern Hemisphere</value>
+    </labels>
+    <labels>
+        <fullName>HomePhone</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HomePhone</shortDescription>
+        <value>Home Phone</value>
+    </labels>
+    <labels>
+        <fullName>IR</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IR</shortDescription>
+        <value>IR</value>
+    </labels>
+    <labels>
+        <fullName>IfInactiveOpportunityAndClickCreateBooking</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IfInactiveOpportunityAndClickCreateBooking</shortDescription>
+        <value>Please create a new opportunity to create a booking</value>
+    </labels>
+    <labels>
+        <fullName>InfoMeeting</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InfoMeeting</shortDescription>
+        <value>IM</value>
+    </labels>
+    <labels>
+        <fullName>Integration_Profile_Developer_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration Profile Developer Name</shortDescription>
+        <value>Integration Profile</value>
+    </labels>
+    <labels>
+        <fullName>Integration_User_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration User Id</shortDescription>
+        <value>0056E000002ikfvQAA</value>
+    </labels>
+    <labels>
+        <fullName>IntegrationstatusSentToPoseidon</fullName>
+        <categories>Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IntegrationstatusSentToPoseidon</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>InvoiceEmail</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InvoiceEmail</shortDescription>
+        <value>Invoice Email</value>
+    </labels>
+    <labels>
+        <fullName>IsActive</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IsActive</shortDescription>
+        <value>Is Active?</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ACTION_DATETIME</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ACTION_DATETIME</shortDescription>
+        <value>Follow-Up past date cannot be selected</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ADT</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ADT</shortDescription>
+        <value>Follow-Up Date</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Action</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Action</shortDescription>
+        <value>Action</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ActionScreenURL</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ActionScreenURL</shortDescription>
+        <value>/one/one.app#/n/AG_Action_Screen</value>
+    </labels>
+    <labels>
+        <fullName>LAC_CNR</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CNR</shortDescription>
+        <value>Call Not Reached Type</value>
+    </labels>
+    <labels>
+        <fullName>LAC_CP</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CP</shortDescription>
+        <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>LAC_CR</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CR</shortDescription>
+        <value>Close Reason</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Call_Not_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Not Reached</shortDescription>
+        <value>Call Not Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Call_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Call Reached</shortDescription>
+        <value>Call Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Called_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Called Us</shortDescription>
+        <value>Called Us</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Change_Program</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Change Program</shortDescription>
+        <value>Change Program</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Close</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Close</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Cmd_TXT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>cmd_Here</shortDescription>
+        <value>Please enter comment here</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Comments</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Comments</shortDescription>
+        <value>Comments</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Convert</fullName>
+        <categories>Convert</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Convert</shortDescription>
+        <value>Convert</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Convert_C</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Convert_C</shortDescription>
+        <value>Convert and Back</value>
+    </labels>
+    <labels>
+        <fullName>LAC_DATA_SUCCESS</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_DATA_SUCCESS</shortDescription>
+        <value>Data saved successfully</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Dest</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>dest</shortDescription>
+        <value>Destination</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Duration</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Duration</shortDescription>
+        <value>Duration</value>
+    </labels>
+    <labels>
+        <fullName>LAC_ERROR_PAST_MSG</fullName>
+        <categories>Past date cannot be selected</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_ERROR_PAST_MSG</shortDescription>
+        <value>Past date cannot be selected</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Emailed_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Emailed Us</shortDescription>
+        <value>Emailed Us</value>
+    </labels>
+    <labels>
+        <fullName>LAC_FILL_VALID_INFO</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_FILL_VALID_INFO</shortDescription>
+        <value>Please fill your information correctly.</value>
+    </labels>
+    <labels>
+        <fullName>LAC_HDYH</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HDYH</shortDescription>
+        <value>How did you hear?</value>
+    </labels>
+    <labels>
+        <fullName>LAC_HDYHA_EF</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HDYHA_EF</shortDescription>
+        <value>How did you hear about EF?</value>
+    </labels>
+    <labels>
+        <fullName>LAC_LHTB</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LHTB</shortDescription>
+        <value>Likelihood to book</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Likelihood</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Likelihood</shortDescription>
+        <value>Likelihood</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Month</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Month</shortDescription>
+        <value>Month</value>
+    </labels>
+    <labels>
+        <fullName>LAC_RNA</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RNA</shortDescription>
+        <value>Result/next action</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SAC</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SAC</shortDescription>
+        <value>Save and Back</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SACO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SACO</shortDescription>
+        <value>Save and Create Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SAVE_ACTION</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>saveAction</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Select</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>select</shortDescription>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Sent_Email</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sent Email</shortDescription>
+        <value>Sent Email</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Reached</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Reached</shortDescription>
+        <value>Social Media Reached</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Social_Media_Sent</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Sent</shortDescription>
+        <value>Social Media Sent</value>
+    </labels>
+    <labels>
+        <fullName>LAC_TITLE</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TITLE</shortDescription>
+        <value>LOG AN ACTION</value>
+    </labels>
+    <labels>
+        <fullName>LAC_VDT</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VDT</shortDescription>
+        <value>Visit Date</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visit</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visit</shortDescription>
+        <value>Visit</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Visited_Us</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visited Us</shortDescription>
+        <value>Visited Us</value>
+    </labels>
+    <labels>
+        <fullName>LAC_WBO</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WBO</shortDescription>
+        <value>Will book on</value>
+    </labels>
+    <labels>
+        <fullName>LAC_When</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>When</shortDescription>
+        <value>When</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Year</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Year</shortDescription>
+        <value>Year</value>
+    </labels>
+    <labels>
+        <fullName>LAC_loading</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>loading</shortDescription>
+        <value>Loading</value>
+    </labels>
+    <labels>
+        <fullName>LTCourseProgram</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LTCourseProgram</shortDescription>
+        <value>Select LT Course</value>
+    </labels>
+    <labels>
+        <fullName>Last_Name</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last Name</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>Last_Name_English</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last Name English</shortDescription>
+        <value>Last Name English</value>
+    </labels>
+    <labels>
+        <fullName>LeadPrefix</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadPrefix</shortDescription>
+        <value>00Q</value>
+    </labels>
+    <labels>
+        <fullName>LeadStageConverted</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStageConverted</shortDescription>
+        <value>Converted</value>
+    </labels>
+    <labels>
+        <fullName>LeadStageFollowup</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStageFollowup</shortDescription>
+        <value>Follow Up</value>
+    </labels>
+    <labels>
+        <fullName>LeadStageTBC</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStageTBC</shortDescription>
+        <value>To Contact</value>
+    </labels>
+    <labels>
+        <fullName>LeadStageWon</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStageWon</shortDescription>
+        <value>Closed Won</value>
+    </labels>
+    <labels>
+        <fullName>LineItemPricingStatusPending</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item Pricing Status Pending</shortDescription>
+        <value>Pending</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMDay</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Day</shortDescription>
+        <value>Day</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMEach</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Each</shortDescription>
+        <value>Each</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMHour</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Hour</shortDescription>
+        <value>Hour</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMMonth</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Month</shortDescription>
+        <value>Month</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMWeek</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Week</shortDescription>
+        <value>Week</value>
+    </labels>
+    <labels>
+        <fullName>LineItemUOMYear</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Line Item UOM Year</shortDescription>
+        <value>Year</value>
+    </labels>
+    <labels>
+        <fullName>MULTI</fullName>
+        <categories>this is used in duplicate check class</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MULTI</shortDescription>
+        <value>MULTI</value>
+    </labels>
+    <labels>
+        <fullName>MandatoryFields</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MandatoryFields</shortDescription>
+        <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
+    </labels>
+    <labels>
+        <fullName>MergeReasonManual</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MergeReasonManual</shortDescription>
+        <value>Manually Merged</value>
+    </labels>
+    <labels>
+        <fullName>Middle_Name</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Middle Name</shortDescription>
+        <value>Middle Name</value>
+    </labels>
+    <labels>
+        <fullName>MobilePhone</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MobilePhone</shortDescription>
+        <value>Mobile Phone</value>
+    </labels>
+    <labels>
+        <fullName>Nationality</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Nationality</shortDescription>
+        <value>Nationality</value>
+    </labels>
+    <labels>
+        <fullName>Net_Price</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Net Price</shortDescription>
+        <value>Net Price</value>
+    </labels>
+    <labels>
+        <fullName>Nick_Name</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Nick Name</shortDescription>
+        <value>Nick Name</value>
+    </labels>
+    <labels>
+        <fullName>No</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>NoActiveOpportunity</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoActiveOpportunity</shortDescription>
+        <value>Please create an opportunity before sending Customer info to Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>OfficeVisit</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OfficeVisit</shortDescription>
+        <value>Office Visit</value>
+    </labels>
+    <labels>
+        <fullName>OppStageClosedLost</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opp Stage Closed Lost</shortDescription>
+        <value>Closed Lost</value>
+    </labels>
+    <labels>
+        <fullName>OppStageInactive</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppStageInactive</shortDescription>
+        <value>InActive</value>
+    </labels>
+    <labels>
+        <fullName>Opportunities</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunities</shortDescription>
+        <value>Opportunities</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityBookingStage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityBookingStage</shortDescription>
+        <value>Booking</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityName</shortDescription>
+        <value>Opportunity Name</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityStageFollowUp</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Represents the Follow Up Opportunity stage</shortDescription>
+        <value>Follow Up</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityStageToContact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Represents the To Contact Opportunity stage</shortDescription>
+        <value>To Contact</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_owner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity owner</shortDescription>
+        <value>Opportunity owner</value>
+    </labels>
+    <labels>
+        <fullName>Optional</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Optional</shortDescription>
+        <value>Optional</value>
+    </labels>
+    <labels>
+        <fullName>OtherPhone</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OtherPhone</shortDescription>
+        <value>Other Phone</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Email_ID</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Email ID</shortDescription>
+        <value>Parent Email ID</value>
+    </labels>
+    <labels>
+        <fullName>Passport_Expiry_Date</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Passport Expiry Date</shortDescription>
+        <value>Passport Expiry Date</value>
+    </labels>
+    <labels>
+        <fullName>Passport_Issue_Date</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Passport Issue Date</shortDescription>
+        <value>Passport Issue Date</value>
+    </labels>
+    <labels>
+        <fullName>Passport_Number</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Passport Number</shortDescription>
+        <value>Passport Number</value>
+    </labels>
+    <labels>
+        <fullName>Passport_Type</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Passport Type</shortDescription>
+        <value>Passport Type</value>
+    </labels>
+    <labels>
+        <fullName>PersonMailingCity</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonMailingCity</shortDescription>
+        <value>Mailing City</value>
+    </labels>
+    <labels>
+        <fullName>PersonMailingCountry</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonMailingCountry</shortDescription>
+        <value>Mailing Country</value>
+    </labels>
+    <labels>
+        <fullName>PersonMailingPostalCode</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonMailingPostalCode</shortDescription>
+        <value>Mailing Zip/Postal Code</value>
+    </labels>
+    <labels>
+        <fullName>PersonMailingState</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonMailingState</shortDescription>
+        <value>Mailing State/Province</value>
+    </labels>
+    <labels>
+        <fullName>PersonMailingStreet</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonMailingStreet</shortDescription>
+        <value>Mailing Street</value>
+    </labels>
+    <labels>
+        <fullName>PersonOtherCity</fullName>
+        <categories>Apttus, Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonOtherCity</shortDescription>
+        <value>Other City</value>
+    </labels>
+    <labels>
+        <fullName>PersonOtherPostalCode</fullName>
+        <categories>Apttus, Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonOtherPostalCode</shortDescription>
+        <value>Other Zip/Postal Code</value>
+    </labels>
+    <labels>
+        <fullName>PersonOtherStreet</fullName>
+        <categories>Apttus, Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PersonOtherStreet</shortDescription>
+        <value>Other Street</value>
+    </labels>
+    <labels>
+        <fullName>Personal_ID</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Personal ID</shortDescription>
+        <value>National ID</value>
+    </labels>
+    <labels>
+        <fullName>PleaseSelect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used for Default value in picklist values</shortDescription>
+        <value>Please Select</value>
+    </labels>
+    <labels>
+        <fullName>Price</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price</shortDescription>
+        <value>Price</value>
+    </labels>
+    <labels>
+        <fullName>PrintSendProposal</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PrintSendProposal label button</shortDescription>
+        <value>Print/Send Proposal</value>
+    </labels>
+    <labels>
+        <fullName>ProductAdjustmentPriceOverride</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Adjustment Price Override</shortDescription>
+        <value>Price Override</value>
+    </labels>
+    <labels>
+        <fullName>ProductCodeEnglish</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Code English</shortDescription>
+        <value>COL</value>
+    </labels>
+    <labels>
+        <fullName>ProductCodeNonEnglish</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Code Non English</shortDescription>
+        <value>COLN</value>
+    </labels>
+    <labels>
+        <fullName>ProductCodeOSHC</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Code OSHC</shortDescription>
+        <value>OSHC</value>
+    </labels>
+    <labels>
+        <fullName>ProductCodeOSHCAY</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Code OSHCAY</shortDescription>
+        <value>OSHCAY</value>
+    </labels>
+    <labels>
+        <fullName>ProductCountryUK</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Country UK</shortDescription>
+        <value>GB</value>
+    </labels>
+    <labels>
+        <fullName>ProductFamilyDestination</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Family Destination</shortDescription>
+        <value>Destination</value>
+    </labels>
+    <labels>
+        <fullName>ProductFamilyJuniorCourse</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Family Junior Course</shortDescription>
+        <value>Junior Course</value>
+    </labels>
+    <labels>
+        <fullName>ProductLanguageEnglish</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Language English</shortDescription>
+        <value>English</value>
+    </labels>
+    <labels>
+        <fullName>ProductLanguageNonEnglish</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Language Non English</shortDescription>
+        <value>Non English</value>
+    </labels>
+    <labels>
+        <fullName>ProductSubTypeBooks</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Sub Type Books</shortDescription>
+        <value>Books</value>
+    </labels>
+    <labels>
+        <fullName>ProductSubTypeHostFamily</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Sub Type Host Family</shortDescription>
+        <value>Host Family</value>
+    </labels>
+    <labels>
+        <fullName>ProductSubTypeHotel</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Sub Type Hotel</shortDescription>
+        <value>Hotel</value>
+    </labels>
+    <labels>
+        <fullName>ProductSubTypeResidence</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Sub Type Residence</shortDescription>
+        <value>Residence</value>
+    </labels>
+    <labels>
+        <fullName>ProductSubTypeSeasonSupplement</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Sub Type Season Supplement</shortDescription>
+        <value>Season Supplements</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeAccommodation</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Type Accommodation</shortDescription>
+        <value>Accommodation</value>
+    </labels>
+    <labels>
+        <fullName>ProductTypeCourse</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Type Course</shortDescription>
+        <value>Course</value>
+    </labels>
+    <labels>
+        <fullName>ProfileSystemAdmin</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Profile System Admin</shortDescription>
+        <value>System Administrator</value>
+    </labels>
+    <labels>
+        <fullName>Program</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Program</shortDescription>
+        <value>Program</value>
+    </labels>
+    <labels>
+        <fullName>ProgramLT</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProgramLT</shortDescription>
+        <value>LT</value>
+    </labels>
+    <labels>
+        <fullName>ProposalLineItemTypeOption</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Proposal Line Item Type Option</shortDescription>
+        <value>Option</value>
+    </labels>
+    <labels>
+        <fullName>ProposalLineItemTypeProductService</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Proposal Line Item Type Product Service</shortDescription>
+        <value>Product/Service</value>
+    </labels>
+    <labels>
+        <fullName>Quantity</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+    <labels>
+        <fullName>QuoteProposalStatusesToDelete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Semicolon separated list of Quote/Proposal statuses for which prevent record del</shortDescription>
+        <value>Draft</value>
+    </labels>
+    <labels>
+        <fullName>Quote_Summary</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote Summary</shortDescription>
+        <value>Quote Summary</value>
+    </labels>
+    <labels>
+        <fullName>Rank</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank</shortDescription>
+        <value>Rank</value>
+    </labels>
+    <labels>
+        <fullName>ReachedAction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reached Action</shortDescription>
+        <value>Reached Action</value>
+    </labels>
+    <labels>
+        <fullName>ReachedRate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reached Rate</shortDescription>
+        <value>Reached Rate</value>
+    </labels>
+    <labels>
+        <fullName>RecordDeletedSuccessfully</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RecordDeletedSuccessfully</shortDescription>
+        <value>Record was deleted successfully</value>
+    </labels>
+    <labels>
+        <fullName>Reservation</fullName>
+        <categories>this is used in duplicate check class</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reservation</shortDescription>
+        <value>RES</value>
+    </labels>
+    <labels>
+        <fullName>Review_message_before_proceeding_to_next_step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review message before proceeding to next step</shortDescription>
+        <value>* Please review your quote before proceedings to next step</value>
+    </labels>
+	<labels>
+        <fullName>SalesAssociateProfileName</fullName>
+        <language>en_US</language>
+        <shortDescription>Sales Associate Profile Name</shortDescription>
+        <value>Sales Associate</value>
+    </labels>
+    <labels>
+        <fullName>SBRTask</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SBRTask</shortDescription>
+        <value>SBRTask</value>
+    </labels>
+    <labels>
+        <fullName>SPQTask</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SPQTask</shortDescription>
+        <value>SPQ Task</value>
+    </labels>
+    <labels>
+        <fullName>STP_Booking</fullName>
+        <categories>QTB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status value for sent to Poseidon</shortDescription>
+        <value>STP</value>
+    </labels>
+    <labels>
+        <fullName>SalesClosed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SalesClosed</shortDescription>
+        <value>Sales Closed</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Made_by</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Made by</shortDescription>
+        <value>Sales Made by</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Office</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Office</shortDescription>
+        <value>Sales Office</value>
+    </labels>
+    <labels>
+        <fullName>SaveFailed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>When the record is failed to save in Lightning component.</shortDescription>
+        <value>Unable to save</value>
+    </labels>
+    <labels>
+        <fullName>Search</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search</shortDescription>
+        <value>search</value>
+    </labels>
+    <labels>
+        <fullName>SearchDel</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SearchDel</shortDescription>
+        <value>search-del</value>
+    </labels>
+    <labels>
+        <fullName>SendToPoseidon</fullName>
+        <categories>PQ</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SendToPoseidon</shortDescription>
+        <value>Send to Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>SentEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sent Email Sales action on Log a Call Component</shortDescription>
+        <value>Sent Email</value>
+    </labels>
+    <labels>
+        <fullName>Sent_To_Poseidon</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This field is used in Quote Proposal trigger for checking before invoking Scribe</shortDescription>
+        <value>Sent To Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>ShowBookingDisplayMessage</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ShowBookingDisplayMessage</shortDescription>
+        <value>Opening Booking Please wait!!</value>
+    </labels>
+    <labels>
+        <fullName>SocialMediaReached</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Reached Sales action on Log a Call Component</shortDescription>
+        <value>Social Media Reached</value>
+    </labels>
+    <labels>
+        <fullName>SocialMediaSent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Social Media Sent Sales action on Log a Call Component</shortDescription>
+        <value>Social Media Sent</value>
+    </labels>
+    <labels>
+        <fullName>Stage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stage</shortDescription>
+        <value>Stage</value>
+    </labels>
+    <labels>
+        <fullName>StartDate_label_for_cart_page</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StartDate label for cart page</shortDescription>
+        <value>Select Start Date</value>
+    </labels>
+    <labels>
+        <fullName>Start_Date</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Start Date</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>StaticTextTranslation</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StaticTextTranslation (Please do not translate this)</shortDescription>
+        <value>Static Text Translation</value>
+    </labels>
+    <labels>
+        <fullName>StringFalse</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringFalse</shortDescription>
+        <value>False</value>
+    </labels>
+    <labels>
+        <fullName>StringLead</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringLead</shortDescription>
+        <value>Lead</value>
+    </labels>
+    <labels>
+        <fullName>StringNA</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringNA</shortDescription>
+        <value>NA</value>
+    </labels>
+    <labels>
+        <fullName>StringOne</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringOne</shortDescription>
+        <value>1</value>
+    </labels>
+    <labels>
+        <fullName>StringTrue</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringTrue</shortDescription>
+        <value>True</value>
+    </labels>
+    <labels>
+        <fullName>StringZero</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StringZero</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>SystemCallTaskLabelName</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SystemCallTaskLabelName</shortDescription>
+        <value>System Call Task</value>
+    </labels>
+    <labels>
+        <fullName>SystemCallTaskRecordTypeDeveloperName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Developer name of Task System Call Task record type</shortDescription>
+        <value>SystemCallTask</value>
+    </labels>
+    <labels>
+        <fullName>SystemTaskDefaultSubject</fullName>
+        <categories>Custom Development</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System task default subject - Contact Customer</shortDescription>
+        <value>Contact Customer</value>
+    </labels>
+    <labels>
+        <fullName>TBC</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TBC</shortDescription>
+        <value>TBC</value>
+    </labels>
+    <labels>
+        <fullName>TaskStatusCompleted</fullName>
+        <categories>CRM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TaskStatusCompleted</shortDescription>
+        <value>Completed</value>
+    </labels>
+    <labels>
+        <fullName>TemplateBuilderCongaQueryId</fullName>
+        <categories>DEV</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
+        <value>a5J6E0000000CikUAE</value>
+    </labels>
+    <labels>
+        <fullName>TestDependentPicklistValues</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This label is used in UnitTests to mock dependent picklists values</shortDescription>
+        <value>DEB;DEB;APP;MLY;AY;DE</value>
+    </labels>
+    <labels>
+        <fullName>TotalAction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Action</shortDescription>
+        <value>Total Action</value>
+    </labels>
+    <labels>
+        <fullName>TritonId</fullName>
+        <categories>Dev</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TritonId</shortDescription>
+        <value>triton id</value>
+    </labels>
+    <labels>
+        <fullName>ValidateCartActionFinalize</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validate Cart Action Finalize</shortDescription>
+        <value>Finalize</value>
+    </labels>
+    <labels>
+        <fullName>ValidateCartGrandTotal</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validate Cart Grand Total</shortDescription>
+        <value>Grand Total</value>
+    </labels>
+    <labels>
+        <fullName>Visit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visit Call Result on Log an Action Component</shortDescription>
+        <value>Visit</value>
+    </labels>
+    <labels>
+        <fullName>VisitedUs</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Visited Us action on Log a Call Component</shortDescription>
+        <value>Visited Us</value>
+    </labels>
+    <labels>
+        <fullName>bookingSummaryFinish_Booking</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Finish Booking</shortDescription>
+        <value>Finish Booking</value>
+    </labels>
+    <labels>
+        <fullName>bookingSummarySuccess</fullName>
+        <categories>BookingSummary</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>bookingSummarySuccess</shortDescription>
+        <value>Please Create a Booking in Poseidon.</value>
+    </labels>
+    <labels>
+        <fullName>bookingsummaryPersonalDetails</fullName>
+        <categories>Apttus</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Personal Details</shortDescription>
+        <value>Personal Details</value>
+    </labels>
+     <labels>
+        <fullName>LAC_Booking_HelpText</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Booking_HelpText</shortDescription>
+        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLLive</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLLive</shortDescription>
+        <value>https://languagereports.ef.com</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLQA</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLQA</shortDescription>
+        <value>https://language.ef.com:8826/</value>
+    </labels>
+    <labels>
+        <fullName>ReportEnv</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReportEnv</shortDescription>
+        <value>QA</value>
+    </labels>
+</CustomLabels>

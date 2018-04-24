@@ -1,0 +1,7 @@
+Sehr geehrte(r) Herr/Frau {!Case.SuppliedName}, 
+
+Wir freuen uns dass Sie sich an unseren Online Support gewendet haben. Kundenvorgang {!CaseCaseNumber}: “{!Case.Subject}“ ist erstellt worden, und ein {!Organization.Name} Support Agent wird Ihnen bald eine Antwort schicken. 
+
+Mit freundlichen Grüßen, 
+
+Ihr {!Organization.Name} Team

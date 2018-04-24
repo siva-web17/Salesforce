@@ -1,0 +1,90 @@
+<aura:component controller="AccountOpportunitiesListController"
+                implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler event="c:RecordIsDeletedEvent" action="{!c.init}"/>
+    <aura:handler event="force:showToast" action="{!c.handleChangeRecord}"/>
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="opportunitiesList" type="Object[]"/>
+    <aura:attribute name="opportunitiesCount" type="String"/>
+
+    <article class="slds-card slds-card_boundary forceRelatedListCardDesktop">
+        <div class="slds-card__header slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <lightning:icon iconName="standard:opportunity" size="small"/>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 id="header">
+                            <a class="slds-card__header-link baseCard__header-title-container">
+                                <span class="slds-text-heading--small slds-truncate slds-m-right--xx-small">
+                                        {!$Label.c.Opportunities}
+                                </span>
+                                <span class="slds-text-heading--small slds-shrink-none slds-m-right--xx-small">
+                                    ({!v.opportunitiesCount})
+                                </span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+        </div>
+
+        <div class="slds-card__body">
+            <aura:if isTrue="{!v.opportunitiesCount > 0}">
+                <div class="slds-scrollable">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                        <tr class="slds-text-title_caps">
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.OpportunityName}">
+                                        {!$Label.c.OpportunityName}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Active}">
+                                        {!$Label.c.Active}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Program}">
+                                        {!$Label.c.Program}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Stage}">
+                                        {!$Label.c.Stage}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Sales_Office}">
+                                        {!$Label.c.Sales_Office}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Opportunity_owner}">
+                                        {!$Label.c.Opportunity_owner}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="{!$Label.c.Action}">
+                                        {!$Label.c.Action}
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <aura:iteration items="{!v.opportunitiesList}" var="opp">
+                            <tr>
+                                <c:AccountOpportunitiesListRecordListRow row="{!opp}"/>
+                            </tr>
+                        </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </aura:if>
+        </div>
+    </article>
+</aura:component>

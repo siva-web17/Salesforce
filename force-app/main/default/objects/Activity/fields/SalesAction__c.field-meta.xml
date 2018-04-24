@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesAction__c</fullName>
+    <description>Captures the Call action for the sales user.</description>
+    <externalId>false</externalId>
+    <label>Sales Action</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Call Reached</fullName>
+                <default>false</default>
+                <label>Call Reached</label>
+            </value>
+            <value>
+                <fullName>Call Not Reached</fullName>
+                <default>false</default>
+                <label>Call Not Reached</label>
+            </value>
+            <value>
+                <fullName>Called Us</fullName>
+                <default>false</default>
+                <label>Called Us</label>
+            </value>
+            <value>
+                <fullName>Visited Us</fullName>
+                <default>false</default>
+                <label>Visited Us</label>
+            </value>
+            <value>
+                <fullName>Emailed Us</fullName>
+                <default>false</default>
+                <label>Emailed Us</label>
+            </value>
+            <value>
+                <fullName>Sent Email</fullName>
+                <default>false</default>
+                <label>Sent Email</label>
+            </value>
+            <value>
+                <fullName>Social Media Reached</fullName>
+                <default>false</default>
+                <label>Social Media Reached</label>
+            </value>
+            <value>
+                <fullName>Social Media Sent</fullName>
+                <default>false</default>
+                <label>Social Media Sent</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Lead_Lightning_Page_Layout</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Opportunity_Lightning_Page_Layout</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PersonAccountLightningPageLayout</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+    </actionOverrides>
+    <formFactors>Small</formFactors>
+    <formFactors>Medium</formFactors>
+    <formFactors>Large</formFactors>
+    <label>Sales</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>AG_Action_Screen</tabs>
+    <tabs>AG_Assign</tabs>
+    <tabs>AG_Send_Materials</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>ImportfromExcel</tabs>
+    <tabs>dcBatch</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
+    <tabs>TemplateSetting__c</tabs>
+    <tabs>standard-Event</tabs>
+    <tabs>Source__c</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>LanguageReport</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

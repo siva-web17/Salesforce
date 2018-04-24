@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoNotEditInactiveOpportunities</fullName>
+    <active>true</active>
+    <description>This Validation Rule is used to block users from editing an Inactive Opportunity</description>
+    <errorConditionFormula>NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)
+&amp;&amp;
+NOT(ISCHANGED( IsActive__c ) )
+&amp;&amp;
+IsActive__c = False</errorConditionFormula>
+    <errorMessage>The Opportunity you are attempting to edit is Inactive. Please work with the latest Active Opportunity or create a new Opportunity.</errorMessage>
+</ValidationRule>

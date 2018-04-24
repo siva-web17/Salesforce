@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnabledForMarketSalesOfficeProgram__c</fullName>
+    <description>Contains all the Public Group api names for which the user should be a member. This will grant access to the records visible to these groups for the user</description>
+    <externalId>false</externalId>
+    <label>Enabled For Market-SalesOffice-Program</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

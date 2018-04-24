@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Won</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Ranking__c</columns>
+    <columns>Program__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>SalesOffice__c</columns>
+    <columns>Market__c</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.WON</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.CLOSED</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Won</label>
+</ListView>

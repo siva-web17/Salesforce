@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Post_to_the_Parent_Id_feed</name>
+        <label>Post to the Parent Id feed</label>
+        <locationX>91</locationX>
+        <locationY>79</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>TaskParentId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>ChatterPostBody</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <description>This flow is used to create a chatter post when a comment is added when logging an action.
+
+Caution: This might cause issues when doing bulk uploads/updates.</description>
+    <interviewLabel>Create Chatter Post with Sales Comment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Chatter Post with Sales Comment</label>
+    <processType>AutoLaunchedFlow</processType>
+    <startElementReference>Post_to_the_Parent_Id_feed</startElementReference>
+    <textTemplates>
+        <name>ChatterPostBody</name>
+        <text>Sales Comment: {!TaskComment}</text>
+    </textTemplates>
+    <variables>
+        <name>TaskComment</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>TaskParentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

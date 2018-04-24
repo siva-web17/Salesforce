@@ -1,0 +1,6 @@
+#Mapping values
+#Mon Jan 29 17:53:26 IST 2018
+DOUBLEOPTIN__C=DoubleOptIn__c
+MARKETCODE__C=MarketCode__c
+NAME=Name
+CALLCAMPAIGN__C=CallCampaign__c

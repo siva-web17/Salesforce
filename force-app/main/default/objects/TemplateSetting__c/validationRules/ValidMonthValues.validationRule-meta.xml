@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidMonthValues</fullName>
+    <active>true</active>
+    <description>Month value cannot exceed 12 or be negative</description>
+    <errorConditionFormula>OR(AgeFromMonths__c > 12,  AgeToMonths__c > 12, 
+   AgeFromMonths__c &lt; 0 ,  AgeToMonths__c &lt; 0 )</errorConditionFormula>
+    <errorMessage>Please enter valid month. Cannot exceed value 12 or be negative</errorMessage>
+</ValidationRule>

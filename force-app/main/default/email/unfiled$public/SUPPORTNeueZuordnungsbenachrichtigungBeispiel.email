@@ -1,0 +1,10 @@
+*** NEUE KUNDENVORGANG ZUWEISUNGSBENACHRICHTIGUNG *** 
+
+Ihnen wurde der folgende Kundenvorgang zugewiesen: 
+Firma: {!Account.Name} 
+Kontakt Name: {!Contact.Name} 
+Kundenvorgang #: {!Case.CaseNumber} 
+Wegen: {!Case.Subject} 
+Beschreibung: {!Case.Description} 
+
+Bitte verwenden Sie den folgenden Link um direkt zur Kundenvorgang zu gelangen: {!Case.Link}

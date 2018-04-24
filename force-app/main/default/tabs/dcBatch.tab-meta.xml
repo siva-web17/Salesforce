@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Duplicates</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom66: Dice</motif>
+    <page>dupcheck__dc3Batch</page>
+</CustomTab>

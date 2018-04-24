@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Phone Support</masterLabel>
+        <translation>Telefon Service</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Web Support</masterLabel>
+        <translation>Internet Service</translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

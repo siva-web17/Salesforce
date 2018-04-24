@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OtherNationalities__c</fullName>
+    <description>It contains nationality of the customers.</description>
+    <externalId>false</externalId>
+    <label>Other Nationalities</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Nationality</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

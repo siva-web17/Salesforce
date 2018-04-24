@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AppendProgramToTaskSubject</fullName>
+        <description>Append Task 'Subject' with 'Program'.</description>
+        <field>Subject</field>
+        <formula>Subject+' - '+ TEXT(Program__c)</formula>
+        <name>AppendProgramToTaskSubject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateIsOppClosingFieldOnTask</fullName>
+        <field>IsParentClosing__c</field>
+        <literalValue>0</literalValue>
+        <name>UpdateIsOppClosingFieldOnTask</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>AppendProgramToTaskSubject</fullName>
+        <actions>
+            <name>AppendProgramToTaskSubject</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Task.Subject</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Task.Subject</field>
+            <operation>notContain</operation>
+            <value>-</value>
+        </criteriaItems>
+        <description>To update current subject appended with program code.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>TaskFieldUpdateAfterOppClose</fullName>
+        <actions>
+            <name>UpdateIsOppClosingFieldOnTask</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Task.Status</field>
+            <operation>equals</operation>
+            <value>Deferred</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Task.IsParentClosing__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Task.IsClosed__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Update 'IsOpportunityClosing' field to false after the Task is set to deferred</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

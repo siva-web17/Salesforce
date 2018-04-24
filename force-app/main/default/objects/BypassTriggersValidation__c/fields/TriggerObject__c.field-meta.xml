@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TriggerObject__c</fullName>
+    <description>Stores Trigger Objects like lead/Opportunity/Account/Task for which we need to bypass.</description>
+    <externalId>false</externalId>
+    <label>Trigger Object</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

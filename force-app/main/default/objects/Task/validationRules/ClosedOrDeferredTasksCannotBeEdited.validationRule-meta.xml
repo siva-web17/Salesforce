@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ClosedOrDeferredTasksCannotBeEdited</fullName>
+    <active>true</active>
+    <description>IsClosed tasks cannot be edited.</description>
+    <errorConditionFormula>AND( 
+(NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)), Not(IsParentClosing__c)&amp;&amp;(ISPICKVAL( PRIORVALUE( Status ) , "Completed") || ISPICKVAL( PRIORVALUE( Status ) , "Deferred") ) &amp;&amp; ISCHANGED(Status ))</errorConditionFormula>
+    <errorMessage>Closed / deferred tasks Cannot be Edited.</errorMessage>
+</ValidationRule>

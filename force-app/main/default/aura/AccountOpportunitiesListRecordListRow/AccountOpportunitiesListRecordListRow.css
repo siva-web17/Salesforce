@@ -1,0 +1,18 @@
+.THIS td{
+         padding: .25rem .5rem;
+         white-space: nowrap;
+         position: relative;
+         border-bottom: 1px solid;
+     }
+
+
+.THIS a{
+         color: rgb(0, 112, 210);
+     }
+.THIS .slds-checkbox_faux{
+    border-color: rgb(201, 201, 201) !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+.THIS .slds-checkbox_faux:after{
+    border-color: rgb(144, 144, 144) !important;
+}

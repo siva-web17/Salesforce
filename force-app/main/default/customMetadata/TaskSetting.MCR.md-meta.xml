@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MCR</label>
+    <protected>false</protected>
+    <values>
+        <field>CanCloseManually__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>CanCreateManually__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>CreateCallType__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ForClosedCallTypes__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsCallType__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsTaskPerCustomer__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Name__c</field>
+        <value xsi:type="xsd:string">MCR</value>
+    </values>
+    <values>
+        <field>No__c</field>
+        <value xsi:type="xsd:double">14.0</value>
+    </values>
+    <values>
+        <field>RecordTypeLabel__c</field>
+        <value xsi:type="xsd:string">MCR Task</value>
+    </values>
+    <values>
+        <field>RuleForActivity__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RuleForTask__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Rule__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>TaskGroup__c</field>
+        <value xsi:type="xsd:string">MCR</value>
+    </values>
+    <values>
+        <field>TaskSubject__c</field>
+        <value xsi:type="xsd:string">Make Reservation</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Task</value>
+    </values>
+    <values>
+        <field>UpdateCallType__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

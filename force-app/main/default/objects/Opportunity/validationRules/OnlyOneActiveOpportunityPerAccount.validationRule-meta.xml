@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyOneActiveOpportunityPerAccount</fullName>
+    <active>true</active>
+    <description>Each Account can have only one Active opportunity.</description>
+    <errorConditionFormula>And( 
+NOT($Setup.BypassTriggersValidation__c.DisableValidation__c ), ((Account.ActiveOpportunities__c >=1)&amp;&amp; (ISNEW())) ||(ISCHANGED(AccountId ) &amp;&amp; (Account.ActiveOpportunities__c >=1 ) ))</errorConditionFormula>
+    <errorMessage>Active opportunity already exists for this Personal Account.</errorMessage>
+</ValidationRule>

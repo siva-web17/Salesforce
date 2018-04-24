@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActionScreenScore__c</fullName>
+    <description>The score calculated based on the business rules, defined the order of the record in the action screen</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  HasReservationTask__c , 1,
+IF(
+   ISPICKVAL(SCT_CallType__c, 'FUA'), 2,
+IF(
+   SCT_IsExpress__c , 3,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'TCC') &amp;&amp; (Ranking__c>=1 &amp;&amp; Ranking__c&lt;=4), 4,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'FUP') &amp;&amp; (Ranking__c>=1 &amp;&amp; Ranking__c&lt;=3), 5,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'UCC') &amp;&amp; (Ranking__c>=1 &amp;&amp; Ranking__c&lt;=3), 6,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'TCC') &amp;&amp; Ranking__c==5, 7,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'FUP') &amp;&amp; (Ranking__c>=4 &amp;&amp; Ranking__c&lt;=5), 8,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'UCC') &amp;&amp; (Ranking__c>=4 &amp;&amp; Ranking__c&lt;=5), 9,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'TCC') &amp;&amp; Ranking__c>5, 10,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'FUP') &amp;&amp; Ranking__c>5, 11,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'UCC') &amp;&amp; Ranking__c>5, 12,
+IF(
+  ISPICKVAL(SCT_CallType__c, 'UCC'), 13,14)))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Action Screen Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

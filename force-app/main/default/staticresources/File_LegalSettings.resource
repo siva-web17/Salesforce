@@ -1,0 +1,6 @@
+"NAME","CALLCAMPAIGN__C","DOUBLEOPTIN__C","MARKETCODE__C"
+"INB","true","false","INB"
+"DEB","true","false","DEB"
+"PLW","true","false","PLW"
+"ESB","true","false","ESB"
+"FRP","true","false","FRP"

@@ -1,0 +1,28 @@
+<!--
+ - Created by saiharish.r on 4/6/2018.
+ -->
+
+<apex:page id="ShowCustomer" standardController="Account" extensions="CreateBookingController" showHeader="false"
+           standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <apex:slds />
+    <script>
+       window.onload = function () {
+        var timeout=0;
+           var AccountID = '{!globalAccountID}';
+           var CustomerURL = '{!ShowCustomerURL}';
+           if(AccountID.length > 0 && CustomerURL.length > 0)
+       {
+        Sfdc.canvas.publisher.publish({ name : "publisher.close", payload : { refresh:"true" }});
+        var xhr = new XMLHttpRequest();
+        var url = CustomerURL+AccountID;
+        xhr.open("GET", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send();
+        return false;
+        }
+      }
+
+
+    </script>
+</apex:page>

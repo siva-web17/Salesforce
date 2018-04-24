@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>BR</masterLabel>
+        <translation><!-- BR --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CAM</masterLabel>
+        <translation><!-- CAM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CBR</masterLabel>
+        <translation><!-- CBR --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CU</masterLabel>
+        <translation><!-- CU --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IM</masterLabel>
+        <translation><!-- IM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IR</masterLabel>
+        <translation><!-- IR --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation>Sonstiges</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PQ</masterLabel>
+        <translation><!-- PQ --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RES</masterLabel>
+        <translation><!-- RES --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

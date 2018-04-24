@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This field is used to find the possible duplicates while testing. --></help>
+    <label><!-- Duplicate Record Sets --></label>
+    <name>DuplicateRecordSets__c</name>
+</CustomFieldTranslation>
