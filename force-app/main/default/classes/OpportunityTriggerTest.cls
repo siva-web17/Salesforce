@@ -104,7 +104,7 @@ private class OpportunityTriggerTest {
         for (Opportunity o : oppList2) {
             oppMap2.put(o.Id, o);
         }
-        OpportunitiesHelper.setDefaultLetterAndLabel(oppMap1, oppMap2);
+        OpportunitiesHelper.setDefaultLetterLabelAndDateOfDeactivation(oppMap1, oppMap2);
         Test.stopTest();
     }
 
