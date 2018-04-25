@@ -150,10 +150,11 @@ public class OpportunitiesHelper {
     /**
     * @author Arkadiusz Celej
     * ver 1.0 8-Dec-2017
-    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records
+    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records and set DateOfDeactivation if IsActive is changed
+    *
     *
     * */
-    public static void setDefaultLetterAndLabel(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
+    public static void setDefaultLetterLabelAndDateOfDeactivation(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunitiesToUpdate = new Set<Id>();
         try {
             for (Opportunity opp : newOpportunities.values()) {
@@ -181,7 +182,7 @@ public class OpportunitiesHelper {
                 setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
             }
         } catch (Exception ex) {
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterAndLabel', null);
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterLabelAndDateOfDeactivation', null);
         }
     }
 
