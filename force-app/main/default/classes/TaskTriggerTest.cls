@@ -647,7 +647,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_1(){
+    static void when_TaskIsCreated_Expect_SubjectIsPopulated(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_1:
@@ -690,7 +690,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_2(){
+    static void when_TaskIsCreated_Expect_HyphenAndProgramIsAddedToSubject(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_2:
@@ -735,7 +735,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_3(){
+    static void when_TaskIsCreated_Expect_SubjectIsNotChanged(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_3:
@@ -779,7 +779,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_4(){
+    static void when_TaskIsUpdated_Expect_SubjectIsPopulated(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_4:
@@ -825,7 +825,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_5(){
+    static void when_TaskIsUpdated_Expect_HyphenAndProgramIsAddedToSubject(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_5:
@@ -874,7 +874,7 @@ private class TaskTriggerTest {
     }
 
     @IsTest
-    static void when_TaskIsCreated_Expect_SpecificSubjectBehavior_6(){
+    static void when_TaskIsUpdated_Expect_SubjectIsNotChanged(){
 
         //given
         //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_6:
