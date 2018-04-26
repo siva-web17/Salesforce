@@ -166,8 +166,11 @@ private class OpportunityTriggerTest {
                 opportunityBuilder.build();
             }
             insert opportunities;
-
-            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity];
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(TRUE, opportunity.IsActive__c, 'Expecting added opp is active');
                 System.assertEquals(null, opportunity.DateOfDeactivation__c, 'Expecting added opp is null');
@@ -180,7 +183,7 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity];
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(FALSE, opportunity.IsActive__c, 'Expecting added opp is not active');
                 System.assertNotEquals(null, opportunity.DateOfDeactivation__c, 'Expecting Date of deactivation is not null');
@@ -209,8 +212,11 @@ private class OpportunityTriggerTest {
                 opportunityBuilder.build();
             }
             insert opportunities;
-
-            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity];
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);   
+            }   
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
 
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(FALSE, opportunity.IsActive__c, 'Expecting added opp is not active');
@@ -224,7 +230,7 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity];
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(TRUE, opportunity.IsActive__c);
                 System.assertEquals(null, opportunity.DateOfDeactivation__c, 'Expecting Date of deactivation is null');
