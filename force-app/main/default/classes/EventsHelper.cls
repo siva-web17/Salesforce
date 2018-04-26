@@ -30,56 +30,68 @@ public class EventsHelper {
     }
 
     public static void createAttachmentForQuestionAnswers(list<event> newItems) {
-        set<id> leadIdSet = new set<id>();
-        try {
-            for (event objEvents : [select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c != null and (type = 'CAM' or type = 'CBR')]) {
-                if (objEvents.whoId != null && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q') {
-                    leadIdSet.add(objEvents.whoid);
-                }
+        Set<Id> setLeadIds = new Set<Id>();
+        List<Event> lstEvents = new List<Event>();
+        Map<Id, Lead> mapLeads = new Map<Id, Lead>();
+        Map<Id, Id> mapEventIdLeadId = new Map<Id, Id>();
+        Map<Event, ContentNote> mapEventContentNote = new Map<Event, ContentNote>();        
+        
+        try {        	
+        	for(Event eventRecord : newItems){
+        		if(eventRecord.CampaignName__c != null && eventRecord.WhoId != null 
+        		   && String.valueOf(eventRecord.WhoId).subString(0, 3) == '00Q'
+        		   && eventRecord.CampaignName__c != null && eventRecord.CampaignName__c != ''
+        		   && (eventRecord.Type == 'CAM' || eventRecord.Type == 'CBR') ){
+        			lstEvents.add(eventRecord);
+        			setLeadIds.add(eventRecord.WhoId);   
+        			mapEventIdLeadId.put(eventRecord.Id, eventRecord.WhoId);     			
+        		}
+        	}
+        	if(lstEvents.size() <= 0){
+        		return;
+        	}
+                
+            mapLeads = new map<Id, Lead>([Select Id, CampaignQuestionsAnswer__c 
+            							  from Lead 
+            							  where Id in :setLeadIds]);			        
+           
+            for (event eventRecord : lstEvents) {
+            	if(mapLeads.containskey(eventRecord.WhoId) 
+            	   && mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c != null 
+            	   && mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c != ''){
+            		String camQsAndAnswersAsText = getTheParsedJson(mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c);
+	                ContentNote cn = new ContentNote();
+	                cn.Title = eventRecord.CampaignName__c;	                
+	                cn.Content = Blob.valueOf(camQsAndAnswersAsText);
+	                mapEventContentNote.put(eventRecord, cn);
+            	}
             }
-            map<id, lead> leadIdCamQsAns = new map<id, lead>([select id,CampaignQuestionsAnswer__c from lead where id in:leadIdSet]);
-            list<attachment> attachmentForQsAnsList = new list<attachment>();
-            for (event objEvents : [select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c != null and (type = 'CAM' or type = 'CBR')]) {
-                if (String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' 
-                && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != null
-                && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != '') {
-                    //adding a content note
-                    String camQsAndAnswersAsText = getTheParsedJson(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c);
-                    ContentNoteAndEventLink objContentNoteAndEventLink = new ContentNoteAndEventLink();
-                    objContentNoteAndEventLink.eventid = objEvents.id;
-                    objContentNoteAndEventLink.camQsAndAnswersAsText = blob.valueof(camQsAndAnswersAsText);
-                    objContentNoteAndEventLink.leadId = objEvents.whoid;
-                    listOfContentNoteAndEventLink.add(objContentNoteAndEventLink);
-                    ContentNote cn = new ContentNote();
-                    cn.Title = objEvents.CampaignName__c;
-                    system.debug('CamQsAns>>' + (leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c));
-                    cn.Content = Blob.valueOf(camQsAndAnswersAsText);
-                    listOfContentNote.add(cn);
-                }
+            
+            if(mapEventContentNote.size() > 0){
+            	insert mapEventContentNote.values();
             }
-            insert listOfContentNote;
-            for (contentnote objcontentnote : listOfContentNote) {
-                noteIdAndContentNoteContent.put(objcontentnote.content, objcontentnote.id);
+            
+            for (Event eventRecord : mapEventContentNote.keySet()) {
+            	ContentDocumentLink cdLinkEvent = new ContentDocumentLink();
+                cdLinkEvent.ContentDocumentId = mapEventContentNote.get(eventRecord).Id;
+                cdLinkEvent.LinkedEntityId = eventRecord.Id;
+                cdLinkEvent.ShareType = 'V';
+                cdLinkEvent.Visibility = 'AllUsers';
+                listOfContentDocumentLink.add(cdLinkEvent); 
+                
+                ContentDocumentLink cdLinkLead = new ContentDocumentLink();
+                cdLinkLead.ContentDocumentId = mapEventContentNote.get(eventRecord).Id;
+                cdLinkLead.LinkedEntityId = eventRecord.WhoId;
+                cdLinkLead.ShareType = 'V';
+                cdLinkLead.Visibility = 'AllUsers';
+                listOfContentDocumentLink.add(cdLinkLead);
             }
-            for (ContentNoteAndEventLink ContentNoteAndEventLinkobj : listOfContentNoteAndEventLink) {
-                ContentDocumentLink link2 = new ContentDocumentLink();
-                link2.ContentDocumentId = noteIdAndContentNoteContent.get(ContentNoteAndEventLinkobj.camQsAndAnswersAsText);
-                link2.LinkedEntityId = ContentNoteAndEventLinkobj.eventid;
-                link2.ShareType = 'V';
-                link2.Visibility = 'AllUsers';
-                listOfContentDocumentLink.add(link2);
-                ContentDocumentLink link3 = new ContentDocumentLink();
-                link3.ContentDocumentId = noteIdAndContentNoteContent.get(ContentNoteAndEventLinkobj.camQsAndAnswersAsText);
-                link3.LinkedEntityId = ContentNoteAndEventLinkobj.leadId;
-                link3.ShareType = 'V';
-                link3.Visibility = 'AllUsers';
-                listOfContentDocumentLink.add(link3);
-                system.debug('Contentdocid' + link2.id);
-                system.debug('Contentdocid' + link2.id);
-
+            
+            if(listOfContentDocumentLink.size() > 0){
+            	insert listOfContentDocumentLink;
             }
-            insert listOfContentDocumentLink;
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'EventsHelper', 'createAttachmentForQuestionAnswers', null);
         }
     }
