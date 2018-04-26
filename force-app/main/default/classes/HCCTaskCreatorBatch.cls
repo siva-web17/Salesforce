@@ -14,12 +14,15 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
 
     public Id SystemCallTaskRecordTypeId =
             RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
+    public Integer numberOfDays = Integer.valueOf(Label.HCCTaskCreatorBatchNoOfDaysParameter);
 
     public Database.QueryLocator start(Database.BatchableContext context){
         return Database.getQueryLocator(
-                'SELECT Id, MaxActiveBookingEndDate__c, (SELECT MainSalesResponsible__c, MaxEndDate__c, Program__c  FROM Bookings__r)'+
+                'SELECT Id, MaxActiveBookingEndDate__c, (SELECT MainSalesResponsible__c, MaxEndDate__c, Program__c  FROM Bookings__r' +
+                        ' WHERE MaxEndDate__c < TODAY AND MaxEndDate__c = LAST_N_DAYS:' + numberOfDays + ') '+
                         'FROM Account ' +
                         'WHERE MaxActiveBookingEndDate__c < TODAY' +
+                        ' AND MaxActiveBookingEndDate__c = LAST_N_DAYS:' + numberOfDays +
                         ' AND ActiveOpportunities__c = 0' +
                         ' AND HasHappyCallTask__c = FALSE'
         );
@@ -28,33 +31,27 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
     public void execute(Database.BatchableContext context,List<Account> scope){
 
         List<Task> tasks = new List<Task>();
-        List<Booking__c> bookings = new List<Booking__c>();
+        Booking__c booking = new Booking__c();
         List<Account> accounts = new List<Account>();
         Account acc = new Account();
 
         for(Account account : scope){
-
             account.HasHappyCallTask__c = TRUE;
-            bookings = account.Bookings__r;
+            accounts.add(account);
+            booking = account.Bookings__r[0];
             Task task = new Task(
                     RecordTypeId = SystemCallTaskRecordTypeId,
                     WhatId = account.Id,
                     NextCallType__c = Label.HCC_Next_Call_Type,
                     Type = Label.HCC_Task_Type,
-                    ActivityDate = Date.today(),
-                    FollowUpDate__c = Date.today(),
-                    Status = Label.Not_Started
+                    ActivityDate = account.MaxActiveBookingEndDate__c + 1,
+                    FollowUpDate__c = account.MaxActiveBookingEndDate__c + 1,
+                    Status = Label.Not_Started,
+                    Subject = Label.Happy_Call + ' ' + booking.Program__c,
+                    OwnerId = booking.MainSalesResponsible__c,
+                    Program__c = booking.Program__c
             );
-
-            for(Booking__c booking : bookings){
-                if(booking.MaxEndDate__c == account.MaxActiveBookingEndDate__c){
-                    task.Subject = Label.Happy_Call + ' ' + booking.Program__c;
-                    task.OwnerId = booking.MainSalesResponsible__c;
-                    break;
-                }
-            }
             tasks.add(task);
-            accounts.add(account);
         }
         try{
             insert tasks;

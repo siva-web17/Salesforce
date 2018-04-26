@@ -13,8 +13,9 @@ Modification Log   :
 @IsTest
 private class HCCTaskCreatorBatchTest{
 
-    Static Id SystemCallTaskRecordTypeId =
+    private static Id SystemCallTaskRecordTypeId =
             RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
+    private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
 
     @isTest
     static void When_BookingMaxEndDateIsPast_Expect_CreatingATask(){
@@ -23,15 +24,14 @@ private class HCCTaskCreatorBatchTest{
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
         System.runAs(adminUser){
 
+            //given
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
             Account accPerson = (Account)pab.build().save().getRecord();
 
             TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
             Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
-            testOpportunity.IsActive__c = true;
             testOpportunity.AccountId = accPerson.Id;
-            testOpportunity.Market__c = 'ARB';
-            testOpportunity.Program__c = 'AY';
+            testOpportunity.Program__c = picklistValuesHelper.program;
             insert testOpportunity;
 
             Booking__c book = new Booking__c(
@@ -40,44 +40,46 @@ private class HCCTaskCreatorBatchTest{
                     MaxEndDate__c = Date.today().addDays(-1),
                     Status__c = 'BKN',
                     MainSalesResponsible__c = adminUser.Id,
-                    Program__c = 'AY'
+                    Program__c = picklistValuesHelper.program
             );
             insert book;
 
             testOpportunity.StageName = 'Closed Won';
             update testOpportunity;
 
-        Test.startTest();
-        HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
-        Id batchId = Database.executeBatch(tcb);
-        Test.stopTest();
+            //when
+            Test.startTest();
+            HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
+            Id batchId = Database.executeBatch(tcb);
+            Test.stopTest();
 
-        Task createdTask =[
-                SELECT Id, WhatId, RecordTypeId, NextCallType__c, ActivityDate, FollowUpDate__c, Subject, OwnerId
-                FROM Task
-                LIMIT 1
-        ];
-        Account account =[
+            //then
+            List<Task> createdTasks = [
+                    SELECT Id, WhatId, RecordTypeId, NextCallType__c, ActivityDate, FollowUpDate__c, Subject, OwnerId
+                    FROM Task
+            ];
+
+            Account account =[
                 SELECT Id, HasHappyCallTask__c
                 FROM Account
-                LIMIT 1
-        ];
+                WHERE Id = :accPerson.Id
+            ];
 
-        Booking__c booking =[
-                SELECT Id, MainSalesResponsible__c
+            Booking__c booking =[
+                SELECT MainSalesResponsible__c
                 FROM Booking__c
-                LIMIT 1
-        ];
+                WHERE Id = :book.Id
+            ];
 
-        System.assertEquals(1,[SELECT Count() FROM Task], 'Expecting one task is created');
-        System.assertEquals(account.Id, createdTask.WhatId, 'Expecting Task is related with created account');
-        System.assert(account.HasHappyCallTask__c, 'Expecting Account Has Happy Call Task');
-        System.assertEquals(SystemCallTaskRecordTypeId, createdTask.RecordTypeId, 'Expecting specific Task Record type');
-        System.assertEquals(Label.HCC_Next_Call_Type, createdTask.NextCallType__c, 'Expecting specific Next Call Type');
-        System.assertEquals(Date.today(), createdTask.ActivityDate, 'Expecting task\'s activity date is today');
-        System.assertEquals(Date.today(), createdTask.FollowUpDate__c, 'Expecting task\'s follow up date is today');
-        System.assertEquals('Happy Call - AY', createdTask.Subject, 'Expecting task\'s subject match');
-        System.assertEquals(booking.MainSalesResponsible__c, createdTask.OwnerId, 'Expecting Task owner is booking\'s Main Sales Responsible');
+            System.assertEquals(1, createdTasks.size(), 'Expecting one task is created');
+            System.assertEquals(account.Id, createdTasks[0].WhatId, 'Expecting Task is related with created account');
+            System.assert(account.HasHappyCallTask__c, 'Expecting Account Has Happy Call Task');
+            System.assertEquals(SystemCallTaskRecordTypeId, createdTasks[0].RecordTypeId, 'Expecting specific Task Record type');
+            System.assertEquals(Label.HCC_Next_Call_Type, createdTasks[0].NextCallType__c, 'Expecting specific Next Call Type');
+            System.assertEquals(Date.today(), createdTasks[0].ActivityDate, 'Expecting task\'s activity date is today');
+            System.assertEquals(Date.today(), createdTasks[0].FollowUpDate__c, 'Expecting task\'s follow up date is today');
+            System.assertEquals('Happy Call - ' + picklistValuesHelper.program, createdTasks[0].Subject, 'Expecting task\'s subject match');
+            System.assertEquals(booking.MainSalesResponsible__c, createdTasks[0].OwnerId, 'Expecting Task owner is booking\'s Main Sales Responsible');
         }
     }
 
@@ -88,6 +90,7 @@ private class HCCTaskCreatorBatchTest{
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
         System.runAs(adminUser){
 
+            //given
             Integer numberOfRecords = 3;
             Account[] accounts = new Account[]{};
             Opportunity[] opportunities = new Opportunity[]{};
@@ -98,9 +101,7 @@ private class HCCTaskCreatorBatchTest{
 
                 Opportunity opp = new Opportunity();
                 opp = (Opportunity)oppBuilder.withPersonAccount().getRecord();
-                opp.IsActive__c = true;
-                opp.Market__c = 'ARB';
-                opp.Program__c = 'AY';
+                opp.Program__c = picklistValuesHelper.program;
                 opportunities.add(opp);
                 accounts.add(oppBuilder.getAccount());
                 oppBuilder.build();
@@ -119,7 +120,7 @@ private class HCCTaskCreatorBatchTest{
                         MaxEndDate__c = Date.today().addDays(-1),
                         Status__c = 'BKN',
                         MainSalesResponsible__c = adminUser.Id,
-                        Program__c = 'AY'
+                        Program__c = picklistValuesHelper.program
                 );
                 bookings.add(book);
             }
@@ -130,22 +131,26 @@ private class HCCTaskCreatorBatchTest{
             }
             update opportunities;
 
+            //when
             Test.startTest();
             HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
             Id batchId = Database.executeBatch(tcb);
             Test.stopTest();
 
-            for(List<Task> tasks :[
+            //then
+            List<Task> tasks = [
                     SELECT Id, RecordTypeId, NextCallType__c, ActivityDate, FollowUpDate__c, Subject, OwnerId
-                    FROM Task])
-            {
-                for(Task task : tasks){
-                    System.assertEquals(SystemCallTaskRecordTypeId, task.RecordTypeId, 'Expecting specific Task Record type');
-                    System.assertEquals(Label.HCC_Next_Call_Type, task.NextCallType__c, 'Expecting specific Next Call Type');
-                    System.assertEquals(Date.today(), task.ActivityDate, 'Expecting task\'s activity date is today');
-                    System.assertEquals(Date.today(), task.FollowUpDate__c, 'Expecting task\'s follow up date is today');
-                    System.assertEquals('Happy Call - AY', task.Subject, 'Expecting task\'s subject match the pattern');
-                }
+                    FROM Task
+            ];
+
+            System.assertEquals(numberOfRecords, tasks.size(), 'Expecting specific number of Task records are created');
+
+            for(Task task : tasks){
+                System.assertEquals(SystemCallTaskRecordTypeId, task.RecordTypeId, 'Expecting specific Task Record type');
+                System.assertEquals(Label.HCC_Next_Call_Type, task.NextCallType__c, 'Expecting specific Next Call Type');
+                System.assertEquals(Date.today(), task.ActivityDate, 'Expecting task\'s activity date is today');
+                System.assertEquals(Date.today(), task.FollowUpDate__c, 'Expecting task\'s follow up date is today');
+                System.assertEquals('Happy Call - ' + picklistValuesHelper.program, task.Subject, 'Expecting task\'s subject match the pattern');
             }
         }
     }
@@ -205,10 +210,8 @@ private class HCCTaskCreatorBatchTest{
 
             TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
             Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
-            testOpportunity.IsActive__c = true;
             testOpportunity.AccountId = accPerson.Id;
-            testOpportunity.Market__c = 'ARB';
-            testOpportunity.Program__c = 'AY';
+            testOpportunity.Market__c = picklistValuesHelper.market;
             insert testOpportunity;
 
             Booking__c book = new Booking__c(
@@ -217,7 +220,7 @@ private class HCCTaskCreatorBatchTest{
                     MaxEndDate__c = Date.today().addDays(-1),
                     Status__c = 'BKN',
                     MainSalesResponsible__c = adminUser.Id,
-                    Program__c = 'AY'
+                    Program__c = picklistValuesHelper.program
             );
             insert book;
             testOpportunity.StageName = 'Closed Won';
@@ -245,9 +248,142 @@ private class HCCTaskCreatorBatchTest{
                     FROM ErrorLog__c
             ];
 
-            System.assertEquals(1,errorLogs.size(),'Expecting one error log');
-            System.assertEquals('HCCTaskCreatorBatch',errorLogs[0].Name,'Expecting specific error log data');
-            System.assertEquals('execute',errorLogs[0].MethodName__c,'Expecting specific error log data');
+            System.assertEquals(1, errorLogs.size(), 'Expecting one error log');
+            System.assertEquals('HCCTaskCreatorBatch', errorLogs[0].Name, 'Expecting specific error log data');
+            System.assertEquals('execute', errorLogs[0].MethodName__c, 'Expecting specific error log data');
+        }
+    }
+
+    @isTest
+    static void When_BookingMaxEndDateIsToday_Expect_TaskIsNotCreated(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+            Account accPerson = (Account)pab.build().save().getRecord();
+
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
+            testOpportunity.AccountId = accPerson.Id;
+            testOpportunity.Program__c = picklistValuesHelper.program;
+            insert testOpportunity;
+
+            Booking__c book = new Booking__c(
+                    AccountId__c = accPerson.Id,
+                    OpportunityId__c = testOpportunity.Id,
+                    MaxEndDate__c = Date.today(),
+                    Status__c = 'BKN',
+                    MainSalesResponsible__c = adminUser.Id,
+                    Program__c = picklistValuesHelper.program
+            );
+            insert book;
+
+            testOpportunity.StageName = 'Closed Won';
+            update testOpportunity;
+
+            //when
+            Test.startTest();
+            HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
+            Id batchId = Database.executeBatch(tcb);
+            Test.stopTest();
+
+            //then
+            System.assertEquals(0, [SELECT Count() FROM Task], 'Expecting no task is created');
+        }
+    }
+
+    @isTest
+    static void When_BookingMaxEndDateDayBeforeExpectedRange_Expect_TaskIsNotCreated(){
+
+        Integer numberOfDays = Integer.valueOf(Label.HCCTaskCreatorBatchNoOfDaysParameter) + 1;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+            Account accPerson = (Account)pab.build().save().getRecord();
+
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
+            testOpportunity.AccountId = accPerson.Id;
+            testOpportunity.Program__c = picklistValuesHelper.program;
+            insert testOpportunity;
+
+            Booking__c book = new Booking__c(
+                    AccountId__c = accPerson.Id,
+                    OpportunityId__c = testOpportunity.Id,
+                    MaxEndDate__c = Date.today().addDays(-numberOfDays),
+                    Status__c = 'BKN',
+                    MainSalesResponsible__c = adminUser.Id,
+                    Program__c = picklistValuesHelper.program
+            );
+            insert book;
+
+            testOpportunity.StageName = 'Closed Won';
+            update testOpportunity;
+
+            //when
+            Test.startTest();
+            HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
+            Id batchId = Database.executeBatch(tcb);
+            Test.stopTest();
+
+            //then
+            System.assertEquals(0, [SELECT Count() FROM Task], 'Expecting no task is created');
+        }
+    }
+
+    @isTest
+    static void When_BookingMaxEndDateDayIsInExpectedRange_Expect_TaskIsCreated(){
+
+        Integer numberOfDays = Integer.valueOf(Label.HCCTaskCreatorBatchNoOfDaysParameter);
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+            Account accPerson = (Account)pab.build().save().getRecord();
+
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
+            testOpportunity.AccountId = accPerson.Id;
+            testOpportunity.Program__c = picklistValuesHelper.program;
+            insert testOpportunity;
+
+            Booking__c book = new Booking__c(
+                    AccountId__c = accPerson.Id,
+                    OpportunityId__c = testOpportunity.Id,
+                    MaxEndDate__c = Date.today().addDays(-numberOfDays),
+                    Status__c = 'BKN',
+                    MainSalesResponsible__c = adminUser.Id,
+                    Program__c = picklistValuesHelper.program
+            );
+            insert book;
+
+            testOpportunity.StageName = 'Closed Won';
+            update testOpportunity;
+
+            //when
+            Test.startTest();
+            HCCTaskCreatorBatch tcb = new HCCTaskCreatorBatch();
+            Id batchId = Database.executeBatch(tcb);
+            Test.stopTest();
+
+            //then
+            List<Task> createdTasks = [
+                    SELECT ActivityDate, FollowUpDate__c
+                    FROM Task
+            ];
+            System.assertEquals(1, createdTasks.size(), 'Expecting one task is created');
+            System.assertEquals(Date.today().addDays(-numberOfDays+1), createdTasks[0].ActivityDate, 'Expecting task\'s activity date is today');
+            System.assertEquals(Date.today().addDays(-numberOfDays+1), createdTasks[0].FollowUpDate__c, 'Expecting task\'s follow up date is today');
         }
     }
 }
