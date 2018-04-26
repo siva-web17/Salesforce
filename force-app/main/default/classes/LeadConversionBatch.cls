@@ -130,7 +130,7 @@ global class LeadConversionBatch implements Database.Batchable<SObject>, Databas
     }
     
     public void execute(SchedulableContext ctx){
-        Database.executeBatch(new LeadConversionBatch());
+        Database.executeBatch(new LeadConversionBatch(),1);
     }
     
     public static void scheduleEvery30mins(){
