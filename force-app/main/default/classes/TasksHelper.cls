@@ -895,7 +895,9 @@ public class TasksHelper {
             if(task.SalesAction__c != oldTask.SalesAction__c){
                 task.Subject = setSalesActionAndProgramAsTaskSubject(task);
             }else{
-                task.Subject = checkIfAddProgramToSubject(task);
+                if(task.Subject != oldTask.Subject){
+                    task.Subject = checkIfAddProgramToSubject(task);
+                }
             }
         }
     }
