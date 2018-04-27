@@ -30,7 +30,7 @@ private class OpportunityTriggerTest {
             Account accPerson = (Account)pab.build().getRecord();
             accPerson.Market__c = testAccMarket;
             insert accPerson;
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -116,7 +116,7 @@ private class OpportunityTriggerTest {
             accPerson.Market__c = testMarket;
             insert accPerson;
 
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -128,8 +128,12 @@ private class OpportunityTriggerTest {
                 ob.build();
             }
             insert opportunities;
+            Set<Id> oppsIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppsIds.add(opportunity.Id);
+            }
 
-            opportunities = [SELECT Program__c, IsActive__c, OwnerId FROM Opportunity];
+            opportunities = [SELECT Program__c, IsActive__c, OwnerId FROM Opportunity WHERE Id IN: oppsIds];
             List<OpportunityShare> oldOpportunityShares = [SELECT UserOrGroupId, OpportunityId FROM OpportunityShare];
             List<Id> oldOpportunitySharesIds = new List<Id>();
 
@@ -230,8 +234,12 @@ private class OpportunityTriggerTest {
                 opportunityBuilder.build();
             }
             insert opportunities;
+            Set<Id> oppsIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppsIds.add(opportunity.Id);
+            }
 
-            opportunities = [SELECT Id, TemplateKey__c FROM Opportunity];
+            opportunities = [SELECT Id, TemplateKey__c FROM Opportunity WHERE Id IN :oppsIds];
             System.assertEquals(testTemplateKey, opportunities[0].TemplateKey__c,
                     'Expecting specific value of TemplateKey__c in inserted Opportunity');
 
@@ -267,13 +275,13 @@ private class OpportunityTriggerTest {
             List<APXTConga4__Conga_Template__c> conga_templateLetter = [
                     SELECT Id
                     FROM APXTConga4__Conga_Template__c
-                    WHERE APXTConga4__Template_Type__c = 'Letter'
+                    WHERE APXTConga4__Template_Type__c = 'Letter' AND Id = :templateLetter.Id
             ];
 
             List<APXTConga4__Conga_Template__c> conga_templateLabel = [
                     SELECT Id
                     FROM APXTConga4__Conga_Template__c
-                    WHERE APXTConga4__Template_Type__c = 'Label'
+                    WHERE APXTConga4__Template_Type__c = 'Label' AND Id = :templateLabel.Id
             ];
 
             TemplateSetting__c ts = new TemplateSetting__c(
@@ -290,12 +298,11 @@ private class OpportunityTriggerTest {
             );
             insert ts;
 
-            List<TemplateSetting__c> templateSettings = [SELECT TemplateKey__c FROM TemplateSetting__c];
+            List<TemplateSetting__c> templateSettings = [SELECT TemplateKey__c FROM TemplateSetting__c WHERE Id = :ts.Id];
             System.assertEquals(testNewTemplateKey, templateSettings[0].TemplateKey__c,
                     'Expecting specific value of TemplateKey__c in inserted TemplateSetting__c');
 
-            opportunities = [SELECT Program__c FROM Opportunity];
-
+            opportunities = [SELECT Program__c FROM Opportunity WHERE Id IN :oppsIds];
 
             //when
             Test.startTest();
@@ -306,7 +313,7 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            for(Opportunity opps: [SELECT Letter__c, Label__c FROM Opportunity ]){
+            for(Opportunity opps: [SELECT Letter__c, Label__c FROM Opportunity WHERE Id IN :oppsIds]){
                 System.assertEquals(conga_templateLetter[0].Id, opps.Letter__c,
                         'Expecting specific value of field in updated Opportunity');
                 System.assertEquals(conga_templateLabel[0].Id, opps.Label__c,
@@ -336,7 +343,7 @@ private class OpportunityTriggerTest {
             Account accPerson = (Account)pab.build().getRecord();
             accPerson.Market__c = testAccMarket;
             insert accPerson;
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -348,8 +355,12 @@ private class OpportunityTriggerTest {
                 ob.build();
             }
             insert opportunities;
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
 
-            opportunities = [SELECT Program__c FROM Opportunity];
+            opportunities = [SELECT Program__c FROM Opportunity WHERE Id IN :oppIds];
             System.assertEquals(numOfOpps, opportunities.size(), 'Checking if specific amount of opportunities was added');
 
             List<Task> tasks = new List<Task>();
@@ -364,8 +375,12 @@ private class OpportunityTriggerTest {
                 taskBuilder.build();
             }
             insert tasks;
+            Set<Id> taskIds = new Set<Id>();
+            for(Task task : tasks){
+                taskIds.add(task.Id);
+            }
 
-            tasks = [SELECT RecordTypeId FROM Task];
+            tasks = [SELECT RecordTypeId FROM Task WHERE Id IN :taskIds];
             System.assertEquals(numOfOpps, tasks.size(), 'Checking if specific amount of tasks was added');
 
             for(Task task : tasks){
@@ -381,12 +396,12 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT Program__c FROM Opportunity];
+            opportunities = [SELECT Program__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(testNewOppProgram, opportunity.Program__c, 'Checking if Opp program was successfully changed');
             }
 
-            tasks = [SELECT Program__c FROM Task];
+            tasks = [SELECT Program__c FROM Task WHERE Id IN :taskIds];
             for(Task task : tasks){
                 System.assertEquals(testNewOppProgram, task.Program__c, 'Expecting specific value of updated task');
             }
@@ -412,6 +427,10 @@ private class OpportunityTriggerTest {
                 Opp.add((Opportunity) oppBuilder.build().getRecord());
             }
             insert Opp;
+            List<Id> oppIds = new List<Id>();
+            for(Opportunity opportunity : Opp){
+                oppIds.add(opportunity.Id);
+            }
 
             TestDataFactory.TaskBuilder taskBuilder = new TestDataFactory.TaskBuilder();
             List<Task> tasks = new List<Task>();
@@ -419,7 +438,7 @@ private class OpportunityTriggerTest {
             TestDataFactory.EventBuilder eventBuilder = new TestDataFactory.EventBuilder();
             List<Event> events = new List<Event>();
 
-            for(Opportunity opportunities :[SELECT Id FROM Opportunity]){
+            for(Opportunity opportunities :[SELECT Id FROM Opportunity WHERE Id IN :oppIds]){
                 Task t = (Task)taskBuilder.withRecordType(Label.SBRTask).getRecord();
                 t.Product__c = picklistValuesHelper.product;
                 t.Program__c = picklistValuesHelper.program;
@@ -443,11 +462,7 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            List<Id> oppId = new List<Id>();
-            for(Opportunity opportunity :[SELECT Id FROM Opportunity]){
-                oppId.add(opportunity.Id);
-            }
-            Opportunity[] updatedOpportunity = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(oppId);
+            Opportunity[] updatedOpportunity = OpportunitiesSelector.getAllEventsAndTasksforOpportunity(oppIds);
 
             System.assertEquals(numberOfOpportunities, updatedOpportunity.size());
             for (Opportunity o : updatedOpportunity) {
@@ -484,7 +499,7 @@ private class OpportunityTriggerTest {
             insert salesOfficeProgram;
 
             List<SalesOfficeProgram__c> salesOfficePrograms = [
-                    SELECT Id, Name FROM SalesOfficeProgram__c
+                    SELECT Id, Name FROM SalesOfficeProgram__c WHERE Id = :salesOfficeProgram.Id
             ];
             System.assertEquals(1, salesOfficePrograms.size(),
                     'Checking if SalesOfficeProgram record was added successfully');
@@ -494,7 +509,7 @@ private class OpportunityTriggerTest {
             Account accPerson = (Account)pab.build().getRecord();
             accPerson.Market__c = testAccMarket;
             insert accPerson;
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -512,7 +527,11 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT SalesOfficeProgram__c FROM Opportunity];
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
+            opportunities = [SELECT SalesOfficeProgram__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(salesOfficePrograms[0].Id, opportunity.SalesOfficeProgram__c,
                         'Expecting Opp SalesOfficeProgram is the same as Opp RecordSharingKey');
@@ -546,14 +565,14 @@ private class OpportunityTriggerTest {
                     Market__c = testAccMarket
             );
             insert source;
-            List<Source__c> sources = [SELECT Name FROM Source__c];
+            List<Source__c> sources = [SELECT Name FROM Source__c WHERE Id = :source.Id];
             System.assertEquals(1, sources.size(), 'Checking if Source was added successfully');
 
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
             Account accPerson = (Account)pab.build().getRecord();
             accPerson.Market__c = testAccMarket;
             insert accPerson;
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -572,7 +591,11 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT Partner__c FROM Opportunity];
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
+            opportunities = [SELECT Partner__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(sources[0].Name, opportunity.Partner__c,
                         'Expecting Opp Partner is the same as Related source Name');
@@ -604,14 +627,14 @@ private class OpportunityTriggerTest {
                     Market__c = testAccMarket
             );
             insert source;
-            List<Source__c> sources = [SELECT Name, Code__c FROM Source__c];
+            List<Source__c> sources = [SELECT Name, Code__c FROM Source__c WHERE Id = :source.Id];
             System.assertEquals(1, sources.size(), 'Checking if Source was added successfully');
 
             TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
             Account accPerson = (Account)pab.build().getRecord();
             accPerson.Market__c = testAccMarket;
             insert accPerson;
-            List<Account> accounts = [SELECT Market__c FROM Account];
+            List<Account> accounts = [SELECT Market__c FROM Account WHERE Id = :accPerson.Id];
 
             for(Integer i = 0; i < numOfOpps; i++){
                 Opportunity opp = (Opportunity)ob.getRecord();
@@ -630,7 +653,11 @@ private class OpportunityTriggerTest {
             Test.stopTest();
 
             //then
-            opportunities = [SELECT Partner__c, SourceCodeAuto__c FROM Opportunity];
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
+            opportunities = [SELECT Partner__c, SourceCodeAuto__c FROM Opportunity WHERE Id IN :oppIds];
             for(Opportunity opportunity : opportunities){
                 System.assertEquals(sources[0].Name, opportunity.Partner__c,
                         'Expecting Opp Partner is the same as Related source Name');
@@ -664,10 +691,11 @@ private class OpportunityTriggerTest {
                 accounts.add(testAccount);
             }
             insert accounts;
-            accounts = [
-                    SELECT Id
-                    FROM Account
-            ];
+            Set<Id> accIds = new Set<Id>();
+            for(Account account : accounts){
+                accIds.add(account.Id);
+            }
+            accounts = [SELECT Id FROM Account WHERE Id = :accIds];
             System.assertEquals(numberOfRecords, accounts.size(), 'Checking if accounts were added successfully');
 
             for(Integer i = 0; i<numberOfRecords; i++){
@@ -676,14 +704,7 @@ private class OpportunityTriggerTest {
                 opportunities.add(testOpp);
             }
             insert opportunities;
-            System.assertEquals(numberOfRecords, opportunities.size());
-
-            accounts = [
-                    SELECT FirstName, LastName
-                    FROM Account
-                    WHERE FirstName LIKE 'TestFirstName_'
-                    AND LastName LIKE 'TestLastName_'
-            ];
+            System.assertEquals(numberOfRecords, opportunities.size(), 'Checking if accounts were added successfully');
 
             //when
             Test.startTest();
