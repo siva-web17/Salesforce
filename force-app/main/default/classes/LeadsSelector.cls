@@ -87,7 +87,7 @@ public class LeadsSelector {
     }
 
     public static List<Lead> getLeadsByIdsALLROWS(Set<Id> leadIds){
-        return [SELECT Id, Program__c, SalesOffice__c, RequestType__c, Source__c FROM Lead WHERE Id IN : leadIds ALL ROWS];
+        return [SELECT Id, Program__c, SalesOffice__c, RequestType__c, Source__c, Etag__c, CreationMethod__c FROM Lead WHERE Id IN : leadIds ALL ROWS];
     }
 
     public static List<Lead> getSortedLeadsOnActivityDate(List<Lead> leads) {

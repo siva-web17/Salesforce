@@ -464,6 +464,8 @@ public class OpportunitiesHelper {
         newOpportunity.RequestType__c = wrapper.lead.RequestType__c;
         newOpportunity.Source__c = wrapper.lead.Source__c;
         newOpportunity.SalesOffice__c = wrapper.lead.SalesOffice__c;
+        newOpportunity.Etag__c = wrapper.lead.Etag__c;
+        newOpportunity.CreationMethod__c = wrapper.lead.CreationMethod__c;
         return newOpportunity;
     }
 
