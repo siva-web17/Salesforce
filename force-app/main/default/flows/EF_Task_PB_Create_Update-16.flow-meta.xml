@@ -13,14 +13,14 @@
                 <stringValue>Create Chatter Post with Sales Comment</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_1_A1</name>
+        <name>myRule_4_A1</name>
         <label>Create chatter post</label>
-        <locationX>100</locationX>
+        <locationX>400</locationX>
         <locationY>200</locationY>
         <actionName>CreateChatterPostwithSalesComment</actionName>
         <actionType>flow</actionType>
         <connector>
-            <targetReference>myDecision2</targetReference>
+            <targetReference>myDecision5</targetReference>
         </connector>
         <inputParameters>
             <processMetadataValues>
@@ -120,14 +120,14 @@
                 <stringValue>Create Chatter Post with Sales Comment</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_3_A1</name>
+        <name>myRule_6_A1</name>
         <label>Create chatter post</label>
-        <locationX>300</locationX>
+        <locationX>600</locationX>
         <locationY>200</locationY>
         <actionName>CreateChatterPostwithSalesComment</actionName>
         <actionType>flow</actionType>
         <connector>
-            <targetReference>myDecision4</targetReference>
+            <targetReference>myDecision7</targetReference>
         </connector>
         <inputParameters>
             <processMetadataValues>
@@ -242,7 +242,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision2</targetReference>
+            <targetReference>myDecision3</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -258,7 +258,7 @@
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Related to Opp and Comment Created</label>
+            <label>Sales Action Updated</label>
         </rules>
     </decisions>
     <decisions>
@@ -273,7 +273,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision12</targetReference>
+            <targetReference>myDecision13</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -289,7 +289,7 @@
             <connector>
                 <targetReference>myRule_11_A1</targetReference>
             </connector>
-            <label>Brochure Sent</label>
+            <label>Related to Opportunity and Is System Task</label>
         </rules>
     </decisions>
     <decisions>
@@ -299,28 +299,28 @@
                 <numberValue>5.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision12</name>
-        <label>myDecision12</label>
+        <name>myDecision13</name>
+        <label>myDecision13</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision16</targetReference>
+            <targetReference>myDecision15</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_13</name>
+            <name>myRule_14</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_13</leftValueReference>
+                <leftValueReference>formula_myRule_14</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_13_A1</targetReference>
+                <targetReference>myRule_14_A1</targetReference>
             </connector>
-            <label>Task Is Closed</label>
+            <label>Brochure Sent</label>
         </rules>
     </decisions>
     <decisions>
@@ -330,8 +330,8 @@
                 <numberValue>6.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision16</name>
-        <label>myDecision16</label>
+        <name>myDecision15</name>
+        <label>myDecision15</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
@@ -339,19 +339,19 @@
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_17</name>
+            <name>myRule_16</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_17</leftValueReference>
+                <leftValueReference>formula_myRule_16</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_17_A1</targetReference>
+                <targetReference>myRule_16_A1</targetReference>
             </connector>
-            <label>Is New MCR Task</label>
+            <label>Task Is Closed</label>
         </rules>
     </decisions>
     <decisions>
@@ -366,7 +366,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision21</targetReference>
+            <targetReference>myDecision22</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -382,38 +382,7 @@
             <connector>
                 <targetReference>myRule_20_A1</targetReference>
             </connector>
-            <label>Is SPQ Task</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <processMetadataValues>
-            <name>index</name>
-            <value>
-                <numberValue>1.0</numberValue>
-            </value>
-        </processMetadataValues>
-        <name>myDecision2</name>
-        <label>myDecision2</label>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision4</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>myRule_3</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_3</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_3_A1</targetReference>
-            </connector>
-            <label>Related to Lead and Comment created</label>
+            <label>Is New MCR Task</label>
         </rules>
     </decisions>
     <decisions>
@@ -423,28 +392,28 @@
                 <numberValue>8.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision21</name>
-        <label>myDecision21</label>
+        <name>myDecision22</name>
+        <label>myDecision22</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision23</targetReference>
+            <targetReference>myDecision24</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_22</name>
+            <name>myRule_23</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_22</leftValueReference>
+                <leftValueReference>formula_myRule_23</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_22_A1</targetReference>
+                <targetReference>myRule_23_A1</targetReference>
             </connector>
-            <label>Is MCR Task Closed</label>
+            <label>Is SPQ Task</label>
         </rules>
     </decisions>
     <decisions>
@@ -454,28 +423,28 @@
                 <numberValue>9.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision23</name>
-        <label>myDecision23</label>
+        <name>myDecision24</name>
+        <label>myDecision24</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision25</targetReference>
+            <targetReference>myDecision26</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_24</name>
+            <name>myRule_25</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_24</leftValueReference>
+                <leftValueReference>formula_myRule_25</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_24_A1</targetReference>
+                <targetReference>myRule_25_A1</targetReference>
             </connector>
-            <label>Is System Type Next Call Type Changed</label>
+            <label>Is MCR Task Closed</label>
         </rules>
     </decisions>
     <decisions>
@@ -485,28 +454,28 @@
                 <numberValue>10.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision25</name>
-        <label>myDecision25</label>
+        <name>myDecision26</name>
+        <label>myDecision26</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision27</targetReference>
+            <targetReference>myDecision28</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_26</name>
+            <name>myRule_27</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_26</leftValueReference>
+                <leftValueReference>formula_myRule_27</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_26_A1</targetReference>
+                <targetReference>myRule_27_A1</targetReference>
             </connector>
-            <label>Is System Task Owner Changed For Opportunity</label>
+            <label>Is System Type Next Call Type Changed</label>
         </rules>
     </decisions>
     <decisions>
@@ -516,23 +485,85 @@
                 <numberValue>11.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision27</name>
-        <label>myDecision27</label>
+        <name>myDecision28</name>
+        <label>myDecision28</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision30</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_28</name>
+            <name>myRule_29</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_28</leftValueReference>
+                <leftValueReference>formula_myRule_29</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_28_A1</targetReference>
+                <targetReference>myRule_29_A1</targetReference>
+            </connector>
+            <label>Is System Task Owner Changed For Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision3</name>
+        <label>myDecision3</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_A1</targetReference>
+            </connector>
+            <label>Related to Opp and Comment Created</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>12.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision30</name>
+        <label>myDecision30</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_31</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_31</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_31_A1</targetReference>
             </connector>
             <label>Is System Task Owner Changed For Lead</label>
         </rules>
@@ -544,8 +575,8 @@
                 <numberValue>2.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision4</name>
-        <label>myDecision4</label>
+        <name>myDecision5</name>
+        <label>myDecision5</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
@@ -553,19 +584,19 @@
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_5</name>
+            <name>myRule_6</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_5</leftValueReference>
+                <leftValueReference>formula_myRule_6</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_5_A1</targetReference>
+                <targetReference>myRule_6_A1</targetReference>
             </connector>
-            <label>Related to Lead And Is System Call Task</label>
+            <label>Related to Lead and Comment created</label>
         </rules>
     </decisions>
     <decisions>
@@ -596,7 +627,7 @@
             <connector>
                 <targetReference>myRule_8_A1</targetReference>
             </connector>
-            <label>Related to Opportunity and Is System Task</label>
+            <label>Related to Lead And Is System Call Task</label>
         </rules>
     </decisions>
     <description>This PB is triggered when a Task is Created or Updated.</description>
@@ -604,10 +635,21 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
+                <stringValue>![Task].IsClosed </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_12_myRule_11_A1_4598596965</name>
+        <dataType>Boolean</dataType>
+        <expression>!{!myVariable_current.IsClosed}</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
                 <stringValue>NOW()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_14_myRule_13_A1_2141694194</name>
+        <name>formula_17_myRule_16_A1_1793076351</name>
         <dataType>DateTime</dataType>
         <expression>NOW()</expression>
     </formulas>
@@ -618,7 +660,7 @@
                 <stringValue>$User.Id</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_15_myRule_13_A1_9237496543</name>
+        <name>formula_18_myRule_16_A1_9004493464</name>
         <dataType>String</dataType>
         <expression>$User.Id</expression>
     </formulas>
@@ -629,9 +671,20 @@
                 <stringValue>![Task].IsClosed</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_18_myRule_17_A1_3601292172</name>
+        <name>formula_21_myRule_20_A1_4270915055</name>
         <dataType>Boolean</dataType>
         <expression>!{!myVariable_current.IsClosed}</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>TEXT([Task].SalesAction__c ) </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_5348001419</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!myVariable_current.SalesAction__c} )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -640,7 +693,7 @@
                 <stringValue>![Task].IsClosed </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_5_A1_7270878888</name>
+        <name>formula_9_myRule_8_A1_4272310961</name>
         <dataType>Boolean</dataType>
         <expression>!{!myVariable_current.IsClosed}</expression>
     </formulas>
@@ -648,40 +701,43 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>![Task].IsClosed </stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_9_myRule_8_A1_3838565847</name>
-        <dataType>Boolean</dataType>
-        <expression>!{!myVariable_current.IsClosed}</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>(ISNEW() || ISCHANGED([Task].Description))
+                <stringValue>(
+ISNEW() 
 &amp;&amp;
-NOT(ISBLANK([Task].Description)) 
-&amp;&amp;
-NOT(ISBLANK([Task].WhatId ))
-&amp;&amp;
-BEGINS([Task].WhatId, "006") 
-&amp;&amp;
-[Task].RecordType.DeveloperName = 'CallTask'
-</stringValue>
+NOT(ISBLANK(TEXT( [Task].SalesAction__c ) ) ) 
+)
+|| 
+ISCHANGED([Task].SalesAction__c)</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>(ISNEW() || ISCHANGED({!myVariable_current.Description}))
+        <expression>(
+ISNEW() 
 &amp;&amp;
-NOT(ISBLANK({!myVariable_current.Description})) 
+NOT(ISBLANK(TEXT( {!myVariable_current.SalesAction__c} ) ) ) 
+)
+|| 
+ISCHANGED({!myVariable_current.SalesAction__c})</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>([Task].RecordType.DeveloperName = 'SystemCallTask')
+&amp;&amp;
+NOT(ISBLANK([Task].WhatId ))
+&amp;&amp;
+BEGINS([Task].WhatId, "006") </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
 &amp;&amp;
 NOT(ISBLANK({!myVariable_current.WhatId} ))
 &amp;&amp;
-BEGINS({!myVariable_current.WhatId}, "006") 
-&amp;&amp;
-{!myVariable_current.RecordType.DeveloperName} = 'CallTask'</expression>
+BEGINS({!myVariable_current.WhatId}, "006")</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -700,7 +756,7 @@ NOT(ISBLANK([Task].WhatId ))
 BEGINS([Task].WhatId, "006") </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_11</name>
+        <name>formula_myRule_14</name>
         <dataType>Boolean</dataType>
         <expression>({!myVariable_current.RecordType.DeveloperName} = 'SBRTask' ) 
 &amp;&amp;
@@ -721,7 +777,7 @@ BEGINS({!myVariable_current.WhatId}, "006")</expression>
                 <stringValue>ISCHANGED([Task].IsClosed)  &amp;&amp; [Task].IsClosed</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_13</name>
+        <name>formula_myRule_16</name>
         <dataType>Boolean</dataType>
         <expression>ISCHANGED({!myVariable_current.IsClosed})  &amp;&amp; {!myVariable_current.IsClosed}</expression>
     </formulas>
@@ -738,7 +794,7 @@ NOT(ISBLANK([Task].WhatId ))
 BEGINS([Task].WhatId, "006") </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_17</name>
+        <name>formula_myRule_20</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW() 
 &amp;&amp;
@@ -761,7 +817,7 @@ NOT(ISBLANK([Task].WhatId ))
 BEGINS([Task].WhatId, "006") </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_20</name>
+        <name>formula_myRule_23</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW() 
 &amp;&amp;
@@ -788,7 +844,7 @@ NOT(ISBLANK([Task].WhatId ))
 BEGINS([Task].WhatId, "006") </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_22</name>
+        <name>formula_myRule_25</name>
         <dataType>Boolean</dataType>
         <expression>NOT(ISNEW() )
 &amp;&amp;
@@ -811,7 +867,7 @@ BEGINS({!myVariable_current.WhatId}, "006")</expression>
 ( ISCHANGED([Task].NextCallType__c )  || ISNEW())</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_24</name>
+        <name>formula_myRule_27</name>
         <dataType>Boolean</dataType>
         <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
 &amp;&amp;
@@ -830,7 +886,7 @@ BEGINS([Task].WhatId, "006")
 ISCHANGED([Task].Owner:User.Id) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_26</name>
+        <name>formula_myRule_29</name>
         <dataType>Boolean</dataType>
         <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
 &amp;&amp;
@@ -853,7 +909,7 @@ BEGINS([Task].WhoId, "00Q")
 ISCHANGED([Task].Owner:User.Id) </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_28</name>
+        <name>formula_myRule_31</name>
         <dataType>Boolean</dataType>
         <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
 &amp;&amp;
@@ -871,15 +927,49 @@ ISCHANGED({!myVariable_current.Owner:User.Id})</expression>
 &amp;&amp;
 NOT(ISBLANK([Task].Description)) 
 &amp;&amp;
+NOT(ISBLANK([Task].WhatId ))
+&amp;&amp;
+BEGINS([Task].WhatId, "006") 
+&amp;&amp;
+[Task].RecordType.DeveloperName = 'CallTask'
+&amp;&amp;
+NOT([Task].IsByConversion__c )
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4</name>
+        <dataType>Boolean</dataType>
+        <expression>(ISNEW() || ISCHANGED({!myVariable_current.Description}))
+&amp;&amp;
+NOT(ISBLANK({!myVariable_current.Description})) 
+&amp;&amp;
+NOT(ISBLANK({!myVariable_current.WhatId} ))
+&amp;&amp;
+BEGINS({!myVariable_current.WhatId}, "006") 
+&amp;&amp;
+{!myVariable_current.RecordType.DeveloperName} = 'CallTask'
+&amp;&amp;
+NOT({!myVariable_current.IsByConversion__c} )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>(ISNEW() || ISCHANGED([Task].Description))
+&amp;&amp;
+NOT(ISBLANK([Task].Description)) 
+&amp;&amp;
 NOT(ISBLANK([Task].WhoId ))
 &amp;&amp;
 BEGINS([Task].WhoId, "00Q") 
 &amp;&amp;
 [Task].RecordType.DeveloperName = 'CallTask'
+&amp;&amp;
+NOT([Task].IsByConversion__c )
 </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_3</name>
+        <name>formula_myRule_6</name>
         <dataType>Boolean</dataType>
         <expression>(ISNEW() || ISCHANGED({!myVariable_current.Description}))
 &amp;&amp;
@@ -889,7 +979,9 @@ NOT(ISBLANK({!myVariable_current.WhoId} ))
 &amp;&amp;
 BEGINS({!myVariable_current.WhoId}, "00Q") 
 &amp;&amp;
-{!myVariable_current.RecordType.DeveloperName} = 'CallTask'</expression>
+{!myVariable_current.RecordType.DeveloperName} = 'CallTask'
+&amp;&amp;
+NOT({!myVariable_current.IsByConversion__c} )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -902,32 +994,13 @@ NOT(ISBLANK([Task].WhoId ))
 BEGINS([Task].WhoId, "00Q") </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_5</name>
+        <name>formula_myRule_8</name>
         <dataType>Boolean</dataType>
         <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
 &amp;&amp;
 NOT(ISBLANK({!myVariable_current.WhoId} ))
 &amp;&amp;
 BEGINS({!myVariable_current.WhoId}, "00Q")</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>([Task].RecordType.DeveloperName = 'SystemCallTask')
-&amp;&amp;
-NOT(ISBLANK([Task].WhatId ))
-&amp;&amp;
-BEGINS([Task].WhatId, "006") </stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_8</name>
-        <dataType>Boolean</dataType>
-        <expression>({!myVariable_current.RecordType.DeveloperName} = 'SystemCallTask')
-&amp;&amp;
-NOT(ISBLANK({!myVariable_current.WhatId} ))
-&amp;&amp;
-BEGINS({!myVariable_current.WhatId}, "006")</expression>
     </formulas>
     <interviewLabel>EF_Task_PB_Create_Update-16_InterviewLabel</interviewLabel>
     <label>EF_Task_PB_Create_Update</label>
@@ -976,1056 +1049,11 @@ BEGINS({!myVariable_current.WhatId}, "006")</expression>
             </value>
         </processMetadataValues>
         <name>myRule_11_A1</name>
-        <label>Update Opportunity</label>
+        <label>Update Opportunity System Call Task</label>
         <locationX>1100</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision12</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Brochure Sent</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>BrochureSent__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task]</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_13_A1</name>
-        <label>Update Close Fields</label>
-        <locationX>1300</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision16</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Close Date</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>CloseDate__c</field>
-            <value>
-                <elementReference>formula_14_myRule_13_A1_2141694194</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Closed By</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>ClosedBy__c</field>
-            <value>
-                <elementReference>formula_15_myRule_13_A1_9237496543</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Task</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_17_A1</name>
-        <label>Update Opportunity</label>
-        <locationX>1700</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision19</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Has Reservation</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>HasReservationTask__c</field>
-            <value>
-                <elementReference>formula_18_myRule_17_A1_3601292172</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Last RES Date Time</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LastRESDateTime__c</field>
-            <value>
-                <elementReference>myVariable_current.CreatedDate</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_20_A1</name>
-        <label>Update Opportunity</label>
-        <locationX>2000</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision21</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Last PQ Date Time</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LastPQDateTime__c</field>
-            <value>
-                <elementReference>myVariable_current.CreatedDate</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_22_A1</name>
-        <label>Update Opportunity</label>
-        <locationX>2200</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision23</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Has Reservation</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>HasReservationTask__c</field>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_24_A1</name>
-        <label>Update Opportunity</label>
-        <locationX>2400</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myRule_24_A2</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Picklist</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Task Type</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_CallType__c</field>
-            <value>
-                <elementReference>myVariable_current.NextCallType__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Name ID (Lead)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_24_A2</name>
-        <label>Update Lead</label>
-        <locationX>2400</locationX>
-        <locationY>300</locationY>
-        <connector>
-            <targetReference>myDecision25</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhoId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Picklist</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Task Type</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_CallType__c</field>
-            <value>
-                <elementReference>myVariable_current.NextCallType__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Lead</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>criteria</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_26_A1</name>
-        <label>Update Opportunity</label>
-        <locationX>2600</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision27</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhatId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Assigned To</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_Owner__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.OwnerId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Assigned To</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_Owner__c</field>
-            <value>
-                <elementReference>myVariable_current.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>criteria</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Name ID (Lead)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_28_A1</name>
-        <label>Update Lead</label>
-        <locationX>2800</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhoId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Assigned To</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_Owner__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.OwnerId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Assigned To</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_Owner__c</field>
-            <value>
-                <elementReference>myVariable_current.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Lead</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Name ID (Lead)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_5_A1</name>
-        <label>Update Lead System Call Task Field</label>
-        <locationX>500</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision7</targetReference>
-        </connector>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.WhoId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Has System Call Task</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>HasSystemCallTask__c</field>
-            <value>
-                <elementReference>formula_6_myRule_5_A1_7270878888</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Last Contact Date Time</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LastContactDateTime__c</field>
-            <value>
-                <elementReference>myVariable_current.ActivityDateTime__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>DateTime</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Followup Date Time</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_FollowupDateTime__c</field>
-            <value>
-                <elementReference>myVariable_current.FollowUpDate__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Call Task Owner</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue>User</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Reference</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>SCT_Owner__c</field>
-            <value>
-                <elementReference>myVariable_current.OwnerId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Lead</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_8_A1</name>
-        <label>Update Opportunity System Call Task</label>
-        <locationX>800</locationX>
-        <locationY>200</locationY>
-        <connector>
-            <targetReference>myDecision10</targetReference>
+            <targetReference>myDecision13</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -2109,7 +1137,7 @@ BEGINS({!myVariable_current.WhatId}, "006")</expression>
             </processMetadataValues>
             <field>HasSystemCallTask__c</field>
             <value>
-                <elementReference>formula_9_myRule_8_A1_3838565847</elementReference>
+                <elementReference>formula_12_myRule_11_A1_4598596965</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2257,6 +1285,1128 @@ BEGINS({!myVariable_current.WhatId}, "006")</expression>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_14_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>1400</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision15</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Brochure Sent</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>BrochureSent__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_16_A1</name>
+        <label>Update Close Fields</label>
+        <locationX>1600</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision19</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Close Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>CloseDate__c</field>
+            <value>
+                <elementReference>formula_17_myRule_16_A1_1793076351</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Closed By</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>ClosedBy__c</field>
+            <value>
+                <elementReference>formula_18_myRule_16_A1_9004493464</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update Subject</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision3</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Subject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Subject</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_5348001419</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_20_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>2000</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision22</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Has Reservation</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>HasReservationTask__c</field>
+            <value>
+                <elementReference>formula_21_myRule_20_A1_4270915055</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Last RES Date Time</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LastRESDateTime__c</field>
+            <value>
+                <elementReference>myVariable_current.CreatedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_23_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>2300</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision24</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Last PQ Date Time</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LastPQDateTime__c</field>
+            <value>
+                <elementReference>myVariable_current.CreatedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_25_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>2500</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision26</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Has Reservation</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>HasReservationTask__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_27_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>2700</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myRule_27_A2</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Task Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_CallType__c</field>
+            <value>
+                <elementReference>myVariable_current.NextCallType__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Name ID (Lead)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_27_A2</name>
+        <label>Update Lead</label>
+        <locationX>2700</locationX>
+        <locationY>300</locationY>
+        <connector>
+            <targetReference>myDecision28</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhoId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Task Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_CallType__c</field>
+            <value>
+                <elementReference>myVariable_current.NextCallType__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Related To ID (Opportunity)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_29_A1</name>
+        <label>Update Opportunity</label>
+        <locationX>2900</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision30</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Assigned To</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_Owner__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Assigned To</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_Owner__c</field>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>criteria</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Name ID (Lead)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_31_A1</name>
+        <label>Update Lead</label>
+        <locationX>3100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhoId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>inputDataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Assigned To</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>operatorDataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_Owner__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Assigned To</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_Owner__c</field>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Task].Name ID (Lead)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_8_A1</name>
+        <label>Update Lead System Call Task Field</label>
+        <locationX>800</locationX>
+        <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision10</targetReference>
+        </connector>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.WhoId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Has System Call Task</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>HasSystemCallTask__c</field>
+            <value>
+                <elementReference>formula_9_myRule_8_A1_4272310961</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Last Contact Date Time</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LastContactDateTime__c</field>
+            <value>
+                <elementReference>myVariable_current.ActivityDateTime__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>DateTime</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Followup Date Time</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_FollowupDateTime__c</field>
+            <value>
+                <elementReference>myVariable_current.FollowUpDate__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Call Task Owner</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue>User</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SCT_Owner__c</field>
+            <value>
+                <elementReference>myVariable_current.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
     <variables>
