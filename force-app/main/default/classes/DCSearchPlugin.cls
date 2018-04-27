@@ -12,21 +12,26 @@ Modification Log   :
 global class DCSearchPlugin implements dupcheck.dc3Plugin.InterfaceSearch
 {
     global static void processResults(String methodName, Id sourceId, Map <string,Object> searchResults)
-    {                             
+    {
         if (!(methodName=='ON_SEARCH;' || methodName=='ON_LAYOUT;' ||
-             methodName=='ON_INSERT;' || methodName=='ON_CONVERT;'|| methodName=='ON_UPDATE;')) {
+                methodName=='ON_INSERT;' || methodName=='ON_CONVERT;'|| methodName=='ON_UPDATE;')) {
             system.debug('DCSearchPlugin:processResults--sourceId='+sourceId +'-searchResults='+searchResults);
             //DCBusinessHandler.ProcessDCSearchPlugin(methodName,sourceId,searchResults);
             DCBusinessFlow.dcSearchResults(methodName,sourceId,searchResults);
             system.debug('DCSearchPlugin.processResults.IfBlock - sourceId:' + sourceId );
         }
-        else if(methodName == 'ON_INSERT;' || methodName=='ON_LAYOUT;'){
-          lead sourceLead = new Lead();
-          sourceLead.id = sourceId;
-          sourceLead.isdupeprocessed__c = true;
-          sourceLead.isdupe__c = false;
-          update sourceLead;
-          system.debug('DCSearchPlugin.processResults.ElseIfBlock - sourceId:' + sourceId );
+        else if((methodName == 'ON_INSERT;' || methodName=='ON_LAYOUT;') && sourceId.getSObjectType()==Lead.getSObjectType()){
+            lead sourceLead = new Lead();
+            sourceLead.id = sourceId;
+            sourceLead.isdupeprocessed__c = true;
+            // sourceLead.isdupe__c = false;
+            
+            List<Lead> sourceLeadList = new List<Lead>();
+            sourceLeadList = LeadsSelector.getLeadsOnId(new Set<id>{sourceLead.id});
+            if(sourceLeadList != null && sourceLeadList.size() > 0 && !sourceLeadList[0].isdupeprocessed__c){
+                update sourceLead;
+            }
+            system.debug('DCSearchPlugin.processResults.ElseIfBlock - sourceId:' + sourceId );
         }
         else{
             system.debug('*****DCSearch Else Block****');

@@ -39,12 +39,12 @@
     <aura:attribute name="selectedOtherNationalityNameMulti" type="String[]"/>
     <aura:attribute name="OtherNationalityTextInfo" type="String"/>
     <aura:attribute name="rendering" type="Boolean" default="true"/>
-    
+
     <div class="app-wrapper" style="background:white;border-bottom: 1px solid rgb(221, 219, 218);border-radius: .25rem .25rem 0 0;box-shadow: none;padding-bottom: 20px;">
         <div class="slds-grid">
             <div class="slds-p-horizontal--large slds-col slds-size--3-of-3">
                 <h2 class="slds-text-heading--medium slds-m-top--large"> &nbsp;
-                    <lightning:icon iconName="utility:phone_portrait" class="customGreen"/>
+                    <lightning:icon iconName="action:following" class="customGreen"/>
                     <span class="slds-icon_container slds-icon-standard-pricebook" title="Description of icon when needed">
                         <span class="slds-assistive-text">Description of icon</span>
                     </span>

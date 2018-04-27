@@ -24,7 +24,11 @@ public class CreatePriceQuoteController {
         } else {
             RecordId = null;
         }
-        this.PriceQuoteURL = ExternalRouter.getServiceURL('OpenPriceQuote');
+        ExternalServiceSettings__mdt serviceSettingRecord = ExternalRouter.getServiceURL('OpenPriceQuote');
+        if(serviceSettingRecord!=null && !String.IsEmpty(serviceSettingRecord.EndPoint__c))
+        {
+            this.PriceQuoteURL = serviceSettingRecord.EndPoint__c;
+        }
         this.returnvalue = openPoseidonToCreateQuote();
         if (!String.isEmpty(this.returnvalue)) {
             this.displayMessage = this.returnvalue;
