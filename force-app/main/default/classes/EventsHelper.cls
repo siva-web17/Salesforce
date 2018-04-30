@@ -29,57 +29,107 @@ public class EventsHelper {
         }
     }
 
-    public static void createAttachmentForQuestionAnswers(list<event> newItems) {
-        set<id> leadIdSet = new set<id>();
+   public static void createAttachmentForQuestionAnswers(list<event> newItems) {
+        /**
+        1.  Loop on event records
+        2.  If event campaign is not blank, and event is associated to a lead, and is of type CAM or CBR
+        3.  Add lead ids into a set
+        4.  Add events to a map, key - event id, value - event record
+        5.  If events map is blank - return     
+        6.  Query out leads into a map of lead id and lead record based on set of lead ids
+        7.  Loop on map of event        
+        8.  If corresponding lead is having non blank campaign Q&A then create content note records
+        9.  Add content note record into a map
+        10. Insert content notes
+        11. Loop on event records
+        12. Create content document link for lead and event record
+        13. Insert content document link records
+        **/
+        
+        Set<Id> setLeadIds = new Set<Id>();
+        
+        Map<Id, Lead> mapLeads = new Map<Id, Lead>();
+        Map<Id, Event> mapEvents = new Map<Id, Event>();                
+        Map<Id, ContentNote> mapEventIdContentNote = new Map<Id, ContentNote>();        
+        
         try {
-            for (event objEvents : [select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c != null and (type = 'CAM' or type = 'CBR')]) {
-                if (objEvents.whoId != null && String.valueOf(objEvents.whoid).substring(0, 3) == '00Q') {
-                    leadIdSet.add(objEvents.whoid);
+            //1.  Loop on event records         
+            for(Event eventRecord : newItems){
+                //2.  If event campaign is not blank, and event is associated to a lead, and is of type CAM or CBR
+                if(eventRecord.CampaignName__c != null && eventRecord.WhoId != null 
+                   && String.valueOf(eventRecord.WhoId).subString(0, 3) == '00Q'
+                   && eventRecord.CampaignName__c != null && eventRecord.CampaignName__c != ''
+                   && (eventRecord.Type == Label.CAM || eventRecord.Type == Label.CampaignBrochureRequest) ){                   
+                    
+                    //3.  Add lead ids into a set
+                    setLeadIds.add(eventRecord.WhoId);   
+                    
+                    //4.  Add events to a map, key - event id, value - event record
+                    mapEvents.put(eventRecord.Id, eventRecord);                                                     
                 }
             }
-            map<id, lead> leadIdCamQsAns = new map<id, lead>([select id,CampaignQuestionsAnswer__c from lead where id in:leadIdSet]);
-            list<attachment> attachmentForQsAnsList = new list<attachment>();
-            for (event objEvents : [select id,whoid,CampaignName__c,type from event where id in:newItems and CampaignName__c != null and (type = 'CAM' or type = 'CBR')]) {
-                if (String.valueOf(objEvents.whoid).substring(0, 3) == '00Q' 
-                && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != null
-                && leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c != '') {
-                    //adding a content note
-                    String camQsAndAnswersAsText = getTheParsedJson(leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c);
-                    ContentNoteAndEventLink objContentNoteAndEventLink = new ContentNoteAndEventLink();
-                    objContentNoteAndEventLink.eventid = objEvents.id;
-                    objContentNoteAndEventLink.camQsAndAnswersAsText = blob.valueof(camQsAndAnswersAsText);
-                    objContentNoteAndEventLink.leadId = objEvents.whoid;
-                    listOfContentNoteAndEventLink.add(objContentNoteAndEventLink);
+            
+            //5.  If events map is blank - return 
+            if(mapEvents.size() <= 0){
+                return;
+            }
+            
+            //6.  Query out leads into a map of lead id and lead record based on set of lead ids    
+            mapLeads = new map<Id, Lead>([Select Id, CampaignQuestionsAnswer__c 
+                                          from Lead 
+                                          where Id in :setLeadIds]);    
+                                          
+            //7.  Loop on map of event
+            for (Id eventId : mapEvents.keySet()) {
+                Event eventRecord = mapEvents.get(eventId);
+                
+                //8.  If corresponding lead is having non blank campaign Q&A then create content note records
+                if(mapLeads.containskey(eventRecord.WhoId) 
+                   && mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c != null 
+                   && mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c != ''){
+                    String camQsAndAnswersAsText = getTheParsedJson(mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c);
                     ContentNote cn = new ContentNote();
-                    cn.Title = objEvents.CampaignName__c;
-                    system.debug('CamQsAns>>' + (leadIdCamQsAns.get(objEvents.whoid).CampaignQuestionsAnswer__c));
+                    cn.Title = eventRecord.CampaignName__c;                 
                     cn.Content = Blob.valueOf(camQsAndAnswersAsText);
-                    listOfContentNote.add(cn);
+                    
+                    //9.  Add content note record into a map
+                    mapEventIdContentNote.put(eventRecord.Id, cn);
                 }
             }
-            insert listOfContentNote;
-            for (contentnote objcontentnote : listOfContentNote) {
-                noteIdAndContentNoteContent.put(objcontentnote.content, objcontentnote.id);
+            
+            //10. Insert content notes
+            if(mapEventIdContentNote.size() > 0){
+                insert mapEventIdContentNote.values();
             }
-            for (ContentNoteAndEventLink ContentNoteAndEventLinkobj : listOfContentNoteAndEventLink) {
-                ContentDocumentLink link2 = new ContentDocumentLink();
-                link2.ContentDocumentId = noteIdAndContentNoteContent.get(ContentNoteAndEventLinkobj.camQsAndAnswersAsText);
-                link2.LinkedEntityId = ContentNoteAndEventLinkobj.eventid;
-                link2.ShareType = 'V';
-                link2.Visibility = 'AllUsers';
-                listOfContentDocumentLink.add(link2);
-                ContentDocumentLink link3 = new ContentDocumentLink();
-                link3.ContentDocumentId = noteIdAndContentNoteContent.get(ContentNoteAndEventLinkobj.camQsAndAnswersAsText);
-                link3.LinkedEntityId = ContentNoteAndEventLinkobj.leadId;
-                link3.ShareType = 'V';
-                link3.Visibility = 'AllUsers';
-                listOfContentDocumentLink.add(link3);
-                system.debug('Contentdocid' + link2.id);
-                system.debug('Contentdocid' + link2.id);
-
+            
+            //11. Loop on event records
+            for (Id eventId : mapEventIdContentNote.keySet()) {
+                if(!mapEvents.containsKey(eventId)){
+                    continue;
+                }
+                
+                //12. Create content document link for lead and event record                
+                ContentDocumentLink cdLinkEvent = new ContentDocumentLink();
+                cdLinkEvent.ContentDocumentId =  mapEventIdContentNote.get(eventId).Id;
+                cdLinkEvent.LinkedEntityId = eventId;
+                cdLinkEvent.ShareType = 'V';
+                cdLinkEvent.Visibility = 'AllUsers';
+                listOfContentDocumentLink.add(cdLinkEvent); 
+                
+                ContentDocumentLink cdLinkLead = new ContentDocumentLink();
+                cdLinkLead.ContentDocumentId = mapEventIdContentNote.get(eventId).Id;
+                cdLinkLead.LinkedEntityId = mapEvents.get(eventId).WhoId;
+                cdLinkLead.ShareType = 'V';
+                cdLinkLead.Visibility = 'AllUsers';
+                listOfContentDocumentLink.add(cdLinkLead); 
             }
-            insert listOfContentDocumentLink;
-        } catch (Exception ex) {
+            
+            //13. Insert content document link records
+            if(listOfContentDocumentLink.size() > 0){
+                insert listOfContentDocumentLink;
+            }
+        } 
+        catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'EventsHelper', 'createAttachmentForQuestionAnswers', null);
         }
     }
