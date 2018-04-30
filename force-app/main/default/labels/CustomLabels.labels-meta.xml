@@ -1081,6 +1081,13 @@
         <value>Select LT Course</value>
     </labels>
     <labels>
+        <fullName>LanguagePicklistValueNorwegian</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguagePicklistValueNorwegian</shortDescription>
+        <value>NO</value>
+    </labels>
+    <labels>
         <fullName>Last_Name</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -1206,6 +1213,13 @@
         <protected>false</protected>
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
+    </labels>
+    <labels>
+        <fullName>MarketPicklistValueNorway</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MarketPicklistValueNorway</shortDescription>
+        <value>NOO</value>
     </labels>
     <labels>
         <fullName>MergeReasonManual</fullName>
