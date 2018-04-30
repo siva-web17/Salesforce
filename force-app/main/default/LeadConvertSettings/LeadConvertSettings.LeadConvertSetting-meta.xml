@@ -88,6 +88,10 @@
             <outputField>CreationMethod__c</outputField>
         </mappingFields>
         <mappingFields>
+            <inputField>Etag__c</inputField>
+            <outputField>Etag__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>FirstContactDateTime__c</inputField>
             <outputField>FirstContactDateTime__c</outputField>
         </mappingFields>
