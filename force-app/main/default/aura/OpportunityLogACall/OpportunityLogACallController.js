@@ -276,7 +276,7 @@
             var bookOnDateValue = component.get("v.bookOnDate");
             var LAC_Select = $A.get("$Label.c.LAC_Select");
             var validateBookOnDate = bookOnDateValue == "" || bookOnDateValue == null ? !0 : moment(bookOnDateValue).isValid() ? !0 : !1;
-            if (!moment(component.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(component.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
+            if (!moment(component.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD")) && !moment(component.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD"))) {
                 var toastEvent = $A.get("e.force:showToast");
                 var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ACTION_DATETIME");
                 toastEvent.setParams({
@@ -474,7 +474,7 @@
     },
     pastDateValidation: function(cmp, evt, helper) {
         if (cmp.get("v.selectedActionDate") != null) {
-            if (!moment(cmp.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD HH:mm")) && !moment(cmp.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD HH:mm"))) {
+            if (!moment(cmp.get("v.selectedActionDate")).isAfter(moment().format("YYYY-MM-DD")) && !moment(cmp.get("v.selectedActionDate")).isSame(moment().format("YYYY-MM-DD"))) {
                 var toastEvent = $A.get("e.force:showToast");
                 var LAC_ERROR_PAST_MSG = $A.get("$Label.c.LAC_ACTION_DATETIME");
                 toastEvent.setParams({
