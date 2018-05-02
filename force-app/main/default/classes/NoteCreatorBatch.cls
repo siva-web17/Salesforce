@@ -6,8 +6,8 @@ global class NoteCreatorBatch implements Database.Batchable<SObject>{
            
     //constructor
     global NoteCreatorBatch(){
-        this.strQuery  = ' Select Id, EventId__c, LeadId__c, Title__c, NoteContent__c from NoteMigration__c ' ;
-        this.strQuery += ' where EventId__c != null and LeadId__c != null and Title__c != null and IsProcessed__c = false ';
+        this.strQuery  = ' Select Id, EventId__c, LeadId__c, OpportunityId__c, Title__c, NoteContent__c from NoteMigration__c ' ;
+        this.strQuery += ' where Title__c != null and IsProcessed__c = false and (OpportunityId__c != null Or EventId__c != null or LeadId__c != null) ';
         this.strQuery += ' order by CreatedDate ';  
         
         if(Test.isRunningTest()){
@@ -36,7 +36,7 @@ global class NoteCreatorBatch implements Database.Batchable<SObject>{
         List<NoteMigration__c> lstNoteMigrations = new List<NoteMigration__c>();                
         List<ContentDocumentLink> lstContentDocumentLinksToInsert = new List<ContentDocumentLink>();
         
-        Map<Id, ContentNote> mapNoteMigrationContentNote = new Map<Id, ContentNote>();
+        Map<Id, ContentNote> mapNoteMigrationContentNote = new Map<Id, ContentNote>();        
         
         try{            
             lstNoteMigrations = (List<NoteMigration__c>)scope;
@@ -60,20 +60,32 @@ global class NoteCreatorBatch implements Database.Batchable<SObject>{
             //4. Loop on note migration record
             for(NoteMigration__c objNoteMigration : lstNoteMigrations){
                 //5. Create content document link records for lead and event and add them to list
-                ContentDocumentLink linkRecordEvent = new ContentDocumentLink();
-                linkRecordEvent.LinkedEntityId = objNoteMigration.EventId__c;
-                linkRecordEvent.ContentDocumentId = mapNoteMigrationContentNote.get(objNoteMigration.Id).Id;                
-                linkRecordEvent.ShareType = 'V';
-                linkRecordEvent.Visibility = 'AllUsers';
-                lstContentDocumentLinksToInsert.add(linkRecordEvent);
+                if(objNoteMigration.EventId__c != null){
+                	ContentDocumentLink linkRecordEvent = new ContentDocumentLink();
+	                linkRecordEvent.LinkedEntityId = objNoteMigration.EventId__c;
+	                linkRecordEvent.ContentDocumentId = mapNoteMigrationContentNote.get(objNoteMigration.Id).Id;                
+	                linkRecordEvent.ShareType = 'V';
+	                linkRecordEvent.Visibility = 'AllUsers';
+	                lstContentDocumentLinksToInsert.add(linkRecordEvent);
+                }
                 
-                ContentDocumentLink linkRecordLead = new ContentDocumentLink();
-                linkRecordLead.LinkedEntityId = objNoteMigration.LeadId__c;
-                linkRecordLead.ContentDocumentId = mapNoteMigrationContentNote.get(objNoteMigration.Id).Id;                
-                linkRecordLead.ShareType = 'V';
-                linkRecordLead.Visibility = 'AllUsers';
+                if(objNoteMigration.LeadId__c != null){
+                	ContentDocumentLink linkRecordLead = new ContentDocumentLink();
+	                linkRecordLead.LinkedEntityId = objNoteMigration.LeadId__c;
+	                linkRecordLead.ContentDocumentId = mapNoteMigrationContentNote.get(objNoteMigration.Id).Id;                
+	                linkRecordLead.ShareType = 'V';
+	                linkRecordLead.Visibility = 'AllUsers';                
+                	lstContentDocumentLinksToInsert.add(linkRecordLead);
+                }
                 
-                lstContentDocumentLinksToInsert.add(linkRecordLead);
+                if(objNoteMigration.OpportunityId__c != null){
+                	ContentDocumentLink linkRecordLead = new ContentDocumentLink();
+	                linkRecordLead.LinkedEntityId = objNoteMigration.OpportunityId__c;
+	                linkRecordLead.ContentDocumentId = mapNoteMigrationContentNote.get(objNoteMigration.Id).Id;                
+	                linkRecordLead.ShareType = 'V';
+	                linkRecordLead.Visibility = 'AllUsers';                
+                	lstContentDocumentLinksToInsert.add(linkRecordLead);
+                }
                 
                 //6. Update note migration records
                 objNoteMigration.IsProcessed__c = true;
