@@ -270,8 +270,13 @@ public with sharing class LogACallController {
                     opp.LastAutomationUpdateDateTime__c = system.now();
                     String previousStage = OpportunitiesSelector.getOpportunityStageName(opp);
                     if(previousStage == null || previousStage == ''){
+                        if( LogACallHelper.allReachedItems.contains(CallAction.toUpperCase()) ){
                         opp.StageName = Label.OpportunityStageFollowUp;
-                    } 
+                        }
+                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()) ){
+                            opp.StageName = Label.OpportunityStageToContact;
+                        }
+                    }
                     else{
                         opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
                     }
