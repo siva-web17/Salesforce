@@ -53,6 +53,8 @@ public with sharing class QuotesHelper {
                     taskRecord.Subject = System.Label.EmailPriceQuote;
                     taskRecord.OwnerId = quoteRecord.QuoteCreatedBy__c;
                     taskRecord.RecordTypeId = recordTypeId;
+                    taskRecord.ActivityDate = Datetime.now().Date();
+                    taskRecord.ActivityDateTime__c = Datetime.now();
                     taskList.add(taskRecord);
                 }
             }
