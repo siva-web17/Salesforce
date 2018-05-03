@@ -11,6 +11,7 @@
     <columns>Invited__c</columns>
     <columns>Attended__c</columns>
     <columns>MeetingSize__c</columns>
+    <columns>IsUP__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CAMPAIGN.STATUS</field>
