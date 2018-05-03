@@ -80,4 +80,12 @@ public class AccountsSelector {
         }
         return accountMap;
     }
+
+    public static Map<ID,Account> getAccountsWithActiveOpportunitiesByIds(Set<Id> accountIds){
+        Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>([
+                SELECT Id, Name, Market__c, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE limit 1)
+                FROM Account
+                WHERE id IN :accountIds]);
+        return accountWithActiveOpportunities; 
+    }
 }
