@@ -90,7 +90,7 @@ public class EventsHelper {
                     String camQsAndAnswersAsText = getTheParsedJson(mapLeads.get(eventRecord.WhoId).CampaignQuestionsAnswer__c);
                     ContentNote cn = new ContentNote();
                     cn.Title = eventRecord.CampaignName__c;                 
-                    cn.Content = Blob.valueOf(camQsAndAnswersAsText);
+                    cn.Content = Blob.valueOf(camQsAndAnswersAsText.unescapeHtml4());
                     
                     //9.  Add content note record into a map
                     mapEventIdContentNote.put(eventRecord.Id, cn);
