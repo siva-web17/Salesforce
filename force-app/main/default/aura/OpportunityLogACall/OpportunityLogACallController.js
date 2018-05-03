@@ -91,12 +91,19 @@
         });
         $A.enqueueAction(durationAction);
         var closeReasonsAction = component.get("c.getCloseReasons");
+        var LAC_SELECTED_CLOSEREASON = $A.get("$Label.c.LAC_SELECTED_CLOSEREASON");
         closeReasonsAction.setParams({ recordId: component.get("v.recordId") });
         closeReasonsAction.setCallback(this, function(res) {
             switch (res.getState()) {
                 case "SUCCESS":
+                    var closeReasonTemp = [];
                     var closeReasons = JSON.parse(res.getReturnValue());
                     component.set("v.closeReasons", closeReasons);
+                    for (var i = 0; i < closeReasons.length; i++) { closeReasonTemp.push(closeReasons[i].toUpperCase()); }
+                    var closeReasonIndexValue = closeReasonTemp.indexOf(LAC_SELECTED_CLOSEREASON.toUpperCase())
+                    if (closeReasonIndexValue > 0 && LAC_SELECTED_CLOSEREASON != null) {
+                        component.set("v.selectedCloseReason", closeReasons[closeReasonIndexValue]);
+                    }
                     break;
                 case "INCOMPLETE":
                     break;
