@@ -2092,7 +2092,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ReportEnv</shortDescription>
-        <value>QA</value>
+        <value>LIVE</value>
     </labels>
     <labels>
         <fullName>Home_Pg_SP_Heading</fullName>
@@ -2173,5 +2173,13 @@
         <protected>false</protected>
         <shortDescription>Home_Pg_SP_RaiseCaseURL</shortDescription>
         <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SELECTED_CLOSEREASON</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
+        <value>Not able to contact customer</value>
     </labels>
 </CustomLabels>
