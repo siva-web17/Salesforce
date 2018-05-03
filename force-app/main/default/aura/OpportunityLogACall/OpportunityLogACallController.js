@@ -99,10 +99,12 @@
                     var closeReasonTemp = [];
                     var closeReasons = JSON.parse(res.getReturnValue());
                     component.set("v.closeReasons", closeReasons);
-                    for (var i = 0; i < closeReasons.length; i++) { closeReasonTemp.push(closeReasons[i].toUpperCase()); }
-                    var closeReasonIndexValue = closeReasonTemp.indexOf(LAC_SELECTED_CLOSEREASON.toUpperCase())
-                    if (closeReasonIndexValue > 0 && LAC_SELECTED_CLOSEREASON != null) {
-                        component.set("v.selectedCloseReason", closeReasons[closeReasonIndexValue]);
+                    if (closeReasons != (null || undefined || NaN)) {
+                        for (var i = 0; i < closeReasons.length; i++) { closeReasonTemp.push(closeReasons[i].toUpperCase()); }
+                        var closeReasonIndexValue = closeReasonTemp.indexOf(LAC_SELECTED_CLOSEREASON.toUpperCase());
+                        if (closeReasonIndexValue > 0 && LAC_SELECTED_CLOSEREASON != (null || undefined || NaN)) {
+                            component.set("v.selectedCloseReason", closeReasons[closeReasonIndexValue]);
+                        }
                     }
                     break;
                 case "INCOMPLETE":
