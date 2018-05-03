@@ -159,7 +159,7 @@ public with sharing class LogACallHelper {
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                     String subject = openCallTask.Subject;
 
-                    if(selectedProgram != null && selectedProgram != ''){
+                    if(!String.isEmpty(selectedProgram)){
                         openCallTask.Program__c = selectedProgram;
                         String[] splitSubject = SFLangUtil.splitString(subject, '-');
                         if (splitSubject.size() > 0) {
