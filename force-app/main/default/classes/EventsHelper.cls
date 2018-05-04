@@ -8,11 +8,6 @@ public class EventsHelper {
         public id leadId;
         public blob camQsAndAnswersAsText;
     }
-    public static list<ContentNoteAndEventLink> listOfContentNoteAndEventLink = new list<ContentNoteAndEventLink>();
-    public static Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
-    public static map<blob, string> noteIdAndContentNoteContent = new map<blob, string>();
-    public static list<ContentNote> listOfContentNote = new list<ContentNote>();
-    public static list<ContentDocumentLink> listOfContentDocumentLink = new list<ContentDocumentLink>();
     // Updates the subject on all the events
     public static void updateSubjectOnEvents(List<Event> events) {
         for (Event newEvent : events) {
@@ -22,6 +17,8 @@ public class EventsHelper {
 
     // Update the event subject to appropriate value
     public static void updateSubjectOnEvent(Event eventObj) {
+        Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
+
         if (taskSettingsMap != null && taskSettingsMap.containsKey(eventObj.Type)) {
             String eventSubject = taskSettingsMap.get(eventObj.Type).TaskSubject__c;
             eventSubject = eventSubject + ' - ' + eventObj.Program__c;
@@ -52,6 +49,7 @@ public class EventsHelper {
         Map<Id, Event> mapEvents = new Map<Id, Event>();                
         Map<Id, ContentNote> mapEventIdContentNote = new Map<Id, ContentNote>();        
         
+        List<ContentDocumentLink> listOfContentDocumentLink = new List<ContentDocumentLink>();
         try {
             //1.  Loop on event records         
             for(Event eventRecord : newItems){
