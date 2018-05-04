@@ -9,5 +9,5 @@
     <navType>Standard</navType>
     <tabs>dcBatch</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>Duplicates_UtilityBar</utilityBar>
+    <!--<utilityBar>Duplicates_UtilityBar</utilityBar>-->
 </CustomApplication>

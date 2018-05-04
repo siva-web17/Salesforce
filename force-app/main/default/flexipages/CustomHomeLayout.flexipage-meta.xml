@@ -3,18 +3,18 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>displayNumber</name>
-                <value>3</value>
+                <name>dashboardName</name>
+                <value>pHTLElodfSKxQUZVjVDKVLNdwDBxyg5</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>recommendationTypes</name>
-                <value>["users","groups"]</value>
+                <name>height</name>
+                <value>10000</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>title</name>
-                <value>Einstein Recommendations</value>
+                <name>hideOnError</name>
+                <value>true</value>
             </componentInstanceProperties>
-            <componentName>forceChatter:recommendations</componentName>
+            <componentName>desktopDashboards:embeddedDashboard</componentName>
         </componentInstances>
         <name>top</name>
         <type>Region</type>
@@ -22,40 +22,32 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>decorate</name>
-                <value>true</value>
+                <name>cacheAge</name>
+                <value>10</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>richTextValue</name>
-                <value>Left One</value>
+                <name>reportName</name>
+                <value>Tomorrow_s_Activities_by_Next_Call_Type</value>
             </componentInstanceProperties>
-            <componentName>flexipage:richText</componentName>
+            <componentInstanceProperties>
+                <name>showRefreshButton</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:reportChart</componentName>
         </componentInstances>
         <name>bottom</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentInstanceProperties>
-                <name>cacheAge</name>
-                <value>1440</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>reportName</name>
-                <value>SampleReportPipelineHistory</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>showRefreshButton</name>
-                <value>false</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:reportChart</componentName>
+            <componentName>home:recentRecordContainer</componentName>
         </componentInstances>
         <name>bottom2</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>home:heroChart</componentName>
+            <componentName>HomePageSupportCenter</componentName>
         </componentInstances>
         <name>bottom3</name>
         <type>Region</type>

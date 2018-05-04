@@ -1,0 +1,16 @@
+.THIS .z-align-padding {
+    padding: 3px 16px;
+    margin: 0;
+    float: left !important;
+}
+
+.THIS .recentsRecordCardRow {
+    margin-top: 1.5rem;
+}
+
+.THIS .iconContainer {
+    float: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+}

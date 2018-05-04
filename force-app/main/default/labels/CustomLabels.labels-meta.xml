@@ -344,6 +344,13 @@
         <value>Country Of Birth</value>
     </labels>
     <labels>
+        <fullName>CreateActiveOpportunitiesQueueableChunkSize</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chunk size for queueable job</shortDescription>
+        <value>50</value>
+    </labels>
+    <labels>
         <fullName>CreateBookinDisplayMessage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -705,7 +712,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Integration User Id</shortDescription>
-        <value>0056E000002ikfvQAA</value>
+        <value>0050Y000003KB95</value>
     </labels>
     <labels>
         <fullName>IntegrationstatusSentToPoseidon</fullName>
@@ -1081,6 +1088,13 @@
         <value>Select LT Course</value>
     </labels>
     <labels>
+        <fullName>LanguagePicklistValueNorwegian</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguagePicklistValueNorwegian</shortDescription>
+        <value>NO</value>
+    </labels>
+    <labels>
         <fullName>Last_Name</fullName>
         <categories>Label</categories>
         <language>en_US</language>
@@ -1206,6 +1220,13 @@
         <protected>false</protected>
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
+    </labels>
+    <labels>
+        <fullName>MarketPicklistValueNorway</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MarketPicklistValueNorway</shortDescription>
+        <value>NOO</value>
     </labels>
     <labels>
         <fullName>MergeReasonManual</fullName>
@@ -1970,7 +1991,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
-        <value>a5J6E0000000CikUAE</value>
+        <value>a5J0Y000000Y7msUAC</value>
     </labels>
     <labels>
         <fullName>TestDependentPicklistValues</fullName>
@@ -2078,6 +2099,94 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ReportEnv</shortDescription>
-        <value>QA</value>
+        <value>LIVE</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_Heading</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_Heading</shortDescription>
+        <value>Support Center</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_Manuals</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_Manuals</shortDescription>
+        <value>Manuals</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_ManualsImg</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_ManualsImg</shortDescription>
+        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/question_feed_120.png</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_ManualsURL</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_ManualsURL</shortDescription>
+        <value>https://poseidonlounge.ef.com/hc/en-us/categories/360000056269-Salesforce-Manuals</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_MyRequest</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_MyRequest</shortDescription>
+        <value>My Requests</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_MyRequestImg</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_MyRequestImg</shortDescription>
+        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/contract_line_item_120.png</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_MyRequestURL</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_MyRequestURL</shortDescription>
+        <value>https://poseidonlounge.ef.com/hc/en-us/requests</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_RaiseCase</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_RaiseCase</shortDescription>
+        <value>Raise a Case</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_RaiseCaseImg</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_RaiseCaseImg</shortDescription>
+        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/live_chat_120.png</value>
+    </labels>
+    <labels>
+        <fullName>Home_Pg_SP_RaiseCaseURL</fullName>
+        <categories>HP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home_Pg_SP_RaiseCaseURL</shortDescription>
+        <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SELECTED_CLOSEREASON</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
+        <value>Not able to contact customer</value>
     </labels>
 </CustomLabels>

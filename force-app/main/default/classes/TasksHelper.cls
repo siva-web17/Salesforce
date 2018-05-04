@@ -45,6 +45,7 @@ public class TasksHelper {
         Map<Id, Opportunity> parentOpportunityMap = new Map<Id, Opportunity>();
         Map<Id, String> eventTypeValues = new Map<Id, String>();
         List<Event> eventsToUpdateList = new List<Event>();
+        Map<Id,Event> eventsToUpdateMap=new Map<Id,Event>();
         if (opportunityRecord.size() > 0) {
             {
                 for (Opportunity opportunityRecords : opportunityRecord) {
@@ -79,13 +80,14 @@ public class TasksHelper {
                                 //Here we are collecting all the tasks which are to be saved(Insert/Update)
                                 tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
                                 parentActivity.ProcessedforTaskcreation__c = true;
-                                eventsToUpdateList.add(parentActivity);
+                                eventsToUpdateMap.put(eventId,parentActivity);
+                                //eventsToUpdateList.add(parentActivity);
                             }
                         }
                         if (tasksForActivitiesList.size() > 0) {
                             SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
                             //Here we are Marking Field on Events as ProcessedforTaskcreation__c=true;
-                            SObjectUnitOfWork.modifyEvents(eventsToUpdateList);
+                            SObjectUnitOfWork.modifyEvents(eventsToUpdateMap.Values());
                         }
                     } catch (exception ex) {
                         ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
@@ -345,7 +347,7 @@ public class TasksHelper {
             //we will update this only if the Sales user has not spoken to customer today.
             if (tasktoUpdate != null)
                 tasktoUpdate.FollowUpDate__c = Datetime.now();
-                tasktoUpdate.ActivityDate = Datetime.now().Date();
+            tasktoUpdate.ActivityDate = Datetime.now().Date();
         }
         return tasktoUpdate;
     }
@@ -379,6 +381,7 @@ public class TasksHelper {
             newTask.Program__c =(objTask.Type == SalesTasks.TCC.Name() && oppRecord != NULL ) ? oppRecord.Program__c : eventObj.Program__c;
             newTask.FollowUpDate__c = Datetime.now();
             newTask.ActivityDate = Datetime.now().Date();
+            newTask.OwnerId = oppRecord.OwnerId;
             newTask.ActivityDateTime__c = Datetime.now();
             newTask.EventId__c = eventObj.Id;
             newTask.Description = eventObj.Description;
@@ -435,7 +438,7 @@ public class TasksHelper {
         return canSendBR;
     }
     //Create call task only if below condition are verified
-      public static Boolean canCreateCallTask() {
+    public static Boolean canCreateCallTask() {
         Boolean hasCallTaskInTempList = false;
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         for(Task task : tasksForActivitiesList.values()){
@@ -843,14 +846,14 @@ public class TasksHelper {
         List<Id> opportunityIds = new List<Id>();
         for(Task taskRecord: taskList) {
             if (taskRecord != null) {
-            if (getTaskParentType(taskRecord)== Lead.getSObjectType()) {
-                leadIds.add(taskRecord.WhoId);
-            }
-            else if(getTaskParentType(taskRecord) == Opportunity.getSObjectType()) {
-                opportunityIds.add(taskRecord.WhatId);
+                if (getTaskParentType(taskRecord)== Lead.getSObjectType()) {
+                    leadIds.add(taskRecord.WhoId);
+                }
+                else if(getTaskParentType(taskRecord) == Opportunity.getSObjectType()) {
+                    opportunityIds.add(taskRecord.WhatId);
+                }
             }
         }
-    }
 
         Map<Id,Lead> leadMap = LeadsSelector.getleadRecord(leadIds);
         Map<Id,Opportunity> opportunityMap = OpportunitiesSelector.getOpportunityRecords(opportunityIds);

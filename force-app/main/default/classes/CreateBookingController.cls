@@ -10,7 +10,12 @@ public String ShowCustomerURL{get;set;}
    public CreateBookingController(ApexPages.StandardController controller)
     {
         this.globalAccountID=ApexPages.currentPage().getParameters().get('id');
-        this.ShowCustomerURL = ExternalRouter.getServiceURL('ShowCustomer');
+
+        ExternalServiceSettings__mdt serviceSettingRecord = ExternalRouter.getServiceURL('ShowCustomer');
+        if(serviceSettingRecord!=null && !String.IsEmpty(serviceSettingRecord.EndPoint__c))
+        {
+            this.ShowCustomerURL = serviceSettingRecord.EndPoint__c;
+        }
         system.debug('this.ShowCustomerURL' +this.ShowCustomerURL);
     }
 

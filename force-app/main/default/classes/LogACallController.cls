@@ -154,7 +154,7 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if (opp.NumberOfUnreachedCalls__c < 3 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
+                if (opp.NumberOfUnreachedCalls__c < 2 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
                                                           callAction.equalsIgnoreCase(Label.SentEmail) ||
                                                           callAction.equalsIgnoreCase(Label.SocialMediaSent))) {
                     for(Integer i=0; i< callResults.size() ; i++){
@@ -268,7 +268,19 @@ public with sharing class LogACallController {
                 // If an Opportunity is closed revive the Opportunity
                 if(opp.StageName == Label.SalesClosed ){
                     opp.LastAutomationUpdateDateTime__c = system.now();
-                    opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    String previousStage = OpportunitiesSelector.getOpportunityStageName(opp);
+                    if(previousStage == null || previousStage == ''){
+                        if( LogACallHelper.allReachedItems.contains(CallAction.toUpperCase()) ){
+                        opp.StageName = Label.OpportunityStageFollowUp;
+                        }
+                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()) ){
+                            opp.StageName = Label.OpportunityStageToContact;
+                        }
+                    }
+                    else{
+                        opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    }
+
                     opp.TimeOutDate__c=null;
                     //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
