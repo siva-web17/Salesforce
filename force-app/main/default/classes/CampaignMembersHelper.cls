@@ -43,17 +43,39 @@ public class CampaignMembersHelper {
      *
      * @description This method updates Opportunity__c reference on given Campaign Member records when a IM activity is imported from EF.com
      * */
-    public static void addOppToIMOnLeadConvert(List<Lead> newItems){
-        Map<Id,Id> leadToOppMap =  new Map<Id,Id>();
-        For(Lead objLead:newItems){
-            if(objLead.IsConverted && objLead.ConvertedOpportunityId !=null){
-                leadToOppMap.put(objLead.Id,objLead.ConvertedOpportunityId);
+    public static void addOppToIMOnLeadConvert(List<Lead> newItems) {
+        Map<Id, Id> leadToOppMap = new Map<Id, Id>();
+        Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>();
+        Set<Id> convertedAccountIdSet = new Set<Id>();
+
+        For(Lead objLead:newItems) {
+            if (objLead.IsConverted && (objLead.ConvertedOpportunityId == null && objLead.ConvertedAccountId != null)) {
+                convertedAccountIdSet.add(objLead.ConvertedAccountId);
             }
         }
 
-        List<CampaignMember> CampaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
-        for(CampaignMember campaignMember:CampaignMemberList){
-            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId);
+        if(convertedAccountIdSet.size()>0) {
+            accountWithActiveOpportunities = AccountsSelector.getAccountsWithActiveOpportunitiesByIds(convertedAccountIdSet);
+        }
+
+        For (Lead objLead:newItems) {
+            if (objLead.IsConverted) {
+                // 1. If the Lead is converted into an Opportunity use the converted Opportunity.
+                // 2. If the Lead is merged into a Person Account(There's no ConvertedOpportunityId on Lead), get the Opportunity details from PA.
+                if(objLead.ConvertedOpportunityId != null){
+                    leadToOppMap.put(objLead.Id, objLead.ConvertedOpportunityId);
+                }
+                else if(accountWithActiveOpportunities.containskey(objLead.ConvertedAccountID) &&
+                        !accountWithActiveOpportunities.get(objLead.ConvertedAccountID).Opportunities.isEmpty()){
+                    Opportunity activeOpportunityForAccount = accountWithActiveOpportunities.get(objLead.ConvertedAccountID).Opportunities;
+                    leadToOppMap.put(objLead.Id, activeOpportunityForAccount.Id);
+                }
+            }
+        }
+
+        List<CampaignMember> campaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
+        for (CampaignMember campaignMember:campaignMemberList) {
+            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId) != null?leadToOppMap.get(campaignMember.LeadId):campaignMember.Opportunity__c;
         }
         update CampaignMemberList;
     }
