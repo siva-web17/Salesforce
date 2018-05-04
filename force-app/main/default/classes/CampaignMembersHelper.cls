@@ -75,7 +75,7 @@ public class CampaignMembersHelper {
 
         List<CampaignMember> campaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
         for (CampaignMember campaignMember:campaignMemberList) {
-            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId!=null?leadToOppMap.get(campaignMember.LeadId):campaignMember.Opportunity__c);
+            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId) != null?leadToOppMap.get(campaignMember.LeadId):campaignMember.Opportunity__c;
         }
         update CampaignMemberList;
     }
