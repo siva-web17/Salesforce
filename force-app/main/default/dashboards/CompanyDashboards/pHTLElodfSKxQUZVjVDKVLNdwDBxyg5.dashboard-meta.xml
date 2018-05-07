@@ -50,6 +50,7 @@
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Calls_Made</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>2</rowSpan>
@@ -75,6 +76,7 @@
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Reached_Call_Rate</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -121,6 +123,7 @@
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Reached_Actions</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>2</rowIndex>
             <rowSpan>2</rowSpan>
@@ -142,6 +145,7 @@
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Visit</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>4</rowIndex>
             <rowSpan>2</rowSpan>
@@ -220,6 +224,7 @@
                 <indicatorLowColor>#00716B</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Brochures_to_send</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>6</rowIndex>
             <rowSpan>2</rowSpan>
@@ -241,6 +246,7 @@
                 <indicatorLowColor>#408080</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>Sales_Rep_Dashboard_Reports/Dupes_to_Process</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>6</rowIndex>
             <rowSpan>2</rowSpan>
