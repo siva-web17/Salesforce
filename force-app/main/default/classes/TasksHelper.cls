@@ -44,57 +44,51 @@ public class TasksHelper {
         Map<Id, List<Event>> activityMap = new Map<Id, List<Event>>();
         Map<Id, Opportunity> parentOpportunityMap = new Map<Id, Opportunity>();
         Map<Id, String> eventTypeValues = new Map<Id, String>();
-        List<Event> eventsToUpdateList = new List<Event>();
         Map<Id,Event> eventsToUpdateMap=new Map<Id,Event>();
-        if (opportunityRecord.size() > 0) {
-            {
-                for (Opportunity opportunityRecords : opportunityRecord) {
-                    {
-                        currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
-                        if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
-                            activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
-                        }
-                        else {
-                            activityMap.put(opportunityRecords.id, opportunityRecords.events);
-                        }
-                        parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
-                    }
 
-                    try {
-                        for (Id parentIds : activityMap.keySet()) {
-                            for (Event parentActivity : activityMap.get(parentIds)) {
-                                if(parentActivity == null)
-                                {
-                                    return;
-                                }
-                                eventRecord = parentActivity;
-                                eventId = parentActivity.Id;
+        try {
+            for (Opportunity opportunityRecords : opportunityRecord) {
+                currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
+                if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
+                    activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
+                }
+                else {
+                    activityMap.put(opportunityRecords.id, opportunityRecords.events);
+                }
+                parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
 
-                                Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
-                                oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
-
-                                //Filter tasks based on task type
-                                if (currentTaskMap.containsKey(parentIds))
-                                    filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
-
-                                //Here we are collecting all the tasks which are to be saved(Insert/Update)
-                                tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
-                                parentActivity.ProcessedforTaskcreation__c = true;
-                                eventsToUpdateMap.put(eventId,parentActivity);
-                                //eventsToUpdateList.add(parentActivity);
-                            }
+                for (Id parentIds : activityMap.keySet()) {
+                    for (Event parentActivity : activityMap.get(parentIds)) {
+                        if(parentActivity == null)
+                        {
+                            return;
                         }
-                        if (tasksForActivitiesList.size() > 0) {
-                            SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
-                            //Here we are Marking Field on Events as ProcessedforTaskcreation__c=true;
-                            SObjectUnitOfWork.modifyEvents(eventsToUpdateMap.Values());
-                        }
-                    } catch (exception ex) {
-                        ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                                'Tasks', 'convertActivitiesToTask', eventId);
+                        eventRecord = parentActivity;
+                        eventId = parentActivity.Id;
+
+                        Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
+                        oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
+
+                        //Filter tasks based on task type
+                        if (currentTaskMap.containsKey(parentIds))
+                            filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
+
+                        //Here we are collecting all the tasks which are to be saved(Insert/Update)
+                        tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
+                        parentActivity.ProcessedforTaskcreation__c = true;
+                        eventsToUpdateMap.put(eventId,parentActivity);
                     }
                 }
             }
+            if (tasksForActivitiesList.size() > 0) {
+                SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
+            }
+            if(eventsToUpdateMap.values().size() > 0){
+                SObjectUnitOfWork.modifyEvents(eventsToUpdateMap.values());
+            }
+        } catch (exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'Tasks', 'convertActivitiesToTask', null);
         }
     }
 
