@@ -86,6 +86,6 @@ public class AccountsSelector {
                 SELECT Id, Name, Market__c, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE limit 1)
                 FROM Account
                 WHERE id IN :accountIds]);
-        return accountWithActiveOpportunities; 
+        return accountWithActiveOpportunities;
     }
 }
