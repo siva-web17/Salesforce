@@ -52,10 +52,25 @@ public class DCObjectMerge {
 
     //Lead to account merge
     public static Account leadtoAccountFieldMerge(Account duplicateAccount, Lead sourceLead) {
-        //1. first Name
-        duplicateAccount.FirstName = valueLength(duplicateAccount.FirstName,sourceLead.FirstName);
+         //1. first Name
+        String sFirstName = valueLength(duplicateAccount.FirstName,sourceLead.FirstName);
+        String sLastname = valueLength(duplicateAccount.LastName,sourceLead.LastName);
+        if(sFirstName==sLastname)
+        {
+            Map<String,String> existingNamesMap=New Map<String,String>();
+            	existingNamesMap.put('FirstName', duplicateAccount.FirstName);
+                existingNamesMap.put('LastName', duplicateAccount.LastName);
+            Map<String,String> retainedNamesMap=New Map<String,String>();
+                retainedNamesMap.put('FirstName', sFirstName);
+                retainedNamesMap.put('LastName', sLastname);
+           retainedNamesMap = getValidNames(retainedNamesMap,existingNamesMap);
+            sFirstName=retainedNamesMap.get('FirstName');
+            sLastname=retainedNamesMap.get('LastName');
+        }
+            
+        duplicateAccount.FirstName = sFirstName;
         //2. lastname
-        duplicateAccount.LastName = valueLength(duplicateAccount.LastName,sourceLead.LastName);
+        duplicateAccount.LastName=sLastname;
         //3. DOB
         duplicateAccount.PersonBirthdate= calculateAge(duplicateAccount.PersonBirthdate,sourceLead.DOB__c);
         //4. Mobile Phone, Home phone, other phone
