@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoNotUpdateMarketAfterCreation</fullName>
+    <active>true</active>
+    <description>This validation rule is used to restrict Non-Support users from updating the Lead Market after Lead creation.</description>
+    <errorConditionFormula>NOT(ISNEW()) 
+&amp;&amp;  
+ISCHANGED( Market__c )  
+&amp;&amp;
+NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)</errorConditionFormula>
+    <errorMessage>It is not allowed to change the Market of a Lead. Please contact Support in case the Market needs to be updated.</errorMessage>
+</ValidationRule>
