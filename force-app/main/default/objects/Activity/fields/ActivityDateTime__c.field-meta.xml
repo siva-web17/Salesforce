@@ -3,7 +3,7 @@
     <fullName>ActivityDateTime__c</fullName>
     <description>ActivityDateTime</description>
     <externalId>false</externalId>
-    <inlineHelpText>ActivityDateTime</inlineHelpText>
+    <inlineHelpText>Date when the student did a request on EF.com or when it was entered manually in Salesforce.</inlineHelpText>
     <label>Activity Date Time</label>
     <required>false</required>
     <type>DateTime</type>
