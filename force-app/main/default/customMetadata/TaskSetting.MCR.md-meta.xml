@@ -60,7 +60,7 @@
     </values>
     <values>
         <field>TaskSubject__c</field>
-        <value xsi:type="xsd:string">Make Reservation</value>
+        <value xsi:type="xsd:string">Make Reservation - Program__c - DestinationCode__c - Duration__c - Course__c</value>
     </values>
     <values>
         <field>Type__c</field>
