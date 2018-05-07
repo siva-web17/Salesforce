@@ -157,22 +157,25 @@ public with sharing class LogACallHelper {
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
-                    openCallTask.Program__c = selectedProgram;
                     String subject = openCallTask.Subject;
-                    List<String> splitSubject = subject.split('\\-');
-                    if (splitSubject.size() > 0) {
-                        openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
-                    }
-                    if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Program__c != selectedProgram) {
-                            opp.Program__c = selectedProgram;
-                            update opp;
+
+                    if(!String.isEmpty(selectedProgram)){
+                        openCallTask.Program__c = selectedProgram;
+                        List<String> splitSubject = subject.split('\\-');
+                        if (splitSubject.size() > 0) {
+                            openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                         }
-                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if ( lead.Program__c != selectedProgram) {
-                            lead.Program__c = selectedProgram;
-                            update lead;
-                        }
+                        if (String.valueOf(parentId).substring(0, 3) == '006') {
+                            if (opp.Program__c != selectedProgram) {
+                                opp.Program__c = selectedProgram;
+                                update opp;
+                         	}
+                        } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
+                            if ( lead.Program__c != selectedProgram) {
+                                lead.Program__c = selectedProgram;
+                                update lead;
+                            }
+                        }    
                     }
                 }
 
