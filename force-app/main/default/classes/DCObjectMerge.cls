@@ -6,10 +6,25 @@
 public class DCObjectMerge {
     //lead to lead merge
     public static Lead leadToLeadFieldMerge(Lead sourceLead, Lead duplicateLead) {
-        //1. first Name
-        sourceLead.FirstName = valueLength(sourceLead.FirstName,duplicateLead.FirstName);
+         //1. first Name
+        String sFirstName = valueLength(sourceLead.FirstName,duplicateLead.FirstName);
+        String sLastname = valueLength(sourceLead.LastName,duplicateLead.LastName);
+        if(sFirstName==sLastname)
+        {
+            Map<String,String> existingNamesMap=New Map<String,String>();
+            	existingNamesMap.put('FirstName', sourceLead.FirstName);
+                existingNamesMap.put('LastName', sourceLead.LastName);
+            Map<String,String> retainedNamesMap=New Map<String,String>();
+                retainedNamesMap.put('FirstName', sFirstName);
+                retainedNamesMap.put('LastName', sLastname);
+           retainedNamesMap = getProperNames(retainedNamesMap,existingNamesMap);
+            sFirstName=retainedNamesMap.get('FirstName');
+            sLastname=retainedNamesMap.get('LastName');
+        }
+            
+        sourceLead.FirstName = sFirstName;
         //2. lastname
-        sourceLead.LastName=valueLength(sourceLead.LastName,duplicateLead.LastName);
+        sourceLead.LastName=sLastname;
         //3. DOB
         sourceLead.DOB__c = calculateAge(sourceLead.DOB__c,duplicateLead.DOB__c);
         //4. Mobile Phone, Home phone, Oher phone
@@ -80,6 +95,20 @@ public class DCObjectMerge {
             temp = oldValue;
         }
         return temp;
+    }
+
+     private static Map<String,String> getProperNames(Map<String,String> retainedNamesMap,
+                                                     Map<String,String> existingNamesMap)
+    {
+       for(String keyName:retainedNamesMap.KeySet())
+       {
+           if(retainedNamesMap.get(keyName).length() == existingNamesMap.get(keyName).length() 
+              && retainedNamesMap.get(keyName)!=existingNamesMap.get(keyName))
+           {
+               retainedNamesMap.put(keyName, existingNamesMap.get(keyName));
+           }
+       }
+       return retainedNamesMap;
     }
     //age calculation
     public static Date calculateAge(Date oldDate, Date newDate) {
