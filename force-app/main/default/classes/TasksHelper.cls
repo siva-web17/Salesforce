@@ -180,18 +180,18 @@ public class TasksHelper {
         if (!String.isBlank(objCurrentType.CreateCallType__c)) {
             taskSettingsValues = objCurrentType.CreateCallType__c;
             //Add is Active Condition
-            String[] createCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.INSERTDATA.name(), createCallTypeArray);
+            List<String> createCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.INSERTDATA.name(), createCallTypeList);
         }
         if (!String.isBlank(objCurrentType.UpdateCallType__c)) {
             taskSettingsValues = objCurrentType.UpdateCallType__c;
-            String[] updateCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.UPDATEDATA.name(), updateCallTypeArray);
+            List<String> updateCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.UPDATEDATA.name(), updateCallTypeList);
         }
         if (!String.isBlank(objCurrentType.ForClosedCallTypes__c)) {
             taskSettingsValues = objCurrentType.ForClosedCallTypes__c;
-            String[] closedCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.CLOSEDINSERT.name(), closedCallTypeArray);
+            List<String> closedCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.CLOSEDINSERT.name(), closedCallTypeList);
         }
         return callTypeMap;
     }
@@ -313,7 +313,7 @@ public class TasksHelper {
                 if (taskSettingsMap.containsKey(type.trim())) {
                     TaskSetting__mdt objTaskSettingMap = taskSettingsMap.get(type);
                     if (objTaskSettingMap.IsTaskPerCustomer__c) {
-                        String[] groupItems = SFLangUtil.splitString(objTaskSettingMap.TaskGroup__c, '|');
+                        List<String> groupItems = objTaskSettingMap.TaskGroup__c.split('\\|');
                         boolean canInsertTask = false;
                         for (String Item : groupItems) {
                             if (currentParentTaskMap.containsKey(Item)) {
