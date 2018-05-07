@@ -143,3 +143,17 @@
     position: absolute;
     left: 90px;
 }
+
+.THIS .displayCommunicationHeader {
+    font-size: 20px;
+    padding-right: 5px;
+}
+
+.THIS .relative-btn-title .slds-dropdown.slds-dropdown_right {
+    margin-top: 9px;
+}
+
+.THIS .border-thin-line {
+    position: relative;
+    top: -2px;
+}
