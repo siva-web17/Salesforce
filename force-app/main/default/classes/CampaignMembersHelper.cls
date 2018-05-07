@@ -45,31 +45,28 @@ public class CampaignMembersHelper {
      * */
     public static void addOppToIMOnLeadConvert(List<Lead> newItems) {
         Map<Id, Id> leadToOppMap = new Map<Id, Id>();
+        Map<Id, Id> accToLeadMap = new Map<Id, Id>();
         Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>();
-        Set<Id> convertedAccountIdSet = new Set<Id>();
 
-        For(Lead objLead:newItems) {
-            if (objLead.IsConverted && (objLead.ConvertedOpportunityId == null && objLead.ConvertedAccountId != null)) {
-                convertedAccountIdSet.add(objLead.ConvertedAccountId);
-            }
-        }
-
-        if(convertedAccountIdSet.size()>0) {
-            accountWithActiveOpportunities = AccountsSelector.getAccountsWithActiveOpportunitiesByIds(convertedAccountIdSet);
-        }
-
-        For (Lead objLead:newItems) {
-            if (objLead.IsConverted) {
-                // 1. If the Lead is converted into an Opportunity use the converted Opportunity.
-                // 2. If the Lead is merged into a Person Account(There's no ConvertedOpportunityId on Lead), get the Opportunity details from PA.
+        For(Lead objLead : newItems) {
+            if (objLead.IsConverted ){
                 if(objLead.ConvertedOpportunityId != null){
                     leadToOppMap.put(objLead.Id, objLead.ConvertedOpportunityId);
                 }
-                else if(accountWithActiveOpportunities.containskey(objLead.ConvertedAccountID) &&
-                        !accountWithActiveOpportunities.get(objLead.ConvertedAccountID).Opportunities.isEmpty()){
-                    Opportunity activeOpportunityForAccount = accountWithActiveOpportunities.get(objLead.ConvertedAccountID).Opportunities;
-                    leadToOppMap.put(objLead.Id, activeOpportunityForAccount.Id);
+                else if(objLead.ConvertedOpportunityId == null && objLead.ConvertedAccountId != null) {
+                    accToLeadMap.put(objLead.ConvertedAccountId,objLead.Id);
                 }
+            }
+        }
+
+        if(accToLeadMap.size()>0) {
+            accountWithActiveOpportunities = AccountsSelector.getAccountsWithActiveOpportunitiesByIds(accToLeadMap.keySet());
+        }
+
+        For (Id accId : accountWithActiveOpportunities.keyset()) {
+            if(!accountWithActiveOpportunities.get(accId).Opportunities.isEmpty()){
+                Opportunity activeOpportunityForAccount = accountWithActiveOpportunities.get(accId).Opportunities;
+                leadToOppMap.put(accToLeadMap.get(accId), activeOpportunityForAccount.Id);
             }
         }
 
