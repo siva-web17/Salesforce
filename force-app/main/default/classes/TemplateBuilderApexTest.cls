@@ -5,12 +5,14 @@
 @IsTest
 private class TemplateBuilderApexTest {
 
-    @testSetup static void setup() {
+    @testSetup 
+    static void setup() {
         User adminUser = TestDataFactory.createAdminUser(true);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
     }
-
-    static testMethod void When_getServerURL_Expect_ReturnServerURLForCurrentUserThatContainsOrganizationId() {
+    
+    @IsTest
+    static void When_getServerURL_Expect_ReturnServerURLForCurrentUserThatContainsOrganizationId() {
 
         User adminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         System.runAs(adminUser) {
@@ -24,8 +26,9 @@ private class TemplateBuilderApexTest {
             System.assert(serverURL.contains(UserInfo.getOrganizationId().substring(0,15)),'serverURL should contain organizationID');
         }
     }
-
-    static testMethod void When_getRecordsWithLeadPrefix_Expect_ReturnListOfOpportunities() {
+    
+    @IsTest
+    static void When_getRecordsWithLeadPrefix_Expect_ReturnListOfOpportunities() {
 
         User adminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         System.runAs(adminUser) {
@@ -51,7 +54,8 @@ private class TemplateBuilderApexTest {
         }
     }
 
-    static testMethod void When_getRecordsWithOpportunityPrefix_Expect_ReturnListOfLeads() {
+    @IsTest
+    static void When_getRecordsWithOpportunityPrefix_Expect_ReturnListOfLeads() {
 
         User adminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         System.runAs(adminUser) {
@@ -77,7 +81,8 @@ private class TemplateBuilderApexTest {
         }
     }
 
-    static testMethod void When_getRecordsAccountPrefix_Expect_ReturnEmptyList() {
+    @IsTest
+    static void When_getRecordsAccountPrefix_Expect_ReturnEmptyList() {
 
         User adminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
         System.runAs(adminUser) {
