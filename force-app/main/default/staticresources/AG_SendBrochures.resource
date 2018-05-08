@@ -160,6 +160,10 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                     }
                 }
 
+                if(batch.length > 0){
+                    batches.push(batch);
+                }
+
                 var onfailure = function (error) {
                     kendoPopup.popupWithButtons(POPUP_HEADER, error.message || error.faultstring, []);
                 };
