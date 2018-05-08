@@ -268,7 +268,7 @@ public with sharing class LogACallHelper {
             Task callTask = null;
             if(opp.Tasks.size() > 0) {
                 for(Task objTask:opp.Tasks){
-                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId){
+                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId && objTask.Type == TasksHelper.CALL){
                         callTask = objTask;
                     }
                 }
