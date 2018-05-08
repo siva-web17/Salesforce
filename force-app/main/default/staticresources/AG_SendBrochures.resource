@@ -177,9 +177,7 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                                     }
                                     recordIds.push(row.id);
                                 });
-                                if (results.length == recordIds.length) {
-                                    context.actionGrid.refresh();
-                                }
+                                context.actionGrid.refresh();}
                             },
                             onFailure: onfailure
                         });
