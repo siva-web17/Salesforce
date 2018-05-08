@@ -384,6 +384,7 @@ public class OpportunitiesSelector {
         
         return opportunityIDAndStageMap;
     }
+
     public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
         map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,program__c,FirstContactDateTime__c,LastAutomationUpdateDateTime__c,CloseDate,TimeOutDate__c,RecalculateRanking__c,StageName,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
         return OpportunityEventsMap;
