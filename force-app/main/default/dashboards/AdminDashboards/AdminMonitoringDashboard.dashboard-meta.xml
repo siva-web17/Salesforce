@@ -20,6 +20,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExPAHavingMultipleActiveOpportunities</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -42,6 +43,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExPAToCreateOpportunity</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -64,6 +66,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExOpenOpportunitiesWOSystemCallTask</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -86,6 +89,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExOpportunitiesWOCreationMethod</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -108,6 +112,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExOpportunitiesWORank</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -130,6 +135,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExOpportunityWithBlankRequestType</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -152,6 +158,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadNotConvertedNorway</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -174,6 +181,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadNotDupeProcessed</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -196,6 +204,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadsNotRankedYet</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -218,6 +227,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadsWaitingForManualMerge</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -240,6 +250,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadsWithBlankCreationMethod</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -262,6 +273,7 @@
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
                 <report>AdminReports/ExLeadsWithBlankRequestType</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -274,6 +286,28 @@
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
+                <flexComponentProperties>
+                    <flexTableColumn>
+                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>STAGE_NAME</reportColumn>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.FollowupDateTime__c</reportColumn>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortColumn>OPPORTUNITY_NAME</sortColumn>
+                        <sortOrder>1</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                </flexComponentProperties>
                 <header>Opps which should not be In Active</header>
                 <report>AdminReports/Opps_which_should_not_be_In_Active</report>
             </dashboardComponent>
@@ -317,6 +351,7 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
+                <componentChartTheme>light</componentChartTheme>
                 <componentType>Gauge</componentType>
                 <displayUnits>Integer</displayUnits>
                 <gaugeMax>100.0</gaugeMax>
@@ -329,6 +364,7 @@
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>AdminReports/Closed_Opp_w_Open_SCT</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -356,6 +392,7 @@
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>AdminReports/AssignedtoNoneSalesUser</report>
                 <showPercentage>false</showPercentage>
+                <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
@@ -383,11 +420,34 @@
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
                 <report>AdminReports/Meeting_members_w_o_OpportunityID</report>
                 <showPercentage>false</showPercentage>
+                <showRange>true</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
             </dashboardComponent>
             <rowIndex>20</rowIndex>
             <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <displayUnits>Integer</displayUnits>
+                <header>Opportunity Without Program</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>AdminReports/Opportunity_Without_Program</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>20</rowIndex>
+            <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>80</rowHeight>
