@@ -12,8 +12,8 @@ Modification Log   :
 @isTest
 public class DCDiscardsTest {
     static testmethod void leadDiscardTest() {
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<Lead> leadList = TestdataUtil.createLeadList(4);
+        system.runAs(TestDataFactory.createUserRecord()) {
+            List<Lead> leadList = TestDataFactory.createLeadList(4);
             insert leadList;
             dupcheck__dcDiscard__c dupcheckDiscard = createDupcheckDiscard(leadList[0].id,leadList[1].id);
             insert dupcheckDiscard;
