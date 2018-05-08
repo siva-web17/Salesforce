@@ -495,8 +495,6 @@
     },
     handleMenuSelect: function(cmp, event, helper) {
         var selectedMenuItemValue = event.getParam("value").split(":");
-        if (selectedMenuItemValue instanceof Array) {
-            cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
-        }
+        cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
     }
 });
