@@ -5245,6 +5245,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>NoteMigration__c.OpportunityId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>NoteMigration__c.Title__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5712,11 +5717,6 @@
         <editable>true</editable>
         <field>Opportunity.Source__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.TEST_Conga_Conductor__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>

@@ -43,17 +43,36 @@ public class CampaignMembersHelper {
      *
      * @description This method updates Opportunity__c reference on given Campaign Member records when a IM activity is imported from EF.com
      * */
-    public static void addOppToIMOnLeadConvert(List<Lead> newItems){
-        Map<Id,Id> leadToOppMap =  new Map<Id,Id>();
-        For(Lead objLead:newItems){
-            if(objLead.IsConverted && objLead.ConvertedOpportunityId !=null){
-                leadToOppMap.put(objLead.Id,objLead.ConvertedOpportunityId);
+    public static void addOppToIMOnLeadConvert(List<Lead> newItems) {
+        Map<Id, Id> leadToOppMap = new Map<Id, Id>();
+        Map<Id, Id> accToLeadMap = new Map<Id, Id>();
+        Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>();
+
+        For(Lead objLead : newItems) {
+            if (objLead.IsConverted ){
+                if(objLead.ConvertedOpportunityId != null){
+                    leadToOppMap.put(objLead.Id, objLead.ConvertedOpportunityId);
+                }
+                else if(objLead.ConvertedOpportunityId == null && objLead.ConvertedAccountId != null) {
+                    accToLeadMap.put(objLead.ConvertedAccountId,objLead.Id);
+                }
             }
         }
 
-        List<CampaignMember> CampaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
-        for(CampaignMember campaignMember:CampaignMemberList){
-            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId);
+        if(accToLeadMap.size()>0) {
+            accountWithActiveOpportunities = AccountsSelector.getAccountsWithActiveOpportunitiesByIds(accToLeadMap.keySet());
+        }
+
+        For (Id accId : accountWithActiveOpportunities.keyset()) {
+            if(!accountWithActiveOpportunities.get(accId).Opportunities.isEmpty()){
+                Opportunity activeOpportunityForAccount = accountWithActiveOpportunities.get(accId).Opportunities;
+                leadToOppMap.put(accToLeadMap.get(accId), activeOpportunityForAccount.Id);
+            }
+        }
+
+        List<CampaignMember> campaignMemberList = CampaignMembersSelector.getCampaignMemberByLeadID(leadToOppMap.keySet());
+        for (CampaignMember campaignMember:campaignMemberList) {
+            campaignMember.Opportunity__c = leadToOppMap.get(campaignMember.LeadId) != null?leadToOppMap.get(campaignMember.LeadId):campaignMember.Opportunity__c;
         }
         update CampaignMemberList;
     }

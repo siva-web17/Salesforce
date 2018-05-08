@@ -61,6 +61,30 @@
             <operator>equals</operator>
             <value>Task.SystemCallTask</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.IsActive__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Activity.IsClosed__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.HasPhoneNumber__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
