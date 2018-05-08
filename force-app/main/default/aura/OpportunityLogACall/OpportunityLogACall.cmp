@@ -56,7 +56,7 @@
                     <div class="slds-spinner__dot-b"></div>
                 </div>
             </div>
-            <div class="slds-p-around_x-small slds-border_bottom border-thin-line">
+            <div class="slds-p-around_x-small slds-border_bottom border-thin-line slds-is-relative">
                 <div class="slds-grid slds-wrap">
                     <div class="slds-p-horizontal_x_small slds-size_1-of-1 relative-btn">
                         <h2 class="slds-truncate log_a_call_heading slds-p-left_x-small">{!$Label.c.LAC_TITLE}</h2>
@@ -73,7 +73,7 @@
                                     <div class="relative-btn-title">
                                         <div class="btn-phone-data">
                                             <aura:iteration items="{!v.selectedDisplayNumber}" var="action">
-                                                <p class="displayCommunicationHeader">
+                                                <p class="displayCommunicationHeader slds-p-right_xx-small">
                                                     <b>{!action}</b>
                                                 </p>
                                             </aura:iteration>

@@ -146,7 +146,6 @@
 
 .THIS .displayCommunicationHeader {
     font-size: 20px;
-    padding-right: 5px;
 }
 
 .THIS .relative-btn-title .slds-dropdown.slds-dropdown_right {
@@ -154,6 +153,5 @@
 }
 
 .THIS .border-thin-line {
-    position: relative;
     top: -2px;
 }
