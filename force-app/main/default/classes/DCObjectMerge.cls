@@ -119,8 +119,7 @@ public class DCObjectMerge {
     {
        for(String keyName:retainedNamesMap.KeySet())
        {
-           if(retainedNamesMap.get(keyName).length() == existingNamesMap.get(keyName).length() 
-              && retainedNamesMap.get(keyName)!=existingNamesMap.get(keyName))
+           if( retainedNamesMap.get(keyName)!=existingNamesMap.get(keyName))
            {
                retainedNamesMap.put(keyName, existingNamesMap.get(keyName));
            }
