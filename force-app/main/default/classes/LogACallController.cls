@@ -375,13 +375,11 @@ public with sharing class LogACallController {
         response.ResponseCode = 'SUCCESS';
         return JSON.serialize(response);
     }
-     Public Static Integer getNoOfConsecutiveUnreachedCalls(Opportunity objOpp){
+     public static Integer getNoOfConsecutiveUnreachedCalls(Opportunity objOpp){
        List<Opportunity> OpportunityList = OpportunitiesSelector.getOpportunityWithTasksOrderByCreatedDate(objOpp);
         Integer numberOfConsecutiveUnreached = 0;
-        for(Task task : OpportunityList[0].Tasks){
-            system.debug('inside task'+task.SalesAction__c);
-            if (isTaskRecordType(Label.CallTaskRecordTypeDeveloperName, task.RecordTypeId) && task.IsClosed) {
-                system.debug('inside taskrecordtype');
+        for(Task task : OpportunityList[0].Tasks){            
+            if (TasksHelper.isTaskRecordType(Label.CallTaskRecordTypeDeveloperName, task.RecordTypeId) && task.IsClosed) {               
                 if(task.SalesAction__c == Label.CallNotReached){
                     numberOfConsecutiveUnreached++;
                 }
@@ -392,9 +390,5 @@ public with sharing class LogACallController {
         }
 
         return numberOfConsecutiveUnreached;
-    }
-    private static Boolean isTaskRecordType(String recordTypeDeveloperName, Id recordTypeId) {
-        return RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).containsKey(recordTypeDeveloperName)
-                && RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(recordTypeDeveloperName).Id == recordTypeId;
-    }
+    }   
 }

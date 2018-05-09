@@ -390,11 +390,11 @@ public class OpportunitiesSelector {
      map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,stagename,program__c,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
      return OpportunityEventsMap;
     }
-     Public static List<Opportunity> getOpportunityWithTasksOrderByCreatedDate(Opportunity oppRecord){
+     public static List<Opportunity> getOpportunityWithTasksOrderByCreatedDate(Opportunity oppRecord){
         return [
             SELECT
                     id,NumberOfUnreachedCalls__c,(
-                    SELECT id,salesaction__c,isclosed,recordtypeid from tasks order by createddate desc
+                    SELECT id,salesaction__c,taskSubType,isclosed,recordtypeid from tasks order by createddate desc
             )
             FROM opportunity
             WHERE ID=:oppRecord.id And isactive__c=true];
