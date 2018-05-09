@@ -3402,7 +3402,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    
+
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
@@ -4891,6 +4891,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LeadChannel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LeadExternalId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
