@@ -269,12 +269,12 @@ public with sharing class LogACallController {
                 if(opp.StageName == Label.SalesClosed ){
                     opp.LastAutomationUpdateDateTime__c = system.now();
                     String previousStage = OpportunitiesSelector.getOpportunityStageName(opp);
-                    if(previousStage == null || previousStage == ''){
-                        if( LogACallHelper.allReachedItems.contains(CallAction.toUpperCase()) ){
-                        opp.StageName = Label.OpportunityStageFollowUp;
+                    if(string.isEmpty(previousStage)){
+                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase())){
+                            opp.StageName = (opp.FirstContactDateTime__c == NULL) ? Label.OpportunityStageToContact:Label.OpportunityStageFollowUp;
                         }
-                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()) ){
-                            opp.StageName = Label.OpportunityStageToContact;
+                        else if(LogACallHelper.allReachedItems.contains(CallAction.toUpperCase())){
+                            opp.StageName = Label.OpportunityStageFollowUp;
                         }
                     }
                     else{
@@ -290,7 +290,7 @@ public with sharing class LogACallController {
                     }
                     else{
                         opp.CloseDate = bookOn.date();
-                    }
+                    }                   
                     update opp;
                 }
                 else {
