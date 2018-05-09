@@ -154,7 +154,7 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if (opp.NumberOfUnreachedCalls__c < 2 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
+                if (opp.NumberOfUnreachedCalls__c < 3 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
                                                           callAction.equalsIgnoreCase(Label.SentEmail) ||
                                                           callAction.equalsIgnoreCase(Label.SocialMediaSent))) {
                     for(Integer i=0; i< callResults.size() ; i++){
@@ -269,11 +269,12 @@ public with sharing class LogACallController {
                 if(opp.StageName == Label.SalesClosed ){
                     opp.LastAutomationUpdateDateTime__c = system.now();
                     String previousStage = OpportunitiesSelector.getOpportunityStageName(opp);
-                    if(previousStage == null || previousStage == ''){
-                        if( LogACallHelper.allReachedItems.contains(CallAction.toUpperCase()) ){
-                        opp.StageName = Label.OpportunityStageFollowUp;
+                    if(string.isEmpty(previousStage)){
+                        if((opp.FirstContactDateTime__c != NULL && (LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()))) ||
+                                (LogACallHelper.allReachedItems.contains(CallAction.toUpperCase()))){ 
+                            opp.StageName = Label.OpportunityStageFollowUp;
                         }
-                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()) ){
+                        else if(opp.FirstContactDateTime__c == NULL && (LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase()))) {
                             opp.StageName = Label.OpportunityStageToContact;
                         }
                     }
@@ -291,6 +292,7 @@ public with sharing class LogACallController {
                     else{
                         opp.CloseDate = bookOn.date();
                     }
+                     system.debug('opprecord>>'+opp);
                     update opp;
                 }
                 else {
