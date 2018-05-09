@@ -397,7 +397,6 @@ public class OpportunitiesSelector {
                     SELECT id,salesaction__c,taskSubType,isclosed,recordtypeid from tasks order by createddate desc
             )
             FROM opportunity
-            WHERE ID=:oppRecord.id And isactive__c=true];
-    
+            WHERE ID=:oppRecord.id And isactive__c=true];    
     }
 }

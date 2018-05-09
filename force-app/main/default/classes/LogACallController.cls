@@ -379,7 +379,7 @@ public with sharing class LogACallController {
        List<Opportunity> OpportunityList = OpportunitiesSelector.getOpportunityWithTasksOrderByCreatedDate(objOpp);
         Integer numberOfConsecutiveUnreached = 0;
         for(Task task : OpportunityList[0].Tasks){            
-            if (TasksHelper.isTaskRecordType(Label.CallTaskRecordTypeDeveloperName, task.RecordTypeId) && task.IsClosed) {               
+            if (task.TaskSubtype == 'Call' && task.IsClosed) {               
                 if(task.SalesAction__c == Label.CallNotReached){
                     numberOfConsecutiveUnreached++;
                 }
@@ -388,7 +388,6 @@ public with sharing class LogACallController {
                 }
             }
         }
-
         return numberOfConsecutiveUnreached;
     }   
 }
