@@ -291,8 +291,7 @@ public with sharing class LogACallController {
                     }
                     else{
                         opp.CloseDate = bookOn.date();
-                    }
-                     system.debug('opprecord>>'+opp);
+                    }                    
                     update opp;
                 }
                 else {
