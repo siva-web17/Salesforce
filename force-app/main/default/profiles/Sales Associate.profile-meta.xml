@@ -5414,7 +5414,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.HomePhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5539,7 +5539,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5569,7 +5569,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.OtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
