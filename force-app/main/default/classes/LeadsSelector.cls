@@ -228,7 +228,7 @@ public class LeadsSelector {
     * */
     public static List<Lead> getLeadsByIdsWithTasks(List<id> leadIds) {
         return [
-                SELECT Id, IsCAMOnly__c,NumberOfCalls__c,status, (SELECT Id,IsExpressCall__c, WhoId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId FROM Tasks)
+                SELECT Id, IsCAMOnly__c,NumberOfCalls__c,status, (SELECT Id,IsExpressCall__c, WhoId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type,RecordTypeId,TaskSubtype FROM Tasks)
                 FROM Lead
                 WHERE Id in :leadIds
         ];
