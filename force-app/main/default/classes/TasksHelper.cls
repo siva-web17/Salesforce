@@ -678,8 +678,8 @@ public class TasksHelper {
 
     private static void updateNumberOfCompletedCalls(SObject toUpdate, Task[] tasks) {
         Integer numberOfCompletedCalls = 0;
-        for (Task t : tasks) {
-            if (isTaskRecordType(CALL_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.IsClosed) {
+        for (Task t : tasks){
+            if ((t.TaskSubtype == 'Call') && t.IsClosed) {
                 numberOfCompletedCalls++;
             }
         }

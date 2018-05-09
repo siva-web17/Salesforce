@@ -264,7 +264,7 @@ public class OpportunitiesSelector {
     * */
     public static List<Opportunity> getOpportunitiesByIdsWithTasks(List<id> opportunityIds) {
         return [
-                SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, SentBrochures__c, HasSystemCallTask__c, Account.PersonBirthdate, NumberOfUnreachedCalls__c, (SELECT Id, ActivityDate, SalesAction__c, IsTaskCallReached__c, WhatId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName, IsJunior__c, IsUp__c FROM Tasks ORDER BY ActivityDate)
+                SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, SentBrochures__c, HasSystemCallTask__c, Account.PersonBirthdate, NumberOfUnreachedCalls__c, (SELECT Id, ActivityDate, SalesAction__c, IsTaskCallReached__c, WhatId, Program__c, IsClosed, TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName, IsJunior__c, IsUp__c,TaskSubtype FROM Tasks ORDER BY ActivityDate)
                 FROM Opportunity
                 WHERE Id in :opportunityIds
         ];
