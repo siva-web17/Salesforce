@@ -43,7 +43,7 @@ public class CampaignMembersHelper {
      *
      * @description This method updates Opportunity__c reference on given Campaign Member records when a IM activity is imported from EF.com
      * */
-    public static void addOppToIMOnLeadConvert(List<Lead> newItems) {
+   public static void addOppToIMOnLeadConvert(List<Lead> newItems) {
         Map<Id, Id> leadToOppMap = new Map<Id, Id>();
         Map<Id, Id> accToLeadMap = new Map<Id, Id>();
         Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>();
