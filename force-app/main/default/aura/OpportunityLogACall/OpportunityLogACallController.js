@@ -91,12 +91,21 @@
         });
         $A.enqueueAction(durationAction);
         var closeReasonsAction = component.get("c.getCloseReasons");
+        var LAC_SELECTED_CLOSEREASON = $A.get("$Label.c.LAC_SELECTED_CLOSEREASON");
         closeReasonsAction.setParams({ recordId: component.get("v.recordId") });
         closeReasonsAction.setCallback(this, function(res) {
             switch (res.getState()) {
                 case "SUCCESS":
+                    var closeReasonTemp = [];
                     var closeReasons = JSON.parse(res.getReturnValue());
                     component.set("v.closeReasons", closeReasons);
+                    if (closeReasons instanceof Array) {
+                        for (var i = 0; i < closeReasons.length; i++) { closeReasonTemp.push(closeReasons[i].toUpperCase()); }
+                        var closeReasonIndexValue = closeReasonTemp.indexOf(LAC_SELECTED_CLOSEREASON.toUpperCase());
+                        if (closeReasonIndexValue > 0 && LAC_SELECTED_CLOSEREASON != (null && undefined)) {
+                            component.set("v.selectedCloseReason", closeReasons[closeReasonIndexValue]);
+                        }
+                    }
                     break;
                 case "INCOMPLETE":
                     break;
@@ -154,19 +163,19 @@
                         if (data.OtherPhone) {
                             phoneNumberCounter++;
                             component.set("v.displayOtherPhone", "Other" + ": " + data.OtherPhone);
-                            var initialCommunication = ["Other", data.OtherPhone];
+                            var initialCommunication = [data.OtherPhone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         if (data.Phone) {
                             phoneNumberCounter++;
                             component.set("v.displayPhone", "Home" + ": " + data.Phone);
-                            var initialCommunication = ["Home", data.Phone];
+                            var initialCommunication = [data.Phone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         if (data.MobilePhone) {
                             phoneNumberCounter++;
                             component.set("v.displayMobilePhone", "Mobile" + ": " + data.MobilePhone);
-                            var initialCommunication = ["Mobile", data.MobilePhone];
+                            var initialCommunication = [data.MobilePhone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         component.set("v.phoneNumberCounter", phoneNumberCounter);
@@ -495,6 +504,6 @@
     },
     handleMenuSelect: function(cmp, event, helper) {
         var selectedMenuItemValue = event.getParam("value").split(":");
-        cmp.set("v.selectedDisplayNumber", selectedMenuItemValue);
+        cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
     }
 });

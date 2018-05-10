@@ -26,7 +26,7 @@ public class AccountsSelector {
 
     public static List<Account> getAccountsWithOpportunitiesByContactIds(Set<Id> contactIds) {
         return [
-                SELECT Id, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
+                SELECT Id, Name, Market__c, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE)
                 FROM Account
                 WHERE PersonContactId IN :contactIds
         ];
@@ -79,5 +79,13 @@ public class AccountsSelector {
             accountMap.put(accRecord.Id, accRecord);
         }
         return accountMap;
+    }
+
+    public static Map<ID,Account> getAccountsWithActiveOpportunitiesByIds(Set<Id> accountIds){
+        Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>([
+                SELECT Id, Name, Market__c, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE limit 1)
+                FROM Account
+                WHERE id IN :accountIds]);
+        return accountWithActiveOpportunities;
     }
 }

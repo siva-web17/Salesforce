@@ -5,40 +5,72 @@
 
 public class DCObjectMerge {
     //lead to lead merge
-    public static Lead leadToLeadFieldMerge(Lead sourceLead, Lead duplicateLead) {
+    public static Lead leadToLeadFieldMerge(Lead existingLead, Lead incomingLead) {
+        System.debug('existingLead '+existingLead.Id);
+        System.debug('incomingLead Lead '+incomingLead.Id);
         //1. first Name
-        sourceLead.FirstName = valueLength(sourceLead.FirstName,duplicateLead.FirstName);
+        String sFirstName = valueLength(existingLead.FirstName,incomingLead.FirstName);
+        String sLastname = valueLength(existingLead.LastName,incomingLead.LastName);
+        if(sFirstName==sLastname)
+        {
+            Map<String,String> existingNamesMap=New Map<String,String>();
+            	existingNamesMap.put('FirstName', existingLead.FirstName);
+                existingNamesMap.put('LastName', existingLead.LastName);
+            Map<String,String> retainedNamesMap=New Map<String,String>();
+                retainedNamesMap.put('FirstName', sFirstName);
+                retainedNamesMap.put('LastName', sLastname);
+           retainedNamesMap = getValidNames(retainedNamesMap,existingNamesMap);
+            sFirstName=retainedNamesMap.get('FirstName');
+            sLastname=retainedNamesMap.get('LastName');
+        }
+            
+        existingLead.FirstName = sFirstName;
         //2. lastname
-        sourceLead.LastName=valueLength(sourceLead.LastName,duplicateLead.LastName);
+        existingLead.LastName=sLastname;
         //3. DOB
-        sourceLead.DOB__c = calculateAge(sourceLead.DOB__c,duplicateLead.DOB__c);
+        existingLead.DOB__c = calculateAge(existingLead.DOB__c,incomingLead.DOB__c);
         //4. Mobile Phone, Home phone, Oher phone
-        sourceLead = phoneMerge(sourceLead,duplicateLead);
+        existingLead = phoneMerge(existingLead,incomingLead);
         //5. email merge
-        sourceLead = emailMerge(sourceLead,duplicateLead);
+        existingLead = emailMerge(existingLead,incomingLead);
         //6. address mergealeim
-        sourceLead = addressMerge(sourceLead,duplicateLead);
-         sourceLead.status = sourceLead.status=='closed'?'open':sourceLead.status;
+        existingLead = addressMerge(existingLead,incomingLead);
+         existingLead.status = existingLead.status=='closed'?'open':existingLead.status;
         //7. program merge
         
-        //if(sourceLead.Program__c == 'MULTI' || programMerge(DCBusinessFlow.sourceCustomerRequstType,DCBusinessFlow.latestCustomerRequsetType)) {
-        if((sourceLead.Program__c == Label.MULTI) || (duplicateLead.RequestType__c != 'CAM')) {
-            sourceLead.Product__c = duplicateLead.Product__c;
-            sourceLead.Program__c = duplicateLead.Program__c;
+        //if(existingLead.Program__c == 'MULTI' || programMerge(DCBusinessFlow.sourceCustomerRequstType,DCBusinessFlow.latestCustomerRequsetType)) {
+        if((existingLead.Program__c == Label.MULTI) || (incomingLead.RequestType__c != 'CAM')) {
+            existingLead.Product__c = incomingLead.Product__c;
+            existingLead.Program__c = incomingLead.Program__c;
         }
-        sourceLead.HasOptedOutOfEmail = false;
-        sourceLead.Email2OptOut__c = false;
-        sourceLead.DoNotMail__c = false;
+        existingLead.HasOptedOutOfEmail = false;
+        existingLead.Email2OptOut__c = false;
+        existingLead.DoNotMail__c = false;
 
-        return sourceLead;
+        return existingLead;
     }
 
     //Lead to account merge
     public static Account leadtoAccountFieldMerge(Account duplicateAccount, Lead sourceLead) {
-        //1. first Name
-        duplicateAccount.FirstName = valueLength(duplicateAccount.FirstName,sourceLead.FirstName);
+         //1. first Name
+        String sFirstName = valueLength(duplicateAccount.FirstName,sourceLead.FirstName);
+        String sLastname = valueLength(duplicateAccount.LastName,sourceLead.LastName);
+        if(sFirstName==sLastname)
+        {
+            Map<String,String> existingNamesMap=New Map<String,String>();
+            	existingNamesMap.put('FirstName', duplicateAccount.FirstName);
+                existingNamesMap.put('LastName', duplicateAccount.LastName);
+            Map<String,String> retainedNamesMap=New Map<String,String>();
+                retainedNamesMap.put('FirstName', sFirstName);
+                retainedNamesMap.put('LastName', sLastname);
+           retainedNamesMap = getValidNames(retainedNamesMap,existingNamesMap);
+            sFirstName=retainedNamesMap.get('FirstName');
+            sLastname=retainedNamesMap.get('LastName');
+        }
+            
+        duplicateAccount.FirstName = sFirstName;
         //2. lastname
-        duplicateAccount.LastName = valueLength(duplicateAccount.LastName,sourceLead.LastName);
+        duplicateAccount.LastName=sLastname;
         //3. DOB
         duplicateAccount.PersonBirthdate= calculateAge(duplicateAccount.PersonBirthdate,sourceLead.DOB__c);
         //4. Mobile Phone, Home phone, other phone
@@ -80,6 +112,19 @@ public class DCObjectMerge {
             temp = oldValue;
         }
         return temp;
+    }
+
+      private static Map<String,String> getValidNames(Map<String,String> retainedNamesMap,
+                                                     Map<String,String> existingNamesMap)
+    {
+       for(String keyName:retainedNamesMap.KeySet())
+       {
+           if( retainedNamesMap.get(keyName)!=existingNamesMap.get(keyName))
+           {
+               retainedNamesMap.put(keyName, existingNamesMap.get(keyName));
+           }
+       }
+       return retainedNamesMap;
     }
     //age calculation
     public static Date calculateAge(Date oldDate, Date newDate) {

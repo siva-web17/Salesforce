@@ -54,6 +54,11 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 return;
             }
 
+            if (context.selectedRows.length > 50){
+                kendoPopup.popupWithButtons(POPUP_HEADER, 'Please select only 50 records in this batch to print.', []);
+                return;
+            }
+
             function templatesAreValid() {
                 var templatesAssigned = true;
                 var lettersAndLabelsToCheckAttachment = new Set();
@@ -120,50 +125,71 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
             }
 
             function Process() {
+
                 var ids = [];
                 for (var i = 0; i < context.selectedRows.length; i++) {
                     ids.push(context.selectedRows[i].id);
                 }
 
                 //Query for the data that needs to be passed into new records.
-                var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND IsDeleted = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "')");
-                
+                var sbrTasks = sfdc.query("SELECT Id, WhatId FROM Task WHERE IsClosed = False AND IsDeleted = False AND TaskResult__c <> \'" + TASK_RESULT_WILL_NOT_SEND + "\' AND TaskResult__c <> \'" + TASK_RESULT_SENT_BROCHURE + "\' AND RecordType.DeveloperName IN ('SBRTask','SBR_Task_Read_Only') AND WhatId IN ('" + ids.join("','") + "') ORDER BY WhatId");
+
                 var opportunitiesByIds = mapRecordsByIds(context.selectedRows);
                 //Loop through each result and pull the data.
-                var records = [];
 
+                var duplicateLimit = 10;
+                var duplicateCounter = 0;
+                var duplicatedOpportunityIds = {};
+                var batches = [];
+                var batch = [];
                 for (var i = 0; i < sbrTasks.length; i++) {
+                    var t = sbrTasks[i];
                     var record = new sforce.SObject('Task');
-                    record.Id = sbrTasks[i].Id;
+                    record.Id = t.Id;
                     record.TaskResult__c = TASK_RESULT_SENT_BROCHURE;
-                    record.SentLetter__c = opportunitiesByIds[sbrTasks[i].WhatId].Letter__c;
-                    record.SentLabel__c = opportunitiesByIds[sbrTasks[i].WhatId].Label__c;
+                    record.SentLetter__c = opportunitiesByIds[t.WhatId].Letter__c;
+                    record.SentLabel__c = opportunitiesByIds[t.WhatId].Label__c;
                     record.Status = 'Completed';
-                    records.push(record);
+
+                    batch.push(record);
+                    if(!(t.WhatId in duplicatedOpportunityIds)){
+                        duplicatedOpportunityIds[t.WhatId] = true;
+                    }else{
+                        duplicateCounter++;
+                        if(duplicateCounter == duplicateLimit || sbrTasks.length - 1 == i){
+                            batches.push(batch);
+                            batch = [];
+                            duplicateCounter = 0;
+                            duplicatedOpportunityIds = {};
+                        }
+                    }
+                }
+                if(batch.length > 0){
+                    batches.push(batch);
                 }
 
                 var onfailure = function (error) {
                     kendoPopup.popupWithButtons(POPUP_HEADER, error.message || error.faultstring, []);
                 };
 
-                if (records.length > 0) {
-                    sforce.connection.update(records, {
-                        onSuccess: function (results) {
-                            // Get the new record Ids
-                            var recordIds = [];
-                            $.each(results, function (i, row) {
-                                if (row.errors) {
-                                    onfailure(row.errors);
-                                    return;
-                                }
-                                recordIds.push(row.id);
-                            });
-                            if (results.length == recordIds.length) {
+                if (batches.length > 0) {
+                    for(var i = 0 ; i < batches.length; i++){
+                        sforce.connection.update(batches[i], {
+                            onSuccess: function (results) {
+                                // Get the new record Ids
+                                var recordIds = [];
+                                $.each(results, function (i, row) {
+                                    if (row.errors) {
+                                        onfailure(row.errors);
+                                        return;
+                                    }
+                                    recordIds.push(row.id);
+                                });
                                 context.actionGrid.refresh();
-                            }
-                        },
-                        onFailure: onfailure
-                    });
+                            },
+                            onFailure: onfailure
+                        });
+                    }
                 } else {
                     kendoPopup.popupWithButtons(POPUP_HEADER, 'No SBR Task records to update', []);
                 }

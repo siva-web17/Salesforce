@@ -189,12 +189,14 @@ public class EventsHelper {
         //set What id only for Customer Request events
         Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
         Set<Id> newContactIds = new Set<Id>();
+        Set<Id> oldLeadIds = new Set<Id>();
         List<Event> validEvents = new List<Event>();
         for(Event newEvent : newEvents){
             Event oldEvent = oldEvents.get(newEvent.Id);
             if(newEvent.RecordTypeId == customerRequestId && newEvent.WhoId.getSobjectType() == Contact.SObjectType && oldEvent.WhoId.getSobjectType() == Lead.SObjectType && newEvent.WhatId == NULL){
-                newContactIds.add(newEvent.WhoId);
                 validEvents.add(newEvent);
+                newContactIds.add(newEvent.WhoId);
+                oldLeadIds.add(oldEvent.WhoId);
             }
         }
         if(validEvents.size() > 0) {
@@ -202,14 +204,35 @@ public class EventsHelper {
             for(Account acc : AccountsSelector.getAccountsWithOpportunitiesByContactIds(newContactIds)){
                 accountsByContactIds.put(acc.PersonContactId, acc);
             }
+            Map<Id, Lead> leadsByIds = new Map<Id, Lead>(LeadsSelector.getLeadsByIdsALLROWS(oldLeadIds));
+            Map<Id, OpportunitiesHelper.OpportunityDataWrapper> opportunityDataWrappersByAccountIds = new Map<Id, OpportunitiesHelper.OpportunityDataWrapper>();
             for(Event validEvent : validEvents){
-                if(accountsByContactIds.containsKey(validEvent.WhoId) && accountsByContactIds.get(validEvent.WhoId).Opportunities.size() > 0){
-                    validEvent.WhatId = accountsByContactIds.get(validEvent.WhoId).Opportunities[0].Id;
+                if(accountsByContactIds.containsKey(validEvent.WhoId)){
+                    Account acc = accountsByContactIds.get(validEvent.WhoId);
+                    if(acc.Opportunities.size() > 0) {
+                        validEvent.WhatId = acc.Opportunities[0].Id;
+                    }else{
+                        OpportunitiesHelper.OpportunityDataWrapper wrapper;
+                        if(!opportunityDataWrappersByAccountIds.containsKey(acc.Id)){
+                            wrapper = new OpportunitiesHelper.OpportunityDataWrapper();
+                            wrapper.account = acc;
+                            wrapper.events = new List<Event>{validEvent};
+                            wrapper.lead = leadsByIds.get(oldEvents.get(validEvent.Id).WhoId);
+                            opportunityDataWrappersByAccountIds.put(acc.Id, wrapper);
+                        }else{
+                            wrapper = opportunityDataWrappersByAccountIds.get(acc.Id);
+                            wrapper.events.add(validEvent);
+                        }
+                    }
                 }
+            }
+            if(opportunityDataWrappersByAccountIds.values().size() > 0){
+                System.enqueueJob(new OpportunitiesHelper.CreateActiveOpportunitiesQueueable(opportunityDataWrappersByAccountIds.values()));
             }
         }
     }
-      public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
+
+    public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
         system.debug('Afterupdate>>>'+newEvents);
         Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
        
@@ -224,15 +247,15 @@ public class EventsHelper {
             }
         }
         if(validOpportunitiesId.size() > 0) {
-            Map<Id, opportunity> OpportunityWithEventsByCreatedDate = opportunitiesselector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
-            map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
+           Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
+            Map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
           
-           Map<id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);
-         
+
+           Map<id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);         
             opportunitiesToBeUpdated.addall(changeProgramForOpportunityOnNewActivity(OpportunityWithEventsByCreatedDate,opportunityToBeRevivedMap));
             
             update opportunitiesToBeUpdated;
-            LogACallHelper.getOpportunitiesWithOpenSystemCallTask(OpportunityWithPreviousStage.keyset(),system.now(),'');
+            LogACallHelper.getOpportunitiesWithOpenSystemCallTask(opportunityToBeRevivedMap.keyset(),system.now(),'');
         }
     }
     public static Map<id,opportunity> reviveSalesClosedOpportunities(Map<Id,String> opportunitiesToBeRevivedMap, Map<Id, Opportunity> oppsMap){
@@ -254,6 +277,7 @@ public class EventsHelper {
         }
         return opportunityToBeRevivedMap;
     }
+
     public Static List<Opportunity> changeProgramForOpportunityOnNewActivity(map<Id,Opportunity> opportunityWithLatestEventsMap,map<Id,Opportunity> opportunityToBeRevivedMap){
         List<Opportunity> updatetedOppList=new List<Opportunity>();
         for(Opportunity objOpp:opportunityWithLatestEventsMap.values()){
