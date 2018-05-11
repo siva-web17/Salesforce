@@ -10,12 +10,11 @@ Modification Log   :
 * Osiecki A                  10/03/2018              Original Version
 *******************************************************************************/
 
-
 @IsTest
 private class DcJobCleanUpTest{
 
     @isTest
-    static void testBehavior(){
+    static void when_DcJobCleanUpIsScheduled_Dc3SearchBatchDeleteIsExecuted(){
         User adminUser = TestDataFactory.createAdminUser(true);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
         System.runAs(adminUser){
@@ -40,20 +39,25 @@ private class DcJobCleanUpTest{
             ];
             System.assertEquals(0, asyncApexJobs.size(), 'Checking if there are no jobs scheduled');
 
+
             //when
             Test.startTest();
             String jobId = System.schedule('testScheduledApex', CRON_EXP, new dcJobCleanUp());
             Test.stopTest();
 
             //then
-            CronTrigger ct = [
-                    SELECT Id, CronExpression, TimesTriggered, NextFireTime
-                    FROM CronTrigger
-                    WHERE id = :jobId
-            ];
-            System.assertEquals(CRON_EXP, ct.CronExpression, 'Expecting job is scheduled correctly');
-            System.assertEquals(0, ct.TimesTriggered, 'Expecting job is scheduled correctly');
-            System.assertEquals('2055-01-01 00:00:00', String.valueOf(ct.NextFireTime), 'Expecting job is scheduled correctly');
+            List<AsyncApexJob> asyncBatchApexJobs = [
+                    SELECT CreatedById
+                    FROM AsyncApexJob
+                    WHERE JobType = 'BatchApex' AND CreatedById = :adminUser.Id];
+
+            List<AsyncApexJob> asyncScheduledApexJobs = [
+                    SELECT CreatedById
+                    FROM AsyncApexJob
+                    WHERE JobType = 'ScheduledApex' AND CreatedById = :adminUser.Id];
+
+            System.assertEquals(1, asyncBatchApexJobs.size(), 'Expecting exactly one Batch job queried');
+            System.assertEquals(1, asyncScheduledApexJobs.size(), 'Expecting exactly one Scheduled job queried');
         }
     }
 }
