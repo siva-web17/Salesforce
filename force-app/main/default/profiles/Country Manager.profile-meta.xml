@@ -2723,6 +2723,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.NumberOfUnreachedHappyCalls__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.NumberofOpportunities__c</field>
         <readable>true</readable>
     </fieldPermissions>
