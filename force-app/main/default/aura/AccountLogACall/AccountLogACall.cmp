@@ -1,0 +1,239 @@
+<!--
+ - Created by britenet-patrykzak on 29/03/2018.
+ -->
+
+<aura:component description="AccountLogACall" controller="AccountLogACallController" implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId">
+
+    <ltng:require scripts="{!$Resource.MomentMinRecur + '/moment.min.js'}" afterScriptsLoaded="{!c.doInit}" />
+
+    <aura:attribute name="required1" type="String"/>
+    <aura:attribute name="required2" type="String"/>
+
+    <aura:attribute name="salesAction" type="List" />
+    <aura:attribute name="account" type="Account" />
+    <aura:attribute name="callResults" type="List" />
+    <aura:attribute name="subActions" type="List" />
+    <aura:attribute name="selectedActionType" type="String" />
+    <aura:attribute name="selectedSubActionType" type="String" />
+    <aura:attribute name="ExPaxSourceId" type="Id" />
+    <aura:attribute name="selectedCallResult" type="String" />
+    <aura:attribute name="closeReason" type="String" />
+    <aura:attribute name="DateTimeTemp" type="String" />
+    <aura:attribute name="accountCloseDate" type="String" />
+    <aura:attribute type="DateTime" name="selectedActionDate" default="{!v.DateTimeTemp}" />
+    <aura:attribute name="selectedVisitDate" type="DateTime" />
+    <aura:attribute name="message" type="String" />
+    <aura:attribute name="showMessage" type="Boolean" />
+    <aura:attribute name="messageType" type="String" />
+    <aura:attribute name="messageTitle" type="String" />
+    <aura:attribute name="isCustomerReached" type="Boolean" default="false"/>
+    <aura:attribute name="readOnlyToggle" type="Boolean" default="false" />
+    <aura:attribute name="customDataLoader" type="Boolean" default="false" />
+    <aura:attribute name="isActiveUser" type="Boolean" default="true" />
+    <aura:attribute name="saveText" type="String" />
+    <aura:attribute name="phoneNumberCounter" type="String" default="0" />
+    <aura:attribute name="displayPhone" type="String" />
+    <aura:attribute name="displayMobilePhone" type="String" />
+    <aura:attribute name="displayOtherPhone" type="String" />
+    <aura:attribute name="selectedDisplayNumber" type="List" />
+    <aura:attribute name="doNotCall" type="Boolean" />
+    <aura:attribute name="commentsValue" type="String" default=''/>
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <div class="slds">
+        <div class="slds-panel slds-border_bottom slds-border_top slds-border_left slds-border_right" style="position: relative;">
+            <lightning:spinner aura:id="mySpinner" variant="brand" class="slds-hide"/>
+            <div class="slds-p-around_x-small slds-border_bottom">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-p-horizontal_x_small slds-size_1-of-1 relative-btn">
+                        <h2 class="slds-truncate log_a_call_heading slds-p-left_x-small">{!$Label.c.LAC_TITLE}</h2>
+                        <aura:if isTrue="{!v.doNotCall}">
+                            <div class="relative-btn-title">
+                                <div class="btn-phone-data">
+                                    <p class="doNotCall">
+                                        Do Not Call
+                                    </p>
+                                </div>
+                            </div>
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!v.phoneNumberCounter > 0}">
+                                    <div class="relative-btn-title">
+                                        <div class="btn-phone-data">
+                                            <aura:iteration items="{!v.selectedDisplayNumber}" var="action">
+                                                <p class="displayCommunicationHeader">
+                                                    <b>{!action}</b>
+                                                </p>
+                                            </aura:iteration>
+                                        </div>
+                                        <lightning:buttonMenu menuAlignment="right" iconName="utility:down" class="custom-header-btn" title="{!$Label.c.LAC_TITLE}" value="{!$Label.c.LAC_TITLE}" name="{!$Label.c.LAC_TITLE}" alternativeText="{!$Label.c.LAC_TITLE}" onselect="{! c.handleMenuSelect }">
+                                            <aura:if isTrue="{!v.displayMobilePhone}">
+                                                <lightning:menuItem label="{!v.displayMobilePhone}" value="{!v.displayMobilePhone}" />
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.displayPhone}">
+                                                <lightning:menuItem label="{!v.displayPhone}" value="{!v.displayPhone}" />
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.displayOtherPhone}">
+                                                <lightning:menuItem label="{!v.displayOtherPhone}" value="{!v.displayOtherPhone}" />
+                                            </aura:if>
+                                        </lightning:buttonMenu>
+                                    </div>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-panel__section slds-p-top_xxx-small">
+                <aura:renderIf isTrue="{!v.showMessage}">
+                    <ui:message title="{!v.messageTitle}" severity="{!v.messageType}" closable="true">{!v.message} </ui:message>
+                </aura:renderIf>
+                <div class="slds-grid slds-wrap slds-p-bottom_none">
+                    <aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
+                        <div class="slds-size_1-of-2">
+                            <lightning:select aura:id="required"
+                                              disabled="{!(v.salesAction == 'null' || v.salesAction == '' || v.salesAction == 'undefined' || empty(v.salesAction) )}"
+                                              class="slds-large-size_4-of-4 slds-p-around_small opportunityLogACallSplit"
+                                              label="{!$Label.c.LAC_Action}"
+                                              required="true"
+                                              value="{!v.selectedActionType}"
+                                              onchange="{!c.onSalesActionChanged}">
+
+                                <option value="">{!$Label.c.LAC_Select}</option>
+                                <aura:iteration items="{!v.salesAction}" var="action">
+                                    <ui:inputSelectOption text="{!action}" label="{!action}" />
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </aura:if>
+
+                    <div class="slds-size_1-of-2">
+                        <lightning:select aura:id="required"
+                                          class="slds-large-size_4-of-4 slds-p-around_small opportunityLogACallSplit"
+                                          disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != $Label.c.LAC_Select?false:true) )}"
+                                          label="{!$Label.c.LAC_RNA}"
+                                          required="true"
+                                          value="{!v.selectedCallResult}">
+
+                            <option value="">{!$Label.c.LAC_Select}</option>
+                            <aura:iteration items="{!v.callResults}" var="callResult">
+                                <ui:inputSelectOption text="{!callResult}" label="{!callResult}" />
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+
+                    <div class="slds-size_1-of-1">
+                        <lightning:textarea value="{!v.commentsValue}"
+                                            class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit commentsArea"
+                                            maxlength="9985"
+                                            label="{!$Label.c.LAC_Comments}"
+                                            placeholder="{!$Label.c.LAC_Cmd_TXT}" />
+                    </div>
+
+
+                    <aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
+
+                        <aura:if isTrue="{!v.selectedActionType == $Label.c.LAC_Call_Not_Reached?true:false}">
+                            <div class="slds-size_1-of-1">
+
+                                <lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions))}"
+                                                  aura:id="required"
+                                                  class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit"
+                                                  value="{!v.selectedSubActionType}"
+                                                  label="{!$Label.c.LAC_CNR}"
+                                                  required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
+
+                                    <option value="">{!$Label.c.LAC_Select}</option>
+                                    <aura:iteration items="{!v.subActions}" var="subAction">
+                                        <ui:inputSelectOption text="{!subAction}" label="{!subAction}" />
+                                    </aura:iteration>
+                                </lightning:select>
+
+                            </div>
+                        </aura:if>
+
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.selectedCallResult == $Label.c.CallBack ? true : false}">
+
+                        <div class=" slds-size_1-of-1 slds-p-around_small slds-p-top--none">
+                            <ui:inputDateTime change="{!c.pastDateValidation}"
+
+                                             class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit"
+                                             label="{!$Label.c.LAC_ADT}"
+                                             value="{!v.selectedActionDate}"
+                                             disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}"
+                                             required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
+                                              displayDatePicker="true"
+                            />
+                        </div>
+                    </aura:if>
+
+                        <lightning:recordEditForm class="{!and(v.selectedActionType == $Label.c.CallReached,v.selectedCallResult == $Label.c.CallBack) ? 'slds-size_1-of-1' : 'slds-size_1-of-1 slds-hide'}" aura:id="recordEditForm" objectApiName="Opportunity" onsuccess="{!c.oppModalOnSuccess}" onerror="{!c.oppModalOnError}">
+
+                            <div class="slds-size_1-of-2 slds-float--left slds-p-around_small slds-p-top_none">
+                                <lightning:inputField fieldName="Program__c" aura:id="requiredProgram" onchange="{!c.programChanged}"/>
+                            </div>
+
+                            <div class="slds-size_1-of-2 slds-float--right slds-p-around_small slds-p-top_none">
+                                <lightning:inputField fieldName="SalesOffice__c" aura:id="requiredOffice" onchange="{!c.officeChanged}"/>
+                            </div>
+                            <div class="slds-hide">
+                                <lightning:inputField fieldName="Source__c" value="{!v.ExPaxSourceId}"/>
+                                <lightning:inputField fieldName="Market__c" value="{!v.account.Market__c}"/>
+                                <lightning:inputField fieldName="CurrencyIsoCode" value="{!v.account.CurrencyIsoCode}"/>
+                                <lightning:inputField fieldName="AccountId" value="{!v.recordId}"/>
+                                <lightning:inputField fieldName="SendBrochure__c" value='{!true}'/>
+                                <lightning:inputField fieldName="CloseDate" value="{!v.accountCloseDate}"/>
+                                <lightning:inputField fieldName="CustomerRequest__c" value="{!$Label.c.CustomerRequestInfoRequest}"/>
+                                <lightning:inputField fieldName="Name" value="{!v.account.Name}"/>
+                                <lightning:inputField fieldName="StageName" value="{!$Label.c.OpportunityStageFollowUp}"/>
+                                <lightning:inputField fieldName="CreationMethod__c" value="{!$Label.c.CreationMethodEnteredByUser}"/>
+                                <lightning:inputField fieldName="RequestType__c" value="{!$Label.c.IR}"/>
+                                <lightning:inputField fieldName="FollowupDateTime__c" value="{!v.selectedActionDate}"/>
+                                <lightning:inputField fieldName="HearAboutUs__c" value="{!$Label.c.ExPaxExENQ}"/>
+                                <lightning:inputField fieldName="LikelihoodToBook__c" value="{!$Label.c.LikelihoodToBookHigh}"/>
+                            </div>
+
+                            <lightning:messages />
+
+                            <div class="slds-p-around_small slds-panel__section slds-grid slds-size_1-of-1">
+                                <lightning:button class="slds-button slds-button--brand slds-size_1-of-1"
+                                                  variant="brand" onclick="{!c.oppModalSubmitForm}"
+                                                  type="submit"
+                                                  name="Save"
+                                                  label="Create New Opportunity"
+                                                  disabled="{!or(v.ExPaxSourceId==null,or(v.required1=='',v.required2==''),
+                                                          v.account.Market__c==null,v.account.CurrencyIsoCode==null,v.accountCloseDate==null,v.account.Name==null)}"
+                                />
+                            </div>
+
+                        </lightning:recordEditForm>
+                </div>
+            </div>
+
+
+                <aura:renderIf isTrue="{!!and(v.selectedActionType == $Label.c.LAC_Call_Reached,v.selectedCallResult == $Label.c.CallBack)}">
+                    <div class="slds-panel__section slds-grid slds-p-top_none">
+                        <div class="slds-size_1-of-2 slds-p-around_small slds-p-top_none">
+                            <button disabled="{! (v.isActiveUser == false ? true : false) }"
+                                    class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1"
+                                    data-save="save"
+                                    onclick="{!c.onSaveClicked}">
+                                    {!$Label.c.LAC_SAVE_ACTION}
+                            </button>
+                        </div>
+
+                        <div class="slds-size_1-of-2 slds-p-around_small slds-p-top_none">
+                            <button disabled="{! v.isActiveUser == false ? true : false }"
+                                    class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1"
+                                    data-save="saveAndClose"
+                                    onclick="{!c.onSaveClicked}">
+                                    {!$Label.c.LAC_SAC}
+                            </button>
+                        </div>
+                    </div>
+                </aura:renderIf>
+        </div>
+    </div>
+</aura:component>

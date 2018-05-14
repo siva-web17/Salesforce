@@ -250,6 +250,16 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentName>AccountLogACall</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.ReadyForHappyCall__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>true</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
             <componentInstanceProperties>
                 <name>tabs</name>
                 <value>facet-58f686b5-8b6b-4e99-bcfa-51c3c40d078c</value>
