@@ -154,19 +154,19 @@
                         if (data.OtherPhone) {
                             phoneNumberCounter++;
                             component.set("v.displayOtherPhone", "Other" + ": " + data.OtherPhone);
-                            var initialCommunication = ["Other", data.OtherPhone];
+                            var initialCommunication = [data.OtherPhone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         if (data.Phone) {
                             phoneNumberCounter++;
                             component.set("v.displayPhone", "Home" + ": " + data.Phone);
-                            var initialCommunication = ["Home", data.Phone];
+                            var initialCommunication = [data.Phone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         if (data.MobilePhone) {
                             phoneNumberCounter++;
                             component.set("v.displayMobilePhone", "Mobile" + ": " + data.MobilePhone);
-                            var initialCommunication = ["Mobile", data.MobilePhone];
+                            var initialCommunication = [data.MobilePhone];
                             component.set("v.selectedDisplayNumber", initialCommunication);
                         }
                         component.set("v.phoneNumberCounter", phoneNumberCounter);
@@ -495,6 +495,6 @@
     },
     handleMenuSelect: function(cmp, event, helper) {
         var selectedMenuItemValue = event.getParam("value").split(":");
-        cmp.set("v.selectedDisplayNumber", selectedMenuItemValue);
+        cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
     }
 });

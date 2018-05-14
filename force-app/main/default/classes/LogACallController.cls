@@ -154,7 +154,8 @@ public with sharing class LogACallController {
             List<String> callResults = dependentPicklists.get(callAction);
             if(recordId.getSobjectType() == Opportunity.getSObjectType() ){
                 Opportunity opp = [Select Id,NumberOfUnreachedCalls__c FROM Opportunity WHERE Id = :recordId];
-                if (opp.NumberOfUnreachedCalls__c < 2 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
+                Integer numberOfConsecutiveUnreachedCalls = getNoOfConsecutiveUnreachedCalls(opp);
+                if (numberOfConsecutiveUnreachedCalls < 2 && (callAction.equalsIgnoreCase(Label.CallNotReached) ||
                                                           callAction.equalsIgnoreCase(Label.SentEmail) ||
                                                           callAction.equalsIgnoreCase(Label.SocialMediaSent))) {
                     for(Integer i=0; i< callResults.size() ; i++){
@@ -374,4 +375,19 @@ public with sharing class LogACallController {
         response.ResponseCode = 'SUCCESS';
         return JSON.serialize(response);
     }
+     public static Integer getNoOfConsecutiveUnreachedCalls(Opportunity objOpp){
+       List<Opportunity> OpportunityList = OpportunitiesSelector.getOpportunityWithTasksOrderByCreatedDate(objOpp);
+        Integer numberOfConsecutiveUnreached = 0;
+        for(Task task : OpportunityList[0].Tasks){            
+            if (task.TaskSubtype == 'Call' && task.IsClosed) {               
+                if(task.SalesAction__c == Label.CallNotReached){
+                    numberOfConsecutiveUnreached++;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        return numberOfConsecutiveUnreached;
+    }   
 }
