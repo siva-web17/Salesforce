@@ -212,7 +212,7 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
+        List<Lead> leads = LeadsSelector.getLeadsByIdsWithTasks(new List<Id>(parentIds));
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
@@ -264,18 +264,18 @@ public with sharing class LogACallHelper {
     */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> parentIds, Datetime followupDatetime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
+        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentIds));
 
+        Task callTask = null;
         if(opportunities.size() > 0 && callResult != Label.CloseOpp && followupDatetime != NULL) {
             Opportunity opp = opportunities[0];
-            Task callTask = null;
             if(opp.Tasks.size() > 0) {
                 for(Task objTask:opp.Tasks){
                     if(objTask.RecordTypeId == systemCallTaskRecordTypeId && objTask.Type == TasksHelper.CALL){
                         callTask = objTask;
                     }
                 }
-
+                
                 if(callTask == null){
                     System.debug('Created a new Task');
                     callTask = OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opp);

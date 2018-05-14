@@ -247,13 +247,10 @@ public class EventsHelper {
             }
         }
         if(validOpportunitiesId.size() > 0) {
-           Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
+            Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
             Map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
-          
             Map<Id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);
-         
             opportunitiesToBeUpdated.addall(changeProgramForOpportunityOnNewActivity(OpportunityWithEventsByCreatedDate,opportunityToBeRevivedMap));
-            
             update opportunitiesToBeUpdated;
             LogACallHelper.getOpportunitiesWithOpenSystemCallTask(opportunityToBeRevivedMap.keyset(),system.now(),'');
         }
