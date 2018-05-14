@@ -389,8 +389,8 @@ public class TasksHelper {
             newTask.Duration__c = eventObj.Duration__c;
             newTask.Course__c = eventObj.Course__c;
             newTask.DestinationCode__c = eventObj.DestinationCode__c;
-            
             newTask.Subject= getTaskSubject(taskSettingsMap.get(objTask.Type).TaskSubject__c,newTask, objTask.Type);
+            mapTaskFieldsBasedonType(newTask,eventObj, objTask);
         } else {
             newTask = objTask;
         }

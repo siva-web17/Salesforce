@@ -164,6 +164,7 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                         }
                     }
                 }
+                
                 if(batch.length > 0){
                     batches.push(batch);
                 }
