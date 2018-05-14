@@ -17,6 +17,7 @@ public without sharing class HCCTaskDeferrerBatch implements Database.Batchable<
                 'SELECT Id, Status, Account.HasHappyCallTask__c '+
                         'FROM Task ' +
                         'WHERE (Status != \'Deferred\' OR Status = \'Completed\')' +
+                        ' AND NextCallType__c = \'' + Label.HCC_Next_Call_Type + '\'' +
                         ' AND Account.HasHappyCallTask__c = TRUE' +
                         ' AND Account.ActiveOpportunities__c > 0'
         );

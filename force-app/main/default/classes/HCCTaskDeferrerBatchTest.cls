@@ -13,6 +13,8 @@ Modification Log   :
 @IsTest
 private class HCCTaskDeferrerBatchTest{
 
+    private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
+
     @isTest
     static void When_AccountHasHappyCallTaskAndOppIsActive_Expect_DeferTask(){
 
@@ -33,8 +35,8 @@ private class HCCTaskDeferrerBatchTest{
             Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
             testOpportunity.IsActive__c = TRUE;
             testOpportunity.AccountId = accPerson.Id;
-            testOpportunity.Market__c = 'ARB';
-            testOpportunity.Program__c = 'AY';
+            testOpportunity.Market__c = picklistValuesHelper.market;
+            testOpportunity.Program__c = picklistValuesHelper.program;
             insert testOpportunity;
 
             Task task = new Task(
@@ -58,6 +60,7 @@ private class HCCTaskDeferrerBatchTest{
             List<Task> updatedTasks = [
                     SELECT Status
                     FROM Task
+                    WHERE Id = :task.Id
             ];
 
             System.assertEquals('Deferred', updatedTasks[0].Status, 'Expecting specific Task\'s status');
@@ -85,8 +88,8 @@ private class HCCTaskDeferrerBatchTest{
                 Opportunity opp = new Opportunity();
                 opp = (Opportunity)oppBuilder.withPersonAccount().getRecord();
                 opp.IsActive__c = TRUE;
-                opp.Market__c = 'ARB';
-                opp.Program__c = 'AY';
+                opp.Market__c = picklistValuesHelper.market;
+                opp.Program__c = picklistValuesHelper.program;
                 opportunities.add(opp);
                 Account acc = oppBuilder.getAccount();
                 acc.HasHappyCallTask__c = TRUE;
@@ -113,6 +116,10 @@ private class HCCTaskDeferrerBatchTest{
                 tasks.add(task);
             }
             insert tasks;
+            Set<Id> taskIds = new Set<Id>();
+            for(Task task : tasks){
+                taskIds.add(task.Id);
+            }
 
             //when
             Test.startTest();
@@ -124,6 +131,7 @@ private class HCCTaskDeferrerBatchTest{
             List<Task> updatedTasks = [
                     SELECT Status
                     FROM Task
+                    WHERE Id IN :taskIds
             ];
 
             for(Task task : updatedTasks){
@@ -193,8 +201,8 @@ private class HCCTaskDeferrerBatchTest{
             Opportunity testOpportunity = (Opportunity)opportunityBuilder.getRecord();
             testOpportunity.IsActive__c = TRUE;
             testOpportunity.AccountId = accPerson.Id;
-            testOpportunity.Market__c = 'ARB';
-            testOpportunity.Program__c = 'AY';
+            testOpportunity.Market__c = picklistValuesHelper.market;
+            testOpportunity.Program__c = picklistValuesHelper.program;
             insert testOpportunity;
 
             Task task = new Task(
