@@ -322,7 +322,7 @@ public class OpportunitiesSelector {
      * @return List<Opportunity>
      */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> opportunitiesIds) {
-        //Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         return [
                 SELECT
                         Id, Name, StageName, Product__c, Program__c, FirstContactDateTime__c,OwnerId, (
