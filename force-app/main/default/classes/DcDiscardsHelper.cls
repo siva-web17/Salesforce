@@ -23,7 +23,6 @@ public class DcDiscardsHelper {
             }
         }
          Set<Id> LeadToUpdateSet = new Set<Id>();
-        Integer pairCount=0;
         Id LeadId;
         Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap=new Map<Id,Integer>();
         List<dupcheck__dc3Duplicate__c> duplicateList = 
@@ -34,13 +33,13 @@ public class DcDiscardsHelper {
         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
             List<dupcheck__dc3Duplicate__c> duplicatePairList=new List<dupcheck__dc3Duplicate__c>();
-            pairCount=0;
+            duplicatePairList.add(duplicatepairRecord);
             if(duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
             || duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
             {
               duplicatePairList = duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)
               ? duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__SourceObject__c):duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__MatchObject__c);
-              duplicatePairList.add(duplicatepairRecord);
+              
               LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
                duplicatepairRecord.dupcheck__MatchObject__c;
               duplicatepairViewCountMap.put(LeadId,duplicatePairList);
