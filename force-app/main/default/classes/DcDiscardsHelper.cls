@@ -89,7 +89,7 @@ public class DcDiscardsHelper {
             if(leadIdAndRankMap.containskey(objLead.id) && leadIdAndRankMap.get(objLead.id)!=null){
                 objLead.ranking__c = leadIdAndRankMap.get(objLead.id);
                 objLead.IsDupe__c  = false;
-                objLead.readyforranking__c = true;
+                objLead.IsDupeProcessed__c  = true;
             }
         }
         try{
