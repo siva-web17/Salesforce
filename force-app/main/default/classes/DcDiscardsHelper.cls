@@ -22,12 +22,58 @@ public class DcDiscardsHelper {
                leadIdList.add(leadId);
             }
         }
-         List<Lead> leadUpdateList = new List<Lead>();
-        leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
-        for (Lead lead : leadUpdateList) {
-            lead.IsDupe__c = false;           
+         Set<Id> LeadToUpdateSet = new Set<Id>();
+        Integer pairCount=0;
+        Id LeadId;
+        Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap=new Map<Id,Integer>();
+        List<dupcheck__dc3Duplicate__c> duplicateList = 
+        [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
+        dupcheck__dc3Duplicate__c
+         WHERE (dupcheck__MatchObject__c IN leadIdList
+          OR dupcheck__SourceObject__c  IN leadIdList)];
+        for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
+        {
+            List<dupcheck__dc3Duplicate__c> duplicatePairList=new List<dupcheck__dc3Duplicate__c>();
+            pairCount=0;
+            if(duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
+            || duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
+            {
+              duplicatePairList = duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)
+              ? duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__SourceObject__c):duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__MatchObject__c);
+              duplicatePairList.add(duplicatepairRecord);
+              LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
+               duplicatepairRecord.dupcheck__MatchObject__c;
+              duplicatepairViewCountMap.put(LeadId,duplicatePairList);
+            }
+            else
+            {
+                if(duplicatepairRecord.dupcheck__MatchObject__c == duplicatepairRecord.dupcheck__SourceObject__c)
+                {
+                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c,duplicatePairList);
+                }
+                else{
+                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c,duplicatePairList);
+                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__SourceObject__c,duplicatePairList);
+                }
+            }
         }
-       System.enqueueJob(new QueueClass(leadIdList));
+        List<Lead> leadListToUpdate=new List<Lead>();
+        for(Id LeadIdrec:leadIdList)
+        {
+            If(duplicatepairViewCountMap.containskey(LeadIdrec))
+            {
+                    if(duplicatepairViewCountMap.get(LeadIdrec).size() <= 1)
+                    {
+                        Lead objLead=new Lead();
+                        objLead.IsDupe__c=false;
+                        leadListToUpdate.add(objLead);
+                        LeadToUpdateSet.add(LeadIdrec);
+                    }
+            }
+        }
+        update leadListToUpdate;
+        system.debug('records '+ duplicateList.size());
+       System.enqueueJob(new QueueClass(LeadToUpdateSet));
     }
 	
     @future (callout=true)
