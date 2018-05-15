@@ -1,4 +1,4 @@
- global class UpdateNoOfCallsBatch implements Database.Batchable<SObject>{       
+global class UpdateNoOfCallsBatch implements Database.Batchable<SObject>{       
     
     //start method
     global Database.QueryLocator start(Database.BatchableContext context){
@@ -13,17 +13,14 @@
             List<opportunity> finalopplist = new List<Opportunity>();
                lstResource = (List<Opportunity>)scope;
             for(Opportunity opp : lstResource){  
-                system.debug('Inside opplist');
                 Integer numberOfCallsCompleted= 0;
                 for(Task task : opp.Tasks){
-                    system.debug('inside task'+task.SalesAction__c);
                     if (task.tasksubtype=='Call' && task.IsClosed) {                      
                             numberOfCallsCompleted++;                      
                     }
                 }
                 if(opp.NumberOfCalls__c != numberOfCallsCompleted){
                     opp.NumberOfCalls__c = numberOfCallsCompleted;
-                    system.debug('updated number of call  tasks'+ opp.NumberOfCalls__c);
                     finalopplist.add(opp);
                 }
             }
