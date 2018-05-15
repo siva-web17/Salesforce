@@ -29,7 +29,7 @@ public class DcDiscardsHelper {
         }
          Set<Id> LeadToUpdateSet = new Set<Id>();
         Id LeadId;
-        Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap=new Map<Id,Integer>();
+        Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap = new  Map<Id,List<dupcheck__dc3Duplicate__c>>();
         List<dupcheck__dc3Duplicate__c> duplicateList = 
         [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
         dupcheck__dc3Duplicate__c
