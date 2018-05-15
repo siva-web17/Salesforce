@@ -56,7 +56,6 @@ public class DcDiscardsHelper {
                 }
             }
         }
-        List<Lead> leadListToUpdate=new List<Lead>();
         for(Id LeadIdrec:leadIdList)
         {
             If(duplicatepairViewCountMap.containskey(LeadIdrec))
@@ -65,12 +64,10 @@ public class DcDiscardsHelper {
                     {
                         Lead objLead=new Lead();
                         objLead.IsDupe__c=false;
-                        leadListToUpdate.add(objLead);
                         LeadToUpdateSet.add(LeadIdrec);
                     }
             }
         }
-        update leadListToUpdate;
         system.debug('records '+ duplicateList.size());
        System.enqueueJob(new QueueClass(LeadToUpdateSet));
     }
