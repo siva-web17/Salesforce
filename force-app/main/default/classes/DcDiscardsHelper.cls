@@ -18,8 +18,13 @@ public class DcDiscardsHelper {
         set<Id> leadIdList = new set<Id>();
         for (dupcheck__dcDiscard__c discardedItem : dcDiscardList) {
              Id leadId = discardedItem.dupcheck__objectA__c;
+             Id LeadObjBId=discardedItem.dupcheck__objectB__c;
             if(leadId.getSObjectType() == Lead.getSObjectType()){
                leadIdList.add(leadId);
+            }
+            if(LeadObjBId.getSObjectType() == Lead.getSObjectType())
+            {
+                leadIdList.add(LeadObjBId);
             }
         }
          Set<Id> LeadToUpdateSet = new Set<Id>();
@@ -63,8 +68,6 @@ public class DcDiscardsHelper {
             {
                     if(duplicatepairViewCountMap.get(LeadIdrec).size() <= 1)
                     {
-                        Lead objLead=new Lead();
-                        objLead.IsDupe__c=false;
                         LeadToUpdateSet.add(LeadIdrec);
                     }
             }
