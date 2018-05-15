@@ -327,7 +327,7 @@ public class OpportunitiesSelector {
                 SELECT
                         Id, Name, StageName, Product__c, Program__c, FirstContactDateTime__c,OwnerId, (
                         SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c, Program__c, Type, IsClosed__c, IsClosed,IsParentClosing__c,isexpresscall__c,RecordTypeId,SalesAction__c
-                        FROM Tasks WHERE RecordTypeId = :systemCallTaskRecordTypeId AND Type = :TasksHelper.CALL
+                        FROM Tasks WHERE RecordTypeId = :systemCallTaskRecordTypeId AND Type = :TasksHelper.CALL LIMIT 1
                 )
                 FROM Opportunity
                 WHERE Id IN :opportunitiesIds
