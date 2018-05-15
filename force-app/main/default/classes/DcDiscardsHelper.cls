@@ -33,19 +33,20 @@ public class DcDiscardsHelper {
         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
             List<dupcheck__dc3Duplicate__c> duplicatePairList=new List<dupcheck__dc3Duplicate__c>();
-            duplicatePairList.add(duplicatepairRecord);
+            
             if(duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
             || duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
             {
               duplicatePairList = duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)
               ? duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__SourceObject__c):duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__MatchObject__c);
-              
+              duplicatePairList.add(duplicatepairRecord);
               LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
                duplicatepairRecord.dupcheck__MatchObject__c;
               duplicatepairViewCountMap.put(LeadId,duplicatePairList);
             }
             else
             {
+                duplicatePairList.add(duplicatepairRecord);
                 if(duplicatepairRecord.dupcheck__MatchObject__c == duplicatepairRecord.dupcheck__SourceObject__c)
                 {
                     duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c,duplicatePairList);
