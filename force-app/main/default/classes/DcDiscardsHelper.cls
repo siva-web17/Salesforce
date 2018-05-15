@@ -33,8 +33,8 @@ public class DcDiscardsHelper {
         List<dupcheck__dc3Duplicate__c> duplicateList = 
         [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
         dupcheck__dc3Duplicate__c
-         WHERE (dupcheck__MatchObject__c IN leadIdList
-          OR dupcheck__SourceObject__c  IN leadIdList)];
+         WHERE (dupcheck__MatchObject__c IN : leadIdList
+          OR dupcheck__SourceObject__c  IN : leadIdList)];
         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
             Boolean isSourceIsDifferent=false;
@@ -53,7 +53,7 @@ public class DcDiscardsHelper {
                duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord);
                if(isSourceIsDifferent && duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c))
                {
-                  LeadId=duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__MatchObject__c);
+                  LeadId = duplicatepairRecord.dupcheck__MatchObject__c;
                   duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord); 
                }
         }
