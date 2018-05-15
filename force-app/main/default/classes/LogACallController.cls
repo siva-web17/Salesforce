@@ -268,7 +268,19 @@ public with sharing class LogACallController {
                 // If an Opportunity is closed revive the Opportunity
                 if(opp.StageName == Label.SalesClosed ){
                     opp.LastAutomationUpdateDateTime__c = system.now();
-                    opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    String previousStage = OpportunitiesSelector.getOpportunityStageName(opp);
+                    if(string.isEmpty(previousStage)){
+                        if(LogACallHelper.allNotReachedItems.contains(CallAction.toUpperCase())){
+                            opp.StageName = (opp.FirstContactDateTime__c == NULL) ? Label.OpportunityStageToContact:Label.OpportunityStageFollowUp;
+                        }
+                        else if(LogACallHelper.allReachedItems.contains(CallAction.toUpperCase())){
+                            opp.StageName = Label.OpportunityStageFollowUp;
+                        }
+                    }
+                    else{
+                        opp.StageName = OpportunitiesSelector.getOpportunityStageName(opp);
+                    }
+
                     opp.TimeOutDate__c=null;
                     //set the closedate to two months from now if book on date is not changed else set it to the selected bookon date
                     date dateFromBookOn = date.newinstance(bookOn.year(), bookOn.month(), bookOn.day());
@@ -278,7 +290,7 @@ public with sharing class LogACallController {
                     }
                     else{
                         opp.CloseDate = bookOn.date();
-                    }
+                    }                   
                     update opp;
                 }
                 else {
