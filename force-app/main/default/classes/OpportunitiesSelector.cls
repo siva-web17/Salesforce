@@ -316,14 +316,12 @@ public class OpportunitiesSelector {
      * @return List<Opportunity>
      */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> opportunitiesIds) {
-        Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
+        //Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         return [
                 SELECT
                         Id, Name, StageName, Product__c, Program__c, FirstContactDateTime__c,OwnerId, (
-                        SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c, Program__c, Type, IsClosed__c, IsClosed,IsParentClosing__c,isexpresscall__c,RecordTypeId
-                        FROM Tasks
-                        WHERE Type = :TasksHelper.CALL AND RecordTypeId = :systemCallTaskRecordTypeId
-                        LIMIT 1
+                        SELECT Id, Subject, Status, NextCallType__c, FollowUpDate__c, Program__c, Type, IsClosed__c, IsClosed,IsParentClosing__c,isexpresscall__c,RecordTypeId,SalesAction__c
+                        FROM Tasks Order BY ActivityDate DESC                         
                 )
                 FROM Opportunity
                 WHERE Id IN :opportunitiesIds
@@ -386,8 +384,8 @@ public class OpportunitiesSelector {
         
         return opportunityIDAndStageMap;
     }
-      public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
-     map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,stagename,program__c,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
-     return OpportunityEventsMap;
+    public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
+        map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,program__c,FirstContactDateTime__c,LastAutomationUpdateDateTime__c,CloseDate,TimeOutDate__c,RecalculateRanking__c,StageName,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
+        return OpportunityEventsMap;
     }
 }
