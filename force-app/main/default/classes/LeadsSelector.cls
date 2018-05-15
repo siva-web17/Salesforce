@@ -208,7 +208,7 @@ public class LeadsSelector {
         ];
     }
 
-    public static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> leadIds, Boolean allTask) {
+   public static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> leadIds, Boolean allTask) {
             // allTask - default value is bool always
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         return [
