@@ -157,21 +157,24 @@ public with sharing class LogACallHelper {
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
-                    openCallTask.Program__c = selectedProgram;
                     String subject = openCallTask.Subject;
-                    String[] splitSubject = SFLangUtil.splitString(subject, '-');
-                    if (splitSubject.size() > 0) {
-                        openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
-                    }
-                    if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Program__c != selectedProgram) {
-                            opp.Program__c = selectedProgram;
-                            update opp;
+
+                    if(!String.isEmpty(selectedProgram)){
+                        openCallTask.Program__c = selectedProgram;
+                        String[] splitSubject = SFLangUtil.splitString(subject, '-');
+                        if (splitSubject.size() > 0) {
+                            openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                         }
-                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if ( lead.Program__c != selectedProgram) {
-                            lead.Program__c = selectedProgram;
-                            update lead;
+                        if (String.valueOf(parentId).substring(0, 3) == '006') {
+                            if (opp.Program__c != selectedProgram) {
+                                opp.Program__c = selectedProgram;
+                                update opp;
+                         	}
+                        } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
+                            if ( lead.Program__c != selectedProgram) {
+                                lead.Program__c = selectedProgram;
+                                update lead;
+                            }
                         }
                     }
                 }
@@ -209,7 +212,7 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
+        List<Lead> leads = LeadsSelector.getLeadsByIdsWithTasks(new List<Id>(parentIds));
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
@@ -261,8 +264,9 @@ public with sharing class LogACallHelper {
     */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> parentIds, Datetime followupDatetime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
+        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentIds));
 
+        Task callTask = null;
         if(opportunities.size() > 0 && callResult != Label.CloseOpp && followupDatetime != NULL) {
             Opportunity opp = opportunities[0];
             Task callTask = null;
