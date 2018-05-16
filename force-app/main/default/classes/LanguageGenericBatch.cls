@@ -30,7 +30,7 @@ global class LanguageGenericBatch implements Database.Batchable<SObject>{
         catch(Exception ex){
             //Logger.logException(ex);
              ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                    'LanguageGenericBatch', 'execute', '');
+                    'LanguageGenericBatch', 'execute', null);
         }
     }    
     //finish method
