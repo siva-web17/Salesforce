@@ -233,17 +233,15 @@ public class EventsHelper {
     }
 
     public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
-        system.debug('Afterupdate>>>'+newEvents);
         Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
-       
         list<opportunity> opportunitiesToBeUpdated = new list<opportunity>();
         Set<Id> validOpportunitiesId = new Set<Id>();
         for(Event newEvent : newEvents){
             Event oldEvent = oldEvents.get(newEvent.Id);
-            if(newEvent.RecordTypeId == customerRequestId && newEvent.whatid!=null 
-            && newEvent.whatid.getSobjectType() == opportunity.SObjectType 
-            && ((oldEvent.whatid != null && oldEvent.whatid.getSobjectType()!= opportunity.SObjectType) || oldEvent.whatid == null) ){
-                validOpportunitiesId.add(newEvent.whatid); 
+            if(newEvent.RecordTypeId == customerRequestId && newEvent.whatid!=null
+                    && newEvent.whatid.getSobjectType() == opportunity.SObjectType
+                    && ((oldEvent.whatid != null && oldEvent.whatid.getSobjectType()!= opportunity.SObjectType) || oldEvent.whatid == null)){
+                validOpportunitiesId.add(newEvent.whatid);
             }
         }
         if(validOpportunitiesId.size() > 0) {
@@ -259,17 +257,18 @@ public class EventsHelper {
         Map<id,opportunity> opportunityToBeRevivedMap = new Map<id,opportunity>();
         for(Id objOppID : oppsMap.keyset()){
             Opportunity oppToBeRevived = oppsMap.get(objOppID);
-            oppToBeRevived.id = objOppID;
-            oppToBeRevived.LastAutomationUpdateDateTime__c = system.now();
-            oppToBeRevived.CloseDate = System.today().addMonths(2);
-            oppToBeRevived.TimeOutDate__c=null;
-            oppToBeRevived.RecalculateRanking__c=true;
-            opportunityToBeRevivedMap.put(objOppID,oppToBeRevived);
-            if(opportunitiesToBeRevivedMap.containsKey(objOppID)){
-                oppToBeRevived.stagename = opportunitiesToBeRevivedMap.get(objOppID);
-            }
-            else{
-                oppToBeRevived.StageName = (oppsMap.get(objOppID).FirstContactDateTime__c != null) ? Label.OpportunityStageFollowUp : Label.OpportunityStageToContact;
+            if(oppToBeRevived.StageName == Label.Salesclosed) {
+                oppToBeRevived.id = objOppID;
+                oppToBeRevived.LastAutomationUpdateDateTime__c = system.now();
+                oppToBeRevived.CloseDate = System.today().addMonths(2);
+                oppToBeRevived.TimeOutDate__c = null;
+                oppToBeRevived.RecalculateRanking__c = true;
+                opportunityToBeRevivedMap.put(objOppID, oppToBeRevived);
+                if (opportunitiesToBeRevivedMap.containsKey(objOppID)) {
+                    oppToBeRevived.stagename = opportunitiesToBeRevivedMap.get(objOppID);
+                } else {
+                    oppToBeRevived.StageName = (oppsMap.get(objOppID).FirstContactDateTime__c != null) ? Label.OpportunityStageFollowUp : Label.OpportunityStageToContact;
+                }
             }
         }
         return opportunityToBeRevivedMap;
