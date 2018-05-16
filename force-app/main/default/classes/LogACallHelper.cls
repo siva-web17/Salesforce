@@ -157,21 +157,24 @@ public with sharing class LogACallHelper {
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
-                    openCallTask.Program__c = selectedProgram;
                     String subject = openCallTask.Subject;
-                    String[] splitSubject = SFLangUtil.splitString(subject, '-');
-                    if (splitSubject.size() > 0) {
-                        openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
-                    }
-                    if (String.valueOf(parentId).substring(0, 3) == '006') {
-                        if (opp.Program__c != selectedProgram) {
-                            opp.Program__c = selectedProgram;
-                            update opp;
+
+                    if(!String.isEmpty(selectedProgram)){
+                        openCallTask.Program__c = selectedProgram;
+                        String[] splitSubject = SFLangUtil.splitString(subject, '-');
+                        if (splitSubject.size() > 0) {
+                            openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                         }
-                    } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
-                        if ( lead.Program__c != selectedProgram) {
-                            lead.Program__c = selectedProgram;
-                            update lead;
+                        if (String.valueOf(parentId).substring(0, 3) == '006') {
+                            if (opp.Program__c != selectedProgram) {
+                                opp.Program__c = selectedProgram;
+                                update opp;
+                         	}
+                        } else if (String.valueOf(parentId).substring(0, 3) == '00Q') {
+                            if ( lead.Program__c != selectedProgram) {
+                                lead.Program__c = selectedProgram;
+                                update lead;
+                            }
                         }
                     }
                 }
@@ -209,7 +212,7 @@ public with sharing class LogACallHelper {
     */
     private static List<Lead> getLeadsWithOpenSystemCallTask(Set<Id> parentIds, DateTime followupDateTime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Lead> leads = LeadsSelector.getLeadsWithOpenSystemCallTask(parentIds, true);
+        List<Lead> leads = LeadsSelector.getLeadsByIdsWithTasks(new List<Id>(parentIds));
         if(leads.size() > 0 && callResult != Label.CloseOpp && followupDateTime != NULL){
             Lead lead = leads[0];
             if(lead.Tasks.size() > 0) {
@@ -261,27 +264,32 @@ public with sharing class LogACallHelper {
     */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> parentIds, Datetime followupDatetime, String callResult){
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
-        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
+        List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentIds));
 
-
+        Task callTask = null;
         if(opportunities.size() > 0 && callResult != Label.CloseOpp && followupDatetime != NULL) {
             Opportunity opp = opportunities[0];
+            Task callTask = null;
             if(opp.Tasks.size() > 0) {
+                for(Task objTask:opp.Tasks){
+                    if(objTask.RecordTypeId == systemCallTaskRecordTypeId && objTask.Type == TasksHelper.CALL){
+                        callTask = objTask;
+                    }
+                }
 
-                Task callTask = opp.Tasks[0];
-                System.debug('Open the existing System Call Task');
-                if(callTask.IsClosed) {
+                if(callTask == null){
+                    System.debug('Created a new Task');
+                    callTask = OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opp);
+                    callTask.NextCallType__c = getNextCallTypeOnSCT(opp);
+                    callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
+                    insert callTask;
+                }
+                else if(callTask.IsClosed) {
+                    System.debug('Open the existing System Call Task');
                     callTask.IsParentClosing__c = true;
                     callTask.Status = 'Not Started' ;
                     callTask.FollowUpDate__c = followupDatetime;
-                    system.debug('stagename>>'+opp.StageName);
-                    if(opp.StageName == Label.OpportunityStageToContact){
-                        system.debug('I am here in to contact');
-                        callTask.NextCallType__c = TasksHelper.SalesTasks.UCC.name();
-                    }
-                    else if(opp.StageName == Label.OpportunityStageFollowUp){
-                        callTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
-                    }
+                    callTask.NextCallType__c = getNextCallTypeOnSCT(opp);
                     callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
                     update callTask;
                     callTask.IsParentClosing__c = false;
@@ -290,10 +298,32 @@ public with sharing class LogACallHelper {
             }
             else {
                 System.debug('Created a new Task');
-                Task callTask = OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opp);
+                callTask = OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opp);
+                callTask.NextCallType__c = getNextCallTypeOnSCT(opp);
+                callTask.Subject = TasksHelper.taskSettingsMap.get(callTask.NextCallType__c).TaskSubject__c;
                 insert callTask;
             }
         }
         return OpportunitiesSelector.getOpportunitiesWithOpenSystemCallTask(parentIds);
+    }
+
+    private static String getNextCallTypeOnSCT(Opportunity opp){
+        if(opp.FirstContactDateTime__c == NULL){
+            if(opp.Tasks == NULL || opp.Tasks.size() == 0){
+                return TasksHelper.SalesTasks.TCC.name();
+            }
+
+            for(Task task : opp.Tasks){
+                if(task.SalesAction__c == Label.CallNotReached){
+                    return TasksHelper.SalesTasks.UCC.name();
+                }
+            }
+
+            return TasksHelper.SalesTasks.TCC.name();
+        }
+        else{
+            return TasksHelper.SalesTasks.FUP.name();
+        }
+
     }
 }
