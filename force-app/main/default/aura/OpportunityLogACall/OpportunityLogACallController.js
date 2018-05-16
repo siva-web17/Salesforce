@@ -6,7 +6,7 @@
             "v.DateTimeTemp",
             moment(new Date(), "DD-MM-YYYY")
             .add(1, "days")
-            .format("YYYY-MM-DD") + "T00:00"
+            .format("YYYY-MM-DD") + "T00:00:00.000Z"
         );
         var years = [];
         years.push(currentYear.toString());
@@ -147,7 +147,7 @@
                             "v.DateTimeTemp",
                             moment(new Date(), "DD-MM-YYYY")
                             .add(1, "days")
-                            .format("YYYY-MM-DD") + "T00:00"
+                            .format("YYYY-MM-DD") + "T00:00:00.000Z"
                         );
                         component.set("v.selectedActionDate", component.get("v.DateTimeTemp"));
                         var phoneNumberCounter = 0;
