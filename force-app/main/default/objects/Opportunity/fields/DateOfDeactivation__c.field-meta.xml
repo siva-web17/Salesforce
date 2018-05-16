@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateOfDeactivation__c</fullName>
+    <defaultValue>null</defaultValue>
+    <description>This field contains date and time when field IsActive__c was last time set to 'FALSE'. When Opportunity is active, then DateOfDeactivaton is set to null.</description>
+    <externalId>false</externalId>
+    <label>Date Of Deactivation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>
