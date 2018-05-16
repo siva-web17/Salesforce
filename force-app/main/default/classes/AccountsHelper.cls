@@ -72,7 +72,7 @@ public class AccountsHelper {
 
     public static void updateHasAddress(List<Account> newAccounts){
         for (Account newAccount : newAccounts){
-                newAccount.HadAddressonCreation__c = newAccount.IsPersonAccount && newAccount.PersonMailingStreet != null;
+                newAccount.HadAddressonCreation__c = newAccount.IsPersonAccount && String.isNotEmpty(newAccount.PersonMailingStreet);
         }
     }
 
