@@ -66,8 +66,9 @@ Note: To be removed as soon as the PA Component on the Opp PL is functional.</de
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
-                <uiBehavior>Edit</uiBehavior>
+                <emptySpace>false</emptySpace>
+                <field>IsRepeat__c</field>
+                <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>

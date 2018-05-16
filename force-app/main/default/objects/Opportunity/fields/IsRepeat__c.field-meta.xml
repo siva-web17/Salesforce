@@ -5,6 +5,7 @@
     <externalId>false</externalId>
     <formula>Account.HasBooking__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicates if your customer has one or more other Opportunities in Stage Booking. This Booking could have been a CAX as well.</inlineHelpText>
     <label>Repeat Customer</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
