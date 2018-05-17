@@ -35,40 +35,25 @@ public class DcDiscardsHelper {
         dupcheck__dc3Duplicate__c
          WHERE (dupcheck__MatchObject__c IN : leadIdList
           OR dupcheck__SourceObject__c  IN : leadIdList)];
+        Set<Id> SourceMatchingIds=new Set<Id>();
         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
-            Boolean isSourceIsDifferent=false;
-            if(!duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
-            && !duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
-            {
-                duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c, new List<dupcheck__dc3Duplicate__c>());
-                if(duplicatepairRecord.dupcheck__MatchObject__c != duplicatepairRecord.dupcheck__SourceObject__c)
-                {
-                    isSourceIsDifferent=true;
-                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__SourceObject__c, new List<dupcheck__dc3Duplicate__c>());
-                }
-            }
-               LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
-               duplicatepairRecord.dupcheck__MatchObject__c;
-               duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord);
-               if(isSourceIsDifferent && duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c))
-               {
-                  LeadId = duplicatepairRecord.dupcheck__MatchObject__c;
-                  duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord); 
-               }
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__MatchObject__c);
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__SourceObject__c);
         }
+        System.debug('Total Leads we got '+leadIdList.size());
         for(Id LeadIdrec:leadIdList)
         {
-            If(duplicatepairViewCountMap.containskey(LeadIdrec))
+            If(!SourceMatchingIds.contains(LeadIdrec))
             {
-                    if(duplicatepairViewCountMap.get(LeadIdrec).size() <= 1)
-                    {
-                        LeadToUpdateSet.add(LeadIdrec);
-                    }
+                LeadToUpdateSet.add(LeadIdrec);
             }
         }
-        system.debug('records '+ duplicateList.size());
-       System.enqueueJob(new QueueClass(LeadToUpdateSet));
+        system.debug('leads we are updating '+ LeadToUpdateSet.size());
+        if(LeadToUpdateSet.size()>0)
+        {
+            System.enqueueJob(new QueueClass(LeadToUpdateSet));
+        }
     }
 	
     @future (callout=true)
