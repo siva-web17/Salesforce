@@ -245,4 +245,105 @@ private class InviteToCampaignTest {
         }
         Test.stopTest();
     }
+
+    @isTest
+    static void When_getInitialCampaignData_Expect_returnListSizeLimitedTo100AndOrderedByLastModifiedDate() {
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+
+            List<Campaign> campaigns = new List<Campaign>();
+            Integer numberOfRecords = 110;
+            String campaignName = 'test Campaign';
+
+            for (Integer i = 0; i < numberOfRecords; i++) {
+                Map<String, String> campaignValues = new Map<String, String>{
+
+                        'Market__c' => 'DEB',
+                        'Program__c' => 'AY',
+                        'Salesoffice__c' => 'DEB',
+                        'Status' => 'Active',
+                        'MeetingType__c' => 'ONM',
+                        'MeetingCity__c' => 'Berlin',
+                        'DateFrom__c' => String.valueOf(DateTime.now().addminutes(i)),
+                        'DateTo__c' => String.valueOf(DateTime.now().addminutes(i))
+                };
+                Campaign campaignRecord = TestDataFactory.createCampaign(campaignName + i, campaignValues, False);
+                campaigns.add(campaignRecord);
+            }
+            insert campaigns;
+
+            TestDataFactory.OpportunityBuilder oppBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = new Opportunity();
+            opp = (Opportunity) oppBuilder.withPersonAccount().getRecord();
+            opp.IsActive__c = true;
+            opp.Market__c = '';
+            opp.Program__c = '';
+            insert opp;
+
+            Datetime dateFrom = DateTime.now();
+
+            Test.startTest();
+
+            List<InviteToCampaign.CampaignWrapper> camp = InviteToCampaign.getInitialCampaignData(opp.Id, dateFrom);
+
+            Test.stopTest();
+
+            System.assert(camp.size() == 100, 'Limit 100 as expected');
+            System.assert(camp[50].objWrapperCampaign.DateFrom__c < camp[60].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[60].objWrapperCampaign.DateFrom__c < camp[70].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[70].objWrapperCampaign.DateFrom__c < camp[80].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+        }
+    }
+
+    @isTest
+    static void When_getCampaignsWithFilter_Expect_returnListSizeLimitedTo100AndOrderedByLastModifiedDate() {
+        User tAdminUser = [SELECT Id,Name FROM User WHERE alias = 'admnTU' LIMIT 1];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+
+            List<Campaign> campaigns = new List<Campaign>();
+            Integer numberOfRecords = 110;
+            String campaignName = 'test Campaign';
+
+            for (Integer i = 0; i < numberOfRecords; i++) {
+                Map<String, String> campaignValues = new Map<String, String>{
+
+                        'Market__c' => 'DEB',
+                        'Program__c' => 'AY',
+                        'Salesoffice__c' => 'DEB',
+                        'Status' => 'Active',
+                        'MeetingType__c' => 'ONM',
+                        'MeetingCity__c' => 'Berlin',
+                        'DateFrom__c' => String.valueOf(DateTime.now().addminutes(i)),
+                        'DateTo__c' => String.valueOf(DateTime.now().addminutes(i))
+                };
+                Campaign campaignRecord = TestDataFactory.createCampaign(campaignName + i, campaignValues, False);
+                campaigns.add(campaignRecord);
+            }
+            insert campaigns;
+
+            TestDataFactory.OpportunityBuilder oppBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = new Opportunity();
+            opp = (Opportunity) oppBuilder.withPersonAccount().getRecord();
+            opp.IsActive__c = true;
+            opp.Market__c = '';
+            opp.Program__c = '';
+            insert opp;
+
+            Datetime dateFrom= DateTime.now();
+            Datetime dateTo= DateTime.now().addYears(1);
+
+            Test.startTest();
+
+            List<InviteToCampaign.CampaignWrapper> camp = InviteToCampaign.getCampaignsWithFilter(opp.Id,null,null,null,null,dateFrom,dateTo);
+
+            Test.stopTest();
+
+            System.assert(camp.size() == 100, 'Limit 100 as expected');
+            System.assert(camp[50].objWrapperCampaign.DateFrom__c < camp[60].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[60].objWrapperCampaign.DateFrom__c < camp[70].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[70].objWrapperCampaign.DateFrom__c < camp[80].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+        }
+    }
 }
