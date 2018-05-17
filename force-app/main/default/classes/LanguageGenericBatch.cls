@@ -5,7 +5,7 @@ global class LanguageGenericBatch implements Database.Batchable<SObject>{
     global String strQuery;   
     
     //constructor
-    global LangGenericBatch(){
+    global LanguageGenericBatch(){
     	this.strQuery = 'Select Id, NumberOfCalls__c from Opportunity order by AccountId';    	    
     }    
     //start method
