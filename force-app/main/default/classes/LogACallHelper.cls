@@ -269,7 +269,6 @@ public with sharing class LogACallHelper {
         Task callTask = null;
         if(opportunities.size() > 0 && callResult != Label.CloseOpp && followupDatetime != NULL) {
             Opportunity opp = opportunities[0];
-            Task callTask = null;
             if(opp.Tasks.size() > 0) {
                 for(Task objTask:opp.Tasks){
                     if(objTask.RecordTypeId == systemCallTaskRecordTypeId && objTask.Type == TasksHelper.CALL){
