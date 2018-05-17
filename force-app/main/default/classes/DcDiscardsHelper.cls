@@ -12,6 +12,7 @@ Modification Log   :
  *                                                   WebServiceCallForRankingAfterFalseDupe
 *******************************************************************************/
 public class DcDiscardsHelper {
+    
     public static void notifyRankingAfterInsert(List<dupcheck__dcDiscard__c > dcDiscardList) {
         //This trigger will invoke once we click "Discard" button in the DC Tool and hit for ranking once we discard the record.
         system.debug('I am in dcdiscardhelper'+dcDiscardList);
