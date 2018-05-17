@@ -126,7 +126,7 @@ public with sharing class InviteToCampaign {
                 whereConditions.add('DateTo__c <= :dateto');
             }
 
-            query += ' WHERE ' + String.join(whereConditions, ' AND ') + ' ORDER BY LastModifiedDate LIMIT 100';
+            query += ' WHERE ' + String.join(whereConditions, ' AND ') + ' ORDER BY LastModifiedDate DESC LIMIT 100';
 
             System.debug('Query :' + query);
             System.debug('Sales Offices :' + lstOfSalesOffice);
@@ -188,7 +188,7 @@ public with sharing class InviteToCampaign {
                 whereConditions.add('DateFrom__c >= :datefrom');
             }
 
-            query += ' WHERE ' + String.join(whereConditions, ' AND ') + ' ORDER BY LastModifiedDate LIMIT 100';
+            query += ' WHERE ' + String.join(whereConditions, ' AND ') + ' ORDER BY LastModifiedDate DESC LIMIT 100';
 
             List<Campaign> campaignRecords = new List<campaign>();
             campaignRecords = Database.query(query);

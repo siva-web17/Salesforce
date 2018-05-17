@@ -252,11 +252,14 @@ private class InviteToCampaignTest {
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         system.runAs(tAdminUser) {
 
+            List<Campaign> campaignsFromTestSetup = [SELECT Id FROM Campaign];
+            delete  campaignsFromTestSetup;
+
             List<Campaign> campaigns = new List<Campaign>();
             Integer numberOfRecords = 110;
             String campaignName = 'test Campaign';
 
-            for (Integer i = 0; i < numberOfRecords; i++) {
+            for (Integer i = 1; i < numberOfRecords; i++) {
                 Map<String, String> campaignValues = new Map<String, String>{
 
                         'Market__c' => 'DEB',
@@ -290,9 +293,9 @@ private class InviteToCampaignTest {
             Test.stopTest();
 
             System.assert(camp.size() == 100, 'Limit 100 as expected');
-            System.assert(camp[50].objWrapperCampaign.DateFrom__c < camp[60].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
-            System.assert(camp[60].objWrapperCampaign.DateFrom__c < camp[70].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
-            System.assert(camp[70].objWrapperCampaign.DateFrom__c < camp[80].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[0].objWrapperCampaign.Name == 'test Campaign1');
+            System.assert(camp[1].objWrapperCampaign.Name == 'test Campaign2');
+            System.assert(camp[2].objWrapperCampaign.Name == 'test Campaign3');
         }
     }
 
@@ -302,11 +305,14 @@ private class InviteToCampaignTest {
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         system.runAs(tAdminUser) {
 
+            List<Campaign> campaignsFromTestSetup = [SELECT Id FROM Campaign];
+            delete  campaignsFromTestSetup;
+
             List<Campaign> campaigns = new List<Campaign>();
             Integer numberOfRecords = 110;
             String campaignName = 'test Campaign';
 
-            for (Integer i = 0; i < numberOfRecords; i++) {
+            for (Integer i = 1; i < numberOfRecords; i++) {
                 Map<String, String> campaignValues = new Map<String, String>{
 
                         'Market__c' => 'DEB',
@@ -341,9 +347,9 @@ private class InviteToCampaignTest {
             Test.stopTest();
 
             System.assert(camp.size() == 100, 'Limit 100 as expected');
-            System.assert(camp[50].objWrapperCampaign.DateFrom__c < camp[60].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
-            System.assert(camp[60].objWrapperCampaign.DateFrom__c < camp[70].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
-            System.assert(camp[70].objWrapperCampaign.DateFrom__c < camp[80].objWrapperCampaign.DateFrom__c, 'OrderBy LastModifiedDate');
+            System.assert(camp[0].objWrapperCampaign.Name == 'test Campaign1');
+            System.assert(camp[1].objWrapperCampaign.Name == 'test Campaign2');
+            System.assert(camp[2].objWrapperCampaign.Name == 'test Campaign3');
         }
     }
 }
