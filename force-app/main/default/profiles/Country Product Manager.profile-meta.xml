@@ -2605,6 +2605,11 @@
         <field>Account.HasBooking__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>Account.HasHappyCallTask__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.HasPhoneNumber__c</field>
