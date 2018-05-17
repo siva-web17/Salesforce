@@ -351,6 +351,13 @@
         <value>Country Of Birth</value>
     </labels>
     <labels>
+        <fullName>CreateActiveOpportunitiesQueueableChunkSize</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chunk size for queueable job</shortDescription>
+        <value>50</value>
+    </labels>
+    <labels>
         <fullName>CreateBookinDisplayMessage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -692,6 +699,13 @@
         <protected>false</protected>
         <shortDescription>HCC Task Type</shortDescription>
         <value>Call</value>
+    </labels>
+    <labels>
+        <fullName>Happy_Call</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Happy Call -</shortDescription>
+        <value>Happy Call -</value>
     </labels>
     <labels>
         <fullName>HasBooking</fullName>
@@ -1360,6 +1374,13 @@
         <protected>false</protected>
         <shortDescription>Not able to contact customer</shortDescription>
         <value>Not able to contact customer</value>
+    </labels>
+    <labels>
+        <fullName>Not_Started</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Started</shortDescription>
+        <value>Not Started</value>
     </labels>
     <labels>
         <fullName>OfficeVisit</fullName>
@@ -2056,6 +2077,13 @@
         <value>Completed</value>
     </labels>
     <labels>
+        <fullName>Task_Status_Deferred</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Task Status Deferred</shortDescription>
+        <value>Deferred</value>
+    </labels>
+    <labels>
         <fullName>TemplateBuilderCongaQueryId</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -2176,7 +2204,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ReportEnv</shortDescription>
-        <value>QA</value>
+        <value>LIVE</value>
     </labels>
     <labels>
         <fullName>Home_Pg_SP_Heading</fullName>
@@ -2257,5 +2285,13 @@
         <protected>false</protected>
         <shortDescription>Home_Pg_SP_RaiseCaseURL</shortDescription>
         <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
+    </labels>
+    <labels>
+        <fullName>LAC_SELECTED_CLOSEREASON</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
+        <value>Not able to contact customer</value>
     </labels>
 </CustomLabels>
