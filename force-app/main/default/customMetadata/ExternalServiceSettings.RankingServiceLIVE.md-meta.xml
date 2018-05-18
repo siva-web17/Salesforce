@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>EndPoint__c</field>
-        <value xsi:type="xsd:string">http://poseidonqa.eflangtech.com/RankingSFService/api/ranking</value>
+        <value xsi:type="xsd:string">https://poseidon.ef.com/RankingSFService/api/ranking</value>
     </values>
     <values>
         <field>Environment__c</field>
@@ -21,6 +21,10 @@
     <values>
         <field>IsSandbox__c</field>
         <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>SecurityToken__c</field>
+        <value xsi:type="xsd:string">bmFyZXNafoOmYT5hcmVz3ZXNhf02934jhDjdaA==</value>
     </values>
     <values>
         <field>ServiceName__c</field>

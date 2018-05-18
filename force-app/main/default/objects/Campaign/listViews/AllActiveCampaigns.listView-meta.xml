@@ -11,11 +11,12 @@
     <columns>Invited__c</columns>
     <columns>Attended__c</columns>
     <columns>MeetingSize__c</columns>
+    <columns>IsUP__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CAMPAIGN.STATUS</field>
         <operation>equals</operation>
         <value>Active</value>
     </filters>
-    <label>All Active Campaigns</label>
+    <label>All Active Info Meetings</label>
 </ListView>

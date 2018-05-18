@@ -21,6 +21,11 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>Duplicates</application>
+        <default>false</default>
+        <visible>false</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>Service_Cloud_Console</application>
         <default>false</default>
         <visible>false</visible>
@@ -700,6 +705,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CalloutHandlerMocks</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CampaignMemberTriggerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -860,10 +869,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ErrorTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Events</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -934,6 +939,10 @@
     <classAccesses>
         <apexClass>InviteToCampaignTest</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LanguageGenericBatch</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>LeadTriggerTest</apexClass>
@@ -1022,6 +1031,18 @@
     <classAccesses>
         <apexClass>PickListUtil</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonAccountSyncBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonAccountSyncBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PoseidonSyncService</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>PublicGroupsSelector</apexClass>
@@ -2605,6 +2626,11 @@
         <field>Account.HasBooking__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>Account.HasHappyCallTask__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.HasPhoneNumber__c</field>
@@ -2701,6 +2727,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.NumberOfUnreachedHappyCalls__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.NumberofOpportunities__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.OtherNationalities__c</field>
         <readable>true</readable>
@@ -2753,6 +2789,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.PoseidonCustomerId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.PoseidonSyncStatus__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3370,11 +3411,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
@@ -4427,6 +4464,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ExternalServiceSettings__mdt.SecurityToken__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ExternalServiceSettings__mdt.ServiceName__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -4758,6 +4800,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.IsByConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.IsCAMOnly__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5177,6 +5224,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>NoteMigration__c.IsByConversion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>NoteMigration__c.IsProcessed__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5188,6 +5240,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>NoteMigration__c.LeadId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>NoteMigration__c.Market__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5366,7 +5423,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.HomePhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5491,7 +5548,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5521,7 +5578,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.OtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8281,6 +8338,10 @@
         <recordType>Task.SystemCallTask</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
+     <tabVisibilities>
+        <tab>standard-report</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>AG_Action_Screen</tab>
         <visibility>DefaultOn</visibility>
@@ -8398,6 +8459,10 @@
         <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>Quote__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>SalesOfficeProgram__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -8483,7 +8548,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Opportunity</tab>
-        <visibility>DefaultOff</visibility>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Order</tab>
@@ -8541,6 +8606,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ChatterInternalUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterOwnGroups</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -1,95 +1,102 @@
 .THIS .slds-button_brand .slds-icon-text-default {
-  fill: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
 }
+
 .THIS .slds-path__scroller_inner .slds-icon-text-default {
-  fill: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
 }
 
 .THIS .text-alteration .slds-icon-text-default {
-  fill: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
 }
 
 .THIS .panel-display-none {
-  display: none !important;
+    display: none !important;
 }
 
 .THIS .fixedHeight {
-  min-height: 415px;
+    min-height: 415px;
 }
 
 .THIS .icon_color_black {
-  fill: rgb(112, 110, 107) !important;
+    fill: rgb(112, 110, 107) !important;
 }
 
 .THIS .icon_color_black .slds-icon-text-default {
-  fill: rgb(112, 110, 107) !important;
+    fill: rgb(112, 110, 107) !important;
 }
 
 .THIS textarea {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .THIS .customColor {
-  display: inline-block;
-  border-radius: .25rem;
-  background: #89c059 !important;
-  padding: 5px !important;
+    display: inline-block;
+    border-radius: .25rem;
+    background: #89c059 !important;
+    padding: 5px !important;
 }
 
 .THIS .customColor .slds-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: white;
 }
 
 .THIS .customGreen {
-  background: #89c059;
-  padding: 4px 7px 7px;
+    background: #ED2893;
+    padding: 0px 5px 4px;
+    border-radius: .125rem;
 }
 
 .THIS .customGreen .slds-icon-text-default {
-  fill: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
 }
 
 .THIS .customGreen .slds-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  fill: rgb(230, 230, 230);
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: rgb(230, 230, 230);
 }
 
 .THIS .overllappingElement {
-  position: relative;
+    position: relative;
 }
 
 .THIS .overllappingElement .slds-form-element.lightningInput {
-  position: absolute;
-  width: 100%;
+    position: absolute;
+    width: 100%;
 }
 
 .THIS .overllappingElement .slds-form_compound {
-  position: absolute;
-  right: 10px;
-  top: 25px;
+    position: absolute;
+    right: 10px;
+    top: 25px;
 }
 
 .THIS .overllappingElement .uiOutputURL {
-          white-space: nowrap;
-          position: absolute;
-          left: -250px;
-          top: 2px;
-      }
+    white-space: nowrap;
+    position: absolute;
+    left: -250px;
+    top: 2px;
+}
+
 .THIS .otherNationality .slds-picklist {
     width: 100% !important;
 }
-      .THIS .otherNationality .slds-picklist button {
-          width: 100% !important;
-          height: 33px;
-          margin-top: 2px;
-      }
 
-      .THIS  .overllappingElement .slds-input,.THIS  .overllappingElement .slds-input:hover, .THIS  .overllappingElement .slds-input:focus, .THIS  .overllappingElement .slds-input:active {
-          border: none;
-          background: transparent;
-          box-shadow: none;
-          line-height: 0;
-      }
+.THIS .otherNationality .slds-picklist button {
+    width: 100% !important;
+    height: 33px;
+    margin-top: 2px;
+}
+
+.THIS .overllappingElement .slds-input,
+.THIS .overllappingElement .slds-input:hover,
+.THIS .overllappingElement .slds-input:focus,
+.THIS .overllappingElement .slds-input:active {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    line-height: 0;
+}

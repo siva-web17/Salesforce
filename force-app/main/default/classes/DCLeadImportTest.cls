@@ -1,15 +1,14 @@
-/**
- * Created by suresha.shettigar on 6/1/2017.
- */
-
 @isTest(SeeAllData=false)
 
 
 private class DCLeadImportTest {   
     
-     static testMethod void testrule12() {
-        Test.startTest();
+     @isTest
+     static void testrule12() {
         system.runAs(TestDataUtil.createUserRecord()) {
+            
+            Test.startTest();
+            
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -27,15 +26,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule13() {
-        Test.startTest();
+    @isTest
+    static void testrule13() {
         system.runAs(TestDataUtil.createUserRecord()) {
+            
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -53,15 +53,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-     static testMethod void testrule17() {
-        Test.startTest();
+    @isTest
+    static void testrule17() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -78,12 +79,12 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-     static testMethod void testNoDupe() {
+    
+    @isTest
+    static void testNoDupe() {
         
         system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
@@ -104,19 +105,21 @@ private class DCLeadImportTest {
             duplicateIncomingLeads.add(dataSet1);
             duplicateIncomingLeads.clear();
             objectData.put('001P', duplicateIncomingLeads);
-           test.startTest();
+           
+            test.startTest();
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             test.stopTest();
-             }
+        }
     }  
     
         
-    static testMethod void testrule19() {
-        Test.startTest();
+    @isTest
+    static void testrule19() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -137,14 +140,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-     static testMethod void testforphonescenarioone() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenarioone() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -165,14 +170,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-     static testMethod void testforphonescenariotwo() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenariotwo() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -193,14 +200,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforphonescenariothree() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenariothree() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -221,14 +230,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-        static testMethod void testforphonescenarioFour() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenarioFour() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -249,14 +260,17 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-        static testMethod void testforphonescenarioFive() {
-        Test.startTest();
+    
+
+    @isTest
+    static void testforphonescenarioFive() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -277,14 +291,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforphonescenariosix() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenariosix() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -305,14 +321,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforphonescenarioseven() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenarioseven() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -333,14 +351,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforphonescenarioeight() {
-        Test.startTest();
+    
+    @isTest
+    static void testforphonescenarioeight() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -361,14 +381,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-        static testMethod void testforEmailscenarioone() {
-        Test.startTest();
+    
+    @isTest
+    static void testforEmailscenarioone() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -389,11 +411,15 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
             Test.stopTest();
-             }
+        }
     }
-        static testMethod void testforEmailscenarioTwo() {
-        Test.startTest();
+    
+    @isTest
+    static void testforEmailscenarioTwo() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -414,11 +440,15 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforEmailscenarioThree() {
-        Test.startTest();
+    
+    @isTest
+    static void testforEmailscenarioThree() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -439,11 +469,15 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testforEmailscenarioFour() {
-        Test.startTest();
+    
+    @isTest
+    static void testforEmailscenarioFour() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -464,77 +498,16 @@ private class DCLeadImportTest {
             objectData.put('001P', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);            
             Test.stopTest();
-             }
+        }
     }
+ 
     
- /*   static testMethod void testrule4() {
-        Test.startTest();
+    @isTest
+    static void testrule6() {
         system.runAs(TestDataUtil.createUserRecord()) {
-            List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
-            List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
-            lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead.InsertTime__c=system.now();
-            insert newlead;
+            Test.startTest();
 
-            DateTime newDateTime = system.now().addyears(3).addHours(3);
-            DateTime newDateTime2 = system.now().addyears(3).addHours(10);
-             ContentNote cn = new ContentNote();
-              cn.Title = 'sample name';               
-              cn.Content = Blob.valueOf('Sample string');
-              insert cn;
-               ContentDocumentLink link2 = new ContentDocumentLink();
-                link2.ContentDocumentId = cn.id;
-                link2.LinkedEntityId = newLead.id;
-                link2.ShareType = 'V';
-                link2.Visibility = 'AllUsers';
-                insert link2;
-           
-            event objEvent = new Event();
-            objEvent.whoid = newLead.id;
-            objEvent.DurationInMinutes = 5;
-            objEvent.subject = 'call';
-            objEvent.ActivityDateTime=system.now();
-            insert objEvent;
-
-            Map<String,String> campaignValues = new Map<String,String>{
-
-                    'Market__c'=>'DEB',
-                    'Program__c'=>'AY',
-                    'Salesoffice__c'=>'DEB',
-                    'Status'=>'Active',
-                    'MeetingType__c'=>'ONM',
-                    'MeetingCity__c'=>'Berlin',
-                    'DateFrom__c'=>String.valueOf(DateTime.now().addminutes(5)),
-                    'DateTo__c'=>String.valueOf(DateTime.now().addminutes(20))
-            };
-
-           Campaign campaignRecord= TestDataFactory.createCampaign('test Campaign',campaignValues,TRUE);
-           campaignmember objcampaignmember = new campaignmember();
-           objcampaignmember.campaignid = campaignRecord.id;
-           objcampaignmember.leadid = newlead.id;
-           insert objcampaignmember;
-          
-            lead newlead1 = DCTestDataUtil.DynamicinsertAnotherSetOfLeadRecord('testfirstname','testlastname','testcity','ghjgj','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
-            newlead1.InsertTime__c=datetime.now()-1;
-            insert  newlead1;
-            Map<String, Object> objectData = new Map<String, Object>();
-            List<Object> duplicateIncomingLeads = new List<Object>();
-            dupcheck.dc3SearchResult dataSet1 = new dupcheck.dc3SearchResult();
-            dataSet1.objectData = (Sobject) newlead1;
-            duplicateIncomingLeads.add(dataSet1);
-            objectData.put('00Q', duplicateIncomingLeads);
-            DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
-
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
-            Test.stopTest();
-             }
-    }*/
-    
-    static testMethod void testrule6() {
-        Test.startTest();
-        system.runAs(TestDataUtil.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -552,15 +525,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule7() {
-        Test.startTest();
+    @isTest
+    static void testrule7() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -578,15 +552,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule8() {
-        Test.startTest();
+    @isTest
+    static void testrule8() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -604,15 +579,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule9() {
-        Test.startTest();
+    @isTest
+    static void testrule9() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -630,15 +606,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule20() {
-        Test.startTest();
+    @isTest
+    static void testrule20() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -661,18 +638,18 @@ private class DCLeadImportTest {
             //duplicateAccount.add(dataSet2);
             objectData.put('00Q', duplicateIncomingLeads);
             
-            //objectData.put('001P',duplicateAccount);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule21() {
-        Test.startTest();
+    @isTest
+    static void testrule21() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -690,15 +667,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule25() {
-        Test.startTest();
+    @isTest
+    static void testrule25() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -716,15 +694,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule26() {
-        Test.startTest();
+    @isTest
+    static void testrule26() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -742,15 +721,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-     static testMethod void testrule27() {
-        Test.startTest();
+    @isTest
+    static void testrule27() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -768,15 +748,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule28() {
-        Test.startTest();
+    @isTest
+    static void testrule28() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -794,15 +775,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule31() {
-        Test.startTest();
+    @isTest
+    static void testrule31() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -820,14 +802,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testrule32() {
-        Test.startTest();
+    
+    @isTest
+    static void testrule32() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -845,15 +829,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule33() {
-        Test.startTest();
+    @isTest
+    static void testrule33() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -871,15 +856,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule36() {
-        Test.startTest();
+    @isTest
+    static void testrule36() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -897,15 +883,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
     
-    static testMethod void testrule37() {
-        Test.startTest();
+    @isTest
+    static void testrule37() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','teststreet','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
@@ -922,11 +909,15 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
             Test.stopTest();
-             }
+        }
     }
-     static testMethod void testForEmailMatch() {
-        Test.startTest();
+    
+    @isTest
+    static void testForEmailMatch() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
             lead newlead = DCTestDataUtil.DynamicinsertNewLeadRecords('testfirstname','testlastname','testcity','','560048','9723445332','7744666333','9954777444','testtritonid','student1@email.com','student2@email.com','testregion',system.today());
@@ -945,9 +936,13 @@ private class DCLeadImportTest {
             Test.stopTest();
              }
     }
-     static testMethod void testForAccountAddress() {
-        Test.startTest();
+
+    @isTest
+    static void testForAccountAddress() {
         system.runAs(TestDataUtil.createUserRecord()) {
+            
+            Test.startTest();
+            
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -968,11 +963,16 @@ private class DCLeadImportTest {
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testrule29() {
-        Test.startTest();
+    
+    @isTest
+    static void testrule29() {
+        
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -990,14 +990,16 @@ private class DCLeadImportTest {
             objectData.put('00Q', duplicateIncomingLeads);
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
-            //DCBusinessHelpher.ProcessAfterMergeorConvert(MergableLeadsWithRules,existingLead,null,null,null);
-            // DCBusinessHandler.ProcessDCSearchPlugin('ON_UPLOAD',LDList[1].id,objectData);
             Test.stopTest();
-             }
+        }
     }
-         static testMethod void testrule29foraccount() {
-        Test.startTest();
+    
+    @isTest
+    static void testrule29foraccount() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -1022,12 +1024,15 @@ private class DCLeadImportTest {
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             Test.stopTest();
-             }
+        }
     }
     
-         static testMethod void testForAccountstreet() {
-        Test.startTest();
+    @isTest
+    static void testForAccountstreet() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -1051,11 +1056,16 @@ private class DCLeadImportTest {
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             Test.stopTest();
-             }
+        }
     }
-    static testMethod void testForAccountPostalCode() {
-        Test.startTest();
+    
+
+    @isTest
+    static void testForAccountPostalCode() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -1079,11 +1089,16 @@ private class DCLeadImportTest {
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             Test.stopTest();
-             }
+        }
     }
-        static testMethod void testForAccountforSalesClosed() {
-        Test.startTest();
+    
+
+    @isTest
+    static void testForAccountforSalesClosed() {
         system.runAs(TestDataUtil.createUserRecord()) {
+
+            Test.startTest();
+
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -1107,9 +1122,10 @@ private class DCLeadImportTest {
             DCSearchPlugin.processResults('ON_UPLOAD;', newlead.id, objectData);
 
             Test.stopTest();
-             }
+        }
     }
-   public static Opportunity createOpportunityForAccount(String strAccountId,String strOpportunityName, Map<String, String> mFieldNameToVal, boolean doInsert,string market,string program,date closeDate,string stageName) {
+
+    public static Opportunity createOpportunityForAccount(String strAccountId,String strOpportunityName, Map<String, String> mFieldNameToVal, boolean doInsert,string market,string program,date closeDate,string stageName) {
         Opportunity tOpp = new Opportunity();
         tOpp.name = strOpportunityName;
         tOpp.AccountId= strAccountId;
@@ -1138,6 +1154,8 @@ private class DCLeadImportTest {
             insert tOpp;
         return tOpp;
     }
+
+
 
      
     

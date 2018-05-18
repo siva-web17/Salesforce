@@ -3,7 +3,7 @@
     <fullName>IsParentSynchedToPoseidon__c</fullName>
     <description>Used for Sending Family Details to Poseidon only if the related Account has Parent details.</description>
     <externalId>false</externalId>
-    <formula>Account.IsSyncedToPoseidon__c</formula>
+    <formula>Account.IsSyncedToPoseidon__c || Account.HasBooking__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Is Parent Synched To Poseidon</label>
     <type>Checkbox</type>

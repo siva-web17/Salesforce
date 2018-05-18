@@ -1783,7 +1783,6 @@
         <isActive>false</isActive>
         <label>WWC</label>
     </customValue>
->
     <customValue>
         <fullName>IALDM</fullName>
         <default>false</default>

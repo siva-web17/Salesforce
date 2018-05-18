@@ -4,7 +4,7 @@
     <defaultValue>0</defaultValue>
     <description>Stores number of consecutive unreached calls. Calculated by trigger. Used to check if we can close opportunity after number of unreached calls</description>
     <externalId>false</externalId>
-    <label>Number Of Unreached Calls</label>
+    <label>Consecutive Number Of Unreached Calls</label>
     <precision>5</precision>
     <required>false</required>
     <scale>0</scale>
