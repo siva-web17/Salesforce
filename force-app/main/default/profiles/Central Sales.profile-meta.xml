@@ -3732,6 +3732,11 @@
         <field>Contact.IsByConversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.IsPseudonymised__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Jigsaw</field>
