@@ -680,6 +680,13 @@
         <value>Gender</value>
     </labels>
     <labels>
+        <fullName>HCCTaskCreatorBatchNoOfDaysParameter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Task Creator Batch Number Of Days Parameter</shortDescription>
+        <value>2</value>    
+    </labels>
+    <labels>
         <fullName>HCC</fullName>
         <language>en_US</language>
         <protected>false</protected>
