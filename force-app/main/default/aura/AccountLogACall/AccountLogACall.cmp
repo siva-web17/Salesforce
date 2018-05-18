@@ -172,6 +172,7 @@
                         <lightning:recordEditForm class="{!and(v.selectedActionType == $Label.c.CallReached,v.selectedCallResult == $Label.c.CallBack) ? 'slds-size_1-of-1' : 'slds-size_1-of-1 slds-hide'}" aura:id="recordEditForm" objectApiName="Opportunity" onsuccess="{!c.oppModalOnSuccess}" onerror="{!c.oppModalOnError}">
 
                             <div class="slds-size_1-of-2 slds-float--left slds-p-around_small slds-p-top_none">
+                                <lightning:inputField fieldName="Market__c" value="{!v.account.Market__c}" hidden='true'/>
                                 <lightning:inputField fieldName="Program__c" aura:id="requiredProgram" onchange="{!c.programChanged}"/>
                             </div>
 
@@ -180,7 +181,6 @@
                             </div>
                             <div class="slds-hide">
                                 <lightning:inputField fieldName="Source__c" value="{!v.ExPaxSourceId}"/>
-                                <lightning:inputField fieldName="Market__c" value="{!v.account.Market__c}"/>
                                 <lightning:inputField fieldName="CurrencyIsoCode" value="{!v.account.CurrencyIsoCode}"/>
                                 <lightning:inputField fieldName="AccountId" value="{!v.recordId}"/>
                                 <lightning:inputField fieldName="SendBrochure__c" value='{!true}'/>
