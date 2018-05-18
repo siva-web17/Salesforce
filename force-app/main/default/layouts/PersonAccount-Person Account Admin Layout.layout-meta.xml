@@ -47,11 +47,7 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PersonBirthdate</field>
-            </layoutItems>
-        <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsPseudonymised__pc</field>
-            </layoutItems>    
+            </layoutItems>        
                 </layoutColumns>
         <layoutColumns>
             <layoutItems>
