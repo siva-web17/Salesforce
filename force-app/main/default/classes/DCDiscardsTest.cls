@@ -54,33 +54,6 @@ public class DCDiscardsTest {
             );
             insert dcGroup;
 
-            List<dupcheck__dc3Duplicate__c> dc3DuplicateList = new List<dupcheck__dc3Duplicate__c>();
-            dupcheck__dc3Duplicate__c dupcheckDuplicate1 = new dupcheck__dc3Duplicate__c(
-                    dupcheck__MatchObject__c = leadList[0].Id,
-                    dupcheck__SourceObject__c = leadList[1].Id,
-                    dupcheck__Display__c = FALSE,
-                    dupcheck__doNotCount__c = FALSE,
-                    dupcheck__handled__c = FALSE,
-                    dupcheck__HasError__c = FALSE,
-                    dupcheck__Score__c = 2,
-                    dupcheck__dcJob__c = dcJob.Id,
-                    dupcheck__dcGroup__c = dcGroup.Id
-            );
-            dupcheck__dc3Duplicate__c dupcheckDuplicate2 = new dupcheck__dc3Duplicate__c(
-                    dupcheck__MatchObject__c = leadList[2].Id,
-                    dupcheck__SourceObject__c = leadList[3].Id,
-                    dupcheck__Display__c = FALSE,
-                    dupcheck__doNotCount__c = FALSE,
-                    dupcheck__handled__c = FALSE,
-                    dupcheck__HasError__c = FALSE,
-                    dupcheck__Score__c = 2,
-                    dupcheck__dcJob__c = dcJob.Id,
-                    dupcheck__dcGroup__c = dcGroup.Id
-            );
-            dc3DuplicateList.add(dupcheckDuplicate1);
-            dc3DuplicateList.add(dupcheckDuplicate2);
-            insert dc3DuplicateList;
-
             Set<Id> dupcheckDiscardsIds = new Set<Id>();
             List<dupcheck__dcDiscard__c> dcDiscards = new List<dupcheck__dcDiscard__c>();
 
@@ -150,33 +123,6 @@ public class DCDiscardsTest {
             );
             insert dcGroup;
 
-            List<dupcheck__dc3Duplicate__c> dc3DuplicateList = new List<dupcheck__dc3Duplicate__c>();
-            dupcheck__dc3Duplicate__c dupcheckDuplicate1 = new dupcheck__dc3Duplicate__c(
-                    dupcheck__MatchObject__c = leadList[0].Id,
-                    dupcheck__SourceObject__c = leadList[1].Id,
-                    dupcheck__Display__c = FALSE,
-                    dupcheck__doNotCount__c = FALSE,
-                    dupcheck__handled__c = FALSE,
-                    dupcheck__HasError__c = FALSE,
-                    dupcheck__Score__c = 2,
-                    dupcheck__dcJob__c = dcJob.Id,
-                    dupcheck__dcGroup__c = dcGroup.Id
-            );
-            dupcheck__dc3Duplicate__c dupcheckDuplicate2 = new dupcheck__dc3Duplicate__c(
-                    dupcheck__MatchObject__c = leadList[2].Id,
-                    dupcheck__SourceObject__c = leadList[3].Id,
-                    dupcheck__Display__c = FALSE,
-                    dupcheck__doNotCount__c = FALSE,
-                    dupcheck__handled__c = FALSE,
-                    dupcheck__HasError__c = FALSE,
-                    dupcheck__Score__c = 2,
-                    dupcheck__dcJob__c = dcJob.Id,
-                    dupcheck__dcGroup__c = dcGroup.Id
-            );
-            dc3DuplicateList.add(dupcheckDuplicate1);
-            dc3DuplicateList.add(dupcheckDuplicate2);
-            insert dc3DuplicateList;
-
             Set<Id> dupcheckDiscardsIds = new Set<Id>();
             List<dupcheck__dcDiscard__c> dcDiscards = new List<dupcheck__dcDiscard__c>();
 
@@ -186,13 +132,11 @@ public class DCDiscardsTest {
             dcDiscards.add(dupcheckDiscard2);
             insert dcDiscards;
 
-
             //when
             Test.startTest();
             Test.setMock(HttpCalloutMock.class, new CalloutHandlerMocks.CallForRankingMock(leadList));
             DcDiscardsHelper.WebServiceCallForRankingAfterFalseDupe(leadIds);
             Test.stopTest();
-
 
             //then
             leadList = [
@@ -213,7 +157,7 @@ public class DCDiscardsTest {
         dupcheck__dcDiscard__c dupcheckdiscard = new dupcheck__dcDiscard__c(
                 dupcheck__objectA__c =objectA,
                 dupcheck__Relation__c='Duplicate',
-                dupcheck__objectB__c = objectA,
+                dupcheck__objectB__c = objectB,
                 dupcheck__recordA__c= objectA,
                 dupcheck__recordB__c= objectB
         );
