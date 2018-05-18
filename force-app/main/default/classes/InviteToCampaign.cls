@@ -250,6 +250,7 @@ public with sharing class InviteToCampaign {
         }
         catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'InviteToCampaign', 'AddCampaigns', null);
+            throw new AuraHandledException('This opportunity is already a member of the selected meeting');
         }
     }
 
