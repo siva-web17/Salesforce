@@ -3002,6 +3002,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>false</editable>
+        <field>Booking__c.Attainedlevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.BalanceDue__c</field>
         <readable>true</readable>
@@ -3062,6 +3067,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>false</editable>
+        <field>Booking__c.OverAllSatisfied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.PosBookingNumber__c</field>
         <readable>false</readable>
@@ -3087,6 +3097,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>false</editable>
+        <field>Booking__c.RecommendFriend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.SalesOffice__c</field>
         <readable>true</readable>
@@ -3099,6 +3114,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.SubStatus__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+       <editable>false</editable>
+        <field>Booking__c.TravelAgain__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
