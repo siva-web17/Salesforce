@@ -13,10 +13,10 @@ public class AccountsSelector {
 
     public static Account getAccountOnId(Id accountId) { 
         return [
-                select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
+                select id,Name,FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
                         PersonMailingStreet, RecalculateRanking__c, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
                         PersonOtherPhone,PersonBirthdate,Market__c,Region__c,
-                        HasBooking__c
+                        HasBooking__c, NumberOfUnreachedHappyCalls__c,CurrencyIsoCode,DoNotCall__c
                 from Account
                 where Id = :accountId
                 limit 1
