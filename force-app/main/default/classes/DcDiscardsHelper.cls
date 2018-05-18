@@ -12,22 +12,64 @@ Modification Log   :
  *                                                   WebServiceCallForRankingAfterFalseDupe
 *******************************************************************************/
 public class DcDiscardsHelper {
+    
     public static void notifyRankingAfterInsert(List<dupcheck__dcDiscard__c > dcDiscardList) {
         //This trigger will invoke once we click "Discard" button in the DC Tool and hit for ranking once we discard the record.
         system.debug('I am in dcdiscardhelper'+dcDiscardList);
         set<Id> leadIdList = new set<Id>();
         for (dupcheck__dcDiscard__c discardedItem : dcDiscardList) {
              Id leadId = discardedItem.dupcheck__objectA__c;
+             Id LeadObjBId=discardedItem.dupcheck__objectB__c;
             if(leadId.getSObjectType() == Lead.getSObjectType()){
                leadIdList.add(leadId);
             }
+            if(LeadObjBId.getSObjectType() == Lead.getSObjectType())
+            {
+                leadIdList.add(LeadObjBId);
+            }
         }
-         List<Lead> leadUpdateList = new List<Lead>();
-        leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
-        for (Lead lead : leadUpdateList) {
-            lead.IsDupe__c = false;           
+         Set<Id> LeadToUpdateSet = new Set<Id>();
+        Id LeadId;
+        Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap = new  Map<Id,List<dupcheck__dc3Duplicate__c>>();
+        List<dupcheck__dc3Duplicate__c> duplicateList = 
+        [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
+        dupcheck__dc3Duplicate__c
+         WHERE (dupcheck__MatchObject__c IN : leadIdList
+          OR dupcheck__SourceObject__c  IN : leadIdList)];
+        for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
+        {
+            Boolean isSourceIsDifferent=false;
+            if(!duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
+            && !duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
+            {
+                duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c, new List<dupcheck__dc3Duplicate__c>());
+                if(duplicatepairRecord.dupcheck__MatchObject__c != duplicatepairRecord.dupcheck__SourceObject__c)
+                {
+                    isSourceIsDifferent=true;
+                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__SourceObject__c, new List<dupcheck__dc3Duplicate__c>());
+                }
+            }
+               LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
+               duplicatepairRecord.dupcheck__MatchObject__c;
+               duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord);
+               if(isSourceIsDifferent && duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c))
+               {
+                  LeadId = duplicatepairRecord.dupcheck__MatchObject__c;
+                  duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord); 
+               }
         }
-       System.enqueueJob(new QueueClass(leadIdList));
+        for(Id LeadIdrec:leadIdList)
+        {
+            If(duplicatepairViewCountMap.containskey(LeadIdrec))
+            {
+                    if(duplicatepairViewCountMap.get(LeadIdrec).size() <= 1)
+                    {
+                        LeadToUpdateSet.add(LeadIdrec);
+                    }
+            }
+        }
+        system.debug('records '+ duplicateList.size());
+       System.enqueueJob(new QueueClass(LeadToUpdateSet));
     }
 	
     @future (callout=true)
@@ -43,7 +85,7 @@ public class DcDiscardsHelper {
             if(leadIdAndRankMap.containskey(objLead.id) && leadIdAndRankMap.get(objLead.id)!=null){
                 objLead.ranking__c = leadIdAndRankMap.get(objLead.id);
                 objLead.IsDupe__c  = false;
-                objLead.readyforranking__c = true;
+                objLead.IsDupeProcessed__c  = true;
             }
         }
         try{
