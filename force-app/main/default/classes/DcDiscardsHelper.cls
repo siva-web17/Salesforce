@@ -12,6 +12,7 @@ Modification Log   :
  *                                                   WebServiceCallForRankingAfterFalseDupe
 *******************************************************************************/
 public class DcDiscardsHelper {
+    
     public static void notifyRankingAfterInsert(List<dupcheck__dcDiscard__c > dcDiscardList) {
         //This trigger will invoke once we click "Discard" button in the DC Tool and hit for ranking once we discard the record.
         system.debug('I am in dcdiscardhelper'+dcDiscardList);
@@ -33,8 +34,8 @@ public class DcDiscardsHelper {
         List<dupcheck__dc3Duplicate__c> duplicateList = 
         [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
         dupcheck__dc3Duplicate__c
-         WHERE (dupcheck__MatchObject__c IN leadIdList
-          OR dupcheck__SourceObject__c  IN leadIdList)];
+         WHERE (dupcheck__MatchObject__c IN : leadIdList
+          OR dupcheck__SourceObject__c  IN : leadIdList)];
         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
             Boolean isSourceIsDifferent=false;
@@ -53,7 +54,7 @@ public class DcDiscardsHelper {
                duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord);
                if(isSourceIsDifferent && duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c))
                {
-                  LeadId=duplicatepairViewCountMap.get(duplicatepairRecord.dupcheck__MatchObject__c);
+                  LeadId = duplicatepairRecord.dupcheck__MatchObject__c;
                   duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord); 
                }
         }
