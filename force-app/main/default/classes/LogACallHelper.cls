@@ -175,7 +175,7 @@ public with sharing class LogACallHelper {
                                 lead.Program__c = selectedProgram;
                                 update lead;
                             }
-                        }    
+                        }
                     }
                 }
 
@@ -276,7 +276,7 @@ public with sharing class LogACallHelper {
                         callTask = objTask;
                     }
                 }
-                
+
                 if(callTask == null){
                     System.debug('Created a new Task');
                     callTask = OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opp);

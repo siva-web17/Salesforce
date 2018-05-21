@@ -263,8 +263,7 @@ public class OpportunitiesSelector {
     * @return Returns list of opportunities with Tasks
     * */
     public static List<Opportunity> getOpportunitiesByIdsWithTasks(List<id> opportunityIds) {
-        return [
-                SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, 
+        return [SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, 
             	SentBrochures__c, HasSystemCallTask__c, Account.PersonBirthdate, NumberOfUnreachedCalls__c,
             	StageName, Product__c, Program__c, FirstContactDateTime__c,
             	(SELECT Id, ActivityDate, SalesAction__c, IsTaskCallReached__c, WhatId, Program__c, IsClosed, Subject,Status,
@@ -377,7 +376,7 @@ public class OpportunitiesSelector {
         return [Select Id,Program__c from Opportunity where id in:taskMap.keySet()];
     }
      public static map<id,string> getOpportunityStageNameForList(set<id> opportunityRecord) {
-       
+
             map<id,string> opportunityIDAndStageMap = new Map<id,string>();
             String previousOpportunityStageName;
             system.debug('StageHistory>>>'+[Select id,opportunityid,opportunity.FirstContactDateTime__c,StageName from OpportunityHistory where opportunityid in:opportunityRecord and Opportunity.StageName=:Label.Salesclosed]);
@@ -387,15 +386,15 @@ public class OpportunitiesSelector {
                     (oppHistory.opportunityid, (oppHistory.opportunity.FirstContactDateTime__c != null) ? label.OpportunityStageFollowUp : oppHistory.StageName);
                 }
             }
-        
+
         return opportunityIDAndStageMap;
     }
-    
+
     public static map<id,opportunity> getLatestEventForOpportunityOrderByCreatedDate(set<id> opportunityID){
         map<id,opportunity> OpportunityEventsMap = new map<id,opportunity>([select id,program__c,FirstContactDateTime__c,LastAutomationUpdateDateTime__c,CloseDate,TimeOutDate__c,RecalculateRanking__c,StageName,(select id,program__c,type,whatid from events order by createddate desc) from opportunity where id in:opportunityID]);
         return OpportunityEventsMap;
     }
-    
+
      public static List<Opportunity> getOpportunityWithTasksOrderByCreatedDate(Opportunity oppRecord){
         return [
             SELECT
@@ -403,6 +402,6 @@ public class OpportunitiesSelector {
                     SELECT id,salesaction__c,taskSubType,isclosed,recordtypeid from tasks order by createddate desc
             )
             FROM opportunity
-            WHERE ID=:oppRecord.id And isactive__c=true];    
+            WHERE ID=:oppRecord.id And isactive__c=true];
     }
 }

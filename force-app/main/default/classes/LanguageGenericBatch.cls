@@ -1,16 +1,20 @@
 //This batch is generic, its code can be changed for executing one off data update jobs 
+
 global class LanguageGenericBatch implements Database.Batchable<SObject>{      
 
     //properties
     global String strQuery;   
-           
+    
     //constructor
+
     global LanguageGenericBatch(){    
         this.strQuery = 'select Id,NumberOfCalls__c,(Select Id,SalesAction__c,TaskSubType,IsClosed,RecordTypeId from Tasks order by CreatedDate desc) from Opportunity'; 
+
     }    
     //start method
     global Database.QueryLocator start(Database.BatchableContext context){        
          return Database.getQueryLocator(this.strQuery); 
+
     }    
     //execute method
     global void execute(Database.BatchableContext context, List<SObject> scope){ 
@@ -33,6 +37,7 @@ global class LanguageGenericBatch implements Database.Batchable<SObject>{
                     'LanguageGenericBatch', 'execute', null);
         }
     }    
+
     //finish method
     global void finish(Database.BatchableContext context){    
     }
