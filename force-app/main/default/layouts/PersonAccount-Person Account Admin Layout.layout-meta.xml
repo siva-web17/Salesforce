@@ -187,7 +187,7 @@
             <actionName>Account.NewOpportunity</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
-        </platformActionListItems>
+      </platformActionListItems>
 	 <platformActionListItems>
             <actionName>Account.PseudonymiseAction</actionName>
             <actionType>QuickAction</actionType>

@@ -143,6 +143,10 @@
             <inputField>Partner__c</inputField>
             <outputField>Partner__c</outputField>
         </mappingFields>
+		<mappingFields>
+            <inputField>RecalculateRanking__c</inputField>
+            <outputField>RecalculateRanking__c</outputField>
+        </mappingFields>
         <mappingFields>
             <inputField>InterestedToTravelInGroup__c</inputField>
             <outputField>InterestedToTravelInGroup__c</outputField>

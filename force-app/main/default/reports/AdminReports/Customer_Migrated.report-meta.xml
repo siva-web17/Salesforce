@@ -22,9 +22,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>SITE</field>
     </columns>
     <columns>
@@ -107,12 +104,6 @@
     </columns>
     <columns>
         <field>PC_LAST_NAME</field>
-    </columns>
-    <columns>
-        <field>PC_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>PC_LAST_NAME_LOCAL</field>
     </columns>
     <columns>
         <field>PC_TITLE</field>
@@ -448,15 +439,6 @@
         <field>Contact.IsByConversion__c</field>
     </columns>
     <columns>
-        <field>Contact.et4ae5__Mobile_Country_Code__c</field>
-    </columns>
-    <columns>
-        <field>Contact.et4ae5__HasOptedOutOfMobile__c</field>
-    </columns>
-    <columns>
-        <field>Contact.OtherNationalities__c</field>
-    </columns>
-    <columns>
         <field>Account.PoseidonCustomerId__c</field>
     </columns>
     <columns>
@@ -475,16 +457,7 @@
         <field>Account.TotalBooking__c</field>
     </columns>
     <columns>
-        <field>User.et4ae5__Default_MID__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__ExactTarget_OAuth_Token__c</field>
-    </columns>
-    <columns>
         <field>User.DefaultMarket__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__Default_ET_Page__c</field>
     </columns>
     <columns>
         <field>User.dupcheck__dc3DisableDuplicateCheck__c</field>
@@ -499,15 +472,6 @@
         <field>User.IsByConversion__c</field>
     </columns>
     <columns>
-        <field>User.et4ae5__ExactTargetForAppExchangeAdmin__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__ExactTargetForAppExchangeUser__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__ExactTargetUsername__c</field>
-    </columns>
-    <columns>
         <field>User.PosUserId__c</field>
     </columns>
     <columns>
@@ -515,12 +479,6 @@
     </columns>
     <columns>
         <field>User.TF_Default_Market__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__ValidExactTargetAdmin__c</field>
-    </columns>
-    <columns>
-        <field>User.et4ae5__ValidExactTargetUser__c</field>
     </columns>
     <currency>USD</currency>
     <description>Number of  Customer Migrated</description>
