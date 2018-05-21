@@ -12,7 +12,6 @@ Modification Log   :
  *                                                   WebServiceCallForRankingAfterFalseDupe
 *******************************************************************************/
 public class DcDiscardsHelper {
-    
     public static void notifyRankingAfterInsert(List<dupcheck__dcDiscard__c > dcDiscardList) {
         //This trigger will invoke once we click "Discard" button in the DC Tool and hit for ranking once we discard the record.
         system.debug('I am in dcdiscardhelper'+dcDiscardList);
@@ -29,49 +28,34 @@ public class DcDiscardsHelper {
             }
         }
          Set<Id> LeadToUpdateSet = new Set<Id>();
-        Id LeadId;
-        Map<Id,List<dupcheck__dc3Duplicate__c>> duplicatepairViewCountMap = new  Map<Id,List<dupcheck__dc3Duplicate__c>>();
+         Set<Id> SourceMatchingIds = new Set<Id>();
         List<dupcheck__dc3Duplicate__c> duplicateList = 
         [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
         dupcheck__dc3Duplicate__c
          WHERE (dupcheck__MatchObject__c IN : leadIdList
           OR dupcheck__SourceObject__c  IN : leadIdList)];
-        for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
+          System.debug('Dupe Pairs we got  :'+duplicateList.size() );
+         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
         {
-            Boolean isSourceIsDifferent=false;
-            if(!duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c)
-            && !duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c))
-            {
-                duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__MatchObject__c, new List<dupcheck__dc3Duplicate__c>());
-                if(duplicatepairRecord.dupcheck__MatchObject__c != duplicatepairRecord.dupcheck__SourceObject__c)
-                {
-                    isSourceIsDifferent=true;
-                    duplicatepairViewCountMap.put(duplicatepairRecord.dupcheck__SourceObject__c, new List<dupcheck__dc3Duplicate__c>());
-                }
-            }
-               LeadId=duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__SourceObject__c)? duplicatepairRecord.dupcheck__SourceObject__c :
-               duplicatepairRecord.dupcheck__MatchObject__c;
-               duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord);
-               if(isSourceIsDifferent && duplicatepairViewCountMap.containskey(duplicatepairRecord.dupcheck__MatchObject__c))
-               {
-                  LeadId = duplicatepairRecord.dupcheck__MatchObject__c;
-                  duplicatepairViewCountMap.get(LeadId).add(duplicatepairRecord); 
-               }
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__MatchObject__c);
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__SourceObject__c);
         }
+        System.debug('Total Leads we got '+leadIdList.size());
         for(Id LeadIdrec:leadIdList)
         {
-            If(duplicatepairViewCountMap.containskey(LeadIdrec))
+             If(SourceMatchingIds.size()==0 || !SourceMatchingIds.contains(LeadIdrec))
             {
-                    if(duplicatepairViewCountMap.get(LeadIdrec).size() <= 1)
-                    {
-                        LeadToUpdateSet.add(LeadIdrec);
-                    }
+                LeadToUpdateSet.add(LeadIdrec);
             }
+            
         }
-        system.debug('records '+ duplicateList.size());
-       System.enqueueJob(new QueueClass(LeadToUpdateSet));
+        system.debug('leads we are updating '+ LeadToUpdateSet.size());
+        if(LeadToUpdateSet.size()>0)
+        {
+            System.enqueueJob(new QueueClass(LeadToUpdateSet));
+        }
     }
-	
+    
     @future (callout=true)
     Public Static void WebServiceCallForRankingAfterFalseDupe(set <id> leadIdList){
      List<Lead> leadUpdateList = new List<Lead>();
