@@ -18,8 +18,6 @@ public class Tasks {
     public static void onBeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
     }
 
-    public static void onBeforeDelete(Map<Id, SObject> oldItems) {
-    }
 
     public static void onAfterInsert(Map<Id, SObject> newItems) {
         TasksHelper.updateParents(newItems, null);
@@ -29,9 +27,5 @@ public class Tasks {
     public static void onAfterUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
         TasksHelper.updateParents(newItems, oldItems);
     }
-    public static void onAfterDelete(Map<Id, SObject> oldItems) {
-    }
 
-    public static void onAfterUndelete(Map<Id, SObject> oldItems) {
-    }
 }
