@@ -8,11 +8,6 @@ public class EventsHelper {
         public id leadId;
         public blob camQsAndAnswersAsText;
     }
-    public static list<ContentNoteAndEventLink> listOfContentNoteAndEventLink = new list<ContentNoteAndEventLink>();
-    public static Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
-    public static map<blob, string> noteIdAndContentNoteContent = new map<blob, string>();
-    public static list<ContentNote> listOfContentNote = new list<ContentNote>();
-    public static list<ContentDocumentLink> listOfContentDocumentLink = new list<ContentDocumentLink>();
     // Updates the subject on all the events
     public static void updateSubjectOnEvents(List<Event> events) {
         for (Event newEvent : events) {
@@ -22,6 +17,8 @@ public class EventsHelper {
 
     // Update the event subject to appropriate value
     public static void updateSubjectOnEvent(Event eventObj) {
+        Map<String, TaskSetting__mdt> taskSettingsMap = MetaDataSelector.getTaskSettingMetada();
+
         if (taskSettingsMap != null && taskSettingsMap.containsKey(eventObj.Type)) {
             String eventSubject = taskSettingsMap.get(eventObj.Type).TaskSubject__c;
             eventSubject = eventSubject + ' - ' + eventObj.Program__c;
@@ -49,9 +46,10 @@ public class EventsHelper {
         Set<Id> setLeadIds = new Set<Id>();
 
         Map<Id, Lead> mapLeads = new Map<Id, Lead>();
-        Map<Id, Event> mapEvents = new Map<Id, Event>();
-        Map<Id, ContentNote> mapEventIdContentNote = new Map<Id, ContentNote>();
-
+        Map<Id, Event> mapEvents = new Map<Id, Event>();                
+        Map<Id, ContentNote> mapEventIdContentNote = new Map<Id, ContentNote>();        
+        
+        List<ContentDocumentLink> listOfContentDocumentLink = new List<ContentDocumentLink>();
         try {
             //1.  Loop on event records
             for(Event eventRecord : newItems){
@@ -189,12 +187,14 @@ public class EventsHelper {
         //set What id only for Customer Request events
         Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
         Set<Id> newContactIds = new Set<Id>();
+        Set<Id> oldLeadIds = new Set<Id>();
         List<Event> validEvents = new List<Event>();
         for(Event newEvent : newEvents){
             Event oldEvent = oldEvents.get(newEvent.Id);
             if(newEvent.RecordTypeId == customerRequestId && newEvent.WhoId.getSobjectType() == Contact.SObjectType && oldEvent.WhoId.getSobjectType() == Lead.SObjectType && newEvent.WhatId == NULL){
-                newContactIds.add(newEvent.WhoId);
                 validEvents.add(newEvent);
+                newContactIds.add(newEvent.WhoId);
+                oldLeadIds.add(oldEvent.WhoId);
             }
         }
         if(validEvents.size() > 0) {
@@ -202,17 +202,36 @@ public class EventsHelper {
             for(Account acc : AccountsSelector.getAccountsWithOpportunitiesByContactIds(newContactIds)){
                 accountsByContactIds.put(acc.PersonContactId, acc);
             }
+            Map<Id, Lead> leadsByIds = new Map<Id, Lead>(LeadsSelector.getLeadsByIdsALLROWS(oldLeadIds));
+            Map<Id, OpportunitiesHelper.OpportunityDataWrapper> opportunityDataWrappersByAccountIds = new Map<Id, OpportunitiesHelper.OpportunityDataWrapper>();
             for(Event validEvent : validEvents){
-                if(accountsByContactIds.containsKey(validEvent.WhoId) && accountsByContactIds.get(validEvent.WhoId).Opportunities.size() > 0){
-                    validEvent.WhatId = accountsByContactIds.get(validEvent.WhoId).Opportunities[0].Id;
+                if(accountsByContactIds.containsKey(validEvent.WhoId)){
+                    Account acc = accountsByContactIds.get(validEvent.WhoId);
+                    if(acc.Opportunities.size() > 0) {
+                        validEvent.WhatId = acc.Opportunities[0].Id;
+                    }else{
+                        OpportunitiesHelper.OpportunityDataWrapper wrapper;
+                        if(!opportunityDataWrappersByAccountIds.containsKey(acc.Id)){
+                            wrapper = new OpportunitiesHelper.OpportunityDataWrapper();
+                            wrapper.account = acc;
+                            wrapper.events = new List<Event>{validEvent};
+                            wrapper.lead = leadsByIds.get(oldEvents.get(validEvent.Id).WhoId);
+                            opportunityDataWrappersByAccountIds.put(acc.Id, wrapper);
+                        }else{
+                            wrapper = opportunityDataWrappersByAccountIds.get(acc.Id);
+                            wrapper.events.add(validEvent);
+                        }
+                    }
                 }
+            }
+            if(opportunityDataWrappersByAccountIds.values().size() > 0){
+                System.enqueueJob(new OpportunitiesHelper.CreateActiveOpportunitiesQueueable(opportunityDataWrappersByAccountIds.values()));
             }
         }
     }
-      public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
-        system.debug('Afterupdate>>>'+newEvents);
-        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
 
+    public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
+        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
         list<opportunity> opportunitiesToBeUpdated = new list<opportunity>();
         Set<Id> validOpportunitiesId = new Set<Id>();
         for(Event newEvent : newEvents){
@@ -220,6 +239,7 @@ public class EventsHelper {
             if(newEvent.RecordTypeId == customerRequestId && newEvent.whatid!=null
             && newEvent.whatid.getSobjectType() == opportunity.SObjectType
             && ((oldEvent.whatid != null && oldEvent.whatid.getSobjectType()!= opportunity.SObjectType) || oldEvent.whatid == null) ){
+
                 validOpportunitiesId.add(newEvent.whatid);
             }
         }
