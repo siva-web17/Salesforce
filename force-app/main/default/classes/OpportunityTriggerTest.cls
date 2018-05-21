@@ -5,7 +5,7 @@ private class OpportunityTriggerTest {
     public static final String testOpportunityName = 'TestOpportunityRecord';
     private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
 
-    @testSetup 
+    @testSetup
     static void testDataSetup() {
         Test.startTest();
         Profile SystemAdminProfile = TestDataFactory.getProfile('System Administrator', true);
@@ -108,7 +108,8 @@ private class OpportunityTriggerTest {
         Test.stopTest();
     }
 
-    static testMethod void whenOwnerChangesCreateSystemCallTasks() {
+    @isTest
+    static void whenOwnerChangesCreateSystemCallTasks() {
 
         User adminUser = TestDataFactory.createAdminUser(true);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
@@ -147,7 +148,41 @@ private class OpportunityTriggerTest {
                 OpportunitiesHelper.createSystemCallTaskRecordForOpportunity(opplist[0]);
             }
         }
+    }
 
+    @isTest
+    static void whenOpportunityCreatedCloseDateShouldBeUpdated(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true, false);
+        System.runAs(adminUser){
+            TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = (Opportunity)ob.getRecord();
+            Test.startTest();
+            insert opp;
+            Test.stopTest();
+
+            opp = [SELECT CloseDate FROM Opportunity WHERE Id = :opp.Id LIMIT 1];
+            System.assertEquals(System.today().addMonths(2), opp.CloseDate);
+        }
+    }
+
+    @isTest
+    static void whenOpportunityCreatedByMigrationSkipCloseDateUpdate(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true, false);
+        System.runAs(adminUser){
+            TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = (Opportunity)ob.getRecord();
+            opp.CloseDate = System.today().addDays(1);
+            opp.IsByConversion__c = true;
+            Test.startTest();
+            insert opp;
+            Test.stopTest();
+
+            opp = [SELECT CloseDate FROM Opportunity WHERE Id = :opp.Id LIMIT 1];
+            System.assertEquals(System.today().addDays(1), opp.CloseDate);
+        }
+    }
     @isTest
     static void when_OppIsSetToInactive_Expect_DateOfDeactivationIsSet(){
 
@@ -214,8 +249,8 @@ private class OpportunityTriggerTest {
             insert opportunities;
             Set<Id> oppIds = new Set<Id>();
             for(Opportunity opportunity : opportunities){
-                oppIds.add(opportunity.Id);   
-            }   
+                oppIds.add(opportunity.Id);
+            }
             opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
 
             for(Opportunity opportunity : opportunities){

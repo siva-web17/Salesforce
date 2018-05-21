@@ -15,6 +15,7 @@ public class Opportunities {
         OpportunitiesHelper.populateSalesOfficeProgram((List<Opportunity>) oppItems);
         OpportunitiesHelper.populateSourceBasedonSorceCodeAuto((List<Opportunity>) oppItems);
         OpportunitiesHelper.populateSourceCodeAutoAndPartnerFromSource((List<Opportunity>) oppItems);
+        OpportunitiesHelper.populateCloseDate(oppItems);
     }
 
     public static void onBeforeUpdate(Map<Id, Sobject> newItems, Map<Id, Sobject> oldItems) {
