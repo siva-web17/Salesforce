@@ -54,6 +54,11 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                 return;
             }
 
+            if (context.selectedRows.length > 50){
+                kendoPopup.popupWithButtons(POPUP_HEADER, 'Please select only 50 records in this batch to print.', []);
+                return;
+            }
+
             function templatesAreValid() {
                 var templatesAssigned = true;
                 var lettersAndLabelsToCheckAttachment = new Set();
@@ -159,6 +164,10 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                         }
                     }
                 }
+                
+                if(batch.length > 0){
+                    batches.push(batch);
+                }
 
                 var onfailure = function (error) {
                     kendoPopup.popupWithButtons(POPUP_HEADER, error.message || error.faultstring, []);
@@ -177,9 +186,7 @@ crmc.require(["KendoEntry", "KendoPopup", "sfdc"], function (kendoEntry, kendoPo
                                     }
                                     recordIds.push(row.id);
                                 });
-                                if (results.length == recordIds.length) {
-                                    context.actionGrid.refresh();
-                                }
+                                context.actionGrid.refresh();
                             },
                             onFailure: onfailure
                         });

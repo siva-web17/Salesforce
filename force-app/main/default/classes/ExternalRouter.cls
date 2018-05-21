@@ -60,12 +60,14 @@ public class ExternalRouter {
         HttpResponse res = h.send(req);
         system.debug(' url '+url);
         system.debug(' response is '+res);
-        if(res.getStatusCode()!=200)
-        {
+        if(res.getStatusCode()!=200){
             Id UserId=Id.Valueof(UserInfo.getUserId());
             ExceptionHandler.errorLog(String.ValueOf(res),url+'   --- \n'+ body,
                     'ExternalRouter', 'InvokeService', UserId);
-            retValue = res.getStatus();
+            CalloutResult result = new CalloutResult(false, res.getStatus());
+            HttpResponse response = new HttpResponse();
+            response.setBody(JSON.serialize(result));
+            return response;
         }
         return res;
     }

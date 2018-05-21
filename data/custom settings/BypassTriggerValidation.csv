@@ -1,4 +1,9 @@
-"NAME","DISABLETRIGGER__C","DISABLEVALIDATION__C","TRIGGEROBJECT__C"
-"Bypass Triggers Validation (User)","false","false","Account"
-"Bypass Triggers Validation (User)","false","true",""
-"Bypass Triggers Validation (User)","false","false",""
+NAME,DISABLETRIGGER__C,DISABLEVALIDATION__C,TRIGGEROBJECT__C
+Bypass Triggers Validation (User),FALSE,FALSE,
+Bypass Triggers Validation (User),FALSE,TRUE,
+Bypass Triggers Validation (User),FALSE,TRUE,
+Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
+Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
+Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
+Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
+Bypass Triggers Validation (Profile),FALSE,TRUE,

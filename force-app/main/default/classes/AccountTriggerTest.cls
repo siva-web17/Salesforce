@@ -97,4 +97,138 @@ private class AccountTriggerTest {
             Test.stopTest();
         }
     }
+
+    @IsTest
+    static void when_InsertedAccountHasMarketNOOAndLangNull_expect_LangIsSet(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
+
+            String expectedLanguageValue = 'NO';
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+            Account acc = new Account();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                pab.setField('Market__c', 'NOO');
+                accounts.add((Account)pab.getRecord());
+            }
+
+            //when
+            Test.startTest();
+            insert accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT Language__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(expectedLanguageValue, account.Language__c, 'Expecting specific Account Language');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_UpdatedAccountHasMarketNOOAndLangNull_expect_LangIsSet(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser){
+
+            String startingMarketValue = 'AZB';
+            String newMarketValue = 'NOO';
+            String expectedLanguageValue = 'NO';
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+            Account acc = new Account();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                pab.setField('Market__c', startingMarketValue);
+                accounts.add((Account)pab.getRecord());
+            }
+            insert accounts;
+            accounts = [SELECT Market__c, Language__c FROM Account];
+
+            for(Account account : accounts){
+                System.assertEquals(startingMarketValue, account.Market__c);
+                System.assertEquals(null, account.Language__c);
+                account.Market__c = 'NOO';
+            }
+
+            //when
+            Test.startTest();
+            update accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT Market__c, Language__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(newMarketValue, account.Market__c, 'Expecting specific Account Market value');
+                System.assertEquals(expectedLanguageValue, account.Language__c, 'Expecting specific Account Language value');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_InsertedAccountIsPersonAccountAndPersonMailingStreetNotNull_expect_HadAddressonCreationIsTrue(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
+
+            String mailingStreet = 'SomeStreetName';
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                pab.setField('PersonMailingStreet', mailingStreet);
+                accounts.add((Account)pab.getRecord());
+            }
+
+            //when
+            Test.startTest();
+            insert accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT HadAddressonCreation__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(account.HadAddressonCreation__c, true, 'Expecting HadAddressonCreation to be true');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_InsertedAccountIsPersonAccountAndPersonMailingStreetIsNull_expect_HadAddressonCreationIsFalse(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                accounts.add((Account)pab.getRecord());
+            }
+
+            //when
+            Test.startTest();
+            insert accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT HadAddressonCreation__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(account.HadAddressonCreation__c, false,  'Expecting HadAddressonCreation to be false');
+            }
+        }
+    }
 }

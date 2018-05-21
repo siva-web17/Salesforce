@@ -195,6 +195,7 @@ private class TaskTriggerTest {
                 Task t = (Task)taskBuilder.closeTask().withRecordType(Label.CallTaskRecordTypeDeveloperName).getRecord();
                 t.Product__c = picklistValuesHelper.product;
                 t.Program__c = picklistValuesHelper.program;
+                t.tasksubtype = 'call';
                 t.WhatId = opportunities[i].Id;
                 opportunityIds.add(opportunities[i].Id);
                 tasks.add(t);
@@ -292,6 +293,7 @@ private class TaskTriggerTest {
             for(Integer i = 0; i < numOfLeads; i++){
                 Task t = (Task)taskBuilder.closeTask().withRecordType(Label.CallTaskRecordTypeDeveloperName).getRecord();
                 t.WhoId = leads[i].Id;
+                t.tasksubtype = 'call';
                 leadIds.add(leads[i].Id);
                 tasks.add(t);
                 taskBuilder.build();

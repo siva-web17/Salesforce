@@ -381,16 +381,44 @@ public class TasksHelper {
             newTask.Program__c =(objTask.Type == SalesTasks.TCC.Name() && oppRecord != NULL ) ? oppRecord.Program__c : eventObj.Program__c;
             newTask.FollowUpDate__c = Datetime.now();
             newTask.ActivityDate = Datetime.now().Date();
+            newTask.OwnerId = oppRecord.OwnerId;
             newTask.ActivityDateTime__c = Datetime.now();
             newTask.EventId__c = eventObj.Id;
             newTask.Description = eventObj.Description;
             newTask.recordtypeid = recordTypeId;
-            newTask.Subject= taskSettingsMap.get(objTask.Type).TaskSubject__c+' - '+newTask.Program__c ;
+            newTask.Duration__c = eventObj.Duration__c;
+            newTask.Course__c = eventObj.Course__c;
+            newTask.DestinationCode__c = eventObj.DestinationCode__c;
+            newTask.Subject= getTaskSubject(taskSettingsMap.get(objTask.Type).TaskSubject__c,newTask, objTask.Type);
             mapTaskFieldsBasedonType(newTask,eventObj, objTask);
         } else {
             newTask = objTask;
         }
         return newTask;
+    }
+    
+    private static string getTaskSubject(String taskSubject,Task objTask, String taskType) {
+        String [] subjectList= taskSubject.split(' - ');
+        if(subjectList!=null && subjectList.size() >1) {
+            for (Integer i = 1; i < subjectList.size() ; i++) {
+                
+            if(!String.isEmpty((String)objTask.get(subjectList[i]))) {
+                
+                	taskSubject=taskSubject.replace(subjectList[i], (String)objTask.get(subjectList[i]));
+            }
+            else {
+                  taskSubject=taskSubject.replace(' - '+subjectList[i], '');
+                
+            }
+            }
+        }
+         else
+         {
+               taskSubject= taskSettingsMap.get(taskType).TaskSubject__c+' - '+objTask.Program__c ;
+         }
+        system.debug('taskSubject last' +taskSubject);
+        return taskSubject.trim();
+        
     }
 
     //SBR Complete rules are being verified here
@@ -675,10 +703,10 @@ public class TasksHelper {
         opportunity.SendBrochureDueDateTime__c = minDateTime;
     }
 
-    private static void updateNumberOfCompletedCalls(SObject toUpdate, Task[] tasks) {
+    public static void updateNumberOfCompletedCalls(SObject toUpdate, Task[] tasks) {
         Integer numberOfCompletedCalls = 0;
-        for (Task t : tasks) {
-            if (isTaskRecordType(CALL_TASK_DEVELOPER_NAME, t.RecordTypeId) && t.IsClosed) {
+        for (Task t : tasks){
+            if ((t.TaskSubtype == 'Call') && t.IsClosed) {
                 numberOfCompletedCalls++;
             }
         }

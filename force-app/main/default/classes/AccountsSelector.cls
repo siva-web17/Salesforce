@@ -13,10 +13,10 @@ public class AccountsSelector {
 
     public static Account getAccountOnId(Id accountId) { 
         return [
-                select id, FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
+                select id,Name,FirstName,LastName,PersonMailingCity,PersonMailingCountry,PersonMailingPostalCode,
                         PersonMailingStreet, RecalculateRanking__c, PersonEmail,Email2__c,PersonHomePhone,PersonMobilePhone,
                         PersonOtherPhone,PersonBirthdate,Market__c,Region__c,
-                        HasBooking__c
+                        HasBooking__c, NumberOfUnreachedHappyCalls__c,CurrencyIsoCode,DoNotCall__c
                 from Account
                 where Id = :accountId
                 limit 1
@@ -79,5 +79,13 @@ public class AccountsSelector {
             accountMap.put(accRecord.Id, accRecord);
         }
         return accountMap;
+    }
+
+    public static Map<ID,Account> getAccountsWithActiveOpportunitiesByIds(Set<Id> accountIds){
+        Map<ID,Account> accountWithActiveOpportunities = new Map<ID,Account>([
+                SELECT Id, Name, Market__c, PersonContactId, (SELECT Id FROM Opportunities WHERE IsActive__c = TRUE limit 1)
+                FROM Account
+                WHERE id IN :accountIds]);
+        return accountWithActiveOpportunities;
     }
 }

@@ -18,18 +18,45 @@ public class DcDiscardsHelper {
         set<Id> leadIdList = new set<Id>();
         for (dupcheck__dcDiscard__c discardedItem : dcDiscardList) {
              Id leadId = discardedItem.dupcheck__objectA__c;
+             Id LeadObjBId=discardedItem.dupcheck__objectB__c;
             if(leadId.getSObjectType() == Lead.getSObjectType()){
                leadIdList.add(leadId);
             }
+            if(LeadObjBId.getSObjectType() == Lead.getSObjectType())
+            {
+                leadIdList.add(LeadObjBId);
+            }
         }
-         List<Lead> leadUpdateList = new List<Lead>();
-        leadUpdateList = LeadsSelector.getLeadsOnId(leadIdList);
-        for (Lead lead : leadUpdateList) {
-            lead.IsDupe__c = false;           
+         Set<Id> LeadToUpdateSet = new Set<Id>();
+         Set<Id> SourceMatchingIds = new Set<Id>();
+        List<dupcheck__dc3Duplicate__c> duplicateList = 
+        [SELECT Id,dupcheck__MatchObject__c,dupcheck__SourceObject__c FROM 
+        dupcheck__dc3Duplicate__c
+         WHERE (dupcheck__MatchObject__c IN : leadIdList
+          OR dupcheck__SourceObject__c  IN : leadIdList)];
+          System.debug('Dupe Pairs we got  :'+duplicateList.size() );
+         for(dupcheck__dc3Duplicate__c duplicatepairRecord:duplicateList)
+        {
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__MatchObject__c);
+            SourceMatchingIds.add(duplicatepairRecord.dupcheck__SourceObject__c);
         }
-       System.enqueueJob(new QueueClass(leadIdList));
+        System.debug('Total Leads we got '+leadIdList.size());
+        for(Id LeadIdrec:leadIdList)
+        {
+           System.debug('Leads we got ID :'+LeadIdrec);
+             If(SourceMatchingIds.size()==0 || !SourceMatchingIds.contains(LeadIdrec))
+            {
+                LeadToUpdateSet.add(LeadIdrec);
+            }
+            
+        }
+        system.debug('leads we are updating '+ LeadToUpdateSet.size());
+        if(LeadToUpdateSet.size()>0)
+        {
+            System.enqueueJob(new QueueClass(LeadToUpdateSet));
+        }
     }
-	
+    
     @future (callout=true)
     Public Static void WebServiceCallForRankingAfterFalseDupe(set <id> leadIdList){
      List<Lead> leadUpdateList = new List<Lead>();
@@ -43,7 +70,7 @@ public class DcDiscardsHelper {
             if(leadIdAndRankMap.containskey(objLead.id) && leadIdAndRankMap.get(objLead.id)!=null){
                 objLead.ranking__c = leadIdAndRankMap.get(objLead.id);
                 objLead.IsDupe__c  = false;
-                objLead.readyforranking__c = true;
+                objLead.IsDupeProcessed__c  = true;
             }
         }
         try{
