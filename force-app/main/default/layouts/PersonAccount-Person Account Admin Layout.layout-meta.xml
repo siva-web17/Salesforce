@@ -187,6 +187,11 @@
             <actionName>Account.NewOpportunity</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
+      </platformActionListItems>
+	 <platformActionListItems>
+            <actionName>Account.PseudonymiseAction</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -259,11 +264,7 @@
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedActivityList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Pseudo_Account__c.AccountID__c</relatedList>
-    </relatedLists>
+    </relatedLists>    
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>true</showInteractionLogPanel>
