@@ -161,7 +161,7 @@ public with sharing class LogACallHelper {
 
                     if(!String.isEmpty(selectedProgram)){
                         openCallTask.Program__c = selectedProgram;
-                        String[] splitSubject = SFLangUtil.splitString(subject, '-');
+                        List<String> splitSubject = subject.split('\\-');
                         if (splitSubject.size() > 0) {
                             openCallTask.Subject = splitSubject[0] + ' - ' + selectedProgram;
                         }
