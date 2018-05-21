@@ -451,4 +451,13 @@ public class OpportunitiesHelper {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSourceCodeAutoAndPartnerFromSource', null);
         }
     }
+
+    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
+        for (Opportunity opp : opportunities) {
+            if(opp.IsByConversion__c == false) {
+                opp.CloseDate = System.today().addMonths(2);
+            }
+        }
+        return opportunities;
+    }
 }
