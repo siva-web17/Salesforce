@@ -1,25 +1,30 @@
 ({
-    doInit: function(component,helper,event) {  
-        debugger;
+    doInit: function(component,helper,event) {         
        var action = component.get("c.PseudonymiseAccount"); 
        action.setParams({
         recordId : component.get("v.recordId")
         });
         action.setCallback(this, function(response) {
                     var state = response.getState();
+                    $A.get("e.force:closeQuickAction").fire();
                     if (state === "SUCCESS") {
                 
                        // alert("From server: " + response.getReturnValue());
                         if(response.getReturnValue()===''){
-                            $A.get("e.force:closeQuickAction").fire();
+                            
                             var toastEvent = $A.get("e.force:showToast");
                             toastEvent.setParams({
                                 title: "Success!",
                                 type: "success",
                                 message: "The record has been pseudonymised successfully!!!"
                             });
+                            var navEvt = $A.get("e.force:navigateToSObject");
+                            navEvt.setParams({
+                                "recordId": component.get("v.recordId"),
+                                "slideDevName": "related"
+                            });                             
                             toastEvent.fire();
-                                        
+                            navEvt.fire();                                        
                         }else{
                             var toastEvent = $A.get("e.force:showToast");
                             toastEvent.setParams({
@@ -34,8 +39,7 @@
                     else if (state === "INCOMPLETE") {
                     }
                         else if (state === "ERROR") {
-                            var errors = response.getError();
-                            debugger;
+                            var errors = response.getError();                           
                             if (errors) {
                                 if (errors[0] && errors[0].message) {
                                     var toastEvent = $A.get("e.force:showToast");
@@ -58,7 +62,5 @@
                         }
                 });
                 $A.enqueueAction(action);
-
-
 	}
 })
