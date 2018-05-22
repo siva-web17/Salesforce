@@ -496,5 +496,15 @@
     handleMenuSelect: function(cmp, event, helper) {
         var selectedMenuItemValue = event.getParam("value").split(":");
         cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
+    },
+    recreateField: function(component, event, helper) {
+        var LAC_Call_Not_Reached = $A.get("$Label.c.LAC_Call_Not_Reached");
+        var LAC_Social_Media_Sent = $A.get("$Label.c.LAC_Social_Media_Sent");
+        var LAC_Sent_Email = $A.get("$Label.c.LAC_Sent_Email");
+        if (component.get("v.selectedActionType") === LAC_Call_Not_Reached || component.get("v.selectedActionType") === LAC_Social_Media_Sent || component.get("v.selectedActionType") === LAC_Sent_Email) {
+            component.set('v.selectedActionDate', moment().add(2, 'hours').format());
+            console.log(moment().add(2, 'hours').format());
+        }
+        component.set('v.showDateTimeField', true);
     }
 });
