@@ -599,7 +599,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
-        <value>This Account Has a Booking</value>
+        <value>This user has related Bookings in Poseidon, please do not Pseudonymise this customer if any of the Bookings have financial transactions</value>
     </labels>  
         <fullName>ExPaxExENQ</fullName>
         <language>en_US</language>
