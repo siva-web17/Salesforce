@@ -18,8 +18,9 @@
     <aura:attribute name="selectedCloseReason" type="String" />
     <aura:attribute name="bookOnDate" type="Date" />
     <aura:attribute name="years" type="String[]" />
-    <aura:attribute name="DateTimeTemp" type="String" />
-    <aura:attribute type="DateTime" name="selectedActionDate" default="{!v.DateTimeTemp}" />
+    <aura:attribute type="Boolean" name="showDateTimeField" default="true"/>
+    <aura:handler name="change" value="{!v.showDateTimeField}" action="{!c.recreateField}"/>
+    <aura:attribute type="DateTime" name="selectedActionDate" default="1" />
     <aura:attribute name="selectedVisitDate" type="DateTime" />
     <aura:attribute name="message" type="String" />
     <aura:attribute name="showMessage" type="Boolean" />
@@ -264,20 +265,24 @@
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
-                            <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-bottom_none hide-date-time date-time-split">
-                                    <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
-                                        name="datetime" />
+                             <aura:if isTrue="{!v.showDateTimeField}">
+                                <div class="slds-p-horizontal_x_small slds-size_1-of-1">
+                                    <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-bottom_none hide-date-time date-time-split">
+                                        <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
+                                            name="datetime" />
+                                    </div>
                                 </div>
-                            </div>
+                            </aura:if>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Visit?true:false}">
-                            <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-bottom_none slds-p-top_none hide-date-time date-time-split">
-                                    <lightning:input aura:id="required" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
+                            <aura:if isTrue="{!v.showDateTimeField}">
+                                <div class="slds-p-horizontal_x_small slds-size_1-of-1">
+                                    <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-bottom_none slds-p-top_none hide-date-time date-time-split">
+                                          <lightning:input aura:id="required" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
                                         name="datetime" />
+                                    </div>
                                 </div>
-                            </div>
+                            </aura:if>
                         </aura:if>
                     </div>
                 </div>

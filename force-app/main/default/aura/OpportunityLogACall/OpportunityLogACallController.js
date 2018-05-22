@@ -2,12 +2,8 @@
 ({
     doInit: function(component, event, helper) {
         var currentYear = new Date().getFullYear();
-        component.set(
-            "v.DateTimeTemp",
-            moment(new Date(), "DD-MM-YYYY")
-            .add(1, "days")
-            .format("YYYY-MM-DD") + "T00:00:00.000Z"
-        );
+        component.set('v.selectedActionDate', moment().add(1, "days").format());
+        component.set('v.showDateTimeField', false);
         var years = [];
         years.push(currentYear.toString());
         for (var year = 0; year < 2; year++) {
@@ -143,13 +139,8 @@
                         component.set("v.bookOnDate", data.CloseDate);
                         component.set("v.isActiveUser", data.IsActive);
                         component.set("v.doNotCall", data.DoNotCall);
-                        component.set(
-                            "v.DateTimeTemp",
-                            moment(new Date(), "DD-MM-YYYY")
-                            .add(1, "days")
-                            .format("YYYY-MM-DD") + "T00:00:00.000Z"
-                        );
-                        component.set("v.selectedActionDate", component.get("v.DateTimeTemp"));
+                        component.set('v.selectedActionDate', moment().add(1, "days").format());
+                        component.set('v.showDateTimeField', false);
                         var phoneNumberCounter = 0;
                         if (data.OtherPhone) {
                             phoneNumberCounter++;
@@ -225,6 +216,8 @@
                     var callResults = JSON.parse(res.getReturnValue());
                     component.set("v.callResults", callResults);
                     component.set("v.selectedCallResult", LAC_Select);
+                    component.set('v.selectedActionDate', moment().add(1, "days").format());
+                    component.set('v.showDateTimeField', false);
                     break;
                 case "INCOMPLETE":
                     break;
@@ -496,5 +489,8 @@
     handleMenuSelect: function(cmp, event, helper) {
         var selectedMenuItemValue = event.getParam("value").split(":");
         cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
+    },
+    recreateField: function(component, event, helper) {
+        component.set('v.showDateTimeField', true);
     }
 });
