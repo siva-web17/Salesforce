@@ -43,7 +43,6 @@ public class DcDiscardsHelper {
         System.debug('Total Leads we got '+leadIdList.size());
         for(Id LeadIdrec:leadIdList)
         {
-
              If(SourceMatchingIds.size()==0 || !SourceMatchingIds.contains(LeadIdrec))
             {
                 LeadToUpdateSet.add(LeadIdrec);

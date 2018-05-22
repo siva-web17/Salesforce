@@ -47,8 +47,8 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PersonBirthdate</field>
-            </layoutItems>        
-                </layoutColumns>
+            </layoutItems>
+        </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -187,13 +187,17 @@
             <actionName>Account.NewOpportunity</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
-      </platformActionListItems>
-	 <platformActionListItems>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Account.PseudonymiseAction</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
         </platformActionListItems>
-    </platformActionList>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>    </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
@@ -264,7 +268,11 @@
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <relatedList>RelatedActivityList</relatedList>
-    </relatedLists>    
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PseudoAccount__c.AccountId__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>true</showInteractionLogPanel>
