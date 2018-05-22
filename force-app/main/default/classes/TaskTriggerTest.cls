@@ -647,4 +647,113 @@ private class TaskTriggerTest {
 
         }
     }
+
+    @isTest
+    static void when_TaskIsChangedToClosed_expect_CloseFieldsAreSet() {
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        Integer numberOfTasks = 5;
+
+        System.runAs(adminUser){
+
+            //given
+            Opportunity[] opportunities = new Opportunity[]{};
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = (Opportunity)opportunityBuilder.withPersonAccount().getRecord();
+            insert opp;
+
+            Set<Id> taskIds = new Set<Id>();
+            Task[] tasks = new Task[]{};
+            TestDataFactory.TaskBuilder taskBuilder = new TestDataFactory.TaskBuilder();
+            for(Integer i = 0; i < numberOfTasks; i++){
+                Task t = (Task)taskBuilder.withRecordType(Label.SBRTask).getRecord();
+                t.Product__c = picklistValuesHelper.product;
+                t.Program__c = picklistValuesHelper.program;
+                t.WhatId = opp.Id;
+                tasks.add(t);
+                taskBuilder.build();
+            }
+            for(Task task : tasks){
+                System.assertEquals(null, task.CloseDate__c, 'Checking if close date is not set');
+                System.assertEquals(null, task.ClosedBy__r.Id, 'Checking if close date is not set');
+            }
+            insert tasks;
+
+            //when
+            test.startTest();
+            for(Task task : tasks){
+                task.Status = 'Completed';
+            }
+            update tasks;
+            test.stopTest();
+
+            //then
+            for(Task task : tasks){
+                taskIds.add(task.Id);
+            }
+            tasks = [
+                    SELECT CloseDate__c, ClosedBy__r.Id
+                    FROM Task
+                    WHERE Id IN :taskIds
+            ];
+            for(Task task : tasks){
+                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
+                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
+            }
+        }
+    }
+
+    @isTest
+    static void when_NewTaskIsClosed_expect_CloseFieldsAreSet() {
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        Integer numberOfTasks = 5;
+
+        System.runAs(adminUser){
+
+            //given
+            Opportunity[] opportunities = new Opportunity[]{};
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            Opportunity opp = (Opportunity)opportunityBuilder.withPersonAccount().getRecord();
+            insert opp;
+
+            Set<Id> taskIds = new Set<Id>();
+            Task[] tasks = new Task[]{};
+            TestDataFactory.TaskBuilder taskBuilder = new TestDataFactory.TaskBuilder();
+            for(Integer i = 0; i < numberOfTasks; i++){
+                Task t = (Task)taskBuilder.withRecordType(Label.SBRTask).getRecord();
+                t.Product__c = picklistValuesHelper.product;
+                t.Program__c = picklistValuesHelper.program;
+                t.WhatId = opp.Id;
+                t.Status = 'Completed';
+                tasks.add(t);
+                taskBuilder.build();
+            }
+            for(Task task : tasks){
+                System.assertEquals(null, task.CloseDate__c, 'Checking if close date is not set');
+                System.assertEquals(null, task.ClosedBy__r.Id, 'Checking if close date is not set');
+            }
+
+            //when
+            test.startTest();
+            insert tasks;
+            test.stopTest();
+
+            //then
+            for(Task task : tasks){
+                taskIds.add(task.Id);
+            }
+            tasks = [
+                    SELECT CloseDate__c, ClosedBy__r.Id
+                    FROM Task
+                    WHERE Id IN :taskIds
+            ];
+            for(Task task : tasks){
+                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
+                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
+            }
+        }
+    }
 }
