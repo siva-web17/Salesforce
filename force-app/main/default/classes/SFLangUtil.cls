@@ -8,10 +8,6 @@ public class SFLangUtil {
         return date.newInstance(inputDatetime.year(), inputDatetime.month(), inputDatetime.day());
     }
 
-    public static string[] splitString(string splitStringValue, string splitChar) {
-        return splitStringValue.split('\\' + splitChar);
-    }
-
     public static boolean bypassTriggerForObject(String objectName) {
         Boolean isDisable = false;
         BypassTriggersValidation__c runningUserSetting = BypassTriggersValidation__c.getInstance();
