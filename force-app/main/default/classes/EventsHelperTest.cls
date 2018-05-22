@@ -97,4 +97,37 @@ private class EventsHelperTest{
             System.assertEquals(opportunityBuilder.getRecord().Id, event.WhatId);
         }
     }
+
+    @isTest
+    static void whenLeadsMergedThenReassignCustomerRequestEventsToNewlyCreatedOpportunity(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        System.runAs(adminUser) {
+            //given
+            TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+            Account personAccount = (Account)pab.save().getRecord();
+            TestDataFactory.LeadBuilder lb = new TestDataFactory.LeadBuilder();
+            Lead testLead = (Lead)lb.save().getRecord();
+            TestDataFactory.EventBuilder eb = new TestDataFactory.EventBuilder();
+            eb.setWho(testLead.Id);
+            eb.withRecordType(Label.CustomerRequestEventRecordTypeDeveloperName);
+            eb.save();
+
+            //when
+            Test.startTest();
+            Database.LeadConvert lc = new Database.LeadConvert();
+            lc.setLeadId(testLead.Id);
+            lc.setAccountId(personAccount.Id);
+            LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+            lc.setDoNotCreateOpportunity(true);
+            Database.LeadConvertResult lcr = Database.convertLead(lc);
+            Test.stopTest();
+
+            //then
+            Event event = [SELECT WhatId FROM Event WHERE Id = :eb.getRecord().Id];
+            System.assertNotEquals(NULL, event.WhatId);
+            Opportunity opportunity = [SELECT Id, IsActive__c FROM Opportunity WHERE Id = :event.WhatId];
+            System.assert(opportunity.IsActive__c);
+        }
+    }
 }

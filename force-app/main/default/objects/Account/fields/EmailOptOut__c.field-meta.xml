@@ -7,6 +7,6 @@
     <inlineHelpText>Customer does not want to receive emails from EF</inlineHelpText>
     <label>Email Opt Out</label>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Checkbox</type>
 </CustomField>

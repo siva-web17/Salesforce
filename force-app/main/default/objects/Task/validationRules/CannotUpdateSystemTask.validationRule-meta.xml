@@ -6,6 +6,6 @@
     <errorConditionFormula>AND( 
 (NOT($Setup.BypassTriggersValidation__c.DisableValidation__c)), NOT(IsParentClosing__c )&amp;&amp; 
 $RecordType.DeveloperName = "SystemCallTask"&amp;&amp; 
-(ISCHANGED(Status) || ISCHANGED(Priority) ))</errorConditionFormula>
+(ISCHANGED(Status) || ISCHANGED(Priority) ), TEXT(NextCallType__c) == $Label.HCC_Next_Call_Type)</errorConditionFormula>
     <errorMessage>"System Task" cannot be updated.</errorMessage>
 </ValidationRule>
