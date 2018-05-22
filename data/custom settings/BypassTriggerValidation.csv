@@ -1,9 +1,5 @@
-NAME,DISABLETRIGGER__C,DISABLEVALIDATION__C,TRIGGEROBJECT__C
-Bypass Triggers Validation (User),FALSE,FALSE,
-Bypass Triggers Validation (User),FALSE,TRUE,
-Bypass Triggers Validation (User),FALSE,TRUE,
-Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
-Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
-Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
-Bypass Triggers Validation (Profile),TRUE,FALSE,dupcheck__dcDiscard__c
-Bypass Triggers Validation (Profile),FALSE,TRUE,
+NAME,DISABLETRIGGER__C,DISABLEVALIDATION__C,TRIGGEROBJECT__C,DONOTPUSHTOPOSEIDON__C
+Bypass Triggers Validation (User),FALSE,FALSE,,FALSE
+Bypass Triggers Validation (User),FALSE,TRUE,,TRUE
+Bypass Triggers Validation (User),FALSE,TRUE,,FALSE
+Bypass Triggers Validation (Profile),FALSE,TRUE,,FALSE
