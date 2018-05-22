@@ -7,7 +7,7 @@
     <label>Assign</label>
     <packageVersions>
         <majorNumber>1</majorNumber>
-        <minorNumber>86</minorNumber>
+        <minorNumber>88</minorNumber>
         <namespace>CRMC_PP</namespace>
     </packageVersions>
 </ApexPage>

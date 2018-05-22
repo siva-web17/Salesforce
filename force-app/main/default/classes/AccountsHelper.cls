@@ -70,6 +70,12 @@ public class AccountsHelper {
         }
     }
 
+    public static void updateHasAddress(List<Account> newAccounts){
+        for (Account newAccount : newAccounts){
+                newAccount.HadAddressonCreation__c = newAccount.IsPersonAccount && String.isNotEmpty(newAccount.PersonMailingStreet);
+        }
+    }
+
     public static void saveFamilyAccountInformation(Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap) {
 
         List<Id> accountIdList = new List<Id>();

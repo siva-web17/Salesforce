@@ -7,7 +7,7 @@
     <label>Action Screen Tabs</label>
     <packageVersions>
         <majorNumber>1</majorNumber>
-        <minorNumber>82</minorNumber>
+        <minorNumber>88</minorNumber>
         <namespace>CRMC_PP</namespace>
     </packageVersions>
 </ApexPage>
