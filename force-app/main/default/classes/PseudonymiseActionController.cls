@@ -1,11 +1,9 @@
 public class PseudonymiseActionController {
     @AuraEnabled
-    public static String PseudonymiseAccount(String recordId) {
-        System.debug('Am here');
+    public static String PseudonymiseAccount(String recordId) {       
         Set<Id> accountIdSet=new Set<Id>();
         accountIdSet.add(recordId);
-        Map<Id,Account> accountMap = AccountsSelector.getAccountBasedonAccountId(accountIdSet);
-        //System.debug(accountMap.size());
+        Map<Id,Account> accountMap = AccountsSelector.getAccountBasedonAccountId(accountIdSet);        
         if(accountMap.containsKey(recordId))
         {
             if(accountMap.get(recordId).hasbooking__c){
