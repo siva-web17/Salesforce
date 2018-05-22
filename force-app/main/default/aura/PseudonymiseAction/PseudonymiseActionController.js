@@ -18,12 +18,12 @@
                                 type: "success",
                                 message: "The record has been pseudonymised successfully!!!"
                             });
+                            toastEvent.fire();
                             var navEvt = $A.get("e.force:navigateToSObject");
                             navEvt.setParams({
                                 "recordId": component.get("v.recordId"),
                                 "slideDevName": "related"
-                            });                             
-                            toastEvent.fire();
+                            });                            
                             navEvt.fire();                                        
                         }else{
                             var toastEvent = $A.get("e.force:showToast");
