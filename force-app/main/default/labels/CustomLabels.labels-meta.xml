@@ -344,6 +344,13 @@
         <value>Country Of Birth</value>
     </labels>
     <labels>
+        <fullName>CreateActiveOpportunitiesQueueableChunkSize</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chunk size for queueable job</shortDescription>
+        <value>50</value>
+    </labels>
+    <labels>
         <fullName>CreateBookinDisplayMessage</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -567,6 +574,13 @@
         <value>End Date</value>
     </labels>
     <labels>
+        <fullName>ErrorOnPseudonymisingBookingAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
+        <value>This Account Has a Booking</value>
+    </labels>
+    <labels>
         <fullName>ExcelImport</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -705,7 +719,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Integration User Id</shortDescription>
-        <value>0050Y000003KB95</value>
+        <value>0056E000002ikfvQAA</value>
     </labels>
     <labels>
         <fullName>IntegrationstatusSentToPoseidon</fullName>
@@ -761,6 +775,14 @@
         <protected>false</protected>
         <shortDescription>LAC_ActionScreenURL</shortDescription>
         <value>/one/one.app#/n/AG_Action_Screen</value>
+    </labels>
+    <labels>
+        <fullName>LAC_Booking_HelpText</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_Booking_HelpText</shortDescription>
+        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
     </labels>
     <labels>
         <fullName>LAC_CNR</fullName>
@@ -1081,11 +1103,20 @@
         <value>Select LT Course</value>
     </labels>
     <labels>
-        <fullName>LanguagePicklistValueNorwegian</fullName>
+        <fullName>LanguageReportURLLive</fullName>
+        <categories>Reports</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>LanguagePicklistValueNorwegian</shortDescription>
-        <value>NO</value>
+        <shortDescription>LanguageReportURLLive</shortDescription>
+        <value>https://languagereports.ef.com</value>
+    </labels>
+    <labels>
+        <fullName>LanguageReportURLQA</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LanguageReportURLQA</shortDescription>
+        <value>https://language.ef.com:8826/</value>
     </labels>
     <labels>
         <fullName>Last_Name</fullName>
@@ -1213,13 +1244,6 @@
         <protected>false</protected>
         <shortDescription>MandatoryFields</shortDescription>
         <value>Please fill all the Mandatory Fields Before Opening Poseidon PQ</value>
-    </labels>
-    <labels>
-        <fullName>MarketPicklistValueNorway</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>MarketPicklistValueNorway</shortDescription>
-        <value>NOO</value>
     </labels>
     <labels>
         <fullName>MergeReasonManual</fullName>
@@ -1726,6 +1750,14 @@
         <value>Record was deleted successfully</value>
     </labels>
     <labels>
+        <fullName>ReportEnv</fullName>
+        <categories>Reports</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReportEnv</shortDescription>
+        <value>QA</value>
+    </labels>
+    <labels>
         <fullName>Reservation</fullName>
         <categories>this is used in duplicate check class</categories>
         <language>en_US</language>
@@ -1739,12 +1771,6 @@
         <protected>false</protected>
         <shortDescription>Review message before proceeding to next step</shortDescription>
         <value>* Please review your quote before proceedings to next step</value>
-    </labels>
-	<labels>
-        <fullName>SalesAssociateProfileName</fullName>
-        <language>en_US</language>
-        <shortDescription>Sales Associate Profile Name</shortDescription>
-        <value>Sales Associate</value>
     </labels>
     <labels>
         <fullName>SBRTask</fullName>
@@ -1769,6 +1795,13 @@
         <protected>false</protected>
         <shortDescription>Status value for sent to Poseidon</shortDescription>
         <value>STP</value>
+    </labels>
+    <labels>
+        <fullName>SalesAssociateProfileName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Associate Profile Name</shortDescription>
+        <value>Sales Associate</value>
     </labels>
     <labels>
         <fullName>SalesClosed</fullName>
@@ -1984,7 +2017,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>TemplateBuilderCongaQueryId</shortDescription>
-        <value>a5J0Y000000Y7msUAC</value>
+        <value>a5J6E0000000CikUAE</value>
     </labels>
     <labels>
         <fullName>TestDependentPicklistValues</fullName>
@@ -2061,117 +2094,5 @@
         <protected>false</protected>
         <shortDescription>Personal Details</shortDescription>
         <value>Personal Details</value>
-    </labels>
-     <labels>
-        <fullName>LAC_Booking_HelpText</fullName>
-        <categories>LAC</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LAC_Booking_HelpText</shortDescription>
-        <value>This is the expected date on which you think the customer will book with us. This Opportunity will appear in Hotlist view on Action Screen, 2 weeks before the selected date and if Likelihood to book is high</value>
-    </labels>
-    <labels>
-        <fullName>LanguageReportURLLive</fullName>
-        <categories>Reports</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LanguageReportURLLive</shortDescription>
-        <value>https://languagereports.ef.com</value>
-    </labels>
-    <labels>
-        <fullName>LanguageReportURLQA</fullName>
-        <categories>Reports</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LanguageReportURLQA</shortDescription>
-        <value>https://language.ef.com:8826/</value>
-    </labels>
-    <labels>
-        <fullName>ReportEnv</fullName>
-        <categories>Reports</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>ReportEnv</shortDescription>
-        <value>QA</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_Heading</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_Heading</shortDescription>
-        <value>Support Center</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_Manuals</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_Manuals</shortDescription>
-        <value>Manuals</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_ManualsImg</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_ManualsImg</shortDescription>
-        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/question_feed_120.png</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_ManualsURL</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_ManualsURL</shortDescription>
-        <value>https://poseidonlounge.ef.com/hc/en-us/categories/360000056269-Salesforce-Manuals</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_MyRequest</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_MyRequest</shortDescription>
-        <value>My Requests</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_MyRequestImg</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_MyRequestImg</shortDescription>
-        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/contract_line_item_120.png</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_MyRequestURL</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_MyRequestURL</shortDescription>
-        <value>https://poseidonlounge.ef.com/hc/en-us/requests</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_RaiseCase</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_RaiseCase</shortDescription>
-        <value>Raise a Case</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_RaiseCaseImg</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_RaiseCaseImg</shortDescription>
-        <value>https://eflang--c.eu11.content.force.com/img/icon/t4v35/standard/live_chat_120.png</value>
-    </labels>
-    <labels>
-        <fullName>Home_Pg_SP_RaiseCaseURL</fullName>
-        <categories>HP</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Home_Pg_SP_RaiseCaseURL</shortDescription>
-        <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
     </labels>
 </CustomLabels>
