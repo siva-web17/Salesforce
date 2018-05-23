@@ -180,18 +180,18 @@ public class TasksHelper {
         if (!String.isBlank(objCurrentType.CreateCallType__c)) {
             taskSettingsValues = objCurrentType.CreateCallType__c;
             //Add is Active Condition
-            String[] createCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.INSERTDATA.name(), createCallTypeArray);
+            List<String> createCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.INSERTDATA.name(), createCallTypeList);
         }
         if (!String.isBlank(objCurrentType.UpdateCallType__c)) {
             taskSettingsValues = objCurrentType.UpdateCallType__c;
-            String[] updateCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.UPDATEDATA.name(), updateCallTypeArray);
+            List<String> updateCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.UPDATEDATA.name(), updateCallTypeList);
         }
         if (!String.isBlank(objCurrentType.ForClosedCallTypes__c)) {
             taskSettingsValues = objCurrentType.ForClosedCallTypes__c;
-            String[] closedCallTypeArray = SFLangUtil.splitString(taskSettingsValues, '|');
-            callTypeMap.put(SaveType.CLOSEDINSERT.name(), closedCallTypeArray);
+            List<String> closedCallTypeList = taskSettingsValues.split('\\|');
+            callTypeMap.put(SaveType.CLOSEDINSERT.name(), closedCallTypeList);
         }
         return callTypeMap;
     }
@@ -313,7 +313,7 @@ public class TasksHelper {
                 if (taskSettingsMap.containsKey(type.trim())) {
                     TaskSetting__mdt objTaskSettingMap = taskSettingsMap.get(type);
                     if (objTaskSettingMap.IsTaskPerCustomer__c) {
-                        String[] groupItems = SFLangUtil.splitString(objTaskSettingMap.TaskGroup__c, '|');
+                        List<String> groupItems = objTaskSettingMap.TaskGroup__c.split('\\|');
                         boolean canInsertTask = false;
                         for (String Item : groupItems) {
                             if (currentParentTaskMap.containsKey(Item)) {
@@ -895,5 +895,55 @@ public class TasksHelper {
                 }
             }
         }
+    }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method set task subject
+* @version 1.0
+* */
+    public static void setTaskSubject(List<Task> newTasks){
+        for(Task task : newTasks){
+            if(!String.isBlank(task.SalesAction__c)){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                task.Subject = checkIfAddProgramToSubject(task);
+            }
+        }
+    }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method updates task subject
+* @version 1.0
+* */
+    public static void updateTaskSubject(List<Task> newTasks, Map<Id,Task> oldTasks){
+        for(Task task : newTasks){
+            Task oldTask = oldTasks.get(task.Id);
+            if(task.SalesAction__c != oldTask.SalesAction__c){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                if(task.Subject != oldTask.Subject){
+                    task.Subject = checkIfAddProgramToSubject(task);
+                }
+            }
+        }
+    }
+
+    private static String setSalesActionAndProgramAsTaskSubject(Task task){
+        return task.SalesAction__c + ' - ' + task.Program__c;
+    }
+
+    private static String addProgramToTaskSubject(Task task){
+        return task.Subject + ' - ' + task.Program__c;
+    }
+
+    private static String checkIfAddProgramToSubject(Task task){
+        if(!String.isBlank(task.Subject) && !task.Subject.contains('-')){
+            task.Subject = addProgramToTaskSubject(task);
+        }
+        return task.Subject;
     }
 }

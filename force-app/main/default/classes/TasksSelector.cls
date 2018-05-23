@@ -50,4 +50,13 @@ public class TasksSelector {
                 where id = :taskId and RecordTypeId = :recordId and status != 'Completed' and WhatId != null
         ];
     }
+    public static List<Task> getHappyCallTaskForAccounts(Set<Id> AccountIds){
+        return [
+                SELECT id,Program__c
+                FROM Task
+                WHERE WhatId in :AccountIds AND NextCallType__c = :Label.HCC_Next_Call_Type AND Type =:Label.HCC_Task_Type AND isClosed = false
+                LIMIT 1
+        ];
+    }
+
 }

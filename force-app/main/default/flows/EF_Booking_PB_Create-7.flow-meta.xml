@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>textJson</name>
+            <value>
+                <stringValue>{"mentions":[],"message":"Hey @[{![Booking__c].OpportunityId__r.OwnerId}] new booking has been created"}</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Inform Opportunity Owner</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <connector>
+            <targetReference>myRule_1_A2</targetReference>
+        </connector>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>Hey @[{!myVariable_current.OpportunityId__r.OwnerId}] new booking has been created</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <assignments>
         <name>myVariable_waitStartTimeAssignment</name>
         <label>myVariable_waitStartTimeAssignment</label>
@@ -32,77 +64,30 @@
             <name>myRule_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.IsPersonAccount</leftValueReference>
+                <leftValueReference>formula_myRule_1</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>GlobalConstant</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.PersonMailingStreet</leftValueReference>
-                <operator>NotEqualTo</operator>
-            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Person Account has Address</label>
+            <label>Booking Created</label>
         </rules>
     </decisions>
-    <description>This PB is triggered when an account gets created.</description>
-    <interviewLabel>EF_Account_PB_Create-1_InterviewLabel</interviewLabel>
-    <label>EF_Account_PB_Create</label>
+    <description>This PB triggers when a Booking is created</description>
+    <formulas>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>true</expression>
+    </formulas>
+    <interviewLabel>EF_Booking_PB_Create-4_InterviewLabel</interviewLabel>
+    <label>EF_Booking_PB_Create</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
-            <stringValue>Account</stringValue>
+            <stringValue>Booking__c</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -140,13 +125,13 @@
         <processMetadataValues>
             <name>reference</name>
             <value>
-                <stringValue>[Account]</stringValue>
+                <stringValue>[Booking__c].Account</stringValue>
             </value>
         </processMetadataValues>
-        <name>myRule_1_A1</name>
-        <label>Update Had Address on Creation field</label>
+        <name>myRule_1_A2</name>
+        <label>Set HasHappyCallTask to False</label>
         <locationX>100</locationX>
-        <locationY>200</locationY>
+        <locationY>300</locationY>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -157,7 +142,7 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>myVariable_current.Id</elementReference>
+                <elementReference>myVariable_current.AccountId__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -176,7 +161,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Had Address on Creation</stringValue>
+                    <stringValue>Has Happy Call Task</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -191,9 +176,9 @@
                     <stringValue>Boolean</stringValue>
                 </value>
             </processMetadataValues>
-            <field>HadAddressonCreation__c</field>
+            <field>HasHappyCallTask__c</field>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
         <object>Account</object>
@@ -205,7 +190,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Account</objectType>
+        <objectType>Booking__c</objectType>
     </variables>
     <variables>
         <name>myVariable_old</name>
@@ -213,7 +198,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Account</objectType>
+        <objectType>Booking__c</objectType>
     </variables>
     <variables>
         <name>myVariable_waitStartTimeVariable</name>

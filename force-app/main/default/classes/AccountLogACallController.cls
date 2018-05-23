@@ -156,6 +156,7 @@ public with sharing class AccountLogACallController {
 
                     systemCallTask.FollowUpDate__c = actionDateTime;
                     systemCallTask.ActivityDate = Date.newInstance(actionDateTime.year(),actionDateTime.month(),actionDateTime.day());
+
                     systemCallTask.Status = Label.Not_Started;
 
                     task.CallNotReachedType__c = subAction;

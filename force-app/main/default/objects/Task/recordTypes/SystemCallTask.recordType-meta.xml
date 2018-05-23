@@ -196,6 +196,10 @@
             <fullName>FUP</fullName>
             <default>false</default>
         </values>
+		<values>
+            <fullName>HCC</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>TCC</fullName>
             <default>false</default>
