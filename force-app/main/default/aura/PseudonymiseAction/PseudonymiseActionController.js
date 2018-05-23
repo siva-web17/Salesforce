@@ -19,12 +19,7 @@
                                 message: "The record has been pseudonymised successfully!!!"
                             });
                             toastEvent.fire();
-                            var navEvt = $A.get("e.force:navigateToSObject");
-                            navEvt.setParams({
-                                "recordId": component.get("v.recordId"),
-                                "slideDevName": "related"
-                            });                            
-                            navEvt.fire();                                        
+                            $A.get('e.force:refreshView').fire();                                      
                         }else{
                             var toastEvent = $A.get("e.force:showToast");
                             toastEvent.setParams({
