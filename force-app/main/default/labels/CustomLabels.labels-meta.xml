@@ -2181,4 +2181,19 @@
         <shortDescription>Home_Pg_SP_RaiseCaseURL</shortDescription>
         <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
     </labels>
+    <labels>
+        <fullName>AlreadyPseudonymised</fullName>
+        <categories>Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AlreadyPseudonymised</shortDescription>
+        <value>This account is already Pseudonumised.</value>
+    </labels>
+    <labels>
+        <fullName>ErrorOnPseudonymisingBookingAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
+        <value>This user has related Bookings in Poseidon, please do not Pseudonymise this customer if any of the Bookings have financial transactions</value>
+    </labels>  
 </CustomLabels>
