@@ -1,0 +1,10 @@
+#Mapping values
+#Wed May 16 11:38:46 CEST 2018
+Privacy=CRMC_PP__Privacy__c
+Default=CRMC_PP__IsDefault__c
+Context=CRMC_PP__Context__c
+Record\ ID=Id
+ObjectName=CRMC_PP__ObjectName__c
+Description=CRMC_PP__Description__c
+JSON=CRMC_PP__JSON__c
+View\ Name=Name
