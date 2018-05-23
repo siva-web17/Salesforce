@@ -263,16 +263,15 @@ public class OpportunitiesSelector {
     * @return Returns list of opportunities with Tasks
     * */
     public static List<Opportunity> getOpportunitiesByIdsWithTasks(List<id> opportunityIds) {
-        return [
-                SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c,
+        return [SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, 
             	SentBrochures__c, HasSystemCallTask__c, Account.PersonBirthdate, NumberOfUnreachedCalls__c,
             	StageName, Product__c, Program__c, FirstContactDateTime__c,
             	(SELECT Id, ActivityDate, SalesAction__c, IsTaskCallReached__c, WhatId, Program__c, IsClosed, Subject,Status,
                  NextCallType__c,FollowUpDate__c,IsClosed__c,IsParentClosing__c,isexpresscall__c,
-                 TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName,
+                 TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName, 
                  IsJunior__c, IsUp__c,TaskSubtype FROM Tasks ORDER BY ActivityDate)
                 FROM Opportunity
-                WHERE Id in :opportunityIds
+                WHERE Id in :opportunityIds 
         ];
     }
 
