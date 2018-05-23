@@ -22,5 +22,10 @@
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
+     <displayedFields>
+        <field>EmailOptOut__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
     <label>UnsubscribeFields</label>
 </FieldSet>

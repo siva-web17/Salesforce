@@ -55,9 +55,10 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>Pseudo Account</label>
     <nameField>
+        <displayFormat>PA-{000000}</displayFormat>
         <label>Pseudo Account Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>       
     </nameField>
     <pluralLabel>Pseudo Accounts</pluralLabel>
     <searchLayouts/>
