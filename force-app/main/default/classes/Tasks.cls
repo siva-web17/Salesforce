@@ -13,9 +13,11 @@ Modification Log   :
 public class Tasks {
     public static void onBeforeInsert(List<SObject> newItems) { 
         TasksHelper.populateSalesoffice(newItems);
+        TasksHelper.populateClosedFields(newItems);
     }
 
-    public static void onBeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
+    public static void onBeforeUpdate(List<SObject> newItems, Map<Id, SObject> oldItems) {
+        TasksHelper.populateClosedFields(newItems, oldItems);
     }
 
     public static void onBeforeDelete(Map<Id, SObject> oldItems) {

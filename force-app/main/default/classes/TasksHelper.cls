@@ -531,6 +531,33 @@ public class TasksHelper {
         return newSubject;
     }
 
+    /**
+    * @author Adam Osiecki
+    * @date 22.05.2018
+    * @description Method populates Closed fields (ClosedBy__r, ClosedDate__c) on closed tasks
+    * @version 1.0
+    * */
+    public static void populateClosedFields(List<Task> taskList){
+        for(Task task : taskList){
+            if (task.IsClosed == TRUE){
+                setClosedDateAndClosedBy(task);
+            }
+        }
+    }
+    public static void populateClosedFields(List<Task> taskList, Map<Id,SObject> oldTaskList){
+        for(Task task : taskList){
+        Task oldTask = (Task)oldTaskList.get(task.Id);
+            if(task.IsClosed == TRUE && oldTask.IsClosed == TRUE){
+                setClosedDateAndClosedBy(task);
+            }
+        }
+    }
+
+    private static void setClosedDateAndClosedBy(Task task){
+        task.CloseDate__c = System.now();
+        task.ClosedBy__c = UserInfo.getUserId();
+    }
+
     public static void updateParents(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
         updateLeads((Map<Id, Task>) newItems);
         updateOpportunities((Map<Id, Task>) newItems, (Map<Id, Task>) oldItems);
