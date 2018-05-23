@@ -37,6 +37,7 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
 
         for(Account account : scope){
             account.HasHappyCallTask__c = TRUE;
+            account.ReadyForHappyCall__c = TRUE;
             accounts.add(account);
             booking = account.Bookings__r[0];
             Task task = new Task(

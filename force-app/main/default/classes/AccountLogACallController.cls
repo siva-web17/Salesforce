@@ -92,9 +92,11 @@ public with sharing class AccountLogACallController {
 
             if (systemCallTasks.size() > 0 && systemCallTasks != null) {
 
+                DateTime actionDateTime = Datetime.valueOfGmt(actionDate.replace('T', ' '));
+
                 Task SystemCallTask = systemCallTasks[0];
                 SystemCallTask.IsParentClosing__c = true;
-                SystemCallTask.ActivityDate = Date.valueOf(actionDate);
+                SystemCallTask.ActivityDate = Date.newInstance(actionDateTime.year(),actionDateTime.month(),actionDateTime.day());
 
                 systemCallTask.Status = Label.LAC_Closed;
                 update systemCallTask;
@@ -109,7 +111,7 @@ public with sharing class AccountLogACallController {
                 task.ResultType__c = callResult;
                 task.NextCallType__c = Label.OpportunityStageFollowUp;
                 task.TaskSubtype = Label.Call;
-                task.FollowUpDate__c = Datetime.valueOfGmt(actionDate.replace('T', ' '));
+                task.FollowUpDate__c = actionDateTime;
                 task.Program__c = systemCallTask.Program__c;
 
                 LogACallHelper.handleLogAnAction(oppId, task, task.FollowUpDate__c, systemCallTask.Program__c);
@@ -127,6 +129,8 @@ public with sharing class AccountLogACallController {
             List<Task> systemCallTasks = TasksSelector.getHappyCallTaskForAccounts(AccountIds);
 
             if (systemCallTasks.size() > 0 && systemCallTasks != null) {
+
+                DateTime actionDateTime = Datetime.valueOfGmt(actionDate.replace('T', ' '));
 
                 Task SystemCallTask = systemCallTasks[0];
                 SystemCallTask.IsParentClosing__c = true;
@@ -150,8 +154,9 @@ public with sharing class AccountLogACallController {
 
                 } else if (callAction.equalsIgnoreCase(Label.CallNotReached) && callResult.equalsIgnoreCase(Label.CallBack)) {
 
-                    systemCallTask.FollowUpDate__c = Datetime.valueOfGmt(actionDate.replace('T', ' '));
-                    systemCallTask.ActivityDate = Date.valueOf(actionDate);
+                    systemCallTask.FollowUpDate__c = actionDateTime;
+                    systemCallTask.ActivityDate = Date.newInstance(actionDateTime.year(),actionDateTime.month(),actionDateTime.day());
+
                     systemCallTask.Status = Label.Not_Started;
 
                     task.CallNotReachedType__c = subAction;
