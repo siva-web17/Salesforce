@@ -25,6 +25,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Gender__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PersonMailingCountry__c</field>
             </layoutItems>
             <layoutItems>

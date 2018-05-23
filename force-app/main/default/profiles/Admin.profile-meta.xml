@@ -2931,6 +2931,11 @@
         <field>PseudoAccount__c.FirstName__c</field>
         <readable>true</readable>
     </fieldPermissions>
+            <field>PseudoAccount__c.Gender__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
     <fieldPermissions>
         <editable>true</editable>
         <field>PseudoAccount__c.InvoiceEmail__c</field>
