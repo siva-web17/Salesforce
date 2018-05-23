@@ -6,7 +6,10 @@ public class PseudonymiseActionController {
         Map<Id,Account> accountMap = AccountsSelector.getAccountBasedonAccountId(accountIdSet);        
         if(accountMap.containsKey(recordId))
         {
-            if(accountMap.get(recordId).hasbooking__c){
+            if(accountMap.get(recordId).IsPseudonymised__pc){
+                throw new AuraHandledException(Label.AlreadyPseudonymised);                
+            }
+            if(accountMap.get(recordId).hasbooking__c || accountWithBookingMap.containsKey(recordId)){
                 throw new AuraHandledException(Label.ErrorOnPseudonymisingBookingAccount);                
             }            
            boolean pseudonymisedSuccessfully = GDPRHelper.PseudonymiseAccount(accountMap);
