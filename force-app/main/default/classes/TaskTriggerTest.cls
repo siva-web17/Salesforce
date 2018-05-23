@@ -648,6 +648,7 @@ private class TaskTriggerTest {
         }
     }
 
+
     @isTest
     static void when_TaskIsChangedToClosed_expect_CloseFieldsAreSet() {
 
@@ -700,6 +701,91 @@ private class TaskTriggerTest {
             for(Task task : tasks){
                 System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
                 System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
+              
+    @IsTest
+    static void when_TaskIsCreated_Expect_SubjectIsPopulated(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_1:
+        //New Task is created
+        //Task.SalesAction__c IS NOT blank
+
+        String testSalesAction = 'Call Reached';
+        String testProgram = 'AY';
+        String testNewSubject = testSalesAction + ' - ' + testProgram;
+        Integer numOfTasks = 5;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            for(Integer i = 0; i<numOfTasks; i++){
+                Task t = new Task(
+                        Program__c = testProgram,
+                        SalesAction__c = testSalesAction
+                );
+                tasks.add(t);
+            }
+
+            for(Task task : tasks){
+                System.assertNotEquals(testNewSubject, task.Subject, 'Expecting Task Subject is not set before inserting');
+            }
+
+            //when
+            Test.startTest();
+                insert tasks;
+            Test.stopTest();
+
+            //then
+            tasks = [SELECT Subject FROM Task];
+            for(Task task : tasks){
+                System.assertEquals(testNewSubject, task.Subject, 'Expecting new Task Subject matches pattern: <SalesAction__c> - <Program__c>');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_TaskIsCreated_Expect_HyphenAndProgramIsAddedToSubject(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_2:
+        //New Task is created
+        //Task.SalesAction__c IS blank
+        //Task subject IS NOT null
+        //Task subject does not contain '-' (hyphen)
+
+        String testSubject = 'Some Test Subject';
+        String testProgram = 'AY';
+        String testNewSubject = testSubject + ' - ' + testProgram;
+        Integer numOfTasks = 5;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            for(Integer i = 0; i<numOfTasks; i++){
+                Task t = new Task(
+                        Program__c = testProgram,
+                        Subject = testSubject
+                );
+                tasks.add(t);
+            }
+
+            for(Task task : tasks){
+                System.assertNotEquals(testNewSubject, task.Subject, 'Expecting program is not added to subject before inserting');
+            }
+
+            //when
+            Test.startTest();
+            insert tasks;
+            Test.stopTest();
+
+            //then
+            tasks = [SELECT Subject FROM Task];
+            for(Task task : tasks){
+                System.assertEquals(testNewSubject, task.Subject, 'Expecting new Task Subject matches pattern: <current subject> - <Program__c>');
             }
         }
     }
@@ -754,6 +840,205 @@ private class TaskTriggerTest {
                 System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
                 System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
             }
+        }
+    }
+}
+          
+    @IsTest
+    static void when_TaskIsCreated_Expect_SubjectIsNotChanged(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_3:
+        //New Task is created
+        //Task.SalesAction__c IS blank
+        //Task subject is NULL (t1) or Task Subject contain '-' (hyphen) (t2)
+
+        String testSubject = 'Some test subject with hyphen -';
+        String testProgram = 'AY';
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            Task t1 = new Task(
+                    Program__c = testProgram
+            );
+            Task t2 = new Task(
+                    Program__c = testProgram,
+                    Subject = testSubject
+            );
+            tasks.add(t1);
+            tasks.add(t2);
+
+            System.assertEquals(null, t1.Subject, 'Checking if subject is set properly');
+            System.assertEquals(testSubject, t2.Subject, 'Checking if subject is set properly');
+
+            //when
+            Test.startTest();
+            insert tasks;
+            Test.stopTest();
+
+            //then
+            Integer taskWithNullSubject = [SELECT Count() FROM Task WHERE Subject = null];
+            System.assertEquals(1, taskWithNullSubject, 'Expecting task subject is not changed');
+
+            List<Task> taskWithHyphenInSubject = [SELECT Subject FROM Task WHERE Subject != null];
+            System.assertEquals(testSubject,taskWithHyphenInSubject[0].Subject, 'Expecting task subject is not changed');
+        }
+    }
+
+    @IsTest
+    static void when_TaskIsUpdated_Expect_SubjectIsPopulated(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_4:
+        //Existing Task is modified
+        //Field Task.SalesAction__c is changed
+
+        String testSalesAction = 'Call Reached';
+        String testNewSalesAction = 'Called Us';
+        String testProgram = 'AY';
+        String testNewSubject = testNewSalesAction + ' - ' + testProgram;
+        Integer numOfTasks = 5;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            for(Integer i = 0; i<numOfTasks; i++){
+                Task t = new Task(
+                        Program__c = testProgram,
+                        SalesAction__c = testNewSalesAction
+                );
+                tasks.add(t);
+            }
+            insert tasks;
+            System.assertEquals(numOfTasks, [SELECT COUNT() FROM Task], 'Checking if tasks are inserted correctly');
+
+            tasks = [SELECT Subject, SalesAction__c FROM Task];
+            for(Task task : tasks){
+                task.SalesAction__c = testNewSalesAction;
+            }
+
+            //when
+            Test.startTest();
+            update tasks;
+            Test.stopTest();
+
+            //then
+            for(Task task : tasks){
+                System.assertEquals(testNewSubject, task.Subject, 'Expecting new Task Subject matches pattern: <SalesAction__c> - <Program__c>');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_TaskIsUpdated_Expect_HyphenAndProgramIsAddedToSubject(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_5:
+        //Existing Task is modified
+        //Field Task.SalesAction__c is NOT changed
+        //Task subject is NOT null
+        //Task subject does NOT contain '-' (hyphen)
+
+        String testProgram = 'AY';
+        String testSubject = 'Some test subject';
+        String testNewSubjectBeforeInsert = 'Some updated test subject';
+        String testNewSubjectAfterInsert = testNewSubjectBeforeInsert + ' - ' + testProgram;
+        Integer numOfTasks = 5;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            for(Integer i = 0; i<numOfTasks; i++){
+                Task t = new Task(
+                        Program__c = testProgram,
+                        Subject = testSubject
+                );
+                tasks.add(t);
+            }
+            insert tasks;
+            System.assertEquals(numOfTasks, [SELECT COUNT() FROM Task], 'Checking if tasks are inserted correctly');
+            tasks = [SELECT Subject FROM Task];
+
+            for(Task task : tasks){
+                task.Subject = testNewSubjectBeforeInsert;
+            }
+
+            //when
+            Test.startTest();
+            update tasks;
+            Test.stopTest();
+
+            //then
+            tasks = [SELECT Subject FROM Task];
+            for(Task task : tasks){
+                System.assertEquals(testNewSubjectAfterInsert, task.Subject, 'Expecting new Task Subject matches pattern: <current subject> - <Program__c>');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_TaskIsUpdated_Expect_SubjectIsNotChanged(){
+
+        //given
+        //Conditions for when_TaskIsCreated_Expect_SpecificSubjectBehavior_6:
+        //Existing Task is modified
+        //Field Task.SalesAction__c is NOT changed
+        //Task subject is null OR Task subject contains '-' (hyphen)
+
+        String testProgram = 'AY';
+        String testNewProgram = 'ILS';
+        String testSubject = 'Some test subject with hyphen -';
+        String testNewSubject = testSubject + ' - ' + testNewProgram;
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            List<Task> tasks = new List<Task>();
+            Task t1 = new Task(
+                    Program__c = testProgram
+            );
+            Task t2 = new Task(
+                    Program__c = testProgram,
+                    Subject = testSubject
+            );
+            tasks.add(t1);
+            tasks.add(t2);
+
+            insert tasks;
+            System.assertEquals(2, [SELECT COUNT() FROM Task], 'Checking if tasks are inserted correctly');
+            System.assertEquals(null, t1.Subject, 'Checking if subject is set properly');
+            System.assertEquals(testSubject, t2.Subject, 'Checking if subject is set properly');
+
+            List<Task> tasksToUpdate = new List<Task>();
+
+            List<Task> taskWithoutSubject = [SELECT Subject FROM Task WHERE Subject = null];
+            taskWithoutSubject[0].Program__c = testNewProgram;
+
+            List<Task> taskWithHyphenInSubject = [SELECT Subject FROM Task WHERE Subject != null];
+            taskWithoutSubject[0].Program__c = testNewProgram;
+
+            tasksToUpdate.add(taskWithoutSubject[0]);
+            tasksToUpdate.add(taskWithHyphenInSubject[0]);
+
+            //when
+            Test.startTest();
+            update tasksToUpdate;
+            Test.stopTest();
+
+            //then
+            Integer taskWithoutSubjectNumber = [SELECT Count() FROM Task WHERE Subject = null];
+            System.assertEquals(1, taskWithoutSubjectNumber, 'Expecting task subject is not changed');
+
+            taskWithHyphenInSubject = [SELECT Subject FROM Task WHERE Subject != null];
+            System.assertEquals(testSubject,taskWithHyphenInSubject[0].Subject, 'Expecting task subject is not changed');
         }
     }
 }

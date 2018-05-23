@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OverAllSatisfied__c</fullName>
+    <description>This field is used to check the feedback of the customer after booking</description>
+    <externalId>false</externalId>
+    <label>Over All Satisfied</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Somewhat Satisfied</fullName>
+                <default>false</default>
+                <label>Somewhat Satisfied</label>
+            </value>
+            <value>
+                <fullName>Satisfied</fullName>
+                <default>false</default>
+                <label>Satisfied</label>
+            </value>
+            <value>
+                <fullName>Somewhat Unsatisfied</fullName>
+                <default>false</default>
+                <label>Somewhat Unsatisfied</label>
+            </value>
+            <value>
+                <fullName>Very Satisfied</fullName>
+                <default>false</default>
+                <label>Very Satisfied</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

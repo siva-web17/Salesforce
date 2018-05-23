@@ -15,10 +15,11 @@ public class Opportunities {
         OpportunitiesHelper.populateSalesOfficeProgram((List<Opportunity>) oppItems);
         OpportunitiesHelper.populateSourceBasedonSorceCodeAuto((List<Opportunity>) oppItems);
         OpportunitiesHelper.populateSourceCodeAutoAndPartnerFromSource((List<Opportunity>) oppItems);
+        OpportunitiesHelper.populateCloseDate(oppItems);
     }
 
     public static void onBeforeUpdate(Map<Id, Sobject> newItems, Map<Id, Sobject> oldItems) {
-        OpportunitiesHelper.setDefaultLetterAndLabel((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
+        OpportunitiesHelper.setDefaultLetterLabelAndDateOfDeactivation((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
         OpportunitiesHelper.passOpportunityListToPopulateSalesOfficeProgram((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
     }
 
