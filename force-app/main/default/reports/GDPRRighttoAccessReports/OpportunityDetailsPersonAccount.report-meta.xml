@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.SalesOffice__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Program__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.IsUp__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.IsJunior__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.InterestedToTravelInGroup__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.IsActive__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.CloseMainReason__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.CURRENCY_ISO_CODE</field>
+    </columns>
+    <currency>CHF</currency>
+    <description>This report is used to export Opportunity details related to a Person Account.
+
+Please change the filter in this report with the respective Account Id of the customer.</description>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_ID</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value/>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Opportunity Details (Person Account)</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>>0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
