@@ -4,7 +4,7 @@
 @isTest
 public with sharing class GDPRTriggerTest {
 
-    static testMethod void OnPseudomizeAccountCreatePseudoAccount(){
+    static testMethod void When_PseudomizeAccount_Expect_PseudoAccountCreation(){
         Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Account.SobjectType).get('PersonAccount').Id;
         String market = 'NOO';
         Map<String, String> personAccountFieldValues = new Map<String, String>{
