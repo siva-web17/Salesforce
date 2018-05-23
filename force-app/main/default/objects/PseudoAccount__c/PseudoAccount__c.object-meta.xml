@@ -55,7 +55,7 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>Pseudo Account</label>
     <nameField>
-        <label>Pseudo Account' Name</label>
+        <label>Pseudo Account Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
