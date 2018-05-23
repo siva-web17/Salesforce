@@ -56,6 +56,7 @@ public with sharing class GDPRHelper {
 
     private static void deactivateOpportunity(Map<Id, Opportunity> activeOpportunityMap,Id accountId) {
         if (activeOpportunityMap.containsKey(accountId)) {
+            activeOpportunityMap.get(accountId).LastAutomationUpdateDateTime__c = system.now();
             activeOpportunityMap.get(accountId).StageName = Label.SalesClosed;
         }
     }
