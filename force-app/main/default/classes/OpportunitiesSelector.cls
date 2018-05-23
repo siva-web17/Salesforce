@@ -217,7 +217,7 @@ public class OpportunitiesSelector {
             query += f.getFieldPath() + ', ';
         }
 
-        query += 'Name,AccountId,CreatedDate  from Opportunity Where AccountId in  : ' + 'accountIdSet';
+        query += 'Name,AccountId,CreatedDate,StageName from Opportunity Where AccountId in  : ' + 'accountIdSet';
         if (checkActiveOpportunity) {
             query += ' AND IsActive__c  = TRUE';
         }
