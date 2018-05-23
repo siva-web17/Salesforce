@@ -2308,4 +2308,12 @@
         <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
         <value>Not able to contact customer</value>
     </labels>
+    <labels>
+        <fullName>AlreadyPseudonymised</fullName>
+        <categories>Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AlreadyPseudonymised</shortDescription>
+        <value>This account is already Pseudonumised.</value>
+    </labels>
 </CustomLabels>
