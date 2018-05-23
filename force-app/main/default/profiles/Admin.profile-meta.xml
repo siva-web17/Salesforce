@@ -3510,7 +3510,7 @@
         <field>Campaign.PosInfoMeetingID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Campaign.Product__c</field>
@@ -3839,6 +3839,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.IsByConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.IsPseudonymised__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5002,7 +5007,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+     <editable>false</editable>
         <field>Lead.LeadExternalId__c</field>
         <readable>true</readable>
     </fieldPermissions>
