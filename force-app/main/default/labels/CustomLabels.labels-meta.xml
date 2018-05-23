@@ -906,11 +906,11 @@
         <value>Please fill your information correctly.</value>
     </labels>
     <labels>
-        <fullName>LAC_HCCSubjectPrefix</fullName>
+        <fullName>LAC_TaskHCCSubjectPrefix</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Subject Prefix for HCC Task</shortDescription>
-        <value>HC -</value>
+        <value>HC</value>
     </labels>
     <labels>
         <fullName>LAC_HDYH</fullName>
