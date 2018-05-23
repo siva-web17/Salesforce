@@ -538,24 +538,35 @@ public class TasksHelper {
     * @version 1.0
     * */
     public static void populateClosedFields(List<Task> taskList){
+        Set<String> taskClosingStatusList = getAllClosingTaskStatuses();
         for(Task task : taskList){
-            if (task.IsClosed == TRUE){
-                setClosedDateAndClosedBy(task);
+            if (taskClosingStatusList.contains(task.Status)){
+                task = setClosedDateAndClosedBy(task);
             }
         }
     }
     public static void populateClosedFields(List<Task> taskList, Map<Id,SObject> oldTaskList){
+        Set<String> taskClosingStatusList = getAllClosingTaskStatuses();
         for(Task task : taskList){
         Task oldTask = (Task)oldTaskList.get(task.Id);
-            if(task.IsClosed == TRUE && oldTask.IsClosed == TRUE){
-                setClosedDateAndClosedBy(task);
+            if(taskClosingStatusList.contains(task.Status) && !(taskClosingStatusList.contains(oldTask.Status))){
+                task = setClosedDateAndClosedBy(task);
             }
         }
     }
 
-    private static void setClosedDateAndClosedBy(Task task){
+    private static Task setClosedDateAndClosedBy(Task task){
         task.CloseDate__c = System.now();
         task.ClosedBy__c = UserInfo.getUserId();
+        return task;
+    }
+
+    private static Set<String> getAllClosingTaskStatuses(){
+        Set<String> taskClosingStatusList = new Set<String>();
+        for(TaskStatus ts : [SELECT ApiName FROM TaskStatus WHERE IsClosed = TRUE]){
+            taskClosingStatusList.add(ts.ApiName);
+        }
+        return taskClosingStatusList;
     }
 
     public static void updateParents(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
