@@ -88,4 +88,14 @@ public class AccountsSelector {
                 WHERE id IN :accountIds]);
         return accountWithActiveOpportunities;
     }
+    
+    public static map<Id, Account> getAccountBasedonAccountId(Set<Id> accountIds) {
+        Map<ID,Account> accountMap = new Map<ID,Account>([
+                SELECT Id,IsPseudonymised__pc, Email2__c, hasBooking__c,FirstName, InvoiceEmail__c, LastName,ParentEmail__c,PersonEmail,PersonHomePhone,
+                        PersonMailingCity,PersonMailingCountry,PersonMailingCountryCode, PersonMailingPostalCode,
+                        PersonMailingState, PersonMailingStateCode,PersonMailingStreet,PersonMobilePhone,PersonOtherPhone,Gender__c
+                FROM Account
+                WHERE id IN :accountIds]);
+        return accountMap;
+    }
 }
