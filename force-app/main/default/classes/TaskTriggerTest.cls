@@ -699,8 +699,8 @@ private class TaskTriggerTest {
                     WHERE Id IN :taskIds
             ];
             for(Task task : tasks){
-                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
-                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
+                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Expecting task.CloseDate__c is set today');
+                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Expecting task ClosedBy is set to current user');
               
     @IsTest
     static void when_TaskIsCreated_Expect_SubjectIsPopulated(){
@@ -837,8 +837,8 @@ private class TaskTriggerTest {
                     WHERE Id IN :taskIds
             ];
             for(Task task : tasks){
-                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Checking if close date is not set');
-                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Checking if close date is not set');
+                System.assertEquals(System.today(), task.CloseDate__c.date(), 'Expecting task.CloseDate__c is set today');
+                System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Expecting task ClosedBy is set to current user');
             }
         }
     }
