@@ -47,6 +47,7 @@
     <tabs>Source__c</tabs>
 	<tabs>standard-Opportunity</tabs>
     <tabs>standard-Lead</tabs>
+    <tabs>standard-Opportunity</tabs>
     <tabs>LanguageReport</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
