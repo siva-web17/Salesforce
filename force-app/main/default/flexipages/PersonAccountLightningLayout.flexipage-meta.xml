@@ -12,35 +12,39 @@
             </componentInstanceProperties>
             <componentName>force:highlightsPanel</componentName>
         </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>decorate</name>
-                <value>true</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>richTextValue</name>
-                <value>This Person Account is marked as Protected&amp;nbsp;Identity.&amp;nbsp;&lt;font color="#FF0000">&lt;b>Do not share contact details.&lt;/b>&lt;/font></value>
-            </componentInstanceProperties>
-            <componentName>flexipage:richText</componentName>
-            <visibilityRule>
-                <criteria>
-                    <leftValue>{!Record.IsProtectedIdentity__c}</leftValue>
-                    <operator>EQUAL</operator>
-                    <rightValue>true</rightValue>
-                </criteria>
-            </visibilityRule>
-        </componentInstances>
-        <componentInstances>
-            <componentName>force:relatedListQuickLinksContainer</componentName>
-        </componentInstances>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentName>AccountOpportunitiesList</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>parentFieldApiName</name>
+                <value>Account.Id</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>relatedListApiName</name>
+                <value>Bookings__r</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>relatedListComponentOverride</name>
+                <value>NONE</value>
+            </componentInstanceProperties>
+            <componentName>force:relatedListSingleContainer</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>force:relatedListQuickLinksContainer</componentName>
+        </componentInstances>
+        <name>facet-bdaa32d9-9723-4575-be38-8548ac663268</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
-        <name>facet-c22f1286-b70b-4c73-9f21-3161150d1ec5</name>
+        <name>facet-feca67ad-a290-424b-9a97-38aceba6582d</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -63,7 +67,7 @@
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
-        <name>facet-9f70ff28-6b91-43be-80af-aec039532035</name>
+        <name>facet-bba03ece-b25e-4d02-947e-c3b458700f43</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -86,7 +90,7 @@
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>
-        <name>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</name>
+        <name>facet-d0599f49-83b5-43cd-a6b3-9751e486df2f</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -101,7 +105,7 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>relatedListComponentOverride</name>
-                <value>GRID</value>
+                <value>NONE</value>
             </componentInstanceProperties>
             <componentName>force:relatedListSingleContainer</componentName>
         </componentInstances>
@@ -120,102 +124,7 @@
             </componentInstanceProperties>
             <componentName>flowruntime:interview</componentName>
         </componentInstances>
-        <name>facet-fdb412b8-6c3c-4a55-b136-4e5c0c2b1524</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentName>AccountOpportunitiesList</componentName>
-        </componentInstances>
-        <name>facet-aa3ab419-29a3-4698-bb1d-447c137e36c2</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-c22f1286-b70b-4c73-9f21-3161150d1ec5</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Standard.Tab.detail</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-9f70ff28-6b91-43be-80af-aec039532035</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Other Details</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-a729ea08-9238-4a75-9c5c-58cb77a17b84</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Unsubscribe</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-fdb412b8-6c3c-4a55-b136-4e5c0c2b1524</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Family</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>active</name>
-                <value>false</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>facet-aa3ab419-29a3-4698-bb1d-447c137e36c2</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Opportunities</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <name>facet-2b883504-df8c-4580-b6a6-1622170a2f04</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>tabs</name>
-                <value>facet-2b883504-df8c-4580-b6a6-1622170a2f04</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tabset</componentName>
-        </componentInstances>
-        <name>main</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentName>runtime_sales_activities:activityPanel</componentName>
-        </componentInstances>
-        <name>facet-b581f496-1b27-415b-887e-b40aac8570bb</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentName>forceChatter:recordFeedContainer</componentName>
-        </componentInstances>
-        <name>facet-6a3a687e-532f-4cad-94eb-9a400cf4ea5e</name>
+        <name>facet-44d60751-38db-4522-9fde-b3099bfd1933</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -226,7 +135,98 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>facet-b581f496-1b27-415b-887e-b40aac8570bb</value>
+                <value>facet-bdaa32d9-9723-4575-be38-8548ac663268</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.relatedLists</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-feca67ad-a290-424b-9a97-38aceba6582d</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.detail</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-bba03ece-b25e-4d02-947e-c3b458700f43</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Other Details</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-d0599f49-83b5-43cd-a6b3-9751e486df2f</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Unsubscribe</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-44d60751-38db-4522-9fde-b3099bfd1933</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Family</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <name>facet-27fc7993-4c8e-44d5-bea9-31465d689f1b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>tabs</name>
+                <value>facet-27fc7993-4c8e-44d5-bea9-31465d689f1b</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tabset</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>dupcheck:dc3Live</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>runtime_sales_activities:activityPanel</componentName>
+        </componentInstances>
+        <name>facet-41f17296-8367-4b16-a547-c0b230f8f671</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>forceChatter:recordFeedContainer</componentName>
+        </componentInstances>
+        <name>facet-37535026-2c02-414b-ac19-8270f2bfadff</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>facet-41f17296-8367-4b16-a547-c0b230f8f671</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
@@ -237,7 +237,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>body</name>
-                <value>facet-6a3a687e-532f-4cad-94eb-9a400cf4ea5e</value>
+                <value>facet-37535026-2c02-414b-ac19-8270f2bfadff</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>title</name>
@@ -245,24 +245,21 @@
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>
-        <name>facet-58f686b5-8b6b-4e99-bcfa-51c3c40d078c</name>
+        <name>facet-c771b2b4-902e-4adf-a2ab-1d6e1fef8768</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
                 <name>tabs</name>
-                <value>facet-58f686b5-8b6b-4e99-bcfa-51c3c40d078c</value>
+                <value>facet-c771b2b4-902e-4adf-a2ab-1d6e1fef8768</value>
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentName>dupcheck:dc3Live</componentName>
         </componentInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Person Account Lightning Page Layout</masterLabel>
+    <masterLabel>Person Account Lightning  Layout</masterLabel>
     <sobjectType>Account</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
