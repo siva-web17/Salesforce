@@ -449,6 +449,19 @@ public class LeadsHelper {
         return systemTask;
     }
 
+    public static void createSystemCallTasksForLeadsEnteredManually(List<Lead> leads) {
+
+        List<Task> systemTasksForLeads = new List<Task>();
+
+        for(Lead lead : leads) {
+            if(lead.CreationMethod__c == Label.Lead_CreationMethod_Enteredbyuser){
+                systemTasksForLeads.add(createSystemCallTaskRecordForLead(lead));
+            }
+        }
+
+        insert systemTasksForLeads;
+    }
+
     public static void populateSalesOfficeProgram(List<Lead> leadList) {
         Set<string> recordSharingValues = new Set<String>();
         Map<string, id> salesOfficeMap = new Map<string, id>();

@@ -1144,6 +1144,14 @@
         <value>Closed Won</value>
     </labels>
     <labels>
+        <fullName>Lead_CreationMethod_Enteredbyuser</fullName>
+        <categories>Lead Creation Method picklist value</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Creation Method Entered by User</shortDescription>
+        <value>Enteredbyuser</value>
+    </labels>
+    <labels>
         <fullName>LineItemPricingStatusPending</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>
