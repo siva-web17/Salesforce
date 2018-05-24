@@ -701,6 +701,9 @@ private class TaskTriggerTest {
             for(Task task : tasks){
                 System.assertEquals(System.today(), task.CloseDate__c.date(), 'Expecting task.CloseDate__c is set today');
                 System.assertEquals(adminUser.Id, task.ClosedBy__r.Id, 'Expecting task ClosedBy is set to current user');
+			}
+		}
+	}
               
     @IsTest
     static void when_TaskIsCreated_Expect_SubjectIsPopulated(){
@@ -842,7 +845,6 @@ private class TaskTriggerTest {
             }
         }
     }
-}
           
     @IsTest
     static void when_TaskIsCreated_Expect_SubjectIsNotChanged(){
