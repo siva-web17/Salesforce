@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HasSeenPrice__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field indicates if the Customer has seen a price during the Web Visit.</description>
+    <externalId>false</externalId>
+    <label>Has Seen Price</label>
+    <type>Checkbox</type>
+</CustomField>
