@@ -16,6 +16,7 @@
     <div id="tabstrip" class="noselect" style="display:none;">
         <ul>
             <li id="opportunitiesTab" class="k-state-active" onclick="TabController.setLastSelectedTab('opportunitiesTab')">Opportunities</li>
+            <li id="happyCallsTab" onclick="TabController.setLastSelectedTab('happyCallsTab')">Happy Calls</li>
             <li id="leadsTab" onclick="TabController.setLastSelectedTab('leadsTab')">Leads</li>
         </ul>
     <!-- Opportunities -->
@@ -25,6 +26,14 @@
             EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
             <CRMC_PP:DrillUp />
         </div>
+        
+        <!-- Happy Calls -->
+        <div style="overflow:hidden;"> 
+            <CRMC_PP:Grid ObjectName="Task" DelayLoad="false"  ViewID="a0I3E000001EHjYUAW" 
+             EnableNewButton="false"  EnableNewInline="false"  EnableEdit="false"  EnableActions="false"  EnableFieldChooser="true" 
+             EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+             <CRMC_PP:DrillUp /> 
+         </div>
 
     <!-- Leads -->
         <div style="overflow:hidden;">
