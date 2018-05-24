@@ -896,4 +896,54 @@ public class TasksHelper {
             }
         }
     }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method set task subject
+* @version 1.0
+* */
+    public static void setTaskSubject(List<Task> newTasks){
+        for(Task task : newTasks){
+            if(!String.isBlank(task.SalesAction__c)){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                task.Subject = checkIfAddProgramToSubject(task);
+            }
+        }
+    }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method updates task subject
+* @version 1.0
+* */
+    public static void updateTaskSubject(List<Task> newTasks, Map<Id,Task> oldTasks){
+        for(Task task : newTasks){
+            Task oldTask = oldTasks.get(task.Id);
+            if(task.SalesAction__c != oldTask.SalesAction__c){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                if(task.Subject != oldTask.Subject){
+                    task.Subject = checkIfAddProgramToSubject(task);
+                }
+            }
+        }
+    }
+
+    private static String setSalesActionAndProgramAsTaskSubject(Task task){
+        return task.SalesAction__c + ' - ' + task.Program__c;
+    }
+
+    private static String addProgramToTaskSubject(Task task){
+        return task.Subject + ' - ' + task.Program__c;
+    }
+
+    private static String checkIfAddProgramToSubject(Task task){
+        if(!String.isBlank(task.Subject) && !task.Subject.contains('-')){
+            task.Subject = addProgramToTaskSubject(task);
+        }
+        return task.Subject;
+    }
 }

@@ -18,7 +18,7 @@ public class TasksDispatcher {
                 Tasks.onBeforeInsert(trigger.new);
 
             if (Trigger.IsUpdate)
-                Tasks.onBeforeUpdate(trigger.newMap, trigger.oldMap);
+                Tasks.onBeforeUpdate(trigger.new, trigger.oldMap);
 
             if (Trigger.IsDelete)
                 Tasks.onBeforeDelete(trigger.oldMap);
