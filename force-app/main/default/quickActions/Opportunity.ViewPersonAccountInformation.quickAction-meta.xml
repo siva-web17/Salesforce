@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This action is used to display Person Account information in a separate tab on the Opportunity Lightning Layout
+    <description>This Action is used to display Person Account information in a separate tab on the Opportunity Lightning Layout
 IMPORTANT: DO NOT USE THIS ACTION ANYWHERE ELSE
 
 Note: To be removed as soon as the PA Component on the Opp PL is functional.</description>

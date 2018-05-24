@@ -18,10 +18,7 @@ public class TasksDispatcher {
                 Tasks.onBeforeInsert(trigger.new);
 
             if (Trigger.IsUpdate)
-                Tasks.onBeforeUpdate(trigger.newMap, trigger.oldMap);
-
-            if (Trigger.IsDelete)
-                Tasks.onBeforeDelete(trigger.oldMap);
+                Tasks.onBeforeUpdate(trigger.new, trigger.oldMap);
         }
 
         // After trigger logic
@@ -31,12 +28,6 @@ public class TasksDispatcher {
 
             if (Trigger.IsUpdate)
                 Tasks.onAfterUpdate(trigger.newMap, trigger.oldMap);
-
-            if (trigger.IsDelete)
-                Tasks.onAfterDelete(trigger.oldMap);
-
-            if (trigger.isUndelete)
-                Tasks.onAfterUndelete(trigger.oldMap);
         }
     }
 }
