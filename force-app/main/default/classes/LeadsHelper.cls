@@ -458,8 +458,9 @@ public class LeadsHelper {
                 systemTasksForLeads.add(createSystemCallTaskRecordForLead(lead));
             }
         }
-
-        insert systemTasksForLeads;
+        if (systemTasksForLeads.size() > 0) {
+            insert systemTasksForLeads;
+        }
     }
 
     public static void populateSalesOfficeProgram(List<Lead> leadList) {
