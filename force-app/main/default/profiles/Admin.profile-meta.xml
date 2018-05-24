@@ -929,6 +929,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
++        <apexClass>GDPRHelper</apexClass>
++        <enabled>true</enabled>
++    </classAccesses>
+    <classAccesses>
         <apexClass>GroupMembersSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2872,6 +2876,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>AccountToPseudoAccountMapping__mdt.AccountAPIName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>AccountContactRelation.AccountContactID__c</field>
         <readable>false</readable>
@@ -2897,6 +2906,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>AccountToPseudoAccountMapping__mdt.IsMandatoryOnAccount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>AccountContactRelation.IsParentSynchedToPoseidon__c</field>
         <readable>true</readable>
@@ -2909,6 +2923,101 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AccountContactRelation.StartDate</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AccountToPseudoAccountMapping__mdt.PseudoAccountAPIName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.AccountId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.Email2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.FirstName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+            <field>PseudoAccount__c.Gender__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.InvoiceEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.LastName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.ParentEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonHomePhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCountryCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCountry__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingPostalCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingStateCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingState__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingStreet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMobilePhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonOtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7720,6 +7829,12 @@
     <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
++        <layout>PseudoAccount__c-Pseudo Account Layout</layout>
++    </layoutAssignments>
+    <layoutAssignments>
         <layout>AccountContactRelation-Account Contact Relationship Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8273,6 +8388,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>Pricebook2</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>PseudoAccount__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

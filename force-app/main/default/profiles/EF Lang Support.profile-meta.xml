@@ -2886,6 +2886,16 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.AccountAPIName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.IsMandatoryOnAccount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AccountContactRelation.EndDate</field>
         <readable>true</readable>
@@ -7800,6 +7810,9 @@
         <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Idea-Idea Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8023,6 +8036,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Pricebook2</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>PseudoAccount__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
