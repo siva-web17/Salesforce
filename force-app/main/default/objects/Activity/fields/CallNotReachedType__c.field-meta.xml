@@ -10,7 +10,12 @@
         <controllingField>SalesAction__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Answer</fullName>
+                <default>false</default>
+                <label>No Answer</label>
+            </value>
             <value>
                 <fullName>Busy can’t talk</fullName>
                 <default>false</default>
@@ -20,11 +25,6 @@
                 <fullName>Missing Number</fullName>
                 <default>false</default>
                 <label>Missing Number</label>
-            </value>
-            <value>
-                <fullName>No Answer</fullName>
-                <default>false</default>
-                <label>No Answer</label>
             </value>
             <value>
                 <fullName>Not at Home</fullName>
@@ -39,15 +39,15 @@
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Call Not Reached</controllingFieldValue>
+            <valueName>No Answer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <valueName>Busy can’t talk</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Not Reached</controllingFieldValue>
             <valueName>Missing Number</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Call Not Reached</controllingFieldValue>
-            <valueName>No Answer</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Call Not Reached</controllingFieldValue>
