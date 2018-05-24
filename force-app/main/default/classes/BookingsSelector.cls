@@ -10,7 +10,6 @@ Modification Log   :
  * Arjun.Mohan                 23/05/2018              Original Version
 *******************************************************************************/
 public class BookingsSelector {
-
     public static Map<Id,List<Booking__c>> getBookingForAccountIds(Set<Id> AccountIdSet)
     {
         Map<Id,List<Booking__c>> accountWithBookingMap = new Map<Id,List<Booking__c>>();
