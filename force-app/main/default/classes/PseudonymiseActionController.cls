@@ -3,7 +3,8 @@ public class PseudonymiseActionController {
     public static String PseudonymiseAccount(String recordId) {       
         Set<Id> accountIdSet=new Set<Id>();
         accountIdSet.add(recordId);
-        Map<Id,Account> accountMap = AccountsSelector.getAccountBasedonAccountId(accountIdSet);        
+        Map<Id,Account> accountMap = AccountsSelector.getAccountBasedonAccountId(accountIdSet);
+         Map<Id,List<Booking__c>> accountWithBookingMap = BookingsSelector.getBookingForAccountIds(accountIdSet);
         if(accountMap.containsKey(recordId))
         {
             if(accountMap.get(recordId).IsPseudonymised__pc){
