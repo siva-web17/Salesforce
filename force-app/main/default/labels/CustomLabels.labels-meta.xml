@@ -1152,6 +1152,14 @@
         <value>Enteredbyuser</value>
     </labels>
     <labels>
+        <fullName>Lead_CreationMethod_ExcelImport</fullName>
+        <categories>Lead Creation Method picklist value</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Creation Method Entered by User</shortDescription>
+        <value>Excel Import</value>
+    </labels>
+    <labels>
         <fullName>LineItemPricingStatusPending</fullName>
         <categories>Apttus</categories>
         <language>en_US</language>

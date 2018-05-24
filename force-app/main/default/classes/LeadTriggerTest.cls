@@ -267,4 +267,68 @@ private class LeadTriggerTest {
             RankingHandler.getLeadSettings(new List<Lead>{leadRec});         
         //}
     }
+
+    @IsTest
+    static void When_LeadCreatedFromGlobalActionByUser_Expect_CreateSystemTaskForThisLead() {
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser) {
+
+            Integer numberOfLeads = 10;
+            Id SystemCallTaskRecordType = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(Label.SystemCallTaskRecordTypeDeveloperName).Id;
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            List<Lead> leads = new List<Lead>();
+
+            for(Integer i = 0 ; i < numberOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.build().getRecord();
+                lead.CreationMethod__c = Label.Lead_CreationMethod_Enteredbyuser;
+                leads.add(lead);
+            }
+
+            Test.startTest();
+
+            insert leads;
+
+            Test.stopTest();
+
+            List<Task> SystemTasksForLeads = [SELECT Id,RecordTypeId,WhoId,ActivityDate,Type,NextCallType__c From Task];
+
+            System.assert(SystemTasksForLeads.size() == numberOfLeads, 'Amount of Tasks created is equal to number of Lead Created');
+            for(Task task : SystemTasksForLeads){
+                System.assertEquals(task.RecordTypeId, SystemCallTaskRecordType, 'All Tasks are System Call Task Record Type');
+                System.assert(task.ActivityDate == System.today(),'Activity Date is Today');
+                System.assert(task.Type == TasksHelper.CALL,'Type is Call');
+                System.assert(task.NextCallType__c == TasksHelper.CONTACT_CUSTOMER,'NextCallType is Contact Customer');
+            }
+        }
+    }
+
+    @IsTest
+    static void When_LeadCreatedFromExcelImport_Expect_DoNotCreateSystemTaskForThisLead() {
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser) {
+
+            Integer numberOfLeads = 10;
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            List<Lead> leads = new List<Lead>();
+
+            for(Integer i = 0 ; i < numberOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.build().getRecord();
+                lead.CreationMethod__c = Label.Lead_CreationMethod_ExcelImport;
+                leads.add(lead);
+            }
+
+            Test.startTest();
+
+            insert leads;
+
+            Test.stopTest();
+
+            List<Task> SystemTasksForLeads = [SELECT Id From Task];
+            System.assert(SystemTasksForLeads.isEmpty(),'No system Tasks are created for Leads with CreationMethod different than UserCreated');
+
+        }
+    }
 }
