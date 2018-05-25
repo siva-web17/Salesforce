@@ -24,7 +24,7 @@ public class DCDiscardsTest {
             Set<Id> leadIds = new Set<Id>();
 
             //given
-            List<Lead> leadList = TestdataUtil.createLeadList(4);
+            List<Lead> leadList = TestDataFactory.createLeadList(4);
             for(Lead lead : leadList){
                 lead.IsDupe__c = true;
             }
@@ -93,7 +93,11 @@ public class DCDiscardsTest {
 
             Set<Id> leadIds = new Set<Id>();
             //given,
+<<<<<<< HEAD
             List<Lead> leadList = TestdataUtil.createLeadList(4);
+=======
+            List<Lead> leadList = TestDataFactory.createLeadList(4);
+>>>>>>> origin/SF-884/PatrykZakDev
             for(Lead lead : leadList){
                 lead.IsDupe__c = true;
             }

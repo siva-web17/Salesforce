@@ -5,10 +5,10 @@
 public class DCMergePluginTest {
     //lead merge
     static testmethod void leadMergePlugin() {
-        system.runAs(TestDataUtil.createUserRecord()) {
-            List<Lead> leadList = TestdataUtil.createLeadList(4);
+        system.runAs(TestDataFactory.createUserRecord()) {
+            List<Lead> leadList = TestDataFactory.createLeadList(4);
             insert leadList;
-            Lead masterLead = TestdataUtil.createLead();
+            Lead masterLead = TestDataFactory.createLead();
             insert masterLead;
             DCMergePlugin plugin = new DCMergePlugin();
             plugin.beforeMerge('00Q',masterLead,leadList);
