@@ -32,6 +32,11 @@
                 <label>Follow-up</label>
             </value>
             <value>
+                <fullName>HCC</fullName>
+                <default>false</default>
+                <label>Happy Call</label>
+            </value>
+            <value>
                 <fullName>MCR</fullName>
                 <default>false</default>
                 <isActive>false</isActive>

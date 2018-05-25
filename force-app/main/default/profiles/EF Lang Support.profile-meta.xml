@@ -2630,6 +2630,11 @@
         <field>Account.HasBooking__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>Account.HasHappyCallTask__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.HasPhoneNumber__c</field>
@@ -2723,6 +2728,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.NumberOfEmployees</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.NumberOfUnreachedHappyCalls__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2863,6 +2873,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AccountContactRelation.AccountContactID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.AccountAPIName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.IsMandatoryOnAccount__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3111,6 +3131,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.Attainedlevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.BalanceDue__c</field>
         <readable>true</readable>
@@ -3171,6 +3196,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.OverAllSatisfied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.PosBookingNumber__c</field>
         <readable>true</readable>
@@ -3196,6 +3226,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.RecommendFriend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.SalesOffice__c</field>
         <readable>true</readable>
@@ -3208,6 +3243,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Booking__c.SubStatus__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.TravelAgain__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5441,6 +5481,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.DateOfDeactivation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.DOB__c</field>
         <readable>true</readable>
@@ -5531,7 +5576,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.HomePhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5568,6 +5613,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.IsJunior__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.IsOppForExistingCustomer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5656,7 +5706,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5686,7 +5736,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.OtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5829,11 +5879,6 @@
         <editable>true</editable>
         <field>Opportunity.Source__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.TEST_Conga_Conductor__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -7770,6 +7815,9 @@
     <layoutAssignments>
         <layout>Global-Global Layout</layout>
     </layoutAssignments>
+     <layoutAssignments>
+        <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
     </layoutAssignments>
@@ -7909,15 +7957,6 @@
     <layoutAssignments>
         <layout>UserAlt-User Profile Layout</layout>
     </layoutAssignments>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Document</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -8685,7 +8724,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Opportunity</tab>
-        <visibility>DefaultOff</visibility>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Order</tab>

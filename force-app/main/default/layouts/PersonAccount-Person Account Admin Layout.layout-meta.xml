@@ -267,7 +267,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Pseudo_Account__c.AccountID__c</relatedList>
+        <relatedList>PseudoAccount__c.AccountId__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>

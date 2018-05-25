@@ -31,12 +31,6 @@
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>CONTACT_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>CONTACT_LAST_NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>CON_IS_PERSON_ACCOUNT</field>
     </columns>
     <columns>
@@ -205,9 +199,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>SITE</field>
     </columns>
     <columns>
@@ -356,15 +347,6 @@
     </columns>
     <columns>
         <field>Contact.IsByConversion__c</field>
-    </columns>
-    <columns>
-        <field>Contact.et4ae5__Mobile_Country_Code__c</field>
-    </columns>
-    <columns>
-        <field>Contact.et4ae5__HasOptedOutOfMobile__c</field>
-    </columns>
-    <columns>
-        <field>Contact.OtherNationalities__c</field>
     </columns>
     <columns>
         <field>Account.BookingsinstatusBKN__c</field>

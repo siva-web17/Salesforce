@@ -446,12 +446,20 @@
     <columns>
         <field>CONTACT</field>
     </columns>
+<<<<<<< HEAD
     <columns>
+=======
+    <!-- <columns>
+>>>>>>> origin/Sf-2520/AneeshDev
         <field>CONTACT_FIRST_NAME_LOCAL</field>
     </columns>
     <columns>
         <field>CONTACT_LAST_NAME_LOCAL</field>
+<<<<<<< HEAD
     </columns>
+=======
+    </columns> -->
+>>>>>>> origin/Sf-2520/AneeshDev
     <columns>
         <field>CON_IS_PERSON_ACCOUNT</field>
     </columns>

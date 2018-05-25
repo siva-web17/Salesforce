@@ -44,57 +44,51 @@ public class TasksHelper {
         Map<Id, List<Event>> activityMap = new Map<Id, List<Event>>();
         Map<Id, Opportunity> parentOpportunityMap = new Map<Id, Opportunity>();
         Map<Id, String> eventTypeValues = new Map<Id, String>();
-        List<Event> eventsToUpdateList = new List<Event>();
         Map<Id,Event> eventsToUpdateMap=new Map<Id,Event>();
-        if (opportunityRecord.size() > 0) {
-            {
-                for (Opportunity opportunityRecords : opportunityRecord) {
-                    {
-                        currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
-                        if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
-                            activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
-                        }
-                        else {
-                            activityMap.put(opportunityRecords.id, opportunityRecords.events);
-                        }
-                        parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
-                    }
 
-                    try {
-                        for (Id parentIds : activityMap.keySet()) {
-                            for (Event parentActivity : activityMap.get(parentIds)) {
-                                if(parentActivity == null)
-                                {
-                                    return;
-                                }
-                                eventRecord = parentActivity;
-                                eventId = parentActivity.Id;
+        try {
+            for (Opportunity opportunityRecords : opportunityRecord) {
+                currentTaskMap.put(opportunityRecords.id, opportunityRecords.tasks);
+                if(opportunityRecords.StageName==system.label.OpportunityBookingStage) {
+                    activityMap.put(opportunityRecords.id, getEventToBeProcessed(opportunityRecords.events));
+                }
+                else {
+                    activityMap.put(opportunityRecords.id, opportunityRecords.events);
+                }
+                parentOpportunityMap.put(opportunityRecords.id, opportunityRecords);
 
-                                Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
-                                oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
-
-                                //Filter tasks based on task type
-                                if (currentTaskMap.containsKey(parentIds))
-                                    filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
-
-                                //Here we are collecting all the tasks which are to be saved(Insert/Update)
-                                tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
-                                parentActivity.ProcessedforTaskcreation__c = true;
-                                eventsToUpdateMap.put(eventId,parentActivity);
-                                //eventsToUpdateList.add(parentActivity);
-                            }
+                for (Id parentIds : activityMap.keySet()) {
+                    for (Event parentActivity : activityMap.get(parentIds)) {
+                        if(parentActivity == null)
+                        {
+                            return;
                         }
-                        if (tasksForActivitiesList.size() > 0) {
-                            SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
-                            //Here we are Marking Field on Events as ProcessedforTaskcreation__c=true;
-                            SObjectUnitOfWork.modifyEvents(eventsToUpdateMap.Values());
-                        }
-                    } catch (exception ex) {
-                        ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
-                                'Tasks', 'convertActivitiesToTask', eventId);
+                        eventRecord = parentActivity;
+                        eventId = parentActivity.Id;
+
+                        Map<String, List<Task>> filterTaskTypeForParentMap = new Map<String, List<Task>>();
+                        oppRecord = parentOpportunityMap.containsKey(parentIds) ? parentOpportunityMap.get(parentIds) : null;
+
+                        //Filter tasks based on task type
+                        if (currentTaskMap.containsKey(parentIds))
+                            filterTaskTypeForParentMap = filterTaskTypeTaskForparent(currentTaskMap.get(parentIds), parentActivity.Program__c);
+
+                        //Here we are collecting all the tasks which are to be saved(Insert/Update)
+                        tasksForActivitiesList.putAll(saveActivityDataToTask(filterTaskTypeForParentMap, parentActivity));
+                        parentActivity.ProcessedforTaskcreation__c = true;
+                        eventsToUpdateMap.put(eventId,parentActivity);
                     }
                 }
             }
+            if (tasksForActivitiesList.size() > 0) {
+                SObjectUnitOfWork.saveTasks(tasksForActivitiesList.values());
+            }
+            if(eventsToUpdateMap.values().size() > 0){
+                SObjectUnitOfWork.modifyEvents(eventsToUpdateMap.values());
+            }
+        } catch (exception ex) {
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(),
+                    'Tasks', 'convertActivitiesToTask', null);
         }
     }
 
@@ -531,6 +525,44 @@ public class TasksHelper {
         return newSubject;
     }
 
+    /**
+    * @author Adam Osiecki
+    * @date 22.05.2018
+    * @description Method populates Closed fields (ClosedBy__r, ClosedDate__c) on closed tasks
+    * @version 1.0
+    * */
+    public static void populateClosedFields(List<Task> taskList){
+        Set<String> taskClosingStatusList = getAllClosingTaskStatuses();
+        for(Task task : taskList){
+            if (taskClosingStatusList.contains(task.Status)){
+                task = setClosedDateAndClosedBy(task);
+            }
+        }
+    }
+    public static void populateClosedFields(List<Task> taskList, Map<Id,SObject> oldTaskList){
+        Set<String> taskClosingStatusList = getAllClosingTaskStatuses();
+        for(Task task : taskList){
+        Task oldTask = (Task)oldTaskList.get(task.Id);
+            if(taskClosingStatusList.contains(task.Status) && !(taskClosingStatusList.contains(oldTask.Status))){
+                task = setClosedDateAndClosedBy(task);
+            }
+        }
+    }
+
+    private static Task setClosedDateAndClosedBy(Task task){
+        task.CloseDate__c = System.now();
+        task.ClosedBy__c = UserInfo.getUserId();
+        return task;
+    }
+
+    private static Set<String> getAllClosingTaskStatuses(){
+        Set<String> taskClosingStatusList = new Set<String>();
+        for(TaskStatus ts : [SELECT ApiName FROM TaskStatus WHERE IsClosed = TRUE]){
+            taskClosingStatusList.add(ts.ApiName);
+        }
+        return taskClosingStatusList;
+    }
+
     public static void updateParents(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
         updateLeads((Map<Id, Task>) newItems);
         updateOpportunities((Map<Id, Task>) newItems, (Map<Id, Task>) oldItems);
@@ -895,5 +927,55 @@ public class TasksHelper {
                 }
             }
         }
+    }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method set task subject
+* @version 1.0
+* */
+    public static void setTaskSubject(List<Task> newTasks){
+        for(Task task : newTasks){
+            if(!String.isBlank(task.SalesAction__c)){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                task.Subject = checkIfAddProgramToSubject(task);
+            }
+        }
+    }
+
+/**
+* @author Adam Osiecki
+* @date 18.04.2018
+* @description Method updates task subject
+* @version 1.0
+* */
+    public static void updateTaskSubject(List<Task> newTasks, Map<Id,Task> oldTasks){
+        for(Task task : newTasks){
+            Task oldTask = oldTasks.get(task.Id);
+            if(task.SalesAction__c != oldTask.SalesAction__c){
+                task.Subject = setSalesActionAndProgramAsTaskSubject(task);
+            }else{
+                if(task.Subject != oldTask.Subject){
+                    task.Subject = checkIfAddProgramToSubject(task);
+                }
+            }
+        }
+    }
+
+    private static String setSalesActionAndProgramAsTaskSubject(Task task){
+        return task.SalesAction__c + ' - ' + task.Program__c;
+    }
+
+    private static String addProgramToTaskSubject(Task task){
+        return task.Subject + ' - ' + task.Program__c;
+    }
+
+    private static String checkIfAddProgramToSubject(Task task){
+        if(!String.isBlank(task.Subject) && !task.Subject.contains('-')){
+            task.Subject = addProgramToTaskSubject(task);
+        }
+        return task.Subject;
     }
 }

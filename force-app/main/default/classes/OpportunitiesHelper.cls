@@ -150,17 +150,24 @@ public class OpportunitiesHelper {
     /**
     * @author Arkadiusz Celej
     * ver 1.0 8-Dec-2017
-    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records
+    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records and set DateOfDeactivation if IsActive is changed
+    *
     *
     * */
-    public static void setDefaultLetterAndLabel(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
+    public static void setDefaultLetterLabelAndDateOfDeactivation(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunitiesToUpdate = new Set<Id>();
         try {
             for (Opportunity opp : newOpportunities.values()) {
                 Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
-                system.debug('the setDaulfLetterAndLabel' + oldOpportunity);
                 if (opp.TemplateKey__c != oldOpportunity.TemplateKey__c) {
                     opportunitiesToUpdate.add(opp.Id);
+                }
+                if (opp.IsActive__c != oldOpportunity.IsActive__c){
+                    if(opp.IsActive__c == TRUE){
+                        opp.DateOfDeactivation__c = null;
+                    }else{
+                        opp.DateOfDeactivation__c = Datetime.now();
+                    }
                 }
             }
             if (opportunitiesToUpdate.size() > 0) {
@@ -175,7 +182,7 @@ public class OpportunitiesHelper {
                 setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
             }
         } catch (Exception ex) {
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterAndLabel', null);
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterLabelAndDateOfDeactivation', null);
         }
     }
 
@@ -452,6 +459,15 @@ public class OpportunitiesHelper {
         }
     }
 
+    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
+        for (Opportunity opp : opportunities) {
+            if(opp.IsByConversion__c == false) {
+                opp.CloseDate = System.today().addMonths(2);
+            }
+        }
+        return opportunities;
+    }
+
     public static Opportunity createActiveOpportunityForAccount(OpportunityDataWrapper wrapper){
         Opportunity newOpportunity = new Opportunity();
         newOpportunity.Name = wrapper.account.Name;
@@ -544,13 +560,5 @@ public class OpportunitiesHelper {
         public List<Event> events;
         public Lead lead;
         public Account account;
-    }
-    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
-        for (Opportunity opp : opportunities) {
-            if(opp.IsByConversion__c == false) {
-                opp.CloseDate = System.today().addMonths(2);
-            }
-        }
-        return opportunities;
     }
 }

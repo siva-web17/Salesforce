@@ -2627,6 +2627,11 @@
         <field>Account.HasBooking__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>Account.HasHappyCallTask__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.HasPhoneNumber__c</field>
@@ -2720,6 +2725,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.NumberOfEmployees</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.NumberOfUnreachedHappyCalls__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3003,6 +3013,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.Attainedlevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.BalanceDue__c</field>
         <readable>true</readable>
@@ -3063,6 +3078,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.OverAllSatisfied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.PosBookingNumber__c</field>
         <readable>true</readable>
@@ -3088,6 +3108,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.RecommendFriend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.SalesOffice__c</field>
         <readable>true</readable>
@@ -3100,6 +3125,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.SubStatus__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.TravelAgain__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5339,6 +5369,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.DateOfDeactivation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.DOB__c</field>
         <readable>true</readable>
@@ -5429,7 +5464,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.HomePhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5466,6 +5501,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.IsJunior__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.IsOppForExistingCustomer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5554,7 +5594,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5584,7 +5624,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.OtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5727,11 +5767,6 @@
         <editable>true</editable>
         <field>Opportunity.Source__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.TEST_Conga_Conductor__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -9427,10 +9462,10 @@
         <enabled>true</enabled>
         <name>ManageRoles</name>
     </userPermissions>
-    <userPermissions>
+    <!-- <userPermissions>
         <enabled>true</enabled>
         <name>ManageSandboxes</name>
-    </userPermissions>
+    </userPermissions> -->
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageSharing</name>
