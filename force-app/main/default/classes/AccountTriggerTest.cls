@@ -172,4 +172,63 @@ private class AccountTriggerTest {
             }
         }
     }
+
+    @IsTest
+    static void when_InsertedAccountIsPersonAccountAndPersonMailingStreetNotNull_expect_HadAddressonCreationIsTrue(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
+
+            String mailingStreet = 'SomeStreetName';
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                pab.setField('PersonMailingStreet', mailingStreet);
+                accounts.add((Account)pab.getRecord());
+            }
+
+            //when
+            Test.startTest();
+            insert accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT HadAddressonCreation__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(account.HadAddressonCreation__c, true, 'Expecting HadAddressonCreation to be true');
+            }
+        }
+    }
+
+    @IsTest
+    static void when_InsertedAccountIsPersonAccountAndPersonMailingStreetIsNull_expect_HadAddressonCreationIsFalse(){
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id}, true, true);
+        System.runAs(adminUser) {
+
+            //given
+            Integer numOfAccounts = 5;
+            List<Account> accounts = new List<Account>();
+
+            for(Integer i = 0; i<numOfAccounts; i++){
+                TestDataFactory.PersonAccountBuilder pab = new TestDataFactory.PersonAccountBuilder();
+                accounts.add((Account)pab.getRecord());
+            }
+
+            //when
+            Test.startTest();
+            insert accounts;
+            Test.stopTest();
+
+            //then
+            accounts = [SELECT HadAddressonCreation__c FROM Account];
+            for(Account account : accounts){
+                System.assertEquals(account.HadAddressonCreation__c, false,  'Expecting HadAddressonCreation to be false');
+            }
+        }
+    }
 }
