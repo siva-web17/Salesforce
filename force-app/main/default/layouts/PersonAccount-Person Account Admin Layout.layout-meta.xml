@@ -2,7 +2,7 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
-     <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
     <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
@@ -47,6 +47,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PersonBirthdate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsPseudonymised__pc</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -112,10 +116,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IsParent__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>IsPseudonymised__pc</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

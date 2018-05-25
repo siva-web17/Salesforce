@@ -10,10 +10,11 @@ Modification Log   :
  * Arjun.Mohan                 23/05/2018              Original Version
 *******************************************************************************/
 public class BookingsSelector {
-    public static Map<Id,List<Booking__c>> getBookingForAccountIds(Set<Id> AccountIdSet)
+
+    public static Map<Id,List<Booking__c>> getBookingForAccountIds(Set<Id> AccountId)
     {
         Map<Id,List<Booking__c>> accountWithBookingMap = new Map<Id,List<Booking__c>>();
-       List<Booking__c> bookingList=[SELECT Id, Name, CurrencyIsoCode, AccountId__c, BookingDate__c, Product__c, Program__c, SalesOffice__c, PosBookingNumber__c, Status__c, MainSalesResponsible__c FROM Booking__c where AccountId__c IN :AccountIdSet];
+       List<Booking__c> bookingList=[SELECT Id, Name, CurrencyIsoCode, AccountId__c, BookingDate__c, Product__c, Program__c, SalesOffice__c, PosBookingNumber__c, Status__c, MainSalesResponsible__c FROM Booking__c where Status__c != 'CAX' and AccountId__c IN :AccountId];
         for(Booking__c bookingRec:bookingList)
         {
             if(!accountWithBookingMap.containsKey(bookingRec.AccountId__c))

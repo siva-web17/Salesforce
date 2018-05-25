@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This action is to psuedonymise the account.</description>
+    <description>This action is to psuedonymise the account</description>
     <height>250</height>
     <label>Pseudonymise</label>
     <lightningComponent>PseudonymiseAction</lightningComponent>

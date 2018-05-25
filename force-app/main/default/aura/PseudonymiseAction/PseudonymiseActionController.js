@@ -65,7 +65,7 @@
                         }
                 });
                 $A.enqueueAction(action);
-	},
+ },
     // this function automatic call by aura:waiting event  
     showSpinner: function(component, event, helper) {
        // make Spinner attribute true for display loading spinner 
