@@ -12,7 +12,6 @@ Modification Log   :
 *******************************************************************************/
 @isTest
 public class DCDiscardsTest {
-
     private static User adminUser = TestDataFactory.createAdminUser(true);
 
     @isTest
