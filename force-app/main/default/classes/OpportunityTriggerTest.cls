@@ -104,7 +104,7 @@ private class OpportunityTriggerTest {
         for (Opportunity o : oppList2) {
             oppMap2.put(o.Id, o);
         }
-        OpportunitiesHelper.setDefaultLetterAndLabel(oppMap1, oppMap2);
+        OpportunitiesHelper.setDefaultLetterLabelAndDateOfDeactivation(oppMap1, oppMap2);
         Test.stopTest();
     }
 
@@ -181,6 +181,95 @@ private class OpportunityTriggerTest {
 
             opp = [SELECT CloseDate FROM Opportunity WHERE Id = :opp.Id LIMIT 1];
             System.assertEquals(System.today().addDays(1), opp.CloseDate);
+    }
+	
+    @isTest
+    static void when_OppIsSetToInactive_Expect_DateOfDeactivationIsSet(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfOpps = 3;
+            Opportunity[] opportunities = new Opportunity[]{};
+
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            for(Integer i = 0; i < numOfOpps; i++){
+                Opportunity opp = (Opportunity)opportunityBuilder.withPersonAccount().getRecord();
+                opportunities.add(opp);
+                opportunityBuilder.build();
+            }
+            insert opportunities;
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);
+            }
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
+            for(Opportunity opportunity : opportunities){
+                System.assertEquals(TRUE, opportunity.IsActive__c, 'Expecting added opp is active');
+                System.assertEquals(null, opportunity.DateOfDeactivation__c, 'Expecting added opp is null');
+                opportunity.IsActive__c = FALSE;
+            }
+
+            //when
+            Test.startTest();
+            update opportunities;
+            Test.stopTest();
+
+            //then
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
+            for(Opportunity opportunity : opportunities){
+                System.assertEquals(FALSE, opportunity.IsActive__c, 'Expecting added opp is not active');
+                System.assertNotEquals(null, opportunity.DateOfDeactivation__c, 'Expecting Date of deactivation is not null');
+                System.assert(opportunity.DateOfDeactivation__c >Datetime.now().addHours(-1));
+            }
+        }
+    }
+
+    @isTest
+    static void when_OppIsSetActive_Expect_DateOfDeactivationIsSetToNull(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfOpps = 3;
+            Opportunity[] opportunities = new Opportunity[]{};
+
+            TestDataFactory.OpportunityBuilder opportunityBuilder = new TestDataFactory.OpportunityBuilder();
+            for(Integer i = 0; i < numOfOpps; i++){
+                Opportunity opp = (Opportunity)opportunityBuilder.withPersonAccount().getRecord();
+                opp.IsActive__c = FALSE;
+                opp.DateOfDeactivation__c = Datetime.now()-1;
+                opportunities.add(opp);
+                opportunityBuilder.build();
+            }
+            insert opportunities;
+            Set<Id> oppIds = new Set<Id>();
+            for(Opportunity opportunity : opportunities){
+                oppIds.add(opportunity.Id);   
+            }   
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
+
+            for(Opportunity opportunity : opportunities){
+                System.assertEquals(FALSE, opportunity.IsActive__c, 'Expecting added opp is not active');
+                System.assertNotEquals(null, opportunity.DateOfDeactivation__c, 'Expecting added opp is not null');
+                opportunity.IsActive__c = TRUE;
+            }
+
+            //when
+            Test.startTest();
+            update opportunities;
+            Test.stopTest();
+
+            //then
+            opportunities = [SELECT IsActive__c, DateOfDeactivation__c FROM Opportunity WHERE Id IN :oppIds];
+            for(Opportunity opportunity : opportunities){
+                System.assertEquals(TRUE, opportunity.IsActive__c);
+                System.assertEquals(null, opportunity.DateOfDeactivation__c, 'Expecting Date of deactivation is null');
+            }
         }
     }
 }
