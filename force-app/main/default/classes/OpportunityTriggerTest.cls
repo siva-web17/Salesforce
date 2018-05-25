@@ -168,19 +168,20 @@ private class OpportunityTriggerTest {
 
     @isTest
     static void whenOpportunityCreatedByMigrationSkipCloseDateUpdate(){
-        User adminUser = TestDataFactory.createAdminUser(true);
-        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true, false);
-        System.runAs(adminUser){
-            TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
-            Opportunity opp = (Opportunity)ob.getRecord();
-            opp.CloseDate = System.today().addDays(1);
-            opp.IsByConversion__c = true;
-            Test.startTest();
-            insert opp;
-            Test.stopTest();
+            User adminUser = TestDataFactory.createAdminUser(true);
+            TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true, false);
+            System.runAs(adminUser){
+                TestDataFactory.OpportunityBuilder ob = new TestDataFactory.OpportunityBuilder();
+                Opportunity opp = (Opportunity)ob.getRecord();
+                opp.CloseDate = System.today().addDays(1);
+                opp.IsByConversion__c = true;
+                Test.startTest();
+                insert opp;
+                Test.stopTest();
 
-            opp = [SELECT CloseDate FROM Opportunity WHERE Id = :opp.Id LIMIT 1];
-            System.assertEquals(System.today().addDays(1), opp.CloseDate);
+                opp = [SELECT CloseDate FROM Opportunity WHERE Id = :opp.Id LIMIT 1];
+                System.assertEquals(System.today().addDays(1), opp.CloseDate);
+        }
     }
 	
     @isTest
