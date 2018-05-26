@@ -45,6 +45,11 @@
                 <label>Wrongly Imported</label>
             </value>
             <value>
+                <fullName>Will not travel again</fullName>
+                <default>false</default>
+                <label>Will not travel again</label>
+            </value>
+            <value>
                 <fullName>Had intention and money, but chose to do something else</fullName>
                 <default>false</default>
                 <isActive>false</isActive>

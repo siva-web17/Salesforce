@@ -1109,6 +1109,135 @@ public class TestDataFactory {
         system.debug('Group:'+tGroup);
         return tGroup;
     }
+
+    /*Methods added from old TestDataUtil class*/
+
+    public static Lead createLead() {
+        Lead leadRecord = new Lead();
+        leadRecord.FirstName = 'FirstName2';
+        leadRecord.LastName = 'LastName';
+        leadRecord.Region__c = 'Region' ;
+        leadRecord.Program__c = 'AY';
+        leadRecord.market__c = 'DEB';
+        leadRecord.SalesOffice__c = 'DEB';
+        leadRecord.street = 'street1';
+        leadRecord.City = 'City';
+        leadRecord.TritonId__c = 'triton id123';
+        leadRecord.PostalCode = '560048';
+        leadRecord.Phone = '9988776666';
+        leadRecord.MobilePhone = '9988776666';
+        leadRecord.OtherPhone__c = '9988776666';
+        //leadRecord.Parent_Phone__c='9988776666';
+        leadRecord.DOB__c = system.today();
+        leadRecord.Email = 'StudentEmail1@email.com';
+        leadRecord.Email2__c = 'StudentEmail2@email.com';
+        //leadRecord.Parent_Email__c='ParentEmail@email.com';
+        //leadRecord.Invoice_Email__c='InvoiceEmail@email.com';
+        leadRecord.product__c = 'APP';
+        leadRecord.Country = 'India';
+        leadRecord.state = 'KArnataka';
+
+        leadRecord.PostalCode = '560090';
+
+        //leadRecord.Change_Reasons__c='Does not want to travel in group';
+        return leadRecord;
+    }
+
+    public static List<Lead> createLeadList(Integer count) {
+        List<Lead> leadList = new List<Lead>();
+        for (Integer index = 0; index < count; index++) {
+            Lead leadRecord = new Lead();
+            leadRecord.FirstName = 'FirstName2';
+            leadRecord.LastName = 'LastName';
+            leadRecord.Region__c = 'Region' ;
+            leadRecord.Program__c = 'AY';
+            leadRecord.market__c = 'DEB';
+            leadRecord.SalesOffice__c = 'DEB';
+            leadRecord.street = 'street1';
+            leadRecord.City = 'City';
+            leadRecord.TritonId__c = 'triton id123';
+            leadRecord.PostalCode = '560048';
+            leadRecord.Phone = '9988776666';
+            leadRecord.MobilePhone = '9988776666';
+            leadRecord.OtherPhone__c = '9988776666';
+            //leadRecord.Parent_Phone__c='9988776666';
+            leadRecord.DOB__c = system.today();
+            leadRecord.Email = 'StudentEmail1@email.com';
+            leadRecord.Email2__c = 'StudentEmail2@email.com';
+            //leadRecord.Parent_Email__c='ParentEmail@email.com';
+            // leadRecord.Invoice_Email__c='InvoiceEmail@email.com';
+            leadRecord.product__c = 'APP';
+            leadRecord.Country = 'India';
+            leadRecord.State = 'Karnataka';
+
+            leadRecord.PostalCode = '560090';
+
+            //leadRecord.Change_Reasons__c='Does not want to travel in group';
+            leadList.add(leadRecord);
+        }
+        return leadList;
+    }
+
+    public static void SetUniqueValues() {
+        DateTime dateAndTime = DateTime.now();
+        string dateTest = string.valueof(dateAndTime.date());
+        string hh = string.valueof(dateAndTime.hour());
+        string mm = string.valueof(dateAndTime.minute());
+        string ss = string.valueof(dateAndTime.second());
+        string mil = string.valueof(dateAndTime.millisecond());
+        suffix = dateTest + hh + mm + ss + mil;
+        // string tm = mm+ss+hh+mil;
+        //alias = tm.substring(0,3);
+    }
+
+    public static User createUserRecord() {
+        SetUniqueValues();
+        // Getting the profile id
+        Id sysAdminProfileId = [select Id from Profile where Name = 'System Administrator'].Id;
+        //create a test role
+        UserRole adminAsstRole = new UserRole(Name = 'Business Admin');
+        insert adminAsstRole;
+
+        //creating user
+        User adminUserOne = new User(TimeZoneSidKey = 'Europe/Berlin', firstname = 'User1', Username = 'John' + suffix + '@ef.com', Alias = 'P0044',
+                Email = 'TestAdminOne' + suffix + '@ef.com', EmailEncodingKey = 'UTF-8', LastName = 'SA' + suffix, ProfileId = sysAdminProfileId,
+                UserRoleId = adminAsstRole.Id,
+                LanguageLocaleKey = 'en_US', LocaleSidKey = 'en_US', EmployeeNumber = 'P0044', Department = '94444');
+
+        insert adminUserOne;
+        return adminUserOne;
+    }
+
+    public static dupcheck__dcJob__c createDupCheck(Lead leadRecord) {
+        dupcheck__dcJob__c dupCheck = new dupcheck__dcJob__c();
+        dupCheck.dupcheck__name__c = 'Tset';
+        dupCheck.dupcheck__status__c = 'Open';
+        dupCheck.dupcheck__Ended__c = System.now();
+        dupCheck.dupcheck__sourceObject__c = String.valueOf(leadRecord.id).subString(0, 2);
+        //dupCheck.dupcheck__MatchObject__c=leadRecord.id;
+        return dupcheck;
+    }
+
+    public static dupcheck__dcGroup__c createdcGroup(dupcheck__dcJob__c job) {
+        dupcheck__dcGroup__c dcGroup = new dupcheck__dcGroup__c();
+        dcGroup.dupcheck__dcJob__c = job.id;
+        dcGroup.dupcheck__group__c = 6;
+        return dcGroup;
+    }
+
+    public static dupcheck__dc3Duplicate__c createdc3Duplicate(dupcheck__dcJob__c job, Lead leadRecord,
+            dupcheck__dcGroup__c dcGroup) {
+        dupcheck__dc3Duplicate__c dc3duplicate = new dupcheck__dc3Duplicate__c();
+        dc3duplicate.dupcheck__dcJob__c = job.id;
+        dc3duplicate.dupcheck__sourceObject__c = leadRecord.id;
+        dc3duplicate.dupcheck__MatchObject__c = leadRecord.id;
+        dc3duplicate.dupcheck__Score__c = 45;
+        dc3duplicate.dupcheck__dcGroup__c = dcGroup.id;
+
+        return dc3duplicate;
+    }
+
+
     /****************************************************************************************************/
 
     /***** END of Set of builder classes used in Unit tests ***********/

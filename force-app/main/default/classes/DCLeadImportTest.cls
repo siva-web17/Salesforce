@@ -1,12 +1,12 @@
 @isTest(SeeAllData=false)
 
 
-private class DCLeadImportTest {   
-    
-     @isTest
-     static void testrule12() {
-        system.runAs(TestDataUtil.createUserRecord()) {
-            
+private class DCLeadImportTest {
+
+    @isTest
+    static void testrule12() {
+        system.runAs(TestDataFactory.createUserRecord()) {
+
             Test.startTest();
             
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
@@ -32,8 +32,8 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule13() {
-        system.runAs(TestDataUtil.createUserRecord()) {
-            
+        system.runAs(TestDataFactory.createUserRecord()) {
+
             Test.startTest();
 
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
@@ -59,7 +59,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule17() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -85,8 +85,8 @@ private class DCLeadImportTest {
     
     @isTest
     static void testNoDupe() {
-        
-        system.runAs(TestDataUtil.createUserRecord()) {
+
+        system.runAs(TestDataFactory.createUserRecord()) {
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
             List<MergeRuleConfig__c> LeadswithRules1 = Test.loadData(MergeRuleConfig__c.sObjectType, 'File_LeadMergeRuleConfig');
 
@@ -116,7 +116,7 @@ private class DCLeadImportTest {
         
     @isTest
     static void testrule19() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -146,7 +146,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenarioone() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -176,7 +176,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenariotwo() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -206,7 +206,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenariothree() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -236,7 +236,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenarioFour() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -267,7 +267,7 @@ private class DCLeadImportTest {
 
     @isTest
     static void testforphonescenarioFive() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -297,7 +297,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenariosix() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -327,7 +327,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenarioseven() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -357,7 +357,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforphonescenarioeight() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -387,7 +387,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforEmailscenarioone() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -416,7 +416,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforEmailscenarioTwo() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -445,7 +445,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforEmailscenarioThree() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -474,7 +474,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testforEmailscenarioFour() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -504,7 +504,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule6() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -531,7 +531,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule7() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -558,7 +558,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule8() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -585,7 +585,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule9() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -612,7 +612,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule20() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -646,7 +646,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule21() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -673,7 +673,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule25() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -700,7 +700,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule26() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -727,7 +727,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule27() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -754,7 +754,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule28() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -781,7 +781,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule31() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -808,7 +808,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule32() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -835,7 +835,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule33() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -862,7 +862,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule36() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -889,7 +889,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule37() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -914,7 +914,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testForEmailMatch() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -939,8 +939,8 @@ private class DCLeadImportTest {
 
     @isTest
     static void testForAccountAddress() {
-        system.runAs(TestDataUtil.createUserRecord()) {
-            
+        system.runAs(TestDataFactory.createUserRecord()) {
+
             Test.startTest();
             
             List<LeadAccountMapping__c> newLeads1 = Test.loadData(LeadAccountMapping__c.sObjectType, 'File_LeadAccountMapping');
@@ -968,8 +968,8 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule29() {
-        
-        system.runAs(TestDataUtil.createUserRecord()) {
+
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -996,7 +996,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testrule29foraccount() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -1029,7 +1029,7 @@ private class DCLeadImportTest {
     
     @isTest
     static void testForAccountstreet() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -1062,7 +1062,7 @@ private class DCLeadImportTest {
 
     @isTest
     static void testForAccountPostalCode() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 
@@ -1095,7 +1095,7 @@ private class DCLeadImportTest {
 
     @isTest
     static void testForAccountforSalesClosed() {
-        system.runAs(TestDataUtil.createUserRecord()) {
+        system.runAs(TestDataFactory.createUserRecord()) {
 
             Test.startTest();
 

@@ -15,6 +15,55 @@
                 <value>true</value>
             </componentInstanceProperties>
             <componentName>desktopDashboards:embeddedDashboard</componentName>
+            <visibilityRule>
+                <booleanFilter>1 AND 2</booleanFilter>
+                <criteria>
+                    <leftValue>{!$User.Profile.Name}</leftValue>
+                    <operator>NE</operator>
+                    <rightValue>Country Manager</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!$User.Profile.Name}</leftValue>
+                    <operator>NE</operator>
+                    <rightValue>Central Sales</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>dashboardName</name>
+                <value>eSjwLMOngZooJtPsvlSdjZaICcceBN</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>hideOnError</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>desktopDashboards:embeddedDashboard</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!$User.Profile.Name}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Country Manager</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>dashboardName</name>
+                <value>eSjwLMOngZooJtPsvlSdjZaICcceBN1</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>hideOnError</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>desktopDashboards:embeddedDashboard</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!$User.Profile.Name}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Central Sales</rightValue>
+                </criteria>
+            </visibilityRule>
         </componentInstances>
         <name>top</name>
         <type>Region</type>

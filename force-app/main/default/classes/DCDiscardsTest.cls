@@ -28,6 +28,7 @@ public class DCDiscardsTest {
             TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
 
             //given
+
             for(Integer i = 0; i < numOfLeads; i++){
                 leadBuilder.build().withRecordType('Customer');
                 Lead lead = (Lead)leadBuilder.getRecord();

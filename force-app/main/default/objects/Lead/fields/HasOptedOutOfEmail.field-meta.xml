@@ -3,5 +3,5 @@
     <fullName>HasOptedOutOfEmail</fullName>
     <inlineHelpText>Customer does not want to receive emails from EF</inlineHelpText>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
 </CustomField>

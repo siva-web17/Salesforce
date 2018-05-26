@@ -150,17 +150,24 @@ public class OpportunitiesHelper {
     /**
     * @author Arkadiusz Celej
     * ver 1.0 8-Dec-2017
-    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records
+    * @description This method sets Letter and Label for opportunities based on matching TemplateSettings records and set DateOfDeactivation if IsActive is changed
+    *
     *
     * */
-    public static void setDefaultLetterAndLabel(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
+    public static void setDefaultLetterLabelAndDateOfDeactivation(Map<Id, Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunities) {
         Set<Id> opportunitiesToUpdate = new Set<Id>();
         try {
             for (Opportunity opp : newOpportunities.values()) {
                 Opportunity oldOpportunity = oldOpportunities.get(opp.Id);
-                system.debug('the setDaulfLetterAndLabel' + oldOpportunity);
                 if (opp.TemplateKey__c != oldOpportunity.TemplateKey__c) {
                     opportunitiesToUpdate.add(opp.Id);
+                }
+                if (opp.IsActive__c != oldOpportunity.IsActive__c){
+                    if(opp.IsActive__c == TRUE){
+                        opp.DateOfDeactivation__c = null;
+                    }else{
+                        opp.DateOfDeactivation__c = Datetime.now();
+                    }
                 }
             }
             if (opportunitiesToUpdate.size() > 0) {
@@ -175,7 +182,7 @@ public class OpportunitiesHelper {
                 setTemplatesForOpportunities(opportunitiesWithSBRTasks, accountBirthdatesByOppIds);
             }
         } catch (Exception ex) {
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterAndLabel', null);
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'setDefaultLetterLabelAndDateOfDeactivation', null);
         }
     }
 
@@ -450,5 +457,108 @@ public class OpportunitiesHelper {
         } catch (Exception ex) {
             ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'OpportunitiesHelper', 'populateSourceCodeAutoAndPartnerFromSource', null);
         }
+    }
+
+    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
+        for (Opportunity opp : opportunities) {
+            if(opp.IsByConversion__c == false) {
+                opp.CloseDate = System.today().addMonths(2);
+            }
+        }
+        return opportunities;
+    }
+
+    public static Opportunity createActiveOpportunityForAccount(OpportunityDataWrapper wrapper){
+        Opportunity newOpportunity = new Opportunity();
+        newOpportunity.Name = wrapper.account.Name;
+        newOpportunity.StageName = Label.OpportunityStageToContact;
+        newOpportunity.IsActive__c = true;
+        newOpportunity.Market__c = wrapper.account.Market__c;
+        newOpportunity.AccountId = wrapper.account.Id;
+        newOpportunity.CloseDate = System.today();
+        newOpportunity.Program__c = wrapper.lead.Program__c;
+        newOpportunity.RequestType__c = wrapper.lead.RequestType__c;
+        newOpportunity.Source__c = wrapper.lead.Source__c;
+        newOpportunity.SalesOffice__c = wrapper.lead.SalesOffice__c;
+        newOpportunity.Etag__c = wrapper.lead.Etag__c;
+        newOpportunity.CreationMethod__c = wrapper.lead.CreationMethod__c;
+        return newOpportunity;
+    }
+
+    public class CreateActiveOpportunitiesQueueable implements Queueable{
+        private Integer chunkSize = Integer.valueOf(Label.CreateActiveOpportunitiesQueueableChunkSize);
+        private List<OpportunityDataWrapper> opportunityDataWrappers;
+
+        public CreateActiveOpportunitiesQueueable(OpportunityDataWrapper[] wrappers){
+            this.opportunityDataWrappers = wrappers;
+        }
+
+        public void execute(QueueableContext context){
+            List<OpportunityDataWrapper> chunk = retrieveChunk();
+            if(chunk.size() == 0){
+                return;
+            }
+
+            Map<Id, Event> eventsByIds = new Map<Id, Event>();
+            Map<Id, Opportunity> opportunitiesByPersonContactIds = new Map<Id, Opportunity>();
+            for(OpportunityDataWrapper wrapper : chunk){
+                if(wrapper.events != NULL && wrapper.account != NULL && wrapper.lead != NULL){
+                    opportunitiesByPersonContactIds.put(wrapper.account.PersonContactId, OpportunitiesHelper.createActiveOpportunityForAccount(wrapper));
+                    for(Event evt : wrapper.events) {
+                        eventsByIds.putAll(wrapper.events);
+                    }
+                }
+            }
+
+            if(opportunitiesByPersonContactIds.values().size() > 0){
+                insert opportunitiesByPersonContactIds.values();
+            }
+
+            for(Event evt : eventsByIds.values()){
+                Opportunity opp = opportunitiesByPersonContactIds.get(evt.WhoId);
+                if(opp != NULL){
+                    evt.WhatId = opp.Id;
+
+                }
+            }
+            if(eventsByIds.values().size() > 0){
+                update eventsByIds.values();
+            }
+
+            if(this.opportunityDataWrappers.size() > 0){
+                System.enqueueJob(new CreateActiveOpportunitiesQueueable(this.opportunityDataWrappers));
+            }
+        }
+
+        private List<OpportunityDataWrapper> retrieveChunk(){
+            List<OpportunityDataWrapper> chunk = new List<OpportunityDataWrapper>();
+            if(this.opportunityDataWrappers.size() <= this.chunkSize) {
+                chunk.addAll(this.opportunityDataWrappers);
+                this.opportunityDataWrappers.clear();
+            }else{
+                Integer counter = 0;
+                for(Integer i = this.opportunityDataWrappers.size()-1; i >= 0; i--){
+                    if(counter < this.chunkSize){
+                        chunk.add(this.opportunityDataWrappers[i]);
+                        this.opportunityDataWrappers.remove(i);
+                        counter++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+            return chunk;
+        }
+    }
+
+    /**
+     * Wrapper class to store data needed
+     * to create new Opportunity record
+     * for merged lead to Person account
+     */
+    public class OpportunityDataWrapper {
+        public List<Event> events;
+        public Lead lead;
+        public Account account;
     }
 }

@@ -144,9 +144,6 @@
         <field>ACCOUNT</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>ACCOWNER</field>
     </columns>
     <columns>
@@ -165,12 +162,6 @@
         <field>CONTACT</field>
     </columns>
     <columns>
-        <field>CONTACT_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>CONTACT_LAST_NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>TITLE</field>
     </columns>
     <columns>
@@ -178,12 +169,6 @@
     </columns>
     <columns>
         <field>LEAD</field>
-    </columns>
-    <columns>
-        <field>LEAD_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>LEAD_LAST_NAME_LOCAL</field>
     </columns>
     <columns>
         <field>OPPORTUNITY</field>
@@ -400,9 +385,6 @@
     </columns>
     <columns>
         <field>Activity.OriginalDueDate__c</field>
-    </columns>
-    <columns>
-        <field>Activity.PosActivityId__c</field>
     </columns>
     <columns>
         <field>Activity.ProcessedForTaskCreation__c</field>
