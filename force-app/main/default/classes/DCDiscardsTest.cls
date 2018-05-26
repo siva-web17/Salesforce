@@ -14,6 +14,7 @@ Modification Log   :
 public class DCDiscardsTest {
 
     private static User adminUser = TestDataFactory.createAdminUser(true);
+    private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
 
     @isTest
     static void when_DcDiscardsAreInserted_Expect_QueueClassJobIsScheduled(){
@@ -21,12 +22,19 @@ public class DCDiscardsTest {
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
         System.runAs(adminUser){
 
+            Integer numOfLeads = 4;
+            List<Lead> leadList = new List<Lead>();
             Set<Id> leadIds = new Set<Id>();
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
 
             //given
-            List<Lead> leadList = TestdataUtil.createLeadList(4);
-            for(Lead lead : leadList){
+            for(Integer i = 0; i < numOfLeads; i++){
+                leadBuilder.build().withRecordType('Customer');
+                Lead lead = (Lead)leadBuilder.getRecord();
+                lead.Market__c = picklistValuesHelper.market;
+                lead.Language__c = picklistValuesHelper.language;
                 lead.IsDupe__c = true;
+                leadList.add(lead);
             }
             insert leadList;
 
@@ -57,10 +65,16 @@ public class DCDiscardsTest {
             Set<Id> dupcheckDiscardsIds = new Set<Id>();
             List<dupcheck__dcDiscard__c> dcDiscards = new List<dupcheck__dcDiscard__c>();
 
+            Test.startTest();
+            Test.setMock(HttpCalloutMock.class, new CalloutHandlerMocks.CallForRankingMock(leadList));
+            Test.stopTest();
+
             dupcheck__dcDiscard__c dupcheckDiscard = createDupcheckDiscard(leadList[0].id,leadList[1].id);
             dcDiscards.add(dupcheckDiscard);
             dupcheck__dcDiscard__c dupcheckDiscard2 = createDupcheckDiscard(leadList[2].id,leadList[3].id);
             dcDiscards.add(dupcheckDiscard2);
+
+            //when
             insert dcDiscards;
 
             leadList = [
@@ -68,11 +82,6 @@ public class DCDiscardsTest {
                     FROM Lead
                     WHERE Id IN :leadIds
             ];
-
-            //when
-            Test.startTest();
-            Test.setMock(HttpCalloutMock.class, new CalloutHandlerMocks.CallForRankingMock(leadList));
-            Test.stopTest();
 
             //then
             List<AsyncApexJob> asyncBatchApexJobs = [
@@ -91,11 +100,19 @@ public class DCDiscardsTest {
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
         System.runAs(adminUser){
 
+            Integer numOfLeads = 4;
+            List<Lead> leadList = new List<Lead>();
             Set<Id> leadIds = new Set<Id>();
-            //given,
-            List<Lead> leadList = TestdataUtil.createLeadList(4);
-            for(Lead lead : leadList){
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+
+            //given
+            for(Integer i = 0; i < numOfLeads; i++){
+                leadBuilder.build().withRecordType('Customer');
+                Lead lead = (Lead)leadBuilder.getRecord();
+                lead.Market__c = picklistValuesHelper.market;
+                lead.Language__c = picklistValuesHelper.language;
                 lead.IsDupe__c = true;
+                leadList.add(lead);
             }
             insert leadList;
 
