@@ -4490,6 +4490,11 @@
         <field>Event.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Event.ReservationStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Event.ReservedArticles__c</field>
@@ -5203,6 +5208,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.RequestType__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.ReservationStartDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7113,6 +7123,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Task.Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Task.ReservationStartDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
