@@ -58,6 +58,7 @@ global class CalloutHandlerMocks {
                 RankingServiceResponse rsr = new RankingServiceResponse();
                 rsr.LeadID = lead.Id;
                 rsr.Rank = 5;
+                rsr.IsRanked = TRUE;
                 rankingServiceResponses.add(rsr);
             }
             return rankingServiceResponses;
