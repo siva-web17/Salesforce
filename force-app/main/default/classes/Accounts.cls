@@ -13,6 +13,7 @@ public class Accounts {
 
     public static void onBeforeInsert(List<SObject> newItems) {
         AccountsHelper.updateNorwegianLanguage(newItems);
+        AccountsHelper.updateHasAddress(newItems);
     }
 
     public static void onBeforeUpdate(List<Account> newItems, Map<Id, sObject> oldItems) {

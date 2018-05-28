@@ -31,12 +31,6 @@
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>LEAD_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>LEAD_LAST_NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>RECORDTYPE</field>
     </columns>
     <columns>
@@ -44,9 +38,6 @@
     </columns>
     <columns>
         <field>COMPANY</field>
-    </columns>
-    <columns>
-        <field>LEAD_COMPANY_LOCAL</field>
     </columns>
     <columns>
         <field>DESCRIPTION</field>
@@ -395,12 +386,6 @@
     </columns>
     <columns>
         <field>Lead.RecordSharingKey__c</field>
-    </columns>
-    <columns>
-        <field>Lead.et4ae5__Mobile_Country_Code__c</field>
-    </columns>
-    <columns>
-        <field>Lead.et4ae5__HasOptedOutOfMobile__c</field>
     </columns>
     <columns>
         <field>Lead.Nationality__c</field>

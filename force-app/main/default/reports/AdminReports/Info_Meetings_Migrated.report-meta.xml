@@ -223,9 +223,6 @@
         <field>Campaign.Place__c</field>
     </columns>
     <columns>
-        <field>Campaign.PosInfoMeeting_id__c</field>
-    </columns>
-    <columns>
         <field>Campaign.PosInfoMeetingID__c</field>
     </columns>
     <columns>

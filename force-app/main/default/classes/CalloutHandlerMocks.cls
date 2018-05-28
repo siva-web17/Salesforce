@@ -42,7 +42,6 @@ global class CalloutHandlerMocks {
         }
 
         global HTTPResponse respond(HTTPRequest req) {
-            System.debug('HTTP RESPONSE RESPOND !!!!!');
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             res.setBody(JSON.serialize(rankingServiceResponseList()));
