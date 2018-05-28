@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This action is used to send emails from the Opportunity Screen.</description>
+    <description>This action is used to send an email from Lead.</description>
     <fieldOverrides>
         <field>ToAddress</field>
         <formula>(
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Opportunity.Account.PersonContact.Email )) &amp;&amp;  Opportunity.Account.InvalidEmail__c = false), Opportunity.Account.PersonContact.Email, 
+IF((Lead.HasOptedOutOfEmail  = false &amp;&amp; NOT(ISBLANK( Lead.Email )) &amp;&amp;  Lead.InvalidEmail1__c = false), Lead.Email, 
 (
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Opportunity.Account.Email2__c )) &amp;&amp;   Opportunity.Account.InvalidEmail2__c = false), Opportunity.Account.Email2__c,
+IF((Lead.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Lead.Email2__c )) &amp;&amp;   Lead.InvalidEmail2__c = false), Lead.Email2__c,
 ( 
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = true), 'DONOTEMAIL', 
+IF((Lead.HasOptedOutOfEmail = true), 'DONOTEMAIL', 
 ''))))))</formula>
     </fieldOverrides>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
@@ -60,6 +60,6 @@ IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = true), 'DONOTEMAIL',
     </quickActionLayout>
     <standardLabel>SendEmail</standardLabel>
     <targetObject>OutgoingEmail</targetObject>
-    <targetParentField>RelatedTo</targetParentField>
+    <targetParentField>Who</targetParentField>
     <type>SendEmail</type>
 </QuickAction>

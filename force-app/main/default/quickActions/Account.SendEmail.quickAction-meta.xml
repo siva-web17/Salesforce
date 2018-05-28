@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This action is used to send emails from the Opportunity Screen.</description>
+    <description>This Action is used to send an email from the Person Account.</description>
     <fieldOverrides>
         <field>ToAddress</field>
         <formula>(
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Opportunity.Account.PersonContact.Email )) &amp;&amp;  Opportunity.Account.InvalidEmail__c = false), Opportunity.Account.PersonContact.Email, 
+IF((Account.PersonContact.HasOptedOutOfEmail  = false &amp;&amp; NOT(ISBLANK( Account.PersonContact.Email )) &amp;&amp;  Account.InvalidEmail__c = false), Account.PersonContact.Email, 
 (
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Opportunity.Account.Email2__c )) &amp;&amp;   Opportunity.Account.InvalidEmail2__c = false), Opportunity.Account.Email2__c,
+IF((Account.PersonContact.HasOptedOutOfEmail = false &amp;&amp; NOT(ISBLANK( Account.Email2__c )) &amp;&amp;   Account.InvalidEmail2__c = false), Account.Email2__c,
 ( 
-IF((Opportunity.Account.PersonContact.HasOptedOutOfEmail = true), 'DONOTEMAIL', 
+IF((Account.PersonContact.HasOptedOutOfEmail = true), 'DONOTEMAIL', 
 ''))))))</formula>
     </fieldOverrides>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
