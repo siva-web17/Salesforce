@@ -2,7 +2,7 @@
  * Created by britenet-patrykzak on 28/05/2018.
  */
 
-public without sharing class SandboxEmailInvalidatorBatch implements Database.Batchable<SObject>{
+public without sharing class SandboxEmailInvalidatorBatchException extends Exception implements Database.Batchable<SObject>{
 
     private List<String> emailFieldsToInvalidate;
     private String objectName;
@@ -11,9 +11,9 @@ public without sharing class SandboxEmailInvalidatorBatch implements Database.Ba
     private String strQuery;
     private List<String> queryConditions;
 
-    public SandboxEmailInvalidatorBatch(List<String> emailFieldsToInvalidate, String objectName, List<String> queryConditions){
+    public SandboxEmailInvalidatorBatchException(List<String> emailFieldsToInvalidate, String objectName, List<String> queryConditions){
         if(!isSandbox){
-            throw new AuraHandledException('To be executed only on Sandbox instances!');
+            throw new SandboxEmailInvalidatorBatchException('This batch cannot be executed on non sandbox Org');
         }
         this.emailFieldsToInvalidate = emailFieldsToInvalidate;
         this.objectName = objectName;
@@ -38,7 +38,7 @@ public without sharing class SandboxEmailInvalidatorBatch implements Database.Ba
             Update scope;
         }
         catch(Exception ex){
-            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'SandboxEmailInvalidatorBatch', 'execute', null);
+            ExceptionHandler.errorLog(ex.getMessage(), ex.getStackTraceString(), 'SandboxEmailInvalidatorBatchException', 'execute', null);
         }
     }
 

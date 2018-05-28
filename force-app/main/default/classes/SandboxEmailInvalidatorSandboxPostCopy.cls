@@ -11,8 +11,8 @@ public with sharing class SandboxEmailInvalidatorSandboxPostCopy implements Sand
         List<String> leadQueryConditions = new List<String>{};
         List<String> accountQueryConditions = new List<String>{'isPersonAccount = True'};
 
-        SandboxEmailInvalidatorBatch leadInvalidator = new SandboxEmailInvalidatorBatch(leadEmailFieldsToInvalidate,'Lead',leadQueryConditions);
-        SandboxEmailInvalidatorBatch accountInvalidator = new SandboxEmailInvalidatorBatch(accountEmailFieldsToInvalidate,'Account',accountQueryConditions);
+        SandboxEmailInvalidatorBatchException leadInvalidator = new SandboxEmailInvalidatorBatchException(leadEmailFieldsToInvalidate,'Lead',leadQueryConditions);
+        SandboxEmailInvalidatorBatchException accountInvalidator = new SandboxEmailInvalidatorBatchException(accountEmailFieldsToInvalidate,'Account',accountQueryConditions);
 
         Database.executeBatch(leadInvalidator);
         Database.executeBatch(accountInvalidator);
