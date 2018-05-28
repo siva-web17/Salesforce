@@ -6,13 +6,16 @@ public with sharing class SandboxEmailInvalidatorSandboxPostCopy implements Sand
 
     public void runApexClass(SandboxContext context){
         List<String> leadEmailFieldsToInvalidate = new List<String>{'Email','Email2__c','ParentEmail__c'};
-        List<String> AccountEmailFieldsToInvalidate = new List<String>{'PersonEmail','InvoiceEmail__c','Email2__c','ParentEmail__c'};
+        List<String> accountEmailFieldsToInvalidate = new List<String>{'PersonEmail','InvoiceEmail__c','Email2__c','ParentEmail__c'};
 
-        SandboxEmailInvalidatorBatch LeadInvalidator = new SandboxEmailInvalidatorBatch(leadEmailFieldsToInvalidate,'Lead');
-        SandboxEmailInvalidatorBatch AccountInvalidator = new SandboxEmailInvalidatorBatch(AccountEmailFieldsToInvalidate,'Account');
+        List<String> leadQueryConditions = new List<String>{};
+        List<String> accountQueryConditions = new List<String>{'isPersonAccount = True'};
 
-        Database.executeBatch(LeadInvalidator);
-        Database.executeBatch(AccountInvalidator);
+        SandboxEmailInvalidatorBatch leadInvalidator = new SandboxEmailInvalidatorBatch(leadEmailFieldsToInvalidate,'Lead',leadQueryConditions);
+        SandboxEmailInvalidatorBatch accountInvalidator = new SandboxEmailInvalidatorBatch(accountEmailFieldsToInvalidate,'Account',accountQueryConditions);
+
+        Database.executeBatch(leadInvalidator);
+        Database.executeBatch(accountInvalidator);
     }
 
 }

@@ -5,26 +5,30 @@
 public without sharing class SandboxEmailInvalidatorBatch implements Database.Batchable<SObject>{
 
     private List<String> emailFieldsToInvalidate;
-    private String recordToProcess;
+    private String objectName;
+    private Boolean isSandbox = ExternalRouter.getOrganizationDetails().IsSandbox;
     private String instanceNameFromUserInfo = UserInfo.getUserName().substringAfterLast('.');
     private String strQuery;
+    private List<String> queryConditions;
 
-    public SandboxEmailInvalidatorBatch(List<String> emailFieldsToInvalidate, String recordToProcess){
-
+    public SandboxEmailInvalidatorBatch(List<String> emailFieldsToInvalidate, String objectName, List<String> queryConditions){
+        if(!isSandbox){
+            throw new AuraHandledException('To be executed only on Sandbox instances!');
+        }
         this.emailFieldsToInvalidate = emailFieldsToInvalidate;
-        this.recordToProcess = recordToProcess;
+        this.objectName = objectName;
+        this.queryConditions = queryConditions;
 
-        this.strQuery = 'SELECT ' + String.join(emailFieldsToInvalidate,',') + ' FROM ' + recordToProcess;
+        this.strQuery = 'SELECT ' + String.join(emailFieldsToInvalidate,',') + ' FROM ' + objectName;
 
-        if(recordToProcess.equalsIgnoreCase('Account')){
-            strQuery += ' WHERE isPersonAccount = True';
+        if(queryConditions.size()>0){
+            strQuery += ' WHERE ' + String.join(queryConditions, ' AND ');
         }
     }
 
     public Database.QueryLocator start(Database.BatchableContext context){
         return Database.getQueryLocator(strQuery);
     }
-
 
     public void execute(Database.BatchableContext context,List<sObject> scope){
         try{
@@ -39,6 +43,7 @@ public without sharing class SandboxEmailInvalidatorBatch implements Database.Ba
     }
 
     public void finish(Database.BatchableContext bc){
+
     }
 
     public void process(SObject record){

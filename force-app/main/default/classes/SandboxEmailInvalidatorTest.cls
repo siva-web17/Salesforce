@@ -47,6 +47,5 @@ private class SandboxEmailInvalidatorTest {
             System.assert(accountsList[0].PersonEmail == testEmail + '.' + instanceNameFromUserInfo);
             System.assert(accountsList[0].Email2__c == null);
         }
-
     }
 }
