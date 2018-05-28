@@ -278,6 +278,7 @@ private class LeadTriggerTest {
             //given
             Integer numOfLeads = 10;
             String testAddress = 'Marszalkowska 15';
+            Set<Id> leadIds = new Set<Id>();
 
             List<Lead> leads = new List<Lead>();
             TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
@@ -294,12 +295,16 @@ private class LeadTriggerTest {
             Test.stopTest();
 
             //then
+            for(Lead lead : leads){
+                leadIds.add(lead.Id);
+            }
             List<Lead> insertedLeads = [
                     SELECT HadAddressonCreation__c, Address, Street
                     FROM Lead
+                    WHERE Id IN :leadIds
             ];
 
-            System.assertEquals(10, insertedLeads.size());
+            System.assertEquals(numOfLeads, insertedLeads.size());
             for(Integer i = 0; i<numOfLeads; i++){
                 System.assertEquals(testAddress, insertedLeads[i].Street);
                 System.assertEquals(TRUE, insertedLeads[i].HadAddressonCreation__c);
@@ -307,8 +312,8 @@ private class LeadTriggerTest {
         }
     }
 
-    @IsTest
-    static void when_LeadDontHaveAddressOnCreation_Expect_FlagIsSetToFalse(){
+	@IsTest
+    static void when_LeadDoesNotHaveAddressOnCreation_Expect_FlagIsSetToFalse(){
 
         User adminUser = TestDataFactory.createAdminUser(true);
         TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
@@ -316,9 +321,9 @@ private class LeadTriggerTest {
 
             //given
             Integer numOfLeads = 10;
-            String testAddress = 'Marszalkowska 15';
 
             List<Lead> leads = new List<Lead>();
+            Set<Id> leadIds = new Set<Id>();
             TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
             for(Integer i = 0; i < numOfLeads; i++){
                 Lead lead = (Lead)leadBuilder.getRecord();
@@ -332,15 +337,19 @@ private class LeadTriggerTest {
             Test.stopTest();
 
             //then
+            for(Lead lead : leads){
+                leadIds.add(lead.Id);
+            }
             List<Lead> insertedLeads = [
-            SELECT HadAddressonCreation__c, Address, Street
-            FROM Lead
+                    SELECT HadAddressonCreation__c, Address, Street
+                    FROM Lead
+                    WHERE Id IN :leadIds
             ];
 
-            System.assertEquals(10, insertedLeads.size());
+            System.assertEquals(numOfLeads, insertedLeads.size());
             for(Integer i = 0; i<numOfLeads; i++){
-                System.assertEquals(testAddress, insertedLeads[i].Street);
-                System.assertEquals(FALSE, insertedLeads[i].HadAddressonCreation__c);
+                System.assertEquals(null, insertedLeads[i].Street);
+                System.assertEquals(FALSE, insertedLeads[i].HadAddressOnCreation__c);
             }
         }
     }
