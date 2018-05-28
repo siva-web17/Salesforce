@@ -40,6 +40,7 @@ public without sharing class HCCTaskCreatorBatch implements Database.Batchable<S
             account.ReadyForHappyCall__c = TRUE;
             accounts.add(account);
             booking = account.Bookings__r[0];
+            account.LatestBooking__c = booking.Id;
             Task task = new Task(
                     RecordTypeId = SystemCallTaskRecordTypeId,
                     WhatId = account.Id,
