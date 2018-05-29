@@ -127,7 +127,7 @@ public class DCBusinessFlow {
                     transferCampaignMember(duplicateLead,duplicateLeadIdSet,finalDecision);
                       update finalLead;
                     Set<Id> idsToDelete=New Set<Id>();
-                    idsToDelete.add(sourceLead.Id);
+                    idsToDelete.add(duplicateLead.Id);
                     idsToDelete.add(sourceLead.Id);
                     deleteAutoMergedRecordsFromDCJOBs(idsToDelete);
                     SObjectUnitOfWork.deleteLead(sourceLead);
