@@ -151,11 +151,11 @@ public class DCBusinessFlow {
                 convertsourcelead();
                 //3. update the fields
                // duplicateAccount.RecalculateRanking__c = true;
-                update duplicateAccount;
                 Set<Id> idsToDelete=New Set<Id>();
                 idsToDelete.add(sourceLead.Id);
                 idsToDelete.add(duplicateAccount.Id);
                 deleteAutoMergedRecordsFromDCJOBs(idsToDelete);
+                update duplicateAccount;
                
             }
             else{
