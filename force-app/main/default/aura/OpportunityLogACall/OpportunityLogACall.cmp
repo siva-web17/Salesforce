@@ -18,9 +18,8 @@
     <aura:attribute name="selectedCloseReason" type="String" />
     <aura:attribute name="bookOnDate" type="Date" />
     <aura:attribute name="years" type="String[]" />
-    <aura:attribute type="Boolean" name="showDateTimeField" default="true"/>
-    <aura:handler name="change" value="{!v.showDateTimeField}" action="{!c.recreateField}"/>
-    <aura:attribute type="DateTime" name="selectedActionDate" default="1" />
+    <aura:attribute name="DateTimeTemp" type="String" />
+    <aura:attribute type="DateTime" name="selectedActionDate" default="{!v.DateTimeTemp}" />
     <aura:attribute name="selectedVisitDate" type="DateTime" />
     <aura:attribute name="message" type="String" />
     <aura:attribute name="showMessage" type="Boolean" />
@@ -51,7 +50,8 @@
     <div class="slds">
         <div class="slds-panel slds-border_bottom slds-border_top slds-border_left slds-border_right" style="position: relative;">
             <div class="demo-only" aura:id="loaderComp">
-                <div role="status" class="slds-spinner slds-spinner_medium"> <span class="slds-assistive-text">{!$Label.c.LAC_loading}</span>
+                <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">{!$Label.c.LAC_loading}</span>
                     <div class="slds-spinner__dot-a"></div>
                     <div class="slds-spinner__dot-b"></div>
                 </div>
@@ -63,7 +63,9 @@
                         <aura:if isTrue="{!v.doNotCall}">
                             <div class="relative-btn-title">
                                 <div class="btn-phone-data">
-                                    <p class="doNotCall"> Do Not Call </p>
+                                    <p class="doNotCall">
+                                        Do Not Call
+                                    </p>
                                 </div>
                             </div>
                             <aura:set attribute="else">
@@ -71,18 +73,24 @@
                                     <div class="relative-btn-title">
                                         <div class="btn-phone-data">
                                             <aura:iteration items="{!v.selectedDisplayNumber}" var="action">
-                                                <p class="displayCommunicationHeader slds-p-right_xx-small"> <b>{!action}</b> </p>
+                                                <p class="displayCommunicationHeader slds-p-right_xx-small">
+                                                    <b>{!action}</b>
+                                                </p>
                                             </aura:iteration>
                                         </div>
-                                        <lightning:buttonMenu menuAlignment="right" iconName="utility:down" class="custom-header-btn" title="{!$Label.c.LAC_TITLE}" value="{!$Label.c.LAC_TITLE}" name="{!$Label.c.LAC_TITLE}" alternativeText="{!$Label.c.LAC_TITLE}"
-                                            onselect="{! c.handleMenuSelect }">
+                                        <lightning:buttonMenu menuAlignment="right" iconName="utility:down" class="custom-header-btn" title="{!$Label.c.LAC_TITLE}" value="{!$Label.c.LAC_TITLE}" name="{!$Label.c.LAC_TITLE}" alternativeText="{!$Label.c.LAC_TITLE}" onselect="{! c.handleMenuSelect }">
                                             <aura:if isTrue="{!v.displayMobilePhone}">
-                                                <lightning:menuItem label="{!v.displayMobilePhone}" value="{!v.displayMobilePhone}" /> </aura:if>
+                                                <lightning:menuItem label="{!v.displayMobilePhone}" value="{!v.displayMobilePhone}" />
+                                            </aura:if>
                                             <aura:if isTrue="{!v.displayPhone}">
-                                                <lightning:menuItem label="{!v.displayPhone}" value="{!v.displayPhone}" /> </aura:if>
+                                                <lightning:menuItem label="{!v.displayPhone}" value="{!v.displayPhone}" />
+                                            </aura:if>
                                             <aura:if isTrue="{!v.displayOtherPhone}">
-                                                <lightning:menuItem label="{!v.displayOtherPhone}" value="{!v.displayOtherPhone}" /> </aura:if>
-                                            <!-- <aura:iteration items="{!v.salesAction}" var="action"><lightning:menuItem label="{!action}" value="format" /></aura:iteration> -->
+                                                <lightning:menuItem label="{!v.displayOtherPhone}" value="{!v.displayOtherPhone}" />
+                                            </aura:if>
+                                            <!-- <aura:iteration items="{!v.salesAction}" var="action">
+							<lightning:menuItem label="{!action}" value="format" />
+						</aura:iteration> -->
                                         </lightning:buttonMenu>
                                     </div>
                                 </aura:if>
@@ -99,21 +107,24 @@
                     <div class="slds-grid slds-wrap slds-grid_pull-padded">
                         <div class="slds-p-horizontal_x_small slds-size_1-of-1">
                             <div style="display:none">
-                                <lightning:input aura:id="required" label='temporaryData' name="temporaryData" value="{!v.temporaryData}" /> </div>
+                                <lightning:input aura:id="required" name="temporaryData" value="{!v.temporaryData}" />
+                            </div>
                         </div>
                         <aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
-                            <lightning:select aura:id="required" disabled="{!(v.salesAction == 'null' || v.salesAction == '' || v.salesAction == 'undefined' || empty(v.salesAction) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none" label="{!$Label.c.LAC_Action}"
+                            <lightning:select aura:id="required" disabled="{!(v.salesAction == 'null' || v.salesAction == '' || v.salesAction == 'undefined' || empty(v.salesAction) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_Action}"
                                 required="true" value="{!v.selectedActionType}" onchange="{!c.onSalesActionChanged}">
                                 <option value="">{!$Label.c.LAC_Select}</option>
                                 <aura:iteration items="{!v.salesAction}" var="action">
-                                    <ui:inputSelectOption text="{!action}" label="{!action}" /> </aura:iteration>
+                                    <ui:inputSelectOption text="{!action}" label="{!action}" />
+                                </aura:iteration>
                             </lightning:select>
                         </aura:if>
                         <aura:if isTrue="{!v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == false}">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-1 ">
                                 <div class="custom_component">
                                     <div class="row_right_top" onclick="{!c.onEdit}">
-                                        <lightning:icon size="x-small" iconName="utility:edit" class="icon_color_white" /> </div>
+                                        <lightning:icon size="x-small" iconName="utility:edit" class="icon_color_white" />
+                                    </div>
                                     <div class="row_main">
                                         <article class="slds-card bg-brandColor">
                                             <div class="slds-grid slds-wrap slds-p-vertical_x-small border_brand_bottom ">
@@ -144,21 +155,23 @@
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == false}">
-                            <lightning:select aura:id="required" disabled="{!(v.salesAction == 'null' || v.salesAction == '' || v.salesAction == 'undefined' || empty(v.salesAction) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_small"
-                            label="{!$Label.c.LAC_Action}" required="true" value="{!v.selectedActionType}" onchange="{!c.onSalesActionChanged}">
+                            <lightning:select aura:id="required" disabled="{!(v.salesAction == 'null' || v.salesAction == '' || v.salesAction == 'undefined' || empty(v.salesAction) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_small opportunityLogACallSplit" label="{!$Label.c.LAC_Action}"
+                                required="true" value="{!v.selectedActionType}" onchange="{!c.onSalesActionChanged}">
                                 <option value="">{!$Label.c.LAC_Select}</option>
                                 <aura:iteration items="{!v.salesAction}" var="action">
-                                    <ui:inputSelectOption text="{!action}" label="{!action}" /> </aura:iteration>
+                                    <ui:inputSelectOption text="{!action}" label="{!action}" />
+                                </aura:iteration>
                             </lightning:select>
                         </aura:if>
                         <aura:if isTrue="{!v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == false}">
                             <aura:if isTrue="{!v.selectedActionType == $Label.c.LAC_Call_Not_Reached?true:false}">
                                 <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                    <lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none"
-                                    value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
+                                    <lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}"
+                                        label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
                                         <option value="">{!$Label.c.LAC_Select}</option>
                                         <aura:iteration items="{!v.subActions}" var="subAction">
-                                            <ui:inputSelectOption text="{!subAction}" label="{!subAction}" /> </aura:iteration>
+                                            <ui:inputSelectOption text="{!subAction}" label="{!subAction}" />
+                                        </aura:iteration>
                                     </lightning:select>
                                 </div>
                             </aura:if>
@@ -166,130 +179,154 @@
                         <aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
                             <aura:if isTrue="{!v.selectedActionType == $Label.c.LAC_Call_Not_Reached?true:false}">
                                 <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                    <lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none"
-                                    value="{!v.selectedSubActionType}" label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
+                                    <lightning:select disabled="{!(v.subActions == 'null' || v.subActions == '' || v.subActions == 'undefined' || empty(v.subActions) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedSubActionType}"
+                                        label="{!$Label.c.LAC_CNR}" required="{! v.selectedActionType == $Label.c.LAC_Call_Not_Reached ? true : false }">
                                         <option value="">{!$Label.c.LAC_Select}</option>
                                         <aura:iteration items="{!v.subActions}" var="subAction">
-                                            <ui:inputSelectOption text="{!subAction}" label="{!subAction}" /> </aura:iteration>
+                                            <ui:inputSelectOption text="{!subAction}" label="{!subAction}" />
+                                        </aura:iteration>
                                     </lightning:select>
                                 </div>
                             </aura:if>
                         </aura:if>
                         <aura:if isTrue="{! (v.isCustomerReached == true &amp;&amp; v.readOnlyToggle == true) || (v.isCustomerReached == false) }">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select aura:id="required" disabled="{!(v.likelihoodToBook == 'null' || v.likelihoodToBook == '' || v.likelihoodToBook == 'undefined' || empty(v.likelihoodToBook) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none"
-                                value="{!v.selectedLikelihoodToBook}" label="{!$Label.c.LAC_LHTB}" required="{! ( (v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) || (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) ) ? true : false }">
+                                <lightning:select aura:id="required" disabled="{!(v.likelihoodToBook == 'null' || v.likelihoodToBook == '' || v.likelihoodToBook == 'undefined' || empty(v.likelihoodToBook) )}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit"
+                                    value="{!v.selectedLikelihoodToBook}" label="{!$Label.c.LAC_LHTB}" required="{! ( (v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) || (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) || (v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close )  ) ? true : false }">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.likelihoodToBook}" var="option">
-                                        <ui:inputSelectOption text="{!option}" label="{!option}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!option}" label="{!option}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select disabled="{!(v.hearAboutEF == 'null' || v.hearAboutEF == '' || v.hearAboutEF == 'undefined' || empty(v.hearAboutEF) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none label_adj"
-                                value="{!v.hearAboutEFValue}" label="{!$Label.c.LAC_HDYHA_EF}" required="{! (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) ? true : false}">
+                                <lightning:select disabled="{!(v.hearAboutEF == 'null' || v.hearAboutEF == '' || v.hearAboutEF == 'undefined' || empty(v.hearAboutEF) )}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit label_adj"
+                                    value="{!v.hearAboutEFValue}" label="{!$Label.c.LAC_HDYHA_EF}" required="{! (v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close ) ? true : false}">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.hearAboutEF}" var="option">
-                                        <ui:inputSelectOption text="{!option}" label="{!option}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!option}" label="{!option}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select value="{!v.destinationsSelected}" disabled="{!(v.destinations == 'null' || v.destinations == '' || v.destinations == 'undefined' || empty(v.destinations) )}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none"
+                                <lightning:select value="{!v.destinationsSelected}" disabled="{!(v.destinations == 'null' || v.destinations == '' || v.destinations == 'undefined' || empty(v.destinations) )}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit"
                                     label="{!$Label.c.LAC_Dest}">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.destinations}" var="destination">
-                                        <ui:inputSelectOption text="{!destination}" label="{!destination}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!destination}" label="{!destination}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select value="{!v.durationsSelected}" disabled="{!(v.durations == 'null' || v.durations == '' || v.durations == 'undefined' || empty(v.durations) )}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none"
+                                <lightning:select value="{!v.durationsSelected}" disabled="{!(v.durations == 'null' || v.durations == '' || v.durations == 'undefined' || empty(v.durations) )}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit"
                                     label="{!$Label.c.LAC_Duration}">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.durations}" var="duration">
-                                        <ui:inputSelectOption text="{!duration}" label="{!duration}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!duration}" label="{!duration}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
                                 <div class="slds-grid">
                                     <div class="slds-size_1-of-2">
-                                        <lightning:select value="{!v.yearSelected}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-right_xxx-small" label="{!$Label.c.LAC_Year}">
+                                        <lightning:select value="{!v.yearSelected}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit slds-p-right_xxx-small" label="{!$Label.c.LAC_Year}">
                                             <option value="">{!$Label.c.LAC_Select}</option>
                                             <aura:iteration items="{!v.years}" var="year">
-                                                <ui:inputSelectOption text="{!year}" label="{!year}" /> </aura:iteration>
+                                                <ui:inputSelectOption text="{!year}" label="{!year}" />
+                                            </aura:iteration>
                                         </lightning:select>
                                     </div>
                                     <div class="slds-size_1-of-2">
-                                        <lightning:select value="{!v.monthSelected}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none" label="{!$Label.c.LAC_Month}">
+                                        <lightning:select value="{!v.monthSelected}" aura:id="marketDropdown" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_Month}">
                                             <option value="">{!$Label.c.LAC_Select}</option>
                                             <aura:iteration items="{!v.months}" var="month">
-                                                <ui:inputSelectOption text="{!month}" label="{!month}" /> </aura:iteration>
+                                                <ui:inputSelectOption text="{!month}" label="{!month}" />
+                                            </aura:iteration>
                                         </lightning:select>
                                     </div>
                                 </div>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2 slds-form-element">
                                 <div class="slds-p-around_small slds-p-top_none full-width-datepicker">
-                                    <lightning:input type="date" onchange="{!c.preValidateWillBookOn}" onblur="{!c.preValidateWillBookOn}" aura:id="requiredBookOnDate" class="" label="{!$Label.c.LAC_WBO}" value="{!v.bookOnDate}" name="bookOnDate" />
-                                    <div class="date-blocker"></div>
-                                    <div class="slds-hide">
-                                        <lightning:input aura:id="requiredBookOnDate" label='temporaryData' name="temporaryDataWillBookOn" value="{!v.temporaryDataWillBookOn}" /> </div>
-                                    <lightning:helptext class="helpText" content="{!$Label.c.LAC_Booking_HelpText}" /> </div>
+                                    <lightning:input type="date" onchange="{!c.preValidateWillBookOn}" onblur="{!c.preValidateWillBookOn}" aura:id="requiredBookOnDate" class="" label="{!$Label.c.LAC_WBO}"
+                                    min="Date.now()" value="{!v.bookOnDate}" name="bookOnDate" />
+                                <div class="date-blocker"></div>
+                                <div class="slds-hide">
+                                    <lightning:input aura:id="requiredBookOnDate" name="temporaryDataWillBookOn" value="{!v.temporaryDataWillBookOn}" />
+                                </div>
+                                <lightning:helptext class="helpText" content="{!$Label.c.LAC_Booking_HelpText}" />
+                                </div>
                             </div>
                         </aura:if>
-                        <div class="slds-p-horizontal_x_small slds-size_1-of-1 slds-p-right_small slds-p-left_small slds-p-bottom_small-x">
-                            <lightning:textarea aura:id="required" value="{!v.commentsValue}" maxlength="9985" label="{!$Label.c.LAC_Comments}" placeholder="{!$Label.c.LAC_Cmd_TXT}" /> </div>
+                        <div class="slds-p-horizontal_x_small slds-size_1-of-1">
+                            <lightning:textarea aura:id="required" value="{!v.commentsValue}" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit commentsArea" maxlength="9985" label="{!$Label.c.LAC_Comments}" placeholder="{!$Label.c.LAC_Cmd_TXT}" />
+                        </div>
                         <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                            <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none " disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != $Label.c.LAC_Select?false:true) )}"
+                            <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" disabled="{!(v.selectedActionType == 'null' || v.selectedActionType == '' || v.selectedActionType == 'undefined' || empty(v.selectedActionType) || (v.selectedActionType != $Label.c.LAC_Select?false:true) )}"
                                 label="{!$Label.c.LAC_RNA}" required="true" value="{!v.selectedCallResult}">
                                 <option value="">{!$Label.c.LAC_Select}</option>
                                 <aura:iteration items="{!v.callResults}" var="callResult">
-                                    <ui:inputSelectOption text="{!callResult}" label="{!callResult}" /> </aura:iteration>
+                                    <ui:inputSelectOption text="{!callResult}" label="{!callResult}" />
+                                </aura:iteration>
                             </lightning:select>
                         </div>
-                        <aura:if isTrue="{!(v.multi == true) ? (((v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||(v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||(v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||(v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||(v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close)) ? true : false) : ((v.selectedCallResult == $Label.c.LAC_Change_Program) ? true : false)}">
+                        <aura:if isTrue="{!
+							(v.multi == true) ? (
+							(
+							(v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close) ||
+							(v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult != $Label.c.LAC_Close)
+							) ? true : false
+							) : (
+							(v.selectedCallResult == $Label.c.LAC_Change_Program) ? true : false
+							)
+							}">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none " label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != $Label.c.LAC_Select?false:true) ) )}"
+                                <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" label="{!$Label.c.LAC_CP}" required="true" disabled="{!(v.programs == 'null' || v.programs == '' || v.programs == 'undefined' || empty(v.programs || (v.selectedActionType != $Label.c.LAC_Select?false:true) ) )}"
                                     value="{!v.changedProgram}" onchange="{!c.onProgramChange}">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.programs}" var="program">
-                                        <ui:inputSelectOption text="{!program}" label="{!program}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!program}" label="{!program}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close?true:false}">
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2">
-                                <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none " value="{!v.selectedCloseReason}" label="{!$Label.c.LAC_CR}" required="{!v.selectedCallResult == $Label.c.LAC_Close?true:false}">
+                                <lightning:select aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" value="{!v.selectedCloseReason}" label="{!$Label.c.LAC_CR}" required="{!v.selectedCallResult == $Label.c.LAC_Close?true:false}">
                                     <option value="">{!$Label.c.LAC_Select}</option>
                                     <aura:iteration items="{!v.closeReasons}" var="closeReason">
-                                        <ui:inputSelectOption text="{!closeReason}" label="{!closeReason}" /> </aura:iteration>
+                                        <ui:inputSelectOption text="{!closeReason}" label="{!closeReason}" />
+                                    </aura:iteration>
                                 </lightning:select>
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
-                             <aura:if isTrue="{!v.showDateTimeField}">
-                                <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                    <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-bottom_none hide-date-time date-time-split">
-                                        <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
-                                            name="datetime" />
-                                    </div>
-                                </div>
-                            </aura:if>
+                            <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-bottom_none hide-date-time date-time-split">
+                                <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
+                                disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
+                            </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Visit?true:false}">
-                            <aura:if isTrue="{!v.showDateTimeField}">
-                                <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                    <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-bottom_none slds-p-top_none hide-date-time date-time-split">
-                                          <lightning:input aura:id="required" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}"
-                                        name="datetime" />
-                                    </div>
-                                </div>
-                            </aura:if>
+                            <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-bottom_none slds-p-top_none hide-date-time date-time-split">
+                                <lightning:input aura:id="required" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}"
+                                required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
+                            </div>
                         </aura:if>
                     </div>
                 </div>
             </div>
             <div class="slds-panel__section slds-grid">
-                <div class="slds-size_1-of-2 slds-p-right_small"> <button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="save" onclick="{!c.onSaveClicked}">{!( v.selectedActionType == $Label.c.LAC_Call_Reached ||v.selectedActionType == $Label.c.LAC_Called_Us ||v.selectedActionType == $Label.c.LAC_Visited_Us ||v.selectedActionType == $Label.c.LAC_Emailed_Us ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached )? ( v.sObjectName == 'Lead' ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert ) : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION } </button>                    </div>
-                <div class="slds-size_1-of-2 slds-p-left_small"> <button disabled="{! v.isActiveUser == false ? true : false }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="saveAndClose" onclick="{!c.onSaveClicked}">{! (v.sObjectName == 'Lead') ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached || v.selectedActionType == $Label.c.LAC_Called_Us || v.selectedActionType == $Label.c.LAC_Visited_Us || v.selectedActionType == $Label.c.LAC_Emailed_Us || v.selectedActionType == $Label.c.LAC_Social_Media_Reached ) ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAC : $Label.c.LAC_Convert_C ) : $Label.c.LAC_SAC ) : $Label.c.LAC_SAC}</button>                    </div>
+                <div class="slds-size_1-of-2 slds-p-right_x-small">
+                    <button disabled="{! (v.temporaryDataWillBookOn == false ? true: false) || (v.isActiveUser == false ? true : false) }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="save" onclick="{!c.onSaveClicked}">
+						{!( v.selectedActionType == $Label.c.LAC_Call_Reached ||v.selectedActionType == $Label.c.LAC_Called_Us ||v.selectedActionType == $Label.c.LAC_Visited_Us ||v.selectedActionType == $Label.c.LAC_Emailed_Us ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached )? ( v.sObjectName == 'Lead' ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close || v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAVE_ACTION : $Label.c.LAC_Convert ) : $Label.c.LAC_SAVE_ACTION ): $Label.c.LAC_SAVE_ACTION } </button>
+                </div>
+                <div class="slds-size_1-of-2 slds-p-left_x-small">
+                    <button disabled="{! v.isActiveUser == false ? true : false }" class="slds-button slds-button_brand slds-p-right_xx-small slds-large-size_1-of-1 font-12" data-save="saveAndClose" onclick="{!c.onSaveClicked}">
+						{! (v.sObjectName == 'Lead') ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached || v.selectedActionType == $Label.c.LAC_Called_Us || v.selectedActionType == $Label.c.LAC_Visited_Us || v.selectedActionType == $Label.c.LAC_Emailed_Us || v.selectedActionType == $Label.c.LAC_Social_Media_Reached ) ? ( ( v.selectedActionType == $Label.c.LAC_Call_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Called_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Visited_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Emailed_Us &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ||v.selectedActionType == $Label.c.LAC_Social_Media_Reached &amp;&amp; v.selectedCallResult == $Label.c.LAC_Close ) ? $Label.c.LAC_SAC : $Label.c.LAC_Convert_C ) : $Label.c.LAC_SAC ) : $Label.c.LAC_SAC}</button>
+                </div>
             </div>
         </div>
     </div>
