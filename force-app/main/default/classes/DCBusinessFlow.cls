@@ -128,7 +128,7 @@ public class DCBusinessFlow {
                       update finalLead;
                     Set<Id> idsToDelete=New Set<Id>();
                     idsToDelete.add(sourceLead.Id);
-                    idsToDelete.add(duplicateAccount.Id);
+                    idsToDelete.add(sourceLead.Id);
                     deleteAutoMergedRecordsFromDCJOBs(idsToDelete);
                     SObjectUnitOfWork.deleteLead(sourceLead);
                   
@@ -149,7 +149,6 @@ public class DCBusinessFlow {
                 update sourceLead;
                 duplicateAccount = DCObjectMerge.leadtoAccountFieldMerge(duplicateAccount,sourceLead);
                 convertsourcelead();
-
                 //3. update the fields
                // duplicateAccount.RecalculateRanking__c = true;
                 update duplicateAccount;
