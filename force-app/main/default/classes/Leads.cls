@@ -35,7 +35,7 @@ public class Leads {
     }
 
     public static void onAfterInsert(List<Lead>newItems) {
-
+        LeadsHelper.createSystemCallTasksForLeadsEnteredManually(newItems);
        // LeadsHelper.createShareRecordsOnInsert(newItems);
     }
 
