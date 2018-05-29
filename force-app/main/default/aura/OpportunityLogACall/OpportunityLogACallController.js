@@ -103,7 +103,7 @@
                         for (var i = 0; i < closeReasons.length; i++) { closeReasonTemp.push(closeReasons[i].toUpperCase()); }
                         var closeReasonIndexValue = closeReasonTemp.indexOf(LAC_SELECTED_CLOSEREASON.toUpperCase());
                         if (closeReasonIndexValue > 0 && LAC_SELECTED_CLOSEREASON != (null && undefined)) {
-                            component.set("v.selectedCloseReason", closeReasons[closeReasonIndexValue]);
+                            component.set("v.selectedCloseReasonDefault", closeReasons[closeReasonIndexValue]);
                         }
                     }
                     break;
@@ -220,8 +220,18 @@
         component.set("v.saveText", LAC_SAVE_ACTION);
         var LAC_Call_Reached = $A.get("$Label.c.LAC_Call_Reached");
         var LAC_Select = $A.get("$Label.c.LAC_Select");
+        var LAC_Call_Not_Reached = $A.get("$Label.c.LAC_Call_Not_Reached");
+        var LAC_Social_Media_Sent = $A.get("$Label.c.LAC_Social_Media_Sent");
+        var LAC_Sent_Email = $A.get("$Label.c.LAC_Sent_Email");
+        var LAC_SELECTED_CLOSEREASON = $A.get("$Label.c.LAC_SELECTED_CLOSEREASON");
         if (component.get("v.selectedActionType") === LAC_Call_Reached && component.get("v.recordId").startsWith("00Q")) {
             component.set("v.saveText", LAC_SACO);
+        }
+        var selectedCloseReasonDefault = component.get("v.selectedCloseReasonDefault");
+        if (component.get("v.selectedActionType") === LAC_Call_Not_Reached || component.get("v.selectedActionType") === LAC_Social_Media_Sent || component.get("v.selectedActionType") === LAC_Sent_Email) {
+            component.set("v.selectedCloseReason", selectedCloseReasonDefault);
+        } else {
+            component.set("v.selectedCloseReason", LAC_Select);
         }
         var callResultAction = component.get("c.getCallResults");
         callResultAction.setParams({
