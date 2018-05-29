@@ -220,7 +220,7 @@
         if (component.get("v.selectedActionType") === LAC_Call_Not_Reached || component.get("v.selectedActionType") === LAC_Social_Media_Sent || component.get("v.selectedActionType") === LAC_Sent_Email) {
             component.set('v.selectedActionDate', moment().add(2, 'hours').format());
         } else {
-            component.set('v.selectedActionDate', moment().format());
+            component.set('v.selectedActionDate', moment(new Date(), "DD-MM-YYYY").add(1, "days").format("YYYY-MM-DD") + "T00:00");
         }
         var callResultAction = component.get("c.getCallResults");
         callResultAction.setParams({
