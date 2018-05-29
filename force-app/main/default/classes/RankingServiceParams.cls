@@ -21,5 +21,6 @@ public with sharing class RankingServiceParams {
     public String Address{get;set;}
     public String HearAboutUs{get;set;}
     public String DeviceType{get;set;}
-
+    public String ETag{get;set;}
+    public String UserSelectedSourceCode{get;set;}
 }
