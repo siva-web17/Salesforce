@@ -21,7 +21,7 @@
         </ul>
     <!-- Opportunities -->
         <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false"  ViewID="a5J7E000000CcQsUAK"
+            <CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false"  ViewID=""
             EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true"
             EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
             <CRMC_PP:DrillUp />
@@ -37,7 +37,7 @@
 
     <!-- Leads -->
         <div style="overflow:hidden;">
-            <CRMC_PP:Grid ObjectName="Lead" DelayLoad="false"  ViewID="a5J7E000000CcQuUAK"
+            <CRMC_PP:Grid ObjectName="Lead" DelayLoad="false"  ViewID=""
             EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true"
             EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
             <CRMC_PP:DrillUp />
