@@ -213,9 +213,11 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Program__c</fields>
-        <fields>PreApplicationDate__c</fields>
-        <fields>BookingDate__c</fields>
         <fields>Status__c</fields>
+        <fields>Destination__c</fields>
+        <fields>Duration__c</fields>
+        <fields>MinStartDate__c</fields>
+        <fields>MaxEndDate__c</fields>
         <relatedList>Booking__c.AccountId__c</relatedList>
     </relatedLists>
     <relatedLists>
