@@ -6,7 +6,7 @@
         <developerName>FORMULA1</developerName>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Count of Calls</masterLabel>
+        <masterLabel>Number of Visits</masterLabel>
         <scale>0</scale>
     </aggregates>
     <columns>
@@ -25,18 +25,19 @@
         <field>Activity.FollowUpDate__c</field>
     </columns>
     <currency>USD</currency>
+    <description>Count of Visits _CPM</description>
     <filter>
+        <criteriaItems>
+            <column>Activity.FollowUpDate__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>TODAY</value>
+        </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Task.CallTask</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Activity.SalesAction__c</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Call Reached,Call Not Reached</value>
+            <value>Event.CustomerVisit</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -44,14 +45,12 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ASSIGNED</field>
-        <sortByName>FORMULA1</sortByName>
         <sortOrder>Asc</sortOrder>
-        <sortType>CustomSummaryFormula</sortType>
     </groupingsDown>
-    <name>Leaderboard Calls Made</name>
+    <name>Visits</name>
     <params>
         <name>closed</name>
-        <value>closed</value>
+        <value>open</value>
     </params>
     <params>
         <name>type</name>
@@ -66,6 +65,6 @@
     <showDetails>true</showDetails>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>THIS_FISCALWEEK</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
