@@ -303,6 +303,50 @@ private class LeadTriggerTest {
             }
         }
     }
+	
+	@IsTest
+    static void when_LeadHasAddressOnCreation_Expect_FlagIsSetToTrue(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfLeads = 10;
+            String testAddress = 'Marszalkowska 15';
+            Set<Id> leadIds = new Set<Id>();
+
+            List<Lead> leads = new List<Lead>();
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            for(Integer i = 0; i < numOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.getRecord();
+                lead.Street = testAddress;
+                leads.add(lead);
+                leadBuilder.build();
+            }
+
+            //when
+            Test.startTest();
+            insert leads;
+            Test.stopTest();
+
+            //then
+            for(Lead lead : leads){
+                leadIds.add(lead.Id);
+            }
+            List<Lead> insertedLeads = [
+                    SELECT HadAddressonCreation__c, Address, Street
+                    FROM Lead
+                    WHERE Id IN :leadIds
+            ];
+
+            System.assertEquals(numOfLeads, insertedLeads.size());
+            for(Integer i = 0; i<numOfLeads; i++){
+                System.assertEquals(testAddress, insertedLeads[i].Street);
+                System.assertEquals(TRUE, insertedLeads[i].HadAddressonCreation__c);
+            }
+        }
+    }
 
     @IsTest
     static void When_LeadCreatedFromExcelImport_Expect_DoNotCreateSystemTaskForThisLead() {
@@ -328,7 +372,48 @@ private class LeadTriggerTest {
 
             List<Task> SystemTasksForLeads = [SELECT Id From Task];
             System.assert(SystemTasksForLeads.isEmpty(),'No system Tasks are created for Leads with CreationMethod different than UserCreated');
+        }
+    }
 
+	@IsTest
+    static void when_LeadDoesNotHaveAddressOnCreation_Expect_FlagIsSetToFalse(){
+
+        User adminUser = TestDataFactory.createAdminUser(true);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{adminUser.Id},true,true);
+        System.runAs(adminUser){
+
+            //given
+            Integer numOfLeads = 10;
+
+            List<Lead> leads = new List<Lead>();
+            Set<Id> leadIds = new Set<Id>();
+            TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
+            for(Integer i = 0; i < numOfLeads; i++){
+                Lead lead = (Lead)leadBuilder.getRecord();
+                leads.add(lead);
+                leadBuilder.build();
+            }
+
+            //when
+            Test.startTest();
+            insert leads;
+            Test.stopTest();
+
+            //then
+            for(Lead lead : leads){
+                leadIds.add(lead.Id);
+            }
+            List<Lead> insertedLeads = [
+                    SELECT HadAddressonCreation__c, Address, Street
+                    FROM Lead
+                    WHERE Id IN :leadIds
+            ];
+
+            System.assertEquals(numOfLeads, insertedLeads.size());
+            for(Integer i = 0; i<numOfLeads; i++){
+                System.assertEquals(null, insertedLeads[i].Street);
+                System.assertEquals(FALSE, insertedLeads[i].HadAddressOnCreation__c);
+            }
         }
     }
 }
