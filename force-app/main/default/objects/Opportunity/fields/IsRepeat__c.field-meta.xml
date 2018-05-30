@@ -3,7 +3,7 @@
     <fullName>IsRepeat__c</fullName>
     <description>Returns value of Account HasBooking field</description>
     <externalId>false</externalId>
-    <formula>Account.HasBooking__c</formula>
+    <formula>Account.TotalBooking__c &lt;&gt; 0</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Indicates if your customer has one or more other Opportunities in Stage Booking. This Booking could have been a CAX as well.</inlineHelpText>
     <label>Repeat Customer</label>
