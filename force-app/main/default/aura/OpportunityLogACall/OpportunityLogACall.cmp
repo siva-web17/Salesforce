@@ -16,6 +16,7 @@
     <aura:attribute name="selectedCallResult" type="String" />
     <aura:attribute name="selectedLikelihoodToBook" type="String" />
     <aura:attribute name="selectedCloseReason" type="String" />
+    <aura:attribute name="selectedCloseReasonDefault" type="String" />
     <aura:attribute name="bookOnDate" type="Date" />
     <aura:attribute name="years" type="String[]" />
     <aura:attribute name="DateTimeTemp" type="String" />
