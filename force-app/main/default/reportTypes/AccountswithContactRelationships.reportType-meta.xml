@@ -625,11 +625,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IsByConversion__c</field>
-            <table>Account.AccountContactRelations</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>AccountContactID__c</field>
             <table>Account.AccountContactRelations</table>
         </columns>
