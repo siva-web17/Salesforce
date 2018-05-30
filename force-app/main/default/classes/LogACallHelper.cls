@@ -115,16 +115,19 @@ public with sharing class LogACallHelper {
                     }
 
                     openCallTask.FollowUpDate__c = followupDate;
+                    openCallTask.OriginalDueDate__c = followupDate;                    
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                 } else if (callResult.toUpperCase() == Label.CallAppointment.toUpperCase()) {
                     System.debug('Call appointment section invoked');
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUA.name();
                     openCallTask.FollowUpDate__c = followupDate;
+                    openCallTask.OriginalDueDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                 } else if (callResult.toUpperCase() == Label.Visit.toUpperCase()) {
                     System.debug('Visit section invoked');
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
+                    openCallTask.OriginalDueDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                     Event visitEvent = new Event();
                     visitEvent.Program__c = (String.valueOf(parentId).substring(0, 3) == '00Q') ? lead.Program__c : opp.Program__c;
@@ -156,6 +159,7 @@ public with sharing class LogACallHelper {
                     System.debug('Change program section invoked');
                     openCallTask.NextCallType__c = TasksHelper.SalesTasks.FUP.name();
                     openCallTask.FollowUpDate__c = followupDate;
+                    openCallTask.OriginalDueDate__c = followupDate;
                     openCallTask.ActivityDate = SFLangUtil.ConvertDateTimeTodate(followupDate);
                     String subject = openCallTask.Subject;
 
