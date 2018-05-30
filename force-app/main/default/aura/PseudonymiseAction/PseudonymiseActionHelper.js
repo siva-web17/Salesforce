@@ -1,4 +1,38 @@
 ({
+    doInit: function(component, event, helper) {
+        var action = component.get("c.ValidateAccountforPseudonymis");
+        action.setParams({
+            recordId: component.get("v.recordId")
+        });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            var errors = response.getError();
+            if (state === "ERROR") {
+                $A.get("e.force:closeQuickAction").fire();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        var staticLabel = $A.get("$Label.c.AlreadyPseudonymised");
+                        var displayType = "error";
+                        var displayTitle = "Failure!";
+                        if (staticLabel === errors[0].message) {
+                            displayTitle = "Warning!";
+                            displayType = "warning"
+                        }
+                        var toastEvent = $A.get("e.force:showToast");
+                        toastEvent.setParams({
+                            title: displayTitle,
+                            type: displayType,
+                            message: errors[0].message,
+                            duration: 10000
+                        });
+                        toastEvent.fire()
+                    }
+                    component.set("v.Spinner", false);
+                }
+            }
+        });
+        $A.enqueueAction(action)
+    },
     process: function(component, event, helper) {
         component.set("v.Spinner", true)
         var action = component.get("c.PseudonymiseAccount");
