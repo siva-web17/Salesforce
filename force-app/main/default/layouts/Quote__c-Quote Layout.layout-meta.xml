@@ -54,7 +54,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>CurrencyIsoCode</field>
             </layoutItems>
             <layoutItems>
