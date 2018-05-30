@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <field>Account.AccountContactRelations$Name</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$Roles</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$MobilePhone</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$Email</field>
+    </columns>
+    <currency>CHF</currency>
+    <description>This report is used to export the different relationships a Person Account has.
+
+Please change the filter in this report with the respective Account Id of the customer.</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Id</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value/>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Relationship Details (Person Account)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountswithContactRelationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
