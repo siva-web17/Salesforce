@@ -6,12 +6,9 @@
         <developerName>FORMULA1</developerName>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Count of Calls</masterLabel>
+        <masterLabel>Count of Actions</masterLabel>
         <scale>0</scale>
     </aggregates>
-    <columns>
-        <field>SUBJECT</field>
-    </columns>
     <columns>
         <field>Opportunity.SalesOfficeProgram__c</field>
     </columns>
@@ -25,6 +22,7 @@
         <field>Activity.FollowUpDate__c</field>
     </columns>
     <currency>USD</currency>
+    <description>Count of any reached actions for CPM</description>
     <filter>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -33,10 +31,10 @@
             <value>Task.CallTask</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Activity.SalesAction__c</column>
+            <column>Activity.IsTaskCallReached__c</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Call Reached,Call Not Reached</value>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -44,11 +42,14 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ASSIGNED</field>
-        <sortByName>FORMULA1</sortByName>
         <sortOrder>Asc</sortOrder>
-        <sortType>CustomSummaryFormula</sortType>
     </groupingsDown>
-    <name>Leaderboard Calls Made</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SUBJECT</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Reached Actions Today</name>
     <params>
         <name>closed</name>
         <value>closed</value>
@@ -63,9 +64,9 @@
     </params>
     <reportType>OpportunityActivity</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>THIS_FISCALWEEK</interval>
+        <interval>INTERVAL_TODAY</interval>
     </timeFrameFilter>
 </Report>

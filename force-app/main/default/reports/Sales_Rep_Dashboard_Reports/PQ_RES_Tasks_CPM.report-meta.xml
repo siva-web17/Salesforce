@@ -6,37 +6,32 @@
         <developerName>FORMULA1</developerName>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Count of Calls</masterLabel>
+        <masterLabel>Count of Tasks</masterLabel>
         <scale>0</scale>
     </aggregates>
     <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>Opportunity.SalesOfficeProgram__c</field>
+        <field>Activity.SalesOffice__c</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
     </columns>
-    <columns>
-        <field>Opportunity.Ranking__c</field>
-    </columns>
-    <columns>
-        <field>Activity.FollowUpDate__c</field>
-    </columns>
     <currency>USD</currency>
+    <description>PQ and RES made by the customer on ef.com</description>
     <filter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Task.CallTask</value>
+            <value>Task.MCRTask,Task.SPQTask</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Activity.SalesAction__c</column>
+            <column>DUE_DATE</column>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Call Reached,Call Not Reached</value>
+            <operator>lessOrEqual</operator>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -44,14 +39,17 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ASSIGNED</field>
-        <sortByName>FORMULA1</sortByName>
         <sortOrder>Asc</sortOrder>
-        <sortType>CustomSummaryFormula</sortType>
     </groupingsDown>
-    <name>Leaderboard Calls Made</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>RECORDTYPE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PQ and RES Tasks</name>
     <params>
         <name>closed</name>
-        <value>closed</value>
+        <value>open</value>
     </params>
     <params>
         <name>type</name>
@@ -61,11 +59,11 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>OpportunityActivity</reportType>
+    <reportType>Activity</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>THIS_FISCALWEEK</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
