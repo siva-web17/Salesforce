@@ -4440,7 +4440,7 @@
         <field>Event.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+	<fieldPermissions>
         <editable>false</editable>
         <field>Event.ReservedArticles__c</field>
         <readable>true</readable>
@@ -5160,7 +5160,7 @@
         <field>Lead.RequestType__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+	<fieldPermissions>
         <editable>false</editable>
         <field>Lead.ReservedArticles__c</field>
         <readable>false</readable>
@@ -5558,6 +5558,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.IsActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.IsAmbassador__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7070,7 +7075,7 @@
         <field>Task.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+	<fieldPermissions>
         <editable>false</editable>
         <field>Task.ReservedArticles__c</field>
         <readable>true</readable>
