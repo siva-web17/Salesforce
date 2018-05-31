@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TopDestination__c</fullName>
+    <description>This field represents the destination from the Web Visit Page where the customer spent the most time.</description>
+    <externalId>false</externalId>
+    <label>Top Destination</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>
