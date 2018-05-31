@@ -221,7 +221,7 @@ public class TestDataFactory {
     *
     */
     public static Lead createLead(String strFirstName, String strLastName, String strCompanyName, String strRecordTypeId, Map<String, String> mFieldNameToVal,boolean doInsert) {
-        Lead tLead = createLead(strFirstName,strLastName,strCompanyName,strRecordTypeId,doInsert);
+        Lead tLead = createLead(strFirstName,strLastName,strCompanyName,strRecordTypeId);
         Map<String, Schema.SObjectField> mSobjFields = Schema.SObjectType.Lead.fields.getMap();
         if (mFieldNameToVal != null) {
             for (String strFieldName : mFieldNameToVal.keySet()) {
