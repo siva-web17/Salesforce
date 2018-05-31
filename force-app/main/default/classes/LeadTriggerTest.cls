@@ -7,7 +7,8 @@ private class LeadTriggerTest {
 
     private static TestDataFactory.DefaultPicklistValuesHelper picklistValuesHelper = new TestDataFactory.DefaultPicklistValuesHelper();
 
-    static testMethod void whenProgramChangesUpdateProgramOnSystemCallTasks() {
+    @isTest
+    static void whenProgramChangesUpdateProgramOnSystemCallTasks() {
         //given
         Integer numberOfLeads = 50;
         TestDataFactory.LeadBuilder leadBuilder = new TestDataFactory.LeadBuilder();
@@ -48,7 +49,8 @@ private class LeadTriggerTest {
         }
     }
 
-    static testMethod void whenOwnerChangesReassignOpenTasks() {
+    @isTest
+    static void whenOwnerChangesReassignOpenTasks() {
         User u = TestDataFactory.createAdminUser(true);
         System.runAs(u){
             Integer numberOfLeads = 50;
@@ -87,7 +89,8 @@ private class LeadTriggerTest {
         }
     }
 
-    static testMethod void whenOwnerChangesCreateSystemCallTasks() {
+    @isTest
+    static void whenOwnerChangesCreateSystemCallTasks() {
         User u = TestDataFactory.createAdminUser(true);
         System.runAs(u){
             Integer numberOfLeads = 50;
@@ -118,7 +121,8 @@ private class LeadTriggerTest {
         }
     }
 
-    static testMethod void whenLeadCreatedPopulateSalesOfficeProgram(){
+    @isTest
+    static void whenLeadCreatedPopulateSalesOfficeProgram(){
         Map<String,String> salesOfficeValues = new Map<String,String>{
                 'Market__c'=>'DEB',
                 'program__c' => 'AY',
@@ -134,12 +138,17 @@ private class LeadTriggerTest {
                 'SalesOffice__c'=>'DEB',
                 'Email'=>'record@ef.com'
         };
-        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
-        leadlist.add(newLead);
-        LeadsHelper.populateSalesOfficeProgram(leadlist);
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '', leadFieldValues, true);
+            leadlist.add(newLead);
+            LeadsHelper.populateSalesOfficeProgram(leadlist);
+        }
     }
 
-    static testMethod void whenLeadCreatedPopulateSource(){
+    @isTest
+    static void whenLeadCreatedPopulateSource(){
         Map<String,String> sourceValues = new Map<String,String>{
                 'Name'=>'testSource',
                 'Market__c'=>'DEB',
@@ -157,12 +166,17 @@ private class LeadTriggerTest {
                 'Email'=>'record@ef.com',
                 'SourceCodeAuto__c'=>'E007'
         };
-        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
-        leadlist.add(newLead);
-        LeadsHelper.populateSourceBasedonSourceCodeAuto(leadlist);
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '', leadFieldValues, true);
+            leadlist.add(newLead);
+            LeadsHelper.populateSourceBasedonSourceCodeAuto(leadlist);
+        }
     }
 
-    static testMethod void whenLeadCreatedPopulateSourceCodeAndPartner(){
+    @isTest
+    static void whenLeadCreatedPopulateSourceCodeAndPartner(){
         Map<String,String> sourceValues = new Map<String,String>{
                 'Name'=>'testSource',
                 'Market__c'=>'DEB',
@@ -181,15 +195,20 @@ private class LeadTriggerTest {
                 'Source__c'=>sourceRecord.Id,
                 'Street'=>'2Main'
         };
-        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
-        leadlist.add(newLead); 
-        LeadsHelper.populateSourceCodeAutoAndPartnerFromSource(leadlist);
-        LeadsHelper.updateHadAddressFilledOnCreation(leadList);
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '', leadFieldValues, true);
+            leadlist.add(newLead);
+            LeadsHelper.populateSourceCodeAutoAndPartnerFromSource(leadlist);
+            LeadsHelper.updateHadAddressFilledOnCreation(leadList);
+        }
     }
 
-    private static testMethod void whenLeadCreatedPopulatePublicGroup() {
+    @isTest
+    static void whenLeadCreatedPopulatePublicGroup() {
         User tAdminUser = TestDataFactory.createAdminUser(True);
-        tAdminUser = [SELECT Id FROM User WHERE Id = :tAdminUser.ID];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
         system.runAs(tAdminUser) {
             TestDataFactory.createPublicGroup(TRUE, 'DEB_DEB_AYP', 'DEB_DEB_AYP');
             Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
@@ -205,23 +224,29 @@ private class LeadTriggerTest {
             LeadsHelper.createShareRecordsOnInsert(leadlist);
         }
     }
-    static testMethod void leadSelector(){
-        Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
-        Map<String, String> leadFieldValues = new Map<String, String>{
-                'program__c' => 'AY',
-                'Market__c' => 'DEB',
-                'SalesOffice__c'=>'DEB',
-                'Email'=>'record@ef.com'
-        };
-        Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
 
-        LeadsSelector.leadRecordMap(new List<Id>{newLead.Id});
-        LeadsSelector.getNotConvertedLeadMapById(new List<Id>{newLead.Id});
-        LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
+    @isTest
+    static void leadSelector(){
+        User tAdminUser = TestDataFactory.createAdminUser(True);
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{tAdminUser.Id},true,false);
+        system.runAs(tAdminUser) {
+            Id recordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Lead.SobjectType).get('Customer').Id;
+            Map<String, String> leadFieldValues = new Map<String, String>{
+                    'program__c' => 'AY',
+                    'Market__c' => 'DEB',
+                    'SalesOffice__c'=>'DEB',
+                    'Email'=>'record@ef.com'
+            };
+            Lead newLead = TestDataFactory.createLead('LoganAction', 'Test', 'EF', '',leadFieldValues, true);
 
+            LeadsSelector.leadRecordMap(new List<Id>{newLead.Id});
+            LeadsSelector.getNotConvertedLeadMapById(new List<Id>{newLead.Id});
+            LeadsSelector.getLeadByConvertedOpportunityId(new Set<Id>{newLead.Id});
+        }
     }
-    
-     private static testMethod void whenLeadCreatedPopulateRanking() {
+
+    @isTest
+     static void whenLeadCreatedPopulateRanking() {
          //User tAdminUser = TestDataFactory.createAdminUser(True);
          //system.runAs(tAdminUser) {
              List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');
@@ -235,16 +260,17 @@ private class LeadTriggerTest {
             leadRec.SalesOffice__c='DEB';
             leadRec.Email='record@ef.com';
             leadRec.ReadyForRanking__c=TRUE;
-            leadRec.IsDupeProcessed__c=TRUE;              
+            leadRec.IsDupeProcessed__c=TRUE;
             leadRec.Ranking__c=5;
             leadRec.RequestType__c='BR';
             insert leadRec;
-                
-            RankingHandler.getLeadSettings(new List<Lead>{leadRec});         
+
+            RankingHandler.getLeadSettings(new List<Lead>{leadRec});
         //}
      }
-        
-    private static testMethod void whenLeadCreateCheckRanking() {
+
+    @isTest
+    static void whenLeadCreateCheckRanking() {
         //User tAdminUser = TestDataFactory.createAdminUser(True);
         //system.runAs(tAdminUser) {
             List<LeadRankingSetting__c> leadRankingSetting = Test.loadData(LeadRankingSetting__c.sObjectType, 'File_LeadRankingSettings');

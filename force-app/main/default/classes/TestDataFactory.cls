@@ -194,7 +194,7 @@ public class TestDataFactory {
      *                 if set to false no DML operations will be executed
      *
      */
-    public static Lead createLead(String strFirstName, String strLastName, String strCompanyName, String strRecordTypeId, boolean doInsert) {
+    public static Lead createLead(String strFirstName, String strLastName, String strCompanyName, String strRecordTypeId) {
         Lead tLead = new Lead();
 
         tLead.FirstName = strFirstName;
@@ -204,8 +204,6 @@ public class TestDataFactory {
         String strEmail = strFirstName  + 'test' + strLastName + EMAIL_SUFFIX ;
         tLead.Email = strEmail.trim().replaceAll(' ', '_');
 
-        if (doInsert)
-            insert tLead;
         return tLead;
     }
     /*********************************************************************************************************************************/
@@ -238,7 +236,7 @@ public class TestDataFactory {
         }
 
         if(doInsert){
-            update tLead;
+            insert tLead;
         }
 
         return tLead;

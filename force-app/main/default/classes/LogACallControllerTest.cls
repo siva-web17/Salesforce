@@ -25,6 +25,7 @@ private class LogACallControllerTest {
     public static List<LogACallTestInput> logACallTestInputs ;
     @testsetup static void setup(){
         User currentUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+        TestDataFactory.bypassValidationsTriggersForUsers(new Set<String>{currentUser.Id},true,false);
         system.runAs(currentUser) {
             User tAdminUser = TestDataFactory.createAdminUser(True);
             Lead lead = createLeadRecord();
