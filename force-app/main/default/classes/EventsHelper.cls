@@ -246,6 +246,7 @@ public class EventsHelper {
             }
         }
         if(validOpportunitiesId.size() > 0) {
+            reviveSCTForOpportunityBookingStage(validOpportunitiesId);
             Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
             Map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
             Map<Id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);
@@ -289,5 +290,10 @@ public class EventsHelper {
         }
 
        return updatetedOppList;
+    }
+
+     public static void reviveSCTForOpportunityBookingStage(Set<Id> OpportunityIds){
+        Map<Id, Opportunity> bookingOpportunityMap = OpportunitiesSelector.getBookingOpportunities(OpportunityIds);
+        LogACallHelper.getOpportunitiesWithOpenSystemCallTask(bookingOpportunityMap.keyset(), system.now(), '');
     }
 }
