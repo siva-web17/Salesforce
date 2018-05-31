@@ -248,13 +248,15 @@
                                 </div>
                             </div>
                             <div class="slds-p-horizontal_x_small slds-size_1-of-2 slds-form-element">
-                                <lightning:input type="date" onchange="{!c.preValidateWillBookOn}" onblur="{!c.preValidateWillBookOn}" aura:id="requiredBookOnDate" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit pastdatesdisable" label="{!$Label.c.LAC_WBO}"
+                                <div class="slds-p-around_small slds-p-top_none full-width-datepicker">
+                                    <lightning:input type="date" onchange="{!c.preValidateWillBookOn}" onblur="{!c.preValidateWillBookOn}" aura:id="requiredBookOnDate" class="" label="{!$Label.c.LAC_WBO}"
                                     min="Date.now()" value="{!v.bookOnDate}" name="bookOnDate" />
                                 <div class="date-blocker"></div>
                                 <div class="slds-hide">
                                     <lightning:input aura:id="requiredBookOnDate" name="temporaryDataWillBookOn" value="{!v.temporaryDataWillBookOn}" />
                                 </div>
                                 <lightning:helptext class="helpText" content="{!$Label.c.LAC_Booking_HelpText}" />
+                                </div>
                             </div>
                         </aura:if>
                         <div class="slds-p-horizontal_x_small slds-size_1-of-1">
@@ -303,15 +305,15 @@
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Close? false : true}">
-                            <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
-                                    disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
+                            <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none slds-p-bottom_none hide-date-time date-time-split">
+                                <lightning:input onblur="{!c.pastDateValidation}" aura:id="required" type="datetime-local" label="{!$Label.c.LAC_ADT}" value="{!v.selectedActionDate}"
+                                disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}" required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
                             </div>
                         </aura:if>
                         <aura:if isTrue="{!v.selectedCallResult == $Label.c.LAC_Visit?true:false}">
-                            <div class="slds-p-horizontal_x_small slds-size_1-of-1">
-                                <lightning:input aura:id="required" class="slds-large-size_4-of-4 slds-p-around_small slds-p-top_none opportunityLogACallSplit" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}"
-                                    required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
+                            <div class="slds-large-size_4-of-4 slds-p-around_small slds-p-bottom_none slds-p-top_none hide-date-time date-time-split">
+                                <lightning:input aura:id="required" type="datetime-local" label="{!$Label.c.LAC_VDT}" value="{!v.selectedVisitDate}" disabled="{!v.selectedActionType != $Label.c.LAC_Select?false:true}"
+                                required="{!v.selectedCallResult == $Label.c.LAC_Close?false:true}" name="datetime" />
                             </div>
                         </aura:if>
                     </div>

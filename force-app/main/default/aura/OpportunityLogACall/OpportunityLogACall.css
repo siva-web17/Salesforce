@@ -155,3 +155,35 @@
 .THIS .border-thin-line {
     top: -2px;
 }
+
+
+/* Summer 18 Release fixes */
+
+.THIS .hide-date-time label {
+    display: none;
+}
+
+.THIS .hide-date-time lightning-datepicker,
+.THIS .hide-date-time lightning-timepicker {
+    display: block;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.THIS .hide-date-time lightning-timepicker {
+    padding-left: 0.725rem;
+}
+
+.THIS .hide-date-time lightning-datepicker {
+    padding-right: 0.725rem;
+}
+
+.THIS .date-time-split .slds-dropdown-trigger {
+    width: 100%;
+}
+
+.THIS .full-width-datepicker lightning-datepicker {
+    display: inline-grid;
+    width: 100%;
+}
