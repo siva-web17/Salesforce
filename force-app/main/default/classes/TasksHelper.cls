@@ -965,7 +965,12 @@ public class TasksHelper {
     }
 
     private static String setSalesActionAndProgramAsTaskSubject(Task task){
+<<<<<<< HEAD
         return task.SalesAction__c + ' - ' + task.Program__c;
+=======
+        String appendHCC = task.Type == Label.HCC ? Label.LAC_TaskHCCSubjectPrefix + ' - ' : '';
+        return appendHCC + task.SalesAction__c + ' - ' + task.Program__c;
+>>>>>>> SF-2428/PatrykZakDev
     }
 
     private static String addProgramToTaskSubject(Task task){
