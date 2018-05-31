@@ -244,6 +244,7 @@ public class EventsHelper {
             }
         }
         if(validOpportunitiesId.size() > 0) {
+            reviveSCTForOpportunityBookingStage(validOpportunitiesId);
             Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
             Map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
             Map<Id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);
@@ -256,7 +257,7 @@ public class EventsHelper {
         Map<id,opportunity> opportunityToBeRevivedMap = new Map<id,opportunity>();
         for(Id objOppID : oppsMap.keyset()){
             Opportunity oppToBeRevived = oppsMap.get(objOppID);
-            if(oppToBeRevived.StageName == Label.Salesclosed) {
+            if(oppToBeRevived.StageName == Label.Salesclosed || oppToBeRevived.StageName == label.OpportunityBookingStage) {
                 oppToBeRevived.id = objOppID;
                 oppToBeRevived.LastAutomationUpdateDateTime__c = system.now();
                 oppToBeRevived.CloseDate = System.today().addMonths(2);
@@ -287,5 +288,10 @@ public class EventsHelper {
         }
 
        return updatetedOppList;
+    }
+
+     public static void reviveSCTForOpportunityBookingStage(Set<Id> OpportunityIds){
+        Map<Id, Opportunity> bookingOpportunityMap = OpportunitiesSelector.getBookingOpportunities(OpportunityIds);
+        LogACallHelper.getOpportunitiesWithOpenSystemCallTask(bookingOpportunityMap.keyset(), system.now(), '');
     }
 }

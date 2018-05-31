@@ -404,4 +404,9 @@ public class OpportunitiesSelector {
             FROM opportunity
             WHERE ID=:oppRecord.id And isactive__c=true];
     }
+
+     public static Map<Id, Opportunity> getBookingOpportunities(Set<Id> OpportunityIds){
+        Map<Id,Opportunity> bookingOpportunityMap = new map<Id,Opportunity>([Select Id, StageName from Opportunity where id in: OpportunityIds and Opportunity.StageName=:label.OpportunityBookingStage]);
+        return bookingOpportunityMap;
+    }
 }
