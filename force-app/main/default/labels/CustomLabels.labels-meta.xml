@@ -2339,4 +2339,35 @@
         <shortDescription>AlreadyPseudonymised</shortDescription>
         <value>This account is already Pseudonumised.</value>
     </labels>
+    <labels>
+        <fullName>ErrorOnPseudonymisingBookingAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
+        <value>This user has related Bookings in Poseidon, please do not Pseudonymise this customer if any of the Bookings have financial transactions</value>
+    </labels>
+    <labels>
+        <fullName>Ps_Acc</fullName>
+        <categories>PS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ps_Acc</shortDescription>
+        <value>Pseudonymise the Account</value>
+    </labels>
+    <labels>
+        <fullName>Ps_Spinner</fullName>
+        <categories>PS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ps_Spinner</shortDescription>
+        <value>Pseudonymising the Account ,Please wait !!!</value>
+    </labels>
+    <labels>
+        <fullName>Ps_desc</fullName>
+        <categories>PS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ps_desc</shortDescription>
+        <value>Are you sure you want to proceed with pseudonymising this account ?</value>
+    </labels>
 </CustomLabels>
