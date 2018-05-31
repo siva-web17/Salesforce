@@ -30,6 +30,8 @@ public class LeadsSelector {
                         SourceCodeGroup__c,
                         IsCAMOnly__c,
                         SourceCodeAuto__c,
+                        Etag__c,
+                        UserSelectedSourceCode__c,
                         PoseidonID__c,
                         RecalculateRanking__c ,
                         Country,CreatedDate,
@@ -108,7 +110,7 @@ public class LeadsSelector {
         [
                 select
                         id, FirstName,street,LastName,City,PostalCode,phone,SourceCodeGroup__c,
-                        SourceCodeAuto__c,PoseidonID__c,RecalculateRanking__c ,Country,CreatedDate,DepartureCity__c,DestinationCode__c,DeviceType__c,IsParent__c,NumberOfCalls__c,SalesOffice__c,State,StateCode,WhenMonth__c,
+                        SourceCodeAuto__c,Etag__c,UserSelectedSourceCode__c,PoseidonID__c,RecalculateRanking__c ,Country,CreatedDate,DepartureCity__c,DestinationCode__c,DeviceType__c,IsParent__c,NumberOfCalls__c,SalesOffice__c,State,StateCode,WhenMonth__c,
                         MobilePhone,OtherPhone__c,DoubleOptIn__c,DOB__c,Email,Email2__c,Product__c,
                         RequestType__c,Program__c,Market__c,InsertTime__c,ActivityDateTime__c,
                         Region__c,IsDupeProcessed__c,IsDupe__c,ReadyForRanking__c,CreationType__c,DoNotCall,
@@ -220,7 +222,7 @@ public class LeadsSelector {
                 WHERE Id IN :leadIds
         ];
     }
-
+    
     /**
     * @author Arkadiusz Celej
     * @param List<id> leadIds - Leads to select
