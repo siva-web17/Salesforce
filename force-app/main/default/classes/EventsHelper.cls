@@ -259,7 +259,7 @@ public class EventsHelper {
         Map<id,opportunity> opportunityToBeRevivedMap = new Map<id,opportunity>();
         for(Id objOppID : oppsMap.keyset()){
             Opportunity oppToBeRevived = oppsMap.get(objOppID);
-            if(oppToBeRevived.StageName == Label.Salesclosed || oppToBeRevived.StageName == label.OpportunityBookingStage) {
+            if(oppToBeRevived.StageName == Label.Salesclosed) {
                 oppToBeRevived.id = objOppID;
                 oppToBeRevived.LastAutomationUpdateDateTime__c = system.now();
                 oppToBeRevived.CloseDate = System.today().addMonths(2);
