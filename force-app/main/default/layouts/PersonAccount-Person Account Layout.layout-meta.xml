@@ -229,10 +229,7 @@
         <relatedList>RelatedCampaignList</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-            <excludeButtons>New</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>et4ae5__DateSent__c</fields>
         <fields>et4ae5__Opened__c</fields>
