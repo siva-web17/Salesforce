@@ -2,12 +2,7 @@
 ({
     doInit: function(component, event, helper) {
         var currentYear = new Date().getFullYear();
-        component.set(
-            "v.DateTimeTemp",
-            moment(new Date(), "DD-MM-YYYY")
-            .add(1, "days")
-            .format("YYYY-MM-DD") + "T00:00"
-        );
+        component.set("v.DateTimeTemp", moment(new Date(), "DD-MM-YYYY").add(1, "days").format());
         var years = [];
         years.push(currentYear.toString());
         for (var year = 0; year < 2; year++) {
@@ -152,12 +147,7 @@
                         component.set("v.bookOnDate", data.CloseDate);
                         component.set("v.isActiveUser", data.IsActive);
                         component.set("v.doNotCall", data.DoNotCall);
-                        component.set(
-                            "v.DateTimeTemp",
-                            moment(new Date(), "DD-MM-YYYY")
-                            .add(1, "days")
-                            .format("YYYY-MM-DD") + "T00:00"
-                        );
+                        component.set("v.DateTimeTemp", moment(new Date(), "DD-MM-YYYY").add(1, "days").format());
                         component.set("v.selectedActionDate", component.get("v.DateTimeTemp"));
                         var phoneNumberCounter = 0;
                         if (data.OtherPhone) {
