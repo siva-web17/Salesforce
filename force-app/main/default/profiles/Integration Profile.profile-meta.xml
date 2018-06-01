@@ -1185,14 +1185,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Utility</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UtilityTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>customLookUpController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -4333,6 +4325,11 @@
         <field>Event.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Event.ReservationStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Event.ReservedArticles__c</field>
@@ -5053,6 +5050,11 @@
         <field>Lead.RequestType__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.ReservationStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.ReservedArticles__c</field>
@@ -5339,6 +5341,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.DateOfDeactivation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.DOB__c</field>
         <readable>true</readable>
@@ -5459,6 +5466,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.IsAmbassador__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.IsByConversion__c</field>
         <readable>true</readable>
@@ -5466,6 +5478,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.IsJunior__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.IsOppForExistingCustomer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5727,11 +5744,6 @@
         <editable>true</editable>
         <field>Opportunity.Source__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.TEST_Conga_Conductor__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6966,6 +6978,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Task.Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Task.ReservationStartDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

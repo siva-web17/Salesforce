@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CURRENCY_ISO_CODE</field>
+    </columns>
+    <columns>
+        <field>Quote__c.CourseType__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.BrochureSeason__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.Destination__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.DeparturePoint__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.StartDate__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.ValidityDate__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.NumberOfWeeks__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.Market__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.Program__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.SentByEmail__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.IsPrinted__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.TotalPrice__c</field>
+    </columns>
+    <columns>
+        <field>Quote__c.QuotePDF__c</field>
+    </columns>
+    <currency>CHF</currency>
+    <description>This report is used to export Quote details that have been sent to the customer.
+
+Please change the filter in this report with the respective Account Id of the customer.</description>
+    <filter>
+        <criteriaItems>
+            <column>ACCOUNT_ID</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value/>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Quote Details (Person Account)</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>>0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityCustomEntity$Quote__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

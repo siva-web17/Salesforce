@@ -126,6 +126,10 @@ public class DCBusinessFlow {
                     transferNotes(duplicateLead,duplicateLeadIdSet,finalDecision);
                     transferCampaignMember(duplicateLead,duplicateLeadIdSet,finalDecision);
                       update finalLead;
+                    Set<Id> idsToDelete=New Set<Id>();
+                    idsToDelete.add(duplicateLead.Id);
+                    idsToDelete.add(sourceLead.Id);
+                    deleteAutoMergedRecordsFromDCJOBs(idsToDelete);
                     SObjectUnitOfWork.deleteLead(sourceLead);
                   
                 }
@@ -147,6 +151,10 @@ public class DCBusinessFlow {
                 convertsourcelead();
                 //3. update the fields
                // duplicateAccount.RecalculateRanking__c = true;
+                Set<Id> idsToDelete=New Set<Id>();
+                idsToDelete.add(sourceLead.Id);
+                idsToDelete.add(duplicateAccount.Id);
+                deleteAutoMergedRecordsFromDCJOBs(idsToDelete);
                 update duplicateAccount;
                
             }
@@ -242,5 +250,14 @@ public class DCBusinessFlow {
         }
         leadMap = LeadsSelector.leadRecordMap(leadIdList);
         return leadMap;
+    }
+
+    private static void deleteAutoMergedRecordsFromDCJOBs(Set<Id> recordIds)
+    {
+        List<dupcheck__dcQueue__c> queueList = new List<dupcheck__dcQueue__c>();
+        for (Id d : recordIds) {
+            queueList.add(new dupcheck__dcQueue__c(dupcheck__Type__c  = 'record-delete', dupcheck__Record__c = d, dupcheck__RecordId__c = d, dupcheck__Priority__c = 99));
+        }
+        insert queueList;
     }
 }

@@ -35,14 +35,14 @@ public class Leads {
     }
 
     public static void onAfterInsert(List<Lead>newItems) {
-
+        LeadsHelper.createSystemCallTasksForLeadsEnteredManually(newItems);
        // LeadsHelper.createShareRecordsOnInsert(newItems);
     }
 
     public static void onAfterUpdate(List<SObject> newItems, Map<Id, SObject> oldItems) {
+        LeadsHelper.handleProgramChange((List<Lead>)newItems, (Map<Id, Lead>)oldItems);
         LeadsHelper.processRanking((List<Lead>)newItems);
         LeadsHelper.handleOwnerChange((List<Lead>)newItems, (Map<Id, Lead>)oldItems);
-        LeadsHelper.handleProgramChange((List<Lead>)newItems, (Map<Id, Lead>)oldItems);
       //  LeadsHelper.createShareOnUpdateTypes((List<Lead>)newItems, (List<Lead>)oldItems.values());
         CampaignMembersHelper.addOppToIMOnLeadConvert((List<Lead>)newItems);
         

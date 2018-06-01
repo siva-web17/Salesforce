@@ -19,7 +19,7 @@ public class Opportunities {
     }
 
     public static void onBeforeUpdate(Map<Id, Sobject> newItems, Map<Id, Sobject> oldItems) {
-        OpportunitiesHelper.setDefaultLetterAndLabel((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
+        OpportunitiesHelper.setDefaultLetterLabelAndDateOfDeactivation((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
         OpportunitiesHelper.passOpportunityListToPopulateSalesOfficeProgram((Map<Id, Opportunity>) newItems, (Map<Id, Opportunity>) oldItems);
     }
 
