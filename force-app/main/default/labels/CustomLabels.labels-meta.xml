@@ -594,13 +594,6 @@
         <shortDescription>End Date</shortDescription>
         <value>End Date</value>
     </labels>
-    <labels>
-        <fullName>ErrorOnPseudonymisingBookingAccount</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
-        <value>This user has related Bookings in Poseidon, please do not Pseudonymise this customer if any of the Bookings have financial transactions</value>
-    </labels>  
 	 <labels>
         <fullName>ExPaxExENQ</fullName>
         <language>en_US</language>
@@ -691,7 +684,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>HCC Task Creator Batch Number Of Days Parameter</shortDescription>
-        <value>2</value>    
+        <value>2</value>
     </labels>
     <labels>
         <fullName>HCC</fullName>
