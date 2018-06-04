@@ -230,8 +230,10 @@
         var selectedCloseReasonDefault = component.get("v.selectedCloseReasonDefault");
         if (component.get("v.selectedActionType") === LAC_Call_Not_Reached || component.get("v.selectedActionType") === LAC_Social_Media_Sent || component.get("v.selectedActionType") === LAC_Sent_Email) {
             component.set("v.selectedCloseReason", selectedCloseReasonDefault);
+            component.set('v.selectedActionDate', moment().add(2, 'hours').format());
         } else {
             component.set("v.selectedCloseReason", LAC_Select);
+            component.set('v.selectedActionDate', moment(new Date(), "DD-MM-YYYY").add(1, "days").format());
         }
         var callResultAction = component.get("c.getCallResults");
         callResultAction.setParams({
