@@ -44,30 +44,36 @@ function cmd_Exec(value, process) {
 
 }
 
-for (i = 0; i < config.collection.length; i++) {
-    cmd_Exec(config.collection[i]);
-    var primarySource = config.source + config.valueHolder + '\\' + config.lastElemt;
-    var primaryDest = config.destination + config.valueHolder + '\\' + config.lastElemt;
-    primarySource = primarySource.replace(/\\/g, "/")
-    primaryDest = primaryDest.replace(/\\/g, "/")
-    primarySource = primarySource.replace(/\\/g, "\\\\")
-    primaryDest = primaryDest.replace(/\\/g, "\\\\")
-    console.log("primarySource:" + primarySource);
-    console.log('primaryDest:' + primaryDest);
-    copyFile(primarySource, primaryDest, (err) => {
-        if (err)
-            throw err;
-        console.log('source.txt was copied to destination.txt');
-    });
-    var secondarySource = config.source + config.valueHolder + '\\' + config.lastElemt + '-meta.xml';
-    var secoundaryDest = config.destination + config.valueHolder + '\\' + config.lastElemt + '-meta.xml';
-    secondarySource = secondarySource.replace(/\\/g, "/")
-    secoundaryDest = secoundaryDest.replace(/\\/g, "/")
-    secondarySource = secondarySource.replace(/\\/g, "\\\\")
-    secoundaryDest = secoundaryDest.replace(/\\/g, "\\\\")
-    console.log("secondarySource:" + secondarySource);
-    console.log("secoundaryDest:" + secoundaryDest);
-    copyFile(secondarySource, secoundaryDest, (err) => {
-        console.log('source.txt was copied to destination.txt');
-    });
-}
+// for (i = 0; i < config.collection.length; i++) {
+//     cmd_Exec(config.collection[i]);
+//     var primarySource = config.source + config.valueHolder + '/' + config.lastElemt;
+//     var primaryDest = config.destination + config.valueHolder + '/' + config.lastElemt;
+//     primarySource = primarySource.replace(/\\/g, "/")
+//     primaryDest = primaryDest.replace(/\\/g, "/")
+//     primarySource = primarySource.replace(/\\/g, "\\\\")
+//     primaryDest = primaryDest.replace(/\\/g, "\\\\")
+//     console.log("primarySource:" + primarySource);
+//     console.log('primaryDest:' + primaryDest);
+//     copyFile(primarySource, primaryDest, (err) => {
+//         if (err)
+//             throw err;
+//         console.log('source.txt was copied to destination.txt');
+//     });
+//     var secondarySource = config.source + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+//     var secoundaryDest = config.destination + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+//     secondarySource = secondarySource.replace(/\\/g, "/")
+//     secoundaryDest = secoundaryDest.replace(/\\/g, "/")
+//     secondarySource = secondarySource.replace(/\\/g, "\\\\")
+//     secoundaryDest = secoundaryDest.replace(/\\/g, "\\\\")
+//     console.log("secondarySource:" + secondarySource);
+//     console.log("secoundaryDest:" + secoundaryDest);
+//     copyFile(secondarySource, secoundaryDest, (err) => {
+//         console.log('source.txt was copied to destination.txt');
+//     });
+// }
+
+var secondarySource = "home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js"
+var secoundaryDest = "\\home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js-meta.xml"
+copyFile(secondarySource, secoundaryDest, (err) => {
+    console.log('Run Executed Successfully');
+});
