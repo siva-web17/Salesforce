@@ -46,10 +46,11 @@ function cmd_Exec(value, process) {
     //   //console.log('Alread');
     // }
     Promise.coroutine(function*() {
-        var response = yield cmd.run('mkdir ' + 'output\\' + urlFormation);
+        urlFormation = urlFormation.replace(/\\/g, "\\\\")
+        var response = yield cmd.run('mkdir ' + 'output\\\\' + urlFormation);
         if (response.success) {
 
-            console.log(success('mkdir ' + 'output\\' + urlFormation));
+            console.log(success('mkdir ' + 'output\\\\' + urlFormation));
             prompt.start();
         } else {
             //  console.log(error('Invalid Comment, Please contact administrator'));
