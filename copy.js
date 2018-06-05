@@ -38,10 +38,6 @@ const config = {
 
 function cmd_Exec(value, process) {
     spinner.start('Loading..');
-    setTimeout(() => {
-        spinner.color = 'yellow';
-        spinner.text = 'Loading....';
-    }, 1000);
     var value = value.split('/');
     var removeLast = value.splice(-1, 1);
     config.lastElemt = removeLast;

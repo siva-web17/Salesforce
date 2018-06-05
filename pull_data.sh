@@ -2,9 +2,6 @@
 
 
 echo "> Getting data..."
-git checkout develop
-git reset --hard
-git remote prune origin
 git pull
 node copy.js
 node run.js
