@@ -8,7 +8,7 @@ prompt.delimiter = colors.green(' ');
 const ora = require('ora');
 const spinner = ora('Loading Data');
 var promisify = require('node-promisify');
-
+var path = require("path");
 // destination.txt will be created or overwritten by default.
 function Head(value) {
     //return colors.inverse(colors.blackBG(' ' + colors.blue(colors.bold(value)) + ' '));
@@ -27,8 +27,8 @@ function convertToJson(value) {
     return JSON.stringify(value);
 }
 const config = {
-    source: 'C:\\work\\SF\\Master\\Prod\\',
-    destination: 'C:\\work\\SF\\Master\\Prod\\output\\',
+    source: path.resolve("./") + '/',
+    destination: path.resolve("./output/") + '/',
     collection: require('./array'),
     valueHolder: '',
     lastElemt: '',
