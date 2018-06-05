@@ -1,1 +1,9 @@
-["force-app/main/default/aura/PseudonymiseAction/PseudonymiseAction.cmp","force-app/main/default/aura/PseudonymiseAction/PseudonymiseAction.cmp-meta.xml","force-app/main/default/aura/PseudonymiseAction/PseudonymiseAction.css","force-app/main/default/aura/PseudonymiseAction/PseudonymiseActionController.js","force-app/main/default/aura/PseudonymiseAction/PseudonymiseActionHelper.js","force-app/main/default/labels/CustomLabels.labels-meta.xml"]
+[
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.cmp",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.cmp-meta.xml",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.css",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.design",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallController.js",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallHelper.js",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallRenderer.js"
+]
