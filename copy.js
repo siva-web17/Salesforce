@@ -5,8 +5,7 @@ var cmd = require('node-command-line'),
 var colors = require('colors/safe');
 prompt.message = colors.bgGreen(' ');
 prompt.delimiter = colors.green(' ');
-const ora = require('ora');
-const spinner = ora('Loading Data');
+
 var promisify = require('node-promisify');
 var path = require("path");
 
@@ -37,7 +36,7 @@ const config = {
 }
 
 function cmd_Exec(value, process) {
-    spinner.start('Loading..');
+
     var value = value.split('/');
     var removeLast = value.splice(-1, 1);
     config.lastElemt = removeLast;
@@ -49,12 +48,12 @@ function cmd_Exec(value, process) {
     Promise.coroutine(function*() {
         var response = yield cmd.run('mkdir ' + 'output\\' + urlFormation);
         if (response.success) {
-            spinner.stop();
+
             console.log(success('mkdir ' + 'output\\' + urlFormation));
             prompt.start();
         } else {
             //  console.log(error('Invalid Comment, Please contact administrator'));
-            spinner.stop();
+
         }
     })();
 

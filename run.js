@@ -5,8 +5,7 @@ var cmd = require('node-command-line'),
 var colors = require('colors/safe');
 prompt.message = colors.bgGreen(' ');
 prompt.delimiter = colors.green(' ');
-const ora = require('ora');
-const spinner = ora('Loading Data');
+
 var promisify = require('node-promisify');
 var path = require("path");
 // destination.txt will be created or overwritten by default.
@@ -36,13 +35,13 @@ const config = {
 }
 
 function cmd_Exec(value, process) {
-    spinner.start('Loading..');
+
     var value = value.split('/');
     var removeLast = value.splice(-1, 1);
     config.lastElemt = removeLast;
     var urlFormation = value.join('\\');
     config.valueHolder = urlFormation;
-    spinner.stop();
+
 }
 
 for (i = 0; i < config.collection.length; i++) {
