@@ -48,6 +48,8 @@ for (i = 0; i < config.collection.length; i++) {
     cmd_Exec(config.collection[i]);
     var primarySource = config.source + config.valueHolder + '/' + config.lastElemt;
     var primaryDest = config.destination + config.valueHolder + '/' + config.lastElemt;
+    primarySource = primarySource.replace(/\\/g, "\\\\")
+    primaryDest = primaryDest.replace(/\\/g, "\\\\")
     console.log("primarySource:" + primarySource);
     console.log('primaryDest:' + primaryDest);
     copyFile(primarySource, primaryDest, (err) => {
@@ -57,6 +59,8 @@ for (i = 0; i < config.collection.length; i++) {
     });
     var secondarySource = config.source + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
     var secoundaryDest = config.destination + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+    secondarySource = secondarySource.replace(/\\/g, "\\\\")
+    secoundaryDest = secoundaryDest.replace(/\\/g, "\\\\")
     console.log("secondarySource:" + secondarySource);
     console.log("secoundaryDest:" + secoundaryDest);
     copyFile(secondarySource, secoundaryDest, (err) => {
