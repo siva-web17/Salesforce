@@ -46,13 +46,20 @@ function cmd_Exec(value, process) {
 
 for (i = 0; i < config.collection.length; i++) {
     cmd_Exec(config.collection[i]);
-    copyFile(config.source + config.valueHolder + '//' + config.lastElemt, config.destination + config.valueHolder + '//' + config.lastElemt, (err) => {
+    var primarySource = config.source + config.valueHolder + '/' + config.lastElemt;
+    var primaryDest = config.destination + config.valueHolder + '/' + config.lastElemt;
+    console.log("primarySource:" + primarySource);
+    console.log('primaryDest:' + primaryDest);
+    copyFile(primarySource, primaryDest, (err) => {
         if (err)
             throw err;
         console.log('source.txt was copied to destination.txt');
     });
-    copyFile(config.source + config.valueHolder + '//' + config.lastElemt + '-meta.xml', config.destination + config.valueHolder + '//' + config.lastElemt + '-meta.xml', (err) => {
-
+    var secondarySource = config.source + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+    var secoundaryDest = config.destination + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+    console.log("secondarySource:" + secondarySource);
+    console.log("secoundaryDest:" + secoundaryDest);
+    copyFile(secondarySource, secoundaryDest, (err) => {
         console.log('source.txt was copied to destination.txt');
     });
 }
