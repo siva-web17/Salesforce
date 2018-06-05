@@ -47,10 +47,10 @@ function cmd_Exec(value, process) {
     // }
     Promise.coroutine(function*() {
         urlFormation = urlFormation.replace(/\\/g, "\\\\")
-        var response = yield cmd.run('mkdir ' + 'output\\\\' + urlFormation);
+        var response = yield cmd.run('mkdir -p ' + 'output\\\\' + urlFormation);
         if (response.success) {
 
-            console.log(success('mkdir ' + 'output\\\\' + urlFormation));
+            console.log(success('mkdir -p ' + 'output\\\\' + urlFormation));
             prompt.start();
         } else {
             //  console.log(error('Invalid Comment, Please contact administrator'));
