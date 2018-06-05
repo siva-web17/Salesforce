@@ -39,6 +39,7 @@ before_install:
 script:
 - node --version
 - sfdx force:org:display -u travis
+- faster.bat develop travis
 branches:
   only:
     - master
