@@ -2,5 +2,14 @@
 
 
 echo "> Getting data..."
+git checkout develop
+git reset --hard
+git remote prune origin
 git pull
-echo "> After Getting data..."
+node copy.js
+node run.js
+rename force-app force-app++
+move output\* force-app
+sfdx force:source:convert -d mdapioutput/
+sfdx force:mdapi:deploy -d mdapioutput/ -u  travis -w 100
+echo "> Completed dude... Have Fun"
