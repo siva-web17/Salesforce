@@ -46,12 +46,12 @@ function cmd_Exec(value, process) {
 
 for (i = 0; i < config.collection.length; i++) {
     cmd_Exec(config.collection[i]);
-    copyFile(config.source + config.valueHolder + '\\' + config.lastElemt, config.destination + config.valueHolder + '\\' + config.lastElemt, (err) => {
+    copyFile(config.source + config.valueHolder + '//' + config.lastElemt, config.destination + config.valueHolder + '//' + config.lastElemt, (err) => {
         if (err)
             throw err;
         console.log('source.txt was copied to destination.txt');
     });
-    copyFile(config.source + config.valueHolder + '\\' + config.lastElemt + '-meta.xml', config.destination + config.valueHolder + '\\' + config.lastElemt + '-meta.xml', (err) => {
+    copyFile(config.source + config.valueHolder + '//' + config.lastElemt + '-meta.xml', config.destination + config.valueHolder + '//' + config.lastElemt + '-meta.xml', (err) => {
 
         console.log('source.txt was copied to destination.txt');
     });
