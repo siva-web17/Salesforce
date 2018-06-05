@@ -82,9 +82,6 @@
         <field>ACCOUNT</field>
     </columns>
     <columns>
-        <field>ACCOUNT.NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>ACCOWNER</field>
     </columns>
     <columns>
@@ -103,12 +100,6 @@
         <field>CONTACT</field>
     </columns>
     <columns>
-        <field>CONTACT_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>CONTACT_LAST_NAME_LOCAL</field>
-    </columns>
-    <columns>
         <field>TITLE</field>
     </columns>
     <columns>
@@ -116,12 +107,6 @@
     </columns>
     <columns>
         <field>LEAD</field>
-    </columns>
-    <columns>
-        <field>LEAD_FIRST_NAME_LOCAL</field>
-    </columns>
-    <columns>
-        <field>LEAD_LAST_NAME_LOCAL</field>
     </columns>
     <columns>
         <field>OPPORTUNITY</field>
@@ -340,9 +325,6 @@
         <field>Activity.OriginalDueDate__c</field>
     </columns>
     <columns>
-        <field>Activity.PosActivityId__c</field>
-    </columns>
-    <columns>
         <field>Activity.ProcessedForTaskCreation__c</field>
     </columns>
     <columns>
@@ -498,16 +480,6 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ASSIGNED</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>SUBJECT</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>Visits Migrated</name>
     <params>
         <name>closed</name>

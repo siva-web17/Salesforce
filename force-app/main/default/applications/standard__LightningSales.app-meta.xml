@@ -45,6 +45,7 @@
     <tabs>TemplateSetting__c</tabs>
     <tabs>standard-Event</tabs>
     <tabs>Source__c</tabs>
+	<tabs>standard-Opportunity</tabs>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Opportunity</tabs>
     <tabs>LanguageReport</tabs>

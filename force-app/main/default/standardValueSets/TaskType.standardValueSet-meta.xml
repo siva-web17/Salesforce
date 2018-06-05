@@ -7,6 +7,11 @@
         <label>Call</label>
     </standardValue>
     <standardValue>
+        <fullName>HCC</fullName>
+        <default>false</default>
+        <label>HCC</label>
+    </standardValue>
+    <standardValue>
         <fullName>MCR</fullName>
         <default>false</default>
         <label>MCR</label>

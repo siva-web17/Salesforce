@@ -267,6 +267,7 @@ public with sharing class LogACallHelper {
     *
     */
     public static List<Opportunity> getOpportunitiesWithOpenSystemCallTask(Set<Id> parentIds, Datetime followupDatetime, String callResult){
+        system.debug('insiedLogacallhelper>>>');
         Id systemCallTaskRecordTypeId = RecordTypesSelector.getActiveRecTypesByDevName(Task.SObjectType).get(TasksHelper.SYSTEM_TASK_DEVELOPER_NAME).Id;
         List<Opportunity> opportunities = OpportunitiesSelector.getOpportunitiesByIdsWithTasks(new List<Id>(parentIds));
 

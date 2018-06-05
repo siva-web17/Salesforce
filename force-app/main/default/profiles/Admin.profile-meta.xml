@@ -2622,6 +2622,11 @@
         <field>Account.HasBooking__c</field>
         <readable>true</readable>
     </fieldPermissions>
+	<fieldPermissions>
+        <editable>true</editable>
+        <field>Account.HasHappyCallTask__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.HasPhoneNumber__c</field>
@@ -2683,6 +2688,41 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_AttainedLevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_OverAllSatisfied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_Program__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_RecommendFriend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_SalesOffice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LatestBooking_TravelAgain__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LatestBooking__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.Market__c</field>
         <readable>true</readable>
@@ -2715,6 +2755,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.NumberOfEmployees</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.NumberOfUnreachedHappyCalls__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2852,6 +2897,11 @@
         <field>Account.dupcheck__dc3Index__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.AccountAPIName__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>AccountToPseudoAccountMapping__mdt.AccountAPIName__c</field>
@@ -2877,6 +2927,11 @@
         <field>AccountContactRelation.IsByConversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.IsMandatoryOnAccount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>AccountToPseudoAccountMapping__mdt.IsMandatoryOnAccount__c</field>
@@ -2901,6 +2956,101 @@
         <editable>true</editable>
         <field>AccountToPseudoAccountMapping__mdt.PseudoAccountAPIName__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.AccountId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.Email2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.FirstName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+            <field>PseudoAccount__c.Gender__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.InvoiceEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.LastName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.ParentEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonHomePhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCountryCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingCountry__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingPostalCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingStateCode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingState__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMailingStreet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonMobilePhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PseudoAccount__c.PersonOtherPhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountToPseudoAccountMapping__mdt.PseudoAccountAPIName__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3103,6 +3253,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.Attainedlevel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.BalanceDue__c</field>
         <readable>true</readable>
@@ -3139,6 +3294,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Booking__c.Destination__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.Duration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Booking__c.IsByConversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3160,6 +3325,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.OpportunityId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.OverAllSatisfied__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3188,6 +3358,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.RecommendFriend__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.SalesOffice__c</field>
         <readable>true</readable>
@@ -3200,6 +3375,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Booking__c.SubStatus__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+       <editable>true</editable>
+        <field>Booking__c.TravelAgain__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4548,6 +4728,41 @@
         <field>Event.WhoId</field>
         <readable>true</readable>
     </fieldPermissions>
+		<fieldPermissions>
+        <editable>true</editable>
+        <field>Event.EntryPointURL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.HasSeenPrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.HasSeenPromotion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.SurfTimeSeconds__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.TopDestination__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.TopProgram__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.TritonVisitId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>ExternalServiceSettings__mdt.IsActive__c</field>
@@ -5004,7 +5219,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-     <editable>false</editable>
+        <editable>false</editable>
         <field>Lead.LeadExternalId__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5544,7 +5759,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.HomePhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5679,7 +5894,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Mobile__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5709,7 +5924,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.OtherPhone__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7203,6 +7418,41 @@
         <field>Task.WhoId</field>
         <readable>true</readable>
     </fieldPermissions>
+	    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.EntryPointURL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.HasSeenPrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.HasSeenPromotion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.SurfTimeSeconds__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.TopDestination__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.TopProgram__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.TritonVisitId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>TaskSetting__mdt.CanCloseManually__c</field>
@@ -7711,6 +7961,9 @@
     <layoutAssignments>
         <layout>Account-Account Layout</layout>
         <recordType>Account.Company</recordType>
+    </layoutAssignments>
+     <layoutAssignments>
+    <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>AccountToPseudoAccountMapping__mdt-AccountToPseudoAccountMapping Layout</layout>
@@ -9551,10 +9804,10 @@
         <enabled>true</enabled>
         <name>ManageRoles</name>
     </userPermissions>
-    <userPermissions>
+    <!-- <userPermissions>
         <enabled>true</enabled>
         <name>ManageSandboxes</name>
-    </userPermissions>
+    </userPermissions> -->
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageSharing</name>

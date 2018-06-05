@@ -3,12 +3,10 @@
     <fullName>PersonAccountCompactLayout</fullName>
     <fields>Name</fields>
     <fields>Market__c</fields>
-    <fields>PersonBirthdate</fields>
-    <fields>NumberofOpportunities__c</fields>
+    <fields>Age__c</fields>
     <fields>PersonMobilePhone</fields>
     <fields>PersonHomePhone</fields>
     <fields>PersonOtherPhone</fields>
     <fields>IsParent__c</fields>
-    <fields>HasBooking__c</fields>
     <label>Person Account Compact Layout</label>
 </CompactLayout>

@@ -2,12 +2,7 @@
 ({
     doInit: function(component, event, helper) {
         var currentYear = new Date().getFullYear();
-        component.set(
-            "v.DateTimeTemp",
-            moment(new Date(), "DD-MM-YYYY")
-            .add(1, "days")
-            .format("YYYY-MM-DD") + "T00:00"
-        );
+        component.set("v.DateTimeTemp", moment(new Date(), "DD-MM-YYYY").add(1, "days").format());
         var years = [];
         years.push(currentYear.toString());
         for (var year = 0; year < 2; year++) {
@@ -152,12 +147,7 @@
                         component.set("v.bookOnDate", data.CloseDate);
                         component.set("v.isActiveUser", data.IsActive);
                         component.set("v.doNotCall", data.DoNotCall);
-                        component.set(
-                            "v.DateTimeTemp",
-                            moment(new Date(), "DD-MM-YYYY")
-                            .add(1, "days")
-                            .format("YYYY-MM-DD") + "T00:00"
-                        );
+                        component.set("v.DateTimeTemp", moment(new Date(), "DD-MM-YYYY").add(1, "days").format());
                         component.set("v.selectedActionDate", component.get("v.DateTimeTemp"));
                         var phoneNumberCounter = 0;
                         if (data.OtherPhone) {
@@ -232,6 +222,15 @@
             component.set("v.selectedCloseReason", selectedCloseReasonDefault);
         } else {
             component.set("v.selectedCloseReason", LAC_Select);
+        }
+        
+        var LAC_Call_Not_Reached = $A.get("$Label.c.LAC_Call_Not_Reached");
+        var LAC_Social_Media_Sent = $A.get("$Label.c.LAC_Social_Media_Sent");
+        var LAC_Sent_Email = $A.get("$Label.c.LAC_Sent_Email");
+        if (component.get("v.selectedActionType") === LAC_Call_Not_Reached || component.get("v.selectedActionType") === LAC_Social_Media_Sent || component.get("v.selectedActionType") === LAC_Sent_Email) {
+            component.set('v.selectedActionDate', moment().add(2, 'hours').format());
+        } else {
+            component.set('v.selectedActionDate', moment(new Date(), "DD-MM-YYYY").add(1, "days").format("YYYY-MM-DD") + "T00:00");
         }
         var callResultAction = component.get("c.getCallResults");
         callResultAction.setParams({

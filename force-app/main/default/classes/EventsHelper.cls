@@ -229,10 +229,9 @@ public class EventsHelper {
             }
         }
     }
-      public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
-        system.debug('Afterupdate>>>'+newEvents);
-        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
 
+    public static void afterEventsTransferFromAccountToActiveOpportunity(List<Event> newEvents, Map<Id, Event> oldEvents){
+        Id customerRequestId = RecordTypesSelector.getActiveRecTypesByDevName(Event.SObjectType).get(Label.CustomerRequestEventRecordTypeDeveloperName).Id;
         list<opportunity> opportunitiesToBeUpdated = new list<opportunity>();
         Set<Id> validOpportunitiesId = new Set<Id>();
         for(Event newEvent : newEvents){
@@ -240,10 +239,12 @@ public class EventsHelper {
             if(newEvent.RecordTypeId == customerRequestId && newEvent.whatid!=null
             && newEvent.whatid.getSobjectType() == opportunity.SObjectType
             && ((oldEvent.whatid != null && oldEvent.whatid.getSobjectType()!= opportunity.SObjectType) || oldEvent.whatid == null) ){
+
                 validOpportunitiesId.add(newEvent.whatid);
             }
         }
         if(validOpportunitiesId.size() > 0) {
+            reviveSCTForOpportunityBookingStage(validOpportunitiesId);
             Map<Id, Opportunity> OpportunityWithEventsByCreatedDate = OpportunitiesSelector.getLatestEventForOpportunityOrderByCreatedDate(validOpportunitiesId);
             Map<id,string> OpportunityWithPreviousStage = opportunitiesselector.getOpportunityStageNameForList(validOpportunitiesId);
             Map<Id,opportunity> opportunityToBeRevivedMap= reviveSalesClosedOpportunities(OpportunityWithPreviousStage, OpportunityWithEventsByCreatedDate);
@@ -287,5 +288,10 @@ public class EventsHelper {
         }
 
        return updatetedOppList;
+    }
+
+     public static void reviveSCTForOpportunityBookingStage(Set<Id> OpportunityIds){
+        Map<Id, Opportunity> bookingOpportunityMap = OpportunitiesSelector.getBookingOpportunities(OpportunityIds);
+        LogACallHelper.getOpportunitiesWithOpenSystemCallTask(bookingOpportunityMap.keyset(), system.now(), '');
     }
 }

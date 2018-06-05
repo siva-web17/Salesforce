@@ -328,6 +328,13 @@
         <value>Closed Won</value>
     </labels>
     <labels>
+        <fullName>Completed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Completed</shortDescription>
+        <value>Completed</value>
+    </labels>
+    <labels>
         <fullName>ContactCustomer</fullName>
         <categories>Dev</categories>
         <language>en_US</language>
@@ -390,6 +397,13 @@
         <value>CustomerRequest</value>
     </labels>
     <labels>
+        <fullName>CustomerRequestInfoRequest</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer Request Info Request</shortDescription>
+        <value>Info Request</value>
+    </labels>
+    <labels>
         <fullName>CustomerRequestType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -449,6 +463,13 @@
         <protected>false</protected>
         <shortDescription>DefaultTranslation</shortDescription>
         <value>USB-English</value>
+    </labels>
+    <labels>
+        <fullName>Deferred</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deferred</shortDescription>
+        <value>Deferred</value>
     </labels>
     <labels>
         <fullName>Delete</fullName>
@@ -573,6 +594,20 @@
         <shortDescription>End Date</shortDescription>
         <value>End Date</value>
     </labels>
+	 <labels>
+        <fullName>ExPaxExENQ</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ex-Pax/Ex-ENQ Heard About Us</shortDescription>
+        <value>Ex-Pax/Ex-ENQ</value>
+    </labels>
+    <labels>
+        <fullName>ExPaxSourceCode</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExPax Source Code</shortDescription>
+        <value>03200</value>
+    </labels>
     <labels>
         <fullName>ExcelImport</fullName>
         <categories>DEV</categories>
@@ -643,6 +678,41 @@
         <protected>false</protected>
         <shortDescription>Gender</shortDescription>
         <value>Gender</value>
+    </labels>
+    <labels>
+        <fullName>HCCTaskCreatorBatchNoOfDaysParameter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Task Creator Batch Number Of Days Parameter</shortDescription>
+        <value>2</value>
+    </labels>
+    <labels>
+        <fullName>HCC</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC</shortDescription>
+        <value>HCC</value>
+    </labels>
+    <labels>
+        <fullName>HCC_Next_Call_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Next Call Type</shortDescription>
+        <value>HCC</value>
+    </labels>
+    <labels>
+        <fullName>HCC_Task_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HCC Task Type</shortDescription>
+        <value>Call</value>
+    </labels>
+    <labels>
+        <fullName>Happy_Call</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Happy Call -</shortDescription>
+        <value>Happy Call -</value>
     </labels>
     <labels>
         <fullName>HasBooking</fullName>
@@ -776,6 +846,13 @@
         <protected>false</protected>
         <shortDescription>CNR</shortDescription>
         <value>Call Not Reached Type</value>
+    </labels>
+        <labels>
+        <fullName>LAC_Closed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Closed</shortDescription>
+        <value>Closed</value>
     </labels>
     <labels>
         <fullName>LAC_CP</fullName>
@@ -911,6 +988,13 @@
         <protected>false</protected>
         <shortDescription>LAC_FILL_VALID_INFO</shortDescription>
         <value>Please fill your information correctly.</value>
+    </labels>
+    <labels>
+        <fullName>LAC_TaskHCCSubjectPrefix</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subject Prefix for HCC Task</shortDescription>
+        <value>HC</value>
     </labels>
     <labels>
         <fullName>LAC_HDYH</fullName>
@@ -1151,6 +1235,13 @@
         <value>Closed Won</value>
     </labels>
     <labels>
+        <fullName>LikelihoodToBookHigh</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Likelihood To Book High</shortDescription>
+        <value>High</value>
+    </labels>
+    <labels>
         <fullName>Lead_CreationMethod_Enteredbyuser</fullName>
         <categories>Lead Creation Method picklist value</categories>
         <language>en_US</language>
@@ -1306,6 +1397,20 @@
         <protected>false</protected>
         <shortDescription>NoActiveOpportunity</shortDescription>
         <value>Please create an opportunity before sending Customer info to Poseidon</value>
+    </labels>
+    <labels>
+        <fullName>NotAbleToContactCustomer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not able to contact customer</shortDescription>
+        <value>Not able to contact customer</value>
+    </labels>
+    <labels>
+        <fullName>Not_Started</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Started</shortDescription>
+        <value>Not Started</value>
     </labels>
     <labels>
         <fullName>OfficeVisit</fullName>
@@ -2002,6 +2107,13 @@
         <value>Completed</value>
     </labels>
     <labels>
+        <fullName>Task_Status_Deferred</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Task Status Deferred</shortDescription>
+        <value>Deferred</value>
+    </labels>
+    <labels>
         <fullName>TemplateBuilderCongaQueryId</fullName>
         <categories>DEV</categories>
         <language>en_US</language>
@@ -2060,6 +2172,13 @@
         <protected>false</protected>
         <shortDescription>Visited Us action on Log a Call Component</shortDescription>
         <value>Visited Us</value>
+    </labels>
+    <labels>
+        <fullName>WillNotTravelAgain</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Will not travel again</shortDescription>
+        <value>Will not travel again</value>
     </labels>
     <labels>
         <fullName>bookingSummaryFinish_Booking</fullName>
@@ -2198,6 +2317,14 @@
         <value>https://poseidonlounge.ef.com/hc/en-us/requests/new</value>
     </labels>
     <labels>
+        <fullName>LAC_SELECTED_CLOSEREASON</fullName>
+        <categories>LAC</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
+        <value>Not able to contact customer</value>
+    </labels>
+    <labels>
         <fullName>AlreadyPseudonymised</fullName>
         <categories>Account</categories>
         <language>en_US</language>
@@ -2211,13 +2338,29 @@
         <protected>false</protected>
         <shortDescription>Error On Pseudonymising Booking Account</shortDescription>
         <value>This user has related Bookings in Poseidon, please do not Pseudonymise this customer if any of the Bookings have financial transactions</value>
-    </labels> 
-    <labels> 
-        <fullName>LAC_SELECTED_CLOSEREASON</fullName>
-        <categories>LAC</categories>
+    </labels>
+    <labels>
+        <fullName>Ps_Acc</fullName>
+        <categories>PS</categories>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>LAC_SELECTED_CLOSEREASON</shortDescription>
-        <value>Not able to contact customer</value>
+        <shortDescription>Ps_Acc</shortDescription>
+        <value>Pseudonymise the Account</value>
+    </labels>
+    <labels>
+        <fullName>Ps_Spinner</fullName>
+        <categories>PS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ps_Spinner</shortDescription>
+        <value>Pseudonymising the Account ,Please wait !!!</value>
+    </labels>
+    <labels>
+        <fullName>Ps_desc</fullName>
+        <categories>PS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ps_desc</shortDescription>
+        <value>Are you sure you want to proceed with pseudonymising this account ?</value>
     </labels>
 </CustomLabels>

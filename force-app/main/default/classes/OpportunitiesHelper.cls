@@ -459,6 +459,15 @@ public class OpportunitiesHelper {
         }
     }
 
+    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
+        for (Opportunity opp : opportunities) {
+            if(opp.IsByConversion__c == false) {
+                opp.CloseDate = System.today().addMonths(2);
+            }
+        }
+        return opportunities;
+    }
+
     public static Opportunity createActiveOpportunityForAccount(OpportunityDataWrapper wrapper){
         Opportunity newOpportunity = new Opportunity();
         newOpportunity.Name = wrapper.account.Name;
@@ -551,13 +560,5 @@ public class OpportunitiesHelper {
         public List<Event> events;
         public Lead lead;
         public Account account;
-    }
-    public static List<Opportunity> populateCloseDate(List<Opportunity> opportunities){
-        for (Opportunity opp : opportunities) {
-            if(opp.IsByConversion__c == false) {
-                opp.CloseDate = System.today().addMonths(2);
-            }
-        }
-        return opportunities;
     }
 }

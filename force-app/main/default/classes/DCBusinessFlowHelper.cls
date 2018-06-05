@@ -50,7 +50,9 @@ public class DCBusinessFlowHelper {
             serviceParams.Source = sourceLead.SourceCodeAuto__c;
             serviceParams.Address = (sourceLead.street + ',' + sourceLead.region__c + ',' + sourceLead.city + ',' + sourceLead.country + ',' + sourceLead.postalcode).replace('null', '');
             serviceParams.HearAboutUs = sourceLead.hearaboutus__c;
-            serviceParams.DeviceType = sourceLead.DeviceType__c;
+            serviceParams.DeviceType = sourceLead.DeviceType__c;                
+            serviceParams.Etag = sourceLead.ETag__c;
+            serviceParams.UserSelectedSourceCode = sourceLead.UserSelectedSourceCode__c;                
             serviceParamsList.Add(serviceParams);
         }
         String serviceParamsJSON = JSON.serialize(serviceParamsList);
@@ -59,9 +61,9 @@ public class DCBusinessFlowHelper {
         if (httpResponse.getStatusCode() == 200) {
             List<RankingServiceResponse> serviceResponse =
                     (List<RankingServiceResponse>) JSON.deserialize(httpResponse.getBody(), List<RankingServiceResponse>.class);
-                    System.debug(' ** response ** : ' + serviceResponse);
+            System.debug(' ** response ** : ' + serviceResponse);
             return serviceResponse;
-        }else{
+        } else {
             System.debug(' httpResponse ' + httpResponse.getBody());
             throw new CalloutException(httpResponse.getBody());
         }

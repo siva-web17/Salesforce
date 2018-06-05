@@ -1,0 +1,9 @@
+[
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.cmp",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.cmp-meta.xml",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.css",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACall.design",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallController.js",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallHelper.js",
+    "force-app/main/default/aura/OpportunityLogACall/OpportunityLogACallRenderer.js"
+]

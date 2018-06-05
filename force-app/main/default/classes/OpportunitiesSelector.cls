@@ -112,8 +112,8 @@ public class OpportunitiesSelector {
 
     public static List<Opportunity> getAllEventsAndTasksforOpportunity(List<id> opportunityIds) {
         return [
-                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c,Market__c,OwnerId, (
-                        SELECT Id, WhoId, WhatId, Subject, Status,
+                select id,Name,account.PersonDoNotCall,account.HasAddress__c,SendBrochure__c,CreationMethod__c,StageName, account.HasPhoneNumber__c, HasSystemCallTask__c,Program__c,Market__c,(
+                        SELECT Id, WhoId, WhatId, Subject, Status, OwnerId,
                                 FollowUpDate__c,SalesAction__c, Program__c, MergeReason__c,Type,IsClosed__c,FalseBrochureProgramCodes__c,WebOnlinePaymentTXLogId__c,
                                 CloseDate__c, IsExpressCall__c,RecordType.DeveloperName,IsUp__c, IsJunior__c, Course__c, DestinationCode__c, StartWhen__c,
                                 ReservedPrice__c, IsPaidOnline__c, Duration__c, Accommodation__c, ReservedCoursePrice__c, ReservedArticles__c, Comments__c,DepartureCity__c,Description
@@ -263,16 +263,15 @@ public class OpportunitiesSelector {
     * @return Returns list of opportunities with Tasks
     * */
     public static List<Opportunity> getOpportunitiesByIdsWithTasks(List<id> opportunityIds) {
-        return [
-                SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c,
+        return [SELECT Name, Letter__c, OwnerId, Label__c, Age__c, TemplateKey__c, BrochuresToSend__c, 
             	SentBrochures__c, HasSystemCallTask__c, Account.PersonBirthdate, NumberOfUnreachedCalls__c,
             	StageName, Product__c, Program__c, FirstContactDateTime__c,
             	(SELECT Id, ActivityDate, SalesAction__c, IsTaskCallReached__c, WhatId, Program__c, IsClosed, Subject,Status,
                  NextCallType__c,FollowUpDate__c,IsClosed__c,IsParentClosing__c,isexpresscall__c,
-                 TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName,
+                 TaskResult__c,FalseBrochureProgramCodes__c, Type, RecordTypeId, RecordType.DeveloperName, 
                  IsJunior__c, IsUp__c,TaskSubtype FROM Tasks ORDER BY ActivityDate)
                 FROM Opportunity
-                WHERE Id in :opportunityIds
+                WHERE Id in :opportunityIds 
         ];
     }
 
@@ -404,5 +403,10 @@ public class OpportunitiesSelector {
             )
             FROM opportunity
             WHERE ID=:oppRecord.id And isactive__c=true];
+    }
+
+     public static Map<Id, Opportunity> getBookingOpportunities(Set<Id> OpportunityIds){
+        Map<Id,Opportunity> bookingOpportunityMap = new map<Id,Opportunity>([Select Id, StageName from Opportunity where id in: OpportunityIds and Opportunity.StageName=:label.OpportunityBookingStage]);
+        return bookingOpportunityMap;
     }
 }
