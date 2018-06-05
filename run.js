@@ -52,7 +52,7 @@ for (i = 0; i < config.collection.length; i++) {
     primaryDest = primaryDest.replace(/\\/g, "/")
     var regex = /(?<!https:)\//g;
     primarySource = primarySource.replace(regex, "\\");
-    primaryDest.replace(primaryDest, "\\");
+    primaryDest = primaryDest.replace(regex, "\\");
     console.log("primarySource:" + primarySource);
     console.log('primaryDest:' + primaryDest);
     copyFile(primarySource, primaryDest, (err) => {
@@ -68,7 +68,7 @@ for (i = 0; i < config.collection.length; i++) {
     secoundaryDest = secoundaryDest.replace(/\\/g, "\\\\")
     var regex = /(?<!https:)\//g;
     secondarySource = secondarySource.replace(regex, "\\");
-    secoundaryDest.replace(secoundaryDest, "\\");
+    secoundaryDest = secoundaryDest.replace(regex, "\\");
     console.log("secondarySource:" + secondarySource);
     console.log("secoundaryDest:" + secoundaryDest);
     copyFile(secondarySource, secoundaryDest, (err) => {
