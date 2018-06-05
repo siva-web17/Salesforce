@@ -8,13 +8,14 @@
         "localhost": "concurrently \"node server.js\" \"http-server localhost\""
     },
     "dependencies": {
-        "node-command-line": "^1.0.2",
-        "prompt": "^1.0.0",
-        "prompt-improved": "^0.1.10",
+        "bluebird": "^3.5.1",
         "body-parser": "^1.18.2",
         "bootstrap": "^4.0.0",
+        "concurrently": "^3.5.1",
         "express": "^4.16.3",
-        "concurrently": "^3.5.1"
+        "node-command-line": "^1.0.2",
+        "prompt": "^1.0.0",
+        "prompt-improved": "^0.1.10"
     },
     "devDependencies": {
         "fancy-log": "^1.3.2",
