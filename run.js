@@ -46,8 +46,8 @@ function cmd_Exec(value, process) {
 
 for (i = 0; i < config.collection.length; i++) {
     cmd_Exec(config.collection[i]);
-    var primarySource = config.source + config.valueHolder + '/' + config.lastElemt;
-    var primaryDest = config.destination + config.valueHolder + '/' + config.lastElemt;
+    var primarySource = config.source + config.valueHolder + '\\' + config.lastElemt;
+    var primaryDest = config.destination + config.valueHolder + '\\' + config.lastElemt;
     primarySource = primarySource.replace(/\\/g, "/")
     primaryDest = primaryDest.replace(/\\/g, "/")
     primarySource = primarySource.replace(/\\/g, "\\\\")
@@ -59,8 +59,8 @@ for (i = 0; i < config.collection.length; i++) {
             throw err;
         console.log('source.txt was copied to destination.txt');
     });
-    var secondarySource = config.source + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
-    var secoundaryDest = config.destination + config.valueHolder + '/' + config.lastElemt + '-meta.xml';
+    var secondarySource = config.source + config.valueHolder + '\\' + config.lastElemt + '-meta.xml';
+    var secoundaryDest = config.destination + config.valueHolder + '\\' + config.lastElemt + '-meta.xml';
     secondarySource = secondarySource.replace(/\\/g, "/")
     secoundaryDest = secoundaryDest.replace(/\\/g, "/")
     secondarySource = secondarySource.replace(/\\/g, "\\\\")
