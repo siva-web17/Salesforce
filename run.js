@@ -51,8 +51,8 @@ for (i = 0; i < config.collection.length; i++) {
     primarySource = primarySource.replace(/\\/g, "/")
     primaryDest = primaryDest.replace(/\\/g, "/")
     var regex = /(?<!https:)\//g;
-    primarySource = primarySource.replace(regex, "\\");
-    primaryDest = primaryDest.replace(regex, "\\");
+    primarySource = primarySource.replace(regex, "\\\\");
+    primaryDest = primaryDest.replace(regex, "\\\\");
     console.log("primarySource:" + primarySource);
     console.log('primaryDest:' + primaryDest);
     copyFile(primarySource, primaryDest, (err) => {
@@ -67,8 +67,8 @@ for (i = 0; i < config.collection.length; i++) {
     secondarySource = secondarySource.replace(/\\/g, "\\\\")
     secoundaryDest = secoundaryDest.replace(/\\/g, "\\\\")
     var regex = /(?<!https:)\//g;
-    secondarySource = secondarySource.replace(regex, "\\");
-    secoundaryDest = secoundaryDest.replace(regex, "\\");
+    secondarySource = secondarySource.replace(regex, "\\\\");
+    secoundaryDest = secoundaryDest.replace(regex, "\\\\");
     console.log("secondarySource:" + secondarySource);
     console.log("secoundaryDest:" + secoundaryDest);
     copyFile(secondarySource, secoundaryDest, (err) => {
@@ -76,8 +76,8 @@ for (i = 0; i < config.collection.length; i++) {
     });
 }
 
-// var secondarySource = "home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js"
-// var secoundaryDest = "\\home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js-meta.xml"
-// copyFile(secondarySource, secoundaryDest, (err) => {
-//     console.log('Run Executed Successfully');
-// });
+var secondarySource = "home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js"
+var secoundaryDest = "\\home\\travis\\build\\siva-web17\\Salesforce\\force-app\\main\\default\\aura\\OpportunityLogACall\\OpportunityLogACallRenderer.js-meta.xml"
+copyFile(secondarySource, secoundaryDest, (err) => {
+    console.log('Run Executed Successfully');
+});
