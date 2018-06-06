@@ -63,3 +63,4 @@ function cmd_Exec(value, process) {
 for (i = 0; i < config.collection.length; i++) {
     cmd_Exec(config.collection[i]);
 }
+//Fixed
