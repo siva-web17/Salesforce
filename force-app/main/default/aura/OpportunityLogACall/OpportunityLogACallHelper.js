@@ -17,3 +17,5 @@
         $A.enqueueAction(getFirstContactStatus)
     }
 })
+
+// <!-- <DUMMY> -->

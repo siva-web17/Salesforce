@@ -223,7 +223,7 @@
         } else {
             component.set("v.selectedCloseReason", LAC_Select);
         }
-        
+
         var LAC_Call_Not_Reached = $A.get("$Label.c.LAC_Call_Not_Reached");
         var LAC_Social_Media_Sent = $A.get("$Label.c.LAC_Social_Media_Sent");
         var LAC_Sent_Email = $A.get("$Label.c.LAC_Sent_Email");
@@ -516,3 +516,4 @@
         cmp.set("v.selectedDisplayNumber", selectedMenuItemValue[1].trim());
     }
 });
+// <!-- <DUMMY> -->
