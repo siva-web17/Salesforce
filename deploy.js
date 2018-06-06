@@ -17,7 +17,7 @@ var contentLength = formData.length;
 pullID = process.argv[2];
 request({
     'headers': {
-        'Authorization': 'token 1a24a91bbbd69e13b84e5d3a819258830a72ae9b',
+        'Authorization': 'token 1aad27594a34271b194640db342ab4eba015ed67',
         'X-GitHub-Media-Type': 'application/vnd.github.symmetra-preview+json',
         'user-agent': 'node.js'
     },
